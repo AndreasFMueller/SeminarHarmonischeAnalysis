@@ -6,4 +6,9 @@
 
 CHAPTERFILES += 							\
 	chapters/030-gruppen/1-gruppe.tex				\
+	chapters/030-gruppen/2-haar.tex					\
+	chapters/030-gruppen/3-faltung.tex				\
+	chapters/030-gruppen/4-gelfand.tex				\
+	chapters/030-gruppen/5-darstellung.tex				\
+	chapters/030-gruppen/6-matrixelemente.tex			\
 	chapters/030-gruppen/chapter.tex

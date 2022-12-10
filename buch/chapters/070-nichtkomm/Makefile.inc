@@ -6,4 +6,9 @@
 
 CHAPTERFILES += 							\
 	chapters/070-nichtkomm/1-beispiele.tex				\
+	chapters/070-nichtkomm/2-unimodular.tex				\
+	chapters/070-nichtkomm/3-mittelung.tex				\
+	chapters/070-nichtkomm/4-gelfand.tex				\
+	chapters/070-nichtkomm/5-mendez.tex				\
+	chapters/070-nichtkomm/6-registrierung.tex			\
 	chapters/070-nichtkomm/chapter.tex

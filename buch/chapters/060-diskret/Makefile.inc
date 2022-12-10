@@ -6,4 +6,7 @@
 
 CHAPTERFILES += 							\
 	chapters/060-diskret/1-endlich.tex				\
+	chapters/060-diskret/2-aufloesung.tex				\
+	chapters/060-diskret/3-schnell.tex				\
+	chapters/060-diskret/4-koerper.tex				\
 	chapters/060-diskret/chapter.tex
