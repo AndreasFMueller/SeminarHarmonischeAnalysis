@@ -1,0 +1,54 @@
+%
+% errata.tex -- errors found in the book
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+\documentclass{article}
+\usepackage{geometry}
+\geometry{papersize={170mm,240mm},total={140mm,200mm},top=21mm}
+\usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amsmath,amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{txfonts}
+\usepackage{verbatim}
+\begin{document}
+
+\def\fehler#1#2{
+\bgroup\parindent0pt
+\rule[0mm]{\textwidth}{0.5pt}
+\hbox to\hsize{%
+#1
+\hfill
+#2}
+\rule[2mm]{\textwidth}{0.5pt}
+\egroup
+}
+
+\def\korrektur#1{
+\vspace{5mm}
+\parindent0pt
+Korrektur-Diff:\\
+\small
+\verbatiminput{diffs/#1.diff}
+}
+
+\section*{Mathematisches Seminar Harmonische Analysis --- Errata}
+
+Die folgenden Fehler im Buch {\em Mathematisches Seminar Harmonische Analysis}
+sind seit der Drucklegung im August 2023 bekannt geworden.
+
+\vspace*{1cm}
+
+%\fehler{Seite 519, letzte Zeile}{(22.~Oktober 2022)}
+%\[
+%P_n(z) = \sum^{\lfloor n/2 \rfloor}_{k=0}
+%\frac{(-1)^k}{2^n k!} \frac{(2n - 2k)!}{(n - k)! (n-2k)!} z^{n - 2k}
+%\]
+
+\end{document}

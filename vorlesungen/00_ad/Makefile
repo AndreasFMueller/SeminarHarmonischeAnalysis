@@ -35,6 +35,7 @@ pages:
 	mkdir pages
 	for i in `seq 1 1 30`; \
 	do \
-		pdfjam --outfile pages/p-$${i}.pdf MathSem-00-ad.pdf $${i}; \
-		convert pages/p-$${i}.pdf pages/p-$${i}.png; \
+		n=`printf %02d $${i}`; \
+		pdfjam --papersize '{19.2cm,10.8cm}' --outfile pages/p-$${n}.pdf MathSem-00-ad.pdf $${n}; \
+		convert -density 600 pages/p-$${n}.pdf -geometry 1920x1080 pages/p-$${n}.jpg; \
 	done
