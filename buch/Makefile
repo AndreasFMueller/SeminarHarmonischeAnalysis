@@ -5,6 +5,8 @@
 #
 all:	buch.pdf
 
+buch:	SeminarHarmonischeAnalysis.pdf
+
 papers/common/Makefile.inc:	papers/common/paperlist
 
 include common/Makefile.inc
