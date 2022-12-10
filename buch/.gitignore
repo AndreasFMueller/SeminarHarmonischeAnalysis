@@ -1,0 +1,10 @@
+*-blx.bib
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.run.xml
+*.toc
+buch.pdf
+SeminarHarmonischeAnalysis.pdf
