@@ -56,6 +56,8 @@ besagen, dass die Funktion
 (\vec{u},\vec{v}) \mapsto \vec{u}\cdot\vec{v}
 \]
 linear ist in jedem Faktor.
+Die folgende Definition verallgemeinert die Idee auf einen
+beliebigen reellen Vektorraum $V$.
 
 \begin{definition}
 Eine Funktion
@@ -66,17 +68,19 @@ V\times V \to \mathbb{R}
 (u,v) \mapsto b(u,v)
 \]
 heisst {\em bilinear} oder {\em Bilinearform},
-wenn sie linear ist in jedem Argument, also also
+wenn sie linear ist in jedem Argument, also
 \index{bilinear}%
 \index{Bilinearform}%
 \[
 \begin{aligned}
 b(\lambda u+\mu w,v) &= \lambda b(u,v) + \mu(w,v)
 \\
+\text{und}\qquad
 b(u,\lambda v+\mu w) &= \lambda b(u,v) + \mu(u,w)
 \end{aligned}
 \]
-gilt.
+gilt für beliebige Vektoren $u,v,w\in V$ und Skalare
+$\lambda,\mu\in\mathbb{R}$.
 \end{definition}
 
 Das Skalarprodukt der Vektorgeometrie hat aber noch eine weitere
@@ -127,6 +131,55 @@ b(u,u)+b(u,v)+b(v,u)+b(v,v)
 &=
 b(u,u) + 2b(u,v) + b(v,v).
 \end{align*}
+
+Eine Bilinearform auf einem endlichdimesionalen Vektorraum $V$
+kann mit Hilfe einer Basis der Berechnung leichter zugänglich
+gemacht werden.
+Seien $b_1,\dots,b_n\in V$ die Vektoren einer Basis von $V$.
+Dann können Vektoren $u,v\in V$ mit Hilfe der Koordinaten
+$u_i\in\mathbb{R}$ und $v_i\in\mathbb{R}$ und der Standardbasisvektoren
+als
+\[
+u = \sum_{i=1}^n u_ib_i,\qquad
+v = \sum_{i=1}^n v_ib_i
+\]
+geschrieben werden.
+Für das Skalarprodukt folgt dann
+\begin{align*}
+\langle u,v\rangle
+&=
+\biggl\langle \sum_{i=1}^n u_ib_i, \sum_{k=1}^n v_kb_k\biggr\rangle
+=
+\sum_{i=1}^n
+\sum_{k=1}^n
+u_i \underbrace{\langle b_i,b_k\rangle}_{\displaystyle = g_{ik}} v_k.
+\end{align*}
+Schreibt man die $u_i$ und $v_k$ in einen $n$-dimensionalen Spaltenvektor
+und die $g_{ik}$ in eine $n\times n-$-Matrix, kann das Skalarprodukt in
+Matrixschreibweise als
+\[
+\langle u,v\rangle
+=
+\transpose{%
+\begin{pmatrix}
+u_1\\u_2\\\vdots\\u_n
+\end{pmatrix}}
+G
+\begin{pmatrix}
+v_1\\v_2\\\vdots\\v_n
+\end{pmatrix}
+\]
+geschrieben werden.
+Die Matrix $G$ heisst die Matrix des Skalarproduktes in der Basis
+oder auch die {\em Gram-Matrix}.
+\index{Gram-Matrix}%
+Die Eigenschaften des Skalarproduktes schlagen sich in Eigenschaften
+dieser Matrix nieder.
+Die Symmetrie des Skalarproduktes hat zum Beispiel zur Folge, dass
+\[
+g_{ik} = \langle b_i,b_k\rangle = \langle b_k,b_i\rangle = g_{ki},
+\]
+die Matrix $G$ ist also symmetrisch.
 
 %
 % Norm
@@ -179,6 +232,13 @@ Eine {\em Skalarprodukt} ist eine positiv definite symmetrische Bilinearform.
 \index{Skalarprodukt}%
 \end{definition}
 
+Für die Gram-Matrix $G$ eines Skalarproduktes bedeutet die Forderung,
+dass das Skalarprodukt bilinear ist, dass die Matrix $G$ positiv
+definit sein muss.
+Aus der linearen Algebra ist bekannt, dass $G$ genau dann positiv
+definit ist, wenn $G$ eine Cholesky-Zerlegung $G=L\transpose{L}$ hat,
+deren Diagonalelemente alle positiv sind.
+
 Ein Skalarprodukt hat jetzt alle Eigenschaften, die erlauben, einen 
 Abstandsbegriff zu definieren.
 
@@ -192,6 +252,10 @@ definiert als
 \]
 für $v\in V$.
 \end{definition}
+
+Die Norm erfüllt $\|\lambda v\| = |\lambda|\,\|v\|$ für jeden Vektor
+$v\in V$ und $\lambda\in\mathbb{R}$.
+Skalierung eines Vektors skaliert die Norm auf die gleiche Art.
 
 %
 % Sesquilineare Funktionen
@@ -289,6 +353,82 @@ Tatsächlich gilt
 \end{align*}
 \end{beispiel}
 
+Eine Sesquilinearform auf einem endlichdimensionalen Vektorraum $V$
+kann wie im reellen Fall mit Hilfe einer Matrix beschrieben werden.
+Eine Darstellung der Vektoren $u$ und $v$ mit Koordinaten $u_i$ und
+$v_i$ in der Basis $b_1,\dots,b_n\in V$ führt auf das Skalarprodukt
+\[
+f(u,v)
+=
+f\biggl( \sum_{i=1}^n u_ib_i, \sum_{k=1}^n v_kb_k \biggr)
+=
+\sum_{i=1}^n\sum_{k=1}^n
+\overline{u}_i
+\underbrace{f(b_i, b_k)}_{\displaystyle=h_{ik}}
+v_k.
+\]
+In Matrixform mit der Matrix $H$ mit Einträgen $h_{ik}$ ist dies
+gleichbedeutend mit
+\[
+f(u,v)
+=
+\transpose{
+\begin{pmatrix}
+\overline{u}_1\\
+\overline{u}_2\\
+\vdots\\
+\overline{u}_n
+\end{pmatrix}
+}
+H
+\begin{pmatrix}
+v_1\\v_2\\\vdots\\v_n
+\end{pmatrix}.
+\]
+Der transponierte Vektor $\transpose{\overline{u}}$ mit komplex
+konjugierten Einträgen heisst auch konjugiert transponiert zu $u$.
+
+\begin{definition}
+Ist $A\in M_{m\times n}(\mathbb{C})$ eine komplexe $m\times n$-Matrix.
+Die Matrix $\overline{A}\in M_{m\times n}(\mathbb{C})$ mit 
+den komplex konjugierten Matrixelementen von $A$ heisst die
+(komplex) konjugierte Matrix zu $A$.
+\index{komplex konjugierte Matrix}%
+\index{konjugierte Matrix}%
+Die Matrix 
+\[
+A^*
+=
+\transpose{\overline{A}}
+=
+\transpose{
+\begin{pmatrix}
+\overline{a_{11}}&\overline{a_{12}}&\dots &\overline{a_{1n}}\\
+\overline{a_{21}}&\overline{a_{22}}&\dots &\overline{a_{2n}}\\
+\vdots           &\vdots           &\ddots&\vdots           \\
+\overline{a_{m1}}&\overline{a_{m2}}&\dots &\overline{a_{mn}}
+\end{pmatrix}
+}
+=
+\begin{pmatrix}
+\overline{a_{11}}&\overline{a_{21}}&\dots &\overline{a_{n1}}\\
+\overline{a_{12}}&\overline{a_{22}}&\dots &\overline{a_{n2}}\\
+\vdots           &\vdots           &\ddots&\vdots           \\
+\overline{a_{1m}}&\overline{a_{2m}}&\dots &\overline{a_{nm}}
+\end{pmatrix}
+\in
+M_{n\times m}(\mathbb{C})
+\]
+heisst die {\em transponiert konjugierte} oder {\em hermitesch konjugierte}
+\index{hermitesch konjugiert}%
+Matrix.
+\end{definition}
+
+Eine Sesquilinearform kann daher geschrieben werden als
+\(
+f(u,v) = u^*Hv.
+\)
+
 %
 % Hermitesche Formen
 %
@@ -321,6 +461,8 @@ V\times V
 \mathbb{C}
 \]
 heisst in {\em konjugiert symmetrisch} oder {\em hermitesch}, wenn
+\index{konjugiert symmetrisch}%
+\index{hermitesch!Sesquilinearform}%
 \[
 \langle u,v\rangle = \overline{\langle v,u\rangle}
 \]
@@ -349,6 +491,21 @@ auf $V=\mathbb{C}^n$ ist konjugiert symmetrisch, denn
 \end{align*}
 \end{beispiel}
 
+Die Gram-Matrix einer hermitesche Sesquilinearform hat die Matrix-Elemente
+\[
+h_{ik}
+=
+\langle b_i,b_k\rangle
+=
+\overline{\langle b_k,b_i\rangle}
+=
+\overline{h}_{ki}
+\qquad\Rightarrow\qquad
+H^* = H.
+\]
+Man sagt auch, die Matrix $H$ ist {\em hermitesch}.
+\index{hermitesch!Matrix}%
+
 %
 % Komplexe Skalarprodukte
 %
@@ -371,10 +528,24 @@ Die zugehörige {\em Norm} eines Vektors ist
 $\|v\| = \sqrt{\langle u, u\rangle}$.
 \end{definition}
 
+Auch für ein komplexes Skalarprodukt
+\[
+\|\lambda v\|^2
+=
+\langle \lambda v,\lambda v\rangle
+=
+\overline{\lambda}\lambda\langle v,v\rangle
+=
+|\lambda|^2\,\|v\|^2
+\qquad\Rightarrow\qquad
+\|\lambda v\|
+=
+|\lambda|\, \|v\|,
+\]
+ganz analog zur entsprechenden Skalierungseigenschaft für ein
+reelles Skalarprodukt.
 
-%
-% Verallgemeinerte Skalarprodukte
-%
-\subsection{Verallgemeinerte Skalarprodukte}
+
+
 
 
