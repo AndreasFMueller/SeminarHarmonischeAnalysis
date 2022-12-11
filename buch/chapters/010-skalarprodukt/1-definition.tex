@@ -6,4 +6,375 @@
 \section{Definition
 \label{buch:skalarprodukte:section:definition}}
 \kopfrechts{Definition}
+Ein Skalarprodukt ist vor allem deshalb besonders einfach anzuwenden,
+weil es bilinear ist.
+Dies bedeutet, dass man Skalarprodukte ausmultiplizieren kann, die
+Intuition, die man aus der elementaren Algebra mitbringt, führt zum
+Erfolg.
+Allerdings braucht es für ein erfolgreiches Skalarprodukt noch
+etwas mehr.
+
+%
+% Symmetrische Bilinearformen
+%
+\subsection{Symmetrische Bilinearformen}
+Das aus der Vektorgeometrie bekannte Skalarprodukt
+\index{Vektorgeometrie}%
+\index{Skalarprodukt}%
+\[
+\vec{u}\cdot \vec{v}
+=
+\sum_{i=1}^n u_iv_i
+\]
+auf $\mathbb{R}^n$ ist deshalb besonders nützlich, weil sich damit
+so rechnen lässt, wie man es sich von einem Produkt in der Algebra
+gewohnt ist.
+Dazu gehört, dass man Produkte ausmultiplizieren kann:
+\begin{equation}
+\begin{aligned}
+(\lambda\vec{u}+\mu\vec{w})\cdot\vec{v}
+&=
+\lambda\vec{u}\cdot\vec{v}+\mu\vec{w}\cdot\vec{v}
+\\
+\vec{u}\cdot(\lambda\vec{v}+\mu\vec{w})
+&=
+\lambda\vec{u}\cdot\vec{v}+\mu\vec{u}\cdot\vec{w}.
+\end{aligned}
+\label{buch:skalarprodukt:eqn:ausmultiplizieren}
+\end{equation}
+Umgekehrt kann man gemeinsame Faktoren auch ausklammern.
+Die Rechenregeln \eqref{buch:skalarprodukt:eqn:ausmultiplizieren}
+besagen, dass die Funktion
+\[
+\cdot
+\;
+\colon
+\mathbb{R}^n \times \mathbb{R}^n
+\to
+\mathbb{R}
+:
+(\vec{u},\vec{v}) \mapsto \vec{u}\cdot\vec{v}
+\]
+linear ist in jedem Faktor.
+
+\begin{definition}
+Eine Funktion
+\[
+b\colon
+V\times V \to \mathbb{R}
+:
+(u,v) \mapsto b(u,v)
+\]
+heisst {\em bilinear} oder {\em Bilinearform},
+wenn sie linear ist in jedem Argument, also also
+\index{bilinear}%
+\index{Bilinearform}%
+\[
+\begin{aligned}
+b(\lambda u+\mu w,v) &= \lambda b(u,v) + \mu(w,v)
+\\
+b(u,\lambda v+\mu w) &= \lambda b(u,v) + \mu(u,w)
+\end{aligned}
+\]
+gilt.
+\end{definition}
+
+Das Skalarprodukt der Vektorgeometrie hat aber noch eine weitere
+wichtige Eigenschaft.
+Der Kosinus-Satz der ebenen Trigonometrie ist folgt für
+\index{Kosinus-Satz}%
+\index{Trigonometrie}%
+$\vec{c} = \vec{b}-\vec{a}$ 
+durch Berechnung der Länge
+\[
+|\vec{c}|^2
+=
+\vec{c}\cdot\vec{c}
+=
+(\vec{b}-\vec{a})\cdot(\vec{b}-\vec{a})
+=
+\vec{b}\cdot\vec{b}
+-
+\vec{b}\cdot\vec{a}
+-
+\vec{a}\cdot\vec{b}
++
+\vec{a}\cdot\vec{a}
+=
+|\vec{a}|^2 + |\vec{b}|^2 - 2 \vec{a}\cdot\vec{b}
+=
+|\vec{a}|^2 + |\vec{b}|^2 - 2 |\vec{a}|\;|\vec{b}|\cos\alpha,
+\]
+wobei wir verwendet haben, dass $\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$
+ist.
+Die zusätzliche Eigenschaft ist also, dass sich die Faktoren
+des Skalaproduktes vertauschen lassen.
+
+\begin{definition}
+Eine Funktion $b\colon V\times V \to\mathbb{R}$ heisst {\em symmetrisch},
+wenn $b(u,v)=b(v,u)$ für alle $u,v\in V$.
+\index{symmetrisch}%
+\end{definition}
+
+Für eine symmetrische Bilinearform erfüllt die binomische Formel
+\begin{align*}
+b(u+v,u+v)
+&=
+b(u,u+v) + b(v,u+v)
+=
+b(u,u)+b(u,v)+b(v,u)+b(v,v)
+\\
+&=
+b(u,u) + 2b(u,v) + b(v,v).
+\end{align*}
+
+%
+% Norm
+%
+\subsection{Norm}
+In der Vektorgeometrie wird das Skalarprodukt auch dazu verwendet,
+mit $|\vec{v}|^2 = \vec{v}\cdot\vec{v}$ 
+die Länge eines Vektors zu berechnen.
+Jeder Vektor $\ne 0$ hat eine positive Länge.
+Für eine beliebige Bilinearform ist jedoch nicht automatisch
+sichergestellt, dass $b(u,u)\ne 0$ ist für $u\ne 0$.
+Ausserdem kann ein Längenbegriff nur dann aus $b$ abgeleitet werden,
+wenn zusätzlich $b(u,u)>0$ ist ür $u\ne 0$, da sich andernfalls
+die Wurzel nicht ziehen lässt.
+
+\begin{beispiel}
+Die symmetrische Bilinearform
+\[
+b(x,y)
+=
+x_1y_1-x_2y_2
+\]
+auf $\mathbb{R}^2$ ist nicht dazu geeignet, eine Länge zu definieren,
+dann der zweite Standardbasisvektor $e_2$ hat das Produkt
+$b(e_2,e_2) = -1$.
+Auch gibt es einen Vektor, der ``Länge'' 0 hat,
+nämlich $v=e_1+e_2$ mit
+\[
+b(v,v)
+=
+b(e_1+e_2,e_1+e_2)
+=
+b(e_1,e_1) + 2\underbrace{b(e_1,e_2)}_{\displaystyle =0} + b(e_2,e_2)
+=
+1-1
+=
+0.
+\qedhere
+\]
+\end{beispiel}
+
+\begin{definition}
+Eine symmetrische Bilinearform $\langle\;\,,\;\rangle$
+heisst {\em positiv definit}, wenn $\langle u,u\rangle > 0$ 
+für alle von 0 verschiedenen Vektoren $u\ne 0$ gilt.
+\end{definition}
+
+\begin{definition}
+Eine {\em Skalarprodukt} ist eine positiv definite symmetrische Bilinearform.
+\index{Skalarprodukt}%
+\end{definition}
+
+Ein Skalarprodukt hat jetzt alle Eigenschaften, die erlauben, einen 
+Abstandsbegriff zu definieren.
+
+\begin{definition}
+Die zu einem Skalarprodukt $\langle\;\,,\;\rangle$ gehörige Norm ist
+definiert als
+\[
+\| v\|
+=
+\sqrt{\langle v,v\rangle}
+\]
+für $v\in V$.
+\end{definition}
+
+%
+% Sesquilineare Funktionen
+%
+\subsection{Sesquilineare Funktionen}
+Sei jetzt $V$ ein komplexer Vektorraum.
+Aus einer bilinearen Funktion
+\[
+b\colon V\times V \to \mathbb{C} : (u,v) \mapsto b(u,v)
+\]
+auf $V$ kann jedoch keine brauchbare Norm abgeleitet werden.
+Eine solche müsste $\| v\|=b(v,v)\ge 0$ erfüllen.
+Selbst wenn $b(u,u)> 0$ ist für einen speziellen Vektor $u\in V$,
+ist das Skalarprodukt von $iu$ mit sich selbst
+\[
+b(iu,iu)
+=
+i^2 b(u,u)
+=
+-b(u,u)
+<
+0.
+\]
+Da $|i|=1$ ist, würde man eher erwarten, dass $iu$ die gleiche 
+Länge hat wie $u$, dass also $b(iu,iu)=b(u,u)$.
+
+\begin{definition}
+Eine Funktion $f\colon V\to U$ zwischen komplexen Vektorräumen 
+heisst {\em konjugiert linear}, wenn 
+\[
+f(\lambda u + \mu v)
+=
+\overline{\lambda} f(u) + \overline{\mu} (v)
+\]
+für alle $u,v\in V$ und $\lambda,\mu\in \mathbb{C}$.
+\end{definition}
+
+Im obengenannten Beispiel wird $b(iu,iu)>0$, wenn $b$ im ersten Faktor
+konjugiert linear ist.
+Dann ist nämlich $b(iu,iu) = -ib(u,iu) = -i^2 b(u,u) = b(u,u)>0$.
+
+\begin{definition}
+Eine Funktion
+\[
+\langle\;\,,\;\rangle
+\colon
+V\times V \to \mathbb{C}
+:
+(u,v) \mapsto \langle u,v\rangle
+\]
+heisst {\em sesquilinear} oder {\em Sesquilinearform}
+wenn sie linear ist im zweiten Argument
+\end{definition}
+
+Das lateinische Wort {\em sesqui} bedeudet eineinhalb, eine
+sesquilineare Funktion ist linear in einem Faktor, aber nur
+halb linear im anderen.
+
+\begin{beispiel}
+Die Form
+\[
+\langle u,v\rangle = \sum_{i=1}^n \overline{u}_i v_i
+\]
+mit $u,v\in \mathbb{C}^n$ ist sesquilinear.
+Tatsächlich gilt
+\begin{align*}
+\langle u,\lambda v+\mu w\rangle
+&=
+\sum_{i=1}^n \overline{u}_i (\lambda v_i+\mu w_i)
+=
+\lambda
+\sum_{i=1}^n \overline{u}_i v_i
++
+\mu
+\sum_{i=1}^n \overline{u}_i w_i
+=
+\lambda\langle u,v\rangle
++
+\mu\langle u,w\rangle
+\\
+\langle \lambda u+\mu w, v\rangle
+&=
+\sum_{i=1}^n \overline{(\lambda u_i+\mu w_i)}v_i
+=
+\overline{\lambda}
+\sum_{i=1}^n \overline{u}_i v_i
++
+\overline{\mu}
+\sum_{i=1}^n \overline{w}_iv_i
+=
+\overline{\lambda}\langle u,v\rangle
++
+\overline{\mu}\langle w,v\rangle.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+%
+% Hermitesche Formen
+%
+\subsection{Hermitesche Formen}
+Damit aus einer sesquilinearen Funktion eine Norm abgeleitet werden
+kann, muss das Produkt $\langle u,u\rangle$ für jeden Vektor $u\in V$
+eine reelle Zahl sein.
+Selbst für die sesquilineare Funktion
+\[
+\langle\;\,,\;\rangle
+\colon
+\mathbb{C}\times\mathbb{C}
+\to
+\mathbb{C}
+:
+(u,v) \mapsto i\overline{u}v
+\]
+ist dies jedoch nicht der Fall, da $\langle 1,1\rangle = i\not\in\mathbb{R}$
+ist.
+Die folgende Eigenschaft kann aber garantieren, dass
+$\langle u,u\rangle\in\mathbb{R}$.
+
+\begin{definition}
+Eine sesquilinear Funktion 
+\[
+\langle \;\,,\;\rangle
+\colon
+V\times V
+\to
+\mathbb{C}
+\]
+heisst in {\em konjugiert symmetrisch} oder {\em hermitesch}, wenn
+\[
+\langle u,v\rangle = \overline{\langle v,u\rangle}
+\]
+für alle $u,v\in V$ gilt.
+\end{definition}
+
+\begin{beispiel}
+Die Standard-Sesquilinearform
+\[
+\langle u,v\rangle
+=
+\sum_{i=1}^n \overline{u}_i v_i
+\]
+auf $V=\mathbb{C}^n$ ist konjugiert symmetrisch, denn
+\begin{align*}
+\langle u,v\rangle
+&=
+\sum_{i=1}^n \overline{u}_i v_i
+=
+\overline{
+\sum_{i=1}^n u_i \overline{v}_i
+}
+=
+\overline{\langle v,u\rangle}.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+%
+% Komplexe Skalarprodukte
+%
+\subsection{Komplexe Skalarprodukte}
+Wie bei einem reellen Skalarprodukt reichen auch im Fall eines
+komplexen Vektorraums die Eigenschaften der Sesquilinearität
+und der hermiteschen Symmetrie nicht aus, ein sinnvolles
+Skalarprodukt zu definieren.
+
+\begin{definition}
+Eine hermitesche Sesquilinearform $\langle\;\,,\;\rangle$
+auf dem komplexen Vektorraum $V$ heisst {\em positiv definit}, wenn
+\[
+\langle u,u\rangle > 0
+\]
+für alle $u\ne 0$ in $V$.
+Ein {\em komplexes Skalarprodukt} ist eine positiv definite hermitesche
+Sesquilinearform.
+Die zugehörige {\em Norm} eines Vektors ist
+$\|v\| = \sqrt{\langle u, u\rangle}$.
+\end{definition}
+
+
+%
+% Verallgemeinerte Skalarprodukte
+%
+\subsection{Verallgemeinerte Skalarprodukte}
+
 
