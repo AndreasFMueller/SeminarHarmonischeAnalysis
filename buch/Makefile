@@ -63,3 +63,8 @@ include test/Makefile.inc
 errata.pdf:	errata.tex
 	$(pdflatex) errata.tex
 
+#
+# publish
+#
+publish:	SeminarHarmonischeAnalysis.pdf
+	bash publish

@@ -1,0 +1,57 @@
+%
+% parallelogramm.tex -- Parallelogramm-Regel
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{0.5}
+\def\punkt#1{
+\fill #1 circle[radius=0.12];
+\fill[color=white] #1 circle[radius=0.08];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (7,1);
+\coordinate (B) at (0.1,6);
+
+\fill[color=gray!10] (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+
+\draw[->,line width=1pt,color=blue] (O) -- (A);
+\draw[->,line width=1pt,color=blue] (O) -- (B);
+\draw[->,line width=1pt,color=blue] (A) -- ($(A)+(B)$);
+\draw[->,line width=1pt,color=blue] (B) -- ($(A)+(B)$);
+
+\draw[->,line width=1pt,color=red] (A) -- (B);
+\draw[->,line width=1pt,color=red] (O) -- ($(A)+(B)$);
+
+\node[color=blue] at ($0.5*(A)$) [below] {$x$};
+\node[color=blue] at ($0.5*(B)$) [left] {$y$};
+\node[color=blue] at ($(A)+0.5*(B)$) [right] {$y$};
+\node[color=blue] at ($(B)+0.5*(A)$) [above] {$x$};
+
+\node[color=red] at ($0.75*(A)+0.75*(B)$) [left] {$x+y$};
+\node[color=red] at ($0.35*(A)+0.70*(B)$) [below left] {$x-y$};
+
+\punkt{(O)}
+\punkt{(A)}
+\punkt{(B)}
+\punkt{($(A)+(B)$)}
+
+\node at (O) [below left] {$A$};
+\node at (A) [below right] {$B$};
+\node at (B) [above left] {$D$};
+\node at ($(A)+(B)$) [above right] {$C$};
+
+\node at (9,3.5) [right] {$|AC|^2 + |BD|^2= |AB|^2 + |BC|^2 + |AD|^2 + |CD|^2$};
+
+\end{tikzpicture}
+\end{document}
+
