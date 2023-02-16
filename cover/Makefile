@@ -32,3 +32,18 @@ lncover.pdf:	lncover.tex
 lncover.png:	lncover.pdf Makefile
 	convert -density 300 -extract 2007x2834+0+0 lncover.pdf \
 		lncover.png
+
+libwavspec.a:	wav.o spec.o
+	ar -r libwavspec.a wav.o
+wav.o:	wav.cpp wav.h 
+	g++ -std=c++11 -o wav.o -O -Wall -g -c wav.cpp
+spec.o:	spec.cpp spec.h wav.h
+	g++ -std=c++11 -o spec.o -O -Wall -g -c spec.cpp
+
+wavreader:	wavreader.cpp libwavspec.a spec.h
+	g++ -std=c++11 -o wavreader -O -Wall -g wavreader.cpp \
+		-L. -lwavspec `pkg-config --libs fftw3` \
+		`pkg-config --libs cfitsio`
+test:	wavreader
+	rm -f brahms.fits
+	./wavreader -d -f brahms.fits brahms.wav
