@@ -1,0 +1,57 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+\def\s{12/(2*3.14159)}
+
+\draw[->] (-0.2,0) -- (13.5,0) coordinate[label={$x$}];
+\draw[->] (0,{-1.5*\s}) -- (0,{1.6*\s}) coordinate[label={right:$y$}];
+
+\draw[color=red,line width=1pt] (-0.2,{-1*\s}) -- (0,{-1*\s});
+\draw[color=red,line width=0.2pt] (0,{-1*\s}) -- (0,{1*\s});
+\draw[color=red,line width=1pt] (0,{1*\s}) -- ({3.14159*\s},{1*\s});k
+\draw[color=red,line width=0.2pt] ({3.14159*\s},{-1*\s}) -- ({3.14159*\s},{1*\s});
+\draw[color=red,line width=1pt] ({2*3.14159*\s},{-1*\s}) -- ({3.14159*\s},{-1*\s});
+\draw[color=red,line width=0.2pt] ({2*3.14159*\s},{-1*\s}) -- ({2*3.14159*\s},{1*\s});
+\draw[color=red,line width=1pt] ({2*3.14159*\s},{1*\s}) -- ({13.2},{1*\s});
+
+\begin{scope}
+\clip (-0.2,{-1.5*\s}) rectangle (13.2,{1.5*\s});
+\draw[color=blue] plot[domain=-10:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*sin(\x)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9+sin(11*\x)/11)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9+sin(11*\x)/11+sin(13*\x)/13)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9+sin(11*\x)/11+sin(13*\x)/13+sin(15*\x)/15)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9+sin(11*\x)/11+sin(13*\x)/13+sin(15*\x)/15+sin(17*\x)/17)*\s});
+\draw[color=blue] plot[domain=-10:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)+sin(3*\x)/3+sin(5*\x)/5+sin(7*\x)/7+sin(9*\x)/9+sin(11*\x)/11+sin(13*\x)/13+sin(15*\x)/15+sin(17*\x)/17+sin(19*\x)/19)*\s});
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

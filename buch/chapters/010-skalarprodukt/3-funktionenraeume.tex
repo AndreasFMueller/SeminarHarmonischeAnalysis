@@ -6,16 +6,285 @@
 \section{Funktionenräume
 \label{buch:skalarprodukt:section:funktionenraeume}}
 \kopfrechts{Funktionenräume}
+Ziel der harmonischen Analysis ist die effiziente Approximation einer
+grossen Klasse von Funktionen.
+Als approximierende Funktionen kommen stetige Funktionen, Polynome,
+trigonometrische Polynome oder eine ähnlich, einfach konstruierbare
+Funktionenfamilie in Frage.
+Es gilt zunächst herauszufinden, was ``Approximation'' genau heissen
+soll und von welchen Funktionen man überhaupt erwarten kann, dass sie
+approximiert werden können.
 
-\subsection{Stetige Funktionen}
+%
+% Stetige Funktionen
+%
+\subsection{Stetige Funktionen
+\label{buch:skalarprodukt:subsection:stetige-funktionen}}
+Der frühe intuitive Funktionsbegriff ging oft von der Vorstellung einer
+in einem Strich gezeichneten Kurve aus, wie man sie von den Graphen
+der Polynome oder der trigonometrischen Funktionen her kennt.
+In moderner Sprechweise sind dies die stetigen Funktionen.
 
-\subsection{Norm für stetige Funktionen}
+\begin{definition}
+Eine Funktion $f\colon I\to\mathbb{R}$ mit $I\subset \mathbb{R}$
+heisst stetig in einem Punkt $x_0\in I$, wenn für jedes $\varepsilon>0$
+ein $\delta>0$ existiert derart, dass $f(x)-f(x_0)|<\delta$ sobald
+$|x-x_0|<\varepsilon$.
+\end{definition}
 
-\subsection{Normen auf Funktionenräumen}
+Nur die Eigenschaft, eine Abstandsmessung zu besitzen, wird vom
+Definitionsbereich $I\subset \mathbb{R}$ verlangt.
+Der Stetigkeitsbegriff kann daher verallgemeinert werden auf den
+Begriff des metrischen Raumes.
 
-\subsection{Skalarprodukt}
+\begin{definition}
+Eine {\em Metrik} auf einer Menge $X$ ist eine Funktion
+\index{Metrik}%
+$d\colon X\times X\to \mathbb{R}$
+mit den folgenden Eigenschaften
+\begin{enumerate}
+\item
+Positiv definit: $d(x,y)\ge 0$ und $d(x,y)$ genau dann, wenn $x=y$.
+\item
+Symmetrie: \(d(x,y)=d(y,x)\)
+\item
+Dreiecksungleichung: \( d(x,y) \le d(x,z) + d(z,y) \).
+\end{enumerate}
+Ein {\em metrischer Raum} ist ein Menge $X$ mit einer Metrik.
+\index{matrischer Raum}%
+\end{definition}
 
+In einem metrischen Raum ist der Begriff des Grenzwertes übertragbar.
+Mit dem Begriff des Grenzwertes lässt sich auch der Begriff der
+Stetigkeit verallgemeinern.
 
+\begin{definition}
+Ist $x_n\in X$ eine Folge von Punkten in einem metrischen Raum $X$,
+dann heisst $x$ der Grenzwert der Folge $x_n$, wenn es für jedes
+$\varepsilon>0$ ein $N>0$ gibt derhart, dass
+$d(x_n,x)\le \varepsilon$ für alle $n>N$.
+Eine Funktion $f\colon X\to Y$ zwischen metrischen Räumen heisst
+stetig im Punkt $x\in X$, wenn für jede Folge $x_n\in X$ mit
+Grenzwert $x$ auch die Folge $y_n=f(x_n)\in Y$ konvergiert und
+den Grenzwert $y=f(x)$ hat.
+\end{definition}
+
+Teilmengen von $\mathbb{R}$ oder $\mathbb{R}^n$ tragen natürlich
+die Struktur eines metrischen Raumes mit der Abstandsmessung in 
+$\mathbb{R}^n$ als Metrik
+\[
+d(x,y) = \sqrt{(x_1-y_1)^2 + \ldots + (x_n-y_n)^2} = \|x-y\|.
+\]
+Die Eigenschaften einer Metrik wurden bereits in Abschnitt
+\ref{buch:skalarprodukte:section:cauchyschwarz} nachgewiesen.
+
+Der Begriff des Grenzwertes klärt, was mit der Approximation von $x$
+durch eine Folge $x_n$ gemeint ist.
+Wenn man darauf aufbauend die Konvergenz einer Folge von Funktionen
+gegen eine Grenzfunktion definieren will, braucht man einen Abstansbegriff
+zwischen Funktionen.
+Ein erster Versuch könnte sein, als Abstand zwischen zwei Funktionen
+$f$ und $g$ die Funktion
+\[
+d(f,g) = |f(x_0) - g(x_0)|.
+\]
+Die Menge der Funktionen wird dadurch jedoch nicht zu einem metrischen
+Raum.
+Zwar gilt sicher die Symmetrie und Dreiecksungleichung, und auch 
+$d(f,g)\ge 0$ für beliebige Funktionen.
+Aber wenn $d(f,g)=0$ ist, heisst das nur, dass $f$ und $g$ im Punkt
+$x_0$ den gleichen Wert haben.
+Ausser in trivialen Fällen wird es Funktionen geben, die zwar im Punkt
+$x_0$ übereinstimmen, sich aber in mindestens einem anderen Punkt
+unterscheiden.
+
+%
+% Normierte Räume
+%
+\subsubsection{Normierte Räume}
+Die stetigen Funktionen bilden aber keine strukturlose Menge, sie
+bilden einen Vektorraum: die Summe von stetigen Funktionen ist ebenfalls
+stetig, multiplizieren einer stetigen Funktion mit einem Skalar führt
+nicht aus der Menge der stetigen Funktionen heraus.
+Die für den Grenzwertbegriff von Funktionen verwendete Abstandsmessung 
+sollte der Vektorraumstruktur ebenfalls Rechnung tragen.
+
+\begin{definition}
+\label{buch:skalaprodukt:funktionenraume:def:norm}
+Sei $V$ ein Vektorraum über $\mathbb{R}$, dann heisst eine Funktion
+\( \|\;\cdot\;\| \colon V \to \mathbb{R}\) eine {\em Norm}, wenn gilt
+\index{Norm}
+\begin{enumerate}
+\item
+Definit: $ \|x\| = 0 \Rightarrow x=0$
+\item
+Homogeneität: $ \| \lambda x \| = |\lambda| \cdot \|x\|$
+\item
+Dreiecksungleichung: $\|x+y\| \le \|x\| + \|y\|$
+\end{enumerate}
+Ein {\em normierter Raum} ist ein Vektorraum $V$ mit einer Norm.
+\end{definition}
+
+%
+% Vollständigkeit
+%
+\subsubsection{Vollständigkeit}
+In den rationalen Zahlen hat nicht jede Folge einen Grenzwert.
+Die Zahl $\sqrt{2}$ lässt sich beliebig genau durch rationale Zahlen
+approximieren, sie ist aber nicht in $\mathbb{Q}$.
+Ähnlich lässt sich die Funktion $x\mapsto \sqrt{x}$ beliebig genau 
+durch Polyome approximieren, sie ist aber selbst kein Poylnome
+
+\begin{definition}
+Ein Folge $x_n\in X$ in einem metrischen Raum heisst {\em Cauchy-Folge},
+wenn es für jedes $\varepsilon>0$ ein $N>0$ gibt derart, dass 
+$|x_n-x_m|<\varepsilon$ wenn $n,m>N$ ist.
+\end{definition}
+
+Cauchy-Folgen sind also Folgen, die sich für genügend grossen Index
+kaum mehr ändern und für die man daher Konvergenz erwarten würde.
+
+\begin{definition}
+Ein normierter Raum heisst {\em vollständig} oder ein Banach-Raum,
+wenn jede Cauchy-Folge einen Grenzwert hat.
+\end{definition}
+
+Die rationalen Zahlen $\mathbb{Q}$ bilden keinen vollständigen
+metrischen Raum, aber die reellen Zahlen $\mathbb{R}$ enthalten
+alle Grenzwerte von Cauchy-Folgen, $\mathbb{R}$ ist eine vollständiger
+metrischer Raum.
+Die Menge der Polynome, betrachtet als Teilmenge der Menge der
+stetigen Funktionen $[0,1]\to\mathbb{R}$ ist nicht vollständig,
+da es eine Folge $f_n(x)$ von Approximationsfunktionen der Funktion
+$x\mapsto \sqrt{x}$ gibt.
+Als Cauchy-Folge konvergiert sie zwar gegen eine stetige Funktion,
+aber die Grenzfunktion ist nicht mehr im Raum der Polynome.
+
+Das Ziel der folgenden Kapitel ist also, zu geeignet interessanten
+Funktionenfamilien ``gute'' Normen zu finden derart, dass Cauchy-Folgen
+konvergieren gegen Funktionen, die immer noch ausreichend viele
+nützliche Eigenschaften haben.
+Im besten Fall konvergieren stetige Funktionen gegen stetige Funktionen,
+es wird sich aber zeigen, dass diese Anforderung zu streng ist.
+
+%
+% Norm fpr stetige Funktionen
+%
+\subsection{Norm für stetige Funktionen
+\label{buch:skalarprodukt:subsection:normfuerstetigefunktionen}}
+Damit man von Konvergenz von Folgen stetiger Funktionen sprechen kann,
+brauchen wir jetzt also eine Norm für stetige Funktionen.
+
+\begin{definition}
+Sei $X$ ein metrischer Raum und
+\[
+C(X)
+=
+C_{\mathbb{R}}(X)
+=
+\{
+f\colon X \to\mathbb{R}\mid
+\text{$f$ ist stetig}
+\}
+\]
+der Vektorraum der stetigen Funktion auf $X$.
+Die Norm von $C(X)$ ist definiert als
+\[
+\|f\| = \sup_{x\in X} |f(x)|.
+\]
+Sie heisst die {\em Supremum-Norm}.
+\end{definition}
+
+Wir prüfen nach, dass die Supremum-Norm tatsächlich eine Norm ist.
+Dazu sind die definierenden Eigenschaften nachzurechnen:
+\begin{enumerate}
+\item Definit: 
+\[
+0
+=
+\|f\|
+=
+\sup_{x\in X} |f(x)|
+\quad\Rightarrow\quad
+f(x)=0 \;\forall x\in X
+\quad\Rightarrow\quad
+f\in C(X).
+\]
+\item Homogeneität:
+\[
+\|\lambda f\|
+=
+\sup_{x\in X} |\lambda f(x)|
+=
+|lambda| \sup_{x\in X} |f(x)|
+=
+|lambda| \cdot \|f\|.
+\]
+\item
+Dreiecksungleichung:
+\[
+\|f+g\|
+=
+\sup_{x\in X}|f(x)+g(x)|
+\le
+\sup_{x\in X}(|f(x)|+|g(x)|)
+\le
+\sup_{x\in X}|f(x)|+\sup_{x\in X}|g(x)|
+=
+\|f\| + \|g\|.
+\]
+\end{enumerate}
+
+Eine Cauchy-Folge $f_n$ von Funktionen $X\to \mathbb{R}$ hat die
+Eigenschaft, dass für jedes $\varepsilon >0$ ein $N>0$ existiert,
+derart dass $\|f_n-f_m\|<\varepsilon$ ist.
+Da die Norm der maximale Unterschied von Funktionswerten ist,
+folgt dass für eine Cauchy-Folge in $C(X)$ die Folge $f_n(x)$ eine
+Cauchy-Folge in $\mathbb{R}$ ist und damit einen Grenzwert in $\mathbb{R}$
+hat.
+Die Funktion $f(x) = \lim_{n\to\infty}f_n(x)$ ist die Grenzfunktion.
+Die Konvergenz bezüglich der Norm besagt, dass für jedes $\varepsilon>0$
+es ein $N>0$ gibt derart, dass
+\[
+\varepsilon 
+>
+\|f_n-f\|
+\ge 
+|f_n(x)-f(x)|
+\]
+ist für alle $n>N$ und unabhängig von $x\in X$.
+Die Konvergenz bezüglich der $\|\;\cdot\;\|$-Norm ist also die wohlbekannte
+gleichmässige Konvergenz.
+Es kann gezeigt werden, dass die Grenzfunktion wieder stetig ist.
+
+\begin{satz}
+Der Raum der stetigen Funktion $C(X)$ mit der Supremumg-Norm ist
+ein Banach-Raum.
+\end{satz}
+
+%
+% Skalarprodukt
+%
+\subsection{Skalarprodukt
+\label{buch:skalarprodukt:subsection:skalarprodukt}}
+Die Supremum-Norm auf dem Raum der stetigen Funktionen hat den
+Begriff der gleichmässig konvergenten Funktionenfolgen ergeben.
+Cauchy-Folgen von stetigen Funktionen in der Supremum-Norm konvergieren
+wieder gegen eine stetige Funktione.
+Ist eine Funktion nicht stetig, lässt Sie sich im Sinne der Supremum-Norm
+nicht durch stetige Funktionen approximieren.
+Andererseits hat Fourier gezeigt, wie man technische wichtige Funktionen
+wie die Rechteckfunktion durch trigonometrische Polynome approximieren
+kann.
+Diese sind alle stetig und kommen der Rechteckfunktion in jedem Punkt,
+in dem die Funktion stetig ist, beliebig nahe.
+An den Stellen $x = n\pi$ hat die Grenzfunktion eine Sprungstellt,
+die approximierenden Funktionen haben dort immer Abstand $1$.
+% XXX Bild der Approximation der Rechteckfunktion
+Die Folge ist also keine Cauchy-Folge und sie konvergiert nicht im
+Sinne der Supremum-Norm.
+Für solche Anwendungen muss eine besser geeignete Norm gefunden werden,
+in der die Folge konvergiert.
 
 
 
