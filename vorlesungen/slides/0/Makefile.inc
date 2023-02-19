@@ -10,4 +10,8 @@ chapter0 = 								\
 	../slides/0/radon.tex						\
 	../slides/0/regis.tex						\
 	../slides/0/spektrum.tex					\
-	../slides/0/was.tex
+	../slides/0/was.tex						\
+	../slides/0/latextipps.tex					\
+	../slides/0/nextsteps.tex					\
+	../slides/0/info.tex						\
+	../slides/0/themen.tex	
