@@ -47,3 +47,6 @@ wavreader:	wavreader.cpp libwavspec.a spec.h
 test:	wavreader
 	rm -f brahms.fits
 	./wavreader -d -f brahms.fits brahms.wav
+
+publish:	buchcover.jpg
+	scp buchcover.jpg oc9co_afm@h2web169.infomaniak.ch:sites/mathsem.ch/jahre/2023/front.jpg
