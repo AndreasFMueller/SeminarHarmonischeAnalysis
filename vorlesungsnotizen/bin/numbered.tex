@@ -1,0 +1,33 @@
+%
+% numbered.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[8pt,a4paper]{article}
+\usepackage[final]{pdfpages}
+\usepackage{geometry}
+\usepackage{times}
+\geometry{papersize={210mm,297mm},total={180mm,260mm},top=21mm}
+\usepackage{fancyhdr}
+
+%\topmargin 20pt
+%\oddsidemargin 20pt
+
+% from the TeXBook, page 308, exercise 7.7
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+
+\pagestyle{fancy}
+\ifundefined{sectionnumber}
+\cfoot{\sffamily\Large\thepage}
+\else
+\cfoot{\sffamily\Large \sectionnumber{} -- \thepage}
+\fi
+\renewcommand {\headrulewidth}{0pt}
+
+\begin{document}
+\includepdfset{pagecommand=\thispagestyle{empty}}
+\includepdf[fitpaper=true,scale=0.95,pages={1}]{unnumbered.pdf}
+\setcounter{page}{1}
+\includepdfset{pagecommand=\thispagestyle{fancy}}
+\includepdf[fitpaper=true,scale=0.94,pages=2-]{unnumbered.pdf}
+\end{document}
