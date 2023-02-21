@@ -3,9 +3,9 @@
 %
 % (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\section{Hilbertraum
+\section{Hilbert-Raum
 \label{buch:skalarprodukt:section:hilbertraum}}
-\kopfrechts{Hilbertraum}
+\kopfrechts{Hilbert-Raum}
 Ein Skalarprodukt stattet einen Vektorraum mit einer Norm aus.
 Es ermöglicht auch, orthonormierte Vektoren zu finden.
 In endlichdimensionalen Vektorräumen können so besonders nützliche
@@ -19,18 +19,652 @@ orthonormierten Vektoren keine Basis, denn nicht jeder Vektor lässt
 sich als Linearkombination schreiben.
 Dies wird erst mit Hilfe von Reihenentwicklungen möglich, doch dazu
 müssen Fragen der Konvergenz solcher Reihen geklärt werden.
-Der in diesem Abschnitt eingeführte Begriff des Hilbertraumes tut dies.
+Der in diesem Abschnitt eingeführte Begriff des Hilbert-Raumes tut dies.
 
-
+%
+% Prähilbertraum
+%
 \subsection{Prähilbertraum}
+Die Funktionenräume, in denen wir harmonische Analysis betreiben wollen,
+zeichnen sich durch das Vorhandensein eines Skalarproduktes aus.
+Wir fassen diese Eigenaschaften im Begriff des Prähilbertraumes
+zusammen.
 
+\begin{definition}
+Ein reeller Prähilbertraum ist ein reller Vektorraum mit einem
+(reellen) Skalarprodukt.
+\index{Prähilbertraum}%
+Eine komplexer Prähilbertraum ist ein komplexer Vektorraum mit einem
+sesquilinearen Skalarprodukt.
+\end{definition}
+
+\begin{beispiel}
+Der endlichdimensionale reelle Vektorraum $\mathbb{R}^n$ ist ein
+reller Prähilbertraum mit dem Skalarprodukt
+\[
+\langle u,v\rangle
+=
+\sum_{i=1}^n u_iv_i
+\]
+für Vektoren $u,v\in\mathbb{R}^n$.
+\end{beispiel}
+
+\begin{beispiel}
+Der endlichedimensionale komplexe Vektorrau $\mathbb{C}$ ist ein
+komplexer Prähilbertraum mit dem Skalarprodukt
+\[
+\langle u,v\rangle
+=
+\sum_{i=1}^n \overline{u}_iv_i
+\]
+für Vektoren $u,v\in\mathbb{C}^n$.
+\end{beispiel}
+
+Die Skalarprodukte in den Beispielen sind nicht die einzig möglichen
+Skalarprodukte.
+Alternative Skalarprodukte auf einem reellen Prähilbertraum können 
+durch eine beliebige positiv definite Matrix $A$ durch
+\[
+\langle u,v\rangle_A
+=
+\sum_{i,j=1}^n u_ia_{ij}v_j
+\]
+definiert werden.
+Wir schreiben die aus $\langle\;,\;\rangle_A$ abgeleitete Norm mit
+$\|\;\cdot\;\|_A$.
+Solange unser primäres Interesse der Approximation von Funktionen gilt,
+kommt es vor allem darauf an, dass die Norm, die aus dem Skalarprodukt
+abgeleitet wird, zu den gleichen konvergenten Folgen führen.
+Die Funktion $u\mapsto \|u\|_A$ ist stetig, sie hat daher auf der
+Einheitskugel des Prähilbertraumes ein Maximum und eine Minimum,
+welches wir mit $M$ bzw.~$m$ bezeichen.
+Dann folgt, dass
+\[
+m\|u\|\le \|u\|_A\le M\|u\|
+\]
+für beliebige Vektoren $u\in\mathbb{R}^n$.
+Daraus kann man jetzt ableiten, dass die beiden Normen $\|\;\cdot\;\|$
+und $\|\;\cdot\;\|_A$ auf die gleichen Cauchy-Folgen und die gleichen
+konvergengen Folgen führen.
+Wir zeigen dies für Cauchy-Folgen:
+\begin{enumerate}
+\item
+Sei $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|$,
+und $\varepsilon>0$.
+Wir müssen zeigen, dass $u_k$ auch eine Cauchy-Folge ist bezüglich
+der Norm $\|\;\cdot\;\|_A$.
+Da $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|$ ist,
+gibt es ein $N>0$ derart, dass
+$\|u_k-u_l\|<\varepsilon/M$ für $k,l>N$.
+Dann folgt aber
+\[
+\|u_k-u_l\|_A
+\le
+M\|u_k-u_l\|
+<
+M\frac{\varepsilon}{M}
+=
+\varepsilon
+\]
+für $k,l>N$.
+Somit ist $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|_A$.
+\item
+Ist umgekehrt  $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\,\cdot\,\|_A$,
+dann gibt es ein $N>0$ derart, dass $\|u_k-u_l\|_A<m\varepsilon$ ist für
+$k,l>N$.
+Dann folgt
+\[
+m\|u_k-u_l\|\le \|u_k-u_l\|_A < m\varepsilon
+\qquad\Rightarrow\qquad \|u_k-u_l\|<\varepsilon
+\]
+für $k,l>N$, also ist $u_k$ auch eine Cauchy-Folge bezüglich der Norm
+$\|\,\cdot\,\|$.
+\end{enumerate}
+In einem endlichdimensionalen Prähilbertraum hat die Wahl des Skalarproduktes
+keinen Einfluss darauf, ob eine Folge eine Cauchy-Folge ist oder nicht.
+Orthonormierte Vektoren werden natürlich im allgemeinen nicht mehr
+orthonormiert, dies ist jedoch ein Aspekt, dem wir uns erst später
+zuwenden werden.
+
+%
+% Orthonormierte Vektoren
+%
+\subsection{Orthonormierte Vektoren in einem Prähilbertraum}
+Der Gram-Schmidt-Orthogonalisierungsprozess kann auf eine beliebige
+\index{Gram-Schmidt}%
+linear unabhängige Menge von Vektoren in einem Prähilbertraum angewendet
+werden.
+Aus den linear unabhängigen Vektoren $a_1,a_2,\dots$ werden die
+orthonormierten Vektoren
+\begin{align*}
+b_1
+&=
+\frac{a_1}{\|a_1\|}
+\\
+b_2
+&=
+\frac{
+a_2 - \langle b_1,a_2\rangle b_1
+}{
+\|a_2 - \langle b_1,a_2\rangle b_1\|
+}
+\\
+&\;\vdots
+\\
+b_n
+&=
+\frac{\displaystyle
+a_n - \sum_{k=1}^{n-1} \langle b_k,a_n\rangle b_k
+}{\displaystyle
+\biggl\|a_n - \sum_{k=1}^{n-1} \langle b_k,a_n\rangle b_k\biggr\|
+}.
+\end{align*}
+
+In einem endlichdimensionalen Vektorraum der Dimensiobn $n$ bricht
+der Prozess ab, sobald eine orthonormierte Basis $b_1,\dots,b_n$
+gefunden wurde.
+Jeder andere Vektor $v$ lässt sich dann als Linearkombination
+\begin{equation}
+v
+=
+\langle b_1,v\rangle b_1 + \langle b_2,v\rangle b_2 + \dots
+=
+\sum_{k=1}^n \langle b_1,v\rangle b_1
+\label{buch:skalarprodukt:hilbertraum:synthese}
+\end{equation}
+schreiben.
+Da die Summe auf der rechten Seite endlich ist, entstehen keine
+Bedenken bezüglich Konvergenz, wie das bei einer unendlichen
+Reihe der Fall wäre.
+
+%
+% Vollständigkeit
+%
 \subsection{Vollständigkeit}
+In einem unendlichdimensionalen Prähilbertraum bricht der
+Orthogonalisierungsprozess nicht ab, es gibt immer noch einen
+linear unabhängigen Vektor, der nicht in dem von den bereits
+gefunden Vektoren aufgespannten Raum liegt.
+Die Summe~\ref{buch:skalarprodukt:hilbertraum:synthese} wird dann
+eine unendliche Summe, die nur im Sinne eines Grenzwertes der
+Partialsummenfolge
+\[
+s_n = \sum_{k=1}^n \langle b_k,v\rangle b_k
+\]
+ausgewertet werden kann.
+Man darf zwar davon ausgehen, dass $s_n$ gegen $v$ konvergiert,
+aber für eine beliebige Folge von Koeffizienten $c_k$ ist nicht
+garantiert, dass die Summe
+\[
+\sum_{k=1}^\infty c_kb_k
+=
+\lim_{n\to\infty} \sum_{k=1}^n c_kb_k
+\]
+konvergiert.
+Ein nützliche Theorie kann nur entstehen, wenn gefordert wird,
+dass jede Cauchy-Folge des Prähilbertraums tatschächlich konvergiert.
 
-\subsection{Endlichdimensionale Hilberträume}
+\begin{definition}
+Ein Prähilbertraum heisst {\em Hilbert-Raum}, wenn er vollständig ist.
+\end{definition}
 
-\subsection{Hilbertbasis}
+Endlichdimensionale Vektorräume über sind automatisch vollständig,
+da gibt es also gar keinen Unterschied zwischen Prähilbertraum und
+Hilbert-Raum.
+Das folgende Beispiel zeigt, dass dies für unendlichdimensionale
+Hilberträume nicht mehr zutrifft.
 
+\begin{beispiel}
+\label{buch:skalarprodukt:hilbertraum:bsp:sinreihe}
+Der Funktionenraum
+\(
+C_{\mathbb{R}}([-\pi,\pi])
+\)
+der stetigen Funktionen auf dem Intervall $[-\pi,\pi]$ wird mit
+dem Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_{-\pi}^\pi f(x)g(x)\,dx
+\]
+zu einem Prähilbert-Raum.
+Die Summanden der Reihe~\eqref{buch:skalarprodukt:eqn:rechteckreihe} 
+sind Sinus-Funktionen, von denen wir später zeigen werden, dass sie
+orthogonal sind.
+Seien $s_n(x)$ die Partialsummen der Reihe, also
+\[
+s_n(x) = \frac{4}{\pi}\sum_{k=0}^n \frac{\sin (2k+1)x}{2k+1},
+\]
+dann kann man auch die Norm $\|s_n-s_m\|$, es gilt nämlich
+\[
+\|s_n-s_m\|
+=
+\biggl\|
+\frac{4}{\pi}
+\sum_{k=m}^n \frac{\sin (2k+1)x}{2k+1}
+\biggr\|,
+\]
+wobei wir $n>m$ angenommen haben, was wir ohne Beschränkung der 
+Allgemeinheit tun dürfen.
+Die Norm eines einzeln Terms ist
+\begin{align}
+\|\sin rx\|^2
+&=
+\int_{-\pi}^\pi \sin^2 rx\,dx
+=
+\int_{-\pi}^\pi \frac12 - \frac{\cos rx}{2}\,dx
+=
+\int_{-\pi}^\pi \frac12\,dx - \int_{-\pi}^\pi \frac{\cos rx}{2}\,dx.
+\notag
+\intertext{Der bweite Term ist ein Integral über eine Periode des
+Integranden und verschindet daher.
+Der erste Term ergibt daher}
+\|\sin rx\|^2
+&= \pi\\
+\biggl\|
+\frac{\sin{2k+1}x}{2k+1}
+\biggr\|^2
+&=
+\frac{\pi}{(2k+1)^2}
+\notag
+\\
+\|s_n-s_m\|^2
+\notag
+&=
+\frac{16}{\pi^2}
+\sum_{k=m}^m \frac{\pi}{(2k+1)^2}
+=
+\frac{16}{\pi}
+\sum_{k=m}^m \frac{1}{(2k+1)^2}
+\label{buch:skalarprodukt:hilbertraum:eqn:bsprest}
+\end{align}
+Da aus dem Analysisunterricht bekannt ist, dass die Reihe $\sum_k\frac1{k^2}$
+konvergiert, kann die rechte Seite von 
+\eqref{buch:skalarprodukt:hilbertraum:eqn:bsprest}
+beliebig klein gemacht werden, die 
+Reihe~\eqref{buch:skalarprodukt:eqn:rechteckreihe} 
+ist also eine Cauchy-Folge im Prähilbertraum $C_{\mathbb{R}}([-\pi,\pi])$.
+Die Grenzfunktion ist die Rechteckfunktion von
+Abbildung~\ref{buch:skalarprodukt:fig:fourierrechteck}, sie ist nicht
+stetig.
+Wir haben also eine Cauchy-Folge im Prähilbertraum 
+$C_{\mathbb{R}}([-\pi,\pi])$ gefunden, die darin nicht konvergiert.
+\end{beispiel}
+
+%
+% Hilbertbasis
+%
+\subsection{Hilbert-Basis}
+Sei jetzt $H$ ein Hilbert-Raum.
+Fürht man wieder die Konstruktion einer orthonormierten Basis durch,
+entsteht eine Menge $\mathcal{B}=\{b_1,b_2,\dots\}$ orthonormierter
+Vektoren.
+In einem unendlichdimensionalen Hilbert-Raum ist $\mathcal{B}$ eine
+undendliche Menge.
+Die Vollständigkeit des Hilbertraumes garantiert, dass jede
+Cauchy-Folge konvergiert, insbesondere können wir zu jedem beliebigen
+Vektor $v$ die Koeffizienten $c_k=\langle b_k,v \rangle$ bestimmen
+und versuchen, mit der
+Summe~\eqref{buch:skalarprodukt:hilbertraum:synthese}
+den Vektor zurückzugewinnen.
+Vollständigkeit garantiert zwar die Konvergenz gegen einen Grenzwert
+\[
+v_0 = \sum_{k=1}^\infty c_k b_k,
+\]
+aber es gibt keine Garantie, dass $v=v_0$ ist.
+
+\begin{beispiel}
+Die Funktionen
+\[
+b_k(x) = \sin (2k+1)x
+\qquad\text{mit}\quad
+k\in \mathbb{N}
+\]
+wurden in Beispiel~\ref{buch:skalarprodukt:hilbertraum:bsp:sinreihe}
+die Rechteckfunktion synthetisiert.
+Für die Konstante Funktion $v(x)$ sind die Koeffizienten
+\[
+\langle v,b_k\rangle
+=
+\int_{-\pi}^\pi v(x)b_k(x)\,dx
+=
+\int_{-\pi}^\pi \sin (2k+1)x\,dx
+=
+0,
+\]
+die Summe
+\[
+v_0
+=
+\sum_{k=0}^\infty
+c_k
+b_k(x)
+=
+0
+\]
+verschwindet also, $v\ne v_0$.
+\end{beispiel}
+
+Wir berechnen das Skalarprodukt 
+\[
+\langle v-v_0,b_k\rangle
+=
+\langle v,b_k\rangle
+-
+\biggl\langle \sum_{l=1}^\infty c_lb_l,b_k\biggr\rangle
+=
+c_k - \sum_{l=1}^\infty c_l\langle b_l,b_k\rangle
+=
+c_k - \sum_{l=1}^\infty c_l\delta_{lk}
+=
+c_k-c_k=0.
+\]
+Der Vektor $v-v_0$ muss also orthogonal sein zu allen Vektoren
+$b_k$.
+Die Menge der Vektoren $b_k$ kann also vergrössert werden um einen
+weiteren Vektor, der zu allen vorhandenen Vektoren orthogonal ist.
+
+\begin{satz}
+Eine Menge von orthogonalen Vektoren in einem Prähilbertraum ist linear 
+unabhängig.
+\end{satz}
+
+\begin{proof}[Beweis]
+Angenommen, die orthogonalen Vektoren  $a_1,\dots,a_n$ sind linear
+abhängig.
+Dann gibt es Zahlen $\lambda_i$, die nicht alle $=0$ sind und derart,
+dass
+\[
+\sum_{k=1}^n \lambda_ka_k
+=
+\lambda_1 a_1 + \ldots + \lambda_n a_n
+=
+0.
+\]
+Das Skalarprodukt mit $a_k$ ergibt
+\[
+0
+=
+\langle a_k,\lambda_1a_1 +\ldots + \lambda_na_n\rangle
+=
+\lambda_1
+\langle a_k,a_1\rangle
++
+\ldots
++
+\lambda_n
+\langle a_k,a_n\rangle
+=
+\lambda_k \|a_k\|^2
+\]
+für alle $k=1,\dots,n$.
+Da die Vektoren $a_k\ne 0$ sind folgt, dass $\lambda_k=0$ sein muss
+für alle $k=1,\dots,n$, im Widerspruch zur Voraussetzung, dass die
+$\lambda_k$ nicht alle verschwinden.
+Der Widerspruch zeigt, dass die Annahme der linearen Abhängigkeit
+falsch ist.
+\end{proof}
+
+In einem endlichdimensionalen Prähilbertraum findet man immer eine
+orthonormierte Basis, aus der sich jeder Vektor linear kombinieren
+lässt.
+In einem unendlichdimensionalen Raum muss dieser Begriff etwas 
+erweitert werden.
+
+\begin{definition}
+Eine {\em Hilbert-Basis} des Hilbertraumes $H$ ist eine Menge von orthonormalen
+\index{Hilbert-Basis}%
+Vektoren $b_k\in H$, $k\in \mathbb{N}$ derart, für jeden Vektor $v\in H$
+die Reihe 
+\[
+\sum_{k\in\mathbb{N}} \langle b_k,v\rangle b_k
+\]
+konvergiert und die Summe $v$ hat.
+\end{definition}
+
+Auf eine Hilbert-Basis ist die Inuition anwendbar, die man von 
+einer orthonormierten Basis eines endlichdimensionalen Prählibertraumes
+hat.
+
+\begin{definition}
+\index{separabel}%
+Ein Hilbert-Raum, der eine Hilbert-Basis besitzt, heisst {\em separabel}.
+\end{definition}
+
+Nicht separable Hilberträume sind deutlich grösser.
+In einem nicht separable Hilbertraum ist es nicht möglich, alle Vektoren
+aus einer Folge von orthonormierten Vektoren linear zu kombinieren.
+Dies verträgt sich nicht mit der Intuition, die in endlichdimensionalen
+Vektorräumen entstanden ist.
+Separabilität ist eine Art ``Endlichkeitseigenschaft''.
+Man findet sie zum Beispiel bei den $L^2$-Räumen mit kompakten
+Definitionsgebiet, auch Kompaktheit ist eine topologische
+Endlichkeitseigenschaft.
+Es lassen sich aber auch nicht separable Hilberträume konstruieren,
+zum Beispiel sogenannte fastperiodische Funktionen.
+\index{fastperiodische Funktionen}%
+
+%
+% Der Hilbertraum $l^2$
+%
 \subsection{Der Hilbertraum $l^2$}
+Die abstrakte Definition eines separablen Hilbert-Raumes suggeriert,
+dass es sehr viele verschiedene Hilbert-Räume geben könnte.
+Dem ist aber nicht so, ein Hilbert-Raum ist eine ziemlich starre Struktur.
+In diesem Abschnitt konstrieren wir zunächst den besonders übersichtlichen
+separablen Hilbert-Raum $l^2$ und zeigen anschliessend, dass sich jeder
+separable HIlbertraum isometrisch auf $l^2$ abbilden lässt.
 
-\subsection{Der Hilbertraum $L^2$}
+\begin{satz}
+Der Vektorraum der unendlichen Folgen
+\[
+l^2_{\mathbb{R}}
+=
+\biggl\{
+(x_0,x_1,\dots)
+\in
+\mathbb{R}^{\mathbb{N}}
+\,\bigg|\,
+\sum_{i=0}^\infty x_i^2<\infty\biggr\}
+\}
+\]
+mit dem Skalarprodukt
+\[
+\langle x,y\rangle_2
+=
+\sum_{k=0}^\infty x_ky_k
+\]
+ist ein separabler Hilbert-Raum.
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Standardbasis des Vektorraums $l^2$ besteht aus den Vektoren $e_i$
+mit $i\in\mathbb{N}$ mit 
+\begin{align*}
+e_0 &= (1,0,0,0,\dots)
+\\
+e_1 &= (0,1,0,0,\dots)
+\\
+e_2 &= (0,1,0,0,\dots)
+\\  &\;\vdots
+\end{align*}
+Es ist klar, dass die Vektoren $e_i$ orthonormiert sind.
+Wir müssen uns überlegen, dass jede Folge in $l^2$ durch Linearkombinationen
+approximiert werden kann.
+Wäre das nicht so, dann gäbe es einen von $0$ verschiedenen
+Vektor $v=(v_0,v_1,v_2,\dots)\in l^2$, der auf allen Vektoren $e_i$
+orthogonal ist.
+Dann wäre aber $0=\langle v,e_i\rangle = v_i$, d.~h.~Vektor $v$ ist der
+Nullvektor.
+Dieser Widerspruch zeigt, dass die Vektoren $e_i$ eine Hilbert-Basis
+bilden.
+\end{proof}
+
+Der Hilbert-Raum $l^2$ ist die einfachste, direkte Verallgemeinerung der
+endlichdimensionalen Hilbert-Raume $\mathbb{R}^n$ mit dem Standardskalarprodukt.
+Er ist aber auch der ``einzige'' separable Hilbert-Raum, alle Hilberträume
+lassen sich isometrisch auf $l^2$ abbilden.
+
+\begin{satz}
+\label{buch:skalarprodukt:hilbertraum:satz:phil2}
+Ist $H$ ein separabler Hilbert-Raum, dann gibt es eine isometrische
+lineare Abbildung $\varphi\colon H\to l^2$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Da $H$ separabel ist, gibt es eine Hilbert-Basis $b_0,b_1,b_2,\ldots\in H$
+und $v$ ein beliebiger Vektor mit der Darstellung
+\[
+v = \sum_{k=0}^\infty c_kb_k.
+\]
+Das Skalarprodukt mit $b_k$ ist
+\[
+\langle b_i,v\rangle
+=
+\biggl\langle b_i,\sum_{k=0}^\infty c_kb_k\biggr\rangle
+=
+\sum_{k=0}^\infty c_k \underbrace{\langle b_i,b_k\rangle}_{\delta_{ik}}
+=
+c_i.
+\]
+Die Abbildung
+\[
+\varphi\colon H \to l^2
+:
+v \mapsto (\langle b_0,v\rangle,\langle b_1,v\rangle,\langle b_2,v\rangle,\dots)
+=
+(c_0,c_1,c_2,\dots)=c\in l^2
+\]
+ist linear und umkehrbar durch die Abbildung
+\[
+\varphi^{-1} \colon l^2 \to H
+:
+(c_0,c_1,c_2,\dots) \mapsto \sum_{k=0}^\infty c_k b_k.
+\]
+Die Norm von $v$ ist
+\[
+\|v\|^2
+=
+\biggl\|
+\sum_{k=0}^\infty c_k b_k
+\biggr\|^2
+=
+\sum_{k=0}^\infty c_k^2
+=
+\|c\|_2^2
+\]
+\end{proof}
+
+Man verliert also nichts, wenn man statt im Hilbert-Raum $H$ im
+Hilbert-Raum $l^2$ rechnet.
+Die später zu besprechende Fourier-Transformation ist genau
+so eine Abbildung $\varphi$ wie in
+Satz~\ref{buch:skalarprodukt:hilbertraum:satz:phil2}, wenn 
+trigonometrische Funktionen als Basisfunktionen des Raumes
+$L^2([-\pi,\pi])$ verwendet werden.
+Die Tatsache, dass die Abbildung eine Isometrie ist, hat einen
+speziellen Namen.
+
+\begin{definition}
+\label{buch:skalarprodukt:hilbertraum:def:parseval}
+Die Identität
+\[
+\|v\|^2 = \|\varphi(v)\|_2^2
+\]
+heisst {\em Parseval-Gleichung}.
+Aus der Polaridenttität folgt dann auch die
+{\em Parseval-Plancherel-Formel}
+\[
+\langle u,v\rangle_H
+=
+\langle\varphi(u),\varphi(v)\rangle_2
+=
+\sum_{k=0}^\infty
+\langle b_k,u\rangle
+\langle b_k,v\rangle.
+\]
+\end{definition}
+
+Die endlichdimensionalen Hilberträume können auf natürliche Art auf
+natürliche Art in $l^2$ eingebettet werden, indem die Koordinaten
+eines $n$-dimensionalen Vektors auf die ersten $n$-Komponenten der
+Folge in $l^2$ abgebildet werden.
+Aus dieser Idee lässt sich auch ein Prähilbertraum konstruieren,
+in dem einfacher gerechnet werden kann.
+
+\begin{definition}
+\label{buch:skalarprodukt:hilbertraum:def:l0}
+Sei 
+\[
+l_0
+=
+\{
+x\in \mathbb{R}^{\mathbb{N}}
+\mid
+\text{$x_k\ne 0$ nur für endlich viele $k$}
+\}
+\]
+der Vektorraum der Folgen, die nur endlich viele nicht verschwindende
+Folgenglieder haben.
+Die Standardbasisvektoren von $l^2$ sind alle in $l_0$.
+\end{definition}
+
+Da die Norm eines Elementes $x\in l_0$ eine endliche Summe ist,
+ist $x\in l^2$ und damit $l_0\subset l^2$.
+Jeder Vektor $v\in l^2$ kann aber beliebig genau durch einen Vektor
+in $l_0$ approximiert werden.
+Dazu konstruiert man die Folge
+\bgroup
+\def\el#1{\phantom{v_0}\llap{#1}}
+\begin{align*}
+x_0 &= (v_0,\el{0},\el{0},\el{0},\el{0},\dots) \in l_0\\
+x_1 &= (v_0,v_1,\el{0},\el{0},\el{0},\dots) \in l_0\\
+x_2 &= (v_0,v_1,v_2,\el{0},\el{0},\dots) \in l_0\\
+x_3 &= (v_0,v_1,v_2,v_3,\el{0},\dots) \in l_0\\
+    &\;\vdots
+\end{align*}
+\egroup
+Die Differenz $x_n-v$ hat die Norm
+\[
+\|x_n-v\|^2
+=
+\sum_{k=n+1}^\infty v_k^2,
+\]
+die für $n\to\infty$ gegen $0$ geht.
+Da es in $l^2$ Vektoren gibt, die nicht in $l_0$ drin sind, zeigt
+dies, dass $l_0$ kein Hilbert-Raum ist, dass aber die Vervollständigung
+von $l_0$ der Hilbert-Raum $l^2$ ist.
+
+Der Prähilbert-Raum rechtfertigt, dass man in Anwendungen im Sinne
+einer Approximation mit endlich vielen der Koeffizienten $c_k$
+rechnen kann.
+
+%
+% Der Hilbert-Raum $L^2$
+%
+\subsection{Der Hilbert-Raum $L^2$}
+Der Vektorraum der stetigen Funktionen auf dem Intervall $[-\pi,\pi]$
+mit dem bekannten Skalarprodukt ist ein Prähilbertraum.
+Wir werden später zeigen, dass die Funktionen
+\[
+1, \cos kx \quad\text{und}\quad \sin kx
+\]
+orthogonal sind bezüglich dieses Skalarproduktes.
+Es wird sich zeigen, dass diese Funktionen nach geeigneter Normierung
+eine Hilbert-Basis bilden von $L^2$ bilden.
+Die in Satz~\ref{buch:skalarprodukt:hilbertraum:satz:phil2}
+konstruierte Abbildung bezeichnen wir mit $\mathscr{F}:L^2([-\pi,\pi])\to l^2$.
+Die Parseval-Plancherel-Formel besagt dann, dass man das Skalarprodukt
+von Funktionen auch durch das Skalarprodukt der zugehörigen
+Fourier-Koeffizienten berechnen kann:
+\[
+\langle f,g\rangle_{L^2{[-\pi,\pi]}}
+=
+\langle \mathscr{F}f,\mathscr{F}g\rangle_{l^2}.
+\]
+Die Fourier-Transformation formalisiert also die Erkenntnis, dass
+man alle Fragen, die man mit Skalarprodukten beantworten kann, statt
+mit Funktionen auch mit Skalarprodukten von Fourier-Koeffizienten
+finden kann.
+
 

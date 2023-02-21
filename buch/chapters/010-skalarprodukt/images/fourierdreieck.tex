@@ -1,0 +1,86 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{ifthen}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\newboolean{draft}
+\setboolean{draft}{false}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% add image content here
+\def\s{12/(2*3.14159)}
+\def\punkt#1#2{({(#1)*\s},{(#2)*\s})}
+
+\draw[->] (-0.6,0) -- (13.2,0) coordinate[label={$x$}];
+\draw[->] (0,{-1.72*\s}) -- (0,{1.8*\s}) coordinate[label={right:$y$}];
+
+\begin{scope}
+\clip (-0.6,{-1.8*\s}) rectangle (13.0,{1.8*\s});
+\draw[color=blue] plot[domain=-20:420,samples=100]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*sin(\x)*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/3)*\s});
+\ifthenelse{\boolean{draft}}{}{
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9)-sin(11*\x)/(11*11))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9)-sin(11*\x)/(11*11)+sin(13*\x)/(13*13))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9)-sin(11*\x)/(11*11)+sin(13*\x)/(13*13)-sin(15*\x)/(15*15))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9)-sin(11*\x)/(11*11)+sin(13*\x)/(13*13)-sin(15*\x)/(15*15)+sin(17*\x)/(17*17))*\s});
+\draw[color=blue] plot[domain=-20:420,samples=1000]
+	({(\x/360)*\s*2*3.14159},{(4/3.14159)*(sin(\x)-sin(3*\x)/(3*3)+sin(5*\x)/(5*5)-sin(7*\x)/(7*7)+sin(9*\x)/(9*9)-sin(11*\x)/(11*11)+sin(13*\x)/(13*13)-sin(15*\x)/(15*15)+sin(17*\x)/(17*17)-sin(19*\x)/(19*19))*\s});
+}
+\end{scope}
+
+\begin{scope}
+	\clip (-0.6,{-1.8*\s}) rectangle (13.0,{1.8*\s});
+	\draw[color=red,line width=1pt]
+		\punkt{-0.5*3.14159}{-0.5*3.14159}
+		--
+		\punkt{0.5*3.14159}{0.5*3.14159}
+		--
+		\punkt{1.5*3.14159}{-0.5*3.14159}
+		--
+		\punkt{2.5*3.14159}{0.5*3.14159};
+\end{scope}
+
+\node at \punkt{0}{0} [below right] {$0\mathstrut$};
+\node at \punkt{0.5*3.14159}{0} [below] {$\frac{\pi}2\mathstrut$};
+\node at \punkt{3.14159}{0} [below left] {$\pi\mathstrut$};
+\node at \punkt{1.5*3.14159}{0} [below] {$\frac{3\pi}2\mathstrut$};
+\node at \punkt{2*3.14159}{0} [below right] {$2\pi\mathstrut$};
+
+\foreach \x in {0.5,1,1.5,2}{
+	\draw \punkt{\x*3.14159}{(0.05)} -- \punkt{\x*3.14159}{(-0.05)};
+}
+\draw \punkt{-0.05}{-0.5*3.14159} -- \punkt{0.05}{-0.5*3.14159};
+\draw \punkt{-0.05}{0.5*3.14159} -- \punkt{0.05}{0.5*3.14159};
+\draw \punkt{-0.05}{1} -- \punkt{0.05}{1};
+\draw \punkt{-0.05}{-1} -- \punkt{0.05}{-1};
+\node at \punkt{0}{-0.5*3.14159} [left] {$-\frac{\pi}2\mathstrut$};
+\node at \punkt{0}{-1} [left] {$-1\mathstrut$};
+\node at \punkt{0}{1} [left] {$1\mathstrut$};
+\node at \punkt{0}{0.5*3.14159} [left] {$\frac{\pi}2\mathstrut$};
+
+
+\end{tikzpicture}
+\end{document}
+
