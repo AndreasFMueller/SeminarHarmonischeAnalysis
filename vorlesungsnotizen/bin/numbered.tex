@@ -7,26 +7,37 @@
 \usepackage[final]{pdfpages}
 \usepackage{geometry}
 \usepackage{times}
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Mathematisches Seminar Harmonische Analaysis}
+pdfauthor={Andreas Müller}
+}
 \geometry{papersize={210mm,297mm},total={180mm,260mm},top=21mm}
+\usepackage{incgraph}
+\usepackage{tikz}
 \usepackage{fancyhdr}
-
+%
 %\topmargin 20pt
 %\oddsidemargin 20pt
-
+%
 % from the TeXBook, page 308, exercise 7.7
 \def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
-
+%
 \pagestyle{fancy}
 \ifundefined{sectionnumber}
 \cfoot{\sffamily\Large\thepage}
 \else
 \cfoot{\sffamily\Large \sectionnumber{} -- \thepage}
 \fi
-\renewcommand {\headrulewidth}{0pt}
-
+\renewcommand{\headrulewidth}{0pt}
+%
 \begin{document}
-\includepdfset{pagecommand=\thispagestyle{empty}}
-\includepdf[fitpaper=true,scale=0.95,pages={1}]{unnumbered.pdf}
+\begin{inctext}[]
+\begin{tikzpicture}
+\node at (0,0) {\includegraphics[width=210mm]{buchcover.jpg}};
+\node[color=white] at (8.4,0) [left,scale=2] {\sffamily\Large\sectionnumber{}};
+\end{tikzpicture}
+\end{inctext}
 \setcounter{page}{1}
 \includepdfset{pagecommand=\thispagestyle{fancy}}
 \includepdf[fitpaper=true,scale=0.94,pages=2-]{unnumbered.pdf}

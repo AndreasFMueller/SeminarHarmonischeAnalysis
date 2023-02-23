@@ -28,6 +28,10 @@ struct option	longoptions[] = {
 { NULL,		no_argument,		NULL,	 0  }
 };
 
+bool	reserved(const std::string& name) {
+	return (std::string::npos != name.find("numbered"));
+}
+
 int	main(int argc, char *argv[]) {
 	bool	force = false;
 	bool	debug = false;
@@ -70,6 +74,16 @@ int	main(int argc, char *argv[]) {
 		std::cout << std::endl;
 	}
 
+	// make sure the names are not reserved
+	if (reserved(unnumbered)) {
+		std::cerr << "cannot use filename " << unnumbered << std::endl;
+		return EXIT_FAILURE;
+	}
+	if (reserved(numbered)) {
+		std::cerr << "cannot use filename " << numbered << std::endl;
+		return EXIT_FAILURE;
+	}
+
 	// make sure input file does exist
 	struct stat	sb;
 	rc = stat(unnumbered.c_str(), &sb);
@@ -86,9 +100,9 @@ int	main(int argc, char *argv[]) {
 	// make sure the "unnumbered.pdf" file does not exist
 	rc = stat("unnumbered.pdf", &sb);
 	if (0 == rc) {
-		std::cerr << "file unnumbered.pdf exists, clean up first";
-		std::cerr << std::endl;
-		return EXIT_FAILURE;
+		unlink("unnumbered.pdf");
+		std::cout << "warning: unnumbered.pdf has been removed";
+		std::cout << std::endl;
 	}
 
 	// test for existence of output file
@@ -103,6 +117,7 @@ int	main(int argc, char *argv[]) {
 	rc = stat("numbered.tex", &sb);
 	if ((0 != rc) || (!S_ISREG(sb.st_mode))) {
 		std::cerr << "file 'numbered.tex' is missing" << std::endl;
+		std::cerr << "hint: run in 'bin' directory" << std::endl;
 		return EXIT_FAILURE;
 	}
 
@@ -137,7 +152,7 @@ int	main(int argc, char *argv[]) {
 		out << "\\\\def\\\\sectionnumber{" << section << "} ";
 		out << "\\\\input{numbered.tex}";
 	} else {
-		out << unnumbered;
+		out << "\\\\input{numbered.tex}";
 	}
 	if (debug) {
 		std::cout << "command line: " << out.str() << std::endl;
