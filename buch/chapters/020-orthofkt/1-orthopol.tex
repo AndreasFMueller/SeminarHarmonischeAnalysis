@@ -1,0 +1,485 @@
+%
+% 1-orthopol.tex -- trigonometrische Funktionen als Beispiel
+%
+% (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachschule
+%
+\section{Orthogonale Polynome
+\label{buch:orthofkt:section:orthopol}}
+Das Orthogonalisierungsverfahren von Gram-Schmidt kann dazu verwendet
+werden, Familien von orthogonalen Polynomen zu konstruieren.
+
+%
+% Das Orthogonalisierungsverfahren von Gram-Schmidt
+%
+\subsection{Das Orthogonalisierungsverfahren von Gram-Schmidt}
+Das Orthogonalisierungsverfahren von Gram-Schmidt geht aus von einer
+Basis $a_1,a_2,\dots,a_n\subset V$ eines Vektorraums mit einem
+Skalarprodukt, welches wie in Kapitel~\ref{buch:chapter:skalarprodukt}
+mit $\langle\;\,,\;\rangle$ bezeichnet wird.
+Aus den Vektoren $a_i$ können jetzt die orthogonalen Vektoren $b_i$
+konstruiert werden, die die zusätzliche Eigenschaft haben, dass der
+von $b_i$ immer im von den Vektoren $a_1,\dots,a_i$ aufgespannten
+Unterraum von $V$ liegt.
+Diese Bedingungen legen nur die Richtung von $b_i$ fest. 
+Auch die Forderung, dass die Norm $\|b_i\|=1$ sein soll, lässt noch
+zwei Möglichkeiten $\pm b_i$ offen.
+Durch die Forderung, dass in der Linearkombination
+\[
+b_i = \alpha_i a_i + \alpha_{i-1} a_{i-1} + \dots + \alpha_1 a_1
+\]
+der Koeffiziente $\alpha_i >0$ sein muss.
+
+Der Vektor $b_1$ muss also ein positives Vielfaches von $a_1$ sein:
+\begin{align}
+b_1
+&=
+\frac{a_1}{\|a_1\|}.
+\notag
+\intertext{Die folgenden Vektoren müssen um Vielfache der bereits
+gefundenen Vektoren $b_k$ mit $k<i$ korrigiert werden, damit das
+Skalarprodukt verschwindet.
+Ausserdem müssen Sie normiert werden, was mit der Formel}
+b_i
+&=
+\frac{
+a_i - \langle b_{i-1},a_i\rangle b_{i-1} - \langle b_{i-2},a_i\rangle b_{i-2}
+- \dots - \langle b_1,a_i\rangle b_1
+}{
+\|
+a_i - \langle b_{i-1},a_i\rangle b_{i-1} - \langle b_{i-2},a_i\rangle b_{i-2}
+- \dots - \langle b_1,a_i\rangle b_1
+\|
+}.
+\label{buch:orthofkt:gs}
+\end{align}
+Der Koeffizient von $a_i$ in \eqref{buch:orthofkt:gs} ist
+\begin{equation}
+\frac{1}{
+\|
+a_i - \langle b_{i-1},a_i\rangle b_{i-1} - \langle b_{i-2},a_i\rangle b_{i-2}
+- \dots - \langle b_1,a_i\rangle b_1
+\|
+}
+> 0,
+\label{buch:orthfkt:gsnenner}
+\end{equation}
+wie gefordert.
+
+Der Nenner von \eqref{buch:orthfkt:gsnenner} kann nicht verschwinden.
+Wäre der Nenner $=0$, dann könnte
+\[
+a_i
+=
+\langle b_{i-1},a_i\rangle b_{i-1} + \langle b_{i-2},a_i\rangle b_{i-2}
++ \dots + \langle b_1,a_i\rangle b_1
+\]
+als Linearkombination der Vektoren $b_1,\dots,b_{i-1}$ geschrieben
+werden.
+Diese liegen aber alle im von $a_1,\dots,a_{i-1}$ aufgespannten Raum,
+es müsste also auch $a_i$ in diesem Raum liegen.
+Dies widerspricht der Voraussetzung, dass die Vektoren eine Basis bilden.
+
+%
+% Hilbertbasis eines Prähilbertraumes
+%
+\subsubsection{Hilbertbasis eines Prähilbertraumes}
+Das Orthogonalisierungsverfahren von Gram-Schmidt kann dazu verwendet
+werden, eine Hilbertbasis in einem Hilbertraum $H$ zu konstruieren.
+Ausgangspunkt ist wieder eine Folge von Vektoren $a_i\in H$.
+Damit der Nenner von \eqref{buch:orthfkt:gsnenner} nicht verschwindet,
+muss verlangt werden, das $a_i$ nicht im Raum aufgespannt von den
+Vektoren $a_1,\dots,a_{i-1}$ liegen darf.
+Dies garantiert, dass \eqref{buch:orthofkt:gs} eine Folge $b_i$ hervorbringt,
+mit der Eigenschaft, dass jeder Vektor $a_i$ sich eindeutig durch die
+$b_i$ ausdrücken lässt.
+Wenn sich jeder Vektor in $H$ beliebig gut durch eine Folge von
+Linearkombinationen der $a_i$ approximieren lässt, dann gilt dies auch
+für die $b_i$.
+Somit produziert das Orthogonalisierungsverfahren von Gram-Schmidt
+automatisch eine Hilbertbasis.
+
+%
+% Legendre Polynome
+%
+\subsection{Legendre-Polynome}
+Wir betrachten stetige Funktionen in $C([-1,1])$ auf dem Intervall
+$[-1,1]$ mit reellen Werten und dem Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_{-1}^1 f(x)g(x)\,dx.
+\]
+$C([-1,1])$ ist ein Prähilbertraum.
+
+Um mit dem Verfahren von Gram-Schmidt eine Familie von orthogonalen
+Funktionen in $C([-1,1])$ zu produzieren, wird zunächst eine Familie
+von nicht notwendigerweise orthogonalen Funktionen benötigt, mit der
+sich jede Funktion in $C([-1,1])$ beliebig genau approximieren
+lässt.
+Dies ist gemäss dem folgenden Satz mit Polnomen möglich.
+
+\begin{satz}[Weierstrass]
+Jeder stetige Funktion auf dem Intervall $[a,b]$ lässt sich beliebig
+genau durch Polynome approximieren: ist $f\colon [a,b]\to\mathbb{R}$
+eine stetige Funktion, dann gibt es Polynome $p_n(x)$, die gleichmässig
+gegen $f(x)$ konvergieren, d.~h.~\(
+\|p_n-f\| \to 0
+\)
+für $n\to\infty$.
+\end{satz}
+
+Da die Polynome gleichmässig gegen $f(x)$ konvergieren, folgt für die
+$L^2$-Norm von $L^2([a,b])$
+\[
+\| f-p_n \|_2^2
+=
+\int_a^b |f(x)-p_n(x)|^2\,dx
+\le 
+\int_a^b \varepsilon^2 \,dx
+=
+\varepsilon |b-a|.
+\]
+Die Folge der approximierenden Polynome $p_n(x)$ konvergiert also
+auch in der $L^2$-Norm.
+
+Dies zeigt, dass als Ausgangsfunktionen für den Gram-Schmidt-Prozess
+die Monome
+\begin{equation}
+a_0(x)=1=x^0,\;
+a_1(x)=x,\;
+a_2(x)=x^2,\;
+a_3(x)=x^3,\;
+\ldots\;
+a_n(x)=x^n,\;
+a_{n+1}(x)=x^{n+1},\;
+\label{buch:orthfkt:monome}
+\end{equation}
+verwendet werden können, die alle linear unabhängig sind.
+Der von den Funktionen $a_0,\dots,a_n$ erzeugte Unterraum von
+$C([a,b])$ besteht aus den Polynomen vom Grad $\le n$.
+Die Vektoren $b_n$ sind daher ebenfalls Vektoren vom Grad $n$.
+
+Wir führen jetzt den Gram-Schmidt-Prozess für die Monome
+\eqref{buch:orthfkt:monome}
+und das $L^2$-Skalarprodukt auf dem Intervall $[-1,1]$ durch.
+Wir bezeichnen das Polynome vom Grad $n$, welches erzeugt wird mit $p_n(x)$.
+
+Die Funktion $p_0$ hat die Norm
+\[
+\|a_0\|^2
+=
+\int_{-1}^1 a_0(x)^2\,dx
+=
+\int_{-1}^1 \,dx
+=
+2
+\qquad\Rightarrow\qquad
+\|a_0\| = \sqrt{2}.
+\]
+Somit ist
+\[
+p_0(x) = \frac{a_0(x)}{\|a_0\|} = \frac{1}{\sqrt{2}}.
+\]
+
+Der Vektor $b_1$ wird berechnet durch
+\[
+b_1
+=
+\frac{
+a_1-\langle b_0,a_1\rangle b_0
+}{
+\|
+a_1-\langle b_0,a_1\rangle b_0
+\|
+},
+\]
+wir müssen daher zunächst das Skalarprodukt
+\[
+\langle b_0,a_1\rangle
+=
+\int_{-1}^1 b_0(x)a_1(x)\,dx
+=
+\int_{-1}^1 \frac{1}{\sqrt{2}} x\,dx
+=
+\frac{1}{\sqrt{2}} \biggl[\frac12x^2\biggr]_{-1}^1=0
+\]
+berechnen.
+Es folgt dass $a_1$ bereits orthogonal zu $b_0$ ist, er muss also
+nur noch normiert werden.
+Dazu müssen wir die Norm
+\[
+\| a_1\|^2
+=
+\int_{-1}^1 a_1(x)^2\,dx
+=
+\int_{-1}^1 x^2\,dx
+=
+\biggl[\frac13x^3\biggr]_{-1}^1
+=
+\frac{2}{3}
+\qquad\Rightarrow\qquad
+\|a_1\|
+=
+\sqrt{\frac{2}{3}}
+\]
+verwenden und bekommen
+\[
+p_1(x) = \sqrt{\frac{3}{2}} x.
+\]
+
+Die dritte Funktion $p_2(x)$ entsteht durch Orthonormierung des
+Monoms $x^2$, dazu sind zunächst die Skalarprodukte
+\begin{align*}
+\langle b_0,a_2\rangle
+&=
+\int_{-1}^1 \frac{1}{\sqrt{2}}x^2\,dx
+=
+\frac{1}{\sqrt{2}} [\frac13x^3]_{-1}^1
+=
+\frac{1}{\sqrt{2}} \frac{2}{3}
+=
+\frac{\sqrt{2}}{3},
+\\
+\langle b_1,a_2\rangle
+&=
+\int_{-1}^1 \sqrt{\frac{3}{2}} x \cdot x^2\,dx
+= 
+0.
+\end{align*}
+Die Funktion $p_2(x)$ wird daher erhalten durch Normierung des Polynoms
+\[
+x^2 - 
+\frac{\sqrt{2}}{3} b_0(x)
+=
+x^2-
+\frac{\sqrt{2}}{3}\cdot\frac{1}{\sqrt{2}}
+=
+x^2-\frac13.
+\]
+Dazu muss die Norm von $x^2-\frac13$ bestimmt werden, sie ist
+\begin{align*}
+\|x^2-\frac13\|^2
+&=
+\int_{-1}^1 \biggl(x^2-\frac13\biggr)^2\,dx
+=
+\int_{-1}^1 x^4-\frac23x^2+\frac{4}{9}\,dx
+\\
+&=
+\biggl[\frac{x^5}{5} -\frac{2x^3}{9}+\frac{4x}{9}\biggr]_{-1}^1
+=
+\frac{2}{5} - \frac{4}{9} + \frac{8}{9}
+=
+\frac{18-20+40}{45}
+=
+\frac{38}{45}
+\\
+\Rightarrow\qquad
+\|x^2-\frac13\|
+&=
+\sqrt{\frac{45}{38}}
+\end{align*}
+und somit
+\[
+p_2(x)
+= 
+\sqrt{\frac{38}{45}} \biggl(x^2-\frac13\biggr).
+\]
+
+Dieser Prozess lässt sich beliebig weiterführen, die Rechnung wird
+allerdings immer aufwendiger.
+Ein praktischeres Verfahren ist dringend nötig und wird sich
+aus der Sturm-Liouville-Theorie von
+Abschnitt~\ref{buch:orthofkt:section:sturmliouville} ergeben.
+Etwas vereinfacht werden kann er durch die Beobachtung, dass die
+Polynome $p_{2n}(x)$ immer gerade sind und die Polynome $p_{2n+1}(x)$
+immer ungerade, so dass die Skalarprodukte 
+$\langle p_{2k},p_{2l+1}\rangle=0$ sind, weil das Produkt
+$p_{2k}(x)p_{2l+1}(x)$ eine ungerade Funktion ist und daher auf
+dem symmetrischen Intervall $[-1,1]$ verschwindendes Integral hat.
+
+Weiter sind in den Polynomen $p_n(x)$ die Normierungsfaktoren mit
+ihren komplizierten Wurzeln eher unangenehm.
+Da zum Beispiel in der Gauss-Quadratur als Anwendung der Polynome
+nur die Nullstellen von Interesse sind, werden sie oft in einer
+anderen Normierung gemäss der folgenden Definition tabelliert.
+
+\begin{definition}
+Die {\em Legendre-Polynome} $P_n(x)$ sind bezüglich des $L^2$-Skalarproduktes 
+auf $[-1,1]$ orthogonale Polynome mit positivem Leitkoeffizienten und
+$P_n(1)=1$.
+\end{definition}
+
+Aus obiger Konstruktion ist klar, dass $P_n(x) = p_n(x)/p_n(1)$.
+Für die oben ausgerechneten ersten drei Polynome finden wir daher die
+Legendre-Polynome
+\begin{align*}
+P_0(x) &= 1 \\
+P_1(x) &= x \\
+P_2(x) &= \frac12(3x^2-1).
+\end{align*}
+
+
+%
+% Andere Skalarprodukte
+%
+\subsection{Andere Skalarprodukte}
+Das gewöhnliche $L^2$-Skalarprodukt ist nur eines von vielen möglichen
+Skalarprodukten für Funktionen auf dem Intervall $(-1,1)$.
+Jeder Wahl eines Skalarproduktes führt auf einen andere Funktionenfamilie.
+
+\subsubsection{Tschebyscheff-Polynome}
+Das Skalarprodukt
+\begin{equation}
+\langle f,g\rangle_{\text{T}}
+=
+\int_{-1}^1
+f(x)g(x)\frac{1}{\sqrt{1-x^2}}\, dx
+\label{buch:orthfkt:tschebyscheff}
+\end{equation}
+führt auf eine Familie $t_n(x)$ von orthonormierten Polynome.
+Da ähnlich wie bei den Legendre-Polynomen oft nur die Nullstellen
+wichtig sind, wird auch hier die Normierung $T_n(x) = t_n(x)/t_n(1)$
+verwendet, was die
+sogenannten Tschebyscheff-Polynome
+\(
+T_n(x)
+\)
+ergibt,
+die durch Gleichung
+\[
+T_n(\cos \vartheta) = \cos n\vartheta
+\]
+gegeben sind.
+
+Tatsächlich kann man direkt nachrechnen, dass die Polynome $T_n$ und $T_m$
+mit $n\ne m$ orthogonal sind.
+Dazu berechnen wir
+\begin{align*}
+\langle T_n,T_m\rangle
+&=
+\int_{-1}^1 T_n(x) T_m(x)\,dx
+\intertext{und verwenden die Substitution $x=\cos\vartheta$ mit
+$dx/d\vartheta=-\sin\vartheta$.}
+&=
+\int_{\pi}^0
+T_n(\cos\vartheta) T_m(\cos\vartheta)
+\sqrt{1-\cos^2\vartheta}
+\, \frac{-d\vartheta}{-\sin\vartheta}
+\\
+&=
+\int_0^{\pi}
+\cos n\vartheta \cos m\vartheta \,d\vartheta
+\\
+&=
+\int_0^\pi
+\frac12(\cos(n-m)\vartheta + \cos(n+m)\vartheta)
+\,d\vartheta
+=
+\frac12
+\biggl[
+\frac{\sin(n-m)\vartheta}{n-m}+\frac{\sin(n+m)\vartheta}{n+m}
+\biggr]_0^{\pi}
+=
+0,
+\end{align*}
+da Sinus für ganzzahlige Vielfache von $\pi$ verschwindet.
+
+%
+% Gewichtsfunktionen
+%
+\subsubsection{Gewichtsfunktionen}
+Sei $w\colon(-1,1)\to \mathbb{R}$ eine stetige Funktion mit
+nichtnegativen Werten, dann kann das zugehörige Skalarprodukt
+\[
+\langle f,g\rangle_w
+=
+\int_{-1}^1 f(x)g(x)\,w(x)\,dx
+\]
+definiert werden.
+Die Funktion $w(x)$ heisst die {\em Gewichtsfunktion} des
+Skalarproduktes.
+\index{Gewichtsfunktion}%
+
+Das Skalarprodukt 
+\eqref{buch:orthfkt:tschebyscheff},
+welches auf die Tschebyscheff-Polynome geführt hat, gehört zur 
+Gewichtsfunktion
+\[
+w_T(x)
+= 
+\frac{1}{\sqrt{1-x^2}}.
+\]
+
+\begin{definition}
+Die {\em Jacobi-Gewichtsfunktion} $w^{(\alpha,\beta)}(x)$ ist 
+\[
+w^{(\alpha,\beta)}
+\colon
+(-1,1) \to \mathbb{R}
+:
+x\mapsto (1-x)^\alpha(1+x)^\beta.
+\]
+Das zugehörige Skalarprodukt wird auch
+\[
+\langle f,g\rangle_{w^{(\alpha,\beta)}}
+=
+\langle f,g\rangle_{(\alpha,\beta)}
+=
+\int_{-1}^1 f(x)g(x) w^{(\alpha,\beta)}\,dx
+=
+\int_{-1}^1 f(x)g(x) (1-x)^\alpha(1+x)^\beta\,dx
+\]
+geschrieben.
+\end{definition}
+
+Die Familie orthogonaler Polynome, die sich zu diesem Skalarprodukt
+ergeben, heissen {\em Jacobi-Polynome}.
+Die Gewichtsfunktion der Tschebyscheff-Polynome ist ein Spezialfall,
+nämlich
+\[
+w_T(x)
+=
+\frac{1}{\sqrt{1-x^2}}
+=
+\frac{1}{\sqrt{(1-x)(1-x)}}
+=
+(1-x)^{-\frac12}(1+x)^{-\frac12}
+=
+w^{(-\frac12,-\frac12)}(x).
+\]
+Die $(-\frac12,-\frac12)$-Jacobi-Polynome sind also die
+Tschebyscheff-Polynome.
+
+%
+% Hermite-Polynome
+%
+\subsubsection{Hermite-Polynome}
+Auch für unendliche Intervalle lassen sich Gewichtsfunktionen und
+Familien von orthogonalen Funktionen angeben.
+Da Polynome für $x\to\infty$ beliebig schnell anwachsen können,
+muss die Gewichtsfunktion exponentiell schnell gegen $0$ gehen, damit
+das Integral beschränkt bleibt.
+
+Für $\mathbb{R}$ als Definitionsbereich der Polynome kann man die
+{\em Hermite-Gewichtsfunktion}
+\[
+w(x) = e^{-\frac{x^2}2}
+\]
+verwenden, sie führt auf die {\em Hermite-Polynome}.
+
+%
+% Laguerre-Polynome
+%
+\subsubsection{Laguerre-Polynome}
+Für den Definitionsbereich $\mathbb{R}_{>0}$ kann die
+Laguerre-Gewichtsfunktion
+\[
+w_{\text{Laguerre}}(x)
+=
+e^{-x}
+\]
+verwendet werden, die auf die sogenannten {\em Laguerre-Polynome}
+führt.
+Die Theorie der Laguerre- und Hermite-Polynome wird ausführlich
+in \cite{buch:mathsem-spezfunk} behandelt.
+

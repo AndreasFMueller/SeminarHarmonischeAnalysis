@@ -1,0 +1,588 @@
+%
+% 2-trigo.tex -- trigonometrische Funktionen als Beispiel
+%
+% (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachschule
+%
+\section{Trigonometrische Funktionen
+\label{buch:orthofkt:section:trigo}}
+Es ist Fouriers Verdienst zu erkennen, dass nicht zu pathologische
+periodische Funktionen immer als Reihe von trigonometrischen
+Funktionen ausgedrückt werden können.
+Die Koeffizienten können als Skalarprodukte berechnet werden,
+dies ist der Zugang, den wir aus heutiger Sicht wählen würden.
+Fourier selbst hatte jedoch auch eine abenteuerliche Methode,
+die Monome durch die trigonometrischen Funktionen auszudrücken.
+Beliebige Funktionen können dann durch Polynome approximiert
+werden, deren Terme wieder durch die trigonometrischen Reihen
+für die Monome ersetzt werden können.
+Hier möchten wir von der Sicht der orthogonalen Funktionen ausgehen
+und müssen daher die Orthogonalitätseigenschaften der trigonometrischen
+Funktionen untersuchen.
+
+%
+% Reelle trigonometrische Funktionen
+%
+\subsection{Reelle trigonometrische Funktionen}
+Die Funktionen
+\[
+C_k(t) = \cos kt
+\qquad\text{und}\qquad
+S_k(t) = \sin kt
+\]
+sind $2\pi$-periodisch für jede ganze Zahl $k\in\mathbb{Z}$.
+Natürlich ist $C_k(t)=C_{-k}(t)$ und $S_{-k}(t)=-S_k(t)$, so
+dass nur natürliche Werte von $k$ untersucht werden müssen.
+Ausserdem ist $S_0(t)=\sin 0t=0$,
+die Funktion $S_0(t)$ kann also ignoriert werden.
+Die Funktion $C_0(t)=\cos 0t=1$ ist die Konstante.
+
+$2\pi$-periodische Funktionen sind eindeutig bestimmt durch die
+Werte im Intervall $[-\pi,\pi]$, es müssen also nur Funktionen in
+diesem kleineren Intervall approximiert werden können.
+Das naheliegende Skalarprodukt ist daher
+\[
+\langle f,g\rangle
+=
+\int_{-\pi}^\pi f(t)g(t)\,dt.
+\]
+
+%
+% Orthogonalität
+%
+\subsubsection{Orthogonalität}
+Die Skalarprodukte der Funktionen $C_k$ und $S_k$ können mit Hilfe
+der trigonometrischen Identitäten
+\begin{align*}
+C_k(t)C_l(t)
+&=
+\frac12\bigl(\cos(k-l)t+\cos(k+l)t\bigr)
+\\
+S_k(t)S_l(t)
+&=
+\frac12\bigl(\cos(k-l)t-\cos(k+l)t\bigr)
+\\
+C_k(t)S_l(t)
+&=
+\frac12\bigl(\sin(k+l)t-\sin(k-l)t\bigr)
+\end{align*}
+direkt berechnet werden.
+Für $k\ne l$ gilt
+\[
+\renewcommand\arraycolsep{2pt}
+\renewcommand\arraystretch{2.2}
+\begin{array}{lclclcl}
+\langle C_k,C_l\rangle
+&=&
+\displaystyle
+\int_{-\pi}^\pi \cos kt\cos lt\,dt
+&=&
+\displaystyle
+\frac12
+\int_{-\pi}^\pi \cos(k-l)t+\cos(k+l)t\,dt
+&=&
+\displaystyle
+\frac12\biggl[
+\frac{\sin(k-l)t}{k-l} + \frac{\sin(k+l)t}{k+l}
+\biggr]_{-\pi}^\pi,
+\\
+\langle S_k,S_l\rangle
+&=&
+\displaystyle
+\int_{-\pi}^\pi \sin kt\sin lt\,dt
+&=&
+\displaystyle
+\frac12
+\int_{-\pi}^\pi \cos(k-l)t-\cos(k+l)t\,dt
+&=&
+\displaystyle
+\frac12
+\biggl[
+\frac{\sin(k-l)}{k-l}-\frac{\sin(k+l)t}{k+l}
+\biggr]_{-\pi}^\pi.
+\end{array}
+\]
+Die Nullstellen der Sinus-Funktione sind ganzzahlige Vielfache von $\pi$,
+daher sind $\langle C_k,C_l\rangle=0$ und $\langle S_k,S_l\rangle = 0$.
+Da die Funktion $\cos kt \sin lt$ ungerade ist, folgt auch
+\[
+\langle C_k,S_l\rangle
+=
+\int_{-\pi}^\pi \cos kt\sin lt\,dt
+=
+0,
+\]
+ganz unabhängig davon, ob $k\ne l$ oder nicht.
+Damit ist gezeigt, dass die trigonometrischen Funktionen orthogonal sind.
+
+%
+% Normierung
+%
+\subsubsection{Normierung}
+Die trigonometrischen Funktionen sind nicht normiert.
+Zur Berechnung der Norm werden die Formeln 
+\[
+\sin^2\vartheta = \frac12(1-\cos2\vartheta)
+\qquad\text{und}\qquad
+\cos^2\vartheta = \frac12(1+\cos2\vartheta)
+\]
+die Quadrate der trigonometrischen Funktionen benötigt.
+Damit werden die Normen von $C_k$ und $S_k$ für $k>0$:
+\begin{align*}
+\|C_k\|^2
+&=
+\int_{-\pi}^\pi \cos^2kt\,dt
+=
+\frac12\int_{-\pi}^\pi 1+\cos 2kt\,dt
+=
+\pi
+\\
+\|S_k\|^2
+&=
+\int_{-\pi}^\pi \sin^2kt\,dt
+=
+\frac12\int_{-\pi}^\pi 1-\cos 2kt\,dt
+=
+\pi.
+\end{align*}
+Die Funktion $C_0(t)=1$ ist etwas speziell, sie hat die Norm
+\[
+\|C_0\|
+=
+\int_{-\pi}^\pi C_0(t)^2\,dt
+=
+\int_{-\pi}^\pi \,dt
+=
+2\pi.
+\]
+Damit können wir jetzt eine Hilbertbasis zusammenstellen:
+\[
+\begin{aligned}
+c_0(t) &= \frac{1}{\sqrt{2\pi}},\\
+c_k(t) &= \frac{1}{\sqrt{\pi}} C_k(t) = \frac{1}{\sqrt{\pi}} \cos kt,\\
+s_k(t) &= \frac{1}{\sqrt{\pi}} S_k(t) = \frac{1}{\sqrt{\pi}} \sin kt.\\
+\end{aligned}
+\]
+
+%
+% Fourier-Reihen
+%
+\subsubsection{Fourier-Reihen}
+Die Funktionen $c_0(t)$, $c_k(t)$ und $s_k(t)$ bilden eine Hilbert-Basis.
+Jede $2\pi$-periodische Funktion $f(t)\in L^2$ hat daher eine in
+$L^2([-\pi,\pi])$ konvergente Reihenentwicklung der Form
+\[
+f(t)
+=
+\langle c_0,f\rangle c_0(t)
++
+\sum_{k=1}^\infty
+(
+\langle c_k,f\rangle c_k(t)
++
+\langle s_k,f\rangle s_k(t)
+).
+\]
+Wir schreiben die einzelnen Terme aus um die Verbindung zu der in der
+Theorie der Fourier-Reihen üblichen Notation herzustellen.
+Der konstante Term ist
+\[
+\langle c_0,f\rangle c_0(t)
+=
+\int_{-\pi}^\pi \frac{1}{\sqrt{2\pi}} f(t)\,dt \frac{1}{\sqrt{2\pi}}
+=
+\frac12 \cdot \frac1{\pi} \int_{-\pi}^\pi f(t)\,dt
+=
+\frac12 a_0
+\]
+Für die Cosinus- und Sinus-Terme erhalten wir 
+\begin{align*}
+\langle c_k,f\rangle c_k(t)
+&=
+\frac{1}{\sqrt{\pi}}
+\int_{-\pi}^\pi \cos kt f(t)\,dt \cdot \frac{1}{\sqrt{\pi}}\cos kt
+=
+\frac{1}{\pi} \cos kt\,f(t)\,dt\cdot \cos kt
+=
+a_k \cos kt
+\\
+\langle s_k,f\rangle s_k(t)
+&=
+\frac{1}{\sqrt{\pi}}
+\int_{-\pi}^\pi \int_{-\pi}^\pi \sin kt f(t)\,dt \cdot \frac{1}{\sqrt{\pi}}\sin kt
+=
+\frac{1}{\pi} \int_{-\pi}^\pi \sin kt\,f(t)\,dt\cdot \sin kt
+=
+b_k \sin kt.
+\end{align*}
+Die Funktion $f(t)$ hat daher die $L^2$-konvergente Fourier-Reihe
+\[
+f(t) = \frac{a_0}{2} + \sum_{k=1}^\infty (a_k \cos kt + b_k \sin kt)
+\qquad\text{mit}\qquad
+\left\{
+\quad
+\begin{aligned}
+a_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(t) \cos kt\,dt
+&&\text{für $k\ge 0$,}
+\\
+b_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(t) \sin kt\,dt
+&&\text{für $k> 0$.}
+\end{aligned}
+\right.
+\]
+
+%
+% Andere Intervalle
+%
+\subsubsection{Andere Intervalle}
+Die Untersuchungen dieses Abschnittes bis jetzt gingen von der 
+Periode $2\pi$ aus.
+Für ein Periodenintervall der Länge $2l$ können wir die Substitution
+$x=(l/\pi)t$ verwenden.
+Aus der $2l$-periodischen Funktion $f(x)$ entsteht dann die $2\pi$-periodische
+Funktion $t\mapsto f(lt/\pi)$ mit der Fourier-Reihe
+\[
+f(x)
+=
+\frac{a_0}{2}
++
+\sum_{k=1}^\infty
+\biggl(a_k\cos\frac{k\pi x}{l} + b_k\sin\frac{k\pi x}{l}\biggr)
+\qquad\text{mit}\qquad
+\left\{\quad
+\begin{aligned}
+a_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(tl/\pi)\cos kt\,dt,
+\\
+b_k
+&=
+\frac{1}{\pi}
+\int_{-\pi}^\pi f(tl/\pi)\sin kt\,dt.
+\end{aligned}
+\right.
+\]
+Indem man die Variablentransformation unter Verwendung von
+$dt = (\pi/l)dx$ auch in den Integralen durchführt,
+erhält man die Darstellung
+\begin{align*}
+a_k
+&=
+\frac{1}{\pi}\int_{-l}^l f(x)\cos\frac{k\pi x}l\,\frac{\pi}{l}\,dx
+=
+\frac{1}{l}\int_{-l}^l f(x) \cos\frac{k\pi x}{l} \,dx
+\\
+b_k
+&=
+\frac{1}{\pi}\int_{-l}^l f(x)\sin\frac{k\pi x}l\,\frac{\pi}{l}\,dx
+=
+\frac{1}{l}\int_{-l}^l f(x) \sin\frac{k\pi x}{l} \,dx
+\end{align*}
+Dasselbe Resultat kann man erhalten, indem man wie vorhin die
+orthogonalen, $2l$-periodischen Funktionen
+\[
+\begin{aligned}
+C^{l}_k(x) &= \cos\frac{k\pi x}{l} &&\text{für $k\ge 0$}
+\\
+S^{l}_k(x) &= \sin\frac{k\pi x}{l} &&\text{für $k>0$}
+\end{aligned}
+\]
+bezüglich des Skalarproduktes
+\[
+\langle f,g\rangle_l
+=
+\int_{-l}^l f(x)g(x)\,dx
+\]
+orthonormiert.
+
+%
+% Komplexe Exponentialfunktionen
+%
+\subsection{Komplexe Exponentialfunktionen}
+Die Eulersche Formel
+\[
+e^{it} = \cos t + i\sin t
+\]
+stellt einen Zusammenhang her zwischen den trigonometrischen Funktionen
+und der komplexen Exponentialfunktion.
+Die Funktionen
+\[
+e_k(t) = e^{ikt} = \cos kt + i\sin kt\qquad\text{für $k\in\mathbb{Z}$}
+\]
+sind $2\pi$-periodisch.
+Im Gegensatz zur Situation bei den trigonometrischen Funktionen können
+wir hier nicht auf die negativen Indizes $k<0$ verzichten.
+Für eine reelle Funktion ist lässt sich die Fourierreihe unter Verwendung
+der Identitäten
+\[
+\cos kt
+=
+\frac{e_k(t) + e_{-k}(t)}{2}
+=
+\frac{e_k(t) + e_{-k}(t)}2
+\qquad\text{und}\qquad
+\sin kt
+=
+\frac{e_k(t) - e_{-k}(t)}{2i}
+=
+i\frac{-e_{k}(t)+e_k(t)}2
+\]
+als komplexe Reihe 
+\begin{align*}
+f(t)
+&=
+\frac{a_0}2
++\sum_{k=1}^\infty (a_k\cos kt + b_k \sin kt)
+\\
+&=
+\frac{a_0}2 e_0(t)
++
+\frac12
+\sum_{k=1}^\infty
+\bigl(
+a_k(e_k(t)+e_{-k}(t))
++
+ib_k(-e_k(t)+e_{-k}(t))
+\bigr)
+\\
+&=
+\frac{a_0}2e_0(t)
++
+\sum_{k=1}^\infty (a_k-ib_k)e_k(t)
++
+\sum_{k=1}^\infty (a_k+ib_k)e_{-k}(t)
+\\
+&=\sum_{k\in\mathbb{Z}} c_ke_k(t)
+\quad\text{mit}\quad
+\left\{\quad
+\begin{aligned}
+c_k    &= \frac{a_k-ib_k}2&&\text{für $k>0$}\\
+c_0    &= \frac{a_0}2     &&                \\
+c_{-k} &= \frac{a_k+ib_k}2&&\text{für $k>0$}\\
+\end{aligned}
+\right.
+\end{align*}
+schreiben.
+Die Koeffizienten $c_k$ erfüllen also $c_{-k}=\overline{c_k}$
+und können direkt aus der Theorie der reellen Fourier-Reihen
+gewonnen werden.
+
+%
+% komplexes Skalarprodukt und Orthogonalität
+%
+\subsubsection{Komplexes Skalarprodukt und Orthogonalität}
+Da die Funktionen $e_k(t)$ komplexertig sind, kann man damit
+auch komplexwertige Funktionen approximieren. 
+Man kann aber nicht mehr erwarten, dass $c_{-k}=\overline{c_k}$ ist.
+Natürlich möchte man diese Koeffizienten mit Hilfe eines komplexen
+Skalarproduktes ermitteln können, bezüglich dem die Funktionen $e_k(t)$
+orthonormiert sind.
+Wir versuchen mit dem komplexen Skalarprodukt
+\begin{equation}
+\langle f,g\rangle
+=
+\int_{-\pi}^\pi \overline{f(x)}g(x)\,dx
+\label{buch:orthfunkt:komplexskalar}
+\end{equation}
+und berechnen die Skalarprodukte für $k\ne l$
+\[
+\langle e_k,e_l\rangle
+=
+\int_{-\pi}^\pi \overline{e^{ikt}} e^{ilt}\,dt
+=
+\int_{-\pi}^\pi e^{i(l-k)t}\,dt
+=
+\biggl[
+\frac{1}{i(l-k)} e^{i(l-k)t}
+\biggr]_{-\pi}^\pi
+=
+\frac{1}{i(l-k)}
+[ e_{l-k} ]_{-\pi}^\pi
+=
+0
+\]
+da die Funktionen $e_k(t)$ $2\pi$-periodisch sind.
+
+%
+% Normierung
+%
+\subsubsection{Normierung}
+Für das komplexe Skalarprodukt~\eqref{buch:orthfunkt:komplexskalar}
+ist die Norm der Funktionen $e_k(t)$
+\begin{align*}
+\|e_k\|^2
+&=
+\int_{-\pi}^\pi |e_k(t)|^2\,dt
+=
+\int_{-\pi}^\pi dt
+=
+2\pi.
+\end{align*}
+Die Funktionen sind also nicht normiert.
+Wir könnten die Funktionen anpassen, aber da wir uns beim Skalarprodukt
+noch nicht wirklich festgelegt haben, können wir auch versuchen, letzteres
+anzupassen derart, dass die Funktionen $e_k$ normiert sind.
+Wir setzen daher
+\begin{equation}
+\langle f,g\rangle
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\pi}^\pi \overline{f(t)} g(t)\,dt.
+\end{equation}
+Mit diesem Skalarprodukt wird die Norm $\|e_k\|=1$.
+Da die Funktionen $e_k(t)$ eine Hilbert-Basis bilden, kann jetzt jede
+$2\pi$-periodische komplexe Funktion $f(t)\in L^2$ durch die komplexe
+Fourier-Reihe
+\begin{align*}
+f(t)
+&=
+\sum_{k\in\mathbb{Z}} c_k e^{ikt}
+\qquad\text{mit}\quad
+c_k
+=
+\langle e_k,f\rangle
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\pi}^{\pi}  \overline{e^{ikt}} f(t)\,dt
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\pi}^{\pi}  e^{-ikt} f(t)\,dt
+\end{align*}
+approximieren.
+
+%
+% Symmetrieeigenschaften
+%
+\subsection{Symmetrieeigenschaften}
+Die trigonometrischen Funktionen und die komplexen Exponentialfunktionen
+haben eine zusätzliche Symmetrieeigenschaft, die sie gegenüber den früher
+untersuchten orthogonalen Polynomen auszeichnet.
+
+%
+% Phasenverschiebung
+%
+\subsubsection{Phasenverschiebung}
+Wir untersuchen, wie sich eine periodische Funktion unter einer
+Translation um $\delta$ ändert.
+Sei $T_\delta$ der Verschiebungsoperator definiert durch
+\[
+T_\delta
+\colon 
+f\mapsto T_\delta f
+\qquad\text{mit}\quad
+(T_\delta f)(t) = f(t+\delta).
+\]
+Es ist klar, dass der Operator $T_\delta$ ein linearer Operator ist.
+
+Wendet man $T_\delta$ auf die Funktion $e_k(t)$ ergibt sich
+\begin{align*}
+(T_\delta e_k)(t)
+&=
+e_k(t+\delta)
+=
+e^{ik(t\delta)}
+=
+e^{ik\delta} e^{ikt}
+=
+e^{ik\delta} e_k(t)
+\intertext{oder}
+T_\delta e_k &= e^{ik\delta} e_k,
+\end{align*}
+die Funktion ist also eine Eigenfunktion des Operators $T_\delta$
+zum Eigenwert $e^{ik\delta}$.
+
+Für die trigonometrischen Funktionen ist die Situation etwas komplizierter,
+man bekommt
+\begin{align*}
+(T_\delta C_k)(t)
+&=
+\cos k(t+\delta)
+=
+\cos kt \cos k\delta - \sin kt \sin k\delta
+=
+\cos k\delta C_k(t) - \sin k\delta S_k(t)
+\\
+(T_\delta S_k)(t)
+&=
+\sin k(t+\delta)
+=
+\cos kt\sin k\delta
++
+\sin kt\cos k\delta
+=
+\sin k\delta C_k(t)
++
+\cos k\delta S_k(t),
+\end{align*}
+die man auch in Matrixform als
+\[
+T_\delta
+\begin{pmatrix}
+C_k\\S_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos k\delta & -\sin k\delta \\
+\sin k\delta &  \cos k\delta
+\end{pmatrix}
+\begin{pmatrix}
+C_k\\S_k
+\end{pmatrix}
+\]
+Die Funktionen $C_k$ und $S_k$ sind also nicht mehr Eigenfunktionen,
+aber sie spannen einen zweidimensionalen invarianten Unterraum auf.
+
+%
+% Ableitung
+%
+\subsubsection{Ableitung}
+Die Symmetrieeigenschaften äussern sich auch in den Ableitungen
+der Funktionen.
+Die Ableitungsfunktion ist der Grenzwert
+\[
+Df
+=
+f'
+=
+\lim_{\delta\to 0}
+\frac{T_\delta f - f}{\delta}
+=
+\frac{d}{d\delta} T_\delta f.
+\]
+Für die komplexen Exponentialfunktionen $e_k$ finden wir
+\[
+De_k
+=
+e_k'
+=
+\frac{d}{d\delta} T_\delta e_k
+=
+\frac{d}{d\delta} e^{ik\delta} e_k
+=
+ik e_k.
+\]
+Die Funktionen $e_k$ sind also Eigenfunktionen des Ableitungsoperators
+$D=d/dt$ zum Eigenwert $ik$.
+
+Für die reellen trigonometrischen Funktionen ist dies nicht möglich,
+die Ableitung von $c_k$ ist $Dc_k=-ks_k$ und
+die Ableitung von $s_k$ ist $Ds_k=kc_k$.
+Die Funktionen sind also nicht Eigenfunktionen des Ableitungsoperators.
+Für die zweite Ableitung $D^2$ gilt jedoch
+\begin{align*}
+D^2c_k &= D(-ks_k) = -k^2c_k
+\\
+D^2s_k &= Dkc_k = -k^2s_k,
+\end{align*}
+die Funktionen $s_k$ und $c_k$ sind also Eigenfunktionen der zweiten
+Ableitung zum Eigenwert $-k^2$.
+
+
+
+

@@ -7,11 +7,58 @@
 \chapter{Orthogonale Funktionen
 \label{buch:chapter:orthofunkt}}
 \kopflinks{Orthogonale Funktionen}
+Kapitel~\ref{buch:chapter:skalarprodukte} hat gezeigt, dass Funktionen
+besonders leicht durch eine Familie von Funktionen dargestellt werden 
+können, wenn die Funktionenfamilie aus orthonormierten Funktionen
+bezüglich eines Skalarproduktes besteht.
+Eine solche Familie von Funktionen kann im Prinzip mit Hilfe des
+Gram-Schmidtschen Orthogonalisierungsverfahrens gefunden werden.
+Dies wird im Abschnitt~\ref{buch:orthofkt:section:orthopol} für
+Polynome durchgerechnet.
+Diese Funktionenfamilien sind zwar nützlich und ermöglichen mit
+der Grauss-Quadratur ein sehr effizientes numerisches
+Integrationsverfahren, sie haben aber kaum andere nützliche Eigenschaften.
 
-\input{chapters/020-orthofkt/1-trigo.tex}
-\input{chapters/020-orthofkt/2-sa.tex}
-\input{chapters/020-orthofkt/3-sturmliouville.tex}
-\input{chapters/020-orthofkt/4-pde.tex}
+Die trigonometrischen Funktionen werden in
+Abschnitt~\ref{buch:orthofkt:section:trigo} als orthogonal nachgewiesen,
+diese Funktionen haben die zusätzliche Eigenschaft, dass Sie eine
+Symmetrieeigenschaft haben.
+Die Translation der Funktionen $t\mapsto \sin nt$ oder
+$t\mapsto\cos nt$um einen Phasenwinkel ergibt eine Funktion
+$\sin(nt+\delta)$ oder $\cos(nt+\delta)$, die sich wieder durch
+$\sin nt$ und $\cos nt$ ausdrücken lässt.
+
+Noch einfacher wird die Situation für die komplexen Exponentialfunktionen
+$t\mapsto e^{int}$.
+Die Verschiebung $e^{i(nt+\delta)}=e^{i\delta}e^{int}$ ist ganz
+offensichlich ein Vielfaches der Ursprünglichen Funktion, sie ist
+ein Eigenvektor des Verschiebungsoperators.
+Aus der linearen Algebra ist bekannt, dass symmetrische Matrizen 
+orthogonale Eigenvektoren haben.
+Die Verallgemeinerung auf Funktionenräume liefert einen Mechanismus,
+der automatisch orthogonale Funktionenfamilien liefert.
+Die trigonometrischen Funktionen sind nur ein Spezialfall dieses
+Mechanismus.
+
+Das Sturm-Liouville-Problem handelt von der Lösung eines Typs
+von Differentialgleichung zweiter Ordnung, die unter anderem auf
+die trigonometrischen Funktionen führt.
+Andere Spezialfälle reproduzieren die orthogonalen Polynome
+von Abschnitt~\ref{buch:orthofkt:section:orthopol}.
+
+Die Idee, orthogonale Funktionen als Eigenfunktionen eines
+Operators zu finden, funktioniert auch für mehrere unabhängige
+Variablen.
+Elliptische partielle Differentialgleichungen können sehr oft
+in eine Form gebracht werden, die eine orthogonale Funktionenfamilie
+hervorbringt, welche dann verwendet werden kann, um Lösungen
+linear zu kombinieren.
+
+\input{chapters/020-orthofkt/1-orthopol.tex}
+\input{chapters/020-orthofkt/2-trigo.tex}
+\input{chapters/020-orthofkt/3-sa.tex}
+\input{chapters/020-orthofkt/4-sturmliouville.tex}
+\input{chapters/020-orthofkt/5-pde.tex}
 
 %\section*{Übungsaufgaben}
 %\rhead{Übungsaufgaben}
