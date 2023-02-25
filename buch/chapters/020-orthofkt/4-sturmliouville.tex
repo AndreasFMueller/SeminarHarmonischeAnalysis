@@ -6,3 +6,397 @@
 \section{Sturm-Liouville-Problem
 \label{buch:orthofkt:section:sturmliouville}}
 \kopfrechts{Sturm-Liouville-Problem}
+Das Beispiel~\ref{buch:orthfkt:sa:beispiel:D2} zeigt, dass
+Eigenfunktionen eines Differentialoperators zu interessanten
+Familien orthogonaler Funktionken führen können.
+Die daraus abgeleitete harmonische Analysis kann zur Lösung
+gewisser Differentialgleichungen genutzt werden.
+Ziel dieses Abschnitts ist zu zeigen, dass das Beispiel auf
+eine wesentlich grössere Klasse von Differentialgleichungen
+erweitert werden kann.
+
+%
+% Der Sturm-Liouville-Differentialoperator
+%
+\subsection{Der Sturm-Liouville-Differentialgoperator}
+Sie $a<b$ und seien zwei Funktionen
+$p(x)\in C^2([a,b])$, $q(x)\in C([a,b])$ gegeben.
+Wir definieren den Sturm-Liouville-Operator
+\[
+L = \frac{d}{dx} p(x) \frac{d}{dx} + q(x),
+\]
+der die Funktion $y(x)$ auf
+\begin{align*}
+(Ly)(x)
+&=
+\frac{d}{dx}p(x)\frac{d}{dx}y(x) + q(x)y(x)
+\\
+&=
+\frac{d}{dx}p(x)y'(x) + q(x)y(x)
+\\
+&=
+p'(x)y'(x)+p(x)y''(x)+q(x)y(x)
+\end{align*}
+abbildet.
+Die Funktion $q(x)$ wirkt also durch punktweise Multiplikation.
+
+Ableitungen kommen nur im ersten Teil vor, den wir mit
+\[
+L_0
+=
+\frac{d}{dx}p(x)\frac{d}{dx}
+\]
+bezeichnen.
+
+%
+% Der Sturm-Liouville-Operator ist selbstadjungiert
+%
+\subsection{Der Sturm-Liouville-Operator ist selbstadjungiert}
+Wir betrachten die Frage der Selbstadjungiertheit des
+Operators $L$ bezüglich des Standardskalarproduktes
+\[
+\langle f,g\rangle
+=
+\int_a^b f(x)g(x)\,dx.
+\]
+Der Multiplikationsoperator mit der Funktion $q(x)$ ist ganz
+offensichtlich selbstadjungiert, es gilt nämlich
+\[
+\langle qf,g\rangle
+=
+\int_a^b (q(x)f(x))g(x)\,dx
+=
+\int_a^b f(x)(q(x)g(x))\,dx
+=
+\langle f,qg\rangle
+\]
+für alle Funktionen $f$ und $g$, für die die Integrale definiert sind.
+
+Der Operator $L_0$ hat ähnliche Eigenschaften wie die zweite
+Ableitung im Beispiel~\ref{buch:orthfkt:sa:beispiel:D2}.
+Dazu berechnen wir die Skalarprodukte
+\begin{align}
+\langle Lf,g\rangle
+&=
+\int_a^b (Lf)(x)g(x)\,dx
+=
+\int_a^b \frac{d}{dx}\biggl(q(x)\frac{d}{dx}f(x)\biggr) g(x)\,dx
+\\
+&=
+\biggl[ q(x)f'(x) g(x) \biggr]_a^b
+-
+\int_a^b q(x)f'(x)g'(x)\,dx
+\label{buch:orthfkt:sturmliouville:Lfg}
+\\
+\langle f,Lg\rangle
+&=
+\int_a^b f(x) (Lg)(x)\,dx
+=
+\int_a^b f(x)\frac{d}{dx}\biggl(q(x)\frac{d}{dx}g(x)\biggr)\,dx
+\\
+&=
+\biggl[ f(x) q(x)g'(x)\biggr]_a^b
+-
+\int_a^b f'(x)q(x)g'(x)\,dx.
+\label{buch:orthfkt:sturmliouville:fLg}
+\end{align}
+Die beiden Integrale stimmen überein, aber der erste Term ist
+offensichtlich verschieden.
+$L$ ist also im allgemeinen nicht selbstadjungiert.
+
+%
+% Randbedingungen
+%
+\subsection{Randbedingungen}
+Aus den Gleichungen
+\eqref{buch:orthfkt:sturmliouville:Lfg}
+und
+\eqref{buch:orthfkt:sturmliouville:fLg}
+kann man Bedingungen an die Funktionen ableiten, die überhaupt
+zugelassen werden sollen, die den Operator $L_0$ zu einem
+selbstadjungierten Operator machen.
+Die Funktionen müssen die Bedingungen
+\begin{align}
+\biggl[ p(x)f'(x) g(x) \biggr]_a^b
+&=
+\biggl[ p(x)f(x) g'(x) \biggr]_a^b
+\notag
+\\
+p(b)f'(b)g(b)
+-
+p(a)f'(a)g(a) 
+&=
+p(b)f(a)g'(b)
+-
+p(a)f(a)g'(a)
+\notag
+\intertext{oder}
+p(b)
+\bigl(
+f'(b)g(b)-f(b)g'(b)
+\bigr)
+&=
+p(a)
+\bigl(
+f'(a)g(b)
+-
+f(a)g'(a)
+\bigr)
+\notag
+\intertext{erfüllen.
+Mit der Determinante lässt sich das noch etwas übersichtlicher
+schreiben als}
+\left|\begin{matrix}
+p(b)f'(b)&p(b)g'(b) \\
+f(b) &g(b)
+\end{matrix}\right|
+=
+\left|\begin{matrix}
+p(a)f'(a)&p(a)g'(a) \\
+f(a) &g(a)
+\end{matrix}\right|.
+\label{buch:orthfkt:sturmliouville:det}
+\end{align}
+
+Randbedingungen können immer nur für einen Randpunkt gefordert
+werden, wir müssen also den Wert der Determinante festlegen.
+Angenommen, wir fordern, dass die Determinante einen Wert
+$d\ne 0$ annimmt. Setzen wir die Funktione $\lambda f$ und $g$ ein,
+ensteht die Determinante
+\[
+\left|\begin{matrix}
+\lambda p(a)f'(a)&p(a)g'(a) \\
+\lambda f(a) &g(a)
+\end{matrix}\right|
+=
+\lambda
+\left|\begin{matrix}
+p(a)f'(a)&p(a)g'(a) \\
+f(a) &g(a)
+\end{matrix}\right|
+=
+\lambda t \ne t
+\]
+für $\lambda \ne 1$.
+Eine solche Forderung führt also auf eine Menge von zulässigen Funktionen,
+die nicht mehr ein Vektorraum ist.
+Es bleibt daher nur die Möglichkeit, dass die Determinante $=0$ sein muss.
+
+Die Determinante 
+\eqref{buch:orthfkt:sturmliouville:det}
+ist genau dann Null, wenn die Spalten der Matrix linear abhängig sind.
+Insbesondere spannen Sie den gleiche Gerade in $\mathbb{R}^2$ auf.
+Es gibt daher Vektoren
+\[
+\begin{pmatrix}
+h_a\\
+k_a
+\end{pmatrix}
+\qquad\text{und}\qquad
+\begin{pmatrix}
+h_b\\
+k_b
+\end{pmatrix}
+\]
+die auf den Vektoren
+\[
+\begin{pmatrix}
+p(a)f'(a)\\
+f(a)
+\end{pmatrix}
+\qquad\text{und}\qquad
+\begin{pmatrix}
+p(a)g'(a)\\
+g(a)
+\end{pmatrix}
+\]
+senkrecht stehen.
+Dies ist gleichbedeutend mit der Randbedingung
+\begin{align*}
+k_af(a) + h_ap(a)f'(a)&=0
+\\
+k_bf(b) + h_bp(b)f'(b)&=0.
+\end{align*}
+Wir fassen die Resultate im folgenden Satz zusammen.
+
+\begin{satz}
+Seien $h_a, h_b, k_a, k_b\in \mathbb{R}$ gegeben.
+Dann ist der Operator $L_0$ ist selbstadjungiert im Prähilbertraum
+\begin{equation}
+H(h_a,h_b,k_a,k_b)
+=
+\left\{
+f \in C^1([a,b])
+\;
+\left|
+\;
+\begin{aligned}
+&\int_a^b |f(x)|^2\,dx < \infty,
+\int_a^b |p(x)| |f'(x)|^2\,dx < \infty,
+\\
+&
+\begin{aligned}
+k_af(a) + h_ap(a)f'(a) &= 0 \\
+k_af(b) + h_bp(b)f'(b) &= 0 
+\end{aligned}
+\end{aligned}
+\right.
+\right\}
+\label{buch:orthfkt:sturmliouvill:ph}
+\end{equation}
+mit dem Skalarprodukte
+\[
+\langle f,g\rangle = \int_a^b f(x)g(x)\,dx.
+\]
+\end{satz}
+
+%
+% Das verallgemeinerte Eigenwertproblem
+%
+\subsection{Das Eigenwertproblem}
+Zu Zahlen $h_a$, $h_b$, $k_a$, $k_b$ ist der Operator $L_0$ im 
+Prählibertraum~\eqref{buch:orthfkt:sturmliouvill:ph}
+selbstadjungiert.
+Wir erwarten, dass die Eigenvektoren dieses Differentialoperators eine
+Hilbertbasis für die Analyse und Synthese von Funktionen in diesem
+Prählibertraum liefern.
+In diesem Abschnitt soll gezeigt werden, wie sich damit 
+Hilbertbasen für erweiterte Differentialgleichungen 
+
+%
+% Das Eigenwertproblem für den Operator $L$
+%
+\subsubsection{Das Eigenwertproblem für den Operator $L$}
+Wir betrachten jetzt den Operator
+\[
+L
+=
+\frac{d}{dx}p(x)\frac{d}{dx} + q(x)
+=
+L_0 + q(x).
+\]
+Es wurde bereits gezeigt, dass $q(x)$ immer selbstadjungiert ist,
+und dass $L_0$ in einem Prähilbertraum der Form
+Prählibertraum~\eqref{buch:orthfkt:sturmliouvill:ph}
+selbstadjungiert wird.
+Eine Funktion $y\in H(h_a,h_b,k_a,k_b)$ ist eine Eigenfunktion des
+Operators $L$ zum Eigenwert $\lambda$, wenn sie die Differentialgleichung
+zweiter Ordnung
+\begin{align*}
+\frac{d}{dx} p(x) y'(x) + q(x)y(x) = \lambda y(x)
+\intertext{oder}
+ p(x) y''(x) + p'(x)y'(x) + q(x)y(x) = \lambda y(x)
+\end{align*}
+erfüllt.
+Für $H(h_a,h_b,k_a,k_b)$ kann eine Hilbertbasis aus Eigenfunktionen
+gefunden werden.
+
+%
+% Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen
+%
+\subsubsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
+
+%
+% Das verallgemeinerte Sturm-Liouville-Eigenwertproblem
+%
+\subsubsection{Das verallgemeinerte Sturm-Liouville-Eigenwertproblem}
+Das verallgemeinerte Sturm-Liouville-Eigenwertproblem ist die Aufgabe,
+eine Lösung $y(x)$ der Differentialgleichung
+\[
+\frac{d}{dx}p(x)\frac{d}{dx} y(x)
++ q(x)y(x)
+=
+\lambda w(x) y(x)
+\]
+zu finden.
+Das Problem unterscheidet sich von dem vorher untersuchten Problem durch
+den zusätzlichen Faktor $w(x)>0$, der auch Gewichtsfunktion heisst.
+Das Eigenwertproblem auf die bereits studierte Situation zurückgeführt
+werden, indem das Skalarprodukt mit der Gewichtsfunktion $w(x)$ verwendet
+wird.
+
+\begin{definition}
+Gegeben ist $p(x)\in C^1([a,b])$, $q(x),w(x)\in C([a,b])$ und $w(x)>0$
+in $(a,b)$.
+Der {\em allgemeine Sturm-Liouville-Operator} ist
+\[
+L
+=
+\frac{1}{w(x)}
+\biggl(
+\frac{d}{dx}p(x)\frac{d}{dx}
++
+q(x)
+\biggr).
+\]
+Das {\em verallgemeinerte Sturm-Liouville-Eigenwertproblem} ist die Aufgabe,
+eine Lösung $y(x)$ der Gleichung
+\(
+Ly(x) = \lambda y(x)
+\)
+zu finden.
+\end{definition}
+
+\begin{satz}
+Der Operator $L$ ist selbstadjungiert im Prähilbertraum
+\[
+H(h_a,h_b,k_a,k_b,w)
+=
+\left\{
+f \in C^1([a,b])
+\;
+\left|
+\;
+\begin{aligned}
+&\int_a^b |f(x)|^2w(x)\,dx < \infty,
+\int_a^b |p(x)| |f'(x)|^2w(x)\,dx < \infty,
+\\
+&
+\begin{aligned}
+k_af(a) + h_ap(a)f'(a) &= 0 \\
+k_af(b) + h_bp(b)f'(b) &= 0 
+\end{aligned}
+\end{aligned}
+\right.
+\right\}
+\]
+mit dem Skalarprodukt $\langle \;\,,\;\rangle_w$ mit der Gewichtsfunktion
+$w(x)$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir müssen nachrechnen, dass der Operator $L$ selbstadfjungiert ist.
+Dazu seien $f,g\in H(h_a,h_b,k_a,k_b,w)$, wir berechnen die
+Skalarprodukte
+\begin{align*}
+\langle Lf,g\rangle_w
+&=
+\int_a^b (Lf)(x)g(x)w(x)\,dx
+=
+\int_a^b
+\biggl(
+\frac{d}{dx}p(x)\frac{d}{dx}f(x) + 
+q(x) f(x)
+\biggr) g(x)\,dx
+=
+\langle L_0f,g\rangle + \langle qf,g\rangle
+\\
+\langle f,Lg\rangle_w
+&=
+\int_a^b f(x)(Lg)(x)w(x)\,dx
+=
+\int_a^b
+f(x)
+\biggl(
+\frac{d}{dx}p(x)\frac{d}{dx}g(x) + 
+q(x) g(x)
+\biggr) \,dx
+=
+\langle f,L_0g\rangle + \langle f,qg\rangle
+\end{align*}
+Da der Operator $L_0$ und der Multiplikationsoperator mit $q(x)$ bezügich
+des Standardskalarproduktes $\langle\;\,,\;\rangle$ selbstadjungiert sind,
+sind die beiden Ausdrücke gleich.
+Damit ist gezeigt, dass $L$ bezüglich $langle\;\,,\;\rangle_w$
+selbstadjungiert ist.
+\end{proof}
