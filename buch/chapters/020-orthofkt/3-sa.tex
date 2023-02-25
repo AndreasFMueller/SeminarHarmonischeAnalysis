@@ -6,3 +6,285 @@
 \section{Selbstadjungierte Operatoren
 \label{buch:orthofkt:section:sa}}
 \kopfrechts{Selbstadjungierte Operatoren}
+In der linearen Algebra lernt man, dass die Eigenvektoren
+symmetrischer Matrizen zu verschiedenen Eigenwerten orthogonal
+sind.
+Abschnitt~\ref{buch:trigo:subsection:symmetrie}
+zeigt, dass die trigonometrischen Funktionen und die
+komplexen Exponentialfunktionen als Eigenfunktionen eines
+Operators auftreten können.
+In diesem Abschnitt soll gezeigt werden, dass diese Situation
+keine Ausnahme ist und zu anderen orthogonalen Funktionenfamilien
+führen kann, wenn man die Begriffe der linearen Algebra auf
+die Situation des Hilbert-Raumes ausweiten kann.
+
+
+%
+% Der adjungierte Operator
+%
+\subsection{Der adjungierte Operator}
+Sei $A:H\to H$ eine lineare Abbildung oder {\em Operator} auf dem
+Hilbert-Raum $H$.
+Damit die Abbildung stetig ist, muss die Norm des Operators
+\[
+\|A\|
+=
+\sup_{x\in H\setminus\{0\}} \frac{\|Hx\|}{\|x\|}
+<
+\infty
+\]
+sein.
+Sei jetzt $x\in H$ ein Vektor.
+Die Funktion
+\[
+l
+\colon
+y\mapsto \langle Ay,x\rangle
+\]
+ist linear und stetig, die Norm ist
+\[
+|l(y)|
+=
+|\langle x, Ay\rangle|
+\le
+\|x\|
+\cdot
+\|Ay\|
+\le
+\|x\| \cdot \|A\| \cdot \|y\|
+.
+\]
+Nach dem Darstellungssatz von Riesz folgt, dass es einen Vektor 
+$A^*x$ gibt derart, dass
+\[
+l(y) = \langle A^*x,y\rangle.
+\]
+Die Abbildung $x\mapsto A^*x$ ist wieder ein linearer und beschränkter
+Operator.
+Die Linearität folgt aus der Linearität des Skalarproduktes, die Norm
+von $A^*$ ist
+\[
+\|A^*x\|^2
+=
+\]
+
+\begin{definition}
+Der Operator $A^*$ heisst der zu $A$ {\em adjungierte} Operator.
+Ein Operator $A$ heisst selbstadjungiert, wenn $A^*=A$ oder
+$\langle Ax,y\rangle = \langle x,Ay\rangle$ für alle $x,y\in H$.
+\end{definition}
+
+
+%
+% Eigenwerte von selbstadjungierten Operatoren
+%
+\subsection{Eigenwerte von selbstadjungierten Operatoren}
+Die Eigenschaften der Eigenvektoren symmetrischer Matrizen lassen
+sich jetzt ohne Änderung der Beweise übertragen.
+
+\begin{satz}
+Die Eigenwerte eines selbstadjungierten Operators sind reell.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $A$ ein selbstadjungierter Operator auf dem Hilbert-Raum und
+$x$ ein Eigenvektor zum Eigenwert $\lambda$, also $Ax=\lambda x$
+und damit
+\begin{equation}
+\langle x,Ax\rangle
+=
+\langle x,\lambda x\rangle
+=
+\lambda \langle x,x\rangle
+\label{buch:orthofkt:sa:reell1}
+\end{equation}
+Andererseits gilt
+\begin{equation}
+\langle x,Ax\rangle
+=
+\langle A^*x,x\rangle
+=
+\langle Ax,x\rangle
+=
+\langle \lambda x,x\rangle
+=
+\overline{\lambda}
+\langle x,x\rangle.
+\label{buch:orthofkt:sa:reell2}
+\end{equation}
+Zusammen mit~\eqref{buch:orthofkt:sa:reell1} folgt jetzt
+\[
+\lambda \langle x,x\rangle = \overline{\lambda} \langle x,x\rangle.
+\]
+Da $x\ne 0$ ist $0\ne \|x\|^2 =\langle x,x\rangle$, darf man durch
+$\|x\|^2$ teilen und erhält 
+\[
+\lambda = \overline{\lambda},
+\]
+$\lambda$ ist reell.
+\end{proof}
+
+\begin{satz}
+Eigenvektoren eines selbstadjungierten Operators zu verschiedenen Eigenwerten
+sind orthogonal.
+\end{satz}
+
+\begin{proof}[Beweis]
+Seien $x_1$ und $x_2$ Eigenvektoren des selbstadjungierten Operators $A$
+zu den Eigenwerten $\lambda_1\ne \lambda_2$.
+Da $A$ selbstadjungiert ist, gilt
+$\langle Ax_1,x_2\rangle=\langle x_1,Ax_2\rangle$.
+Wir berechnen diese beiden Skalarprodukte mit Hilfe der Eigenvektoreigenschaft:
+\[
+\begin{array}{cclcl}
+\langle Ax_1,x_2\rangle
+&=&
+\langle \lambda_1x_1,x_2\rangle
+&=&
+\lambda_1 \langle x_1,x_2\rangle
+\\
+          \|&&&&
+\\
+\langle x_1,Ax_2\rangle
+&=&
+\langle x_1,\lambda_2x_2\rangle
+&=&
+\lambda_2 \langle x_1,x_2\rangle
+\end{array}
+\]
+Die Differenz dieser beiden Terme ist
+\[
+0
+=
+(\lambda_1-\lambda_2)\langle x_1,x_2\rangle.
+\]
+Da $\lambda_1\ne \lambda_2$ ist der Klammerausdruck nicht $0$, daher muss
+das Skalarprodukt $\langle x_1,x_2\rangle=0$ sein, die beiden Eigenvektoren
+sind orthogonal.
+\end{proof}
+
+\begin{beispiel}
+Der Vektorraum $H=\mathbb{R}^n$ mit dem Standardskalarprodukt ist ein
+endlichdimensionaler Hilbertraum.
+Ein Operator $A\colon H\to H$ wird unter Verwendung einer Basis
+$\{b_1,\dots,b_n\}$ durch die Matrix mit den Matrix-Elementen
+\[
+a_{ij}
+=
+\langle b_i,Ab_j\rangle
+=
+\langle Ab_i,b_j\rangle
+=
+\langle b_j,Ab_i\rangle
+=
+a_{ji}
+\]
+beschrieben, die Matrix ist symmetrisch.
+\end{beispiel}
+
+\begin{beispiel}
+Für den endlichdimensionalen komplexen Vektorraum $H=\mathbb{C}^n$ mit dem
+Standardskalarprodukt
+\[
+\langle x,y\rangle
+=
+\sum_{i=1}^n  \overline{x}_i y_i
+\]
+ist ein Hilbertraum.
+Ein selbstadjungierter Operator hat in einer Basis $b_1,\dots,b_n$
+die Matrixelemente
+\[
+a_{ij}
+=
+\langle b_i,Ab_j\rangle
+=
+\langle Ab_i,b_j\rangle
+=
+\overline{
+\langle b_j,Ab_i\rangle
+}
+=
+\overline{a_{ji}}.
+\]
+Die Matrix von $A$ ist also nicht mehr symmetrisch, sondern konjugiert
+symmetrisch.
+\end{beispiel}
+
+\begin{definition}
+Eine Matrix $A$ heisst hermitesch, wenn
+$\transpose{A}=\overline{A}$.
+\end{definition}
+
+\begin{beispiel}
+Wir betrachten den Prähilbertraum
+\[
+H
+=
+\{f\in C^{\infty}(\mathbb{R})
+\mid
+\text{$f$ ist $2\pi$-periodisch}
+\}
+\]
+der $2\pi$-periodischen, beliebig oft stetig differenzierbaren
+stetig differezierbaren Funktionen auf $\mathbb{R}$ mit dem
+Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_{-\pi}^\pi
+f(x)g(x)\,dx
+\]
+und den Operator
+\[
+D^2
+\colon
+H_0 \to H_0
+:
+f\mapsto f''.
+\]
+Wir berechnene die Skalarprodukte
+\begin{align}
+\langle D^2f,g\rangle
+&=
+\int_{-\pi}^\pi f''(x)g(y)\,dx
+=
+\biggl[f'(x)g(x)\biggr]_{-\pi}^\pi
+-
+\int_{-\pi}^\pi f'(x)g'(x)\,dx,
+\label{buch:orthfunkt:sa:eqn:D2fg}
+\\
+\langle f,D^2g\rangle
+&=
+\int_{-\pi}^\pi f(x)g''(y)\,dx
+=
+\biggl[f(x)g'(x)\biggr]_{-\pi}^\pi
+-
+\int_{-\pi}^\pi f'(x)g'(x)\,dx.
+\label{buch:orthfunkt:sa:eqn:fD2g}
+\end{align}
+Da $f(x)$ und $g(x)$ $2\pi$-periodisch sind, ist
+$f'(\pi)g(\pi)=f'(-\pi)g(-\pi)$, der erste Term
+in~\eqref{buch:orthfunkt:sa:eqn:D2fg} verschwindet daher.
+Dasselbe passiert auch in \eqref{buch:orthfunkt:sa:eqn:fD2g}.
+Es bleibt
+\[
+\langle D^2f,g\rangle
+=
+-
+\int_{-\pi}^\pi f'(x)g'(x)\,dx.
+=
+\langle f,D^2g\rangle,
+\]
+der Operator $D^2$ ist daher selbstadjungiert.
+\end{beispiel}
+
+Das letzte Beispiel zeigt zusammen mit den Erkenntnissen aus dem
+Abschnitt~\ref{buch:trigo:subsection:symmetrie}, dass die
+Eigenfunktionen eines selbstadjungierten Operators gute Kandidaten
+für eine harmonische Analysis sind, die sich besonderes gut
+zur Lösung von Problemen eignen, die mit dem Operator $D^2$
+zusammenhängen.
+
+
+
+
