@@ -17,8 +17,13 @@
 #include <sys/stat.h>
 
 void	usage(char *progname) {
-	std::cout << "usage: " << progname << " [ -f ] [ -s section ] ";
+	std::cout << "usage: " << progname << " [ -df ] [ -s section ] ";
 	std::cout << "<unnumbered.pdf> <numbered.pdf>" << std::endl;
+	std::cout << "options:" << std::endl;
+	std::cout << " -d,--debug         enable debug mode" << std::endl;
+	std::cout << " -f,--force         overwrite output file" << std::endl;
+	std::cout << " -s,--section=<s>   use <s> as the section title";
+	std::cout << std::endl;
 }
 
 struct option	longoptions[] = {
