@@ -1,0 +1,17 @@
+scripts to generate the papers
+
+1. create a template paper for topic <topic>
+
+	bash scripts/mktemplate <topic>
+
+2. create infrastructure files 
+
+	a) enter all the paper topics into the file common/paperlist
+
+	b) run the following scripts
+
+		bash scripts/mkbibresources
+		bash scripts/mkmakefile
+		bash scripts/mkpackages
+		bash scripts/mkpapers
+
