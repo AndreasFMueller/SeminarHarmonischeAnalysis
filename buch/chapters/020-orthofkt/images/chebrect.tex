@@ -1,0 +1,101 @@
+%
+% chebrect.tex -- Analysis mit Chebyscheff-Polynomen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{rectpaths.tex}
+\def\sy{1.1}
+\def\xachse{
+	\draw[->] ({-1.01*\sx},0) -- ({1.1*\sx},0) coordinate[label={$x$}];
+	\draw ({-\sx},-0.05) -- ({-\sx},0.05);
+	\node at ({-\sx},0) [below] {$-1$};
+	\draw ({\sx},-0.05) -- ({\sx},0.05);
+	\node at ({\sx},0) [below] {$1$};
+}
+\def\expframe{
+	\def\sx{3}
+	\xachse
+	\draw[->] (0,{-1.4*\sy}) -- (0,{1.4*\sy})
+		coordinate[label={left:$\vartheta(x)$}];
+	\draw[color=blue,line width=1.4pt]
+		({-\sx},{-\sy}) -- ({-0.4*\sx},{-\sy});
+	\draw[color=blue,line width=0.2pt]
+		({-0.4*\sx},{-\sy}) -- ({-0.4*\sx},{\sy});
+	\draw[color=blue,line width=1.4pt]
+		({-0.4*\sx},{\sy}) -- ({0.4*\sx},{\sy});
+	\draw[color=blue,line width=0.2pt]
+		({0.4*\sx},{-\sy}) -- ({0.4*\sx},{\sy});
+	\draw[color=blue,line width=1.4pt]
+		({0.4*\sx},{-\sy}) -- (\sx,{-\sy});
+	\begin{scope}[xshift=7cm]
+		\def\sy{1.4}
+		\fill[color=gray!20] ({-\sx},{-\sy}) rectangle ({\sx},{\sy});
+		\xachse
+		\draw[->] (0,{-1.1*\sy}) -- (0,{1.2*\sy})
+			coordinate[label={right:Fehler}];
+	\end{scope}
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\expframe
+\draw[color=red] \recta;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreerecta$};
+\begin{scope}[xshift=7cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorrecta;
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-3.6cm]
+\expframe
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreerectb$};
+\draw[color=red] \rectb;
+\begin{scope}[xshift=7cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorrectb;
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-7.2cm]
+\expframe
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreerectc$};
+\draw[color=red] \rectc;
+\begin{scope}[xshift=7cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorrectc;
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-10.8cm]
+\expframe
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreerectd$};
+\draw[color=red] \rectd;
+\begin{scope}[xshift=7cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorrectd;
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-14.4cm]
+\expframe
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreerecte$};
+\draw[color=red] \recte;
+\begin{scope}[xshift=7cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorrecte;
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

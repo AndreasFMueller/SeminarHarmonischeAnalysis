@@ -1,0 +1,104 @@
+%
+% cheb.tex -- Analysis mit Chebyscheff-Polynomen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\input{exppaths.tex}
+\input{rectpaths.tex}
+\def\xachse{
+	\draw[->] ({-1.01*\sx},0) -- ({1.1*\sx},0) coordinate[label={$x$}];
+	\draw ({-\sx},-0.05) -- ({-\sx},0.05);
+	\node at ({-\sx},0) [below] {$-1$};
+	\draw ({\sx},-0.05) -- ({\sx},0.05);
+	\node at ({\sx},0) [below] {$1$};
+}
+\def\expframe{
+	\def\sx{3}
+	\def\sy{1}
+	\xachse
+	\draw[->] (0,-0.1) -- (0,{2.8*\sy}) coordinate[label={left:$e^x$}];
+	\draw[color=blue,line width=1.4pt]
+		plot[domain=-1:1,samples=100] ({\x*\sx},{exp(\x)*\sy});
+	\def\sy{1}
+	\begin{scope}[xshift=7cm,yshift=1.1cm]
+		\def\sy{1.4}
+		\fill[color=gray!20] ({-\sx},{-\sy}) rectangle ({\sx},{\sy});
+		\xachse
+		\draw[->] (0,{-1.1*\sy}) -- (0,{1.2*\sy})
+			coordinate[label={right:Fehler}];
+	\end{scope}
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+\expframe
+\draw[color=red] \expa;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreeexpa$};
+\begin{scope}[xshift=7cm,yshift=1.1cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorexpa;
+	\node at ({-\sx},\sy) [above right]
+		{$\delta=\errscalemantexpa \cdot 10^{\errscaleexpexpa}$};
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-3.6cm]
+\expframe
+\draw[color=red] \expb;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreeexpb$};
+\begin{scope}[xshift=7cm,yshift=1.1cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorexpb;
+	\node at ({-\sx},\sy) [above right]
+		{$\delta=\errscalemantexpb \cdot 10^{\errscaleexpexpb}$};
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-7.2cm]
+\expframe
+\draw[color=red] \expc;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreeexpc$};
+\begin{scope}[xshift=7cm,yshift=1.1cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorexpc;
+	\node at ({-\sx},\sy) [above right]
+		{$\delta=\errscalemantexpc \cdot 10^{\errscaleexpexpc}$};
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-10.8cm]
+\expframe
+\draw[color=red] \expd;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreeexpd$};
+\begin{scope}[xshift=7cm,yshift=1.1cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorexpd;
+	\node at ({-\sx},\sy) [above right]
+		{$\delta=\errscalemantexpd \cdot 10^{\errscaleexpexpd}$};
+\end{scope}
+\end{scope}
+
+\begin{scope}[yshift=-14.4cm]
+\expframe
+\draw[color=red] \expe;
+\node at ({-1*\sx},{1.3*\sy}) [below right] {$n=\degreeexpe$};
+\begin{scope}[xshift=7cm,yshift=1.1cm]
+	\def\sy{1.4}
+	\draw[color=red] \errorexpe;
+	\node at ({-\sx},\sy) [above right]
+		{$\delta=\errscalemantexpe \cdot 10^{\errscaleexpexpe}$};
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
