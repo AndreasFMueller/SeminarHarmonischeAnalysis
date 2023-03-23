@@ -3,6 +3,253 @@
 %
 % (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\section{Gruppe
+\section{Gruppen
 \label{buch:gruppen:section:gruppe}}
 \kopfrechts{Gruppe}
+Die Translationsinvarianz des Definitionsbereiches $\mathbb{R}$
+entsteht aus der Tatsache, dass die Addition einer Zahl
+nicht aus $\mathbb{R}$ herausführt und sich auch umkehren lässt.
+Sie basiert also darauf, dass es in $\mathbb{R}$ eine umkehrbare
+Verknüpfung gibt.
+Diese Idee wird von der algebraischen Struktur einer Gruppe eingefangen.
+
+%
+% Definition
+%
+\subsection{Definition
+\label{buch:gruppen:subsection:definition}}
+Der Begriff einer Gruppe soll alle Arten von invertierbaren Rechenoperationen
+erfassen, also Addition/Subtraktion, Multiplikation/Division oder
+die Matrixmultiplikation mit der inversen Matrix.
+Die minimal nötigen Eigenschaften fasst die folgende Definition zusammen.
+
+\begin{definition}
+\label{buch:gruppen:definition:gruppe}
+Eine {\em Gruppe} $G$ ist eine Menge mit einer Verknüpfung
+$\cdot \colon G\times G\to G : (x,y) \mapsto xy $, welche folgende
+Eigenschaften hat:
+\begin{enumerate}
+\item
+Die Verknüpfung ist assoziativ, d.~h.~$(xy)z=x(yz)$ für alle
+$x,y,z\in G$.
+\item
+Es gibt ein {\em neutrales Element} $e\in G$, für welches $ex=x$ für alle
+$x\in G$ gilt.
+\index{neutrales Element}%
+\item 
+Zu jedem $x\in G$ gibt es ein {\em inverses Element} $x^{-1}\in G$ mit der
+Eigenschaft $x^{-1}x=e$.
+\index{inverses Element}%
+\end{enumerate}
+\end{definition}
+
+Man beachte, dass die Defiinition nicht verlangt, dass die Faktoren
+vertauscht werden können. 
+
+\begin{beispiel}
+Die Menge $\operatorname{GL}_n(\mathbb{R})$ der invertierbaren
+$n\times n$-Matrizien mit reellen Einträgen und der Matrixmultiplikation
+heisst die {\em allgemeine lineare Gruppe}.
+\index{allgemeine lineare Gruppe}%
+\index{Gruppe!allgemeine lineare}%
+Das neutrale Element von $\operatorname{GL}_n(\mathbb{R})$ ist die
+Einheitsmatrix, das inverse Element einer Matrix
+$A\in \operatorname{GL}_n(\mathbb{R})$
+ist die inverse Matrix $A^{-1}$.
+\end{beispiel}
+
+\begin{definition}
+\label{buch:gruppen:definition:abelsch}
+Eine Gruppe $G$ heisst {\em abelsch}, wenn 
+$xy=yx$ für alle $x,y\in G$ gilt.
+\end{definition}
+
+Die Verknüpfung einer abelschen Gruppe ist also {\em kommutativ}.
+Abelsche Gruppen werden oft additiv geschrieben, d.~h.~mit einem
+Pluszeichen als $x+y$ für $x,y\in G$.
+Das neutrale Element heisst dann auch das {\em Nullelement} und wird $0$
+geschrieben: $x+0=x$ für alle $x\in G$.
+Das inverse Element von $x$ heisst dann auch das
+{\em entgegengesetzte Element} und wird $-x$ geschrieben. 
+Es gilt $x+(-x)=0$ für alle $x\in G$.
+
+\begin{beispiel}
+Die Gruppe $(\mathbb{R},+)$ ist eine abelsche Gruppe.
+Die Gruppe der von $0$ verschiedenen Zahlen mit der Multiplikation
+$(\mathbb{R}^*,\cdot)$ ist eine abelsche Gruppe.
+\end{beispiel}
+
+%
+% Endliche Gruppen
+%
+\subsection{Endliche Gruppen
+\label{buch:gruppen:subsection:endliche-gruppen}}
+
+% XXX Die Gruppen \mathbb{Z}/n\mathbb{Z}
+% XXX Die Gruppen S_n
+
+%
+% Lie-Gruppen
+%
+\subsection{Lie-Gruppen
+\label{buch:gruppen:subsection:lie-gruppen}}
+%
+% XXX R und R/Z
+% XXX SO(2)
+% XXX SO(3) und andere Matrizengruppen
+
+%
+% Funktionen auf einer Gruppe
+%
+\subsection{Funktionen auf einer Gruppe
+\label{buch:gruppen:subsection:funktionen}}
+In diesem Abschnitt ist $G$ eine Gruppe, die wir multiplikativ
+schreiben.
+Die harmonische Analysis handelt von der Analyse von Funktionen.
+Im Falle einer Lie-Gruppe kann man zusätzlich sinnvoll von Ableitungen
+der Funktionen sprechen.
+Wir definieren daher
+
+\begin{definition}
+Die Menge der stetigen reell- und komplexwertigen Funktionen wird mit
+$C_{\mathbb{R}}(G)$ bzw.~$C_{\mathbb{C}}(G)$ bezeichnet.
+Ist $G$ eine Lie-Gruppe, dann ist
+$C_{\mathbb{R}}^\infty(G)$ die Menge der unendlich oft differenzierbaren
+reellwertigen Funktionen auf $G$,
+$C_{\mathbb{C}}^\infty(G)$ ist die Menge der unendlich oft differenzierbaren
+komplexwertigen Funktionen.
+\end{definition}
+
+Die Gruppenstruktur ermöglich, lineare Operatoren auf $C_{\mathbb{R}}(G)$
+und $C_{\mathbb{C}}(G)$ zu definieren.
+
+\begin{definition}
+Für $s\in G$ ist $T_s$ die Abbildung
+\[
+T_s
+\colon
+C_{\mathbb{R}}(G) \to C_{\mathbb{R}}(G)
+:
+f \mapsto T_sf
+\quad
+\text{mit}
+\quad
+(T_sf)(x) = f(s^{-1}x).
+\]
+Sie heisst die {\em Translation} um $s\in G$.
+\end{definition}
+
+Die Translation ist natürlich linear, denn
+\begin{align*}
+(T_s(f+g))(x)
+&=
+(f+g)(s^{-1}x)
+\\
+&=
+f(s^{-1}x) + g(s^{-1}x)
+=
+(T_sf)(x) + (T_sg)(x)
+&&\Rightarrow&
+T_s(f+g)&=T_sf+T_sg
+\\
+(T_s(\lambda f))(x)
+&=
+\lambda f(s^{-1}x)
+=
+\lambda (T_sf)(x)
+&&\Rightarrow&
+T_s\lambda f
+&=
+\lambda T_sf
+\end{align*}
+
+%
+% Eigenvektoren von T_s
+%
+\subsubsection{Eigenfunktionen des Translationsoperators}
+Tatsächlich wurden in früheren Kapiteln Funktionen verwendet, die
+bezüglich der Translation besondere Eigenschaften hatten.
+Zum Beispiel sind die Funktionen $f(x)=e_k(x)=e^{ikx}$ auf $G=\mathbb{R}$
+Eigenfunktionen des Translationsoperators, denn
+\[
+(T_se_k)(x)
+=
+e^{ik(x-s)}
+=
+e^{iks}e^{ikx}
+=
+e^{-iks} e_k(x).
+\]
+Insbesondere ist $e_k$ eine Eigenfunktion von $T_s$ mit Eigenwert
+$\lambda=e^{-iks}$, also $T_se_k = \lambda e_k$.
+
+%
+% Gruppenstruktur der Translationen
+%
+\subsubsection{Gruppenstruktur der Translationen}
+Wir berechnen die Zusammensetzung zweier Translationen ist $T_s$ und $T_t$.
+Um $T_sT_t$ zu berechnen, muss zunächst die Funktion $T_tf$ bestimmt werden.
+Es ist $(T_tf)(x) = f(t^{-1}x)$.
+Die Translation $T_sg$ einer beliebigen Funktion auf dem Element $y\in G$
+ist $(T_sg)(y)=g(s^{-1}y)$.
+Setzt man $g=T_tf$ ein, ergibt sich
+\[
+(T_sT_tf)(x)
+=
+(T_tf)(s^{-1}x)
+=
+f(t^{-1}s^{-1}x)
+=
+f((st)^{-1}x)
+=
+(T_{st}f)(x),
+\]
+also $T_sT_t=T_{st}$.
+
+%
+% Rechtsoperation der Gruppe auf 
+%
+\subsubsection{Rechtsoperation von $G$ auf $C(G)$}
+Die Operation $T_s$ ist genauer die Links-Translation, die Gruppenoperation
+wirkt auf das Argument von links.
+Für eine abelsche Gruppe spielt die Reihenfolge der Operanden keine
+Rolle, für eine nichtabelsche Gruppe ergibt sich jedoch ein Unterschied.
+
+\begin{definition}
+Der Operator $R_s\colon C(G)\to C(G)$ der Rechts-Translation ist definiert
+durch
+\[
+R_s
+\colon
+C_{\mathbb{R}}(G)\to C_{\mathbb{R}}(G)
+:
+f \mapsto R_sf
+\quad\text{mit}\quad
+(R_sf)(x) = f(xs).
+\]
+\end{definition}
+
+Die Zusammensetzung von $R_s$ und $R_t$ kann ganz ähnlich wie für
+$T_s$ und $T_t$ berechnet werden.
+Zunächst ist $R_sg(y) = g(ys)$.
+Wendet man dies auf $g=R_tf$ mit $g(x)=(R_tf)(x)=f(xt)$ an, bekommt man
+\[
+(R_sR_tf)(x)
+=
+(R_sg)(x)
+=
+g(xs)
+=
+(R_tf)(xs)
+=
+f(xst)
+=
+(R_{st}f)(x)
+\]
+oder kurz $R_sR_t=R_{st}$.
+
+
+
+
+
+

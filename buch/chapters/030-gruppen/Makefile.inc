@@ -11,4 +11,5 @@ CHAPTERFILES += 							\
 	chapters/030-gruppen/4-gelfand.tex				\
 	chapters/030-gruppen/5-darstellung.tex				\
 	chapters/030-gruppen/6-matrixelemente.tex			\
+	chapters/030-gruppen/7-charaktere.tex				\
 	chapters/030-gruppen/chapter.tex
