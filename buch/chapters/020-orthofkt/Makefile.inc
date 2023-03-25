@@ -10,4 +10,5 @@ CHAPTERFILES += 							\
 	chapters/020-orthofkt/3-sa.tex					\
 	chapters/020-orthofkt/4-sturmliouville.tex			\
 	chapters/020-orthofkt/5-pde.tex					\
+	chapters/020-orthofkt/uebungsaufgaben/201.tex			\
 	chapters/020-orthofkt/chapter.tex
