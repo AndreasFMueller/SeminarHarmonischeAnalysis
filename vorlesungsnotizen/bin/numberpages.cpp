@@ -21,6 +21,7 @@ void	usage(char *progname) {
 	std::cout << "<unnumbered.pdf> <numbered.pdf>" << std::endl;
 	std::cout << "options:" << std::endl;
 	std::cout << " -d,--debug         enable debug mode" << std::endl;
+	std::cout << " -h,-?,--help       show this help message" << std::endl;
 	std::cout << " -f,--force         overwrite output file" << std::endl;
 	std::cout << " -s,--section=<s>   use <s> as the section title";
 	std::cout << std::endl;
@@ -28,6 +29,7 @@ void	usage(char *progname) {
 
 struct option	longoptions[] = {
 { "debug",	no_argument,		NULL,	'd' },
+{ "help",	no_argument,		NULL,	'h' },
 { "section",	required_argument,	NULL,	's' },
 { "force",	no_argument,		NULL,	'f' },
 { NULL,		no_argument,		NULL,	 0  }
