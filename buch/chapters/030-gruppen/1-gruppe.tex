@@ -3,6 +3,870 @@
 %
 % (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
-\section{Gruppe
+\section{Gruppen
 \label{buch:gruppen:section:gruppe}}
 \kopfrechts{Gruppe}
+Die Translationsinvarianz des Definitionsbereiches $\mathbb{R}$
+entsteht aus der Tatsache, dass die Addition einer Zahl
+nicht aus $\mathbb{R}$ herausführt und sich auch umkehren lässt.
+Sie basiert also darauf, dass es in $\mathbb{R}$ eine umkehrbare
+Verknüpfung gibt.
+Diese Idee wird von der algebraischen Struktur einer Gruppe eingefangen.
+
+%
+% Definition
+%
+\subsection{Definition
+\label{buch:gruppen:subsection:definition}}
+Der Begriff einer Gruppe soll alle Arten von invertierbaren Rechenoperationen
+erfassen, also Addition/Subtraktion, Multiplikation/Division oder
+die Matrixmultiplikation mit der inversen Matrix.
+Die minimal nötigen Eigenschaften fasst die folgende Definition zusammen.
+
+\begin{definition}
+\label{buch:gruppen:definition:gruppe}
+Eine {\em Gruppe} $G$ ist eine Menge mit einer Verknüpfung
+$\cdot \colon G\times G\to G : (x,y) \mapsto xy $, welche folgende
+Eigenschaften hat:
+\begin{enumerate}
+\item
+Die Verknüpfung ist assoziativ, d.~h.~$(xy)z=x(yz)$ für alle
+$x,y,z\in G$.
+\item
+Es gibt ein {\em neutrales Element} $e\in G$, für welches $ex=x$ für alle
+$x\in G$ gilt.
+\index{neutrales Element}%
+\item 
+Zu jedem $x\in G$ gibt es ein {\em inverses Element} $x^{-1}\in G$ mit der
+Eigenschaft $x^{-1}x=e$.
+\index{inverses Element}%
+\end{enumerate}
+\end{definition}
+
+Man beachte, dass die Defiinition nicht verlangt, dass die Faktoren
+vertauscht werden können. 
+
+\begin{beispiel}
+Die Menge $\operatorname{GL}_n(\mathbb{R})$ der invertierbaren
+$n\times n$-Matrizien mit reellen Einträgen und der Matrixmultiplikation
+heisst die {\em allgemeine lineare Gruppe}.
+\index{allgemeine lineare Gruppe}%
+\index{Gruppe!allgemeine lineare}%
+Das neutrale Element von $\operatorname{GL}_n(\mathbb{R})$ ist die
+Einheitsmatrix, das inverse Element einer Matrix
+$A\in \operatorname{GL}_n(\mathbb{R})$
+ist die inverse Matrix $A^{-1}$.
+\end{beispiel}
+
+%
+% Abelsche Gruppen
+%
+\subsubsection{Abelsche Gruppen}
+\begin{definition}
+\label{buch:gruppen:definition:abelsch}
+Eine Gruppe $G$ heisst {\em abelsch}, wenn 
+$xy=yx$ für alle $x,y\in G$ gilt.
+\end{definition}
+
+Die Verknüpfung einer abelschen Gruppe ist also {\em kommutativ}.
+\index{kommutativ}%
+Abelsche Gruppen werden oft additiv geschrieben, d.~h.~mit einem
+Pluszeichen als $x+y$ für $x,y\in G$.
+Das neutrale Element heisst dann auch das {\em Nullelement} und wird $0$
+geschrieben: $x+0=x$ für alle $x\in G$.
+Das inverse Element von $x$ heisst dann auch das
+{\em entgegengesetzte Element} und wird $-x$ geschrieben. 
+Es gilt $x+(-x)=0$ für alle $x\in G$.
+
+\begin{beispiel}
+Die Gruppe $(\mathbb{R},+)$ ist eine abelsche Gruppe.
+Die Gruppe der von $0$ verschiedenen Zahlen mit der Multiplikation
+$(\mathbb{R}^*,\cdot)$ ist eine abelsche Gruppe.
+\end{beispiel}
+
+\begin{beispiel}
+Die {\em Gruppe der Drehwinkel} in der Ebene ist die Menge
+\(
+\mathbb{R}/2\pi\mathbb{Z}
+=
+(-\pi,\pi].
+\)
+Als Gruppenoperation dient die Addition von Winkeln, die Summe
+$\alpha+\beta$ zweier Winkel $\alpha$ und $\beta$ muss dazu durch
+Subtraktion oder Addition von Vielfachen von $2\pi$ ins Intervall
+$(-\pi,\pi]$ zurückgebracht werden.
+Neutrales Element ist $0$, das inverse Elemente ist $-\alpha$ mit
+dem Spezialfall $-\pi=\pi$.
+\end{beispiel}
+
+\begin{beispiel}
+Die von $0$ verschiedenen Element $\mathbb{C}^*$ mit der Multiplikation
+ist eine Gruppe.
+Das neutrale Element ist die Zahl $1\in\mathbb{C}^*$ und das inverse
+Element zu $z\in\mathbb{C}^*$ ist $z^{-1}$.
+\end{beispiel}
+
+%
+% Untergruppen
+%
+\subsubsection{Untergruppen}
+Da man Drehungen auch mit Hilfe von komplexen Zahlen beschreiben kann,
+kann man die Gruppe der Drehwinkel auch als Menge von komplexen Zahlen
+schreiben, nämlich als die Menge
+\[
+S^1
+=
+\{z\in\mathbb{C}\mid |z|=1\}
+\]
+der komplexen Zahlen vom Betrag $1$.
+Die Gruppenoperation in $S^1$ ist die gleiche wie die Operation
+in $\mathbb{C}^*$, von der $S^1$ eine Teilmenge ist.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:untergruppe}
+Sei $G$ eine Gruppe und $H\subset G$ eine Teilmenge derart,
+dass mit jedem $x,y\in H$ auch $xy$ und $x^{-1}$ in $H$ sind.
+Dann heisst $H$ eine {\em Untergruppe} von $G$.
+\index{Untergruppe}%
+\end{definition}
+
+Jede Gruppe enthält als kleinste Untergruppe immer die Gruppe $G$,
+die {\em triviale Gruppe}, die nur aus dem neutralen Element
+$\{e\}\subset G$ besteht.
+
+%
+% Homomorphismen
+%
+\subsubsection{Homomorphismen}
+Die Exponentialabbildung
+\[
+\exp
+\colon
+\mathbb{R}/2\pi\mathbb{Z} \to S^1
+:
+\alpha \mapsto e^{i\alpha}
+\]
+bildet Drehwinkel auf komplexe Zahlen vom Betrag $1$ ab.
+Die Gruppenoperation bleibt dabei erhalten, es gilt
+\[
+\exp(\alpha + \beta)
+=
+e^{i(\alpha+\beta)}
+=
+e^{i\alpha}
+e^{i\beta}
+=
+\exp(\alpha)
+\exp(\beta).
+\]
+Das neutrale Element $0\in\mathbb{R}/2\pi\mathbb{Z}$ wird auf
+das neutrale Element $1\in S^1$ abgebildet und das inverse
+Element von $\exp(\alpha)$ ist
+$ \exp(\alpha)^{-1} = \exp(-\alpha) $.
+Ausserdem ist die Abbildung bijektiv.
+Die Exponentialabbildung zeigt also, dass es zwischen den beiden
+Gruppen $\mathbb{R}/2\pi\mathbb{Z}$ und $S^1$ nicht wirklich einen
+Unterschied gibt.
+
+Die Gruppe der Drehwinkel kann man auch als eine Matrizengruppe
+verstehen, wie im folgenden Beispiel gezeigt wird.
+
+\begin{beispiel}
+Die Menge
+\[
+\operatorname{SO}(2)
+=
+\biggl\{
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\;
+\bigg|
+\alpha\in\mathbb{R}
+\biggr\}
+\]
+ist eine Gruppe mit der Matrixmultiplikation als Gruppenoperation,
+der Einheitsmatrix als neutralem Element und der inversen Matrix
+als inversem Element.
+\end{beispiel}
+
+Die Abbildung
+\[
+\varphi
+\colon
+\mathbb{R}/2\pi\mathbb{Z}
+\to
+\operatorname{SO}(2)
+:
+\alpha
+\mapsto
+D_\alpha
+=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\]
+transportiert die Gruppenoperation von $\mathbb{R}/2\pi\mathbb{Z}$
+nach $\operatorname{SO}(2)$ denn es gilt
+\[
+\varphi(\alpha)\varphi(\beta)
+=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\begin{pmatrix}
+\cos\beta & -\sin\beta \\
+\sin\beta &  \cos\beta
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
+\sin(\alpha+\beta) &  \cos(\alpha+\beta)
+\end{pmatrix}
+=
+\varphi(\alpha+\beta).
+\]
+Auch ist $\varphi(0)$ die Einheitsmatrix und
+$\varphi(-\alpha)=\varphi(\alpha)^{-1}$.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:homomorphismus}
+Eine Abbildung $\varphi\colon G\to H$ zwischen zwei Gruppen $G$ und $H$
+heisst ein {\em Homomorphismus}, wenn
+$\varphi(gh)=\varphi(g)\varphi(h)$ gilt für alle $g,h\in G$
+\end{definition}
+
+Die Bildmenge $\varphi(G)$ eines Homomorphismus ist automatisch eine
+Untergruppe $\varphi(G)\subset H$.
+Sind $\varphi(x)$ und $\varphi(y)$ Elemente in $\varphi(G)$,
+dann ist auch $\varphi(x)\varphi(y)=\varphi(xy)\in\varphi(G)$.
+
+%
+% Der Kern eines Homomorphismus
+%
+\subsubsection{Der Kern eines Homomorphismus}
+Ist $\varphi\colon G\to H$ ein Homomorphismus von Gruppen und
+$U\subset H$ eine Untergruppe von $H$, dann bilden die Elemente
+\[
+\varphi^{-1}(U)
+=
+\{g\in G\mid \varphi(g)\in U\}
+\]
+eine Untergruppe.
+Sind nämlich $g_1,g_2\in\varphi^{-1}(U)$, dann ist
+\[
+\varphi(g_1g_2)
+=
+\varphi(g_1)\varphi(g_2)
+\in U,
+\]
+da $U$ eine Untergruppe ist.
+Dann ist aber auch $g_1g_2\in\varphi^{-1}(U)$, was zeigt, dass
+$\varphi^{-1}(U)$ eine Untergruppe von $G$ ist.
+Sie heisst die {\em Urbildgruppe} von $U$ unter dem Homomorphismus
+$\varphi$.
+
+Besonders wichtig ist die Urbildgruppe der trivialen Gruppe.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:kern}
+Der Kern eines Homomorphismus $\varphi \colon G\to H$ ist die
+Untergruppe
+\[
+\ker \varphi = \varphi^{-1}(\{e\}).
+\]
+\end{definition}
+
+Der Kern eines Homomorphismus kann dazu verwendet werden zu beurteilen,
+ob der Homomorphismus injektiv ist.
+Wenn nämlich $\varphi(x)=\varphi(y)$ ist, dann ist auch
+\[
+e
+=
+\varphi(x)\varphi(y)^{-1}
+=
+\varphi(xy^{-1})
+\quad\Rightarrow\quad
+xy^{-1} \in\ker\varphi.
+\]
+Es folgt also genau dann $x=y$, wenn der Kern $\ker\varphi$ nur
+das neutrale Element enthält.
+
+%
+% Endliche Gruppen
+%
+\subsection{Endliche Gruppen
+\label{buch:gruppen:subsection:endliche-gruppen}}
+Während für theoretische Überlegungen die kontinuierliche
+Fourier-Transformation auf Gruppen wie $\mathbb{R}$ oder
+$\mathbb{R}/2\pi\mathbb{Z}$, ist f
+In Ingenieuranwendungen bevorzugt man, mit kontinuierlichen
+
+% XXX Die Gruppen \mathbb{Z}/n\mathbb{Z}
+\subsubsection{Die zyklischen Gruppen $\mathbb{Z}/n\mathbb{Z}$}
+Für die diskrete Fourier-Analysis besonders wichtig sind die zyklischen
+Gruppen.
+
+\begin{definition}
+\label{buch:gruppen:endliche-gruppen:def:zyklisch}
+Die Gruppe
+\[
+\mathbb{Z}/n\mathbb{Z}
+=
+\{0,1,2,\dots,n-1\}
+\]
+der Reste modulo $n$ mit der Addition von Resten ist eine abelsche
+Gruppe.
+\end{definition}
+
+Die zyklischen Gruppen können auch als multiplikativ geschriebene
+Untergruppen der von $0$ verschiedenen komplexen Zahlen geschrieben
+werden.
+Dazu verwendet man die Exponentialfunktion:
+\[
+C_n
+=
+\{ e^{2\pi ik/n}\mid k=0,1,\dots,n-1\}.
+\]
+Die Exponentialabbildung
+\[
+\exp
+\colon
+\mathbb{Z}/n\mathbb{Z}
+\to
+C_n
+:
+k\mapsto e^{2\pi ik/n}
+\]
+ist ein Homomorphismus, denn
+\[
+\exp(k+l)
+=
+e^{2\pi i(k+l)/n}
+=
+e^{2\pi ik/n}
+e^{2\pi il/n}
+=
+\exp(k)\exp(l).
+\]
+Die Reste werden auf verschiedene Ecken eines regelmässigen
+$n$-Ecks in der komplexen Ebene abgebildet, die Abbildung $\exp$
+ist daher auch eine Bijektion.
+Die additiv geschriebene Gruppe $\mathbb{Z}/n\mathbb{Z}$ und
+die multiplikativ geschriebene Gruppe $C_n$ sind also isomorph.
+
+%
+% Die zyklischen Gruppen als Kern
+%
+\subsubsection{Die zyklischen Gruppen als Kern}
+Die Gruppe $C_n$ wurde früher schon als Bild der Gruppe
+$\mathbb{R}/2\pi\mathbb{Z}$ unter der Exponentialabbildung 
+in $\mathbb{C}^*$ erkannt worden.
+Man kann sie aber auch als Kern eines geeignet gewählten Homomorphismus
+verstehen.
+
+Die Abbildung
+\[
+\varphi
+\colon
+S^1\to S^1
+:
+z\mapsto z^n
+\]
+ist ein Homomorphismus, denn es ist ja $\varphi(z_1z_2)=(z_1z_2)^n
+= z_1^nz_2^n=\varphi(z_1)\varphi(z_2)$.
+Der Kern von $\varphi$ besteht aus den komplexen Zahlen mit der 
+Eigenschaft $z^k=1$, das sind genau die Elemente von $C_n$.
+
+%
+% Permutationsgruppen
+%
+\subsubsection{Permutationsgruppen}
+Die Menge $[n]=\{1,2,\dots,n\}$ hat $n$ Elemente.
+Wir betrachten die Menge aller invertierbaren Abbildungen
+$\varphi\colon [n] \to [n]$.
+Zwei solche Abbildungen $\varphi$ und $\psi$ können zusammengesetzt
+werden, oder sie können invertiert werden $\varphi^{-1}$.
+Tatsächlich ist die Menge 
+\[
+S_n = \{\varphi\colon [n] \to [n]\mid \text{$\varphi$ ist invertierbar} \}
+\]
+eine Gruppe, sie heisst die {\em Permutationsgruppe von $n$ Elementen}
+oder die {\em symmetrische Gruppe}.
+
+Permutationen können besonders effizient als Matrizen mit zwei Zeilen
+geschrieben werden.
+Eine Abbildung $\varphi\colon [n]\to[n]$ bildet $i\in [n]$ auf $\varphi(u)$
+ab, was man als die Matrix
+\[
+\varphi
+=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+\varphi(1)&\varphi(2)&\varphi(3)&\dots&\varphi(n)
+\end{pmatrix}
+\]
+schreiben kann.
+Um die Komposition von zwei Abbildungen $\varphi$ und $\psi$ zu bestimmen,
+kann man die beiden Matrizen übereinander schreiben und die Spalten der
+unteren Matrix so sortieren, dass sie mit den Elementen in der unteren
+Zeile der oberen übereinstimmen:
+\[
+\begin{aligned}
+\varphi
+&=
+\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}
+\\
+\psi
+&=
+\begin{pmatrix}1&2&3&4\\3&2&4&1\end{pmatrix}
+\end{aligned}
+\quad\Rightarrow\quad
+\psi\circ \varphi
+=
+\left\{
+\begin{array}{c}
+\displaystyle\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}\\
+\displaystyle\begin{pmatrix}1&2&3&4\\3&2&4&1\end{pmatrix}
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{c}
+\displaystyle\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}\\
+\displaystyle\begin{pmatrix}2&3&1&4\\2&4&3&1\end{pmatrix}
+\end{array}
+\right\}
+=
+\begin{pmatrix}
+1&2&3&4\\
+2&4&3&1
+\end{pmatrix}.
+\]
+
+Die inverse Abbildung findet man, indem man die beiden Zeilen vertauscht
+und die Spalten so sortiert, dass die Elemente in der ersten Zeile
+wieder aufsteigend sind.
+Zum Beispiel
+\[
+\varphi
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&3&5&2&4
+\end{pmatrix}
+\quad\Rightarrow\quad
+\varphi^{-1}
+=
+\begin{pmatrix}
+1&3&5&2&4\\
+1&2&3&4&5
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}.
+\]
+Die Zusammensetzung von $\varphi$ und $\varphi^{-1}$ ist
+\[
+\varphi\circ\varphi^{-1}
+=
+\left\{
+\begin{array}{c}
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}
+\\
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&3&5&2&4
+\end{pmatrix}
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{c}
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}
+\\
+\displaystyle
+\begin{pmatrix}
+1&4&2&5&3\\
+1&2&3&4&5
+\end{pmatrix}
+\end{array}
+\right\}
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&2&3&4&5
+\end{pmatrix}
+=
+e.
+\]
+
+% XXX Die Gruppen S_n
+
+%
+% Lie-Gruppen
+%
+\subsection{Lie-Gruppen
+\label{buch:gruppen:subsection:lie-gruppen}}
+Die endlichen Gruppen unterscheiden sich grundlegend von der Gruppe
+der Drehwinkel.
+In $\mathbb{R}$, $\mathbb{R}/2\pi\mathbb{Z}$, $S^1$ und $\mathbb{C}^*$
+steht nicht nur die aus der Gruppenoperation abgeleitete algebraische
+Struktur zur Verfügung.
+
+%
+% Topologische Gruppen
+%
+\subsubsection{Topologische Gruppen}
+Vielmehr kann man auch von konvergenten Folgen von Gruppenelementen
+sprechen und davon, ob eine Abbildung zwischen diesen Gruppen
+stetig ist.
+Man nennt eine solche Gruppe eine {\em topologische Gruppe}.
+\index{topologische Gruppe}%
+
+\begin{beispiel}
+Die Menge
+\(
+\mathbb{Q}^*
+=
+\mathbb{Q} \setminus\{0\}
+\)
+ist eine Gruppe mit der Multiplikation als Gruppenoperation.
+\end{beispiel}
+
+Die Gruppe $\mathbb{Q}^*$ ist eine topologische Gruppe.
+Als Teilmenge von $\mathbb{Q}$ ist klar, was eine Cauchy-Folge in
+$\mathbb{Q}^*$ ist.
+Es gibt aber auch Cauchy-Folgen in $\mathbb{Q}^*$, die nicht konvergieren.
+Die Folge
+\[
+x_0=1,\;
+x_{n+1} = \frac12\biggl(x_n+\frac{2}{x_n}\biggr),\; n\in\mathbb{N},
+\]
+ist eine Folge von rationalen Zahlen, die gegen einen Fixpunkt der
+Funktion
+\[
+x\mapsto f(x)=\frac12\biggl(x+\frac{2}{x}\biggr)
+\]
+konvergiert.
+Durch Multiplikation mit $x$ findet man
+\[
+x=f(x)
+\quad\Rightarrow\quad
+x^2=\frac12 x^2 + 1
+\quad\Rightarrow\quad
+\frac12x^2=1
+\quad\Rightarrow\quad
+x^2=2
+\quad\Rightarrow\quad
+x=\sqrt{2},
+\]
+insbesondere ist der Grenzwert nicht in $\mathbb{Q}^*$.
+
+\begin{definition}
+Eine topologische Gruppe $G$ ist eine Gruppe $G$, deren Verknüpfungsabbildung
+$(x,y)\mapsto xy$ und das inverse Element $x\mapsto x^{-1}$ stetig sind.
+Für konvergente Folgen $x_n\to x$ und $y_n\to y$ in $G$ gilt dann
+\begin{align*}
+\lim_{n\to \infty} x_ny_n &= \lim_{n\to\infty} x_n \lim_{n\to\infty} y_n = xy
+\\
+\lim_{n\to \infty} x_n^{-1} &= (\lim_{n\to\infty} x_n)^{-1} = x^{-1}
+\end{align*}
+\end{definition}
+
+%
+% 
+%
+\subsubsection{Ableitung}
+Für Funktionen auf der Gruppe $\mathbb{R}$ ist sogar die Ableitung
+definiert.
+Eine solche lässt sich auch für Funktionen auf den Gruppen 
+$S^1$ und $\operatorname{SO}(2)$ definieren, indem man diese Gruppen
+mit einer geeigneten Parametrisierung beschreibt.
+
+
+
+\begin{definition}
+Eine $n$-dimensionale {\em Karte} $\alpha$ für eine offene Menge
+$U_\alpha\subset M$ ist eine bijektive Abbildung
+$\varphi_\alpha\colon U\to \mathbb{R}^n$.
+\end{definition}
+
+Man kann sich die Kartenabbildungen als lokale Koordinatensystem auf der
+Menge $M$ vorstellen.
+Der Wert $\varphi_\alpha(p)$ der Kartenabbildung $\varphi_\alpha$
+eines Punktes $p\in M$ hat als Komponenten die Koordinaten $x_1,\dots,x_n$
+dieses Punktes im gewählten Koordinatensystem.
+
+Die Karten sollen der Menge $M$ ein Koordinatensystem geben, mit dem
+man Ableitungen von Funktionen definieren kann.
+Dazu ist notwendig, dass verschiedene Karten auf die gleiche
+Ableitung führen.
+Wegen der Kettenregel der Differentialrechnung bedeutet dies, dass
+die Koordinatenumrechnung zwischen zwei Karten eine differenzierbare
+Abbildung ist.
+
+Seien also
+$\varphi_\alpha\colon U_\alpha \to \mathbb{R}^n$
+und
+$\varphi_\beta\colon U_\beta \to \mathbb{R}^n$
+zwei Karten, deren Definitionsbereiche $U_\alpha$ und $U_\beta$ sich
+schneiden.
+Sie statten also beide die Menge $U_{\alpha\beta}=U_\alpha\cap U_\beta$
+mit einem Koordinatensystem aus.
+Die Koordinatenwechselabbildung
+\[
+\varphi_{\beta\alpha}
+=
+\varphi_\beta
+\circ
+\varphi_\alpha^{-1}
+\colon
+\varphi_\alpha(U_\alpha\cap U_\beta)
+\to
+\varphi_\beta(U_\alpha\cap U_\beta)
+\]
+ist eine Abbildung zwischen offenen Teilmengen von $\mathbb{R}^n$.
+Man sagt, der Kartenwechsel ist differenzierbar, wenn $\varphi_{\beta\alpha}$
+differenzierbar ist.
+Der Kartenwechsel in der umgekehrten Richtung ist $\varphi_{\alpha\beta}$.
+
+\begin{definition}
+Ein {\em differenzierbarer Atlas} von $M$ ist eine Menge von Karten derart,
+dass alle Kartenwechselabbildungen differenzierbar sind.
+\end{definition}
+
+\begin{definition}
+Eine {\em differenzierbare Mannigfaltigkeit} ist eine Menge $M$ mit einem
+differenzierbaren Atlas derart, dass jeder Punkt von $M$ im
+Definitionsgebiet mindestens einer Karte liegt.
+\end{definition}
+
+Eine differenzierbare Mannigfaltigkeit ist also eine Menge, die in
+einer Umgebung jedes Punktes mit mindestens einem Koordinatensystem
+ausgestattet werden kann auf eine Art, dass die Umrechnung zwischen
+verschiedenen Koordinatensystemen immer differenzierbar ist.
+
+\begin{beispiel}
+Die reelle Achse $\mathbb{R}$ ist eine differenzierbare Mannigfaltigkeit,
+sie lässt sich mit einer einzigen Karte parametrisieren.
+\end{beispiel}
+
+\begin{beispiel}
+Die Kreislinie $S^1$ in der komplexen Ebene ist eine differenzierbare
+Mannigfaltigkeit, Karten können wie folgt konstruiert werden.
+Die Abbildung $\mathbb{R}\to S^1: x\mapsto e^{ix}$ bildet die ganze
+reelle Achse auf die Kreislinie ab.
+Die Abbildung ist allerdings nicht umkehrbar, weil $x$-Werte, die sich
+um Vielfache von $2\pi$ unterscheiden, auf den gleichen Punkt in $S^1$
+abgebildet werden.
+Zu jedem Punkt $x\in\mathbb{R}$ gibt es aber ein Intervall
+$U_x=(x-1,x+1)$, welches bijektiv auf eine Teilmenge von $S^1$
+abgebildet wird.
+Die Exponentialabbildung von $U_x\to S^1$ wie auch die Umkehrabbildung
+von der Bildmenge zurück in $U_x$ sind stetig.
+Die Koordinaten, die verschiedene solche Karten einem Punkt der Kreislinie
+zuordnen können, unterscheiden sich immer um Vielfache von $2\pi$.
+Die Koordinatenwechsel-Abbildung zwischen zwei Karten $U_x$ und $U_y$
+sind also Abbildungen der Form $x\mapsto x+2\pi k$ mit $k\in\mathbb{Z}$,
+also sicher differenzierbar.
+Damit ist ein differenzierbarer Atlas für $S^1$ konstruiert, $S^1$
+ist eine differenzierbare Mannigfaltigkeit.
+\end{beispiel}
+
+XXX differenzierbare Abbildungen
+
+XXX Mannigfaltigkeit $S^2$
+
+%
+% Lie-Gruppen
+%
+\subsubsection{Lie-Gruppen}
+Die Gruppen $S^1$ war als differenzierbare Mannigfaltigkeit erkannt
+worden.
+Damit die Struktur der Gruppe und die differenzierbare Struktur sinnvoll
+miteinander verwendet werden können ist notwendig, dass die
+Verknüpfungsabbildung $(x,y)\mapsto xy$ und die Umkehrabbildung
+$x\mapsto x^{-1}$ nicht nur stetig, sondern sogar differenzierbar sind.
+
+\begin{definition}
+Eine Lie-Gruppe ist eine Gruppe, die gleichzeitig eine differenzierbare
+Mannigfaltigkeit ist derart, dass die Gruppenoperation
+$G\times G\to G:(x,y)\mapsto xy$
+und die Invertierung $G\to G: x\mapsto x^{-1}$ differenzierbare Abbildungen
+sind.
+\end{definition}
+
+In den für die Gruppe $S^1$ konstruierten Karten ist die Verknüpfung die
+Addition von Koordinaten und die Invertierung ist der Vorzeichenwechsel.
+Beide sind differenzierbar, daher ist $S^1$ eine Lie-Gruppe.
+
+%
+% Funktionen auf einer Gruppe
+%
+\subsection{Funktionen auf einer Gruppe
+\label{buch:gruppen:subsection:funktionen}}
+In diesem Abschnitt ist $G$ eine Gruppe, die wir multiplikativ
+schreiben.
+Die harmonische Analysis handelt von der Analyse von Funktionen.
+Im Falle einer Lie-Gruppe kann man zusätzlich sinnvoll von Ableitungen
+der Funktionen sprechen.
+Wir definieren daher
+
+\begin{definition}
+Die Menge der stetigen reell- und komplexwertigen Funktionen wird mit
+$C_{\mathbb{R}}(G)$ bzw.~$C_{\mathbb{C}}(G)$ bezeichnet.
+Ist $G$ eine Lie-Gruppe, dann ist
+$C_{\mathbb{R}}^\infty(G)$ die Menge der unendlich oft differenzierbaren
+reellwertigen Funktionen auf $G$,
+$C_{\mathbb{C}}^\infty(G)$ ist die Menge der unendlich oft differenzierbaren
+komplexwertigen Funktionen.
+\end{definition}
+
+Die Gruppenstruktur ermöglich, lineare Operatoren auf $C_{\mathbb{R}}(G)$
+und $C_{\mathbb{C}}(G)$ zu definieren.
+
+\begin{definition}
+Für $s\in G$ ist $T_s$ die Abbildung
+\[
+T_s
+\colon
+C_{\mathbb{R}}(G) \to C_{\mathbb{R}}(G)
+:
+f \mapsto T_sf
+\quad
+\text{mit}
+\quad
+(T_sf)(x) = f(s^{-1}x).
+\]
+Sie heisst die {\em Translation} um $s\in G$.
+\end{definition}
+
+Die Translation ist natürlich linear, denn
+\begin{align*}
+(T_s(f+g))(x)
+&=
+(f+g)(s^{-1}x)
+\\
+&=
+f(s^{-1}x) + g(s^{-1}x)
+=
+(T_sf)(x) + (T_sg)(x)
+&&\Rightarrow&
+T_s(f+g)&=T_sf+T_sg
+\\
+(T_s(\lambda f))(x)
+&=
+\lambda f(s^{-1}x)
+=
+\lambda (T_sf)(x)
+&&\Rightarrow&
+T_s\lambda f
+&=
+\lambda T_sf
+\end{align*}
+
+%
+% Eigenvektoren von T_s
+%
+\subsubsection{Eigenfunktionen des Translationsoperators}
+Tatsächlich wurden in früheren Kapiteln Funktionen verwendet, die
+bezüglich der Translation besondere Eigenschaften hatten.
+Zum Beispiel sind die Funktionen $f(x)=e_k(x)=e^{ikx}$ auf $G=\mathbb{R}$
+Eigenfunktionen des Translationsoperators, denn
+\[
+(T_se_k)(x)
+=
+e^{ik(x-s)}
+=
+e^{iks}e^{ikx}
+=
+e^{-iks} e_k(x).
+\]
+Insbesondere ist $e_k$ eine Eigenfunktion von $T_s$ mit Eigenwert
+$\lambda=e^{-iks}$, also $T_se_k = \lambda e_k$.
+
+%
+% Gruppenstruktur der Translationen
+%
+\subsubsection{Gruppenstruktur der Translationen}
+Wir berechnen die Zusammensetzung zweier Translationen ist $T_s$ und $T_t$.
+Um $T_sT_t$ zu berechnen, muss zunächst die Funktion $T_tf$ bestimmt werden.
+Es ist $(T_tf)(x) = f(t^{-1}x)$.
+Die Translation $T_sg$ einer beliebigen Funktion auf dem Element $y\in G$
+ist $(T_sg)(y)=g(s^{-1}y)$.
+Setzt man $g=T_tf$ ein, ergibt sich
+\[
+(T_sT_tf)(x)
+=
+(T_tf)(s^{-1}x)
+=
+f(t^{-1}s^{-1}x)
+=
+f((st)^{-1}x)
+=
+(T_{st}f)(x),
+\]
+also $T_sT_t=T_{st}$.
+
+%
+% Rechtsoperation der Gruppe auf 
+%
+\subsubsection{Rechtsoperation von $G$ auf $C(G)$}
+Die Operation $T_s$ ist genauer die Links-Translation, die Gruppenoperation
+wirkt auf das Argument von links.
+Für eine abelsche Gruppe spielt die Reihenfolge der Operanden keine
+Rolle, für eine nichtabelsche Gruppe ergibt sich jedoch ein Unterschied.
+
+\begin{definition}
+Der Operator $R_s\colon C(G)\to C(G)$ der Rechts-Translation ist definiert
+durch
+\[
+R_s
+\colon
+C_{\mathbb{R}}(G)\to C_{\mathbb{R}}(G)
+:
+f \mapsto R_sf
+\quad\text{mit}\quad
+(R_sf)(x) = f(xs).
+\]
+\end{definition}
+
+Die Zusammensetzung von $R_s$ und $R_t$ kann ganz ähnlich wie für
+$T_s$ und $T_t$ berechnet werden.
+Zunächst ist $R_sg(y) = g(ys)$.
+Wendet man dies auf $g=R_tf$ mit $g(x)=(R_tf)(x)=f(xt)$ an, bekommt man
+\[
+(R_sR_tf)(x)
+=
+(R_sg)(x)
+=
+g(xs)
+=
+(R_tf)(xs)
+=
+f(xst)
+=
+(R_{st}f)(x)
+\]
+oder kurz $R_sR_t=R_{st}$.
+
+
+
+
+
+

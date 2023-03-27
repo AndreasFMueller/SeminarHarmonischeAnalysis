@@ -6,3 +6,188 @@
 \section{Faltung
 \label{buch:gruppen:section:faltung}}
 \kopfrechts{Faltung}
+Für einen Definitionsbereich $X$, der nur eine Menge ist, können
+von Funktionen $f,g\in C(G)$ nur die Werte im gleichen Punkt
+miteinander verglichen werden. 
+Daher sind die einzigen algebraischen Operationen, die wir auf
+$C(G)$ definieren können, die punktweise Addition $f+g$ und 
+die punktweise Multiplikation $f\cdot g$ mit
+\begin{align*}
+(f+g)(x)      &= f(x)+g(x) \\
+(f\cdot g)(x) &= f(x) g(x)
+\end{align*}
+Die Gruppenstruktur ermöglicht, verschiedene Punkte im Definitionsbereich
+mit Hilfe einer Translation $T_x$ zur Deckung zu bringen und somit
+Funktionswerte auf verschiedenen Gruppenelemente miteinander verrechnen.
+
+%
+% Hall
+%
+\subsection{Hall
+\label{buch:gruppen:faltung:subsection:hall}}
+
+\begin{definition}
+Die Faltung zweier Funktion $f,g\in C(G)$ ist die Funktion
+\begin{equation}
+(f*g)(x)
+=
+\int_G f(y)g(y^{-1}x)\,dy.
+\label{buch:gruppen:faltung:eqn:deffaltung}
+\end{equation}
+Im Fall einer additiv geschriebenen, abelschen Gruppe wird die Faltung zu
+\begin{equation}
+(f*g)(x)
+=
+\int_G f(y)g(x-y)\,dy
+\label{buch:gruppen:faltung:eqn:deffaltungadditiv}
+\end{equation}
+\end{definition}
+
+%
+% Faltung als Produkt
+%
+\subsection{Faltung als Produkt
+\label{buch:gruppen:faltung:subsection:produkt}}
+Die Faltung ist ein Produkt, d.~h.~man kann mit Faltungsprodukten 
+genau so rechnen, wie man es sich von anderen (nicht kommutativen)
+Produkten wie zum Beispiel dem Matrizenprodukt gewöhnt ist.
+Dazu müssen zwei Bedingungen erfüllt sein: es müssen das
+Assoziativ- und das Distributivgesetzt gelten.
+
+%
+% Assoziativität
+%
+\subsubsection{Assoziativität}
+Das Assoziativgesetz besagt, dass es in einem Produkt mit mehr als
+zwei Faktoren nicht auf die Reihenfalge ankommt, in der man die
+Produkte ausführt.
+Dies ermöglicht, Faltungsprodukte von drei Funktionen $f$, $g$ und $h$
+auch einfach als $f*g*h$ zu schreiben.
+
+\begin{satz}
+Die Faltung ist assoziativ, also $(f*g)*h=f*(g*h)$ für Funktionen
+$f,g,h\in C(G)$, für die alle Faltungen definiert sind.
+\end{satz}
+
+\begin{proof}[Beweis]
+Ausgehend vond er Definition der Faltung in
+\eqref{buch:gruppen:faltung:eqn:deffaltung}
+kann man die Faltung der zweifachen Faltung als
+\begin{align*}
+((f*g)*h)(x)
+&=
+\int_G (f*g)(y) h(y^{-1}x)\,dy
+=
+\int_G \int_G f(z)g(z^{-1}y) \,dz\, h(y^{-1}x)\,dy
+\intertext{berechnen.
+Unter der postulierten Voraussetzung, dass alle Integrale existieren,
+gilt der Satz von Fubini, der die Reihenfolge der Integrationen zu
+vertauschen gestattet.
+So wird die Faltung zu
+}
+&=
+\int_G \int_G f(z)g(z^{-1}y) h(y^{-1}x) \,dy \,dz
+\\
+&=
+\int_G f(z) \int_G g(z^{-1}y) h(y^{-1}x) \,dy \,dz
+\intertext{Das Integral über $y$ ist invariant unter der Translation
+mit $z$, wir schreiben daher $s=z^{-1}y$ und integrieren über $s$
+statt $y=zs$:}
+&=
+\int_G f(z) \int_G g(s) h(s^{-1}z^{-1}x) \,ds \,dz
+=
+\int_G f(z) (g*h)(z^{-1}x) \,dz
+=
+(f*(g*h))(x)
+\end{align*}
+Damit ist die Assoziativität gezeigt.
+\end{proof}
+
+%
+% Distributivität
+%
+\subsubsection{Distributivität}
+Für ein Produkt wird zusätzlich erwartet, dass man damit rechnen kann
+wie mit jedem anderen Produkt.
+Dies bedeutet, dass für die Faltung und die Addition von Funktionen
+das Distributivgesetz gilt, dass man also Faltungsprodukte ausmultiplizieren
+und faktorisieren kann wie gewöhnliche punktweise Produkte von Funktionen.
+
+\begin{satz}
+Für die Faltung und die Addition von Funktionen gilt das Distributivgesetz
+\begin{equation}
+\begin{aligned}
+f*(g+h) &= f*g + f*h
+&&\text{und}&
+(f+g)*h &= f*h + g*h
+\\
+(\lambda f) * g &= \lambda (f*g) 
+&&&
+f*(\lambda f) &= \lambda (f*g).
+\end{aligned}
+\label{buch:gruppen:faltung:eqn:distributiv}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Das Distributivgesetz folgt sofort aus der Distributivität der Multiplikation
+und der Linearität des Integrals:
+\begin{align*}
+(f*(g+h))(x)
+&=
+\int_G f(y) (g+h)(y^{-1}x)\,dy
+\\
+&=
+\int_G f(y) g(y^{-1}x)\,dy
++
+\int_G f(y) h(y^{-1}x)\,dy
+=
+(f*g)(x)
++
+(f*h)(x)
+\end{align*}
+Die anderen Gleichungen \eqref{buch:gruppen:faltung:eqn:distributiv}
+folgen auf die gleiche Art.
+\end{proof}
+
+%
+% Kommutivität
+%
+\subsubsection{Kommutativität}
+Die Faltung von Funktionen auf $\mathbb{R}$ mit der Addition ist
+\begin{align*}
+(f*g)(x)
+&=
+\int_{\mathbb{R}} f(y)g(x-y)\,dy
+\intertext{mit der Substitution $s=x-y$ wird daraus}
+=
+\int_{-\infty}^\infty f(x-s) g(s)\,ds
+=
+(g*f)(x).
+\end{align*}
+Das Faltungsprodukt von Funktionen auf $\mathbb{R}$ ist also kommutativ.
+Dies gilt jedoch im allgemeinen nicht.
+
+\begin{beispiel}
+Die symmetrische Gruppe ist die kleinste nichtabelsche Gruppe.
+Es gibt zwei Permutationen $\sigma$ und $\tau$, für die
+$\sigma\tau\ne \tau\sigma$ gilt.
+Wir berechnen die Faltung der beiden Funktionen 
+\[
+\delta_\sigma(x) 
+=
+\begin{cases}
+1&\qquad \text{falls $x=\sigma$}\\
+0&\qquad \text{sonst}
+\end{cases}
+\qquad\text{und}\qquad
+\delta_\tau(x) 
+=
+\begin{cases}
+1&\qquad \text{falls $x=\tau$}\\
+0&\qquad \text{sonst}
+\end{cases}
+\]
+\end{beispiel}
+
+
