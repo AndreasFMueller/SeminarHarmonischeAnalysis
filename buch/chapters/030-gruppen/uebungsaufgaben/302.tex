@@ -1,0 +1,218 @@
+Die Gruppe $S_3$ der Permutationen von $3$ Objekten enthält sechs
+Permutationen.
+Man kann sie alle schreiben als Zusammensetzungen von zwei Permutationen:
+\[
+\tau = \begin{pmatrix}1&2&3\\2&1&3\end{pmatrix}
+\qquad\text{und}\qquad
+\sigma = \begin{pmatrix}1&2&3\\2&3&1\end{pmatrix}.
+\]
+Für $\sigma$ und $\tau$ gelten die Rechenregeln
+\[
+\tau^2=e\;\text{oder}\;\tau^{-1}=\tau,
+\qquad
+\sigma^3=e\;\text{oder}\;\sigma^{-1}=\sigma^2,
+\qquad
+\sigma\tau
+=
+\begin{pmatrix}1&2&3\\3&2&1\end{pmatrix}
+=
+\tau\sigma^2.
+\]
+Damit kann man nachrechnen, dass die Gruppenelement als
+\begin{align*}
+\begin{pmatrix} 1&2&3\\1&2&3 \end{pmatrix} &= e &
+\begin{pmatrix} 1&2&3\\2&3&1 \end{pmatrix} &= \sigma &
+\begin{pmatrix} 1&2&3\\3&1&2 \end{pmatrix} &= \sigma^2 \\
+\begin{pmatrix} 1&2&3\\2&1&3 \end{pmatrix} &= \tau &
+\begin{pmatrix} 1&2&3\\1&3&2 \end{pmatrix} &= \tau\sigma &
+\begin{pmatrix} 1&2&3\\3&2&1 \end{pmatrix} &= \tau\sigma^2
+\end{align*}
+Dargestellt werden können.
+Die Rechenregeln in der Gruppe können auch aus der Multiplikationstabelle
+\[
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}|}
+\hline
+\cdot        &e            &\sigma      &\sigma^2    &\tau        &\tau\sigma  &\tau\sigma^2\\
+\hline
+e            &e            &\sigma      &\sigma^2    &\tau        &\tau\sigma  &\tau\sigma^2\\
+\sigma       &\sigma       &\sigma^2    &e           &\tau\sigma^2&\tau        &\tau\sigma  \\
+\sigma^2     &\sigma^2     &e           &\sigma      &\tau\sigma  &\tau\sigma^2&\tau        \\
+\tau         &\tau         &\tau\sigma  &\tau\sigma^2&e           &\sigma      &\sigma^2    \\
+\tau\sigma   &\tau\sigma   &\tau\sigma^2&\tau        &\sigma^2    &e           &\sigma       \\
+\tau\sigma^2 &\tau\sigma^2 &\tau        &\tau\sigma  &\sigma      &\sigma^2    &e            \\
+\hline
+\end{tabular}
+\qquad
+\begin{tabular}{|>{$}l<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}|}
+\hline
+x     & e & \sigma   & \sigma^2 & \tau & \tau\sigma & \tau\sigma^2 \\
+\hline
+x^{-1}& e & \sigma^2 & \sigma   & \tau & \tau\sigma & \tau\sigma^2 \\
+\hline
+\end{tabular}
+\]
+abgelesen werden.
+Als Skalarprodukt wird 
+\[
+\langle f,g\rangle
+=
+\sum_{x\in S_3} \overline{f(x)}g(x)
+\]
+verwendet.
+\begin{teilaufgaben}
+\item
+Rechnen Sie nach, dass die beiden Funktionen $e_\sigma\colon S_3\to\mathbb{R}$
+und $e_\tau\colon S_3\to\mathbb{R}$ mit den Funktionswerten
+\[
+e_\sigma(x)
+=
+\begin{cases}
+1&\quad \text{für $x=\sigma$}\\
+0&\quad \text{sonst}
+\end{cases}
+\qquad\text{und}\qquad
+e_\tau(x)
+=
+\begin{cases}
+1&\quad \text{für $x=\tau$}\\
+0&\quad \text{sonst}
+\end{cases}
+\]
+orthonormiert sind.
+\item
+Für eine endliche Gruppe ist die Faltung gegeben durch
+\begin{equation}
+(f*g)(x) = \sum_{y\in G} f(y)g(y^{-1}x).
+\label{buch:gruppen:301:faltung}
+\end{equation}
+Berechnen Sie die beiden Faltungen $e_\sigma * e_\tau$ und
+$e_\tau* e_\sigma$.
+\item
+Es gibt zwei Homomorphismen $S_3\to\mathbb{R}^*$, nämlich
+\[
+h_0\colon S_3 \to \mathbb{R}^* : x \mapsto 1
+\]
+und die Funktion $h_1$ mit den Funktionswerten
+\[
+\begin{tabular}{|>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}|}
+\hline
+    x &e &\sigma &\sigma^2 &\tau &\tau\sigma &\tau\sigma^2 \\
+\hline
+h_1(x)&1 &1      &1        &-1   &-1         &-1 \\
+\hline
+\end{tabular}
+\]
+Berechnen Sie $(\mathscr{G}f)(h_0)=\langle h_0,f\rangle$
+und $(\mathscr{G}f)(h_1)=\langle h_1,f\rangle$
+für die Funktionen $e_\sigma$, $e_\tau$, $e_\sigma*e_\tau$
+und $e_\tau*e_\sigma$.
+\item
+Kann die Gelfand-Transformation die beiden Funktionen
+$e_{\tau\sigma}$ und $e_{\tau\sigma^2}$ unterscheiden?
+\item
+Prüfen Sie nach, dass
+\[
+\mathscr{G}(e_\sigma*e_\tau)
+=
+\mathscr{G}e_\sigma
+\cdot
+\mathscr{G}e_\tau
+=
+\mathscr{G}(e_\tau*e_\sigma)
+\]
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die Skalarprodukte sind
+\begin{align*}
+\|e_\sigma\|^2
+&=
+\sum_{x\in S_3} |e_\sigma(x)|^2
+=
+0+6+0+0+0+0 =1\\
+\|e_\tau\|^2
+&=
+\sum_{x\in S_3} |e_\tau(x)|^2
+=
+0+0+0+6+0+0 =1\\
+\langle e_\sigma,e_\tau\rangle
+&=
+\sum_{x\in S_3} e_\sigma(x)e_\tau(x)
+=
+0+\!\sqrt{6}\cdot 0+0\cdot\!\sqrt{6}+0+0 = 0.
+\end{align*}
+Die Funktionen sind also orthonormiert.
+\item
+Wir verwenden die Formel \eqref{buch:gruppen:301:faltung}.
+Das Produkt in der Summe kann nur dann von $0$ verschieden sein,
+wenn sowohl $f(y)$ als auch $g(y^{-1}x)$ von $0$ verschieden sind.
+Für die Funktionen $f=e_\sigma$ und $g=e_\tau$ bedeutet das, dass
+nur für $y=\sigma$ und $y^{-1}x=\tau$ die Faltung von $0$ verschieden 
+ist, also für $x=y\tau=\sigma\tau=\tau\sigma^2$.
+Die Faltung ist daher
+\[
+(e_\sigma*e_\tau)(x)
+=
+e_{\tau\sigma^2}(x)
+=
+\begin{cases}
+1&\quad\text{für $x=\tau\sigma^2$}\\
+0&\quad\text{sonst.}
+\end{cases}
+\]
+Auf die gleiche Art kann auch die Faltung $e_\tau*e_\sigma$ berechnet
+werden, sie ist nur für $y=\tau$ und $y^{-1}x=\sigma$ und damit
+für $x=y\sigma=\tau\sigma$ von $0$ verschieden, d.~h.
+\[
+(e_\tau * e_\sigma)
+=
+e_{\tau\sigma}(x)
+=
+\begin{cases}
+1&\quad\text{für $x=\tau\sigma$}\\
+0&\quad\text{sonst.}
+\end{cases}
+\]
+Insbesondere sind die beiden Faltungen verschieden.
+Das Faltungsprodukt ist nicht kommutativ, weil auch die Gruppe
+$S_3$ nicht kommutativ ist.
+\item
+Für die Funktion $h_0(x)$ ist klar, dass
+$1h_0(xy)=h_0(x)h_0(y)=1\cdot1$ ist.
+Die Funktion $h_1(x)$ hat genau dann den Wert $-1$, wenn das
+Element $x$ ein $\tau$ enthält.
+Die Anzahl der $\tau$ in einem Produkt ist die Summe
+der Anzahlen der $\tau$ in den Faktoren modulo 2.
+Daraus folgt sofort, dass auch $h_1$ ein Homomorphismus ist.
+\item
+Die beiden Funktionen $e_{\tau\sigma}$ und $e_{\tau\sigma^2}$ 
+haben gleich viele $\tau$, daher haben ihre Gelfand-Transfor\-mierten
+die gleichen Werte auf $h_1$.
+Sie lassen sich daher nicht unterscheiden.
+\item
+Die Gelfand-Transformation $\mathscr{G}f$ hat auf $h_0$
+hat immer den Mittelwert der Funktionswerte als Wert.
+Es folgt
+\[
+\left.
+\begin{aligned}
+\mathscr{G}e_\sigma(h_0)         &= 1 & \mathscr{G}e_\sigma(h_1)         &=  1 \\
+\mathscr{G}e_\tau(h_0)           &= 1 & \mathscr{G}e_\tau(h_1)           &= -1 \\
+\mathscr{G}e_{\tau\sigma}(h_0)   &= 1 & \mathscr{G}e_{\tau\sigma}(h_1)   &= -1 \\
+\mathscr{G}e_{\tau\sigma^2}(h_0) &= 1 & \mathscr{G}e_{\tau\sigma^2}(h_1) &= -1 \\
+\end{aligned}
+\;
+\right\}
+\quad\Rightarrow\quad
+\left\{
+\begin{aligned}
+\mathscr{G}(e_\sigma*e_\tau) &= \mathscr{G}e_\sigma\cdot \mathscr{G}e_\tau \\
+\mathscr{G}(e_\tau*e_\sigma) &= \mathscr{G}e_\tau\cdot \mathscr{G}e_\sigma 
+\end{aligned}
+\right.
+\]
+die ``Fourier''-Faltungsformel.
+\end{teilaufgaben}
+\end{loesung}

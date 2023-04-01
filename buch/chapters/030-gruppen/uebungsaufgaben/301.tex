@@ -1,0 +1,121 @@
+Die Gruppe $\mathbb{Z}/6\mathbb{Z} = \{0,1,2,3,4,5\}$  
+ist kommutativ.
+Zu jedem Gruppenelement gibt es eine Funktion
+\[
+e_k(x)
+=
+\begin{cases}
+1&\quad\text{für $x=k$}\\
+0&\quad\text{sonst.}
+\end{cases}
+\]
+Wir verwenden das Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\sum_{k=0}^5 \overline{f(x)} g(x)
+\]
+
+\begin{teilaufgaben}
+\item
+Rechnen Sie nach, dass die Funktionen $e_k$ orthonormiert sind.
+\item
+Berechnen Sie die Faltung $e_k*e_l$.
+\item
+Es gibt sechs Homomorphismen von $\mathbb{Z}/6\mathbb{Z}$ nach $\mathbb{C}^*$,
+nämlich
+\[
+h_k
+\colon
+\mathbb{Z}/6\mathbb{Z} \to \mathbb{C}^*
+:
+x\mapsto e^{ikx}
+\]
+für $k=0,1,\dots,5$.
+Rechnen Sie die Homomorphismuseigenschaft nach.
+\item
+Berechnen Sie die Werte der Gelfand-Transformation
+$(\mathscr{G}e_l)(h_k)$.
+\item
+Überprüfen Sie die Fourier-Faltungsformel
+\begin{equation}
+\mathscr{G}(e_x*e_y)
+=
+\mathscr{G}(e_x)\cdot\mathscr{G}(e_y)
+\label{buch:gruppen:301:gelfand-produkt}
+\end{equation}
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Das Skalarprodukt von $e_k$ und $e_l$ ist
+\[
+\langle e_k,e_l\rangle
+=
+\sum_{x=0}^5 e_k(x)e_l(x)
+=
+\begin{cases}
+1&\quad\text{für $k=l$}\\
+0&\quad\text{sonst,}
+\end{cases}
+\]
+d.~h.~die Funktionen sind orthonormiert.
+\item
+Die Faltung ist die Funktion
+\[
+(e_k*e_l)(x)
+=
+\sum_{y\in G} e_k(y)e_l(x-y).
+\]
+Sie kann nur dann von $0$ verschieden sein, wenn sowohl 
+$e_k(y)$ als auch $e_l(x-y)$ von $0$ verschieden sind, also
+für $k=y$ und $x-y=l$ oder $x=k+l$.
+Somit ist $e_k*e_l=e_{k+l}$.
+Insbesondere ist das Faltungsprodukt kommutativ, da auch die
+Gruppe kommutativ ist.
+\item
+Es ist
+\[
+h_k(x+y)=e^{ik(x+y)} = e^{ikx}e^{iky} = h_k(x)h_k(y),
+\]
+also ist $h_k$ ein Homomorphismus.
+\item
+Der Wert der Gelfand-Transformation ist
+\[
+(\mathscr{G}e_l)(h_k)
+=
+\langle h_k,e_l\rangle
+=
+\sum_{x=0}^5 \overline{h_k(x)} e_l(x)
+=
+\sum_{x=0}^5 e^{-ikx}\delta_{lx}
+=
+e^{-ikl}.
+\]
+\item
+Wir müssen nachprüfen, dass die Gleichung
+\eqref{buch:gruppen:301:gelfand-produkt}
+auf jedem $h_k$ gilt.
+Aus $(\mathscr{G}e_x)(h_k)=e^{-ikx}$ und
+$e_x*e_y=e_{x+y}$
+folgt
+\begin{align*}
+(\mathscr{G}(e_x*e_y))(h_k)
+=
+(\mathscr{G}e_{x+y})(h_k)
+=e^{-ik(x+y)}
+\\
+(\mathscr{G}e_x)(h_k)
+\cdot
+(\mathscr{G}e_y)(h_k)
+=
+e^{-ikx}\cdot e^{-iky}
+=
+e^{-ik(x+y)},
+\end{align*}
+die beiden Seiten der Gleichung
+\eqref{buch:gruppen:301:gelfand-produkt}
+stimmen also tatsächlich überein.
+\end{teilaufgaben}
+\end{loesung}
