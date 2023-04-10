@@ -10,14 +10,34 @@
 \label{opt:section:anwendungen}}
 \rhead{Praktische Anwendungen}
 
-\subsection{Pattern matching aus dem Video}
-\subsection{Überblick über die Papers}
-\subsection{Vergleich mit bestehenden Methoden}
-\begin{itemize}
-    \item Viel höherer Speed möglich
-\end{itemize}
 
-\cite{opt:GuilletdeChatellus.2016}
-\cite{opt:Lin.2018}
-\cite{opt:ScienceDaily:AllOpticalNeuralNetwork}
-\cite{opt:Tyson.2014}
+\subsection{Mustererkennung}
+Die schnelle Erstellung einer Fouriertransformation kann für die Erkennung von vordefinierten Mustern verwendet werden.
+\opttodo{Add skizze}
+Dabei wird das zu untersuchende Muster auf die Bildebene der ersten Linse gelegt \opttodo{Ref zu Bild}.
+In der Fourierebene wird dann die bekannte Fouriertransformation des gesuchten Musters montiert.
+Diese Maske ist bei den gewünschten Frequenzanteilen durchlässig, an allen anderen Orten lichtundurchlässig.
+Mittels einer einfachen Helligkeitsmessung mithilfe einer Photodiode kann anschliessend auf das gesuchte Muster geschlossen werden.
+\cite{opt:YT:PatternRecognition}
+Die Geschwindigkeit hierbei ist nicht mehr durch eine elektronische Schaltung gegeben.
+Einzig limitierend ist die Geschwindigkeit, mit der das Licht durch den Versuchsaufbau gelangt plus die Anstiegszeit der Photodiode.
+Abgeschätzt mit einer Distanz von 20 cm und einer Anstiegszeit von 100 ps liegt die totale Zeit pro Erkennung bei rund 900 ps.
+Dies entspricht einer Frequenz im Bereich von 1 GHz, mit welcher Muster erkennt werden können.
+\opttodo{Add sketch with character A and B after fouriermask}
+
+\subsection{Diffractive deep neural network}
+Beim obenstehenden Beispiel wurde nur mit einer einzelnen Blende gearbeitet, um das gesuchte Muster zu erkennen.
+In \cite{opt:Lin.2018} wurde dieser Ansatz erweitert und mit mehreren Ebenen erfolgreich getestet.
+Der Grundsatz bleibt gleich; koheräntes Licht wird von einer ersten Input Ebene gebrochen und anschliessend an fünf weiteren Ebenen.
+Dies entspricht im Ansatz den verschiedenen Verknüpften Neutronen eines neuronalen Netzwerkes.
+Nach den Beugungsebenen wird das Licht durch mehrere Detektoren erkannt.
+Xing et al. konnten somit erfolgreich handschriftliche Zahlen detektieren.
+Mittels fünf aufeinanderfolgenden Ebenen und zehn Detektoren gelang es ihnen, mehr als 90\% der Schriften korrekt zuzuordnen.
+
+\subsection{Aktuelle Forschung im Bereich Photonics}
+\opttodo{Add infos from OST - Photonics}
+
+\subsection{Fazit}
+Die obenstehenden Beispiele zeigen, was mit optischer Fouriertransformation möglich ist.
+Mittels Verzicht auf die elektronische Berechnung der Fouriertransformation kann viel Zeit und Rechenleistung 
+eingespart werden, was diese Art der Rechnung vor allem im Bereich der neuronalen Netzwerke interessant macht.
