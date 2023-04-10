@@ -16,3 +16,33 @@ Beugung kurz erklärt
 Was ist der Unterschied zwischen den beiden Approximationen?
 
 \subsection{Herleitung}
+Betrachten wir nun wie in TODO gezeigt eine unendlich dünne zylindrische Lichtquelle, welche sich axial in beide Richtingen unendlich weit erstreckt.
+Allerdings muss die Quelle nicht zwingend als Lichtquelle betrachtet werden, sondern kann als eine generelle elektromagentische Quelle angesehen werden.
+Dadurch kann durch anwenden der ersten Maxwellschen Gleichung
+\begin{equation}
+\oint_{S=\partial V} \varepsilon\vec{E}\, d\vec{S}
+=
+\int_{V}\rho\, dV
+\end{equation}
+die Elektrischefeldstärke $\vec{E}$ an jedem beliebigen Punkt in abhängigkeit des radialen Abstandes $r$ berechnet werden.
+Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi d\l$ als
+\begin{align}
+\int_{0}^{a}\int_{0}^{2\pi} \varepsilon Er\, d\varphi d\l
+&=
+Q
+\\
+2\pi r\varepsilon aE
+&=
+Q
+\end{align}
+schreiben.
+Die Deckflächen konnten aufgrund der infiniten Länge des Zylinders vernachlässigt werden.
+Nach der Elektrischenfeldstärke umgeformt lautet die Gleichung
+\begin{equation}
+E(r)
+=
+\frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
+=
+C \cdot \frac{1}{r}
+\end{equation}
+, wobei der konstante Anteil als $C$ zusammengefasst werden kann.
