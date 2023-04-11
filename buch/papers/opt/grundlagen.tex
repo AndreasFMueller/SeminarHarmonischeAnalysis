@@ -15,8 +15,10 @@ Beugung kurz erklärt
 \subsubsection{Fressnel / Frauhofner}
 Was ist der Unterschied zwischen den beiden Approximationen?
 
-\subsection{Herleitung}
-Betrachten wir nun, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtingen unendlich weit erstreckt.
+\subsection{Herleitung Frauenhofer Beugung}
+In dieser Herleitung wird darauf eingegangen, wie die Fouriertransformierte mit Hilfe der Frauenhofer Beugung erhalten werden kann.
+
+Betrachten wir zuerst, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtingen unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
 Somit kann durch anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
@@ -25,9 +27,9 @@ Somit kann durch anwenden der ersten Maxwellschen Gleichung
 \int_{V}\rho\, dV
 \end{equation}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
-Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi d\l$ als
+Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi dl$ als
 \begin{align}
-\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi d\l
+\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
 &=
 Q
 \\
@@ -45,76 +47,86 @@ E(r)
 \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
 =
 C \cdot \frac{1}{r}
+\label{opt:equation:E}
 \end{equation}
 , wobei der konstante Anteil als $C$ zusammengefasst wurde.
-Angenommen eine planare elektromagentische Welle, siehe TODO, treffe nun auf eine Blende mit einer unendlich langen und $d$ breiten Öffnung.
-Wie aus dem Physik Unterricht bereits bekannt ist, wird diese Welle am Spalt gebogen und sie sich hinter der Blende in Abhängigkeit von $d$ mehr oder weniger kreisförmig ausbreitet.
+
+Angenommen eine planare elektromagentische Welle, siehe TODO, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
+Ganz allgemein lässt sich jede Welle als
+\begin{equation}
+\zeta(x, t)
+=
+\zeta_0 \cdot e^{j(\vec{k}\cdot\vec{x}-\omega t)}
+\label{opt:equation:wave}
+\end{equation}
+ausdrücken.
+Wie aus dem Physik Unterricht bereits bekannt ist, wird diese Welle am Spalt gebogen und sich hinter der Blende in Abhängigkeit von $b$ mehr oder weniger kreisförmig ausbreitet.
 Zurückzuführen ist dieses Verhalten auf das Prinzip von Huygens TODO.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
-Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $d$ angereiht.
+Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch superponierung der einzelenen Quelleneinflüsse berechnet werden.
 
-Ein Schirm werde nun im Abstand $x_p$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
+Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
 Siehe TODO. Aus der geometrischen Anordnung geht hervor, dass
-\begin{equation}
-R
-=
-\sqrt{x_p^2 + y_p^2}
-\label{opt:equation:R}
-\end{equation}
-und
 \begin{equation}
 r
 =
-\sqrt{x_p^2 + (y_p^2-y)}
+\sqrt{l^2 + (y_p-y)^2}
 =
-\sqrt{x_p^2 + y_p^2 + y^2 - 2y_py}
-=
-R \sqrt{1 + \frac{y^2}{R^2} - \frac{2y_py}{R^2}}
-\label{opt:equation:r}
+l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
+\label{opt:equation:distance_r}
 \end{equation}
-betragen.
-Im letzten Schritt konnte Gleichung~\ref{opt:equation:R} eingesetzt und $R$ ausgeklammert werden.
-Wie in TODO ersichtlich sein wird, ist dieser Ausdruck aber noch zu komplex um geschickt weiterrechnen zu können.
-Eine Vereinfachung, die getroffen werden kann, ist, dass der Ausdruck $\frac{y^2}{R^2}$ für grosse $R$ stärker gegen 0 konvergiert als $\frac{2y_py}{R^2}$ und dementsprechend gleich 0 gesetzt werden darf.
+beträgt.
+Wie sich in TODO zeigen wird, ist dieser Ausdruck aber noch nicht fundamental genug um eine analytische Lösung zu erhalten.
 Durch anwenden der Binominalexpansion
 \begin{equation}
 (1 + \varepsilon)^n
 \approx
 1 + n\varepsilon
 \end{equation}
-, für die $\varepsilon \ll 1$ gelten muss, ist es möglich den Wurzelausdruck noch weiter zu vereinfachen.
-Hierbei entspricht
+, unter der Voraussetzung dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck noch weiter zu vereinfachen.
+Durch die geometrische Anordnung ist
 \begin{equation}
-\varepsilon
-=
-\frac{2y_py}{R^2}
-.
-\end{equation}
-Somit kann die Bedingung für $\varepsilon$ eingehalten werden, da
-\begin{equation}
-2y_py
+(y_p-y)^2
 \ll
-R^2
+l^2
 \end{equation}
-und dadurch
+garantiert.
+Somit kann die Bedingung
 \begin{equation}
 \varepsilon
 =
-\frac{2y_py}{R^2}
+\frac{(y_p-y)^2}{l^2}
 \ll
 1
 \end{equation}
-gegeben ist.
-Gleichung~\ref{opt:equation:r} vereinfacht sich demnach näherungsweise zu
+eingehalten werden.
+Gleichung~\ref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
 \begin{equation}
 r
 =
-R \sqrt{1 + \frac{y^2}{R^2} - \frac{2y_py}{R^2}}
+l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
 \approx
-R \left(1 - \frac{2y_py}{R^2}\right)^\frac{1}{2}
-\approx
-R \left(1 - \frac{y_py}{R^2}\right)
+l \left(1 - \frac{(y_p-y)^2}{2l^2}\right)
+=
+l - \frac{(y_p-y)^2}{2l}
 .
 \end{equation}
 
+All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich, wie bereits erwähnt, zur gesamten elektrischen Feldstärke am Auswertungspunkt.
+Ein solcher Einfluss lässt sich nun mittels der Gleichungen~\ref{opt:equation:E} und \ref{opt:equation:wave} als
+\begin{equation}
+dE
+=
+E(r) \cdot \zeta(r, t) \cdot dy
+=
+\frac{C}{r} \cdot \zeta_0 \cdot e^{j(\vec{k}\cdot\vec{r} - \omega t)} \cdot dy
+\end{equation}
+beschreiben.
+Durch summieren über all die beteiligten Quellen am $b$ breiten Spalt der Blende beginnend auf der Höhe $y_b$ resultiert das Integral
+\begin{equation}
+E(y_p, t)
+=
+\int_{y_b}^{y_b+b}\frac{C\zeta_0}{r} \cdot e^{j(\vec{k}\cdot\vec{r} - \omega t)} \,dy
+.
+\end{equation}
