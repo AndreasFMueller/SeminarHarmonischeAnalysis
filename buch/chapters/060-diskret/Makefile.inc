@@ -16,4 +16,5 @@ CHAPTERFILES += 							\
 	chapters/060-diskret/36-faktorisierung.tex			\
 	chapters/060-diskret/4-schnell.tex				\
 	chapters/060-diskret/5-koerper.tex				\
+	chapters/060-diskret/6-unschaerfe.tex				\
 	chapters/060-diskret/chapter.tex
