@@ -16,15 +16,15 @@ Beugung kurz erklärt
 Was ist der Unterschied zwischen den beiden Approximationen?
 
 \subsection{Herleitung}
-Betrachten wir nun wie in TODO gezeigt eine unendlich dünne zylindrische Lichtquelle, welche sich axial in beide Richtingen unendlich weit erstreckt.
-Allerdings muss die Quelle nicht zwingend als Lichtquelle betrachtet werden, sondern kann als eine generelle elektromagentische Quelle angesehen werden.
+Betrachten wir nun, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtingen unendlich weit erstreckt.
+Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
 Somit kann durch anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
 \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
 =
 \int_{V}\rho\, dV
 \end{equation}
-die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in abhängigkeit des radialen Abstandes $r$ berechnet werden.
+die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
 Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi d\l$ als
 \begin{align}
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi d\l
@@ -36,8 +36,8 @@ Q
 Q
 \end{align}
 schreiben.
-Die Deckflächen konnten aufgrund der infiniten Länge des Zylinders vernachlässigt werden.
-Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E}$ und $\hat{S}$ parallel sind und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
+Die Deckflächen können aufgrund der infiniten Länge des Zylinders vernachlässigt werden.
+Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E}$ und $\hat{S}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
 Nach der elektrischen Feldstärke umgeformt lautet die Gleichung
 \begin{equation}
 E(r)
@@ -46,12 +46,75 @@ E(r)
 =
 C \cdot \frac{1}{r}
 \end{equation}
-, wobei der konstante Anteil als $C$ zusammengefasst werden kann.
-
-Eine planare elektromagentische Welle, siehe TODO, treffe auf eine Blende mit einer unendlich langen und $d$ breiten Öffnung.
-Diese Welle wird anhand dem Prinzip der Beugung abgelenkt.
-Modelliert kann dieses Verhalten durch die, wie zuvor betrachteten, unendlich langen und dünnen elektromagentischen Quellen werden.
-Die Auswirkung dieser Quellen, verteilt über die Öffnungsbreite $d$, kann nun an jedem beliebigen Punkt hinter der Blende durch superponierung der einzelenen Quellen berechnet werden.
+, wobei der konstante Anteil als $C$ zusammengefasst wurde.
+Angenommen eine planare elektromagentische Welle, siehe TODO, treffe nun auf eine Blende mit einer unendlich langen und $d$ breiten Öffnung.
+Wie aus dem Physik Unterricht bereits bekannt ist, wird diese Welle am Spalt gebogen und sie sich hinter der Blende in Abhängigkeit von $d$ mehr oder weniger kreisförmig ausbreitet.
+Zurückzuführen ist dieses Verhalten auf das Prinzip von Huygens TODO.
+Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
+Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $d$ angereiht.
+Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch superponierung der einzelenen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $x_p$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
-Siehe TODO.
+Siehe TODO. Aus der geometrischen Anordnung geht hervor, dass
+\begin{equation}
+R
+=
+\sqrt{x_p^2 + y_p^2}
+\label{opt:equation:R}
+\end{equation}
+und
+\begin{equation}
+r
+=
+\sqrt{x_p^2 + (y_p^2-y)}
+=
+\sqrt{x_p^2 + y_p^2 + y^2 - 2y_py}
+=
+R \sqrt{1 + \frac{y^2}{R^2} - \frac{2y_py}{R^2}}
+\label{opt:equation:r}
+\end{equation}
+betragen.
+Im letzten Schritt konnte Gleichung~\ref{opt:equation:R} eingesetzt und $R$ ausgeklammert werden.
+Wie in TODO ersichtlich sein wird, ist dieser Ausdruck aber noch zu komplex um geschickt weiterrechnen zu können.
+Eine Vereinfachung, die getroffen werden kann, ist, dass der Ausdruck $\frac{y^2}{R^2}$ für grosse $R$ stärker gegen 0 konvergiert als $\frac{2y_py}{R^2}$ und dementsprechend gleich 0 gesetzt werden darf.
+Durch anwenden der Binominalexpansion
+\begin{equation}
+(1 + \varepsilon)^n
+\approx
+1 + n\varepsilon
+\end{equation}
+, für die $\varepsilon \ll 1$ gelten muss, ist es möglich den Wurzelausdruck noch weiter zu vereinfachen.
+Hierbei entspricht
+\begin{equation}
+\varepsilon
+=
+\frac{2y_py}{R^2}
+.
+\end{equation}
+Somit kann die Bedingung für $\varepsilon$ eingehalten werden, da
+\begin{equation}
+2y_py
+\ll
+R^2
+\end{equation}
+und dadurch
+\begin{equation}
+\varepsilon
+=
+\frac{2y_py}{R^2}
+\ll
+1
+\end{equation}
+gegeben ist.
+Gleichung~\ref{opt:equation:r} vereinfacht sich demnach näherungsweise zu
+\begin{equation}
+r
+=
+R \sqrt{1 + \frac{y^2}{R^2} - \frac{2y_py}{R^2}}
+\approx
+R \left(1 - \frac{2y_py}{R^2}\right)^\frac{1}{2}
+\approx
+R \left(1 - \frac{y_py}{R^2}\right)
+.
+\end{equation}
+
