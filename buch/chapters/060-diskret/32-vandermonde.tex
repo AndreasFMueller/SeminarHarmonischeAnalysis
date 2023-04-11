@@ -1,0 +1,89 @@
+%
+% Fourier-Transformation und die Vandermonde-Matrix
+%
+\subsection{Fourier-Transformation und die Vandermonde-Matrix
+\label{buch:diskret:subsection:fourier}}
+Die Fourier-Transformation der Zahlen $f_0,\dots,f_{n-1}$ ist
+gegeben durch die Summe
+\begin{equation}
+\hat{f}_k
+=
+(\mathscr{F}f)_k
+=
+\sum_{x=0}^{n-1} e^{-2\pi i kx/n} f_x
+\label{buch:diskret:vandermonde:eqn:fourier}
+\end{equation}
+und die Umkehrtransformation
+\begin{equation}
+f_x
+=
+\frac{1}{n}
+(\overline{\mathscr{F}}\hat{f})_x
+=
+\frac{1}{n}
+\sum_{k=0}^{n-1} e^{2\pi i kx/n} \hat{f}_k.
+\label{buch:diskret:vandermonde:eqn:ifourier}
+\end{equation}
+Mit $\omega= e^{-2\pi i/n}$ können
+\eqref{buch:diskret:vandermonde:eqn:fourier}
+und
+\eqref{buch:diskret:vandermonde:eqn:ifourier}
+kompakter als
+\[
+\hat{f}_k
+=
+\sum_{x=0}^{n-1} \omega^{kx}f_x
+\qquad\text{und}\qquad
+f_x
+=
+\sum_{k=0}^{n-1} \overline{\omega}^{kx}\hat{f}_k
+\]
+geschrieben werden.
+
+Schreibt man $f_x$ und $\hat{f}_k$ als Spaltenvektoren, können die
+Transformationen $\mathscr{F}$ und $\overline{\mathscr{F}}$ als
+Matrizen geschrieben werden, sie sind
+\bgroup
+\def\v{\vdots}
+\def\o{\overline{\omega}}
+\renewcommand\arraystretch{1.15}
+\begin{align*}
+\mathscr{F}
+&=
+\begin{pmatrix}
+ 1&     1      &       1&       1&\dots &           1   &           1   \\
+ 1&\omega      &\omega^2&\omega^3&\dots &\omega^{n-2}   &\omega^{n-1}   \\
+ 1&\omega^2    &\omega^4&\omega^6&\dots &\omega^{2(n-2)}&\omega^{2(n-1)}\\
+ 1&\omega^3    &\omega^6&\omega^9&\dots &\omega^{3(n-2)}&\omega^{3(n-1)}\\[-2pt]
+\v&\v&\v&\v&\ddots&\v&\v\\
+ 1&\omega^{n-1}&\omega^{2(n-1)}&\omega^{3(n-1)}&\dots &\omega^{(n-1)(n-2)}&\omega^{(n-1)^2}
+\end{pmatrix}
+\\
+\overline{\mathscr{F}}
+&=
+\begin{pmatrix}
+ 1&     1  &       1   &   1       &\dots &           1   &       1   \\
+ 1&\o      &\o^2       &\o^3       &\dots &\o^{n-2}       &\o^{n-1}   \\
+ 1&\o^2    &\o^4       &\o^6       &\dots &\o^{2(n-2)}    &\o^{2(n-1)}\\
+ 1&\o^3    &\o^6       &\o^9       &\dots &\o^{3(n-2)}    &\o^{3(n-1)}\\[-2pt]
+\v&\v&\v&\ddots&\v&\v\\
+ 1&\o^{n-1}&\o^{2(n-1)}&\o^{3(n-1)}&\dots &\o^{(n-1)(n-2)}&\o^{(n-1)^2}
+\end{pmatrix}
+\end{align*}
+\egroup
+Beide Matrizen sind Vandermonde-Matrizen
+\begin{align}
+\mathscr{F}
+&=
+V(1,\omega,\omega^2,\omega^3,\dots,\omega^{n-1})
+\label{buch:diskret:vandermonde:eqn:vanderfourier}
+\\
+\overline{\mathscr{F}}
+&=
+V(1,\overline{\omega},\overline{\omega}^2,\overline{\omega}^3,\dots,\overline{\omega}^{n-1})
+\label{buch:diskret:vandermonde:eqn:vanderifourier}
+\end{align}
+Da die Potenzen $1=\omega^0,\omega,\omega^2,\dots,\omega^{n-1}$ alle
+verschieden sind, folgt nach
+Satz~\ref{buch:diskret:vandermonde:satz:vandermonde},
+dass $\mathscr{F}$ und $\overline{\mathscr{F}}$ invertierbar sind.

@@ -1,0 +1,155 @@
+%
+% f30.tex -- F_30 Faktorisierung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\w{4.5}
+\def\h{0.6}
+\def\s{0.25}
+\def\punkt#1#2{({(#1)*\w},{-(#2)*\h})}
+\def\fuenf#1#2#3{
+	\foreach \y in {0,...,5}{
+		\draw \punkt{1}{#3+\y} -- \punkt{0.5}{#2};
+		\draw \punkt{0.5}{#2} -- \punkt{0}{#1+5*\y};
+	}
+	\fill[color=white]
+		\punkt{0.5-0.25/\w}{#2-0.25/\h}
+		rectangle
+		\punkt{0.5+0.25/\w}{#2+0.25/\h};
+	\draw
+		\punkt{0.5-0.25/\w}{#2-0.25/\h}
+		rectangle
+		\punkt{0.5+0.25/\w}{#2+0.25/\h};
+	\node at \punkt{0.5}{#2} {$\mathscr{F}_5$};
+}
+\def\t{0.8}
+
+\def\faktor#1#2#3{
+	\fill[color=gray!50] \punkt{\t+(1-\t)*0.5}{\t*(#2)+(1-\t)*(#1)} circle[radius=0.2];
+	\draw \punkt{\t+(1-\t)*0.5}{\t*(#2)+(1-\t)*(#1)} circle[radius=0.2];
+	\node[color=white] at \punkt{\t+(1-\t)*0.5}{\t*(#2)+(1-\t)*(#1)} {$\scriptstyle #3\mathstrut$};
+}
+
+\def\drei#1#2#3#4{
+	\foreach \y in {0,1,2}{
+		\draw \punkt{2}{#3+5*\y+#4*10} -- \punkt{1.5}{#2};
+		\draw \punkt{1.5}{#2} -- \punkt{1}{#1+10*\y};
+	}
+	\fill[color=white] \punkt{1.5-0.25/\w}{#2-0.25/\h} rectangle \punkt{1.5+0.25/\w}{#2+0.25/\h};
+	\draw \punkt{1.5-0.25/\w}{#2-0.25/\h} rectangle \punkt{1.5+0.25/\w}{#2+0.25/\h};
+	\node at \punkt{1.5}{#2} {$\mathscr{F}_3\mathstrut$};
+}
+
+\def\faktorB#1#2#3#4{
+	\fill[color=gray!50] \punkt{(#3)*2+(1-(#3))*1.5}{(#3)*(#2)+(1-(#3))*(#1)} circle[radius=0.2];
+	\draw \punkt{(#3)*2+(1-(#3))*1.5}{(#3)*(#2)+(1-(#3))*(#1)} circle[radius=0.2];
+	\node[color=white] at \punkt{(#3)*2+(1-(#3))*1.5}{(#3)*(#2)+(1-(#3))*(#1)} {$\scriptstyle #4\mathstrut$};
+}
+
+\def\b{0.15}
+\fill[color=red!10]       \punkt{\b/\w}{-0.7/\h} rectangle \punkt{1-\b/\w}{29+\b/\h};
+\fill[color=darkgreen!10] \punkt{1+\b/\w}{-0.7/\h} rectangle \punkt{2-\b/\w}{29+\b/\h};
+\fill[color=blue!10]      \punkt{2+\b/\w}{-0.7/\h} rectangle \punkt{3-\b/\w}{29+\b/\h};
+
+\node at \punkt{0.5}{-0.30} {\smash{$A(5,6,\omega)\mathstrut$}};
+\node at \punkt{1.5}{-0.30} {\smash{$I_5\otimes A(3,2,\omega^5)\mathstrut$}};
+\node at \punkt{2.5}{-0.30} {\smash{$I_5\otimes F(3,2,\omega^5)\mathstrut$}};
+
+\node at \punkt{3}{-0.2} [above] {$f\mathstrut$};
+%\node at \punkt{2}{-0.2} [above] {$f\mathstrut$};
+%\node at \punkt{1}{-0.2} [above] {$f\mathstrut$};
+\node at \punkt{0}{-0.2} [above] {$\hat{f}\mathstrut$};
+
+\foreach \x in {0,1,2,3}{
+	\draw \punkt{\x}{-\b/\h} -- \punkt{\x}{29+\b/\h};
+	\foreach \y in {0,...,29}{
+		\fill \punkt{\x}{\y} circle[radius=0.05];
+	}
+}
+
+\foreach \y in {0,...,14}{
+	\draw[->] \punkt{3}{\y+15} -- \punkt{2}{\y};
+	\draw[->] \punkt{3}{\y} -- \punkt{2}{\y+15};
+}
+
+\foreach \y in {0,...,14}{
+	\fill[color=white] \punkt{2.5-\s/\w}{7.5+\y-\s/\h}
+		rectangle \punkt{2.5+\s/\w}{7.5+\y+\s/\h};
+	\draw \punkt{2.5-\s/\w}{7.5+\y-\s/\h}
+		rectangle \punkt{2.5+\s/\w}{7.5+\y+\s/\h};
+	\node at \punkt{2.5}{7.5+\y} {$\mathscr{F}_2$};
+}
+
+\foreach \u in {0,...,4}{
+	\fuenf{\u}{2.5+6*\u}{6*\u}
+}
+\faktor{8.5}{7}{\omega}
+\faktor{8.5}{8}{\omega^2}
+\faktor{8.5}{9}{\omega^3}
+\faktor{8.5}{10}{\omega^4}
+\faktor{8.5}{11}{\omega^5}
+
+\faktor{14.5}{13}{\omega^2}
+\faktor{14.5}{14}{\omega^4}
+\faktor{14.5}{15}{\omega^6}
+\faktor{14.5}{16}{\omega^8}
+\faktor{14.5}{17}{\omega^{10}}
+
+\faktor{20.5}{19}{\omega^3}
+\faktor{20.5}{20}{\omega^6}
+\faktor{20.5}{21}{\omega^9}
+\faktor{20.5}{22}{\omega^{12}}
+\faktor{20.5}{23}{\omega^{15}}
+
+\faktor{26.5}{25}{\omega^4}
+\faktor{26.5}{26}{\omega^8}
+\faktor{26.5}{27}{\omega^{12}}
+\faktor{26.5}{28}{\omega^{16}}
+\faktor{26.5}{29}{\omega^{20}}
+
+\foreach \u in {0,...,4}{
+	\drei{\u}{1.0+3*\u}{\u}{0}
+}
+\foreach \u in {5,...,9}{
+	\drei{\u}{1.0+3*\u}{\u}{1}
+}
+
+\faktorB{16}{20}{0.5}{\omega^5}
+\faktorB{16}{25}{0.8}{\omega^{10}}
+
+\faktorB{19}{21}{0.5}{\omega^{5}}
+\faktorB{19}{26}{0.8}{\omega^{10}}
+
+\faktorB{22}{22}{0.5}{\omega^{5}}
+\faktorB{22}{27}{0.8}{\omega^{10}}
+
+\faktorB{25}{23}{0.5}{\omega^{5}}
+\faktorB{25}{28}{0.8}{\omega^{10}}
+
+\faktorB{28}{24}{0.5}{\omega^{5}}
+\faktorB{28}{29}{0.8}{\omega^{10}}
+
+\foreach \x in {0,3}{
+	\foreach \y in {0,...,29}{
+		\fill[color=white] \punkt{\x}{\y} circle[radius=0.12];
+		\draw \punkt{\x}{\y} circle[radius=0.12];
+		\node at \punkt{\x}{\y+0.012/\h} {$\scriptscriptstyle \y\mathstrut$};
+	}
+}
+
+\end{tikzpicture}
+\end{document}
+

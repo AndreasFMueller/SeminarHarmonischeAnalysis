@@ -1,0 +1,51 @@
+%
+% 26-faktorisierung.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+
+%
+% Faktorisierung für n = pq
+%
+\subsection{Allgemeine Faktorisierung für $n=pq$}
+Durch Nachrechnen kann man jetzt nachrechnen, dass
+\[
+\mathscr{F}_n = A(p,q,\omega) F(p,q,\omega)
+\qquad\text{mit $\omega^{pq}=1$}.
+\]
+Mit den früher gefundenen Resultaten über die beiden Faktoren
+$A(p,q,\omega)$ und $F(p,q,\omega)$ ist damit der folgende
+Satz bewiesen.
+
+\begin{satz}
+\label{buch:diskret:vandermonde:satz:fourierfaktorisierung}
+Ist $n=pq$ und $\omega=\omega_n=e^{-2\pi i/n}$,
+dann kann die Fourier-Transformation $\mathscr{F}_n$
+faktorisiert werden in
+\[
+\mathscr{F}_n
+=
+A(p,q,\omega)
+(I_p\otimes \mathscr{F}_q).
+\]
+Ebenso gilt
+\[
+\overline{\mathscr{F}}_n
+=
+A(p,q,\overline{\omega})
+(I_p\otimes \overline{\mathscr{F}}_q).
+\]
+Die inverse Fourier-Transformation wird faktorisiert in
+\[
+\mathscr{F}_n^{-1}
+=
+\frac{1}{n}\overline{\mathscr{F}}_n
+=
+\frac{1}{p} A(p,q,\overline{\omega})
+\biggl(I_p \otimes \frac1q\overline{\mathscr{F}}_q\biggr)
+=
+\frac{1}{p} A(p,q,\overline{\omega})
+(I_p\otimes \mathscr{F}_q^{-1}).
+\]
+\end{satz}
+
