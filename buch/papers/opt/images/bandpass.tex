@@ -1,0 +1,28 @@
+%
+% bandpass.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+\def\skala{0.25}
+
+\begin{document}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+    \draw[draw=none] circle (7); %Make drawing symmetric
+
+    \draw[draw=none, fill = lightgray] (-4.2,-4.2) rectangle (4.2,4.2) (0,0) circle (2);
+    \draw[draw] circle (2);
+    \draw[draw, fill = lightgray] circle (1);
+    
+    % x and y axis
+    \draw[->, dashed] (-5,0)--(5,0) node[right]{$\omega_x$};
+    \draw[->, dashed] (0,-5)--(0,5) node[right]{$\omega_y$};
+
+    % \node[label={45:{$\omega_H$}}, circle, fill, inner sep=1pt] at (3, 0) {};
+    % \node[label={-45:{$\omega_L$}}, circle, fill, inner sep=1pt] at (1, 0) {};
+
+\end{tikzpicture}
+\end{document}
