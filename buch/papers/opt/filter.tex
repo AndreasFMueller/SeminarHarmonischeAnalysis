@@ -10,10 +10,15 @@
 \label{opt:section:filter}}
 \rhead{Filterdesign}
 
-\subsection{Tiefpass, Hochpass, Bandpass, Bandsperre}
-Visuelle Beispiele, wie ein solches Filter aussieht.
+Auch bei der optischen Fouriertransformation kann das Signal anschliessend in der Fourierebene bearbeitet werden.
+Im optischen entspricht dies einer Blende, welche zwischen den beiden Linsen platziert wird. 
+(\opttodo{Siehe 4f Aufbau})
+Typische Filter in der Elektrotechnik sind Tiefpass, Hochpass, Bandpass und Bandsperre.
+Deren Realisierung in der Optik ist in Abbildung \ref{opt:fig:filterarten} ersichtlich.
 
-\subsection{Realisierung in der Optik}
+Im Nullpunkt der Filterebene sind die tiefen Frequenzen (DC-Anteil) und entlang der Achsen die höheren Frequenzen zu erkennen.
+Somit entspricht eine lichtundurchlässige Fläche mit einem Loch in der Mitte einem Tiefpass und eine lichtundurchlässige Scheibe einem Hochpass.
+Nach diesem Prinzip lassen sich auch die anderen typischen Filter realisieren.
 
 \subsection{Vergleich mit Filter 1. / 2. Ordnung}
 
@@ -21,3 +26,31 @@ Visuelle Beispiele, wie ein solches Filter aussieht.
 
 \subsection{Wo ist welche Frequenz $Hz <=> mm$ auf der Fourierebene}
 Evt Formel in Abhängigkeit von der Wellenlänge, Distanz und Brennweite
+
+% todo: Move to \begin{subfigure} with the package subcaption
+\begin{figure}
+    \centering
+
+    \subfigure{
+        \includegraphics[width=0.23\linewidth]{papers/opt/images/tiefpass.pdf}
+        % \caption{Tiefpass}
+    }
+    \hfill
+    \subfigure{
+        \includegraphics[width=0.23\linewidth]{papers/opt/images/hochpass.pdf}
+        % \caption{Hochpass}
+    }
+    \hfill
+    \subfigure{
+        \includegraphics[width=0.23\linewidth]{papers/opt/images/bandpass.pdf}
+        % \caption{Bandpass}
+    }
+    \hfill
+    \subfigure{
+        \includegraphics[width=0.23\linewidth]{papers/opt/images/bandsperre.pdf}
+        % \caption{Bandsperre}
+    }
+    \caption{Realisierung typischer Filter als optische Systeme;
+        wobei grau lichtundurchlässig und weiss lichtdurchlässig bedeutet.}
+    \label{opt:fig:filterarten}
+\end{figure}
