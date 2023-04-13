@@ -1,0 +1,51 @@
+%
+% traeger.tex -- Traeger als Lokalisierungsmass
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!20] (6,0) rectangle (11,6);
+
+\draw[color=red] (0,6) --(13,6);
+\node[color=red] at (3,6) [above] {$\|u\|_\infty$};
+
+\draw[->] (-0.1,0) -- (13.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+
+\node at (8,0) [below] {$T=\operatorname{supp}(u)$};
+
+\draw[color=blue,line width=1.4pt] (6,0) -- (6,6) -- (11,6) -- (11,0);
+
+\fill[color=darkgreen!40,opacity=0.5] 
+	plot[domain=6:8,samples=100] ({\x},{3*(1-cos((\x-6)*(360/4)))})
+	--
+	plot[domain=8:11,samples=100] ({\x},{3*(1-cos((\x-5)*(360/6)))})
+	-- cycle;
+
+\draw[color=darkgreen,line width=1.4pt]
+	(0,0)
+	-- plot[domain=6:8,samples=100] ({\x},{3*(1-cos((\x-6)*(360/4)))})
+	-- plot[domain=8:11,samples=100] ({\x},{3*(1-cos((\x-5)*(360/6)))})
+	-- (13,0);
+
+\node[color=darkgreen] at (8,2) {$\|u\|_1$};
+
+
+\node[color=blue] at (6,3) [above,rotate=90] {$\|u\|_\infty\cdot\chi_T$};
+
+\node[color=blue] at (11,6) [below left] {$\|u\|_\infty\cdot |T|$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -311,7 +311,7 @@ $A$ Betrag $|a_{ik}|\le 1$ haben und wenn
 \|A^*Au\|_\infty \ge k\|u\|_\infty
 \label{buch:diskret:unschaerfe:eqn:khadamard}
 \end{equation}
-gilt für alle $n$-dimensionalen Vektoren.
+gilt für alle $n$-dimensionalen Vektoren $u\in \mathbb{C}^n$.
 \end{definition}
 
 Die Bedingung 
@@ -368,6 +368,19 @@ eines Vektors $f\in\mathbb{C}^n$ ist etwas aufwendig zu berechnen.
 Ein einfacheres Mass ist die Anzahl der von $0$ verschiedenen
 Funktionswerte.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/060-diskret/images/traeger.pdf}
+\caption{Der Träger $\operatorname{supp}u$ einer Funktion $u$ kann
+als Lokalisierungsmass verwendet werden.
+Jede Funktion $u$ (grün) mit Träger $T$ kann durch $\|u\|_\infty\cdot\chi_T$
+abgeschätzt werden (blaue Funktion), so dass $\|u\|_1\le \|u\|_\infty\cdot|T|$
+gilt.
+Zwischen dem allgemeinen Lokalisierungsmass $H(u)=\|u\|_1/\|u\|_\infty$
+und der Grösse des Trägers besteht also ein direkter Zusammenhang.
+\label{buch:diskret:unschaerfe:fig:traeger}}
+\end{figure}
+
 \begin{definition}
 \label{buch:diskret:unschaerfe:def:support}
 Der Träger $\operatorname{supp}f$ einer Funktion $f\colon G\to\mathbb{C}$ ist
@@ -387,7 +400,7 @@ Funktion $f$ lokalisiert.
 
 \begin{satz}[Unschärferelation für Träger]
 \label{buch:diskret:unschaerfe:satz:supportsize}
-Ist $A\in M_{m\times n}$ eine $k$-Hadamard-Matrix, dann gilt
+Ist $A\in M_{n\times m}$ eine $k$-Hadamard-Matrix, dann gilt
 \begin{equation}
 |\operatorname{supp}u|
 \cdot
@@ -399,11 +412,52 @@ für jeden nichtverschwindenden Vektor $u\in\mathbb{C}^m$.
 \end{satz}
 
 \begin{proof}[Beweis]
+Sei $u\ne 0$ und sei $\chi_{\operatorname{supp}u}$ die charakteristische
+Funktion des Trägers $\operatorname{supp}u$, also
+\[
+\chi_{\operatorname{supp}u}(x)
+=
+\begin{cases}
+1&\qquad\text{falls $x\in\operatorname{supp}(f)$ oder $f(x)\ne 0$}\\
+0&\qquad\text{sonst}
+\end{cases}
+\]
+Dann ist
+\[
+|u(x)|
+\le
+\|f\|_\infty\cdot \chi_{\operatorname{supp}u}(x)
+\quad
+\text{für alle $x$.}
+\]
+Die Summe über den Definitionsbereich ergibt
+\[
+\|f\|_1
+\le
+\|f\|_\infty \|\chi_{\operatorname{supp}u}\|_1
+=
+\|f\|_\infty |\operatorname{supp}u|
+\quad\Rightarrow\quad
+\frac{\|u\|_1}{\|u\|_\infty} \le |\operatorname{supp}u|.
+\]
+Aus dem allgemeinen Unschärfeprinzip folgt
+\[
+k
+\le
+\frac{\|u\|_1}{\|u\|_\infty}
+\cdot
+\frac{\|Au\|_1}{\|Au\|_\infty}
+\le
+|\operatorname{supp}u|
+\cdot
+|\operatorname{supp}Au|.
+\]
+Dies beweist den Satz.
 \end{proof}
 
 \begin{satz}[Donoho-Stark]
 \label{buch:diskret:unschaerfe:satz:donoho-stark}
-Für $f\colon G\to\mathbb{C}\setminus\{0\}$ gilt
+Für $f\colon G\to\mathbb{C}$ mit $f\ne 0$ gilt
 \[
 |\operatorname{supp}f|
 \cdot
@@ -422,7 +476,173 @@ $n=|G|$-Hadamard ist.
 %
 % $\varepsilon$-Träger
 %
-\subsection{$\varepsilon$-Träger}
+\subsection{$(\varepsilon,p)$-Träger}
+\begin{figure}
+\centering
+\includegraphics{chapters/060-diskret/images/etraeger.pdf}
+\caption{$(\varepsilon,1)$-Träger als Mass für die Lokalsierung
+einer Funktion.
+Im Bereich der Menge $T$ ist die $L^1$-Norm des so gross, dass
+die $L^1$-Norm auf dem Komplement von $L^1$ nur das $\varepsilon$-fache
+der $L^1$-Norm $\|u\|_1$ ist.
+\label{buch:diskret:unschaerfe:fig:etraeger}}
+\end{figure}%
+Rauschen sorgt dafür, dass man nicht erwarten kann dass ein
+Signalvektor überhaupt Nullstellen hat.
+Der Träger einer Funktionen ist also aus praktischen Grünen fast immer
+der ganze Definitionsbereich.
+Eine lokalisierte Funktion zeichnet sich also nicht mehr dadurch aus,
+dass sie nur auf einer kleinen Menge von Punkten des Definitionsbereichs
+grösser als eine gewählte untere Schranke $\varepsilon$ ist.
+Dies führt auf die folgende Definition.
+
+\begin{definition}
+Man sagt die Menge $T$ ist ein $(p,\varepsilon)$-Träger eines Vektors
+$u\in\mathbb{C}^n$, wenn 
+\[
+\| u\cdot (1-\chi_T)  \|_p \le \varepsilon \|u\|_p.
+\]
+\end{definition}
+
+Da die Funktion $1-\chi_T$ in der Menge $T$ verschwindet und ausserhalb
+den Wert $1$ hat, ist
+$u\cdot (1-\chi_T)$ eine Funktion, in der alle Funktionswerte von
+Argumenten in $T$ zu $0$ gemacht worden sind.
+Die Norm $\| u\cdot (1-\chi_T) \|_p$ bewertet also nur den Anteil der
+Funktion ausserhalb von $T$.
+Die Bedingung an einen $(p,\varepsilon)$-Träger ist also die Forderung,
+dass die Norm des Teils der Funktion ausserhalb $T$ höchstens das
+$\varepsilon$-fache der Norm der ganzen Funktion ist.
+Diese Situation ist in der Abbildung~\ref{buch:diskret:unschaerfe:fig:etraeger}
+veranschaulicht.
+
+\begin{definition}
+Die $(p,\varepsilon)$-Trägergrösse ist
+\[
+|\operatorname{supp}_\varepsilon^p u|
+=
+\min \{ |T|\mid \text{$T$ ist eine $(p,\varepsilon)$-Träger von $u$}\}.
+\]
+\end{definition}
+
+Da der Definitionsbereich endlich ist, gibt es auch nur endlich viele
+Teilmengen $T$, die $(p,\varepsilon)$-Träger sein könnten.
+Die Definition verlangt nicht, dass es nur einen einzigen kleinsten
+$(p,\varepsilon)$-Träger gibt, es kann durchaus auch mehrere geben.
+Trotzdem werden wir die Notation $\operatorname{supp}_\varepsilon^p u$
+für einen dieser kleinsten $(p,\varepsilon)$-Träger zulassen.
+
+In Anlehnung an den Satz~\ref{buch:diskret:unschaerfe:satz:donoho-stark}
+möchten wir ein Unschärfe-Resultat für das Unschärfe-Mass
+$\operatorname{supp}_\varepsilon^1 u|$ herleiten.
+Dazu ist es nötig, einen Zusammenhang zwischen
+$|\operatorname{supp}_\varepsilon^1 u|$ und $H(u) = \|u\|_1/\|u\|_\infty$ 
+herzustellen.
+Sei also $T$ ein $(\varepsilon,1)$-Träger von $u$.
+Dann ist
+\[
+u = u\cdot \chi_T + u\cdot (1-\chi_T).
+\]
+Die $L^1$-Norm ist
+\[
+\|u\|_1
+=
+\|u\cdot \chi_T\|_1
++
+\|u\cdot (1-\chi_T)\|_1
+\le
+\|u\cdot \chi_T\|_1
++
+\varepsilon \|u\|_1
+\]
+und nach Subtraktion des zweiten Terms auf der rechten Seite
+\[
+(1-\varepsilon)\|u\|_1 \le \|u\cdot\chi_T\|_1.
+\]
+Die rechte Seite kann wie im Beweis von
+Satz~\ref{buch:diskret:unschaerfe:satz:donoho-stark}
+durch die Supremum-Norm abschätzen und ist
+\[
+\|u\cdot \chi_T\|_1 \le |T| \cdot \|u\|_\infty.
+\]
+Da dies für alle $(\varepsilon,1)$-Träger gilt, folgt
+\begin{equation}
+(1-\varepsilon) \|u\|_1
+\le
+|\operatorname{supp}_\varepsilon^1 u|\cdot \|u\|_\infty
+\qquad
+\Rightarrow
+\qquad
+\frac{\|u\|_1}{\|u\|_\infty}
+\le
+\frac{|\operatorname{supp}_\varepsilon^1 u|}{1-\varepsilon}.
+\label{buch:diskret:unschaerfe:eqn:supp1}
+\end{equation}
+Damit folgt jetzt aus dem allgemeinen Unschärfeprinzip der folgende
+Satz.
+
+\begin{satz}
+Ist $A$ eine $k$-Hadamard-Matrix und $\varepsilon,\delta\in [0,1)$,
+dann gilt
+\[
+|\operatorname{supp}_\varepsilon^1 u|
+\cdot
+|\operatorname{supp}_\delta^1 Au|
+\ge 
+k(1-\varepsilon-\delta).
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Das allgemeine Unschärfeprinzip hat zur Folge, dass
+\[
+k
+\le
+\frac{\|u\|_1}{\|u\|_\infty}
+\cdot
+\frac{\|Au\|_1}{\|Au\|_\infty}.
+\]
+Aus der Abschätzung~\eqref{buch:diskret:unschaerfe:eqn:supp1}
+folgt dann
+\[
+k
+\le
+\frac{ |\operatorname{supp}_\varepsilon^1 u| }{ 1-\varepsilon }
+\cdot
+\frac{ |\operatorname{supp}_\delta^1 Au| }{ 1-\delta },
+\]
+und nach Multiplikation mit $(1-\varepsilon)(1-\delta)$ erhält man
+\[
+|\operatorname{supp}_\varepsilon^1 u|
+\cdot
+|\operatorname{supp}_\delta^1 Au|
+\ge
+k(1-\varepsilon)(1-\delta)
+=
+k(1-\varepsilon-\delta+\varepsilon\delta)
+\ge
+k(1-\varepsilon-\delta).
+\]
+Damit ist der Satz bewiesen.
+\end{proof}
+
+Für die Fourier-Transformation $\mathscr{F}_n$ ergibt sich damit 
+der approximative Satz von Donoho-Stark.
+
+\begin{satz}[Donoho-Stark]
+Sind $\varepsilon,\delta\in[0,1)$, dann gilt
+\[
+|\operatorname{supp}_\varepsilon^1 f|
+\cdot
+|\operatorname{supp}_\delta^1 \mathscr{F}_nf|
+=
+|\operatorname{supp}_\varepsilon^1 f|
+\cdot
+|\operatorname{supp}_\delta^1 \hat{f}|
+\ge
+k(1-\varepsilon-\delta)
+\]
+für alle Funktionen $f\in\mathbb{C}^n$.
+\end{satz}
 
 
-	
