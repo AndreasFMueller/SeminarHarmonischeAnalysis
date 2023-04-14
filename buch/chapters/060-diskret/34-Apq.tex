@@ -11,12 +11,20 @@
 Die im vorangegangenen Abschnitt gefundene Faktorisierung von $\mathscr{F}$
 für $n=6=2\cdot 3$ lässt sich auf ein beliebiges Produkt $n=p\cdot q$ 
 verallgemeinern.
-Durch wiederholte Anwendung der Faktorisierung lässt sich daraus eine
-Zerlegung der Matrix $\mathscr{F}$ in Faktoren finden, die im Wesentlichen
-wieder Fourier-Transformationen sind, jedoch mit Primzahl-Dimension.
-Sei dazu wieder $\omega^n=\omega^{pq}=1$.
+Durch wiederholte Anwendung der Faktorisierung wird sich daraus später
+in Abschnitt~\ref{buch:diskret:section:schnell} eine Faktorisierung
+in Matrizen mit sehr wenigen Einträgen konstruieren lassen wird,
+die eine schnelle Berechnung der Fouriertransformation ermöglichen
+wird.
 
-Der erste Faktor ist die Matrix
+%
+% Definition des Faktors
+%
+\subsubsection{Definition des Faktors $A(p,q,\omega)$}
+Zur Konstruktion der Faktorisierung von $\mathscr{F}_n$ sei wieder
+$\omega$ eine primitive $n$-te Einheitswurzel, also
+$\omega^n=\omega^{pq}=1$.
+Der erste Faktor der Faktorisierung ist die Matrix
 \begin{equation}
 \def\dx{2}
 \def\dy{0.5}
@@ -82,6 +90,12 @@ M_{1\times p}(\mathbb{R})
 \label{buch:diskret:vandermonde:eqn:Apq}
 \end{equation}
 von $0$ verschieden.
+
+%
+% Die Determinante von $A(p,q,\omega)$
+%
+\subsubsection{Die Determinante von $A(p,q,\omega)$}
+Die Determinante von $A(p,q),\omega)$ kann explizit berechnet werden.
 
 %
 % Hauptsatz über die Matrix A(p,q,\omega)
@@ -179,6 +193,11 @@ Um die Determinante zu bestimmen, müssen nun also der Vorzeichenfaktor
 $\sigma(p,q)$ und die $p$ Werte der $q\times q$-Determinanten bestimmt
 werden, was in den folgenden Hilfssätzen geschehen soll.
 \end{proof}
+
+%
+% Der Vorzeichenfaktor
+%
+\subsubsection{Der Vorzeichenfaktor $\sigma(p,q)$}
 
 %
 % Satz über den Vorzeichenfaktor
@@ -315,6 +334,13 @@ wie behauptet.
 \end{proof}
 
 %
+% Der Wert der Blockdeterminanten
+%
+\subsubsection{Der Wert der Blockdeterminanten}
+Zur Berechnung der Determinanten müssen jetzt nur noch die Determinanten
+der einzelnen Blöcke bestimmt werden.
+
+%
 % Satz über den Wert der Blockdeterminante
 %
 \begin{satz}
@@ -437,6 +463,13 @@ k\frac{p(p-1)}2.
 \end{align*}
 Damit folgt die Behauptung.
 \end{proof}
+
+%
+% Das Produkt
+%
+\subsubsection{Das Produkt}
+Das Produkt der Faktoren $\pi_i$ kann jetzt ebenfalls explizit berechnet
+werden.
 
 %
 % Satz über den Wert des Produktes

@@ -7,8 +7,8 @@
 %
 % Der Faktor F(p,q,\omega)
 %
-\subsection{Der Faktor $F(p,q,\omega)$}
-Der zweite Faktor ist die Matrix
+\subsection{Der Faktor $F(q,p,\omega)$}
+Der zweite Faktor der Faktorisierung von $\mathscr{F}_{pq}$ ist die Matrix
 \begin{equation}
 \def\h{2}
 \def\punkt#1#2{({(#2)*\h},{-(#1)*\h})}
@@ -63,41 +63,10 @@ Statt der Potenzen von $\omega$ findet man die Potenzen von $\omega^p$.
 Da aber $(\omega^p)^q = \omega^n=1$, ist das genau die erwartete Basis
 in der Fourier-Matrix $\mathscr{F}_q$.
 
-%Ist $A\in M_{p\times p}$ und $B_{q\times q}$, dann bezeichnen wir mit
-%\[
-%A\otimes B
-%=
-%\def\h{1}
-%\def\punkt#1#2{({(#2)*\h},{-(#1)*\h})}
-%\left(\raisebox{-2.5cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!20] \punkt{0}{0} rectangle \punkt{5}{5};
-%\foreach \x in {1,2,3,4}{
-%	\draw[color=gray] \punkt{\x}{0} -- \punkt{\x}{5};
-%	\draw[color=gray] \punkt{0}{\x} -- \punkt{5}{\x};
-%}
-%\node at \punkt{0.5}{0.5} {$A\cdot b_{11}$};
-%	\node at \punkt{0.5}{1.5} {$A\cdot b_{12}$};
-%		\node at \punkt{0.5}{2.5} {$A\cdot b_{13}$};
-%			\node at \punkt{0.5}{4.5} {$A\cdot b_{1q}$};
-%\node at \punkt{1.5}{0.5} {$A\cdot b_{21}$};
-%	\node at \punkt{1.5}{1.5} {$A\cdot b_{22}$};
-%		\node at \punkt{1.5}{2.5} {$A\cdot b_{23}$};
-%			\node at \punkt{1.5}{4.5} {$A\cdot b_{2q}$};
-%\node at \punkt{2.5}{0.5} {$A\cdot b_{31}$};
-%	\node at \punkt{2.5}{1.5} {$A\cdot b_{32}$};
-%		\node at \punkt{2.5}{2.5} {$A\cdot b_{33}$};
-%			\node at \punkt{2.5}{4.5} {$A\cdot b_{3q}$};
-%\node at \punkt{4.5}{0.5} {$A\cdot b_{q1}$};
-%	\node at \punkt{4.5}{1.5} {$A\cdot b_{q2}$};
-%		\node at \punkt{4.5}{2.5} {$A\cdot b_{q3}$};
-%			\node at \punkt{4.5}{4.5} {$A\cdot b_{qq}$};
-%\end{tikzpicture}}\right)
-%\]
-%das Kronecker-Produkt der beiden Matrizen $A$ und $B$.
 Mit der Notation des Kronecker-Produktes von Matrizen aus
 Abschnitt~\ref{buch:diskret:section:tensor} ist der zweite Faktor
 \[
-F(q,p,\omega^p)
+F(q,p,\omega)
 =
 \mathscr{F}_q
 \otimes

@@ -10,7 +10,7 @@
 \subsection{Allgemeine Faktorisierung für $n=pq$}
 Durch Nachrechnen kann man jetzt nachrechnen, dass
 \[
-\mathscr{F}_n = A(p,q,\omega) F(p,q,\omega)
+\mathscr{F}_n = A(p,q,\omega) F(q,p,\omega)
 \qquad\text{mit $\omega^{pq}=1$}.
 \]
 Mit den früher gefundenen Resultaten über die beiden Faktoren
@@ -26,14 +26,22 @@ faktorisiert werden in
 \mathscr{F}_n
 =
 A(p,q,\omega)
-(I_p\otimes \mathscr{F}_q).
+(
+\mathscr{F}_q
+\otimes
+I_p
+).
 \]
 Ebenso gilt
 \[
 \overline{\mathscr{F}}_n
 =
 A(p,q,\overline{\omega})
-(I_p\otimes \overline{\mathscr{F}}_q).
+(
+\overline{\mathscr{F}}_q
+\otimes
+I_p
+).
 \]
 Die inverse Fourier-Transformation wird faktorisiert in
 \[
@@ -42,10 +50,14 @@ Die inverse Fourier-Transformation wird faktorisiert in
 \frac{1}{n}\overline{\mathscr{F}}_n
 =
 \frac{1}{p} A(p,q,\overline{\omega})
-\biggl(I_p \otimes \frac1q\overline{\mathscr{F}}_q\biggr)
+\biggl(
+\frac1q\overline{\mathscr{F}}_q
+\otimes
+I_p
+\biggr)
 =
 \frac{1}{p} A(p,q,\overline{\omega})
-(I_p\otimes \mathscr{F}_q^{-1}).
+(\mathscr{F}_q^{-1} \otimes I_p).
 \]
 \end{satz}
 
