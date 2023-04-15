@@ -25,7 +25,7 @@ Beugung kurz erklärt
 Was ist der Unterschied zwischen den beiden Approximationen?
 
 \subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das geleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsinteral hergeleitet werden kann.
+In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
 
 Betrachten wir zuerst, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtungen unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
@@ -73,7 +73,7 @@ Wie aus dem Physik Unterricht bereits bekannt ist, wird diese Welle am Spalt geb
 Zurückzuführen ist dieses Verhalten auf das Prinzip von Huygens TODO.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
-Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch superponierung der einzelenen Quelleneinflüsse berechnet werden.
+Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
 Siehe TODO.
@@ -96,7 +96,7 @@ E(r) \cdot \zeta(r, t) \cdot dy
 \frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
 \end{equation}
 beschreiben.
-Werden die Einflüsse der Linienquellen über den Spalt aufintegriert ergibt sich
+Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
 \begin{equation}
 E(y_p, t)
 =
@@ -106,15 +106,15 @@ C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r}
 .
 \end{equation}
 
-Soll nun aber anstelle eines einzelnen Spaltes mehere solcher Spalte in beliebigen Abständen betrachtet werden,
-kann dieses Integral mit Hilfe der Blendenfunkion
+Soll nun aber anstelle eines einzelnen Spaltes mehrere solcher Spalten in beliebigen Abständen betrachtet werden,
+kann dieses Integral mit Hilfe der Blendenfunktion
 \begin{equation}
 f(y)
 \in
 (0, 1)
 \end{equation}
 dargestellt werden.
-Zu beachten sei, dass $f(y)$ nicht nur die Werte 0 und 1 sondern auch jegliche Werte dazwischen annehemen kann.
+Zu beachten sei, dass $f(y)$ nicht nur die Werte 0 und 1 sondern auch jegliche Werte dazwischen annehmen kann.
 Dies würde einer teilweise transparenten Blende entsprechen.
 Somit folgt als allgemeinste Form
 \begin{align}
@@ -129,7 +129,7 @@ Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
 \subsubsection{Fressnel-Approximation}
-In nährer Umgebung um die Blende wird hierfür die Fressnel-Approximation angewendet.
+In näherer Umgebung um die Blende wird hierfür die Fressnel-Approximation angewendet.
 Für weitere Schritte soll die Bedingung
 \begin{equation}
 y, y_p
@@ -138,7 +138,7 @@ l
 \label{opt:equation:condition_fressnel}
 \end{equation}
 gelten.
-Durch anwenden der Binominalexpansion
+Durch Anwenden der Binominalexpansion
 \begin{equation}
 (1 + \varepsilon)^n
 \approx
@@ -174,7 +174,7 @@ l - \frac{(y_p-y)^2}{2l}
 .
 \label{opt:equation:distance_r_fressnel}
 \end{equation}
-Durch ausklammern von Konstanten und einsetzen der Gleichung~\ref{opt:equation:distance_r_fressnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
+Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:distance_r_fressnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
 \begin{align}
 E(y_p, t)
 &=
@@ -190,8 +190,8 @@ C\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl
 C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
 \end{align}
-Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürtzt geschrieben werden.
-Desweiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
+Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
+Des Weiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
 Zulässig ist dies nur, weil $(y_p - y)^2 \ll l$ erfüllt ist.
 Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, weil der Faktor der Wellenzahl hinzumultipliziert wird und der Term $k \frac{(y_p-y)^2}{2l}$ somit nicht vernachlässigbar klein wird.
 Der Zeitpunkt der Auswertung sei nicht von Interesse, da dieser lediglich den Momentanwert der Welle beeinflusst.
@@ -209,7 +209,7 @@ C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cd
 .
 \label{opt:equation:integral_fressnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fressnel Beugungsintegral bezeichnet und ist in nährer Umgebung um die Blende gültig.
+Das hiermit erhaltene Integral wird auch als das Fressnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
 
 \subsubsection{Fraunhofer-Approximation}
 Wird die Distanz zwischen Blende und Auswertungspunkt noch weiter erhöht, ist es möglich mit der Fraunhofer-Approximation eine noch einfachere Form des Beugungsintegrals zu erhalten.
