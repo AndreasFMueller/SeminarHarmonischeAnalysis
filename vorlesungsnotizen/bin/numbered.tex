@@ -35,7 +35,10 @@ pdfauthor={Andreas Müller}
 \begin{inctext}[]
 \begin{tikzpicture}
 \node at (0,0) {\includegraphics[width=210mm]{buchcover.jpg}};
-\node[color=white] at (8.4,0) [left,scale=2] {\sffamily\Large\sectionnumber{}};
+\node[color=white,scale=2] at (0,0) {
+\begin{tabular}{lp{7.8cm}}
+\sffamily\Large\numberstring&\raggedright\sffamily\Large\titlestring
+\end{tabular}};
 \end{tikzpicture}
 \end{inctext}
 \setcounter{page}{1}
