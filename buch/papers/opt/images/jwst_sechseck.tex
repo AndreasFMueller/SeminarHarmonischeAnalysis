@@ -1,0 +1,55 @@
+%
+% jwst_sechseck.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+\def\skala{1}
+
+\begin{document}
+
+\definecolor{jwst}{rgb}{241,207,0}
+\tikzstyle{spikes}=[dashed, blue]
+\tikzstyle{stud}=[black, line width=4]
+
+\def\size{3}
+\def\offset{0.6}
+\def\mirror{0.3}
+\def\angleMarking{0.8}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+    \draw[draw=none] circle (\size + \offset); %Make drawing symmetric
+
+    \draw[fill=jwst, opacity=0.6] (0:\size)--(60:\size)--(120:\size)--(180:\size)--(240:\size)--(300:\size)--(360:\size);
+
+    \draw[spikes] (30:\size + \offset)--(210:\size + \offset);
+    \draw[spikes] (90:\size + \offset)--(270:\size + \offset);
+    \draw[spikes] (150:\size + \offset)--(330:\size + \offset);
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+    \draw[draw=none] circle (\size + \offset); %Make drawing symmetric
+   
+    \draw[fill=jwst, opacity=0.6] (0:\size)--(60:\size)--(120:\size)--(180:\size)--(240:\size)--(300:\size)--(360:\size);
+    \draw[fill=black, opacity=1] (0:\mirror)--(60:\mirror)--(120:\mirror)--(180:\mirror)--(240:\mirror)--(300:\mirror)--(360:\mirror);
+
+    \draw[stud] (0:0)--(0, {cos(30)*\size});
+    \draw[stud] (0:0)--(240:\size);
+    \draw[stud] (0:0)--(300:\size);
+
+    \draw[spikes] (30:\size + \offset)--(210:\size + \offset);
+    \draw[spikes] (150:\size + \offset)--(330:\size + \offset);
+    
+    \draw[spikes, red] (0:\size + \offset)--(180:\size + \offset);
+
+    \draw[black] (150:\angleMarking) arc (150:240:\angleMarking);
+    \draw[black] (300:\angleMarking) arc (300:390:\angleMarking);
+
+    \node[circle,fill,inner sep=1.5pt] at (195:0.6*\angleMarking) {};
+    \node[circle,fill,inner sep=1.5pt] at (345:0.6*\angleMarking) {};
+
+\end{tikzpicture}
+
+\end{document}

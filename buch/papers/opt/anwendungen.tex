@@ -6,10 +6,9 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Anwendungen 
-\label{opt:section:anwendungen}}
+\section{Anwendungen
+  \label{opt:section:anwendungen}}
 \rhead{Praktische Anwendungen}
-
 
 \subsection{Mustererkennung}
 Die schnelle Erstellung einer Fouriertransformation kann für die Erkennung von vordefinierten Mustern verwendet werden.
@@ -37,7 +36,34 @@ Mittels fünf aufeinanderfolgenden Ebenen und zehn Detektoren gelang es ihnen, m
 \subsection{Aktuelle Forschung im Bereich Photonics}
 \opttodo{Add infos from OST - Photonics}
 
-\subsection{Fazit}
-Die obenstehenden Beispiele zeigen, was mit optischer Fouriertransformation möglich ist.
-Mittels Verzicht auf die elektronische Berechnung der Fouriertransformation kann viel Zeit und Rechenleistung 
-eingespart werden, was diese Art der Rechnung vor allem im Bereich der neuronalen Netzwerke interessant macht.
+\subsection{James-Webb-Weltraumteleskop}
+Eine weiteres Beispiel der Beugung befindet sich aktuell im Weltraum.
+Auf den Bildern des James-Webb-Weltraumteleskop (JWST) sind jeweils sechs (beziehungsweise drei) helle Strahlen ersichtlich.
+Diese werden durch die Geometrie des Spiegels erzeugt.
+
+Das Teleskop besteht aus einem sechseckigen Hauptspiegel mit einem Loch sowie einem vorgelagerten Spiegel.
+Dieser wiederum ist mit drei Stützen mit der Struktur des JWST verbunden.
+Dabei wurden zwei Stützen so platziert, dass deren Strahlen deckungsgleich mit denjenigen des Hauptspiegels sind.
+Die dritte Stütze ist senkrecht montiert und somit nicht mit einem Strahl des Hauptspiegels deckungsgleich.
+Dies ist auf den Bildern als vierter Strahl zu sehen.
+Zusammen ergeben diese beiden Effekte in Abbildung \ref{opt:fig:jwst} die charakteristischen Strahlen, welche auf
+den veröffentlichten Bildern des JWST zu sehen sind.
+
+\begin{figure}
+    \centering
+
+    \subfigure{
+        \includegraphics[page=1, width=0.3\linewidth]{papers/opt/images/jwst_sechseck.pdf}
+    }
+    \hfill
+    \subfigure{
+        \includegraphics[page=2, width=0.3\linewidth]{papers/opt/images/jwst_sechseck.pdf}
+    }
+    \hfill
+    \subfigure{
+        \includegraphics[width=0.3\linewidth]{papers/opt/images/jamesWebb_cropped_publicDomain.png}
+    }
+    \caption{Links die Strahlen der sechs Aussenkanten, mittig der drei Stützen sowie rechts eine Aufnahme der NASA (Public Domain)
+        des James-Webb-Weltraumteleskop mit den charakteristischen Strahlen.}
+    \label{opt:fig:jwst}
+\end{figure}
