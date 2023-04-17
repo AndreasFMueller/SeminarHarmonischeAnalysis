@@ -56,9 +56,10 @@ E(r)
 \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
 =
 C \cdot \frac{1}{r}
+,
 \label{opt:equation:E}
 \end{equation}
-, wobei der konstante Anteil als $C$ zusammengefasst wurde.
+wobei der konstante Anteil als $C$ zusammengefasst wurde.
 
 Angenommen eine planare elektromagentische Welle, siehe TODO, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
 Ganz allgemein lässt sich jede Welle als
@@ -106,8 +107,7 @@ C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r}
 .
 \end{equation}
 
-Soll nun aber anstelle eines einzelnen Spaltes mehrere solcher Spalten in beliebigen Abständen betrachtet werden,
-kann dieses Integral mit Hilfe der Blendenfunktion
+Soll nun aber anstelle eines einzelnen Spalts mehrere solcher Spalten in beliebigen Abständen betrachtet werden, kann dieses Integral mit Hilfe der Blendenfunktion
 \begin{equation}
 f(y)
 \in
@@ -143,8 +143,9 @@ Durch Anwenden der Binominalexpansion
 (1 + \varepsilon)^n
 \approx
 1 + n\varepsilon
+,
 \end{equation}
-, unter der Voraussetzung dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung~\ref{opt:equation:distance_r} noch weiter zu vereinfachen.
+unter der Voraussetzung dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung~\ref{opt:equation:distance_r} noch weiter zu vereinfachen.
 Mit Hilfe der Vorbedingungen aus Gleichung~\ref{opt:equation:condition_fressnel} ist
 \begin{equation}
 (y_p-y)^2
@@ -235,4 +236,8 @@ E(y_p)
 &=
 \frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
 .
+\label{opt:equation:integral_fraunhofer}
 \end{align}
+
+\subsubsection{Vergleich mit der Fouriertransformation}
+
