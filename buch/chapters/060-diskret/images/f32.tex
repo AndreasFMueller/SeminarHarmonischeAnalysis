@@ -1,0 +1,59 @@
+%
+% f32.tex -- Faktorisierung 6 = 3 * 2
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{fcommon.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\hintergrund
+\gitter
+
+\node at \punkt{1.5}{0.15} {$F(2,3,\omega)=\mathscr{2}\otimes I_3\mathstrut$};
+\node at \punkt{0.5}{0.15} {$A(3,2,\omega)\mathstrut$};
+
+\foreach \y in {0,1,2}{
+	\draw[->,shorten >= 0.5cm] \punkt{2}{\y} -- \punkt{1.5}{\y+1.5};
+	\draw[->,shorten >= 0.5cm] \punkt{2}{\y+3} -- \punkt{1.5}{\y+1.5};
+	\draw[->,shorten >= 0.1cm] \punkt{1.5}{\y+1.5} -- \punkt{1}{\y};
+	\draw[->,shorten >= 0.1cm] \punkt{1.5}{\y+1.5} -- \punkt{1}{\y+3};
+	\fill[color=white] \punkt{1.5-0.4/\w}{\y+1.5-0.4/\h} rectangle \punkt{1.5+0.4/\w}{\y+1.5+0.4/\h};
+	\draw \punkt{1.5-0.4/\w}{\y+1.5-0.4/\h} rectangle \punkt{1.5+0.4/\w}{\y+1.5+0.4/\h};
+	\node at \punkt{1.5}{\y+1.5} {$\mathscr{F}_2$};
+}
+
+\foreach \y in {0,1}{
+	\draw[->,shorten >= 0.53cm] \punkt{1}{5*\y} -- \punkt{0.5}{2*\y+1.5};
+	\draw[->,shorten >= 0.44cm] \punkt{1}{5*\y+2*(0.5-\y)} -- \punkt{0.5}{2*\y+1.5};
+	\draw[->,shorten >= 0.43cm] \punkt{1}{5*\y+4*(0.5-\y)} -- \punkt{0.5}{2*\y+1.5};
+	\draw[->,shorten >= 0.1cm] \punkt{0.5}{2*\y+1.5} -- \punkt{0}{\y};
+	\draw[->,shorten >= 0.1cm] \punkt{0.5}{2*\y+1.5} -- \punkt{0}{\y+2};
+	\draw[->,shorten >= 0.1cm] \punkt{0.5}{2*\y+1.5} -- \punkt{0}{\y+4};
+	\fill[color=white] \punkt{0.5-0.4/\w}{2*\y+1.5-0.4/\h} rectangle \punkt{0.5+0.4/\w}{2*\y+1.5+0.4/\h};
+	\draw \punkt{0.5-0.4/\w}{2*\y+1.5-0.4/\h} rectangle \punkt{0.5+0.4/\w}{2*\y+1.5+0.4/\h};
+	\node at \punkt{0.5}{2*\y+1.5} {$\mathscr{F}_3$};
+}
+
+\node at \punkt{0}{-0.2} [above] {$\hat{f}$};
+\node at \punkt{1}{-0.2} [above] {$F(2,3,\omega)f$};
+\node at \punkt{2}{-0.2} [above] {$f$};
+
+\faktor{3.5}{4}{\omega}
+\faktor{3.5}{5}{\omega^2}
+
+\knoten
+
+\end{tikzpicture}
+\end{document}
+

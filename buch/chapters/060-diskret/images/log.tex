@@ -1,0 +1,43 @@
+%
+% log.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\a{0.35}
+\def\l{6}
+\pgfmathparse{atan(2*\a)}
+\xdef\w{\pgfmathresult}
+\pgfmathparse{atan(\a*(1+1/(ln(10)*\l)))}
+\xdef\v{\pgfmathresult}
+\pgfmathparse{atan(\a)}
+\xdef\u{\pgfmathresult}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+
+\draw[color=gray!40,line width=1.4pt]
+	plot[domain=00:10,samples=10] ({\x},{\a*\x});
+\node[color=gray!40] at (\l,{\a*\l}) [below,rotate=\u] {$O(n)$};
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:10,samples=10] ({\x},{\a*2*\x});
+\node[color=blue] at (\l,{\a*2*\l}) [above,rotate=\w] {$O(n^2)$};
+\node[color=red] at (\l,{\a*(\l+log10(\l))}) [above,rotate=\v] {$O(n\log n)$};
+\begin{scope}
+\clip (0,0) rectangle (10,7);
+\draw[color=red,line width=1.4pt]
+	plot[domain=0.1:10,samples=100] ({\x},{\a*(\x+log10(\x))});
+\end{scope}
+\draw[->] (0,-0.1) -- (0,7.5) coordinate[label={right:$\log(\text{Aufwand})$}];
+\draw[->] (-0.1,0) -- (10.5,0) coordinate[label={$\log n$}];
+
+\end{tikzpicture}
+\end{document}
+
