@@ -1,0 +1,503 @@
+%
+% 1-motivation.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+\section{Das Registrierungsproblem
+\label{buch:nichtkomm:section:motivation}}
+Das Registrierungsproblem ist ein wichtiges Beispiel für die Bedeutung
+der Gruppentheorie in der harmonischen Analysis.
+In diesem Abschnitt stellen wir das Registrierungsproblem vor
+und Lösen den wichtigen Fall des kommutativen Registrierungsproblems
+mit Fourier-Theorie als Motivation für die spätere Entwicklung 
+der nichtkommutativen harmonischen Analysis.
+
+%
+% Problemstellung
+%
+\subsection{Problemstellung
+\label{buch:nichtkomm:subsection:problemmstellung}}
+Bilder sind Funktionen auf der zweidimensionalen Ebene
+$\mathbb{R}^2\to\mathbb{R}$.
+Das Registrierungsproblem ist die folgende Aufgabe.
+
+\begin{aufgabe}
+Gegben zwei Funktionen $f,g\colon\mathbb{R}^2\to\mathbb{R}$, die
+sich nur durch eine geometrische Transformation des Definitionsbereiches 
+unterscheiden.
+Finde die Transformation $\varphi\colon\mathbb{R}^2\to\mathbb{R}^2$ derart,
+dass $f=g\circ \varphi$.
+\end{aufgabe}
+
+In der Aufgabenstellung bleibt offen, was mit einer ``geometrischen
+Transformation'' gemeint ist.
+Die Transformation sollte natürlich umkehrbar sein, sie sollte
+nicht zwei Pixel im einen Bild auf das gleiche Pixel um anderen
+Bild abbilden.
+Auch sollte man solche Abbildungen zusammensetzen können, zum
+Beispiel auch um die Problemlösung in Schritten zu ermöglichen.
+Es ist daher naheliegend, eine Gruppe von Transformationen
+der zweidimensionalen Ebene $\mathbb{R}^2$ festzulegen, in der
+$\varphi$ gefunden werden muss.
+Die Aufgabenstellung wird damit etwas genauer
+
+\begin{aufgabe}
+\label{buch:nichtkomm:aufgabe:regG}
+Gegeben ist eine Gruppe $G$ von Transformationenen
+$\varphi:\mathbb{R}^2 \to\mathbb{R}^2$ der Ebene und 
+zwei Funktionen $f,g\colon\mathbb{R}^2\to\mathbb{R}$, die sich nur durch
+eine Transformation $\varphi\in G$ unterscheiden.
+Finde die Transformation $\varphi\in G$ derart
+dass $f=g\circ \varphi$.
+\end{aufgabe}
+
+\begin{beispiel}
+Die {\em Bewegungen} der Ebene sind affinen isometrischen
+Transformationen der Ebene.
+Dazu gehören Tranlationen, Drehungen, Spiegelungen und beliebige
+Kombinationen davon.
+In vielen praktischen Anwendungen weiss man, dass die Orientierung
+der Bilder erhalten ist, damit fallen die Spiegelungen weg, es
+müssen nur noch Translationen und Drehungen berücksichtig werden.
+Translationen werden durch Vektoren $v\in\mathbb{r}$ beschrieben,
+Drehungen durch Matrizen in $\operatorname{SO}(2)$.
+\end{beispiel}
+
+\begin{beispiel}
+Bilder der Himmelskugel sind Funktionen $f\colon S^2\to\mathbb{R}$
+definiert auf der Kugeloberfläche $S^2$.
+Sie können durch dreidimensionale Drehungen
+in $G=\operatorname{SO}(3)$ zur Deckung gebracht werden.
+\end{beispiel}
+
+Die Aufgabenstellung~\ref{buch:nichtkomm:aufgabe:regG}
+erscheint zwar natürlich, ist aber in der Praxis
+nicht realistisch.
+In der Praxis enthalten Bilder immer auch Sensorrauschen, Restverzerrung
+der Optik, atmosphärische Verzerrungen oder Quantisierungsrauschen, welches
+durch die Digitalisierung und die Auflösung in Pixel verursacht wird.
+Die Aufgabe muss daher revidiert werden.
+
+\begin{aufgabe}
+\label{buch:nichtkomm:motivation:aufgabe:regGaehnlich}
+Gegeben ist eine Gruppe $G$ von Transformationenen
+$\varphi:\mathbb{R}^2 \to\mathbb{R}^2$ der Ebene und 
+zwei Funktionen $f,g\colon\mathbb{R}^2\to\mathbb{R}$, die sich nur durch
+eine Transformation $\varphi\in G$ unterscheiden.
+Finde die Transformation $\varphi\colon\mathbb{R}^2\to\mathbb{R}^2$ derart,
+dass $f$ und $g\circ \varphi$ ``möglichst ähnlich'' sind.
+\end{aufgabe}
+
+Als Mass dafür, wie ähnlich sich die beiden Bilder $f$ und
+$g\circ\varphi$ sind, kann nach den Erkenntnissen von
+Kapitel~\ref{buch:chapter:skalarprodukte} das Skalarprodukt
+verwendet werden.
+Daraus leitet man den folgenden Lösungsansatz ab.
+Unter allen Transformationen $\varphi\in G$ finde diejenige,
+für die das Skalarprodukt
+\[
+\langle f,g\circ \varphi\rangle
+\]
+maximal wird.
+Dieser intuitive Ansatz hat aber das Problem, dass 
+das Skalarprodukt nicht nur gross werden kann, weil die Funktionen
+$f$ und $g\circ\varphi$ sich ähnlicher werden, sondern auch,
+weil die Norm von $g\circ\varphi$ anwächst.
+Um diesem Problem aus dem Weg zu gehen, könnte man auch 
+die Funktion
+\[
+G\to\mathbb{F}
+\colon
+\varphi\mapsto
+\frac{\langle f,g\circ \varphi\rangle}{\|f\|\cdot\|g\circ\varphi\|}
+\]
+betrachten, die aber wesentlich unhandlicher ist.
+Sie ist insbesondere nicht mehr linear in $f$ und $g$.
+Man kann dieser Schwierigkeit aus dem Weg gehen, wenn man
+verlangt, dass die Transformationen $\varphi\in G$ die Norm nicht
+ändern, dass also
+\[
+\|g\|
+=
+\|g\circ \varphi\|
+\]
+ist für alle $\varphi\in G$.
+Dies ist im Beispiel der Bewegungen der Ebene oder der Drehungen
+der Kugeloberfläche sichergestellt, da diese Transformationen
+die Flächeninhalte nicht verändern.
+
+%
+% Lösung des Registrierungsproblems für Translationen
+%
+\subsection{Registrierung mit Translationen
+\label{buch:nichtkomm:motivation:subsection:translationen}}
+Für Funktionen in der Ebene und die Gruppe der Translationen
+ist das Registrierungsproblem mit harmonischer Analysis lösbar.
+Dies schürt die Hoffnung, dass nichtkommutative harmonische
+Analysis das Registrierungsproblem auch für nichtkommutative
+Gruppen von Transformationen zu lösen hilft.
+
+\begin{aufgabe}
+\label{buch:nichtkomm:motivation:aufgabe:r2}
+Gegen sind zwei Funktionen $f, g\colon\mathbb{R}\to\mathbb{R}$, die
+sich nur durch eine Translation unterscheiden.
+Finde einen Vektor $v\in\mathbb{R}^2$ derart, dass die Translation
+\[
+T_vg
+\colon
+\mathbb{R}\to \mathbb{R}
+:
+x\mapsto g(x-v)
+\]
+des Bildes $g$ dem Bild $f$ ``möglichst ähnlich'' ist.
+\end{aufgabe}
+
+%
+% Skalarprodukt und Faltung
+%
+\subsubsection{Skalarprodukt und Faltung}
+Wie im Lösungsansatz zur Aufgabe
+\ref{buch:nichtkomm:motivation:aufgabe:regGaehnlich}
+angedeutet, soll das Skalarprodukt als Mass für die ``Ähnlichkeit''
+von Funktionen verwendet werden.
+Wir betrachten daher die Funktion
+\begin{equation}
+\mathbb{R}^2 \to \mathbb{R}
+:
+v\mapsto \langle f,T_vg\rangle
+=
+\int_{\mathbb{R}^2} f(x)T_vg(x)\,dx
+=
+\int_{\mathbb{R}^2} f(x)g(x-v)\,dx
+\label{buch:nichtkomm:motivation:eqn:kreuzkorr}
+\end{equation}
+und suchen nach demjenigen Vektor $v$, der das Skalarprodukt
+maximiert.
+Das Integral rechts in~\eqref{buch:nichtkomm:motivation:eqn:kreuzkorr}
+heisst die {\em Kreuzkorrelation} der beiden Bilder $f$ und $g$ und
+wird manchmal auch $f\star g(v)$ geschrieben.
+Man beachte, dass hier ein fünfzackiger Stern $\star$ verwendet wird,
+nicht der für die Faltung verwendete Asterisk $*$.
+
+Die Kreuzkorrelation unterscheidet sich von der Faltung nur durch
+das Vorzeichen des Argumentes von $g$, also
+\begin{equation}
+(f\star g)(v)
+=
+\int_{\mathbb{R}^2} f(x) g(-(x-v))\,dx
+=
+\int_{\mathbb{R}^2} f(x) \check{g}(v-x)\,dx
+=
+(f *\check{g}) (v).
+\label{buch:nichtkomm:motivation:eqn:kkorrfaltung}
+\end{equation}
+Dabei haben wir wieder die Notation $\check{g}(x)=g(-x)$ verwendet.
+Der Gewinn dabei ist vor allem, dass für die Faltung die harmonische
+Analysis zusätzliche Rechenregeln bereitstellt, die für die
+Kreuzkorrelation nicht unmittelbar zur Verfügung stehen.
+
+%
+% Effizente Berechnung
+%
+\subsubsection{Effiziente Berechnung}
+Für die direkte Berechnung der
+Kreuzkorrelation~\eqref{buch:nichtkomm:motivation:eqn:kreuzkorr}
+wird für jeden von $O(n^2)$ Vektoren $v$ die Berechnung des Skalarproduktes
+mit $O(n^2)$ Multiplikationen nötig.
+Sie wird jedoch wird jedoch durch die Formulierung als Faltung bedeutend
+einfacher.
+Die Fourier-Transformation
+von~\eqref{buch:nichtkomm:motivation:eqn:kkorrfaltung}
+ist
+\begin{align*}
+\mathscr{F}{(f\star g)}
+&=
+\mathscr{F}(f*\check{g})
+=
+\mathscr{F}f\cdot\mathscr{F}\check{g}
+\intertext{oder nach Fourier-Rücktransformation}
+(f\star g)(v)
+&=
+\mathscr{F}^{-1} (\mathscr{F}f\cdot\mathscr{F}g)(v)
+\end{align*}
+Für digitale Bilder kann man die diskrete Fourier-Transformation
+verwenden.
+Dank der Existenz der schnellen Fourier-Transformation wird die
+Berechnung der Faltung somit in $O(n^2\log(n)^2$) möglich.
+Danach ist die Bestimmung des Vektors $v$, für den das Maximum
+von $f*\check{g}$ erreicht wird, mit dem Aufwand $O(n^2)$ möglich.
+
+%
+% Nichtkommutative Registrierungsprobleme
+%
+\subsection{Nichtkommutative Registrierungsprobleme
+\label{buch:nichtkomm:motivation:subsection:nichtkommutativ}}
+Die Lösung des Registrierungsproblems konnte mit Hilfe der
+Fourier-Transformation erfolgreich gelöst werden.
+Die Einschränkung auf Translationen ist jedoch in vielen
+Anwendungen nicht realistisch.
+Dies ist nur möglich, wenn die Bilder zum Beispiel durch geeignete
+mechanische Vorrichtungen gegen Verdrehungen zu schützen.
+Dies ist zum Beispiel nicht möglich in der Astrophotographie.
+Da werden viele Bilder mit wenigen Minuten Belichtungszeit 
+kombiniert.
+Unzulänglichkeiten in der Aufstellung des Teleskops verursachen
+aber unweigerlich Verdrehungen.
+Das Registrierungsproblem für Translationen sind also nicht
+ausreichend.
+
+Der erste Schritt, diesen Lösungsansatz auf grössere Gruppen
+zu verallgemeinern, besteht darin, die Gruppen von Transformationen
+besser kennen zu lernen, die für realistischere Registrierungsprobleme
+von Interesse sein könnten.
+
+%
+% Gruppenoperationen und Funktionen
+%
+\subsection{Gruppenoperationen auf Funktionen
+\label{buch:nichtkomm:motivation:subsection:gruppenoperationen}}
+Das Registrierungsproblem versucht, zwei Bilder durch eine geometrische
+Transformation des Definitionsbereichs der Funktionen zur Deckung
+zu bringen.
+In den bisherigen Beispielen war dies die Ebene $\mathbb{R}^2$ oder
+die Kugeloberfläche $S^2$.
+Wir vereinheitlichen die Notation und studieren jetzt Funktionen
+auf dem Definitionsbereich $X$.
+Die Gruppe $G$ ist jetzt eine Gruppe von Transformationen des
+Definitionsbereichs $X$.
+Die Operation eines Elements $g\in G$ auf $X$ schreiben wir
+$g(x) = g\cdot x$, $x\in X$.
+Daraus lässt sich jetzt auch eine Operation auf den Funktionen auf
+$X$ konstruieren:
+
+\begin{definition}
+Ist $g\in G$ und $f\colon X\to\mathbb{R}$ eine Funktion auf $X$, dann
+bezeichnen wir mit
+\begin{equation}
+(g\cdot f)(x)
+=
+T_gf(x)
+=
+f(g^{-1}x)
+\label{buch:nichtkomm:motivation:eqn:opf}
+\end{equation}
+die um $g$ verschobene Funktion $f$.
+\end{definition}
+
+Der Leser mag sich fragen, warum in
+\eqref{buch:nichtkomm:motivation:eqn:opf}
+das inverse Element $g^{-1}$ von $g$ verwendet wird.
+Damit wird erreicht, dass die Abbildung $g\mapsto T_g$
+ein Homomorphismus wird, denn für ein weiteres Element $h\in G$
+ist dann
+\[
+T_g(T_hf)(x)
+=
+(T_hf)(g^{-1}x)
+=
+f(h^{-1}g^{-1}x)
+=
+f((gh)^{-1}x)
+=
+(T_{gh}f)(x),
+\]
+also $T_g\circ T_h= T_{gh}$.
+Man sagt auch, $T$ definiert eine Links-Operation der Gruppe $G$ 
+auf der Menge der Funktionen.
+
+Die Notation $T_gf$ für die um $g$ verschobene Funktion $f$ fällt
+mit der Notation zusammen, die wir fürher für den Definitionsbereich
+$\mathbb{R}^2$ und die Verschiebungen in der Ebene verwendet haben.
+Tatsächlich ist dies der Fall des Definitionsbereichs $X=\mathbb{R}^2$,
+auf dem die Gruppe $G=\mathbb{R}^2$ durch die gewähnliche
+Translation wirkt, also $v\cdot x = x +v$ für $x\in X$ und $v\in G$.
+Die Formel \eqref{buch:nichtkomm:motivation:eqn:opf} wird in diesem
+Fall zu
+\[
+(T_vf)(x) = f(-v + x) = f(x-v)
+\]
+wie in Aufgabe~\ref{buch:nichtkomm:motivation:aufgabe:r2}.
+
+%
+% Die Gruppe SO(2)\ltimes R^2
+%
+\subsection{Die Gruppe $\operatorname{SO}(2)\ltimes \mathbb{R}^2$
+\label{buch:nichtkomm:motivation:subsection:so2lr^2}}
+Das ebene Registrierungsproblem verwendet Drehungen und Verschiebungen
+in der Ebene, um Bilder zur Deckung zu bringen.
+Die zugehörige Gruppe wird mit $\operatorname{SO}(2)\ltimes\mathbb{R}^2$
+bezeichnet und soll in diesem Abschnitt konstruiert werden.
+Das besondere an dieser Situation ist, dass die Drehungen auch auf
+die Richtung der Translation wirken können.
+Wir verallgemeinern diese Situation in den folgenden Definitionen.
+
+\begin{definition}
+Sei $A$ eine abelsche Gruppe, die im folgenden jeweils additiv geschrieben
+werden soll.
+Ein {\em Endorphismus} von $A$ ist eine Abbildung $h\colon A\to A$ mit
+$h(a_1+a_2)=h(a_1)+h(a_2)$.
+und
+$h(0)=0$.
+Die Menge der Endomorphismen wird mit
+$\operatorname{End}(A)=\operatorname{Hom}(A,A)$ bezeichnet.
+\end{definition}
+
+Die Translationen der Ebene bilden eine abelsche Gruppe, wir haben
+Sie früher mit den Vektoren $\mathbb{R}^2$ identifiziert.
+Die inverterbaren Endomorphismen der Gruppe der Translationen der
+Ebene ist die allgemeine lineare Gruppe $\operatorname{GL}_2(\mathbb{R})$,
+ist also eine Gruppe.
+Dies gilt aber auch ganz allgemein für die Menge der invertierbaren
+Endomorphismen, die Menge
+\[
+\{ s \in \operatorname{End}(A)
+\mid
+\text{$s$ ist invertierbar}
+\}
+\]
+ist eine Gruppe.
+
+\begin{definition}
+Sei $G$ eine Gruppe und $A$ eine abelsche Gruppe.
+Man sagt, die Gruppe {\em $G$ wirkt auf $A$}, wenn
+es einen Homomorphismus $\vartheta\colon G\to\operatorname{Hom}(A,A)$ gibt.
+Dies bedeutet, dass $\vartheta(g)$ für jedes $g\in G$ ein Endomorphismus
+der Gruppe $A$ ist, also
+\begin{align*}
+\vartheta(g)(a_1+a_2)&=\vartheta(g)(a_1) + \vartheta(g)(a_2).
+\end{align*}
+Es befeutet auch, dass die Zusammensetzung von zwei solchen
+Endomorphismen assoziativ wirkt, d.~h.
+\[
+\vartheta(gh)=\vartheta(g)\vartheta(h)
+\quad\Rightarrow\quad
+\vartheta(gh)(a) = \vartheta(g)(\vartheta(h)a)
+\]
+Die Operation von $g$ auf $a$ wird oft auch $g\cdot a = \vartheta(g)a$
+abgekürzt.
+\end{definition}
+
+Die Gruppe der Drehungen $G=\operatorname{SO}(2)$ operiert auf den
+Translationen wie folgt.
+Eine Translation wird durch den Verschiebungsvektor $v$ beschrieben.
+Ist $g\in\operatorname{SO}(2)$ eine Drehmatrix, dann ist $gv$ ein
+Vektor in $\mathbb{R}^2$, der wieder eine Verschiebung beschreibt.
+
+\begin{satz}
+Sei $G$ eine Gruppe, die auf einer abelschen Gruppe $A$ wirkt.
+Die Menge $G\times A$ mit der Verknüpfung
+\[
+(g_1,v_1)\cdot(g_2,v_2)
+=
+g_1
+\]
+ist eine Gruppe mit dem neutralen Element $(e,0)$.
+Sie wird mit $G\ltimes A$ bezeichnet und heisst das {\em semidirekte Produkt}
+von $G$ und $A$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir müssen nachrechnen, dass die Operation assoziativ ist und dass
+jedes Element von $G\ltimes A$ ein inverses Element hat.
+
+Seien also $(g_1,a_1)$, $(g_2,a_2)$ und $(g_3,a_3)$ drei Elemente von
+$G\times A$, wir berechnen die Produkt
+\begin{align*}
+(g_1,a_1)\cdot((g_2,a_2)\cdot(g_3,a_3))
+&=
+(g_1,a_1)\cdot(g_2g_3,a_2+a_2a_3)
+\\
+&=
+(g_1g_2g_3,g_1(g_2a_3+a_2)+a_1)
+=
+(g_1g_2g_3,g_1g_2a_3+g_2a_2+a_1)
+\\
+((g_1,a_1)\cdot(g_2,a_2))\cdot(g_3,a_3)
+&=
+(g_1g_2,g_1a_2+a_1)\cdot(g_3,a_3)
+\\
+&=
+(g_1g_2g_3, g_1g_2a_3+g_1a_2+a_1)
+\end{align*}
+Die beiden Produkte stimmen überein, somit ist die Verknüpfung assoziativ.
+
+Wir kontrollieren, dass $(e,0)$ tatsächlich das neutrale Element
+von $G\ltimes A$ ist.
+Tatsächlich ist $(e,0)\cdot (g,a)=(eg,ea+0)=(eg,a)=(g,a)$ und
+$(g,a)\cdot(e,0)=(ge,g0+a)=(g,a)$.
+
+Es bleibt noch nachzuweisen, dass das Element $(g,a)$ ein inverses Element
+hat.
+Es muss also $(h,b)$ gefunden werden derart, dass $(g,a)\cdot (h,b)=(e,0)$.
+Aus $(g,a)\cdot(h,b)=(gh,gb+a)=(e,0)$ folgt zunächst, dass $h=g^{-1}$ sein
+muss.
+Um $b$ zu bestimmen, löst man die zweite Komponente auf, also
+\[
+gb+a=0
+\quad\Rightarrow\quad
+b=g^{-1}(-a)=-g^{-1}a.
+\]
+Tatsächlich ist $(g,a)\cdot(g^{-1},-g^{-1}a)=(gg^{-1},g(-g^{-1}a)+a)=(e,0)$
+und $(g^{-1},-g^{-1}a)\cdot (g,a)=(g^{-1}g, g^{-1}a-g^{-1}a)=(e,0)$,
+somit ist $(g^{-1},-g^{-1}a)$ das zu $(g,a)$ inverse Elemente in $G\ltimes A$.
+\end{proof}
+
+Wir möchten jetzt illustrieren, wie die Drehungen und Verschiebungen
+der Ebene genau die Struktur der Gruppe
+$\operatorname{SO}(2)\ltimes\mathbb{R}^2$ ergeben.
+Dazu lassen wir ein Paar $(g,v)\in\operatorname{SO}(2)\times \mathbb{R}^2$
+durch die Formel
+\[
+(g,v)\cdot x
+=
+gx + v
+\]
+auf den Vektoren $x\in \mathbb{R}^2$ wirken.
+Ein weiteres Element $(h,w)\in\operatorname{SO}(2)\times\mathbb{R}^2$
+macht daraus
+\[
+(h,w)\cdot ((g,v)\cdot x)
+=
+(h,w)\cdot (gx+v)
+=
+h(gx+v)+w
+=
+(hg)x + hv + w.
+\]
+Die gleiche Wirkung hat das Element
+$(hg, hv+w)\in\operatorname{SO}(2)\times\mathbb{R}^2$,
+das ist aber nichts anderes als die Verknüpfung in der Gruppe
+$\operatorname{SO}(2)\ltimes \mathbb{R}^2$.
+
+Die Gruppe $\operatorname{SO}(2)\ltimes\mathbb{R}^2$ ist also genau
+die Gruppe, die dem ebenen Registrierungsproblem zu Grunde liegt.
+Wir halten diese Beobachtung in der folgenden Aufgabe fest.
+
+\begin{aufgabe}[Ebenes Registrierungsproblem]
+Zu gegebenen Funktionen $f,g\colon \mathbb{R}^2\to\mathbb{R}$, die sich
+nur durch eine Drehung und Verschiebung unterscheiden, finde ein
+Element $s\in\operatorname{SO}(2)\ltimes \mathbb{R}^2$ derart, das
+$f$ und $T_sg$ sich ``möglichst ähnlich'' sind.
+\end{aufgabe}
+
+%
+% Die Gruppe SO(3)
+%
+\subsection{Die Gruppe $\operatorname{SO}(3)$
+\label{buch:nichtkomm:motivation:subsection:so3}}
+Für das Registrierungsproblem auf der Kugeloberfläche ist der
+Definitionsbereich der zu registrierenden Funktion die
+zweidimensionale Kugeloberfläche $X=S^2$.
+Darauf operatiert die volle Gruppe der dreidimensionalen
+Drehmatrizen $\operatorname{SO}(3)$.
+
+\begin{aufgabe}[Sphärisches Registrierungsproblem]
+Gegeben zwei Funktionen $f,g\colon S^2\to\mathbb{R}$ auf der Kugeloberfläche,
+die sich nur durch eine Drehung aus $\operatorname{SO}(3)$ unterschieden,
+finde $s\in\operatorname{SO}(3)$ derart, dass $f$ und $T_sg$ so ähnlich
+wie möglich sind.
+\end{aufgabe}
+
+
+
+

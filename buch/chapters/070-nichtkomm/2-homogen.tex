@@ -1,0 +1,178 @@
+%
+% 2-homogen.tex
+%
+% (c) 2023 Prof Dr Andreas Müller
+%
+\section{Homogene Räume
+\label{buch:nichtkomm:section:homogeneraeume}}
+Im vorangegangenen Abschnitt haben wir eine gemeinsame mathematische
+Formalisierung für verschiedene Varianten des Registrierungsproblems
+gefunden.
+In diesem Abschnitt wenden wir uns den Gemeinsamkeiten des 
+abstrakten Problems zu und ermitteln die Struktur, die uns später
+helfen wird, das Registrierungsproblem auf einheitliche Weise
+in einfachere Teilprobleme aufzuteilen.
+
+%
+% Stabilisator
+%
+\subsection{Stabilisator
+\label{buch:nichtkomm:homogen:subsection:stabilisator}}
+In die grosse Menge der Transformationen des Definitionsbereiches
+$X$ lässt sich etwas Ordnung bringen, indem man Fixpunkte dieser
+Transformationen sucht.
+\index{Fixpunkt}
+
+\begin{definition}
+Wenn die Gruppe $G$ auf dem Raum $X$ operiert und $x\in X$ ist, dann
+heisst $x$ ein {\em Fixpunkt} einer Transformation $s\in G$, wenn 
+\index{Fixpunkt}%
+$s\cdot x = x$ ist.
+Die Menge
+\[
+S_x = \{ s\in G \mid s\cdot x = x \}
+\]
+aller Transformationen, die $x$ als Fixpunkt haben,
+heisst der {\em Stabilisator} von $x$.
+\index{Stabilisator}%
+\end{definition}
+
+Der Stabilisator eines Punktes $x\in X$ ist immer eine Untergruppe.
+Dazu muss man nur überprüfen, ob die Zusammensetzung und die Inverse
+von Elementen aus $S_x$ wieder in $S_x$ liegt.
+Dies ist aber klar, denn wenn zwei Elemente $g,h\in S_x$ den Punkt $x$
+festhalten, dann ist auch $(gh)\cdot x= g\cdot(h\cdot x) = g\cdot x = x$
+und analog für die Inverse.
+
+\begin{beispiel}
+Die Gruppe $\operatorname{SO}(2)\ltimes\mathbb{R}^2$ operiert auf der
+Mengen $X=\mathbb{R}^2$.
+Nicht jede Transformation hat einen Fixpunkt, zum Beispiel haben reine
+Verschiebungen um einen Vektor $v\in\mathbb{R}^2$, $v\ne 0$, keinen
+Fixpunkt.
+Für eine Transformation $(s,a)\in\operatorname{SO}(2)\ltimes \mathbb{R}^2$
+mit $s\ne e$, also eine Transformation mit einer nichttrivialen
+Drehkomponente, lässt sich immer ein Fixpunkt durch Lösung der 
+Gleichung
+\[
+sx+a=x
+\quad\Rightarrow\quad
+x = -(s-e)^{-1}a
+\]
+ermitteln.
+Diese Lösung ist genau dann möglich, wenn $s-e$ invertierbar ist.
+Dies kann mit der Determinante der Matrix $D_\alpha-I$ bestimmt werden,
+die
+\begin{align*}
+\det(D_\alpha-I)
+&=
+(\cos\alpha-1)^2+\sin^2\alpha
+\\
+&=
+\cos^2\alpha-2\cos\alpha +1+\sin^2\alpha
+\\
+&=
+2-2\cos\alpha 
+\\
+&=
+2(1-\cos\alpha)
+\end{align*}
+ist.
+Diese verschwindget genau dann, wenn $\alpha$ ein Vielfaches von $2\pi$ ist.
+Damit ist gezeigt, dass alle Transformationen mit einer nichttrivialen
+Drehkomponente einen Fixpunkt haben.
+
+Der Stabilisator eines Punktes $x\in\mathbb{R}$ besteht aus denjenigen
+$(g,a)\in\operatorname{SO}(2)\ltimes \mathbb{R}^2$, für die
+\[
+(g,a)\cdot x = g\cdot x+a = x
+\]
+gilt.
+Daraus leitet man die Bedingung 
+\[
+(g-e)\cdot x = -a
+\]
+ab.
+Für jede Drehung $g\in\operatorname{SO}(2)$ gibt es also einen Vektor
+$a=-(g-e)$ derart, dass $(g,a)\in\operatorname{SO}(2)\ltimes\mathbb{R}^2$
+den Punkt $x$ als Fixpunkt hat.
+Die Abbildung $g\mapsto(g,-gx+x)$ ist daher ein Isomorphismus von
+$\operatorname{SO}(2)$ auf den Stabilisator
+$S_x\subset \operatorname{SO}(2)\ltimes \mathbb{R}^2$.
+\end{beispiel}
+
+\begin{beispiel}
+Die Gruppe $G=\operatorname{SO}(2)$ operiert auf der Kugeloberfläche $S^2$.
+Der Stabilisator eines Punktes $x\in S^2$ auf der Kugeloberfläche besteht
+aus allen Drehungen, die die Achse mit Richtung $x$ oder $-x$ fest
+lassen.
+Die Untergruppe der Drehungen um die Achse ist isomorph zur Gruppe der
+zweidimensionalen Drehmatrizen.
+Ein Isomorphismus kann wie folgt konstruieren.
+Zunächst wählt man zwei Einheitsvektoren $b_1,b_2\in \mathbb{R}^3$ derart,
+dass $b_1,b_2$ und $x$ eine orthonormierte Basis bilden.
+In dieser Basis können Drehungen $s$ um die Achse $x$ durch Matrizen der Form
+\[
+s
+=
+\left(
+\begin{array}{cc|c}
+\cos\alpha & -\sin\alpha & 0 \\
+\sin\alpha &  \cos\alpha & 0 \\
+\hline
+     0     &       0     & 1
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc|c}
+\multicolumn{2}{c|}{
+\multirow{2}{*}{$D_\alpha$}
+}&0\\
+&&0\\
+\hline
+0&0&1
+\end{array}
+\right)
+\quad\text{mit}\quad
+D_\alpha\in\operatorname{SO}(2)
+\]
+dargestellt werden.
+Die Abbildung $D_\alpha\mapsto s$ ist ein Isomorphismus von
+$\operatorname{SO}(2)$ auf den Stabilsator $S_x\subset\operatorname{SO}(3)$.
+\end{beispiel}
+
+%
+% Homogener Raum
+%
+\subsection{Homogener Raum
+\label{buch:nichtkomm:homogen:subsection:homogen}}
+Die Definitionsgebiete $X$, die wir im Registrierungsproblem untersuchen,
+haben noch eine zusätzliche Eigenschaft.
+Für jedes Paar von Punkten $x$ und $y$ in $X$ lässt sich immer mindestens
+eine Transformation $g\in G$ finden derart, dass $g\cdot x = y$ ist.
+Man sagt, die Gruppe $G$ operiert {\em transitiv} auf $X$.
+
+Typischerweise gibt es nicht nur ein Gruppenelement $g$, welches $x$ in
+$y$ transportiert.
+Ist $s\in S_x$, dann ist auch $gsx=gx=y$ und für $t\in S_y$ ist
+auch $tgx=ty=y$.
+
+\begin{satz}
+Falls $gx=hx=x$, dann gibt es eine Element $s\in S_x$ derart, dass
+$gs=h$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Aus $gx=hx$ folgt $x=g^{-1}hx$, also $s=g^{-1}h\in S_x$.
+Ausserdem ist $gs=gg^{-1}h=h$, wie verlangt.
+\end{proof}
+
+%
+% Gruppenoperation auf $G/K$
+%
+\subsection{Gruppenoperation auf $G/K$
+\label{buch:nichtkomm:homogen:subsection:opaufgk}}
+
+
+
