@@ -168,6 +168,80 @@ Aus $gx=hx$ folgt $x=g^{-1}hx$, also $s=g^{-1}h\in S_x$.
 Ausserdem ist $gs=gg^{-1}h=h$, wie verlangt.
 \end{proof}
 
+\begin{satz}
+Wenn die Gruppe $G$ transitiv auf dem Raum $X$ operiert und $x,y\in X$
+zwei Punkte in $X$ sind, dann sind die Stabilisatoren $S_x$ und $S_y$
+isomorp.
+Ist $gx=y$ dann ist die Abbildung
+\[
+c_g\colon
+S_y\to S_x: h\mapsto ghg^{-1}
+\]
+ein Isomorphismus der Stabilisatoren.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zunächst können wir leicht nachrechnen, dass $c_g$ ein Homomorphismus ist,
+denn
+\[
+c_g(hk)
+=
+ghkg^{-1}
+=
+gh(g^{-1}g)kg^{-1}
+=
+(ghg^{-1})gkg^{-1})
+=
+c_g(h)c_g(k).
+\]
+Wir müssen überprüfen, dass $c_g(s)\in S_y$ ist, wenn $s\in S_x$ ist.
+Dazu rechnen wir nach, dass
+\begin{equation}
+c_g(s)y = gsg^{-1} y = gsx=gx=y
+\quad\Rightarrow\quad
+c_g(s)\in S_x.
+\label{buch:nichtkomm:homogen:eqn:cgimage}
+\end{equation}
+Der Homomorphismus $c_g$ ist aber auch umkehrbar, denn es gilt
+\[
+c_gc_{g^{-1}}(h)
+=
+g(g^{-1}hg)g^{-1}h
+=
+h
+\quad\Rightarrow\quad
+c_gc_{g^{-1}}=\operatorname{id}.
+\]
+Aus \eqref{buch:nichtkomm:homogen:eqn:cgimage} folgt jetzt, dass
+$c_{g^{-1}}\colon S_y\to S_x$.
+Somit ist $c_g$ ein Isomorphismus.
+\end{proof}
+
+Der Satz besagt also, dass in jedem Punkt des Raumes $X$ der gleiche
+Stabilisator gefunden wird.
+Mit den  Mitteln der Gruppentheorie von $G$ lassen sich zwei Punkte 
+in $X$ nicht unterscheiden.
+Diese spezielle Situation hat einen Namen.
+
+\begin{definition}
+Ein Raum $X$, auf dem eine Gruppe $G$ transitiv wirkt, heisst
+{\em homogen}, wenn der Stabilisator in jedem Punkt von $x$ gleich ist.
+\index{homogener Raum}%
+\end{definition}
+
+Da die Gruppe $G$ transitiv auf $X$ wirkt, kann man die Punkte $y$ von 
+$X$ auch durch die Transformationen bechreiben, die einen gewählten
+Punkte $x$ in $y$ überführen.
+
+\begin{beispiel}
+Sei $x$ der Nordpol der zweidimensionalen Kugeloberfläche $S^2$.
+Ist $y\in S^2$ ein weiterer Punkt, gibt es eine Drehung um die Achse
+$x\times y$, die den Nordpol in den Punkt $y$ transportiert.
+Alle anderen Drehungen, die den Nordpol in den Punkt $y$ überführen,
+bestehen aus einer Drehung um die Nord-Süd-Achse gefolgt von der
+genannten Drehung um $x\times y$.
+\end{beispiel}
+
 %
 % Gruppenoperation auf $G/K$
 %
