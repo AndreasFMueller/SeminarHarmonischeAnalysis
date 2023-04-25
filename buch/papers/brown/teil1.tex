@@ -7,55 +7,41 @@
 % !TEX encoding = UTF-8
 %
 \section{Stochastische Differenzialgleichungen\label{brown:section:teil1}}
-\rhead{Problemstellung}
+\rhead{Stochastische Differenzialgleichungen}
 
-Wird eine DGL (Differenzialgleichtung) hergeleitet, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus /entwickelt sich/folgt/ die Funktion dem Vektorfeld. Die resultierende Funktion ist stetig und "smooth". 
-//
+Ist eine DGL (Differenzialgleichtung) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert wird eine definitives Resultat geliefert.
+
+In vielen Bereichen entspricht ein solch "definitives" System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche nicht der Realität entspricht und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Einflüsse durch Störfunktionen  das Resultat maßgeblich beeinflussen. 
+
+%ToDo: Bild Vektorfed welches sensibel auf störungen ist.
+
+\begin{figure}
+	\caption{My caption}
+	\centering
+	\noindent\includegraphics[scale=0.5]{example-image-c} \label{fig:label}
+\end{figure}
 
 
-Bild
-//
+Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgleichung (SDE).
 
+Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von zufälligen Störungen.
 
-In vielen Bereichen entspricht  ein solch "ideales" System jedoch nicht der Relaität. Kleine Einflüsse durch Störfunktionen und "Zufälle" können das Resultat massgeblich beeinflussen. 
-Bild
-//
-
-
-Um diesem Umstand gerecht zu werden, kann man die Möglickeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgelichung.
-
-Formal kann dies folgendermassen notiert werden, 
+Formal kann dies folgendermaßen notiert werden, 
 
 \begin{equation}
 \dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}\
 
-wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken.
-
-m ist die Dimension der Störfunktion. Alos m dimensionales "white noise".
+wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".
 
 
 
-
-
-
-\begin{equation}
-	\int_a^b x^2\, dx
-	=
-	\left[ \frac13 x^3 \right]_a^b
-	=
-	\frac{b^3-a^3}3.
-	\label{brown:equation1}
-\end{equation}
-
-Text
-
-\subsection{De finibus bonorum et malorum
-\label{brown:subsection:finibus}}
-
+\subsection{Verpacken von Information in Rauschen
+\label{brown:subsection:verpackenVonSignalen}}
 Text \eqref{brown:equation1}.
 
-Text
+\subsection{Information in verrauschten Signalen
+\label{brown:subsection:verrauschteSignale}}
 \ref{brown:section:teil2}.
 
 Text
