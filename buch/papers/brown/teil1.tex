@@ -9,40 +9,84 @@
 \section{Stochastische Differenzialgleichungen\label{brown:section:teil1}}
 \rhead{Stochastische Differenzialgleichungen}
 
-Ist eine DGL (Differenzialgleichtung) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert wird eine definitives Resultat geliefert.
+Ist eine DGL (Differenzialgleichtung) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert wird eine definitives Resultat geliefert.\\
 
-In vielen Bereichen entspricht ein solch "definitives" System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche nicht der Realität entspricht und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Einflüsse durch Störfunktionen  das Resultat maßgeblich beeinflussen. 
+
+In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche nicht der Realität entspricht und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Einflüsse durch Störfunktionen das Resultat maßgeblich beeinflussen. Dies führt dazu, dass die Lösung einer DGL sich gegenüber der Realität durch Rauschen nicht perfekt deckt oder sogar komplett divergiert auf Grund eines Störeinflusses.
 
 %ToDo: Bild Vektorfed welches sensibel auf störungen ist.
 
-\begin{figure}
-	\caption{My caption}
+\begin{figure} [h]
 	\centering
 	\noindent\includegraphics[scale=0.5]{example-image-c} \label{fig:label}
+	\caption{My caption}
 \end{figure}
 
 
 Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgleichung (SDE).
 
-Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von zufälligen Störungen.
+Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von zufälligen Störungen.\\
+
 
 Formal kann dies folgendermaßen notiert werden, 
 
 \begin{equation}
 \dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
-\end{equation}\
+\end{equation}
 
-wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".
+wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".\\
+
+
+\subsection{Rauschen als Wiener Prozess
+\label{brown:subsection:wiener}}
+
+Der Wiener Prozess $ W(t) $ ist eine zentrale Idee, wenn es darum geht stochastisches Verhalten zu modellieren. Er weist folgende Eigenschaften auf / wird folgendermaßen definiert:
+
+% Als Definition formatieren?
+
+\begin{itemize}
+	\item $ W(0) = 0 $; Der Startwert von 0 ist 0.
+	\item $ W(t_{1}) - W(t_{2}) $ ist ein normalverteilte Zufalls-Variable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $.
+	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten.
+\end{itemize}
+
+Weiter wird auf den Wienerprozess nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.\\
+
+
+\textit{White noise} $ \xi(t) $ kann als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden. Somit wird SDE aus ... zu: 
+
+\begin{equation}
+	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
+\end{equation}
+
+Nun sollte man mit $ dt $  multiplizieren, da die Gleichung so nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
+
+\begin{equation}
+	dX(t) = b(X(t)) + B(X(t)) dW(t)
+\end{equation}
+
+%noch Integrall bilden, um der Gleichung einen SInn zu egben?
+
+% So kommt man auf die ITO-sche Kettenregel
+
+in der form ... wie sie ... benutzt wird.
 
 
 
-\subsection{Verpacken von Information in Rauschen
-\label{brown:subsection:verpackenVonSignalen}}
-Text \eqref{brown:equation1}.
 
-\subsection{Information in verrauschten Signalen
-\label{brown:subsection:verrauschteSignale}}
-\ref{brown:section:teil2}.
+
+
+
+
+
+
+\subsection{ITO's Formel
+\label{brown:subsection:ito}}
+
+
+
+
+
 
 Text
 \ref{brown:section:teil3}.
