@@ -26,12 +26,21 @@ Dies entspricht einer Frequenz im Bereich von 1 GHz, mit welcher Muster erkennt 
 
 \subsection{Diffractive deep neural network}
 Beim obenstehenden Beispiel wurde nur mit einer einzelnen Blende gearbeitet, um das gesuchte Muster zu erkennen.
-In \cite{opt:Lin.2018} wurde dieser Ansatz erweitert und mit mehreren Ebenen erfolgreich getestet.
+In \cite{opt:Lin.2018} wurde dieser Ansatz durch Xing et al. erweitert und mit mehreren Ebenen erfolgreich getestet.
+Abbildung \ref{opt:fig:handwriting}a zeigt den schematische Aufbau mit den fünf Ebenen.
 Der Grundsatz bleibt gleich; koheräntes Licht wird von einer ersten Input Ebene gebrochen und anschliessend an fünf weiteren Ebenen.
 Dies entspricht im Ansatz den verschiedenen Verknüpften Neutronen eines neuronalen Netzwerkes.
 Nach den Beugungsebenen wird das Licht durch mehrere Detektoren erkannt.
 Xing et al. konnten somit erfolgreich handschriftliche Zahlen detektieren.
 Mittels fünf aufeinanderfolgenden Ebenen und zehn Detektoren gelang es ihnen, mehr als 90\% der Schriften korrekt zuzuordnen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/opt/images/handwriting.pdf}
+    \caption{Abbildung a) zeigt den Aufbau, wie er in \cite{opt:Lin.2018} verwendet wurde, um handschriftliche Ziffern zu erkennen.
+    Abbildung b) und c) zeigen den Eingang sowie das Bild auf dem Detektor des Systems}
+    \label{opt:fig:handwriting}
+\end{figure}
 
 \subsection{Aktuelle Forschung im Bereich Photonics}
 \opttodo{Add infos from OST - Photonics}
