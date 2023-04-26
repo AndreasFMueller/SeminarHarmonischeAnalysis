@@ -10,12 +10,42 @@
 \label{opt:section:versuch}}
 \rhead{Praktische Erprobung}
 
-\subsection{Beschreibung Versuchsaufbau}
+Der durchgeführte Versuch entspricht im Aufbau demjenigen aus Abbildung \ref{opt:fig:4fAufbau}.
+Als Linsen für die Fouriertransformation wurden jene mit 300mm Brennweite genutzt, da somit der Effekt am besten sichtbar war.
+Um die gerade Wellenfront in ausreichendem Durchmesser zu erhalten, wurde der Laser mittels eines Keplerschen Teleskops aufgeweitet.
+Der schematische Aufbau ist in Abbildung \ref{opt:fig:laserAufweiten} ersichtlich.
+Dafür wurde direkt an der Laserblende eine konkave Linse mit einer Brennweite $f_b = 20mm$ montiert und in einem Abstand von $70mm$ eine weitere mit einer Brennweite von $f_o = 50mm$.
+Somit wird der Laserstrahl um ein Faktor $\frac{f_o}{f_b} = 2.5$ vergrössert.
+Dies war ausreichend, um die vorhandenen Blenden vollständig auszuleuchten.
 
+Nachdem der Laserstrahl vorbereitet wurde, wird eine erste Blende montiert.
+In Abbildung \ref{opt:fig:4fAufbau} ist dies als Originalbild beschrieben.
+Im Abstand $f=300mm$ wird jetzt die erste Linse montiert und nach weiteren zwei Brennweiten die zweite Linse.
+Genau in der Mitte der beiden Linsen ergibt sich die Fourierebene.
+Ganz am Ende des Aufbaus, eine weitere Brennweite hinter der zweiten Linse ist das rücktransformierte Bild ersichtlich.
+
+Im weiteren Verlauf dieses Kapitels werden die erwarteten Ergebnisse simuliert und anschliessend mit den Beobachtungen verglichen.
 \subsection{Simulation der erwarteten Ergebnissen}
 
-\subsection{Durchführung der Ergebnissen}
+\subsection{Versuchsdurchführung}
+Zuerst wurde die Funktion des Aufbaus mit einem 2f Versuch verifiziert.
+Dabei wird nur eine Linse aus dem 4f Aufbau verwendet und das entstandene Spektrum wird im Abstand der Brennweite betrachtet.
+Die dabei entstandenen Bilder entsprachen den Erwartungen.
+Für den Einzelspalt war, wie mit der Fouriertransformation berechnet, eine sinc-förmige Verteilung der Intensität zu betrachten.
+
+Nach dieser Verifizierung wurde die zweite Linse ebenfalls montiert und die Abbildungsebene hinter die zweite Linse gelegt.
+Beim Dreifachspalt konnte die Fouriertransformation und Rücktransformation erfolgreich ausgeführt werden.
+Die Filterung mittels eines optischen Tiefpasses konnte jedoch nicht nachgebildet werden.
 
 \subsection{Vergleich der Simulation}
 
 \subsection{Wieso mit Linsen? -> Positionsunabhängigkeit?}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=60mm]{papers/opt/images/laserAufweiten.pdf}
+    \caption{Die Aufweitung des Laserlichtes geschieht mit einem Kepler Teleskop. 
+    Dabei werden zwei Linsen mit unterschiedlichen Brennweiten verwendet. 
+    Der Abstand entspricht dabei der Summe der beiden Brennweiten.}
+    \label{opt:fig:laserAufweiten}
+\end{figure}
