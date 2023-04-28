@@ -11,25 +11,34 @@
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/opt/images/4fAufbau.pdf}
-    \caption{Der 4f Aufbau ermöglicht eine Fouriertransformation des Originalbildes sowie eine Rücktransformation aus der Fourierebene.
-    In dieser Abbildung wird die transformierte Funktion mit einem Tiefpass gefiltert.
-    Weitere Details zu den Filtern folgen im Kapitel \ref{opt:section:filter}.}
-    \label{opt:fig:4fAufbau}
+    \includegraphics[width=\textwidth]{papers/opt/images/huygens.pdf}
+    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
+    Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
+    \label{opt:fig:huygens}
 \end{figure}
 
 \subsection{Grundlagen Wellentheorie}
-Beugung kurz erklärt
+\label{opt:subsection:huygens}
+Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
+Im folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
 
-\subsubsection{Fressnel / Fraunhofner}
-Was ist der Unterschied zwischen den beiden Approximationen?
+Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären. 
+Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Welle.
+Diese lässt sich als Superposition von unendlichen Elementarwellen betrachten.
+An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront.
+Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront.
+Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
+
+Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
+Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kreisförmig wieder aus.
 
 \subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
+In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation 
+das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
 
 Betrachten wir zuerst, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtungen unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
-Somit kann durch anwenden der ersten Maxwellschen Gleichung
+Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
 \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
 =
@@ -70,8 +79,8 @@ Ganz allgemein lässt sich jede Welle als
 \label{opt:equation:wave}
 \end{equation}
 ausdrücken.
-Wie aus dem Physik Unterricht bereits bekannt ist, wird diese Welle am Spalt gebogen und sich hinter der Blende in Abhängigkeit von $b$ mehr oder weniger kreisförmig ausbreitet.
-Zurückzuführen ist dieses Verhalten auf das Prinzip von Huygens TODO.
+Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebogen.
+In Abhängigkeit von $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
@@ -194,7 +203,7 @@ C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cd
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
 Des Weiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
 Zulässig ist dies nur, weil $(y_p - y)^2 \ll l$ erfüllt ist.
-Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, weil der Faktor der Wellenzahl hinzumultipliziert wird und der Term $k \frac{(y_p-y)^2}{2l}$ somit nicht vernachlässigbar klein wird.
+Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da dieser mit dem Faktor der Wellenzahl multipliziert wird und der Term $k \frac{(y_p-y)^2}{2l}$ somit nicht vernachlässigbar klein wird.
 Der Zeitpunkt der Auswertung sei nicht von Interesse, da dieser lediglich den Momentanwert der Welle beeinflusst.
 Mittels $t = 0$ ergibt sich daraus
 \begin{align}

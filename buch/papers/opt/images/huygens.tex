@@ -1,0 +1,69 @@
+%
+% huygens.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+\def\skala{1}
+
+\begin{document}
+
+\def\r{0.3}
+\def\x{4}
+\def\legendx{-2.5}
+
+\tikzset{
+    pics/wavefront/.style args={#1/#2/#3}{
+            code = {
+                    \draw[fill=black] (0,0) circle (1pt);
+                    \draw[#3] (#1:#2) arc(#1:-#1:#2);
+                }
+        }
+}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+    \draw[draw=none] (-7,0)--(7,-0);
+
+    \node[draw=none] at (-\x, \legendx) {a) Elementarwelle};
+
+    \pic at (-\x, 0){wavefront=180/\r/blue};
+
+
+    \node[draw=none] at (0, \legendx) {b) Ebene Wellenfront};
+
+    \foreach \xi in {-0.6,-0.3,...,0.3}{
+            \foreach \yi in {-0.9,-0.6,...,0.9}{
+                    \pic at (\xi, \yi){wavefront=50/\r/blue};
+                }
+            \draw[red] (\xi + \r, -1.2)--(\xi + \r, 1.2);
+        }
+
+
+    \node[draw=none] at (\x, \legendx) {c) Beugung am Spalt};
+
+    \foreach \xi in {-3*\r,-2*\r,-\r}{
+            \draw[red] (\x + \xi, -1.8)--(\x + \xi, 1.8);
+        }
+
+    \draw[line width=2, gray] (\x, 0.5)--(\x, 2);
+    \draw[line width=2, gray] (\x, -0.5)--(\x, -2);
+
+    \foreach \yi in {-0.3,0,...,0.3}{
+            \foreach \ri in {0.3, 0.6, 0.9}{
+                    \pic at (\x, \yi){wavefront=90/\ri/blue!50};
+                }
+        }
+
+    \draw[red] ([shift=(0:1.2)]\x,\r) arc (0:90:1.2);
+    \draw[red] (\x + 1.2, \r) -- (\x + 1.2, -\r);
+    \draw[red] ([shift=(0:1.2)]\x,-\r) arc (0:-90:1.2);
+
+    \draw[red] ([shift=(0:1.5)]\x,\r) arc (0:90:1.5);
+    \draw[red] (\x + 1.5, \r) -- (\x + 1.5, -\r);
+    \draw[red] ([shift=(0:1.5)]\x,-\r) arc (0:-90:1.5);
+
+
+\end{tikzpicture}
+
+\end{document}
