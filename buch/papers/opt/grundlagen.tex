@@ -33,8 +33,7 @@ Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten.
 Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kreisförmig wieder aus.
 
 \subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation 
-das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
+In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
 
 Betrachten wir zuerst, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtungen unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
@@ -45,6 +44,7 @@ Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \int_{V}\rho\, dV
 \end{equation}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
+Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\varrho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
 Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi dl$ als
 \begin{align}
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
@@ -57,6 +57,7 @@ Q
 \end{align}
 schreiben.
 Die Deckflächen können aufgrund der infiniten Länge des Zylinders vernachlässigt werden.
+$Q$ beschreibt die durch den Zylindermantel eingeschlossene Ladung und $a$ dessen Länge.
 Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E}$ und $\hat{S}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
 Nach der elektrischen Feldstärke umgeformt lautet die Gleichung
 \begin{equation}
@@ -116,7 +117,7 @@ C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r}
 .
 \end{equation}
 
-Soll nun aber anstelle eines einzelnen Spalts mehrere solcher Spalten in beliebigen Abständen betrachtet werden, kann dieses Integral mit Hilfe der Blendenfunktion
+Soll nun aber anstelle eines einzelnen Spalts mehrere davon in beliebigen Abständen zueinander betrachtet werden, kann dieses Integral mit Hilfe der Blendenfunktion
 \begin{equation}
 f(y)
 \in
@@ -247,6 +248,24 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
+
+\subsubsection{Intensität}
+Diese elektrische Feldstärke kann leider nicht direkt auf dem Schirm beobachtet werden.
+Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
+Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
+Auf Konstanten wird vorerst verzichtet woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+\begin{align}
+I(y_p)
+&\propto
+|E(y_p)|^2
+\\
+&=
+\left(\frac{C\zeta_0}{l} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\\
+&=
+\frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\end{align}
+ergibt.
 
 \subsubsection{Vergleich mit der Fouriertransformation}
 
