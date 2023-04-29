@@ -16,7 +16,7 @@
 \tikzset{
     pics/wavefront/.style args={#1/#2/#3}{
             code = {
-                    \draw[fill=black] (0,0) circle (1pt);
+                    \draw[fill=gray, gray] (0,0) circle (1pt);
                     \draw[#3] (#1:#2) arc(#1:-#1:#2);
                 }
         }
@@ -46,8 +46,8 @@
             \draw[red] (\x + \xi, -1.8)--(\x + \xi, 1.8);
         }
 
-    \draw[line width=2, gray] (\x, 0.5)--(\x, 2);
-    \draw[line width=2, gray] (\x, -0.5)--(\x, -2);
+    \draw[line width=2, black] (\x, 0.5)--(\x, 2);
+    \draw[line width=2, black] (\x, -0.5)--(\x, -2);
 
     \foreach \yi in {-0.3,0,...,0.3}{
             \foreach \ri in {0.3, 0.6, 0.9}{
