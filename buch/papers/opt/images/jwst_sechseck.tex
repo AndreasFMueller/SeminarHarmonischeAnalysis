@@ -7,10 +7,12 @@
 \documentclass[tikz]{standalone}
 \def\skala{1}
 
+\input{opt_common.tex}
+
 \begin{document}
 
 \definecolor{jwst}{rgb}{241,207,0}
-\tikzstyle{spikes}=[dashed, blue]
+\tikzstyle{spikes}=[dashed, optBlue]
 \tikzstyle{stud}=[black, line width=4]
 
 \def\size{3}
@@ -42,7 +44,7 @@
     \draw[spikes] (30:\size + \offset)--(210:\size + \offset);
     \draw[spikes] (150:\size + \offset)--(330:\size + \offset);
     
-    \draw[spikes, red] (0:\size + \offset)--(180:\size + \offset);
+    \draw[spikes, optRed] (0:\size + \offset)--(180:\size + \offset);
 
     \draw[black] (150:\angleMarking) arc (150:240:\angleMarking);
     \draw[black] (300:\angleMarking) arc (300:390:\angleMarking);

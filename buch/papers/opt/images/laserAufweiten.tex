@@ -14,11 +14,7 @@
 \usetikzlibrary{arrows,intersections,math}
 \usetikzlibrary{decorations.markings, calc}
 
-%% Lense (x, height, curvature)
-\newcommand{\lense}[3]{
-    \def\curvature{0.2}
-    \path[fill=glass, draw=black, line width = 0.6, opacity=0.8] (#1,-#2) .. controls (#1 - #3,0) .. (#1,#2) .. controls (#1 + #3,0) .. (#1,-#2);
-}
+\input{opt_common.tex}
 
 %% Axis (x, textAbove, textBelow)
 \newcommand{\xAxis}[3]{%
@@ -27,18 +23,9 @@
     \node[] at (#1, -\lenseX - 0.5){#3};
 }
 
-%% Dimension arrow (xStart, xEnd)
-\newcommand{\dimensionBetweenLenses}[3]{%
-    \def\dimensionHeight{-2.3}
-    \draw[<->] (#1, \dimensionHeight)--(#2, \dimensionHeight) node[above,midway] {#3};
-}
-
 % Styles
 %% Arrow in the Middle
 \tikzset{arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position 0.52 with \arrow{stealth}}}}
-
-% Define Color
-\definecolor{glass}{cmyk}{0.2,0,0,0}
 
 \begin{document}
 
@@ -52,8 +39,8 @@
     % Optical plane
     \draw[dashed] (-2,0)--(4,0);
 
-    \dimensionBetweenLenses{-1}{0}{$f_b$}
-    \dimensionBetweenLenses{0}{3}{$f_o$}
+    \optMeasurement{-1}{0}{-2.3}{$f_b$}
+    \optMeasurement{0}{3}{-2.3}{$f_o$}
 
     % Laser
     \draw[fill=lightgray] (-3, -1) rectangle (-2, 1) node[rotate=90, pos=0.5] {Laser};
@@ -63,14 +50,14 @@
     \lense{3}{2}{.2}
 
     % Rays
-    \draw[red, line width = 0.6, arrow inside] (-2, 0.5) -- (-1, 0.5);
-    \draw[red, line width = 0.6, arrow inside] (-2, -0.5) -- (-1, -0.5);
+    \draw[ray arrow] (-2, 0.5) -- (-1, 0.5);
+    \draw[ray arrow] (-2, -0.5) -- (-1, -0.5);
 
-    \draw[red, line width = 0.6, arrow inside] (3, 1.5) -- (4, 1.5);
-    \draw[red, line width = 0.6, arrow inside] (3, -1.5) -- (4, -1.5);
+    \draw[ray arrow] (3, 1.5) -- (4, 1.5);
+    \draw[ray arrow] (3, -1.5) -- (4, -1.5);
 
-    \draw[red, line width = 0.6] (-1, 0.5) -- (3, -1.5);
-    \draw[red, line width = 0.6] (-1, -0.5) -- (3, 1.5);
+    \draw[red ray] (-1, 0.5) -- (3, -1.5);
+    \draw[red ray] (-1, -0.5) -- (3, 1.5);
 
 \end{tikzpicture}
 \end{document}

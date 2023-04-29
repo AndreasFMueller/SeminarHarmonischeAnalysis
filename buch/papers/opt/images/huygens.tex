@@ -7,6 +7,8 @@
 \documentclass[tikz]{standalone}
 \def\skala{1}
 
+\input{opt_common.tex}
+
 \begin{document}
 
 \def\r{0.3}
@@ -23,27 +25,27 @@
 }
 
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
-    \draw[draw=none] (-7,0)--(7,-0);
+    \draw[draw=none] (-6,0)--(6,-0);
 
     \node[draw=none] at (-\x, \legendx) {a) Elementarwelle};
 
-    \pic at (-\x, 0){wavefront=180/\r/blue};
+    \pic at (-\x, 0){wavefront=180/\r/optBlue};
 
 
     \node[draw=none] at (0, \legendx) {b) Ebene Wellenfront};
 
     \foreach \xi in {-0.6,-0.3,...,0.3}{
             \foreach \yi in {-0.9,-0.6,...,0.9}{
-                    \pic at (\xi, \yi){wavefront=50/\r/blue};
+                    \pic at (\xi, \yi){wavefront=50/\r/optBlue};
                 }
-            \draw[red] (\xi + \r, -1.2)--(\xi + \r, 1.2);
+            \draw[optRed] (\xi + \r, -1.2)--(\xi + \r, 1.2);
         }
 
 
     \node[draw=none] at (\x, \legendx) {c) Beugung am Spalt};
 
     \foreach \xi in {-3*\r,-2*\r,-\r}{
-            \draw[red] (\x + \xi, -1.8)--(\x + \xi, 1.8);
+            \draw[optRed] (\x + \xi, -1.8)--(\x + \xi, 1.8);
         }
 
     \draw[line width=2, black] (\x, 0.5)--(\x, 2);
@@ -51,17 +53,17 @@
 
     \foreach \yi in {-0.3,0,...,0.3}{
             \foreach \ri in {0.3, 0.6, 0.9}{
-                    \pic at (\x, \yi){wavefront=90/\ri/blue!50};
+                    \pic at (\x, \yi){wavefront=90/\ri/optBlue};
                 }
         }
 
-    \draw[red] ([shift=(0:1.2)]\x,\r) arc (0:90:1.2);
-    \draw[red] (\x + 1.2, \r) -- (\x + 1.2, -\r);
-    \draw[red] ([shift=(0:1.2)]\x,-\r) arc (0:-90:1.2);
+    \draw[optRed] ([shift=(0:1.2)]\x,\r) arc (0:90:1.2);
+    \draw[optRed] (\x + 1.2, \r) -- (\x + 1.2, -\r);
+    \draw[optRed] ([shift=(0:1.2)]\x,-\r) arc (0:-90:1.2);
 
-    \draw[red] ([shift=(0:1.5)]\x,\r) arc (0:90:1.5);
-    \draw[red] (\x + 1.5, \r) -- (\x + 1.5, -\r);
-    \draw[red] ([shift=(0:1.5)]\x,-\r) arc (0:-90:1.5);
+    \draw[optRed] ([shift=(0:1.5)]\x,\r) arc (0:90:1.5);
+    \draw[optRed] (\x + 1.5, \r) -- (\x + 1.5, -\r);
+    \draw[optRed] ([shift=(0:1.5)]\x,-\r) arc (0:-90:1.5);
 
 
 \end{tikzpicture}

@@ -10,14 +10,14 @@
 LATEX_COMPILER = pdflatex
 
 # Source files and PDF files
-SRCS = $(wildcard *.tex)
+SRCS = $(filter-out opt_common.tex,$(wildcard *.tex))
 PDFS = $(patsubst %.tex,%.pdf,$(SRCS))
 
 # Default rule
 all: $(PDFS)
 
 # Rule to build PDF files
-%.pdf: %.tex
+%.pdf: %.tex opt_common.tex
 	$(LATEX_COMPILER) $<
 
 # Clean rule

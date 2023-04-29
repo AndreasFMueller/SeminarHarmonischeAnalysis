@@ -14,11 +14,7 @@
 \usetikzlibrary{arrows,intersections,math}
 \usetikzlibrary{decorations.markings, calc}
 
-%% Lense (x, height, curvature)
-\newcommand{\lense}[3]{
-    \def\curvature{0.2}
-    \path[fill=glass, draw=black, line width = 0.6, opacity=0.8] (#1,-#2) .. controls (#1 - #3,0) .. (#1,#2) .. controls (#1 + #3,0) .. (#1,-#2);
-}
+\input{opt_common.tex}
 
 %% Axis (x, textAbove, textBelow)
 \newcommand{\xAxis}[3]{%
@@ -26,19 +22,6 @@
     \draw[->, thin] (#1,-\lenseX)--(#1,\lenseX) node[above]{#2};
     \node[] at (#1, -\lenseX - 0.5){#3};
 }
-
-%% Dimension arrow (xStart, xEnd)
-\newcommand{\dimensionBetweenLenses}[2]{%
-    \def\dimensionHeight{-3.3}
-    \draw[<->] (#1, \dimensionHeight)--(#2, \dimensionHeight) node[above,midway] {$f$};
-}
-
-% Styles
-%% Arrow in the Middle
-\tikzset{arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position 0.52 with \arrow{stealth}}}}
-
-% Define Color
-\definecolor{glass}{cmyk}{0.2,0,0,0}
 
 \begin{document}
 
@@ -60,7 +43,7 @@
 
     % Dimension between the lenses
     \foreach \n in {-2,...,1}{
-        \dimensionBetweenLenses{\n * 5}{\n * 5 + 5}
+        \optMeasurement{\n * 5}{\n * 5 + 5}{-3.3}{$f$}
     }
 
     % Lenses
@@ -68,29 +51,29 @@
     \lense{5}{2.5}{.2}
 
     % Aperture
-    \draw[-, line width=2, blue] (-10,-2.8)--(-10,-1.5);
-    \draw[-, line width=2, blue] (-10,-1.1)--(-10,-0.1);
-    \draw[-, line width=2, blue] (-10,0.6)--(-10,1.2);
-    \draw[-, line width=2, blue] (-10,1.5)--(-10,2.8);
+    \draw[-, line width=2, optBlue] (-10,-2.8)--(-10,-1.5);
+    \draw[-, line width=2, optBlue] (-10,-1.1)--(-10,-0.1);
+    \draw[-, line width=2, optBlue] (-10,0.6)--(-10,1.2);
+    \draw[-, line width=2, optBlue] (-10,1.5)--(-10,2.8);
 
     % Laser wave
     \draw[<->] (-11, -2.8)--(-10.5,-2.8) node[above,midway] {$\lambda$};
-    \draw[-, red, line width = 0.3] (-11.5, -3)--(-11.5,3) node[above,midway, sloped, fill=white, inner sep = 3] {Gerade Wellenfront};
-    \draw[-, red, line width = 0.3] (-11, -3)--(-11,3);
-    \draw[-, red, line width = 0.3] (-10.5, -3)--(-10.5,3);
+    \draw[red ray] (-11.5, -3)--(-11.5,3) node[above,midway, sloped, fill=white, inner sep = 3] {Gerade Wellenfront};
+    \draw[red ray] (-11, -3)--(-11,3);
+    \draw[red ray] (-10.5, -3)--(-10.5,3);
 
     % Low pass filter
-    \draw[-, line width=3, gray] (0,-2.8)--(0,-0.3);
-    \draw[-, line width=3, gray] (0,0.3)--(0,2.8);
+    \draw[-, line width=3, black] (0,-2.8)--(0,-0.3);
+    \draw[-, line width=3, black] (0,0.3)--(0,2.8);
 
     % Rays
-    \draw[red, line width = 0.6, arrow inside] (-10,1.5) -- (-5,1.5);
-    \draw[red, line width = 0.6] (-5,1.5) -- (5,-1.5);
-    \draw[red, line width = 0.6, arrow inside] (5,-1.5) -- (10,-1.5);
+    \draw[ray arrow] (-10,1.5) -- (-5,1.5);
+    \draw[red ray] (-5,1.5) -- (5,-1.5);
+    \draw[ray arrow] (5,-1.5) -- (10,-1.5);
 
-    \draw[red, line width = 0.6, arrow inside] (-10,-1.5) -- (-5,-1.5);
-    \draw[red, line width = 0.6] (-5,-1.5) -- (5,1.5);
-    \draw[red, line width = 0.6, arrow inside] (5,1.5) -- (10,1.5);
+    \draw[ray arrow] (-10,-1.5) -- (-5,-1.5);
+    \draw[red ray] (-5,-1.5) -- (5,1.5);
+    \draw[ray arrow] (5,1.5) -- (10,1.5);
 
 \end{tikzpicture}
 \end{document}

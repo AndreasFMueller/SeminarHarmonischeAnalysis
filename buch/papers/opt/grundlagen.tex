@@ -11,7 +11,7 @@
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/opt/images/huygens.pdf}
+    \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
     \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
     Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
     \label{opt:fig:huygens}
@@ -31,6 +31,14 @@ Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf
 
 Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
 Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kreisförmig wieder aus.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=90mm]{papers/opt/images/derivation.pdf}
+    \caption{Beugung am Spalt: Die ebene Welle kommt von links her an den Spalt. 
+    Von allen $dy$ geht eine Elementarwelle gemäss Kapitel \ref{opt:subsection:huygens} aus, welche sich am Auswertepunkt $P$ aufsummiert.}
+    \label{opt:fig:geometricalShape}
+\end{figure}
 
 \subsection{Herleitung Beugungsintegrale}
 In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
@@ -87,8 +95,7 @@ Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungs
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
-Siehe TODO.
-Aus der geometrischen Anordnung geht hervor, dass
+Aus der geometrischen Anordnung in Abbildung \ref{opt:fig:geometricalShape} geht hervor, dass
 \begin{equation}
 r
 =
@@ -253,7 +260,7 @@ E(y_p)
 Diese elektrische Feldstärke kann leider nicht direkt auf dem Schirm beobachtet werden.
 Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
-Auf Konstanten wird vorerst verzichtet woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+Auf Konstanten wird vorerst verzichtet, woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
 \begin{align}
 I(y_p)
 &\propto
