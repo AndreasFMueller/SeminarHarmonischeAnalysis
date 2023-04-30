@@ -41,7 +41,8 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \end{figure}
 
 \subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
+In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation 
+das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
 
 Betrachten wir zuerst, wie in TODO gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in beide Richtungen unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
@@ -89,7 +90,7 @@ Ganz allgemein lässt sich jede Welle als
 \end{equation}
 ausdrücken.
 Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebogen.
-In Abhängigkeit von $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter.
+In Abhängigkeit von $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
@@ -255,24 +256,72 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
+Das somit entstandene Integral entspricht gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 
 \subsubsection{Intensität}
 Diese elektrische Feldstärke kann leider nicht direkt auf dem Schirm beobachtet werden.
 Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
-Auf Konstanten wird vorerst verzichtet, woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+Als Proportionalitätskonstante wird $\kappa$ verwendet.
+Auf dessen exakten Wert wird vorerst nicht weiter darauf eingegangen, woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
 \begin{align}
 I(y_p)
-&\propto
-|E(y_p)|^2
+&=
+\kappa \cdot |E(y_p)|^2
 \\
 &=
-\left(\frac{C\zeta_0}{l} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \left(\frac{C\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \\
 &=
-\frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\label{opt:equation:integral_intensity}
 \end{align}
 ergibt.
 
-\subsubsection{Vergleich mit der Fouriertransformation}
-
+\subsection{Beispiel einzelner Spalt}
+Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breit $b$ durchexerziert.
+In diesem Fall beträgt die Blendenfunktion
+\begin{equation}
+f(y)
+=
+\left.
+\begin{cases}
+1 & \text{for } -\frac{b}{2} \leq x \leq \frac{b}{2} \\
+0 & \text{else}
+\end{cases}
+\right\}
+.
+\end{equation}
+Mit Hilfe der Eulerschen Identität des Sinus
+\begin{equation}
+\sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
+\end{equation}
+und der Definition der sinc Funktion
+\begin{equation}
+\text{sinc}(x) = \frac{\sin(x)}{x}
+\end{equation}
+vereinfacht sich Gleichung~\ref{opt:equation:integral_intensity} demnach zu
+\begin{align}
+I(y_p)
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
+\\
+&=
+\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot b^2 \cdot \text{sinc}^2\left(\frac{bky_p}{2l}\right)
+.
+\end{align}
