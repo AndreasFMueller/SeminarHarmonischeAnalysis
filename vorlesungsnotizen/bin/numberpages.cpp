@@ -21,15 +21,21 @@ void	usage(char *progname) {
 	std::cout << "<unnumbered.pdf> <numbered.pdf>" << std::endl;
 	std::cout << "options:" << std::endl;
 	std::cout << " -d,--debug         enable debug mode" << std::endl;
+	std::cout << " -h,-?,--help       show this help message" << std::endl;
+	std::cout << " -n,--number=<n>    number of the section" << std::endl;
 	std::cout << " -f,--force         overwrite output file" << std::endl;
-	std::cout << " -s,--section=<s>   use <s> as the section title";
+	std::cout << " -s,--section=<s>   use <s> as the section title" << std::endl;
+	std::cout << " -t,--title=<t>     use title <t>";
 	std::cout << std::endl;
 }
 
 struct option	longoptions[] = {
 { "debug",	no_argument,		NULL,	'd' },
+{ "help",	no_argument,		NULL,	'h' },
 { "section",	required_argument,	NULL,	's' },
+{ "title",	required_argument,	NULL,	't' },
 { "force",	no_argument,		NULL,	'f' },
+{ "number",	required_argument,	NULL,	'n' },
 { NULL,		no_argument,		NULL,	 0  }
 };
 
@@ -41,8 +47,10 @@ int	main(int argc, char *argv[]) {
 	bool	force = false;
 	bool	debug = false;
 	std::string	section;
+	std::string	title;
+	std::string	number;
 	int	c, longindex, rc;
-	while (EOF != (c = getopt_long(argc, argv, "dfhs:?", longoptions,
+	while (EOF != (c = getopt_long(argc, argv, "dfhn:s:t:?", longoptions,
 		&longindex))) {
 		switch (c) {
 		case 'd':
@@ -55,6 +63,9 @@ int	main(int argc, char *argv[]) {
 		case '?':
 			usage(argv[0]);
 			return EXIT_SUCCESS;
+		case 'n':
+			number = std::string(optarg);
+			break;
 		case 's':
 			section = std::string(optarg);
 			if (debug) {
@@ -62,7 +73,17 @@ int	main(int argc, char *argv[]) {
 				std::cout << std::endl;
 			}
 			break;
+		case 't':
+			title = std::string(optarg);
+			if (debug) {
+				std::cout << "title string: " << title;
+				std::cout << std::endl;
+			}
+			break;
 		}
+	}
+	if (0 == title.size()) {
+		title = section;
 	}
 
 	// remaining arguments are file names
@@ -153,12 +174,14 @@ int	main(int argc, char *argv[]) {
 	// prepare command line
 	std::ostringstream	out;
 	out << "pdflatex ";
+	if (title.size() > 0) {
+		out << "\\\\def\\\\titlestring{" << title << "} ";
+	}
 	if (section.size() > 0) {
 		out << "\\\\def\\\\sectionnumber{" << section << "} ";
-		out << "\\\\input{numbered.tex}";
-	} else {
-		out << "\\\\input{numbered.tex}";
 	}
+	out << "\\\\def\\\\numberstring{" << number << "} ";
+	out << "\\\\input{numbered.tex}";
 	if (debug) {
 		std::cout << "command line: " << out.str() << std::endl;
 	}

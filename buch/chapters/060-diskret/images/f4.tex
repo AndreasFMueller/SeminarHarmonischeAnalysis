@@ -1,0 +1,128 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\t{0.3}
+\def\s{0.3}
+\def\h{1.0}
+\def\w{2.2}
+\def\punkt#1#2{({(#1)*\w},{-(#2)*\h})}
+\def\spinne#1#2#3#4#5#6{
+	\draw[<-,shorten <= #6]
+		\punkt{#5}{#1} -- \punkt{#5+0.5}{0.25*(#1+#2+#3+#4)};
+	\draw[<-,shorten <= #6]
+		\punkt{#5}{#2} -- \punkt{#5+0.5}{0.25*(#1+#2+#3+#4)};
+	\draw
+		\punkt{#5+1}{#3} -- \punkt{#5+0.5}{0.25*(#1+#2+#3+#4)};
+	\draw
+		\punkt{#5+1}{#4} -- \punkt{#5+0.5}{0.25*(#1+#2+#3+#4)};
+	\fill[color=white]
+		\punkt{#5+0.5-\s/\w}{0.25*(#1+#2+#3+#4)-\s/\h}
+		rectangle
+		\punkt{#5+0.5+\s/\w}{0.25*(#1+#2+#3+#4)+\s/\h};
+	\draw
+		\punkt{#5+0.5-\s/\w}{0.25*(#1+#2+#3+#4)-\s/\h}
+		rectangle
+		\punkt{#5+0.5+\s/\w}{0.25*(#1+#2+#3+#4)+\s/\h};
+	\node at \punkt{#5+0.5}{0.25*(#1+#2+#3+#4)} {$\mathscr{F}_2$};
+}
+\def\knoten#1#2#3#4#5{
+	\fill[color=gray!40]
+		\punkt{\t*(#1)+(1-\t)*(#3)}{\t*(#2)+(1-\t)*(#4)}
+		circle[radius=0.2];
+	\draw
+		\punkt{\t*(#1)+(1-\t)*(#3)}{\t*(#2)+(1-\t)*(#4)}
+		circle[radius=0.2];
+	\node at \punkt{\t*(#1)+(1-\t)*(#3)}{\t*(#2)+(1-\t)*(#4)}
+		{$#5$};
+}
+\def\gitter{
+	\foreach \x in {0,1,2}{
+		\draw \punkt{\x}{-0.2} -- \punkt{\x}{3.2};
+	}
+	\node at \punkt{2}{-0.2} [above] {$f$};
+	\node at \punkt{0}{-0.2} [above] {$\hat{f}$};
+
+	\foreach \y in {0,...,3}{
+		\foreach \x in {0,2}{
+			\fill[color=white] \punkt{\x}{\y} circle[radius=0.12];
+			\draw \punkt{\x}{\y} circle[radius=0.12];
+			\node at \punkt{\x}{\y} {$\scriptscriptstyle\y$};
+		}
+		\fill \punkt{1}{\y} circle[radius=0.05];
+	}
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}
+	\fill[color=blue!20]
+		\punkt{1-0.3/\w}{1-0.3/\h}
+		rectangle
+		\punkt{2+0.3/\w}{1+0.3/\h};
+	\fill[color=red!20]
+		\punkt{1-0.3/\w}{2-0.3/\h}
+		rectangle
+		\punkt{2+0.3/\w}{2+0.3/\h};
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+	\fill[color=blue!20]
+		\punkt{1-0.3/\w}{2-0.3/\h}
+		rectangle
+		\punkt{2+0.3/\w}{2+0.3/\h};
+	\fill[color=red!20]
+		\punkt{1-0.3/\w}{1-0.3/\h}
+		rectangle
+		\punkt{2+0.3/\w}{1+0.3/\h};
+\end{scope}
+
+\draw[->,color=blue!40,line width=3pt]
+	({2*\w+0.3},{-1*\h}) to[out=0,in=180] ({1*\w+7-0.3},{-2*\h});
+\draw[->,color=red!40,line width=3pt]
+	({2*\w+0.3},{-2*\h}) to[out=0,in=180] ({1*\w+7-0.3},{-1*\h});
+
+\begin{scope}
+
+
+	\spinne{0}{2}{0}{1}{0}{0.15cm}
+	\spinne{1}{3}{2}{3}{0}{0.15cm}
+
+	\foreach \y in {0,1}{
+		\spinne{\y+2}{\y}{\y}{\y+2}{1}{0.05cm}
+	}
+
+	\knoten{0.5}{2.25}{1}{3}{\omega}
+
+	\gitter
+
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+
+	\spinne{0}{2}{0}{2}{0}{0.15cm}
+	\spinne{1}{3}{1}{3}{0}{0.15cm}
+
+	\foreach \y in {0,2}{
+		\spinne{\y+1}{\y}{\y}{\y+1}{1}{0.05cm}
+	}
+
+	\knoten{0.5}{2.25}{1}{3}{\omega}
+
+	\gitter
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

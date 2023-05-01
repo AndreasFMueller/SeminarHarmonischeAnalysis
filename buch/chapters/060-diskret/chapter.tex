@@ -7,11 +7,38 @@
 \chapter{Diskrete harmonische Analysis
 \label{buch:chapter:diskret}}
 \kopflinks{Skalarprodukte}
+Das in Kapitel~\ref{buch:chapter:gruppen} entwickelte allgemeine
+Programm ist für endliche abelsche Gruppen vollständig durchführbar.
+Dazu muss man zunächst einen Überblick über die endlichen abelschen
+Gruppen bekommen, was in Abschnitt~\ref{buch:diskret:section:endlich}
+geschieht.
+Es zeigt sich, dass sich solche Gruppen immer als Produkte viel
+einfacherer Gruppen schreiben lassen.
+Dies schlägt sich in einer Faktorzerlegung der
+Fourier-Transformationsmatrizen nieder, die auch als das
+Tensorprodukt oder Kronecker-Produkt von Matrizen bekannt ist.
+Sie wird in Abschnitt~\ref{buch:diskret:section:tensor}
+beschrieben.
+In Abschnitt~\ref{buch:diskret:section:vandermonde} wird
+gezeigt, wie eine Faktorisierung der Dimension $n=pq$ zu einer
+Faktorisierung der Fourier-Transformationsmatrix $\mathscr{F}_n$
+führt.
+Mit Hilfe der Primfaktorzerlegung der Dimension $n$ wird daraus
+in Abschnitt~\ref{buch:diskret:section:schnell} die schnelle
+Fourier-Transformation konstruiert.
+Die Konstruktion der Faktorisierung der diskreten Fourier-Transformation
+funktioniert nicht nur für $n$-dimensionale komplexe Vektoren, sondern
+auch über einem endlichen Körper $\mathbb{F}_{p^l}$ vorausgesetzt, dass
+$p$ kein Teiler von $n$ ist.
+Dies wird in Abschnitt~\ref{buch:diskret:section:koerper} gezeigt.
+
 
 \input{chapters/060-diskret/1-endlich.tex}
-\input{chapters/060-diskret/2-aufloesung.tex}
-\input{chapters/060-diskret/3-schnell.tex}
-\input{chapters/060-diskret/4-koerper.tex}
+\input{chapters/060-diskret/2-tensor.tex}
+\input{chapters/060-diskret/3-faktorisierung.tex}
+\input{chapters/060-diskret/4-schnell.tex}
+\input{chapters/060-diskret/5-koerper.tex}
+\input{chapters/060-diskret/6-unschaerfe.tex}
 
 %\section*{Übungsaufgaben}
 %\rhead{Übungsaufgaben}
