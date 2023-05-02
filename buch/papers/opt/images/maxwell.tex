@@ -9,6 +9,7 @@
 % \usepackage{amsmath}
 % \usepackage{txfonts}
 \usepackage{pgfplots}
+\usetikzlibrary{calc}
 
 % \pgfplotsset{compat=1.16}
 \def\skala{1}
@@ -19,34 +20,59 @@
 \usetikzlibrary{decorations.markings, } %calc
 
 \begin{document}
-% \tdplotsetmaincoords{70}{145}
-\begin{tikzpicture}[>=latex,thick,scale=\skala] %tdplot_main_coords
-    \draw[draw=none](-3,0)--(3,0);
+\tdplotsetmaincoords{70}{125}
 
-    % Coordinate
-    \coordinate (O) at (0,0,0);
-    \draw[->, thin] (-2,0,0) -- (3,0,0) node[anchor=north east]{$y$};
-    \draw[->, thin] (0,-3,0) -- (0,3,0) node[anchor=north west]{$z$};
-    \draw[->, thin] (0,0,-4) -- (0,0,4) node[anchor=north]{$x$};
+\begin{tikzpicture}[>=latex,thick,scale=\skala,tdplot_main_coords]
+    % Die Breite des generierte PDFs berechnet sich aus b = cos(125 - 90) * (3.5 + 3.5) = 57.34mm
+    \draw[draw=none](0,-3.5,0)--(0,3.5,0);
 
-    % Charge
-    \draw[line width=2, gray] (0,-2,0) -- (0,2,0);
+    % Koordinaten
+    \draw[->, thin] (-2,0,0) -- (3,0,0) node[above]{$x$};
+    \draw[->, thin] (0,-2,0) -- (0,3,0) node[above]{$y$};
+    \draw[->, thin] (0,0,-2.8) -- (0,0,2.8) node[left]{$z$};
 
-    % Cylinder shape
-    \draw (0,2,0) ellipse (1.25 and 0.5);
-    \draw (-1.25,2,0) -- (-1.25,-2,0);
-    \draw (1.25,2,0) -- (1.25,-2,0);  
-    \draw (-1.25,0,0) arc (180:360:1.25 and 0.5);
-    \draw [dashed] (-1.25,0,0) arc (180:360:1.25 and -0.5);
-    \draw (-1.25,-2,0) arc (180:360:1.25 and 0.5);
-    \draw [dashed] (-1.25,-2, 0) arc (180:360:1.25 and -0.5);
-    \fill [optBlue,opacity=0.3] (-1.25,2,0) -- (-1.25,-2,0) arc (180:360:1.25 and 0.5) -- (1.25,2,0) arc (0:180:1.25 and -0.5);
+    % Elektrisches Feld
+    \foreach \z in {-1, 0, 1} {
+        \foreach \angleTheta in {0, 45, 90, 135, 180, -135, -90, -45} {
+            \tdplotsetcoord{P}{1.4}{90}{\angleTheta}
+            \draw[->, thin, optGreen] (0,0,\z) -- ($(P)+(0,0,\z)$);
+        }
+    }
 
-    % Measurement
-    \draw[->] (0,2,0) -- (1.25,2,0) node[anchor=south east, midway]{$r$};
-    \draw[<->] (2,-2,0) -- (2,2,0) node[anchor=south west, midway]{$a$};
-    \draw[-,thin, dashed] (1.25,2,0)--(2.3,2,0);
-    \draw[-,thin, dashed] (0,-2,0)--(2.3,-2,0);
+    \node[optGreen] at (1,-1.4,1){$\vec{E}$};
+
+    % Ladung
+    \draw[line width=2, gray] (0,0,-2) -- (0,0,2);
+
+    % Zylinder
+    \path (1,0,0);
+    \pgfgetlastxy{\cylxx}{\cylxy}
+    \path (0,1,0);
+    \pgfgetlastxy{\cylyx}{\cylyy}
+    \path (0,0,1);
+    \pgfgetlastxy{\cylzx}{\cylzy}
+    \pgfmathsetmacro{\cylt}{(\cylzy * \cylyx - \cylzx * \cylyy)/ (\cylzy * \cylxx - \cylzx * \cylxy)}
+    \pgfmathsetmacro{\ang}{atan(\cylt)}
+    \pgfmathsetmacro{\ct}{1/sqrt(1 + (\cylt)^2)}
+    \pgfmathsetmacro{\st}{\cylt * \ct}
+    \fill[optBlue,opacity=0.3] (\ct,\st,2) -- ++(0,0,-4) arc[start angle=\ang,delta angle=180,radius=1] -- ++(0,0,4) arc[start angle=\ang+180,delta angle=-180,radius=1];
+    \draw (0,0,2) circle[radius=1];
+    \draw (\ct,\st,2) -- ++(0,0,-4);
+    \draw (-\ct,-\st,2) -- ++(0,0,-4);
+
+    \foreach \height in {-1, 0, 1} {
+        \draw[opacity=0.5, thin] (\ct,\st,\height) arc[start angle=\ang,delta angle=180,radius=1];
+        \draw[dashed, opacity=0.5, thin] (\ct,\st,\height) arc[start angle=\ang,delta angle=-180,radius=1];
+    }
+
+    \draw (\ct,\st,-2) arc[start angle=\ang,delta angle=180,radius=1];
+    \draw[dashed] (\ct,\st,-2) arc[start angle=\ang,delta angle=-180,radius=1];
+
+    % Messungen
+    \draw[->] (0,0,2) -- (0,1,2) node[anchor=south, midway]{$r$};
+    \draw[<->] (0,2,-2) -- (0,2,2) node[anchor=south west, midway]{$a$};
+    \draw[-,thin, dashed] (0,1,2)--(0,2.3,2);
+    \draw[-,thin, dashed] (0,0,-2)--(0,2.3,-2);
 \end{tikzpicture}
 \end{document}
 

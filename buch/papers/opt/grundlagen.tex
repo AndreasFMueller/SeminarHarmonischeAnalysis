@@ -46,8 +46,9 @@ das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fra
 
 \begin{figure}
     \centering
-    \includegraphics[width=60mm]{papers/opt/images/maxwell.pdf}
-    \caption{In grau ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird}
+    \includegraphics[width=57.34mm]{papers/opt/images/maxwell.pdf}
+    \caption{In grau entlang der z-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
+    Das elektrische Feld $\vec{E}$ breitet sich immer radial und rechtwinklig zur Lichtquelle aus.}
     \label{opt:fig:maxwell}
 \end{figure}
 
@@ -61,8 +62,12 @@ Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \end{equation}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
 Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\varrho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
-Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $dS = r d\varphi dl$ als
+Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r d\varphi dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
 \begin{align}
+\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi dl
+&=
+Q
+\\
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
 &=
 Q
@@ -73,8 +78,10 @@ Q
 \end{align}
 schreiben.
 Die durch die Deckflächen entstehenden Randeffekte des elektrischen Feldes können aufgrund der infiniten Länge $a$ des Zylinders vernachlässigt werden.
+Wobei es bereits langen würde, wenn $r \ll a$ ist.
 Des Weiteren beschreibt $Q$ die durch den Zylindermantel eingeschlossene Ladung.
-Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E}$ und $\hat{S}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
+Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E} = \hat{r}$ und $\hat{S} = \hat{r}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
+In anderen Worten, das elektrische Feld $E$ durchtritt die Mantelfläche des Zylinders immer im rechten Winkel.
 Nach der elektrischen Feldstärke umgeformt lautet die Gleichung
 \begin{equation}
 E(r)
