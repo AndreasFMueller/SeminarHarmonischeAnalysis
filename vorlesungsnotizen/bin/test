@@ -1,6 +1,6 @@
 #! /bin/bash
 ./numberpages --force --debug --number="8." \
-	--title="Nichtkommutative harmonische Analysis" \
-	--section="8. Nichtkommative harmonische Analysis" \
-	"8. Nichtkommutative Harmonische Analysis.pdf" \
-	../B/"8 - Nichtkommutative Harmonische Analysis.pdf"
+	--title="Radon-Transformation" \
+	--section="5. Radon-Transformation" \
+	"5. Radon-Transformation.pdf" \
+	../MSE/"5 - Radon-Transformation.pdf"
