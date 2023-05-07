@@ -7,7 +7,7 @@
 %
 % Faktorisierung der Vandermonde-Matrix
 %
-\subsection{Faktorisierung der Vandermonde-Matrix
+\subsection{Faktorisierung der Fourier-Matrix
 \label{buch:diskret:subsetion:faktorisierung}}
 Die Fourier-Transformation $\mathscr{F}$ und ihre Inverse
 $\overline{\mathscr{F}}$ sind nach
@@ -67,10 +67,10 @@ Durch Ausmultiplizieren kann man nachrechnen, dass
 1&\omega^2&\omega^4&      0&       0&          0\\
 0&       0&       0&      1&\omega^3&   \omega^6\\
 \hline
-1&\omega^4&\omega^6&      0&       0&          0\\
+1&\omega^4&\omega^8&      0&       0&          0\\
 0&       0&       0&      1&\omega^5&\omega^{10}
 \end{array}\right)
-}_{\displaystyle =A(3,2,\omega)}
+}_{\displaystyle =A(2,3,\omega)}
 \underbrace{
 \left(\begin{array}{ccc|ccc}
 1&0&0&       1&       0&       0\\
@@ -82,6 +82,10 @@ Durch Ausmultiplizieren kann man nachrechnen, dass
 0&0&1&       0&       0&\omega^3\\
 \end{array}\right)
 }_{\displaystyle =F(2,3,\omega)}
+=
+A(2,3,\omega)
+\cdot
+(\mathscr{F}_2\otimes I_3).
 \]
 Dabei muss auch wieder $\omega^6=1$ verwendet werden, zum Beispiel
 bei der Berechnung der vierten Zeile, wo sich die Werte
@@ -113,7 +117,7 @@ Alternativ ist aber auch die Faktorisierung in die Faktoren
 0&       0&1&\omega^4&0&       0\\
 0&       0&0&       0&1&\omega^5
 \end{array}\right)
-}_{\displaystyle =A(2,3,\omega)}
+}_{\displaystyle =A(3,2,\omega)}
 \underbrace{
 \left(\begin{array}{cc|cc|cc}
 1&0&       1&       0&       1&       0\\
@@ -122,15 +126,26 @@ Alternativ ist aber auch die Faktorisierung in die Faktoren
 1&0&\omega^2&       0&\omega^4&       0\\
 0&1&       0&\omega^2&       0&\omega^4\\
 \hline
-1&0&\omega^4&       0&\omega^6&       0\\
-0&1&       0&\omega^4&       0&\omega^6
+1&0&\omega^4&       0&\omega^8&       0\\
+0&1&       0&\omega^4&       0&\omega^8
 \end{array}\right)
 }_{\displaystyle =F(3,2,\omega)}
+=
+A(3,2,\omega)  
+\cdot
+(\mathscr{F}_3\otimes I_2)
 \]
 möglich.
+
+%
+% Faktorisierung von A(p,q,\omega)
+%
+\subsubsection{Faktorisierung von $A(p,q,\omega)$}
 Durch Vertauschung von Zeilen kann man den Faktor $A(3,2,\omega)$ in die
 Blockform
 \[
+A(3,2,\omega)
+=
 \left(
 \def\l#1{\multicolumn{1}{|c}{#1}}
 \def\r#1{\multicolumn{1}{c|}{#1}}
@@ -147,6 +162,31 @@ Blockform
 \cline{5-6}
 \end{array}
 \right)
+=
+(
+I_3
+\otimes
+\mathscr{F}_2
+)
+\cdot
+\underbrace{
+\left(
+\def\l#1{\multicolumn{1}{|c}{#1}}
+\def\r#1{\multicolumn{1}{c|}{#1}}
+\begin{array}{cccccc}
+\cline{1-2}
+\l{1}&\r{ }&     &          &     &            \\
+\l{} &\r{1}&     &          &     &            \\
+\cline{1-4}
+     &     &\l{1}&\r{      }&     &            \\
+     &     &\l{ }&\r{\omega}&     &            \\
+\cline{3-6}
+     &     &     &          &\l{1}&\r{        }\\
+     &     &     &          &\l{ }&\r{\omega^2}\\
+\cline{5-6}
+\end{array}
+\right)
+}_{\displaystyle = D(3,2,\omega)}
 \]
 bringen.
 Der Block in der linken oberen Ecke ist eine Fourier-Transformation
@@ -155,9 +195,11 @@ Auch die anderen beiden Blöcke sind bis auf eine Multiplikation
 der zweiten Spalte mit $\omega$ bzw.~$\omega^2$ Fourier-Transformationen
 $\mathscr{F}_2$.
 
-Die gleiche Art von Blockstruktur lässt sich auch für $A(3,2,\omega)$
+Die gleiche Art von Blockstruktur lässt sich auch für $A(2,3,\omega)$
 erreichen, sie ist
 \[
+A(2,3,\omega)
+=
 \left(
 \def\l#1{\multicolumn{1}{|c}{#1}}
 \def\r#1{\multicolumn{1}{c|}{#1}}
@@ -173,6 +215,26 @@ erreichen, sie ist
 \cline{4-6}
 \end{array}
 \right)
+=
+(I_2\otimes \mathscr{F}_3)
+\cdot
+\underbrace{
+\left(
+\def\l#1{\multicolumn{1}{|c}{#1}}
+\def\r#1{\multicolumn{1}{c|}{#1}}
+\begin{array}{cccccc}
+\cline{1-3}
+\l{1}& &\r{ }&     &      &            \\
+\l{ }&1&\r{ }&     &      &            \\
+\l{ }& &\r{1}&     &      &            \\
+\cline{1-6}
+     & &     &\l{1}&      &\r{        }\\
+     & &     &\l{ }&\omega&\r{        }\\
+     & &     &\l{ }&      &\r{\omega^2}\\
+\cline{4-6}
+\end{array}
+\right)}
+_{\displaystyle D(2,3,\omega)}.
 \]
 Die Blockmatrix in der linken oberen Ecke ist $\mathscr{F}_3$,
 bis auf die Faktoren $\omega$ und $\omega^2$ in der zweiten
@@ -183,7 +245,7 @@ Fourier-Transformation $\mathscr{F}_3$.
 \centering
 \includegraphics{chapters/060-diskret/images/f32.pdf}
 \caption{Faktorisierung der Fourier-Transformation $\mathscr{F}_6$ als
-$\mathscr{F}_6=A(3,2,\omega)F(2,3,\omega)$.
+$\mathscr{F}_6=A(2,3,\omega)F(2,3,\omega)$.
 Die alternative Faktorisierung ist in
 Abbildung~\ref{buch:diskret:faktorisierung:fig:f23}
 dargestellt.
@@ -193,7 +255,7 @@ dargestellt.
 \centering
 \includegraphics{chapters/060-diskret/images/f23.pdf}
 \caption{Faktorisierung der Fourier-Transformation $\mathscr{F}_6$ als
-$\mathscr{F}_6=A(2,3,\omega)F(3,2,\omega)$.
+$\mathscr{F}_6=A(3,2,\omega)F(3,2,\omega)$.
 Die alternative Faktorisierung ist in
 Abbildung~\ref{buch:diskret:faktorisierung:fig:f32}
 dargestellt.
@@ -205,7 +267,6 @@ Die beiden Faktorisierungen werden in den Abbildungen
 und
 \ref{buch:diskret:faktorisierung:fig:f23}
 schematisch dargestellt.
-
 
 %
 % Rechenaufwand
