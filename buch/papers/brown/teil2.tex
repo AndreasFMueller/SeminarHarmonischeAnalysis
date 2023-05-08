@@ -22,10 +22,37 @@ Damit das die Black-Scholes-Merton-Gleichung zur Anwendung kommen kann, müssen 
 	\item Die Volatilität (Schwankung des Preises) des Basiswertes ist bekannt und über die Laufzeit der Option hinweg konstant.
 \end{enumerate}
 
+Die Eigenschaft, dass kein risikoloses Geschäft möglich ist, wird auch als Arbitragefreiheit \footnote{Die Arbitragefreiheit bezeichnet das Fehlen jeglicher Arbitrage-Möglichkeit auf einem Handelsmarkt. Arbitrage ist ein risikoloses Geschäft, das aus der Ausnutzung von Preis-, Kurs- oder Zinsdifferenzen für gleiche Handelsobjekte zum selben Zeitpunkt auf verschiedenen Teilmärkten einen Gewinn erzielt.} bezeichnet.
+
+Kurzer Exkurs zu Optionen:
+% ToDo: Ausführen
 
 \subsection{Theorie\label{brown:BlackScholes:theorie}}
 
+Um das Black-Scholes-Modell zu bilden, müssen folgende Variablen und Parameter eingeführt werden:
 
+\begin{itemize}
+	\item Der Wert der Aktie $ S $ und die Zeit $ t $  sind Variablen.
+	\item Die Volatilität $ \sigma $ und die Drift-Rate $ \mu $ sind Parameter. Die Drift-Rate beschreibt den zeitlichen Wertzuwachs oder Verlust einer Aktie. Die Volatilität beschreibt die Standardabweichung der Drift-Rate.
+	\item Der Ausübungspreis $ E $ (engl. "Strike Price"), welcher zuvor für die Option bestimmt wurde, um das zu Grunde liegende Wertpapier zu kaufen. 
+	\item Der Verfallstag $ T $, an dem die Option abläuft und nicht mehr ausgeübt werden kann.
+	\item Der risikofreie Zinssatz $ r $ ist ein hypothetischer Zinssatz. Dieser dient als einer Art Vergleich, um die Option gegenüber einem risikofreien erwarteten Gewinn zu bewerten. Dazu werden oft kurzzeitige Staatsanleihen verwendet, da diese näherungsweise als Risikofrei angesehen werden können.
+	\item $ V(S,t) $ bildet den Wert der Option ab, in Abhängigkeit des Aktienwerts und der verstrichenen Zeit.
+\end{itemize}
+
+Um die Veränderung des zugrundeliegenden Aktienwertes zu modellieren, kann $ dS $ als "random Walk" angesehen werden.
+
+\begin{equation}
+	dS = \mu S dt + \sigma S dX
+\end{equation}
+
+$ dX $ entspricht in dieser Gleichung der Brownischen Bewegung. Nach der Kettenregel von ITO und der ITOS's lemma Gleichung kann folgende Gleichung formuliert werden:
+
+\begin{equation}
+	dV = \frac{\partial{V}}{\partial{t}} dt + \frac{\partial{V}}{\partial{S}} dS+ \frac{1}{2} \sigma^2 S^2 \frac{\partial^2{V}}{\partial{S^2}} dt
+\end{equation}
+
+Text
 
 \subsection{Modellbildung\label{rown:BlackScholes:modell}}
 \ref{brown:section:teil2}.
