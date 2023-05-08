@@ -47,7 +47,10 @@
     \draw[optRed] (E) -- (P) node[midway, sloped, above]{$r$};
 
     % Charge
-    \draw[fill=gray, gray] (E) circle (1pt) node[black, left]{$dy$};
+    \foreach \offset in {0, -0.5, -1} {
+        \draw[fill=gray, gray] (E)++(0,\offset) circle (1pt);
+    }
+    \node[black, left] at (E) {$dy$};
 
     % Measurement
     \optMeasurement{0}{6}{-1}{$x_p = l$};
