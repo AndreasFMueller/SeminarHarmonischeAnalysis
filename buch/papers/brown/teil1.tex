@@ -6,17 +6,16 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Stochastische Differenzialgleichungen\label{brown:section:teil1}}
-\rhead{Stochastische Differenzialgleichungen}
+\section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
+\rhead{Stochastische DGLs}
 
-Ist eine DGL (Differenzialgleichtung) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert wird eine definitives Resultat geliefert.\\
-
+Ist eine DGL (Differenzialgleichtung) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert wird eine definitives Resultat geliefert.
 
 In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche nicht der Realität entspricht und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Einflüsse durch Störfunktionen das Resultat maßgeblich beeinflussen. Dies führt dazu, dass die Lösung einer DGL sich gegenüber der Realität durch Rauschen nicht perfekt deckt oder sogar komplett divergiert auf Grund eines Störeinflusses.
 
 %ToDo: Bild Vektorfed welches sensibel auf störungen ist.
 
-\begin{figure} [h]
+\begin{figure}
 	\centering
 	\noindent\includegraphics[scale=0.5]{example-image-c} \label{fig:label}
 	\caption{My caption}
@@ -25,8 +24,7 @@ In vielen Bereichen entspricht ein solch deterministisches System  nicht der Rea
 
 Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgleichung (SDE).
 
-Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von zufälligen Störungen.\\
-
+Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von zufälligen Störungen.
 
 Formal kann dies folgendermaßen notiert werden, 
 
@@ -34,11 +32,10 @@ Formal kann dies folgendermaßen notiert werden,
 \dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".\\
-
+wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".
 
 \subsection{Rauschen als Wiener Prozess
-\label{brown:subsection:wiener}}
+\label{brown:SDGL:Wiener}}
 
 Der Wiener Prozess $ W(t) $ ist eine zentrale Idee, wenn es darum geht stochastisches Verhalten zu modellieren. Er weist folgende Eigenschaften auf / wird folgendermaßen definiert:
 
@@ -50,8 +47,7 @@ Der Wiener Prozess $ W(t) $ ist eine zentrale Idee, wenn es darum geht stochasti
 	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten.
 \end{itemize}
 
-Weiter wird auf den Wienerprozess nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.\\
-
+Weiter wird auf den Wienerprozess nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
 \textit{White noise} $ \xi(t) $ kann als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden. Somit wird SDE aus ... zu: 
 
