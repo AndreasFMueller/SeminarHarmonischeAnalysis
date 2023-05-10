@@ -41,7 +41,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \end{figure}
 
 \subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fressnel-Approximation 
+In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fresnel-Approximation 
 das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
 
 \begin{figure}
@@ -160,14 +160,14 @@ Dieses Integral ist für jeden Auswertungspunkt allgemein gültig.
 Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung~\ref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
-\subsubsection{Fressnel-Approximation}
-In näherer Umgebung um die Blende wird hierfür die Fressnel-Approximation angewendet.
+\subsubsection{Fresnel-Approximation}
+In näherer Umgebung um die Blende wird hierfür die Fresnel-Approximation angewendet.
 Für weitere Schritte soll die Bedingung
 \begin{equation}
 y, y_p
 \ll
 l
-\label{opt:equation:condition_fressnel}
+\label{opt:equation:condition_fresnel}
 \end{equation}
 gelten.
 Durch Anwenden der Binominalexpansion
@@ -178,7 +178,7 @@ Durch Anwenden der Binominalexpansion
 ,
 \end{equation}
 unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung~\ref{opt:equation:distance_r} noch weiter zu vereinfachen.
-Mit Hilfe der Vorbedingungen aus Gleichung~\ref{opt:equation:condition_fressnel} ist
+Mit Hilfe der Vorbedingungen aus Gleichung~\ref{opt:equation:condition_fresnel} ist
 \begin{equation}
 (y_p-y)^2
 \ll
@@ -205,9 +205,9 @@ l \left(1 - \frac{(y_p-y)^2}{2l^2}\right)
 =
 l - \frac{(y_p-y)^2}{2l}
 .
-\label{opt:equation:distance_r_fressnel}
+\label{opt:equation:distance_r_fresnel}
 \end{equation}
-Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:distance_r_fressnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
+Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
 \begin{align}
 E(y_p, t)
 &=
@@ -240,9 +240,9 @@ C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cd
 &=
 \frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
 .
-\label{opt:equation:integral_fressnel}
+\label{opt:equation:integral_fresnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fressnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
+Das hiermit erhaltene Integral wird auch als das Fresnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
 
 \subsubsection{Fraunhofer-Approximation}
 Wird die Distanz zwischen Blende und Auswertungspunkt noch weiter erhöht, ist es möglich, mit der Fraunhofer-Approximation eine noch einfachere Form des Beugungsintegrals zu erhalten.
@@ -254,7 +254,7 @@ y_p
 \ll
 l
 \end{equation}
-gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung~\ref{opt:equation:integral_fressnel} weiter approximiert werden.
+gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung~\ref{opt:equation:integral_fresnel} weiter approximiert werden.
 Unter Berücksichtigung dieser Bedingung sei $y^2 \ll 2y_py$, wodurch der Term $y^2$ vernachlässigt werden kann.
 Daraus folgt
 \begin{align}
