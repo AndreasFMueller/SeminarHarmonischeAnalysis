@@ -425,18 +425,217 @@ x\in\mathbb{R}^n
 die Hyperebene orthogonal auf $\omega$ im Abstand $s$ vom Ursprung.
 \end{definition}
 
+Durch Wahl eines geeigneten Koordinatensystems kann man ein
+Integral über $\mathbb{R}^n$ immer schreiben als
+ein Integral über die Ebenen $E(s,\omega)$ und eines über die Koordinaten $s$.
+Ein solches Koordinatensystem kann zum Beispiel gefunden werden, indem
+man den Vektor $\omega\in S^{n-1}$ mit Vektoren $b_2,\dots,b_n$ zu einer
+Orthonormalbasis von $\mathbb{R}^n$ erweitert.
+Das Integral über $\mathbb{R}^n$ ist dann
+\[
+\int_{\mathbb{R}^n} f(x)\,dx
+=
+\int_{-\infty}^\infty
+\int_{\mathbb{R}^{n-1}}
+f(s\omega + \xi_2 b_2+\dots \xi_n b_n)
+\,d\xi_2\dots\,d\xi_n
+\,ds.
+\]
+Die Wahl der Basisvektoren $b_2,\dots,b_n$ hat keinen Einfluss
+auf den Wert des Integrals.
+Mit der Abkürzung
+\[
+\xi
+=
+\sum_{k=2}^n
+\xi_k b_k
+\]
+ist es daher zulässig, das Integral einfach als
+\[
+\int_{\mathbb{R}^n} f(x)\,dx
+=
+\int_{-\infty}^\infty
+\int_{\mathbb{R}^{n-1}}
+f(s\omega + \xi)
+\,d\xi
+\,ds
+\]
+zu schreiben.
+Die Vektoren $s\omega +\xi$ sind die Punkte der Ebene $E(s,\omega)$,
+wir können daher das Integral noch einfacher als
+\[
+\int_{\mathbb{R}^n} f(x)\,dx
+=
+\int_{-\infty}^\infty
+\int_{E(s,\omega)}
+f(\xi)
+\,d\mu(\xi)
+\,ds
+\]
+schreiben, wobei wir mit $d\mu$ das Volumenelement der Hyperebene
+$E(s,\omega)$ meinen.
+
+%
+% Radon-Transformation
+%
+\subsubsection{Radon-Transformation}
+Die Fourier-Transformation einer Funktion $u\colon \mathbb{R}^n\to\mathbb{C}$
+ist das $n$-fache Integral
+\[
+\mathscr{F}u(k)
+=
+\frac{1}{(2\pi)^{\frac{n}2}}
+\int_{\mathbb{R}^n}
+e^{-ik\cdot x} u(x)\,dx.
+\]
+Der Exponent der Exponentialfunktion ist konstant auf Hyperebenen senkrecht
+auf dem Vektor $k$.
+Schreiben wir $k=k_0k^0=k_0\omega$ mit $\omega=k^0$, wobei $k^0=k/|k|$ der
+zu $k$ gehörige Einheitsvektor ist, dann ist 
+$E(k_0,k^0)$ die Hyperebene, auf der der Exponentialfaktor den
+Wert $e^{-ik_0\omega\cdot x}$ hat.
+Die Fourier-Transformation wird dann
+\[
+\mathscr{F}u(k_0\omega)
+=
+\frac{1}{(2\pi)^{\frac{n}2}}
+\int_{\mathbb{R}}
+e^{-ik_0r}
+\int_{E(k_0,\omega)}
+u(\xi)
+\,d\mu(\xi)
+\,dr.
+\]
+Das innere Integral ist die gesuchte Transformation:
+
+\begin{definition}
+Sei $u\colon\mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion,
+dann heisst die Funktion
+\[
+\mathscr{R}u
+\colon
+\mathbb{R}\times S^{n-1}
+\to
+\mathbb{C}
+:
+(s,\omega)
+\mapsto
+\mathscr{R}(r,\omega)
+=
+\int_{E(r,\omega)} u(\xi) \,d\mu(\xi)
+\]
+die {\em Radon-Transformierte} von $u$.
+\index{Radon-Transformierte}%
+Die Transformation $u\mapsto \mathscr{R}u$ heisst die
+{\em Radon-Transformation}.
+\index{Radon-Transformation}%
+\end{definition}
+
 %
 % Radon- und Fourier-Transformation
 %
 \subsection{Radon- und Fourier-Transformation
 \label{buch:radon:definition:subsection:radonfourier}}
+Die Radon-Transformation vollzieht also einen Teil der Integrationen,
+die für das Fourier-Integral erforderlich sind.
+Es verbleibt aber immer noch eine Integration, die noch
+durchgeführt werden muss, um die Fourier-Transformierte
+\[
+\mathscr{F}u(k)
+=
+\mathscr{F}u(k_0\omega)
+=
+\frac{1}{(2\pi)^{\frac{n-1}2}}
+\frac{1}{\sqrt{2\pi}}
+\int_{\mathbb{R}}
+e^{-ik_0r}
+\mathscr{R}u(r,\omega)\,dr
+\]
+zu finden.
+Das Integral ist eine gewöhnliche eindimensionale Fourier-Transformation
+für die Variable $r$.
+Mit der früheren Notation für eindimensionale Fourier-Transformationen
+können wir dies schreiben als
+\begin{equation}
+\mathscr{F}u(k)
+=
+\frac{1}{(2\pi)^{\frac{n-1}2}}
+(\mathscr{F}_r \mathscr{R}u(r,k^0))(|k|).
+\label{buch:radon:definitionb:eqn:fr}
+\end{equation}
+Die Fourier-Transformierte von $u$ kann also gefunden werden,
+indem erst die Radon-Transformierte bestimmt wird und anschliessend
+bezüglich der ersten Variablen Fourier-transformiert wird.
+
+Die Zusammenetzung~\eqref{buch:radon:definitionb:eqn:fr}
+der Fourier-Transformation $\mathscr{F}$ aus
+einer eindimensionalen Transformation $\mathscr{F}_r$ und der
+Radon-Transformation $\mathscr{R}$
+hat als unmittelbare Konsequenz, dass die Radon-Transformation
+invertierbar sein muss.
+Ist $v=\mathscr{R}u$, dann kann $u$ zurückgewonnen werden, indem
+erst mit einer eindimensionalen Fourier-Transformation die
+Fourier-Transformierte $\mathscr{F}u$ bestimmt wird.
+Die Funktion $u$ wird dann als Fourier-Umkehrtransformierte davon
+gefunden.
 
 %
 % Anwendung: CAT und MRI
 %
 \subsection{Anwendungen: CAT und MRI
 \label{buch:radon:definition:subsection:catmri}}
+Die Radon-Transformation ist der mathematische Kern zweier bedeutender
+Anwendungen.
 
+%
+% CT-Scanner
+%
+\subsubsection{CT-Scanner}
+Ein CT-Scanner oder Computertomograph ermöglicht, ein Bild eines
+Querschnitts durch einen Körper zu bestimmen, ohne dass der Körper
+aufgeschnitten werden muss.
+Dies ist natürlich besonderes nützlich für diagnostische Zwecke in der
+Medizin, wird aber auch ganz allgemein in der Biologie oder in der
+Materialprüfung angewendet.
+Der Computertomograph verwendet eine Röntgen-Quelle um einen Fächerstrahl
+zu erzeugen.
+Die Röntgenstrahlen durchdringen den zu untersuchenden Körper.
+Mit photoelektrischen Sensoren wird die Abschwächung der Strahlung
+gemessen.
+Ausserdem wird die ganze Aparatur in der Ebene des Fächerstrahls
+gedreht, so dass die Abschwächung auf beliebigen Geraden in der
+Ebene gemessen werden kann.
+
+Die Absobtion der Röntgentstrahlen in einem homogenen Medium 
+hängt exponentiell von der Stärke des Mediums ab.
+Die eintretende Intensität $I_0$ wird in der Tiefe $z$ auf
+\[
+I(z) = I_0e^{-\alpha z}
+\]
+abgeschwächt.
+Die Intenstität entlang des Strahles erfüllt also die Differentialgleichung
+\[
+I'(z)
+=
+-\alpha I_0 e^{-\alpha z}
+=
+-\alpha I(z).
+\]
+In einem inhomogenen Medium ist der Absorbtionskoeffizient eine Funktion
+der Tiefe, also erfüllt $I(z)$ die Differentialgleichung
+\[
+I'(z) = -\alpha(z) I(z).
+\]
+Sie kann durch Separation gelöst werden, die Lösung ist
+\[
+I(z) = I(0) \exp\biggl(-\int_0^z \alpha(z)\,dz\biggr).
+\]
+
+
+%
+% Magnetic Resonance Imaging
+%
+\subsubsection{Magnetic Resonance Imaging}
 
 
 
