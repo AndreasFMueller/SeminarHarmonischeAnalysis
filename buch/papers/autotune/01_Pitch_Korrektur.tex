@@ -6,16 +6,21 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{autotune:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\section{Pitch-Korrektur
+\label{autotune:section:pitchKorrektur}}
+\rhead{Pitch-Korrektur}
+Um die Tonhöhe einer Aufnahme zu korrigieren, muss zuerst die Tonhöhe der Aufnahme bestimmt werden.
+Dies kann mit Hilfe der Fourier-Transformation erreicht werden.
+Da eine Aufnahme aus mehreren Tönen besteht, beispielsweise eine Melodie enthält, muss die Fourier-Transformation auf kleine Abschnitte der Aufnahme angewendet werden.
+Diese Abschnitte werden als Frames bezeichnet und in Praxis mit einer Länge von 20 bis 40 ms gewählt.
+
+\subsection{Pitch-Detektion
+\label{autotune:subsection:picthDetektion}}
+Bei einer unisonen Aufnahme, beispielsweise der menschlichen Stimme oder eines Blasinstruments, wird die Grundharmonische als Tonhöhe angeschaut.
+Es gillt nun diese zu finden, wobei eine Short-Time Fourier-Transformation (STFT) angewendet wird.
+Die Frequenz mit der höchsten Amplitude wird als Grundfrequenz bezeichnet und ist die Tonhöhe des Frames.
+
+
 \begin{equation}
 \int_a^b x^2\, dx
 =
