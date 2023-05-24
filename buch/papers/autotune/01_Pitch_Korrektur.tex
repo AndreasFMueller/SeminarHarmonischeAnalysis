@@ -9,16 +9,79 @@
 \section{Pitch-Korrektur
 \label{autotune:section:pitchKorrektur}}
 \rhead{Pitch-Korrektur}
-Um die Tonhöhe einer Aufnahme zu korrigieren, muss zuerst die Tonhöhe der Aufnahme bestimmt werden.
-Dies kann mit Hilfe der Fourier-Transformation erreicht werden.
-Da eine Aufnahme aus mehreren Tönen besteht, beispielsweise eine Melodie enthält, muss die Fourier-Transformation auf kleine Abschnitte der Aufnahme angewendet werden.
-Diese Abschnitte werden als Frames bezeichnet und in Praxis mit einer Länge von 20 bis 40 ms gewählt.
+Um die Töne einer Melodie zu korrigieren, müssen zuerst die Tonhöhen der Einzeltöne erkannt werden.
+Dies kann mit Hilfe der Fourier-Transformation erreicht werden, in dem ein Spektrogram erstellt wird.
 
 \subsection{Pitch-Detektion
-\label{autotune:subsection:picthDetektion}}
+\label{autotune:subsection:pitchDetektion}}
 Bei einer unisonen Aufnahme, beispielsweise der menschlichen Stimme oder eines Blasinstruments, wird die Grundharmonische als Tonhöhe angeschaut.
 Es gillt nun diese zu finden, wobei eine Short-Time Fourier-Transformation (STFT) angewendet wird.
 Die Frequenz mit der höchsten Amplitude wird als Grundfrequenz bezeichnet und ist die Tonhöhe des Frames.
+
+\subsection{Tonsystem und Stimmung
+\label{autotune:subsection:tonsystemUndStimmung}}
+In der westlichen Musik wird das Tonsystem in 12 (Halb)-Töne pro Oktave unterteilt (chromatische Skala).
+Dabei gibt es verschiedene Möglichkeiten wie diese zueinander gestimmt werden, also wie sich die Anordnung der Töne unterscheiden.
+
+Als Kammerton, auch Normalstimmton genannt, wird der Ton bezeichnet auf den sich alle Instrumente einstellen.
+International hat sich der Kammerton A4 mit einer Frequenz von 440\;Hz durchgesetzt.
+Jedoch gibt Länder welche andere Frequenzen verwenden, so ist in der Schweiz der Kammerton A4 mit 442\;Hz üblich.
+Im Rahmen dieser Arbeit wird der Kammerton A4 definiert als 
+\begin{equation}
+    f_{A4}
+    =
+    440\;Hz.
+\end{equation}
+
+\subsubsection{Gleichstufige Stimmung
+\label{autotune:subsubsection:gleichstuffigeStimmung}}
+Die gleichstufige Stimmung ist das meist verbreitetet Stimmungssystem in der westlichen Musik, insbesondere bei Tasteninstrumenten.
+Es ist ein System, bei dem die Oktave in zwölf gleiche Halbtöne aufgeteilt ist, wobei das Frequenzverhältnis zwischen jedem Paar aufeinanderfolgender Töne gleich ist.
+Dieses Verhältnis ist die zwölfte Wurzel aus zwei ($\approx 1.05946$) und berechnet sich als
+
+\begin{equation}
+    f_n
+    =
+    f_{A4} \cdot 2^{\frac{n}{12}}
+    \quad | \quad
+    n \in \mathbb{Z}.
+    \label{autotune:equation1}
+    \end{equation}
+
+Der Vorteil der gleichstufigen Stimmung ist, dass sie in allen Tonarten gleich funktioniert, was bedeutet, dass ein Musikstück in jede Tonart transponiert werden kann, ohne dass sich die harmonischen Beziehungen zwischen den Tönen ändern.
+Ein Nachteil ist jedoch, dass die Intervalle (ausser Oktaven) nicht völlig rein sind, das heisst, sie weichen leicht von den einfachen ganzzahligen Frequenzverhältnissen ab, die in der reinen Stimmung verwendet werden.
+
+\subsubsection{Reine Stimmung
+\label{autotune:subsubsection:reineStimmung}}
+Die reine Stimmung, auch bekannt als natürliche oder harmonische Stimmung, ist ein System, das auf den natürlichen Harmonischen basiert, die in den Schwingungsmustern physikalischer Objekte wie Saiten oder Luftsäulen gefunden werden.
+In diesem System werden die Frequenzen der Noten so gewählt, dass sie einfache ganzzahlige Verhältnisse zueinander haben.
+Zum Beispiel beträgt das Verhältnis der Frequenzen zweier Töne in einer reinen Quinte 3:2, und in einer reinen Quarte 4:3.
+Dies führt zu besonders harmonisch klingenden Intervallen ohne stark bemerkbaren Schwebungen.
+Allerdings bringt die reine Stimmung einige Probleme mit sich.
+Während sie innerhalb einer einzelnen Tonart sehr gut funktioniert, führt sie zu Unstimmigkeiten, wenn man versucht, zwischen verschiedenen Tonarten zu wechseln.
+Deshalb ist die reine Stimmung in der Praxis eher auf Streich- und Blasinstrumente beschränkt, bei denen die Musiker die Intonation von Noten anpassen können.
+
+In der nachfolgenden Tabelle \ref{autotune:tabelleStimmung} werden die Frequenzen der Töne mit reiner Stimmung verglichen mit der gleichstufigen Stimmung.
+
+\begin{table}[]
+    \begin{tabular}{ccrlrlll}
+    \begin{tabular}[c]{@{}c@{}}Tonname\\ (gleichst.)\end{tabular}    & \begin{tabular}[c]{@{}c@{}}Tonname\\ (reinst.)\end{tabular}    & $f_{gleich}$                    & $(Hz)$             & $f_{rein}$                    & $(Hz)$             & $\Delta{f}\;(Hz)$ & $Abweichung$  \\
+    c                                                                & a                                                              & $\sqrt[12]{2^{-9}}\cdot f_{A4}$ & $\approx 261.63$   & $\sfrac{1}{1}  \cdot f_{C4}$  & $= 264.00$         & $2.37$            & $ 1.74\;\%$  \\
+    cis/des                                                          & des                                                            & $\sqrt[12]{2^{-8}}\cdot f_{A4}$ & $\approx 277.18$   & $\sfrac{16}{15}\cdot f_{C4}$  & $= 281.60$         & $4.42$            & $ 3.42\;\%$   \\
+    d                                                                & d                                                              & $\sqrt[12]{2^{-7}}\cdot f_{A4}$ & $\approx 293.67$   & $\sfrac{9}{8}  \cdot f_{C4}$  & $= 297.00$         & $3.33$            & $ 2.79\;\%$   \\
+    dis/es                                                           & es                                                             & $\sqrt[12]{2^{-6}}\cdot f_{A4}$ & $\approx 311.13$   & $\sfrac{6}{5}  \cdot f_{C4}$  & $= 316.80$         & $5.67$            & $ 5.21\;\%$   \\
+    e                                                                & e                                                              & $\sqrt[12]{2^{-5}}\cdot f_{A4}$ & $\approx 329.63$   & $\sfrac{5}{4}  \cdot f_{C4}$  & $= 330.00$         & $0.37$            & $ 0.39\;\%$   \\
+    f                                                                & f                                                              & $\sqrt[12]{2^{-4}}\cdot f_{A4}$ & $\approx 349.23$   & $\sfrac{4}{3}  \cdot f_{C4}$  & $= 352.00$         & $2.77$            & $ 3.42\;\%$   \\
+    fis/ges                                                          & fis                                                            & $\sqrt[12]{2^{-3}}\cdot f_{A4}$ & $\approx 369.99$   & $\sfrac{45}{32}\cdot f_{C4}$  & $= 371.25$         & $1.26$            & $ 1.96\;\%$   \\
+    g                                                                & g                                                              & $\sqrt[12]{2^{-2}}\cdot f_{A4}$ & $\approx 392.00$   & $\sfrac{3}{2}  \cdot f_{C4}$  & $= 396.00$         & $4.00$            & $ 8.80\;\%$   \\
+    gis/as                                                           & as                                                             & $\sqrt[12]{2^{-1}}\cdot f_{A4}$ & $\approx 415.31$   & $\sfrac{8}{5}  \cdot f_{C4}$  & $= 422.40$         & $7.09$            & $29.32\;\%$   \\
+    a                                                                & a                                                              & $\sqrt[12]{2^{ 0}}\cdot f_{A4}$ & $=\textbf{440.00}$ & $\sfrac{5}{3}  \cdot f_{C4}$  & $=\textbf{440.00}$ & $0.00$            & $ 0.00\;\%$   \\
+    ais/b                                                            & b                                                              & $\sqrt[12]{2^{ 1}}\cdot f_{A4}$ & $\approx 466.16$   & $\sfrac{9}{5}  \cdot f_{C4}$  & $= 475.20$         & $9.04$            & $   \;\%$   \\
+    h                                                                & h                                                              & $\sqrt[12]{2^{ 2}}\cdot f_{A4}$ & $\approx 493.88$   & $\sfrac{15}{8} \cdot f_{C4}$  & $= 495.00$         & $1.12$            & $   \;\%$   \\
+    c                                                                & c                                                              & $\sqrt[12]{2^{ 3}}\cdot f_{A4}$ & $\approx 523.25$   & $\sfrac{2}{1}  \cdot f_{C4}$  & $= 528.00$         & $4.75$            & $   \;\%$  
+    \end{tabular}
+    \end{table}
+
 
 
 \begin{equation}
