@@ -1,6 +1,6 @@
 #! /bin/bash
-n=6
-t="Diskrete Fourier-Transformation"
+n=7
+t="Nichtkommutative harmonische Analysis"
 ./numberpages --force --debug --number="${n}." \
 	--title="${t}" \
 	--section="${n}. ${t}" \
