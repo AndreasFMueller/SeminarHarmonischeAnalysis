@@ -6,15 +6,28 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Black-Scholes-Merton-Gleichung\label{brown:BlackScholes}}
+
+\section{Black-Scholes-Merton-Modell\label{brown:BlackScholes}}
 \rhead{Black-Scholes-Merton}
 
-Die Black-Scholes-Merton-Gleichung wurde von Robert Merton, Myron Scholes und Fischer Black entwickelt. Es dient zur Bewertung von Optionen. Es vereint beinahe schon wunderschön SDGLs mit dem Wienerprozess zur Modellbildung und die diskrete Fourriertransformation zur Auswertung.
+Das Black-Scholes-Merton-Modell wurde von Robert Merton, Myron Scholes und Fischer Black entwickelt. Es dient zur Bewertung von Optionen. Es vereint beinahe schon wunderschön SDGLs mit dem Wienerprozess zur Modellbildung und die diskrete Fourriertransformation zur Auswertung.
 
-Damit das die Black-Scholes-Merton-Gleichung zur Anwendung kommen kann, müssen folgende Grundannahmen stimmen:
+
+\subsection{Exkurs zu Optionen\label{brown:BlackScholes:exkurs}}
+Eine Option ist ein Vertrag, der einem das Recht gibt zukünftig etwas zu einem festgelegten Preis zu kaufen oder zu verkaufen. Das Ausübungsdatum an dem der Vertrag wirksam wird, ist im Vertrag festgelegt und wird begrenzt von einem Verfallsdatum. Man ist jedoch nicht verpflichtet von seinem Recht gebrauch zu machen - man kauft lediglich das Recht, dass man den Kauf oder Verkauf zu diesen Konditionen zukünftig ausüben könnte. 
+
+\textit{Oder anders gesagt, man wettet, dass der Markt zum Zeitpunkt des Ausübungsdatums sich zum eigenen Vorteil verändert hat. Die überwältigende Masse an Geschäften mit Optionen würde ich persönlich als reine Wettgeschäfte von Spekulanten abtun - dies ist jedoch meine eher finanz-zynische Meinung als Ingenieur.}
+
+Natürlich gibt es viele Argumente, wesshalb Optionen den Markt stabilisieren und Sicherheit bieten können, zum Beispiel wenn man das Recht kauft, seine Ernte zum Erntedatum zu einem fixen Preis zu verkaufen oder ein Produzent die Sicherheit braucht einen Rohstoff zu einem bestimmten Datum zu einem fixen Preis zu kaufen, um sein Produkt auf dem Markt verkaufen zu können.
+
+Eine Option zum Verkauf wird dabei \textit{"Put-Option} genannt und eine Option mit dem Recht auf Kauf \textit{Call-Option}.
+
+\subsection{Bewertung einer Option\label{brown:BlackScholes:bewertung}}
+
+Damit die Black-Scholes-Merton-Modell zur Anwendung kommen kann, müssen folgende Grundannahmen stimmen:
 %https://finanzderivate.info/optionen/bewertung-von-optionen/das-black-scholes-modell-zur-optionsbewertung/
 \begin{enumerate}
-	\item Die Option ist Europäisch: 
+	\item Die Option ist Europäisch (kann erst zum vereinbarten Termin ausgeübt werden)
 	\item Es gibt keine Dividenden (Fussnote) oder sonstige Cashflows während der Laufzeit.
 	\item Es gibt keine Transaktionskosten
 	\item Die Erträge der Basiswerte sind normalverteilt.
@@ -22,39 +35,68 @@ Damit das die Black-Scholes-Merton-Gleichung zur Anwendung kommen kann, müssen 
 	\item Die Volatilität (Schwankung des Preises) des Basiswertes ist bekannt und über die Laufzeit der Option hinweg konstant.
 \end{enumerate}
 
-Die Eigenschaft, dass kein risikoloses Geschäft möglich ist, wird auch als Arbitragefreiheit \footnote{Die Arbitragefreiheit bezeichnet das Fehlen jeglicher Arbitrage-Möglichkeit auf einem Handelsmarkt. Arbitrage ist ein risikoloses Geschäft, das aus der Ausnutzung von Preis-, Kurs- oder Zinsdifferenzen für gleiche Handelsobjekte zum selben Zeitpunkt auf verschiedenen Teilmärkten einen Gewinn erzielt.} bezeichnet.
 
-Kurzer Exkurs zu Optionen:
-% ToDo: Ausführen
+Die Eigenschaft, dass kein risikoloses Geschäft möglich ist, wird auch als Arbitragefreiheit bezeichnet. 
 
-\subsection{Theorie\label{brown:BlackScholes:theorie}}
+\begin{definition}
+	Die Arbitragefreiheit bezeichnet das Fehlen jeglicher Arbitrage-Möglichkeit auf einem Handelsmarkt. Arbitrage ist ein risikoloses Geschäft, das aus der Ausnutzung von Preis-, Kurs- oder Zinsdifferenzen für gleiche Handelsobjekte zum selben Zeitpunkt auf verschiedenen Teilmärkten einen Gewinn erzielt.
+\end{definition} 
 
 Um das Black-Scholes-Modell zu bilden, müssen folgende Variablen und Parameter eingeführt werden:
 
 \begin{itemize}
 	\item Der Wert der Aktie $ S $ und die Zeit $ t $  sind Variablen.
 	\item Die Volatilität $ \sigma $ und die Drift-Rate $ \mu $ sind Parameter. Die Drift-Rate beschreibt den zeitlichen Wertzuwachs oder Verlust einer Aktie. Die Volatilität beschreibt die Standardabweichung der Drift-Rate.
-	\item Der Ausübungspreis $ E $ (engl. "Strike Price"), welcher zuvor für die Option bestimmt wurde, um das zu Grunde liegende Wertpapier zu kaufen. 
-	\item Der Verfallstag $ T $, an dem die Option abläuft und nicht mehr ausgeübt werden kann.
+	\item Der Ausübungspreis $ E / K $ !entscheiden! (engl. \glqq \textit{Strike Price}\glqq{}), welcher zuvor für die Option bestimmt wurde, um das zu Grunde liegende Wertpapier zu kaufen -  also das Recht etwas zu einem abgemachten Preis in Zukunft zu kaufen oder verkaufen. 
+	\item Der Verfallstag $ T $, an dem die Option abläuft und nicht mehr ausgeübt werden kann und $ t $ die verbleibende Zeit bis zu diesem Datum in Jahren.
 	\item Der risikofreie Zinssatz $ r $ ist ein hypothetischer Zinssatz. Dieser dient als einer Art Vergleich, um die Option gegenüber einem risikofreien erwarteten Gewinn zu bewerten. Dazu werden oft kurzzeitige Staatsanleihen verwendet, da diese näherungsweise als Risikofrei angesehen werden können.
 	\item $ V(S,t) $ bildet den Wert der Option ab, in Abhängigkeit des Aktienwerts und der verstrichenen Zeit.
+	\item $ N $ ist die kumulative Verteilungsfunktion der Standardnormalverteilung. ! Nötig!?
 \end{itemize}
 
-Um die Veränderung des zugrundeliegenden Aktienwertes zu modellieren, kann $ dS $ als "random Walk" angesehen werden.
+??? 
+Die lognormale Verteilung wird in diesem Modell verwendet, da sie bestimmte Eigenschaften aufweist, die mit den beobachteten Preisänderungen von Finanzanlagen übereinstimmen. Insbesondere impliziert die lognormale Verteilung, dass die Renditen der Vermögenswerte symmetrisch um den Erwartungswert verteilt sind und dass große Preisschwankungen seltener auftreten als kleine.
 
+Um die Veränderung des zugrundeliegenden Aktienwertes zu modellieren, kann $ dS $ mittels des Wiener-Prozess modelliert werden, woraus sich folgender Zusammenhang ergibt:
 \begin{equation}
 	dS = \mu S dt + \sigma S dX
 \end{equation}
 
-$ dX $ entspricht in dieser Gleichung der Brownischen Bewegung. Nach der Kettenregel von ITO und der ITOS's lemma Gleichung kann folgende Gleichung formuliert werden:
+$ dX $ entspricht in dieser Gleichung einer Brownischen Bewegung. Nach der Kettenregel von ITO und der ITOS's lemma Gleichung kann folgende Gleichung formuliert werden:
 
 \begin{equation}
 	dV = \frac{\partial{V}}{\partial{t}} dt + \frac{\partial{V}}{\partial{S}} dS+ \frac{1}{2} \sigma^2 S^2 \frac{\partial^2{V}}{\partial{S^2}} dt
 \end{equation}
 
-Text
 
-\subsection{Modellbildung\label{rown:BlackScholes:modell}}
-\ref{brown:section:teil2}.
 
-Text
+
+
+Die Black-Scholes-Gleichung ist eine partielle Differentialgleichung, die den Preis einer Option im Laufe der Zeit in Bezug auf verschiedene Variablen darstellt:
+
+
+\begin{equation}
+	\frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS \frac{\partial V}{\partial S} - rV = 0
+\end{equation}
+
+Das Black-Scholes-Modell sieht dabei zwei Lösungen vor, eine für den Fall einer Call-Option" und eine für den Fall einer "Put-Option".
+
+\begin{equation}
+	C(S, t) = SN(d_1) - Ke^{-rt}N(d_2)
+\end{equation}
+
+\begin{equation}
+	P(S, t) = Ke^{-rt}N(-d_2) - SN(-d_1)
+\end{equation}
+
+, wobei $ d1 $ und $ d2 $ folgendermaßen definiert sind.
+
+\begin{equation}
+	d_1 = \frac{1}{\sigma \sqrt{t}} \left[\ln\left(\frac{S}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)t\right]
+\end{equation}
+
+\begin{equation}
+	d_2 = d_1 - \sigma \sqrt{t}
+\end{equation}
+
+So kann mittels den Werten: $ S $, $ K $, $ t $, $ r $ und $ \sigma $ der mathematisch korrekte Wert einer europäischen Option berechnet werden. 
