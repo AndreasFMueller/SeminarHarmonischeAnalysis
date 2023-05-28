@@ -79,7 +79,7 @@ Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichu
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
 \end{equation}
 
-In dieser Form erkennt man auch besser, dass die SDGL aus zwei Teilen besteht. Der Term $ b((X(t)) $ ist der \glqq{}Drift\glqq{}-Term, der den deterministischen Teil der Bewegung darstellt, während $ B((X(t)) $ der \glqq{}Diffusions- oder Volatilitäts-Term\glqq{} ist, der den stochastischen Teil der Bewegung darstellt.
+%In dieser Form erkennt man auch besser, dass die SDGL aus zwei Teilen besteht. Der Term $ b((X(t)) $ ist der \glqq{}Drift\glqq{}-Term, der den deterministischen Teil der Bewegung darstellt, während $ B((X(t)) $ der \glqq{}Diffusions- oder Volatilitäts-Term\glqq{} ist, der den stochastischen Teil der Bewegung darstellt.
 
 % So kommt man auf die ITO-sche Kettenregel????
 
@@ -87,7 +87,7 @@ Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den A
 
 
 \subsection{Simulation mittels der Euler-Maruyama-Methode
-	\label{brown:Simulation}}
+\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
 Die Brownische Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode.
@@ -136,8 +136,9 @@ Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SD
 In der Abbildung ... ist wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen Brownischen Bewegung.
 
 
-
 \subsection{ITO
+\label{brown:ito}}
+\rhead{Ito} %Kurz-Titel der Section
 Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis zählt. So legte er auch einen Grossteil des Fundaments auf dem stochastische Differenzialgleichungen beruhen.
 
 Ein wichtiges Werkzeug, um mit stochastischen DIfferenzialgleichungen umzugenhen ist das Äquivalent zur Kettenregel und der Substitutionsregel, dem sogenannten Lemma von Ito. Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.
@@ -153,10 +154,8 @@ Angenommen, wir haben eine Funktion f(X,t), wobei X eine Lösung der obigen SDG 
 
 Die Funktion f(X,t) und das Ito-Lemma:
 \begin{equation}
-	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} dX + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (dX)^2
-	
+	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} dX + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (dX)^2	
 \end{equation}
-
 
 %Dabei sind ∂f/∂t und ∂f/∂X die partiellen Ableitungen von f nach t und X, und ∂²f/∂X² ist die zweite partielle Ableitung von f nach X. Der Term (dX)² ist im Ito-Kalkül durch (b^2 dt) ersetzt, was auf die Eigenschaften der Brown'schen Bewegung (oder Wiener-Prozess) zurückzuführen ist.
 
@@ -165,10 +164,9 @@ Dieses Lemma erlaubt es uns, Differentialgleichungen für Funktionen von stochas
 Das Einsetzen der SDG in das Ito-Lemma ergibt:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
-	
 \end{equation}
 
-Die Funktion a(X,t) ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während b(X,t) der "Diffusion"- oder "Volatilitäts"-Term ist, der den stochastischen Teil der Bewegung darstellt.
+Die Funktion $ a(X,t) $ ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der "Diffusion"- oder "Volatilitäts"-Term ist, der den stochastischen Teil der Bewegung darstellt.
 
 Ein wichtiger Aspekt des Ito-Kalküls ist die Ito'sche Lemma, eine Erweiterung der Kettenregel aus der gewöhnlichen Differentialrechnung für Funktionen von stochastischen Prozessen. Die genaue Form des Ito'schen Lemmas kann komplex sein, aber in einer einfacheren Form lautet es wie folgt:
 
