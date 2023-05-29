@@ -7,7 +7,7 @@
 %
 % Der Faktor F(p,q,\omega)
 %
-\subsection{Der Faktor $F(q,p,\omega)$}
+\subsection{Der Faktor $F(p,q,\omega)$}
 Der zweite Faktor der Faktorisierung von $\mathscr{F}_{pq}$ ist die Matrix
 \begin{equation}
 \def\h{2}
@@ -20,9 +20,9 @@ Der zweite Faktor der Faktorisierung von $\mathscr{F}_{pq}$ ist die Matrix
 }
 \def\feld#1#2#3{
 	\node at \punkt{#1}{#2}
-		{$#3{\color{white}\mathstrut\cdot I_p}\mathstrut$};
+		{$#3{\color{white}\mathstrut\cdot I_q}\mathstrut$};
 }
-F(q,p,\omega^p)
+F(p,q,\omega^p)
 =
 \left(\raisebox{-5cm}{%
 \begin{tikzpicture}[>=latex]
@@ -41,23 +41,23 @@ F(q,p,\omega^p)
 	\feld{\x}{0.5}{1}
 	\feld{0.5}{\x}{1}
 }
-\feld{1.5}{1.5}{\omega^p}
-\feld{1.5}{2.5}{\omega^{2p}}
-\feld{1.5}{4.5}{\omega^{(q-1)p}}
+\feld{1.5}{1.5}{\omega^q}
+\feld{1.5}{2.5}{\omega^{2q}}
+\feld{1.5}{4.5}{\omega^{(p-1)q}}
 
-\feld{2.5}{1.5}{\omega^{2p}}
-\feld{2.5}{2.5}{\omega^{4p}}
-\feld{2.5}{4.5}{\omega^{2(q-1)p}}
+\feld{2.5}{1.5}{\omega^{2q}}
+\feld{2.5}{2.5}{\omega^{4q}}
+\feld{2.5}{4.5}{\omega^{2(p-1)q}}
 
-\feld{4.5}{1.5}{\omega^{(q-1)p}}
-\feld{4.5}{2.5}{\omega^{2(q-1)p}}
-\feld{4.5}{4.5}{\omega^{(q-1)^2p}}
+\feld{4.5}{1.5}{\omega^{(p-1)q}}
+\feld{4.5}{2.5}{\omega^{2(p-1)q}}
+\feld{4.5}{4.5}{\omega^{(p-1)^2q}}
 \end{tikzpicture}}
 \right).
 \label{buch:diskret:vandermonde:eqn:}
 \end{equation}
-Die Matrix sieht aus wie eine $q\times q$-Fourier-Matrix, allerdings mit dem
-Unterschied, dass $p\times p$-Einheitsmatrizen anstelle der einzelnen
+Die Matrix sieht aus wie eine $p\times p$-Fourier-Matrix, allerdings mit dem
+Unterschied, dass $q\times q$-Einheitsmatrizen anstelle der einzelnen
 Einträge stehen.
 Statt der Potenzen von $\omega$ findet man die Potenzen von $\omega^p$.
 Da aber $(\omega^p)^q = \omega^n=1$, ist das genau die erwartete Basis
@@ -66,11 +66,11 @@ in der Fourier-Matrix $\mathscr{F}_q$.
 Mit der Notation des Kronecker-Produktes von Matrizen aus
 Abschnitt~\ref{buch:diskret:section:tensor} ist der zweite Faktor
 \[
-F(q,p,\omega)
+F(p,q,\omega)
 =
-\mathscr{F}_q
+\mathscr{F}_p
 \otimes
-I_p.
+I_q.
 \]
 
 \begin{satz}
@@ -80,12 +80,12 @@ ist
 \det F(p,q,\omega)
 =
 \det(
-\mathscr{F}_q
+\mathscr{F}_p
 \otimes
-I_p
+I_q
 )
 =
-(\det \mathscr{F}_q)^p.
+(\det \mathscr{F}_p)^q.
 \]
 \end{satz}
 

@@ -6,5 +6,6 @@
 *.ind
 *.run.xml
 *.toc
+*.out
 buch.pdf
 SeminarHarmonischeAnalysis.pdf
