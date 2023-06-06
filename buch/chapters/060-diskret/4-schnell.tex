@@ -86,15 +86,15 @@ der Fourier-Transformation $\mathscr{F}$ in zwei Faktoren
 \mathscr{F}_n
 =
 %\frac{1}{m''}
-A(m',m'',\omega) (\mathscr{F}_{m''} \otimes I_{m'})
+A(m',m'',\omega) (\mathscr{F}_{m'} \otimes I_{m''})
 \]
 mit $\omega=e^{-2\pi i/n}$.
 
 %
-% Faktorzerlegung der Fourier-Transformation
+% Zerlegung in drei Faktoren
 %
-\subsection{Volle Faktorzerlegung der Fourier-Transformation
-\label{buch:diskret:schnell:subsection:fourierfaktorisierung}}
+\subsection{Zerlegung in drei Faktoren
+\label{buch:diskret:schnell:subsection:dreifaktoren}}
 \begin{figure}
 \centering
 \includegraphics{chapters/060-diskret/images/f30.pdf}
@@ -102,9 +102,9 @@ mit $\omega=e^{-2\pi i/n}$.
 $\mathscr{F}_{30}$ in die Faktoren
 $\mathscr{F}_{30}
 =
-A(5,6,\omega)
+A(6,5,\omega)
 \cdot
-(A(3,2,\omega^5)\otimes I_5)
+(A(2,3,\omega^5)\otimes I_5)
 \cdot
 (F(2,3,\omega^5)\otimes I_5)
 =
@@ -116,6 +116,44 @@ A(5,6,\omega)
 $.
 \label{buch:diskret:faktorisierung:fig:f30}}
 \end{figure}
+Wir betrachten eine Faktorisierung von $n=n_1n_2n_3$ in drei Faktoren
+und setzen $\omega = e^{-2i\pi/n}$.
+Indem wir $p=n_1n_2$ und $q=n_3$ setzen, können wir die Fourier-Transformation
+als
+\begin{equation}
+\mathscr{F}_n
+=
+A(p,q,\omega)
+=
+A(p,q,\omega) \mathscr{F}_p\otimes I_q
+=
+A(n_1n_2,n_3,\omega) \cdot \mathscr{F}_{n_1n_2}\otimes I_{n_3}
+\label{buch:diskret:schnell:eqn:dreifaktoren1}
+\end{equation}
+faktorisieren.
+Der Faktor $\mathscr{F}_{n_1n_2}$ kann wieder faktorisiert werden
+als
+\begin{align*}
+\mathscr{F}_{n_1n_2}
+&=
+A(n_1,n_2,\omega^{n_3}) \cdot \mathscr{F}_{n_1}\otimes I_{n_2}.
+\intertext{Zusammen mit~\eqref{buch:diskret:schnell:eqn:dreifaktoren1}}
+\mathscr{F}_n
+&=
+A(n_1n_2,n_3,\omega)
+\cdot
+(A(n_1,n_2,\omega^{n_3})\otimes I_{n_3})
+\cdot
+\mathscr{F}_{n_1}\otimes I_{n_2n_3}.
+\end{align*}
+Abbildung~\ref{buch:diskret:faktorisierung:fig:f30} zeigt die Situation
+für $n=30=2\cdot 3\cdot 5$ mit $n_1=2$, $n_2=3$ und $n_3=5$.
+
+%
+% Faktorzerlegung der Fourier-Transformation
+%
+\subsection{Volle Faktorzerlegung der Fourier-Transformation
+\label{buch:diskret:schnell:subsection:fourierfaktorisierung}}
 Sei jetzt $n=n_1n_2\dots n_k$ eine Faktorisierung von $n$.
 Wir bezeichnen mit $n_i'$ das Produkt der Faktoren, die nach dem Faktor
 $i$ stehen, also
@@ -149,12 +187,12 @@ n_{l+1}n_{l+1}'
 für alle $l=1,\dots,k-1$.
 
 Die Fourier-Transformation $\mathscr{F}_n$ kann zerlegt werden in die
-Faktor $\mathscr{F}_n=F(n_1,n_1',\omega)$ und $A(n_1,n_1',\omega)$.
+Faktor $A(n_1,n_1',\omega)$ und $F(n_1,n_1',\omega)$.
 Den zweiten Faktor können wir als das Kronecker-Produkt
 \[
-A(n_1,n_1',\omega)
+F(n_1,n_1',\omega)
 =
-\mathscr{F}_{n_1'} \otimes I_{n_1}
+\mathscr{F}_{n_1} \otimes I_{n_1'}
 \]
 schreiben.
 Da $n_1'=n_2n_2'$, kann auch $\mathscr{F}_{n_1'}$ analog zerlegt werden
@@ -162,14 +200,14 @@ als
 \[
 \mathscr{F}_{n_1'}
 =
-A(n_2,n_2',\omega^{n_1}) (\mathscr{F}_{n_2'}\otimes I_{n_2}).
+A(n_2,n_2',\omega^{n_1}) (\mathscr{F}_{n_2}\otimes I_{n_2'}).
 \]
 Das Kronecker-Produkt von rechts mit $I_{n_1}$ ergibt
 \[
 \mathscr{F}_{n_1'}\otimes I_{n_1}
 =
 (A(n_2,n_2',\omega)\otimes I_{n_1})
-(\mathscr{F}_{n_2'}\otimes I_{n_1n_2}).
+(\mathscr{F}_{n_2}\otimes I_{n_1n_2}).
 \]
 Durch Wiederholung dieser Faktorisierung ergibt sich daher die
 vollständige Faktorisierung
@@ -305,7 +343,7 @@ lässt sich eine etwas gleichmässigere Darstellung erreichen.
 \subsubsection{Bitumkehr}
 Die Matrix $A(2,2^{n-1},\omega)$ kann so umgeordnet werden, dass 
 sie aus $2\times 2$-Blöcken besteht, die bis auf Spaltenmultiplikationen
-mit Potenzen von $\omega$ Fourier-Transformationen $mathscr{F}_2$ sind.
+mit Potenzen von $\omega$ Fourier-Transformationen $\mathscr{F}_2$ sind.
 Dazu müssen die Zeilen $i$ und $i+2^{n-1}$ unmittelbar nacheinander
 stehen.
 Numeriert man die Zeilen mit den Zahlen $0,\dots,2^n$, dann ist die

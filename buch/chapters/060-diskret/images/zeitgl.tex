@@ -1,0 +1,65 @@
+%
+% zeitgl.tex -- Graphik für die Aufgabe über die Zeitgleichung
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\def\dt{0.2}
+\begin{tikzpicture}[>=latex,thick]
+\draw[line width=1pt,color=blue] plot[domain=-10:370,samples=200]
+	({\x/30},{(0.342*cos(\x) - 3.575*cos(2*\x)
+		- 7.528*sin(\x) - 9.165*sin(2*\x))*\dt});
+\draw[line width=1pt,color=red] plot[domain=-10:370,samples=200]
+	({\x/30},{(0.342*cos(\x) - 3.575*cos(2*\x)
+		+ 0.083*cos(3*\x) - 0.125*cos(4*\x)
+		+ 0.025*cos(5*\x) + 0.05*cos(6*\x)
+		- 7.528*sin(\x) - 9.165*sin(2*\x)
+		- 0.25*sin(3*\x) - 0.159*sin(4*\x) - 0.022*sin(5*\x))*\dt});
+\draw[line width=1pt,color=darkgreen] plot[domain=-10:370,samples=200]
+	({\x/30},{(-10)*(0.083*cos(3*\x) - 0.125*cos(4*\x)
+		+ 0.025*cos(5*\x) + 0.05*cos(6*\x)
+		- 0.25*sin(3*\x) - 0.159*sin(4*\x) - 0.022*sin(5*\x))*\dt});
+\draw[->] (0,-3)--(0,3.5) coordinate[label={right:$\Delta t$}];
+\draw[->] (-0.5,0)--(12.5,0) coordinate[label={$t$}];
+\foreach\x in {0,...,12}{
+\draw[line width=0.1pt] (\x,-3)--(\x,3.5);
+\draw (\x,-3.1)--(\x,-2.9);
+}
+\draw[line width=0.1pt] (0,-3)--(12,-3);
+\fill ( 0,{ -3.2*\dt}) circle[radius=2pt];
+\fill ( 1,{-13.6*\dt}) circle[radius=2pt];
+\fill ( 2,{-12.3*\dt}) circle[radius=2pt];
+\fill ( 3,{ -3.9*\dt}) circle[radius=2pt];
+\fill ( 4,{  3.1*\dt}) circle[radius=2pt];
+\fill ( 5,{  2.0*\dt}) circle[radius=2pt];
+\fill ( 6,{ -4.1*\dt}) circle[radius=2pt];
+\fill ( 7,{ -6.1*\dt}) circle[radius=2pt];
+\fill ( 8,{  0.5*\dt}) circle[radius=2pt];
+\fill ( 9,{ 10.7*\dt}) circle[radius=2pt];
+\fill (10,{ 16.3*\dt}) circle[radius=2pt];
+\fill (11,{ 10.6*\dt}) circle[radius=2pt];
+\fill (12,{ -3.2*\dt}) circle[radius=2pt];
+\node at ( 0,-3) [below] {Jan};
+\node at ( 1,-3) [below] {Feb};
+\node at ( 2,-3) [below] {März};
+\node at ( 3,-3) [below] {Apr};
+\node at ( 4,-3) [below] {Mai};
+\node at ( 5,-3) [below] {Jun};
+\node at ( 6,-3) [below] {Jul};
+\node at ( 7,-3) [below] {Aug};
+\node at ( 8,-3) [below] {Sep};
+\node at ( 9,-3) [below] {Okt};
+\node at (10,-3) [below] {Nov};
+\node at (11,-3) [below] {Dez};
+\node at (12,-3) [below] {Jan};
+\end{tikzpicture}
+\end{document}
