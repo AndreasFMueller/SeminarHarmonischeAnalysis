@@ -1,0 +1,8 @@
+#! /bin/bash
+n=7
+t="Nichtkommutative harmonische Analysis"
+./numberpages --force --debug --number="${n}." \
+	--title="${t}" \
+	--section="${n}. ${t}" \
+	"${n}. ${t}.pdf" \
+	../MSE/"${n}. ${t}.pdf"
