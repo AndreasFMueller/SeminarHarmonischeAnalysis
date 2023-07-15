@@ -1,0 +1,77 @@
+%
+% 0_lineare_regression.tex
+%
+% (c) 2023 Dominik Gschwind, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Lineare Regression\label{chapter:ml:regression}}
+\rhead{Lineare Regression}
+
+\emph{Regression} ist ein statistisches Analyseverfahren mit dem Ziel Beziehungen zwischen
+Daten zu modellieren. Zum Beispiel hat man Daten über die letzten zwanzig Tage eines
+Aktienkurses und möchte damit den Preis am nächsten Tag vorhersagen. Ziel ist es also mit
+dieser Methode ein Modell zu erstellen, dass die vorherzusagenden Daten so gut wie möglich
+approximiert.
+
+Die einfachste Form der Regression ist die \emph{lineare Regression}, bei der alle Abhängigkeiten linear
+sind.
+
+\paragraph{Ein Modell}
+\begin{itemize}
+    \item $y$ soll die abhängige Variable des vorherzusagenden Werts sein.
+    \item $x_1, \dots, x_i$ sind unabhängigen Variablen die einen Beitrag zur Vorhersage
+    $y$ leisten können, genannt \emph{Features}.
+    \item $\theta_0, \theta_1, \dots, \theta_i$ sind die Koeffizienten der Features $x_i$,
+    sie bestimmen wie wichtig das entsprechenden Feature ist.
+\end{itemize}
+
+Gegeben sind eine sehr grosse Anzahl $m$ Datenpunkte wobei ein Datenpunkt $j$ immer aus
+den Feature-Werten $\{ x_0, \dots, x_n \}_j$ und des vorherzusagenden Werts $y_j$ besteht.
+Es gilt $m \gg n$. Daten die $y$-Werte enthalten werden auch \emph{labeled data} genannt,
+im Gegensatz zu \emph{unlabeled data} wo nur die Feature-Werte bekannt sind.
+
+Man kann nun das lineare Modell mit der Gleichung
+\begin{equation}
+y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \dots + \theta_n x_n
+\label{ml:regression:modell}
+\end{equation}
+aufstellen. Führt man die Variable $x_0 \overset{!}{=} 1$ ein, kann die Gleichung
+\ref{ml:regression:modell} einfacher als
+\begin{equation}
+y = \sum_{i = 0}^{n} \theta_i x_i = \vec \theta \cdot \vec x =: h_0(x_i, \theta_i)
+\label{ml:regression:hypothesis}
+\end{equation}
+geschrieben werden. Diese Beziehung wird auch \emph{hypothesis function} genannt und mit
+$h_0$ bezeichnet.
+
+Unser Ziel ist jetzt die Koeffizienten $\theta_i$ aus den Daten zu lernen. Hierfür
+benötigen wir ein Kriterium, das uns die Distanz der Vorhersage $y_p = h_0(x_i)$ zum tatsächlichen
+Wert $y$ des Datenpunkts angibt. Dieses Kriterium wird \emph{cost function} oder
+\emph{loss function} genannt. Eine praktische Cost-Function ist der quadratische Fehler
+\begin{equation}
+J(x_i, \theta_i) = (y_p - y)^2.
+\end{equation}
+
+$J(\theta_i)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglichst nahe an den
+tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren um dieses
+Minimierungsproblem zu lösen.
+
+\subsection{Minimierung mit Matrix-Inversion}
+
+Zuerst wird das lineare Modell aus \refeq{ml:regression:hypothesis} mit allen Datenpunkten
+in Matrix-Form als
+\begin{equation}
+\mathbf{X} \cdot \vec \theta = \vec y_p
+\end{equation}
+und auch die Cost-Function $J$ in Matrix-Form als
+\begin{equation}
+J(\vec \theta) =\left(\vec y - \vec y_p\right)^\mathrm{T} \left(\vec y - \vec y_p\right)
+= \left(\vec y - \mathbf{X} \vec \theta\right)^\mathrm{T} \left(\vec y - \mathbf{X} \vec \theta\right)
+\end{equation}
+geschrieben.
+
+
+\subsection{Minimierung mit Gradient-Descent}
