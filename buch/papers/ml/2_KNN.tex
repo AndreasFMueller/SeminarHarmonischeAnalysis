@@ -90,8 +90,8 @@ $\sigma(y)$ wird nun auf $f_i$ \emph{elementweise} angewendet, also
     \label{ml:ann:one-layer}
 \end{equation}
 
-Viele weitere praktische Aktivierungsfunktionen mit guten und schlechten Eigenschaften für
-eine Problemstellung existieren, auf diese soll hier nicht weiter eingegangen werden.
+Es existieren viele weitere praktische Aktivierungsfunktionen mit guten und schlechten Eigenschaften für
+eine Problemstellung, auf diese soll hier nicht weiter eingegangen werden.
 
 \subsection{Multilayer künstliches neuronales Netzwerk}
 
@@ -119,43 +119,38 @@ Die Kanten zwischen den Neuronen stellen die Gewichte in der $\bm \thetaup$-Matr
 dar. Die Schichten zwischen der Eingangs- und Ausgangsschicht werden \emph{hidden layer}
 genannt, da all diese Layer nicht von aussen gesehen oder angesprochen werden können.
 
-Auf der linken Seite des Diagramms sind die Eingänge sie werden mit dem entsprechenden
+Auf der linken Seite des Diagramms sind die Eingänge. Sie werden mit dem entsprechenden
 Gewicht $\theta^{(i)}_k$ der Kante gewichtet. Anschliessend werden die gewichteten Werte
-aller eingehenden Kanten plus einer Konstante $b^{(i)}_k$ summiert und dann darauf die
-Aktivierungsfunktion der Neurone angewendet. Dieses Resultat ist der Eingangswert
+aller eingehenden Kanten plus einer Konstante $b^{(i)}_k$ summiert und darauf die
+Aktivierungsfunktion der Neurone angewendet. Das Resultat ist der Eingangswert
 für die nächste Schicht.
 
 Diese Berechnung propagiert so von links nach rechts durch das Netzwerk bis am Ende die
 Werte bei der Ausgangsschicht anliegen.
 
-Die Struktur des Netzwerks also die Anzahl Eingänge, Hidden-Layer, Neuronen
+Die Struktur des Netzwerks, also die Anzahl Eingänge, Hidden-Layer, Neuronen
 pro Layer und Ausgänge, aber auch die spezifischen Aktivierungsfunktionen können
-grundsätzlich frei gewählt werden, sie werden \emph{hyperparameter} genannt.
+grundsätzlich frei gewählt werden. Sie werden \emph{hyperparameter} genannt.
 
 \subsection{Backpropagation \label{section:ml:ann:backpropagation}}
 
 Wir wollen den \hyperref[chapter:ml:regression:gd]{Gradient-Descent-Algorithmus} auch auf
 unser nichtlineares Modell $M$ aus Gl. \refeq{ml:ann:multilayer} anwenden. Damit ist es aber nicht
-mehr so einfach wie mit dem linearen Modell aus Gl. \refeq{ml:regression:modell}. 
+mehr so einfach wie mit dem linearen Modell von vorher. 
 $M$ besteht aus mehreren Layern, jeder mit einer Koeffizientenmatrix $\bm \thetaup$ und einem
-Bias-Vektor $\vec b$, all diese Werte sollen iterativ mit Gradient-Descent gelernt werden,
+Bias-Vektor $\vec b$. All diese Werte sollen iterativ mit Gradient-Descent gelernt werden,
 sodass alle Outputs des gesamten Netzwerks möglichst nahe an den geforderten sind.
 
 Um diese Problemstellung zu untersuchen beschränken wir uns zuerst auf den Fall eines
 Netzwerks mit \emph{einem} Eingang, $n$ Hidden-Layer mit \emph{einer} Neurone und
 \emph{einem} Ausgang. Mit dieser Forderung wird die Matrizen-Gleichung
 \refeq{ml:ann:multilayer} zu einer skalaren Gleichung
-
 \begin{equation}
     M(x, \theta_1, \cdots, \theta_n, b_1, \cdots, b_n)
     = \sigma(\theta_n \cdot \sigma( \theta_{n-1}
         \cdot \sigma ( \cdots \sigma( \theta_1 x + b_1 ) ) + b_{n-1} ) + b_n).
     \label{ml:ann:multilayer-1D}
 \end{equation}
-
-$\theta_i$ sind die Gewichte (englisch \emph{weights}) der Verbindungen beziehungsweise
-Kanten zwischen den Neuronen, $b_i$ sind die konstanten Anteile (englisch \emph{biases})
-und $\sigma$ ist die Aktivierungsfunktion der Neuronen.
 
 Abbildung \ref{fig:ml:ann:simple-1D} zeigt Gleichung \ref{ml:ann:multilayer-1D} wieder als
 gerichteten Graphen.
@@ -167,9 +162,13 @@ gerichteten Graphen.
     \label{fig:ml:ann:simple-1D}
 \end{figure}
 
-Jedes $l_i$ soll den Output eines Layers darstellen. Zur weiteren Verdeutlichung wird
-Gl. \refeq{ml:ann:multilayer-1D} als Gleichungssystem geschrieben:
+$\theta_i$ sind die Gewichte (englisch \emph{weights}) der Verbindungen beziehungsweise
+Kanten zwischen den Neuronen, $b_i$ sind die konstanten Anteile (englisch \emph{biases})
+und $\sigma$ ist die Aktivierungsfunktion der Neuronen. Jedes $l_i$ soll den Output eines
+Layers darstellen.
 
+Zur weiteren Verdeutlichung wird Gl. \refeq{ml:ann:multilayer-1D} als Gleichungssystem
+geschrieben:
 \begin{equation}
     \begin{aligned}
         l_1 = &\sigma(\theta_1 x + b_1) = \sigma(\xi_1)\\
@@ -193,16 +192,14 @@ bezüglich aller Parameter
 
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = 2(M(x) - y) \cdot \frac{\partial M}{\partial \theta_i}
-    \qquad\textsf{und}\qquad
+    \qquad\text{und}\qquad
     \frac{\partial J}{\partial b_i} = 2(M(x) - y) \cdot \frac{\partial M}{\partial b_i}.
 \end{equation}
 
 Mit der Kettenregel
-
 \begin{equation}
     \frac{d}{dt}f(g(t)) = \frac{df(g(t))}{d g(t)} \cdot \frac{d g(t)}{dt} = \frac{df(\tau)}{d \tau} \cdot \frac{d g(t)}{dt}
 \end{equation}
-
 lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
 \[
 \begin{aligned}
@@ -232,8 +229,8 @@ lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
 Wichtig zu erkennen ist, dass alle Werte $l_i$ sowie auch $\xi_i=\theta_i l_{i-1}+b_i$ nur
 einmal berechnet werden müssen. Das Netzwerk muss sowieso für den finalen Wert $y$ einmal
 ausgewertet werden, dieser Schritt wird \emph{forward propagation} (deutsch Vorwärtspropagierung)
-genannt, gleichzeitig können alle Zwischenresultate gespeichert werden, um sie für den
-Korrektursschritt direkt einzusetzen.
+genannt. Gleichzeitig können alle Zwischenresultate gespeichert werden, um sie für den
+Korrekturschritt direkt einzusetzen.
 
 Die Parameter werden analog zu Gl. \ref{ml:regression:gd:update} bei jeder Iteration mit
 \begin{equation}
@@ -253,7 +250,6 @@ Zu diesem Ziel wird eine neue Grösse
 \end{equation}
 eingeführt, sie wird auch \emph{local gradient} (deutsch lokaler Gradient) genannt. Dabei
 gilt
-
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = \delta_i \cdot l_{i-1}
     \qquad\text{und}\qquad
@@ -294,10 +290,10 @@ Danach können die Backpropagation-Gleichungen analog aufgestellt werden:
         \sigma' \left( \xi_{\textsf{node}_k}^{(\textsf{prev layer})} \right) 
         \sum_{j\in \substack{\textsf{nodes of}\\\textsf{current layer}}}
         \theta_{k\rightarrow j} \cdot \delta_j\\
-    \theta_{\textsf{node}_k\rightarrow\textsf{node}_j} &=
+    \theta_{\textsf{node}_k\rightarrow\textsf{node}_j} &\leftarrow
         \theta_{\textsf{node}_k\rightarrow\textsf{node}_j} -
         \alpha \cdot \delta_{\textsf{node}_j} \cdot \sigma(\xi_{\textsf{node}_k}) \\
-    b_{\textsf{node}_j} &= b_{\textsf{node}_j} - \alpha \cdot \delta_{\textsf{node}_j}
+    b_{\textsf{node}_j} &\leftarrow b_{\textsf{node}_j} - \alpha \cdot \delta_{\textsf{node}_j}
 \end{aligned}.
 \label{ml:ann:bp:update}
 \end{equation}
