@@ -19,7 +19,8 @@ approximiert.
 Die einfachste Form der Regression ist die \emph{lineare Regression}, bei der alle Abhängigkeiten linear
 sind.
 
-\paragraph{Ein Modell}
+\subsubsection{Ein lineares Modell}
+
 \begin{itemize}
     \item $y$ soll die abhängige Variable des vorherzusagenden Wertes sein.
     \item $x_1, \dots, x_i$ sind unabhängigen Variablen die einen Beitrag zur Vorhersage
@@ -30,7 +31,7 @@ sind.
 
 Gegeben sind eine sehr grosse Anzahl $m$ Datenpunkte wobei ein Datenpunkt $j$ immer aus
 den Feature-Werten $\{ x_0, x_1, \dots, x_n \}_j$ und des vorherzusagenden Werts $y_j$ besteht.
-Es gilt $m \gg n$. Daten die $y$-Werte enthalten werden auch \emph{labeled data} genannt,
+Am besten ist $m \gg n$. Daten die $y$-Werte enthalten, werden auch \emph{labeled data} genannt,
 im Gegensatz zu \emph{unlabeled data} wo nur die Feature-Werte bekannt sind.
 
 Man kann nun das lineare Modell mit der Gleichung
@@ -41,22 +42,22 @@ y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \dots + \theta_n x_n
 aufstellen. Führt man die Variable $x_0 \overset{!}{=} 1$ ein, kann die Gleichung
 \ref{ml:regression:modell} einfacher als
 \begin{equation}
-y = \sum_{i = 0}^{n} \theta_i x_i = \vec \theta \cdot \vec x =: h(x_i, \theta_i)
+y = \sum_{i = 0}^{n} \theta_i x_i = \vec \theta \cdot \vec x =: h(\vec\theta, \vec x)
 \label{ml:regression:hypothesis}
 \end{equation}
 geschrieben werden. Diese Beziehung wird auch \emph{hypothesis function} genannt und mit
 $h$ bezeichnet.
 
 Unser Ziel ist jetzt die Koeffizienten $\theta_i$ aus den Daten zu lernen. Hierfür
-benötigen wir ein Kriterium, das uns die Distanz der Vorhersage $y_p = h_0(x_i)$ zum tatsächlichen
-Wert $y$ des Datenpunkts angibt. Dieses Kriterium wird \emph{cost function} oder
+benötigen wir ein Kriterium, das uns die Distanz der Vorhersage $y_p = h_0(\vec x)$ zum tatsächlichen
+Wert $y$ des Datenpunkts angibt. Es wird \emph{cost function} oder
 \emph{loss function} genannt. Eine praktische Cost-Function ist der quadratische Fehler
 \begin{equation}
-J(x_i, \theta_i) = (y - y_p)^2.
+J(\vec x, \vec \theta) = (y - y_p)^2.
 \label{ml:regression:cost:sqerr}
 \end{equation}
 
-$J(\theta_i)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglichst nahe an den
+$J(\vec \theta)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglichst nahe an den
 tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren um dieses
 Minimierungsproblem zu lösen.
 
@@ -87,7 +88,7 @@ $m$ Datenpunkten in Matrix-Form als
     \mathbf{X} \vec \theta = \vec y_p
     \label{ml:regression:lstsq:modell}
 \end{equation}
-und auch die Cost-Function $J$ in Matrix-Form als
+und die Cost-Function $J$ in Matrix-Form als
 \begin{align}
     J(\vec \theta) &= \sum_{j=0}^m \left(y_j - (\theta_0 x_{j0} + \theta_1 x_{j1} + \cdots + \theta_n x_{jn}) \right)^2
     = \sum_{j=0}^{m} \left( y_j - \vec \theta \cdot \vec x_j \right)^2 \nonumber\\
@@ -113,8 +114,8 @@ Um das Minimum zu finden wird der Gradient von $J(\vec \theta)$
 auf den Null-Vektor $\vec 0$ gesetzt
 und schliesslich nach $\vec \theta$ aufgelöst:
 \begin{align}
-    &\mathbf{X}^\mathrm{T} \mathbf{X} \vec \theta - 2 \mathbf{X} \vec y \overset{!}= \vec 0 \quad\Leftrightarrow\quad
-    \mathbf{X}^\mathrm{T} \mathbf{X} \vec \theta = \mathbf{X} \vec y \nonumber\\
+    &2\mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y \overset{!}= \vec 0 \quad\Leftrightarrow\quad
+    \mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta = \mathbf{X}\, \vec y \nonumber\\
     &\implies \vec \theta = \left( \mathbf{X}^\mathrm{T} \mathbf{X} \right)^{-1} \mathbf{X} \, \vec y.
     \label{ml:regression:lstsq:formel}
 \end{align}
@@ -140,28 +141,24 @@ aber auch eine Lösung eines höchst nichtlinearen Modells mit vielleicht sehr v
 komplexerer Cost-Function berechnen können. Mit diesem Ansatz existiert aber nur
 sehr selten eine Lösung in geschlossener Form (als Formel).
 
-Mit einem geschickten Algorithmus, der die Koeffizienten $\theta_i$ nummerische
+Mit einem geschickten Algorithmus, der die Koeffizienten $\theta_i$ nummerisch
 approximiert können die oben genannten Problemen weitgehend umgangen werden. Wir möchten
 diesen als nächstes anschauen.
 
 
-\subsection{Minimierung mit Gradient-Descent}
+\subsection{Minimierung mit Gradient-Descent \label{chapter:ml:regression:gd}}
 
-Betrachtet man die Cost-Function $J(\theta_i, x_i)$ aus Gl. \refeq{ml:regression:cost:sqerr}
+Betrachtet man die Cost-Function $J(\vec \theta)$ aus Gl. \refeq{ml:regression:cost:sqerr}
 ergibt sich dessen partielle Ableitung nach $\theta_i$ als
 \begin{equation}
-    \frac{\partial J}{\partial \theta_i} = 2 \cdot (\underbrace{\operatorname{h}(x_0, \dots, x_n)}_{y_p} - y) \cdot x_i.
+    \frac{\partial J}{\partial \theta_i} = 2 (\underbrace{\operatorname{h}(\theta_0, \cdots, \theta_n, x_0, \cdots, x_n)}_{y_p} - y) \cdot x_i
+    = 2 (h(\vec \theta, \vec x) - y) \cdot x_i.
 \end{equation}
 Es ist wieder der Gradient, ähnlich zu Gl. \refeq{ml:regression:lstsq:grad},
 \begin{align}
-    \operatorname{grad} J =
-    \begin{pmatrix}
-        \frac{\partial J}{\partial \theta_0} \\
-        \vdots\\
-        \frac{\partial J}{\partial \theta_n}
-    \end{pmatrix}
-    = 2 \cdot (\operatorname{h}(x_0, \dots, x_n) - y) \cdot \underbrace{\begin{pmatrix} x_0\\ \vdots \\ x_n \end{pmatrix}}_{\vec x}
-    = 2 \cdot (\operatorname{h}(\vec x) - y) \cdot \vec x.
+    \operatorname{grad} J(\vec \theta)
+    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \begin{pmatrix} x_0\\ \vdots \\ x_n \end{pmatrix}
+    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \vec x.
 \end{align}
 
 Eine zentrale Eigenschaften vom Gradienten ist, dass er relativ zum Auswertungspunkt immer
@@ -171,7 +168,7 @@ Anzahl Iterationen zu einem lokalen Minimum.
 
 Konkret kann diese Idee als
 \begin{align}
-    \vec \theta_{\sf k+1} &= \vec \theta_{\sf k}
+    \vec \theta_{k+1} &= \vec \theta_{\sf k}
         - \alpha \cdot \frac{1}{2m}\sum_{j=1}^{m} \operatorname{grad} J(\vec \theta_k, \vec x_j) \nonumber\\
     &= \vec \theta_k
         - \alpha \frac{1}{m} \sum_{j=1}^{m} (\operatorname{h}(\vec \theta_k, \vec x_j) - y_j)\cdot \vec x_j
@@ -196,3 +193,27 @@ Potential zum Überschiessen oder sogar zur Divergenz, bei einem kleinen $\alpha
 die Lösungssuche aber umso länger. Leider gibt es keine Methode um den besten Wert von
 $\alpha$ zu finden. Er muss empirisch ermittelt werden, wobei am besten Werte im
 Bereich $0.001$ bis $1$ auszuprobieren sind. \cite[S. 51]{ml:introduction-to-ml}
+
+\subsubsection{Stochastischer Gradient-Descent}
+
+Der bis jetzt beschriebene Gradient-Descent-Algorithmus berechnet einen Schritt immer über
+\emph{alle} Daten, was viel Rechenleistung benötigt und schlecht parallelisiert werden
+kann.
+
+Nimmt man für jeden Berechnungsschritt eine zufällig ausgewählte, kleinere Stickprobe von
+$b \ll m$ Datenpunkten, kann die Performance stark verbessert werden. $b$ wird
+\emph{batch size} genannt. Die Aktualisierungsgleichung \refeq{ml:regression:gd:update} wird
+
+\begin{equation}
+  \Delta \vec\theta_{k+1} = - \alpha \frac{1}{2b} \sum_{j=1}^{b} \operatorname{grad} J(\vec
+  \theta_k, \vec x_j).
+\end{equation}
+
+In Fällen mit mehreren lokalen Minima kann stochastischer gegenüber dem totalen Gradient-Descent manchmal
+verhindern in diese lokale Minima zu fallen. Je kleiner die Learning-Rate $\alpha$ gewählt
+wird, desto besser wird totaler Gradient-Descent approximiert. 
+\cite[S. 93ff]{ml:ml-tom-mitchell}
+
+\subsection{Normalisierung}
+
+% TODO

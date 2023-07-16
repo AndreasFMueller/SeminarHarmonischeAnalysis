@@ -9,4 +9,5 @@ dependencies-ml =						\
 	papers/ml/references.bib				\
 	papers/ml/0_einleitung.tex					\
 	papers/ml/1_lineare_regression.tex					\
+	papers/ml/2_KNN.tex					\
 
