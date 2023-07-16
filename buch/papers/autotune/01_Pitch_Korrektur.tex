@@ -20,7 +20,8 @@ wird die Grundharmonische als Tonhöhe angeschaut.
 Es gillt nun diese zu finden. Es gibt es mehrere Möglichkeiten dies umzusetzen.
 Im Rahmen dieses Papers werden zwei Methoden verglichen.
 
-\subsubsection{Short-Time Fourier-Transformation (STFT)}
+\subsubsection{Short-Time Fourier-Transformation (STFT)
+\label{autotune:subsubsection:shortTimeFourierTransformation}}
 Die Short-Time Fourier-Transformation (STFT) ist eine Fourier-Transformation, die auf einem kleinen,
 zeitlich begrenzten Ausschnitt eines Signals angewendet wird.
 Da es sich sich um einen diskreten Vorgang handelt, wird die STFT beschrieben als
@@ -46,9 +47,13 @@ Da einzelne Töne jedoch nur wenige Hertz auseinander liegen, können diese nur 
 Schnelle Melodien verhindern das Verlängern der Fensterzeit, da sonst mehrere Töne auf ein Segment fallen und nicht mehr identifiziert werden können.
 
 % TODO: Bild einfügen von STFT mit 23ms Fensterlänge
+% TODO: Erläuterung Sonogramm und Vermerk zu Kapitel von Alain Keller
 
-\subsubsection{Cumulative Mean Normalized Difference Function (CMNDF)}
+\subsubsection{Cumulative Mean Normalized Difference Function (CMNDF)
+\label{autotune:subsubsection:cumultativeMeanNormalizedDifferenceFunction}}
 Eine weitere Methode zur Tonhöhenbestimmung ist die Cumulative Mean Normalized Difference Function (CMNDF).
+
+% TODO: Mathematische Herleitung von der Auto-Korrelation
 
 % TODO: Bild einfügen von CMNDF
 
@@ -101,7 +106,9 @@ wenn man versucht, zwischen verschiedenen Tonarten zu wechseln.
 Deshalb ist die reine Stimmung in der Praxis eher auf Streich- und Blasinstrumente beschränkt,
 bei denen die Musiker die Intonation von Noten anpassen können.
 
-In der nachfolgenden Tabelle \ref{autotune:tabelleStimmung} werden die Frequenzen der Töne mit reiner Stimmung verglichen mit der gleichstufigen Stimmung.
+In der Tabelle \ref{autotune:tabelleStimmung} werden die Frequenzen der Töne mit reiner Stimmung verglichen mit der gleichstufigen Stimmung.
+
+% TODO: Frequenzabweichung neu berechnen da falsch
 
 \begin{table}[]
     \begin{tabular}{ccrlrlll}
@@ -120,6 +127,7 @@ In der nachfolgenden Tabelle \ref{autotune:tabelleStimmung} werden die Frequenze
     h                                                                & h                                                              & $\sqrt[12]{2^{ 2}}\cdot f_{A4}$ & $\approx 493.88$   & $\sfrac{15}{8} \cdot f_{C4}$  & $= 495.00$         & $1.12$            & $   \;\%$   \\
     c                                                                & c                                                              & $\sqrt[12]{2^{ 3}}\cdot f_{A4}$ & $\approx 523.25$   & $\sfrac{2}{1}  \cdot f_{C4}$  & $= 528.00$         & $4.75$            & $   \;\%$  
     \end{tabular}
+    \caption{Vergleich von Frequenzen der Töne mit reiner und gleichstufiger Stimmung}
     \label{autotune:tabelleStimmung}
 \end{table}
 
