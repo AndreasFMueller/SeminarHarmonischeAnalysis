@@ -12,7 +12,7 @@ include papers/wavelets/Makefile.inc
 include papers/brown/Makefile.inc
 include papers/opt/Makefile.inc
 
-TEXFILES = \
+TEXFILES-DEP = \
 	$(dependencies-ct) \
 	$(dependencies-sonogramm) \
 	$(dependencies-jpeg) \

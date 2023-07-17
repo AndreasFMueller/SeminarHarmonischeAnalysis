@@ -10,7 +10,8 @@
             "args": [
                 "buch",
                 "&&",
-                "make"
+                "make",
+                "build/buch.pdf"
             ],
             "problemMatcher": [],
             "group": {

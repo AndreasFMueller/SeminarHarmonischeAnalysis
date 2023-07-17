@@ -11,8 +11,8 @@ papers/common/Makefile.inc:	papers/common/paperlist
 
 include common/Makefile.inc
 include chapters/Makefile.inc
-include papers/common/Makefile.inc
 include papers/common/includes.inc
+include papers/common/Makefile.inc
 
 ALLTEXFILES = $(TEXFILES) $(CHAPTERFILES)
 
@@ -23,15 +23,15 @@ $(workdir):
 	mkdir -p $(workdir)
 buch.pdf:	$(workdir)/buch.pdf
 	cp $(workdir)/buch.pdf buch.pdf
-
-$(workdir)/buch.pdf:	$(workdir) buch.tex $(TEXFILES) $(workdir)/buch.ind
+	
+$(workdir)/buch.pdf:	$(workdir) buch.tex $(ALLTEXFILES) $(workdir)/buch.ind
 	$(pdflatex) buch.tex
 	cd $(workdir); $(bibtex) buch
 
 $(workdir)/buch.ind:	$(workdir) $(workdir)/buch.idx
 	cd $(workdir); $(makeindex) buch.idx
 
-$(workdir)/buch.idx:	$(workdir) buch.tex $(TEXFILES) images
+$(workdir)/buch.idx:	$(workdir) buch.tex $(ALLTEXFILES) images
 	$(touch) build/buch.ind
 	$(pdflatex) buch.tex
 
