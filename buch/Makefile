@@ -19,21 +19,26 @@ ALLTEXFILES = $(TEXFILES) $(CHAPTERFILES)
 #
 # Buchblock für Druckerei
 #
-buch.pdf:	buch.tex $(TEXFILES) buch.ind $(BLXFILES)
-	$(pdflatex) buch.tex
-	$(bibtex) buch
+$(workdir):
+	mkdir -p $(workdir)
+buch.pdf:	$(workdir)/buch.pdf
+	cp $(workdir)/buch.pdf buch.pdf
 
-buch.idx:	buch.tex $(TEXFILES) images
-	$(touch) buch.ind
+$(workdir)/buch.pdf:	$(workdir) buch.tex $(TEXFILES) $(workdir)/buch.ind
 	$(pdflatex) buch.tex
+	cd $(workdir); $(bibtex) buch
 
-buch.ind:	buch.idx
-	$(makeindex) buch.idx
+$(workdir)/buch.ind:	$(workdir) $(workdir)/buch.idx
+	cd $(workdir); $(makeindex) buch.idx
+
+$(workdir)/buch.idx:	$(workdir) buch.tex $(TEXFILES) images
+	$(touch) build/buch.ind
+	$(pdflatex) buch.tex
 
 #
 # Papers in einzelne PDF-Files separieren für digitales Feedback
 #
-separate:	buch.aux buch.pdf
+separate:	build/buch.aux buch.pdf
 	bash splitpapers
 
 #
@@ -42,15 +47,15 @@ separate:	buch.aux buch.pdf
 SeminarHarmonischeAnalysis.pdf:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
 	SeminarHarmonischeAnalysis.ind $(SBLXFILES)
 	$(pdflatex) SeminarHarmonischeAnalysis.tex
-	$(bibtex) SeminarHarmonischeAnalysis
+	cd build; $(bibtex) SeminarHarmonischeAnalysis
 
 SeminarHarmonischeAnalysis.idx:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
 	images
-	$(touch) SeminarHarmonischeAnalysis.ind
+	$(touch) build/SeminarHarmonischeAnalysis.ind
 	$(pdflatex) SeminarHarmonischeAnalysis.tex
 
 SeminarHarmonischeAnalysis.ind:	SeminarHarmonischeAnalysis.idx
-	$(makeindex) SeminarHarmonischeAnalysis
+	cd build; $(makeindex) SeminarHarmonischeAnalysis
 
 #
 # This Makefile can also construct the short tests

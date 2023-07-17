@@ -1,0 +1,70 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{ifthen}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.5}
+\newboolean{draft}
+\setboolean{draft}{false}
+
+\tikzset{%
+  every neuron/.style={
+    circle,
+    draw,
+    minimum size=7 mm
+  },
+  neuron missing/.style={
+    draw=none, 
+    scale=3,
+    text height=0.333cm,
+    yshift=0.5 mm,
+    execute at begin node=\color{black}$\vdots$
+  },
+}
+
+% \begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth]
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\node [] (input-1) at (0,2.5-0.75) {};
+\node [every neuron/.try] (hidden-1) at (1.5,2.5-0.75) {};
+\node [every neuron/.try] (hidden-2) at (3,2.5-0.75) {};
+\node [every neuron/.try] (hidden-3) at (4.5,2.5-0.75) {};
+\node [] (hidden-ell) at (5,2.5-0.75) {$\cdots$};
+\node [every neuron/.try] (hidden-4) at (5.5,2.5-0.75) {};
+\node [every neuron/.try] (output-1) at (7,2.5-0.75) {};
+
+\node [xshift=-1mm] at (input-1) {\small$x$};
+\draw [->] (output-1) -- ++(0.5,0) node (conn-oup) {};
+\draw [<-] (hidden-1) -- ++(0,-0.5) node [yshift=-2mm] {$b_1$};
+\draw [<-] (hidden-2) -- ++(0,-0.5) node [yshift=-2mm] {$b_2$};
+\draw [<-] (hidden-3) -- ++(0,-0.5) node [yshift=-2mm] {$b_3$};
+\draw [<-] (hidden-4) -- ++(0,-0.5) node [yshift=-2mm] {$b_{n-1}$};
+\draw [<-] (output-1) -- ++(0,-0.5) node [yshift=-2mm] {$b_n$};
+\node [] at (output-1) {\small$l_n$};
+\node [] at (hidden-4) {\small$l_{n-1}$};
+\node [] at (hidden-3) {\small$l_{3}$};
+\node [] at (hidden-2) {\small$l_{2}$};
+\node [] at (hidden-1) {\small$l_{1}$};
+
+\draw [->] (input-1) -- (hidden-1) node (conn-ih) {};
+\draw [->] (hidden-1) -- (hidden-2) node (conn-hh1) {};
+\draw [->] (hidden-2) -- (hidden-3) node (conn-hh2) {};
+\draw [->] (hidden-4) -- (output-1) node (conn-ho) {};
+\node [xshift=2 mm] at (conn-oup) {\small $y$};
+
+\node [align=center,above,xshift=-1.25 cm] at (conn-ih) {$\theta_1$};
+\node [align=center,above,xshift=-1.25 cm] at (conn-hh1) {$\theta_2$};
+\node [align=center,above,xshift=-1.25 cm] at (conn-hh2) {$\theta_3$};
+\node [align=center,above,xshift=-1.25 cm] at (conn-ho) {$\theta_n$};
+
+\end{tikzpicture}
+\end{document}

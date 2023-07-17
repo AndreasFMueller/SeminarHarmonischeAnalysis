@@ -1,0 +1,37 @@
+%
+% 02_Phased_Vocoder.tex
+%
+% (c) 2023 Florian Baumgartner, OST Ostschweizer Fachhochschule
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Phased Vocoder
+\label{autotune:section:phasedVocoder}}
+\rhead{Phased Vocoder}
+Der Phased Vocoder ist ein Algorithmus,
+der es ermöglich die Tonhöhe eines Audiosignals zu ändern, ohne die anderen Attribute wesentlich zu beeinflächtigen.
+Im Wesentlichen arbeitet der Phased Vocoder,
+indem er ein Audiosignal in eine Reihe von überlappenden Fenstern oder Frames zerlegt und jedes Fenster mithilfe einer Fourier-Transformation in den Frequenzbereich umwandelt.
+
+Im Frequenzbereich kann das Audiosignal manipuliert werden, um seine Zeitdauer oder Tonhöhe zu ändern. Bei der Zeitstreckung oder -kompression erfolgt dies durch Ändern der Länge der Fenster im Zeitbereich,
+wobei die Überlappung zwischen den Fenstern beibehalten wird. Bei der Tonhöhenänderung werden die Frequenzen der Fourier-Transformierten verschoben.
+
+Nachdem das Signal im Frequenzbereich manipuliert wurde, wird es mithilfe einer inversen Fourier-Transformation zurück in den Zeitbereich überführt.
+Dabei wird speziell darauf geachtet, die Phase zwischen benachbarten Fenstern korrekt zu rekonstruieren, um hörbare Artefakte zu minimieren, die durch die Änderung der Fensterlänge oder die Frequenzverschiebung entstehen können. Daher der Name "Phased Vocoder".
+
+Zusammenfassend ist der Phased Vocoder ein Werkzeug zur Manipulation von Audiosignalen, das auf der Fenster-Fourier-Transformation basiert und spezielle Methoden zur Phasenrekonstruktion verwendet, um die Qualität der resultierenden Audiosignale zu optimieren.
+
+
+\subsection{Spektrum Manipulation
+\label{autotune:subsection:spektrumManipulation}}
+
+
+
+\subsection{Formanten Erhaltung
+\label{autotune:subsection:formantenErhaltung}}
+
+
+
+\subsection{Fenster Rekonstruktion
+\label{autotune:subsection:fensterRekonstruktion}}

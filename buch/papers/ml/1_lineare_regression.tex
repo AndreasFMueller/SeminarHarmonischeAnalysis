@@ -1,0 +1,219 @@
+%
+% 0_lineare_regression.tex
+%
+% (c) 2023 Dominik Gschwind, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Lineare Regression\label{chapter:ml:regression}}
+\rhead{Lineare Regression}
+
+\emph{Regression} ist ein statistisches Analyseverfahren mit dem Ziel Beziehungen zwischen
+Daten zu modellieren. Zum Beispiel hat man Daten über die letzten zwanzig Tage eines
+Aktienkurses und möchte damit den Preis am nächsten Tag vorhersagen. Ziel ist es also mit
+dieser Methode ein Modell zu erstellen, das die vorherzusagenden Daten so gut wie möglich
+approximiert.
+
+Die einfachste Form der Regression ist die \emph{lineare Regression}, bei der alle Abhängigkeiten linear
+sind.
+
+\subsubsection{Ein lineares Modell}
+
+\begin{itemize}
+    \item $y$ soll die abhängige Variable des vorherzusagenden Wertes sein.
+    \item $x_1, \dots, x_i$ sind unabhängigen Variablen die einen Beitrag zur Vorhersage
+    $y$ leisten können, genannt \emph{Features}.
+    \item $\theta_0, \theta_1, \dots, \theta_i$ sind die Koeffizienten der Features $x_i$,
+    sie bestimmen wie wichtig das entsprechenden Feature ist.
+\end{itemize}
+
+Gegeben sind eine sehr grosse Anzahl $m$ Datenpunkte wobei ein Datenpunkt $j$ immer aus
+den Feature-Werten $\{ x_0, x_1, \dots, x_n \}_j$ und des vorherzusagenden Werts $y_j$ besteht.
+Am besten ist $m \gg n$. Daten die $y$-Werte enthalten, werden auch \emph{labeled data} genannt,
+im Gegensatz zu \emph{unlabeled data} wo nur die Feature-Werte bekannt sind.
+
+Man kann nun das lineare Modell mit der Gleichung
+\begin{equation}
+y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \dots + \theta_n x_n
+\label{ml:regression:modell}
+\end{equation}
+aufstellen. Führt man die Variable $x_0 \overset{!}{=} 1$ ein, kann die Gleichung
+\ref{ml:regression:modell} einfacher als
+\begin{equation}
+y = \sum_{i = 0}^{n} \theta_i x_i = \vec \theta \cdot \vec x =: h(\vec\theta, \vec x)
+\label{ml:regression:hypothesis}
+\end{equation}
+geschrieben werden. Diese Beziehung wird auch \emph{hypothesis function} genannt und mit
+$h$ bezeichnet.
+
+Unser Ziel ist jetzt die Koeffizienten $\theta_i$ aus den Daten zu lernen. Hierfür
+benötigen wir ein Kriterium, das uns die Distanz der Vorhersage $y_p = h_0(\vec x)$ zum tatsächlichen
+Wert $y$ des Datenpunkts angibt. Es wird \emph{cost function} oder
+\emph{loss function} genannt. Eine praktische Cost-Function ist der quadratische Fehler
+\begin{equation}
+J(\vec x, \vec \theta) = (y - y_p)^2.
+\label{ml:regression:cost:sqerr}
+\end{equation}
+
+$J(\vec \theta)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglichst nahe an den
+tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren um dieses
+Minimierungsproblem zu lösen.
+
+\subsection{Minimierung mit Matrix-Inversion}
+
+Dieses Verfahren ist auch bekannt als ``Least-Squares für überbestimmte
+Gleichungssysteme''. Es verwendet die Matrix-Inversion um mit \emph{einem} Schritt an die
+Lösung zu kommen.
+
+Zuerst wird das lineare Modell aus Gl. \refeq{ml:regression:hypothesis} mit allen
+$m$ Datenpunkten in Matrix-Form als
+\begin{equation}
+    \begin{pmatrix}
+        x_{00}& \cdots& x_{0i}& \cdots& x_{0n}\\
+        \vdots& \vdots& \vdots& \vdots& \vdots\\
+        x_{j0}& \cdots& x_{ji}& \cdots& x_{jn}\\
+        \vdots& \vdots& \vdots& \vdots& \vdots\\
+        x_{m0}& \cdots& x_{mi}& \cdots& x_{mn}
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        \theta_0\\ \theta_1 \\ \vdots\\ \theta_n
+    \end{pmatrix}
+    = \begin{pmatrix}
+        y_{0,p}\\ \vdots \\ y_{j,p} \\ \vdots \\ y_{m,p}
+    \end{pmatrix}
+    \quad \iff \quad
+    \mathbf{X} \vec \theta = \vec y_p
+    \label{ml:regression:lstsq:modell}
+\end{equation}
+und die Cost-Function $J$ in Matrix-Form als
+\begin{align}
+    J(\vec \theta) &= \sum_{j=0}^m \left(y_j - (\theta_0 x_{j0} + \theta_1 x_{j1} + \cdots + \theta_n x_{jn}) \right)^2
+    = \sum_{j=0}^{m} \left( y_j - \vec \theta \cdot \vec x_j \right)^2 \nonumber\\
+    &= \left(\vec y - \mathbf{X} \vec \theta\right) \cdot \left(\vec y - \mathbf{X} \vec \theta\right)
+    = \left(\vec y - \mathbf{X} \vec \theta\right)^\mathrm{T} \left(\vec y - \mathbf{X} \vec \theta\right)
+    \label{ml:regression:lstsq:cost}
+\end{align}
+formuliert. In Gl. \refeq{ml:regression:lstsq:cost} wurde die Summation über die
+einzelnen quadratischen Fehler $(y_j - y_{j,p})^2$ zuerst als Skalarprodukt und
+anschliessend als Matrizen-Produkt (Zeilen-Vektor mal Spalten-Vektor) geschrieben.
+
+Um das Minimum zu finden wird der Gradient von $J(\vec \theta)$ 
+\begin{align}
+    \operatorname{grad} J(\vec \theta) &=
+    \begin{pmatrix} \partial J / \partial \theta_0 \\ \vdots \\ \partial J / \partial \theta_n \end{pmatrix}
+    = \sum_{j = 0}^{m} 2 (y_j - \vec \theta \cdot \vec x_j) \cdot
+    \begin{pmatrix} - x_{j0}\\ \vdots \\ - x_{jn} \end{pmatrix} \nonumber\\
+    &= \sum_{j = 0}^{m} 2 \left( \vec \theta \cdot \vec x_j - y_j \right) \cdot \vec x_j
+    = \sum_{j = 0}^{m} 2 \vec \theta \cdot \vec x_j\, \vec x_j - 2 y_j \vec x_j \nonumber\\
+    &= 2 \mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y
+    \label{ml:regression:lstsq:grad}
+\end{align}
+auf den Null-Vektor $\vec 0$ gesetzt
+und schliesslich nach $\vec \theta$ aufgelöst:
+\begin{align}
+    &2\mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y \overset{!}= \vec 0 \quad\Leftrightarrow\quad
+    \mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta = \mathbf{X}\, \vec y \nonumber\\
+    &\implies \vec \theta = \left( \mathbf{X}^\mathrm{T} \mathbf{X} \right)^{-1} \mathbf{X} \, \vec y.
+    \label{ml:regression:lstsq:formel}
+\end{align}
+
+Gl. \refeq{ml:regression:lstsq:formel} gibt die Formel an um aus dem überbestimmten
+Gleichungssystem von Gl. \refeq{ml:regression:lstsq:modell} direkt mittels Matrix-Inversion
+die Koeffizienten $\vec \theta$ exakt zu berechnen.
+
+\bigskip
+Aber nicht alle solche Matrizen sind invertierbar, sind Zeilen oder Spalten linear
+abhängig oder gibt es mehr Features als Datenpunkte kann $\mathbf{X}^\mathrm{T}\mathbf{X}$
+nicht invertiert werden.
+
+Dazu kommt dass die Matrizen-Inversion, wie auch das Matrizen-Produkt, sehr aufwendig ist,
+etwa $\mathcal{O}(n^{\log_2 7})$ mit dem besten Algorithmus. Die Inversion  einer (oder
+Multiplikation zweier) $1000 \times 1000$-Matrix braucht also rund $1000^{\log_2 7}
+\approx 260$ Mio Multiplikationen.
+\cite{ml:computational-complexity-math-op}
+
+Wir haben uns hier auf die exakte Lösung der linearen Regression beschränkt mit der
+simplen Cost-Function aus Gl. \refeq{ml:regression:cost:sqerr}. Später wollen wir
+aber auch eine Lösung eines höchst nichtlinearen Modells mit vielleicht sehr viel
+komplexerer Cost-Function berechnen können. Mit diesem Ansatz existiert aber nur
+sehr selten eine Lösung in geschlossener Form (als Formel).
+
+Mit einem geschickten Algorithmus, der die Koeffizienten $\theta_i$ nummerisch
+approximiert können die oben genannten Problemen weitgehend umgangen werden. Wir möchten
+diesen als nächstes anschauen.
+
+
+\subsection{Minimierung mit Gradient-Descent \label{chapter:ml:regression:gd}}
+
+Betrachtet man die Cost-Function $J(\vec \theta)$ aus Gl. \refeq{ml:regression:cost:sqerr}
+ergibt sich dessen partielle Ableitung nach $\theta_i$ als
+\begin{equation}
+    \frac{\partial J}{\partial \theta_i} = 2 (\underbrace{\operatorname{h}(\theta_0, \cdots, \theta_n, x_0, \cdots, x_n)}_{y_p} - y) \cdot x_i
+    = 2 (h(\vec \theta, \vec x) - y) \cdot x_i.
+\end{equation}
+Es ist wieder der Gradient, ähnlich zu Gl. \refeq{ml:regression:lstsq:grad},
+\begin{align}
+    \operatorname{grad} J(\vec \theta)
+    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \begin{pmatrix} x_0\\ \vdots \\ x_n \end{pmatrix}
+    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \vec x.
+\end{align}
+
+Eine zentrale Eigenschaften vom Gradienten ist, dass er relativ zum Auswertungspunkt immer
+in die Richtung des steilsten Anstiegs zeigt. Läuft man also immer entgegengesetzt des
+Gradienten und passt die $\theta_i$ entsprechend an, gelangt man nach einer gewissen
+Anzahl Iterationen zu einem lokalen Minimum.
+
+Konkret kann diese Idee als
+\begin{align}
+    \vec \theta_{k+1} &= \vec \theta_{\sf k}
+        - \alpha \cdot \frac{1}{2m}\sum_{j=1}^{m} \operatorname{grad} J(\vec \theta_k, \vec x_j) \nonumber\\
+    &= \vec \theta_k
+        - \alpha \frac{1}{m} \sum_{j=1}^{m} (\operatorname{h}(\vec \theta_k, \vec x_j) - y_j)\cdot \vec x_j
+    \label{ml:regression:gd:update}
+\end{align}
+geschrieben werden. Der Gradient wird als Durchschnitt über alle
+Datenpunkte berechnet. Mit dem zusätzlichen Parameter $\alpha > 0$ kann die Geschwindigkeit der
+Lösungsfindung eingestellt werden, er wird \emph{learning rate} genannt.
+
+Als Startwert $\vec\theta_0$ kann irgendein Wert verwendet werden, meistens wird dieser jedoch
+auf den Nullvektor $\vec 0$ gesetzt.
+
+$J(\vec \theta)$ ist eine Quadratische-Funktion von $\theta$ mit einem einzigen lokalen
+Minimum, %TODO: vielleicht Herleitung
+dieses Minimum ist also auch gerade das globale Minimum. Man kann sich mit einem linearen
+Modell sicher sein, je näher der Fehler $J$ bei $0$ ist, desto näher sind die berechneten
+$\theta_i$ bei den tatsächlichen $\theta_i$.
+
+Ob oder wie schnell die Berechnung zur Lösung konvergiert ist aber vom Wert von $\alpha$
+abhängig. Ein grosses $\alpha$ gibt eine schnelle Konvergenz aber auch ein grosses
+Potential zum Überschiessen oder sogar zur Divergenz, bei einem kleinen $\alpha$ dauert
+die Lösungssuche aber umso länger. Leider gibt es keine Methode um den besten Wert von
+$\alpha$ zu finden. Er muss empirisch ermittelt werden, wobei am besten Werte im
+Bereich $0.001$ bis $1$ auszuprobieren sind. \cite[S. 51]{ml:introduction-to-ml}
+
+\subsubsection{Stochastischer Gradient-Descent}
+
+Der bis jetzt beschriebene Gradient-Descent-Algorithmus berechnet einen Schritt immer über
+\emph{alle} Daten, was viel Rechenleistung benötigt und schlecht parallelisiert werden
+kann.
+
+Nimmt man für jeden Berechnungsschritt eine zufällig ausgewählte, kleinere Stickprobe von
+$b \ll m$ Datenpunkten, kann die Performance stark verbessert werden. $b$ wird
+\emph{batch size} genannt. Die Aktualisierungsgleichung \refeq{ml:regression:gd:update} wird
+
+\begin{equation}
+  \Delta \vec\theta_{k+1} = - \alpha \frac{1}{2b} \sum_{j=1}^{b} \operatorname{grad} J(\vec
+  \theta_k, \vec x_j).
+\end{equation}
+
+In Fällen mit mehreren lokalen Minima kann stochastischer gegenüber dem totalen Gradient-Descent manchmal
+verhindern in diese lokale Minima zu fallen. Je kleiner die Learning-Rate $\alpha$ gewählt
+wird, desto besser wird totaler Gradient-Descent approximiert. 
+\cite[S. 93ff]{ml:ml-tom-mitchell}
+
+\subsection{Normalisierung}
+
+% TODO
