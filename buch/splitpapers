@@ -4,7 +4,7 @@
 #
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-if [ ! -f buch.aux ]
+if [ ! -f build/buch.aux ]
 then
 	echo "file buch.aux missing"
 	exit 1
@@ -40,6 +40,6 @@ awk 'BEGIN {
 }
 END {
 	printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-\n", identifier, startpage + offsetpage)
-}' buch.aux | bash
+}' build/buch.aux | bash
 
 
