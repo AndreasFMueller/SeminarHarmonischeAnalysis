@@ -7,8 +7,7 @@ dependencies-ml =						\
 	papers/ml/packages.tex					\
 	papers/ml/main.tex					\
 	papers/ml/references.bib				\
-	papers/ml/teil0.tex					\
-	papers/ml/teil1.tex					\
-	papers/ml/teil2.tex					\
-	papers/ml/teil3.tex
+	papers/ml/0_einleitung.tex					\
+	papers/ml/1_lineare_regression.tex					\
+	papers/ml/2_KNN.tex					\
 

@@ -8,7 +8,7 @@ SUBDIRECTORIES = chapters
 
 # change the following variables to suit your environment
 
-pdflatex = pdflatex
+pdflatex = tectonic --outdir build --keep-intermediates
 bibtex = bibtex
 makeindex = makeindex
 touch = touch
