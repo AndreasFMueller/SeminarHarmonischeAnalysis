@@ -8,7 +8,7 @@ SUBDIRECTORIES = chapters
 
 # change the following variables to suit your environment
 
-pdflatex = tectonic --outdir build --keep-intermediates
+pdflatex = pdflatex --output-directory build --keep-intermediates
 bibtex = bibtex
 makeindex = makeindex
 touch = touch
@@ -30,6 +30,8 @@ BUCHFILES =								\
 	common/teilnehmer.tex						\
 	$(CHAPTERS) 							\
 	chapters/references.bib 					\
+	papers/common/addpackages.tex					\
+	papers/common/addpapers.tex					\
 	$(PAPERFILES)
 
 THEMA_FILES = 

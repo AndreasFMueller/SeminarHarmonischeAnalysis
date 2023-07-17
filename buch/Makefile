@@ -3,7 +3,7 @@
 #
 # (c) 2022 Prof Dr Andreas Mueller, OST Ostschweizer Fachhochschule
 #
-all:	build/buch.pdf
+all:	buch.pdf
 
 buch:	SeminarHarmonischeAnalysis.pdf
 
@@ -19,9 +19,12 @@ ALLTEXFILES = $(TEXFILES) $(CHAPTERFILES)
 #
 # Buchblock für Druckerei
 #
-build/buch.pdf:	buch.tex $(TEXFILES) # $(BLXFILES)
+buch.pdf:	build/buch.pdf
+	cp build/buch.pdf buch.pdf
+
+build/buch.pdf:	buch.tex $(TEXFILES) $(BLXFILES)
 	$(pdflatex) buch.tex
-# $(bibtex) buch
+	$(bibtex) buch
 
 build/buch.idx:	buch.tex $(TEXFILES) images
 	$(touch) buch.ind
