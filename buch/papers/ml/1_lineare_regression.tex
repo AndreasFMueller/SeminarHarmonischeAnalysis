@@ -65,7 +65,7 @@ Dieses Verfahren ist auch bekannt als ``Least-Squares für überbestimmte
 Gleichungssysteme''. Es verwendet die Matrix-Inversion um mit \emph{einem} Schritt an die
 Lösung zu kommen.
 
-Zuerst wird das lineare Modell aus Gl. \eqref{ml:regression:hypothesis} mit allen
+Zuerst wird das lineare Modell aus \eqref{ml:regression:hypothesis} mit allen
 $m$ Datenpunkten in Matrix-Form als
 \begin{equation}
     \begin{pmatrix}
@@ -94,7 +94,7 @@ und die Cost-Function $J$ in Matrix-Form als
     = \left(\vec y - \mathbf{X} \vec \theta\right)^\mathrm{T} \left(\vec y - \mathbf{X} \vec \theta\right)
     \label{ml:regression:lstsq:cost}
 \end{align}
-formuliert. In Gl. \eqref{ml:regression:lstsq:cost} wurde die Summation über die
+formuliert. In \eqref{ml:regression:lstsq:cost} wurde die Summation über die
 einzelnen quadratischen Fehler $(y_j - y_{j,p})^2$ zuerst als Skalarprodukt und
 anschliessend als Matrizen-Produkt (Zeilen-Vektor mal Spalten-Vektor) geschrieben.
 
@@ -144,7 +144,7 @@ Mit einem geschickten Algorithmus, der die Koeffizienten $\theta_i$ numerisch
 approximiert können die oben genannten Problemen weitgehend umgangen werden. Wir möchten
 diesen als nächstes anschauen.
 
-\subsection{Minimierung mit Gradient-Descent \label{chapter:ml:regression:gd}}
+\subsection{Minimierung mit Gradient-Descent \label{ml:regression:gd}}
 
 Betrachtet man die Cost-Function $J(\vec \theta)$ aus \eqref{ml:regression:cost:sqerr}
 ergibt sich deren partielle Ableitung nach $\theta_i$ als
