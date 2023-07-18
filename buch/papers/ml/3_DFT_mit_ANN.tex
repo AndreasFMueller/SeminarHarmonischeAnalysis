@@ -1,0 +1,30 @@
+\section{Diskrete Fouriertransformation mit ANN\label{ml:dft-with-ann}}
+\rhead{DFT mit ANN}
+
+Die diskrete Fouriertransformation einer Zahlenreihe $x_n \in \{ x_0, x_1, \cdots, x_{N-1}\}$
+mit $N$ Elementen kann mit
+\begin{equation}
+    c_k = \frac{1}{N} \sum_{n=0}^{N-1} x_n e^{\normalsize -jk\frac{2\pi}{N}n}
+\end{equation}
+berechnet werden, oder in vektorschreibweise
+    \begin{equation}
+    c_k = \begin{pmatrix}
+        x_0\\
+        x_1\\
+        \vdots\\
+        x_{N-1}
+    \end{pmatrix} \cdot
+    \frac{1}{N} \begin{pmatrix}
+        e^{-j \omega_k 0} \\
+        e^{-j \omega_k 1} \\
+        \vdots \\
+        e^{-j \omega_k (N-1)} \\
+    \end{pmatrix}
+    \qquad \textsf{mit}\qquad \omega_k = \frac{2\pi k}{N}.
+    \label{ml:dft-with-ann:dft:vector}
+\end{equation}
+Die einzelnen $x_n$ werden mit einem komplexen Koeffizienten gewichtet und anschliessend
+summiert. In der Vektorschreibweise wird dieser Effekt mit dem Skalarprodukt erzielt. Man
+erkennt, dass dies ein linearer Zusammenhang ist.
+
+Es kann sehr einfach ein entsprechendes neuronales Netzwerk konstruiert werden, das \eqref{ml:dft-with-ann:dft:vector} abbildet:

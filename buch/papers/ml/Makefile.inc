@@ -10,4 +10,5 @@ dependencies-ml =						\
 	papers/ml/0_einleitung.tex					\
 	papers/ml/1_lineare_regression.tex					\
 	papers/ml/2_KNN.tex					\
+	papers/ml/3_DFT_mit_ANN.tex					\
 

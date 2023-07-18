@@ -13,8 +13,10 @@ Wir wollen untersuchen ob ein künstliches neuronales Netzwerk in der Lage ist d
 Daten in Fourier-Koeffizienten zu lernen. Dazu wollen wir die algorithmische
 Komplexität untersuchen und mit der schnellen Fouriertransformation vergleichen.
 
-\paragraph{Was ist ein künstliches neuronales Netzwerk?} \emph{Künstliche neuronale Netze} (KNN
-oder englisch \emph{artificial neural networks}, ANN) werden vor allem im Gebiet der
+\paragraph{Was ist ein künstliches neuronales Netzwerk?} \emph{Künstliche neuronale
+Netzwerke}\footnote{Kürzer auch nur als neuronales Netz bezeichnet mit der deutschen
+Abkürzung KNN.} (englisch \emph{artificial neural networks}, ANN\footnote{Es wird in
+diesem Paper nur der englische Begriff und dessen Abkürzung verwendet.}) werden vor allem im Gebiet der
 künstlichen Intelligenz und \emph{data science} eingesetzt. Ihre Struktur und Funktionsweise ist den
 biologischen neuronalen Netzwerken zum Beispiel im Gehirn nachempfunden. Prinzipiell sind
 sie universelle Approximatoren\footnote{Ein Beweis dafür ist in
@@ -22,8 +24,8 @@ sie universelle Approximatoren\footnote{Ein Beweis dafür ist in
 Sachverhalte beliebig genau approximieren (natürlich abhängig von Struktur, Rechenaufwand,
 vorhandenen Daten und weiterem).
 
-Diese Eigenschaft ist im Gebiet der künstlichen Intelligenz zwingend,
-da allein schon die Definition von ``Intelligenz'' ein offenes Problem in der
+Diese Eigenschaft ist vor allem bei künstlicher Intelligenz sehr wichtig,
+da nur schon die Definition von ``Intelligenz'' noch immer ein offenes Problem in der
 Philosophie ist. Andere, traditionelle Methoden wie zum Beispiel \emph{expert systems} können
 nur begrenzt und mit viel Aufwand Intelligenz darstellen.
 
@@ -33,6 +35,6 @@ Komplexität des Problems, dessen Lösung verunmöglichen. Einige Beispiele sind
 Bilderkennung, Klassifizierung, Spracherkennung oder maschinelle Übersetzung.
 
 \medskip
-In den nächsten zwei Kapitel wollen wir diesen universellen Approximator konstruieren.
+In den nächsten zwei Abschnitten wollen wir diesen universellen Approximator konstruieren.
 Wir fangen mit einem linearen Modell an, welches uns schliesslich zum allgemein
-nichtlinearen feedforward künstlichen neuronalen Netzwerk bringt.
+nichtlinearen \emph{fully connected feedforward} ANN bringt.
