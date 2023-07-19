@@ -44,17 +44,21 @@ separate:	build/buch.aux buch.pdf
 #
 # Version mit Buchdeckeln für Release/Website
 #
-SeminarHarmonischeAnalysis.pdf:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
-	SeminarHarmonischeAnalysis.ind $(SBLXFILES)
+SeminarHarmonischeAnalysis.pdf:	$(workdir)/SeminarHarmonischeAnalysis.pdf
+	cp $(workdir)/SeminarHarmonischeAnalysis.pdf \
+		SeminarHarmonischeAnalysis.pdf
+
+$(workdir)/SeminarHarmonischeAnalysis.pdf:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
+	$(workdir)/SeminarHarmonischeAnalysis.ind $(SBLXFILES)
 	$(pdflatex) SeminarHarmonischeAnalysis.tex
 	cd build; $(bibtex) SeminarHarmonischeAnalysis
 
-SeminarHarmonischeAnalysis.idx:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
+$(workdir)/SeminarHarmonischeAnalysis.idx:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
 	images
-	$(touch) build/SeminarHarmonischeAnalysis.ind
+	$(touch) $(workdir)/SeminarHarmonischeAnalysis.ind
 	$(pdflatex) SeminarHarmonischeAnalysis.tex
 
-SeminarHarmonischeAnalysis.ind:	SeminarHarmonischeAnalysis.idx
+$(workdir)/SeminarHarmonischeAnalysis.ind:	$(workdir)/SeminarHarmonischeAnalysis.idx
 	cd build; $(makeindex) SeminarHarmonischeAnalysis
 
 #

@@ -1,8 +1,8 @@
-#
-# aufgabe1.m -- direkte Loesung der Aufgabe 1
-#
-# (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
-#
+%
+% aufgabe1.m -- direkte Loesung der Aufgabe 1
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
 global N;
 N = 12;
 n = 6;
@@ -29,16 +29,16 @@ function ret = bk(k, y)
 	end
 endfunction
 
-ak(0, y) / 12
-ak(1, y) / 6
-ak(2, y) / 6
-ak(3, y) / 6
-ak(4, y) / 6
-ak(5, y) / 6
-ak(6, y) / 6
+printf("a0 = %.8f\n", ak(0, y) / 12);
+printf("a1 = %.8f\n", ak(1, y) / 6);
+printf("a2 = %.8f\n", ak(2, y) / 6);
+printf("a3 = %.8f\n", ak(3, y) / 6);
+printf("a4 = %.8f\n", ak(4, y) / 6);
+printf("a5 = %.8f\n", ak(5, y) / 6);
+printf("a6 = %.8f\n", ak(6, y) / 12);
 
-bk(1,y) / 6
-bk(2,y) / 6
-bk(3,y) / 6
-bk(4,y) / 6
-bk(5,y) / 6
+printf("b1 = %.8f\n", bk(1,y) / 6);
+printf("b2 = %.8f\n", bk(2,y) / 6);
+printf("b3 = %.8f\n", bk(3,y) / 6);
+printf("b4 = %.8f\n", bk(4,y) / 6);
+printf("b5 = %.8f\n", bk(5,y) / 6);
