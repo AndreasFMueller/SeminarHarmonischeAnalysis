@@ -32,7 +32,7 @@ $(workdir)/buch.ind:	$(workdir) $(workdir)/buch.idx
 	cd $(workdir); $(makeindex) buch.idx
 
 $(workdir)/buch.idx:	$(workdir) buch.tex $(TEXFILES) images
-	$(touch) build/buch.ind
+	$(touch) $(workdir)/buch.ind
 	$(pdflatex) buch.tex
 
 #
@@ -44,18 +44,20 @@ separate:	build/buch.aux buch.pdf
 #
 # Version mit Buchdeckeln für Release/Website
 #
-SeminarHarmonischeAnalysis.pdf:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
-	SeminarHarmonischeAnalysis.ind $(SBLXFILES)
-	$(pdflatex) SeminarHarmonischeAnalysis.tex
-	cd build; $(bibtex) SeminarHarmonischeAnalysis
+buch = SeminarHarmonischeAnalysis
+$(buch).pdf:	$(workdir)/$(buch).pdf
+	cp $(workdir)/$(buch).pdf $(buch).pdf
 
-SeminarHarmonischeAnalysis.idx:	SeminarHarmonischeAnalysis.tex $(TEXFILES) \
-	images
-	$(touch) build/SeminarHarmonischeAnalysis.ind
-	$(pdflatex) SeminarHarmonischeAnalysis.tex
+$(workdir)/SeminarHarmonischeAnalysis.pdf:	$(buch).tex $(TEXFILES) $(workdir)/$(buch).ind $(SBLXFILES)
+	$(pdflatex) $(buch).tex
+	cd $(workdir); $(bibtex) $(buch)
 
-SeminarHarmonischeAnalysis.ind:	SeminarHarmonischeAnalysis.idx
-	cd build; $(makeindex) SeminarHarmonischeAnalysis
+$(workdir)/$(buch).idx:	$(workdir) $(buch).tex $(TEXFILES) images
+	$(touch) $(workdir)/$(buch).ind
+	$(pdflatex) $(buch).tex
+
+$(workdir)/$(buch).ind:	$(workdir)/$(buch).idx
+	cd $(workdir); $(makeindex) $(buch).idx
 
 #
 # This Makefile can also construct the short tests
