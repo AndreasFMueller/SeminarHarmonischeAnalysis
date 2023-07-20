@@ -6,9 +6,31 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Problemstellung\label{sonogramm:section:teil0}}
+\section{Short Time Fourier Trasform STFT\label{sonogramm:section:teil0}}
 \rhead{Teil 0}
-Als 
-Beispiel Audio
-Bild mit Signal
-Bild Fourier analye
+Mit der Short-Time Fourier Transform kann man einen Teil der fehlenden zeitlichen Informartionen zurükhohlen.
+Die Idee ist die Fouriertransfromation nicht auf das ganze Signal anzuwenden, sondern dieses zuerst in kleinere
+Abschnitte zu unterteilen, und diese dann zu transformieren.
+
+Um das Signal zu unterteilen werden sogenannte Fensterfunktionen $w(t)$ verwendet, mit welchen das Signal
+$s(t)$ multipliziert wird.
+Die simpelste Fensterfunktion ist das Rechteckfenster
+\begin{equation}
+    w_r(t) = 
+        \begin{cases}
+        1,& \text{wenn } 0 \le t < M\\
+        0, & \text{sonst, }
+        \end{cases}
+\end{equation}
+welches in diesem Kapitel verwendet wird.
+Andere Fensterfunktionen und deren Effekte werden im Kapitel \dots vorgestellt.
+Verwenden wir das Rechteckfenster für das Signal $s(t)$ resultiert 
+\begin{equation}
+    s(t) w_r(t) = 
+    \begin{cases}
+    s(t),& \text{wenn } 0 \le t < M\\
+    0, & \text{sonst.}
+    \end{cases}
+\end{equation}
+Verschieben wir $w_r(t)$ in der Zeit können wir ein Beliebiges Zeitfenster von $s(t)$
+extrahieren
