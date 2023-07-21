@@ -32,5 +32,29 @@ Verwenden wir das Rechteckfenster für das Signal $s(t)$ resultiert
     0, & \text{sonst.}
     \end{cases}
 \end{equation}
-Verschieben wir $w_r(t)$ in der Zeit können wir ein Beliebiges Zeitfenster von $s(t)$
-extrahieren
+Verschieben wir $w_r(t)$ in der Zeit können wir mit 
+\begin{equation}
+    s(t) w_r(t-\tau) = 
+    \begin{cases}
+        s(t),& \text{wenn } \tau \le t < \tau + M\\
+        0, & \text{sonst.}
+    \end{cases}
+\end{equation}
+ein beliebiges Zeitfenster von $s(t)$ extrahieren.
+
+TODO Grafik
+
+So lässt ich nun die Fouriertransformation von einem M langen Abschnit
+von $s$ zum Zeitpunkt $\tau$ mit
+\begin{equation}
+    \mathscr{F}(s)(\omega, \tau) = \int_{-\infty}^{\infty} s(t) w_r(t) e^{-j \omega t}
+\end{equation}
+beschreiben.
+
+\subsection{Sonogramm}
+
+Das Sonogramm ist eine Art wie man die STFTs eines Signales darstellen kann.
+Dabei werden die Magnituden der einzelnen STFTs chronologisch
+als Spalten eines Bildes TODO Wort finden.
+
+TODO Abbildung
