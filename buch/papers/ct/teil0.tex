@@ -1,25 +1,97 @@
 %
-% einleitung.tex -- Beispiel-File für die Einleitung
+% teil1.tex -- Beispiel-File für das Paper
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{ct:section:teil0}}
-\rhead{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{ct:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\section{Einführung in das Verhalten eines Strahls
+	\label{ct:section:EinführungEinesStrahls}}
+\rhead{Einführung in das Verhalten eines Strahls}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Im vorliegenden Abschnitt wird das Verhalten eines Strahls erklärt. Um die Analyse zu vereinfachen, werden bestimmte Annahmen getroffen, damit eine idealisierte Sichtweise der Röntgenstrahlen und ihres Verhaltens darzustellen. Diese Annahmen werden im folgenden Abschnitt beschrieben.
+
+\subsection{Annahmen eines Röntgenstrahls
+	\label{ct:subsection:annahmen}}
+In erster Linie betrachten wir einen Röntgenstrahl als eine Zusammensetzung von Photonen und nehmen an, dass er monochromatische Eigenschaften aufweist. Diese monochromatische Eigenschaft bedeutet, dass alle Photonen dieselbe Energie $E$ besitzen und mit einer konstanten Frequenz propagieren. $N(x)$ steht für die Anzahl der Photonen pro Sekunde, die einen bestimmten Punkt $x$ durchqueren. Somit kann die Intensität des Strahls an einem Punkt $x$ mit
+\begin{equation}
+	I(x) = E\cdot N(x)
+\end{equation}
+beschrieben werden. Darüber hinaus gehen wir davon aus, dass Röntgenstrahlen eine vernachlässigbare Breite haben und von Brechung oder Beugung unbeeinflusst bleiben. Das bedeutet, dass die Röntgenstrahlen bei der Ausbreitung durch ein Medium weder gebogen noch gestreut werden.
+
+Jede Substanz hat die Eigenschaft, beim Durchgang von Röntgenstrahlen pro Millimeter einen bestimmten Anteil an Photonen zu absorbieren. Dieser einzigartige substanzabhängige Anteil wird als Dämpfungskoeffizient bezeichnet. Die Einheit des Dämpfungskoeffizienten kann auf eine Art beschrieben werden, als "wie viele Photonen werden pro Millimeter des Mediums absorbiert". Dieser Dämpfungskoeffizient ist im Allgemeinen ein positiver Wert und ist vom Material abhängig.  
+\begin{table}
+	\centering
+	\begin{tabular}{|>{}c<{}|>{}c<{}| >{}c<{}| >{}c<{}|}
+		\hline
+		Medium &  Hounsfield Einheit & Medium &  Hounsfield Einheit\\
+		\hline
+		Knochen & 1000		& Niere & 30\\
+		Leber 	& 40 bis 60	& Gehirn-Rückenmarks-Flüssigkeit & 15\\
+		Blut 	& 40		& Wasser & 0\\
+		Muskel 	& 10 bis 40 & Luft & -1000\\
+		\hline
+	\end{tabular}
+	\caption{Ungefähre Hounsfield Einheiten für verschiedene organische Substanzen.
+		\label{ct:hounsfieldunits}}
+\end{table}
+
+In der Praxis verwenden Radiologen eine modifizierte Version des Dämpfungskoeffizienten, die sogenannte Hounsfield-Einheit. Dieser von Godfrey Hounsfield eingeführte Zahlenwert ermöglicht einen direkten Vergleich zwischen dem Abschwächungskoeffizienten eines Mediums und dem von Wasser. Die Hounsfield-Einheit eines Mediums ist
+\begin{equation}
+	H_{Medium} := \dfrac{A_{Medium}-A_{Wasser}}{A_{Wasser}},
+\end{equation}
+wobei $A$ der wahre Dämpfungskoeffizient ist. In der Tabelle \ref{ct:hounsfieldunits} werden verschiedene Hounsfield Einheiten für organische Substanzen aufgelistet.
+
+Ein Röntgenstrahl durchquert ein Medium zwischen zwei Punkten $x$ und $x + \Delta x$. $A(x)$ sei der Dämpfungskoeffizient dieses Mediums an diesem Ort. In diesem Fall ist der Anteil der Photonen, die innerhalb des Intervalls $[x, x + \Delta x]$ absorbiert werden, durch $p(x) = A(x)\Delta x$ gegeben. Die Anzahl der vom Medium in diesem Intervall absorbierten Photonen pro Sekunde lässt sich folglich ausdrücken als $p(x) \cdot N(x) = A(x) \cdot N(x) \cdot \Delta x$. Werden beide Seiten mit der Energie $E$ jedes Photons multipliziert, so kann festgestellt werden, dass dies dem Intensitätsverlust des Röntgenstrahls in dem genannten Intervall entspricht. Dieser Intensitätsverlust kann mit 
+\begin{equation}
+	\Delta I \approx -A(x) \cdot I(x) \cdot \Delta x
+\end{equation}
+ausgedrückt werden.
+
+Beers Gesetz ist die daraus folgende Differentialgleichung, die resultiert, wenn $\Delta x \rightarrow 0$, wobei 
+\begin{equation}
+	\dfrac{dI}{dx} = -A(x)\cdot I(x).
+\end{equation}
+Das Beer'sche Gesetz beschreibt die Änderung der Intensität pro Millimeter eines nicht brechenden, monochromatischen, null-breiten Röntgenstrahls, der ein Medium durchquert, welche direkt proportional sowohl zur Intensität des Strahls als auch zum Dämpfungskoeffizienten des Mediums ist.
+
+Diese Differentialgleichung ist separierbar und kann auch geschrieben werden als
+\begin{equation}
+	\dfrac{dI}{I} = -A(x)dx.
+\end{equation}
+
+Wenn der Strahl am Ort $x_0$ mit einer anfänglichen Intensität von $I_0 = I(x_0)$ beginnt und nach dem Durchgang durch das Medium am Ort $x_1$ mit einer endgültigen Intensität von $I_1 = I(x_1)$ detektiert wird, ergibt sich 
+\begin{equation}
+	\int_{x_0}^{x_1} \dfrac{dI}{I} = -\int_{x_0}^{x_1} A(x)dx,
+\end{equation}
+und daraus folgt, dass
+\begin{equation}
+	\ln (I(x_1)) - \ln (I(x_0)) = -\int_{x_0}^{x_1} A(x)dx.
+\end{equation}
+Aus der Subtraktionsregel für Logarithmen folgt, dass
+\begin{equation}
+	\ln (\dfrac{I(x_1)}{I(x_0)}) = -\int_{x_0}^{x_1} A(x)dx
+\end{equation}
+und durch die Multiplikation von $-1$ folgt,
+\begin{equation}
+	\int_{x_0}^{x_1} A(x)dx = \ln (\dfrac{I(x_0)}{I(x_1)}).
+\end{equation}
+
+Im Vergleich zu anderen Differentialgleichungen bei denen die Koeffizientenfunktion bekannt ist und durch deren Integration die Funktion $I$ gefunden wird, sind bei dieser Differentialgleichung die Anfangs- und Endwerten von $I$ bekannt. Hingegen ist die Koeffizientenfunktion $A$, die eine entscheidende Eigenschaft des abgetasteten Mediums darstellt, unbekannt. Folglich ist die Fähigkeit, die genauen Werte von $A$ abzuleiten, begrenzt. Stattdessen kann aus der gemessenen Röntgenintensität das Integral von $A$ entlang des Weges der Röntgenstrahlung bestimmt werden.
+
+Daraus lässt sich die fundamentale Frage stellen, ob die Möglichkeit besteht, die Koeffizientenfunktion $A$ aus Durchschnittswerten von $A$ entlang Linien, welche durch eine Region passieren, zu rekonstruieren?
+
+\subsection{Linien in der Ebene
+	\label{ct:subsection:linien}}
+Zur Vereinfachung der Analyse wird die Anzahl Linien begrenzt. Deshalb wird hier nur ein Querschnitt einer Probe, die in der $xy$-Ebene liegt, betrachtet. Bei der Durchquerung der Ebene folgen die Röntgenstrahlen jeweils einem Linienstück in der Ebene. Zum Beispiel kann jede nicht vertikale Linie durch die Gleichung $y = mx + b$ dargestellt werden. So können diese Linien katalogisiert werden, indem alle möglichen Paare von $(m, b)$ berücksichtigt werden. Linien die vertikal verlaufen, können hingegen mit dieser Methode nicht katalogisiert werden, da ihre Steigung unendlich gross ist. Anstatt diese Katalogisierung in $(m, b)$ zu verwenden, wird eine \emph{punktnormale} Herangehensweise verwendet, die jede Linie durch einen Punkt in der Ebene und durch einen Vektor, der senkrecht zur Linie steht, definiert.
+
+Ein Vektor $\vec{n}$, der senkrecht zu einer gegebenen Linie $\ell$ steht, wird betrachtet. Zu dieser Linie existiert ein Winkel zwischen $0 \le \theta \le 2\pi$, so dass $\vec{n}$ parallel zu dieser Linie ausgerichtet ist. Dieser Winkel $\theta$ wird vom Ursprung ausgehend gegen den Uhrzeigersinn von der positiven $x$-Achse gemessen. Diese Linie steht unter dem Winkel $\theta$ auch senkrecht auf ihr und schneidet sie folglich in einem Punkt mit Koordinaten in der $xy$-Ebene, die durch $t\cos(\theta), t\sin(\theta)$ für eine reelle Zahl $t$ dargestellt werden. Auf diese Weise kann die Linie vollständig durch die Werte von $t$ und $\theta$ beschrieben werden und wird entsprechend mit $\ell_{t,\theta}$ bezeichnet.
+
+Es sind zwei Beziehungen erkennbar, nämlich
+\begin{equation}
+	\ell_{t,\theta+2\pi} = \ell_{t,\theta} \text{ und } \ell_{t,\theta+\pi} = \ell_{-t,\theta} \text{ für alle } t, \theta.
+\end{equation}
+
+Somit gibt es viele verschiedene Repräsentationen von der Form $\ell_{t,\theta}$ für die gleiche Linie. Um diese Mehrdeutigkeit zu vermeiden, wird entweder die Menge ${\ell_{t,\theta} : t \text{ reell},  0 \le \theta \le \pi}$ oder ${\ell_{t,\theta} : t \ge 0,  0 \le \theta \le 2\pi}$ verwendet.
 
 
