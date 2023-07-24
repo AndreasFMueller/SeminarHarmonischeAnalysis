@@ -6,4 +6,144 @@
 \section{Endliche Gruppen
 \label{buch:diskret:section:endlich}}
 \kopfrechts{Endliche Gruppen}
+Diskrete Fourier-Analysis handelt von der Fourier-Theorie auf
+endlichen abelschen Gruppen.
+Dieser Abschnitt treibt die Theorie der endlich erzeugten Gruppen
+weit genug, damit wir alle endlichen abelschen Gruppen beschreiben
+können.
+
+%
+% Endlich erzeugt Gruppen
+%
+\subsection{Endlich erzeugte Gruppen
+\label{buch:diskret:endlich:subsetion:endlicherzeugt}}
+Endliche Gruppen enthalten nur endlich viele Elemente, die Gruppenoperationen
+können daher leicht durch eine Multiplikations oder Invertierungstabelle
+vollständig beschrieben werden.
+In diesem Abschnitt soll gezeigt werden, dass sogar noch viel weniger
+nötig ist, weil solche Gruppen aus einer kleineren Menge von Elementen
+Erzeugt werden können.
+
+\begin{definition}
+Sei $F\subset G$ eine Teilmenge einer Gruppe $G$.
+Dann heisst die kleinste Untergruppe $\langle F\rangle$ von $G$,
+der $F$ enthält, die von $F$ erzeugte Gruppe.
+\end{definition}
+
+\begin{beispiel}
+Sei $\mathbb{R}$ die additive Gruppe der reellen Zahlen und
+\[
+F
+=
+\biggl\{\frac{1}{p^k}
+\;
+\bigg|
+\;
+\text{$p$ ist Primzahl, $k\in\mathbb{N}$}\biggr\}
+\]
+eine Teilmenge.
+Die erzeugte Untergruppe enthält sicher alle Brüche der Form
+\[
+\frac{a}{p^k},\quad a\in\mathbb{Z},k\in\mathbb{N},\text{$p$ prim}.
+\]
+Da aber auch Summen von Brüchen der Form
+\[
+\frac{a}{p^k} + \frac{b}{q^l}
+=
+\frac{aq^l+bp^k}{p^kq^l}
+\]
+enthalten, die erzeugte Gruppe muss daher auch alle Brüche mit
+Nennern erhalten, die Produkte von beliebigen Primzahlpotenzen sind.
+Da jeder Nenner als Primzahlprodukt geschrieben werden kann, folgt,
+dass die von $F$ erzeugte Gruppe alle rationalen Zahlen enthalten
+muss.
+Da aber in $F$ nur rationale Zahlen vorhanden sind, folgt
+$\langle F\rangle = \mathbb{Q}$.
+\end{beispiel}
+
+\begin{satz}
+Die erzeugte Gruppe der Teilmenge $F$ der Gruppe $G$ ist
+\[
+\langle F\rangle
+=
+\bigcap_{F\subset H\subset G \atop\text{$H$ Gruppe}} L
+\]
+\end{satz}
+
+\begin{definition}
+Eine Gruppe $G$ heisst {\em endlich erzeugt}, wenn es eine endliche Menge
+$F\subset G$ gibt derart, dass $G=\langle F\rangle$.
+\end{definition}
+
+%
+% Zyklische Gruppen
+%
+\subsection{Zyklische Gruppen
+\label{buch:diskret:endlich:subsection:zyklisch}}
+
+%
+% Produkte
+%
+\subsection{Produkte
+\label{buch:diskret:endlich:subsection:produkte}}
+
+\begin{satz}
+Die Gruppen $\mathbb{Z}/p^k\mathbb{Z}$ und $\mathbb{Z}/p^l\mathbb{Z}$
+sind nicht isomorph, wenn $k\ne l$.
+\end{satz}
+
+%
+% Struktursatz
+%
+\subsection{Der Struktursatz
+\label{buch:diskret:endlich:subsection:}}
+
+
+
+\begin{satz}
+\label{buch:diskret:endlich:struktursatz}
+Ist $G$ eine endliche erzeugte abelsche Gruppe, dann gibt es eine
+Zahl $d\in\mathbb{N}$ und eindeutig bestimmte Primzahlpotenzen $d_i$
+derart, dass
+\[
+G
+\cong
+\mathbb{Z}^d
+\oplus
+\bigoplus_{i=1}^n
+\mathbb{Z}/d_i\mathbb{Z}.
+\]
+Die Ordnung der Gruppe $G$ ist $|G|=\prod_{i=1}^n d_i$.
+\end{satz}
+
+%
+% Die duale Gruppe
+%
+\subsection{Die duale Gruppe
+\label{buch:diskret:endlich:subsection:dual}}
+Für die Fourier-Theorie für Funktionen mit einer endlich erzeugten
+Gruppe $G$ muss die duale Gruppe ermittelt werden.
+Aus dem Struktursatz~\ref{buch:diskret:endlich:struktursatz}
+für endlich erzeugte Gruppen folgt, dass ein Homomorphismus
+$G\to\mathbb{C}$ durch die Werte auf den erzeugenden Elementen
+jedes einzelnen Summanden eindeutig bestimmt ist.
+Daher gilt der folgende Satz:
+
+\begin{satz}
+Ist $G$ eine endlich erzeugte Gruppe, dann ist
+$\hat{G}\cong G$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei
+\[
+G
+=
+\bigoplus_{i=1}^k \mathbb{Z}/d_i\mathbb{Z}
+\]
+die Zerlegung von $G$ gemäss dem Struktursatz
+\ref{buch:diskret:endlich:struktursatz}.
+\end{proof}
+
+
 

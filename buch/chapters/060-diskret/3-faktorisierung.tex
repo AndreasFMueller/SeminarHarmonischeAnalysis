@@ -1,0 +1,34 @@
+%
+% 2-vandermonde.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Faktorisierung der Fourier-Transformation
+\label{buch:diskret:section:vandermonde}}
+\kopfrechts{Die Vandermonde-Matrix}
+Für $n=pq$ mit teilerfremden Faktoren ist die Gruppe
+$\mathbb{Z}/n\mathbb{Z}$ isomorph zur Gruppe
+$\mathbb{Z}/p\mathbb{Z}\times \mathbb{Z}/q\mathbb{Z}$.
+Die Fourier-Transformation operiert auf Funktionen auf
+dem Definitionsbereich $\mathbb{Z}/n\mathbb{Z}$,
+Diese Funktionen können nach den Erkenntnissen von
+Abschnitt~\ref{buch:diskret:section:tensor} als Tensorprodukte
+von Funktionen auf den Faktoren $\mathbb{Z}/p\mathbb{Z}$
+und $\mathbb{Z}/q\mathbb{Z}$ geschrieben werden.
+Es besteht auch die Hoffnung, dass das die Matrix $\mathscr{F}_n$
+als Tensorprodukt von einfacheren Matrizen, die auch aus Teilen von 
+$\mathscr{F}_p$ und $\mathscr{F}_q$ zusammgebaut sein können,
+konstruiert werden können.
+Ziel dieses Abschnittes ist, eine Faktorisierung von $\mathscr{F}_n$
+herzuleiten, mit der sich dann in
+Abschnitt~\ref{buch:diskret:section:schnell}
+besonders schnelle Algorithmen zur Berechnung der Fourier-Transformation
+herstellen lassen.
+
+\input{chapters/060-diskret/31-interpolation.tex}
+\input{chapters/060-diskret/32-vandermonde.tex}
+\input{chapters/060-diskret/33-faktorisierung.tex}
+\input{chapters/060-diskret/34-Apq.tex}
+\input{chapters/060-diskret/35-Fpq.tex}
+\input{chapters/060-diskret/36-faktorisierung.tex}
+
