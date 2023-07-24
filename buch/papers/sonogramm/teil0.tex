@@ -13,7 +13,7 @@ Die Idee ist die Fouriertransfromation nicht auf das ganze Signal anzuwenden, so
 Abschnitte zu unterteilen, und diese dann zu transformieren.
 
 Um das Signal zu unterteilen werden sogenannte Fensterfunktionen $w(t)$ verwendet, mit welchen das Signal
-$s(t)$ multipliziert wird.
+$x(t)$ multipliziert wird.
 Die simpelste Fensterfunktion ist das Rechteckfenster
 \begin{equation}
     w_r(t) = 
@@ -24,37 +24,62 @@ Die simpelste Fensterfunktion ist das Rechteckfenster
 \end{equation}
 welches in diesem Kapitel verwendet wird.
 Andere Fensterfunktionen und deren Effekte werden im Kapitel \dots vorgestellt.
-Verwenden wir das Rechteckfenster für das Signal $s(t)$ resultiert 
+Verwenden wir das Rechteckfenster für das Signal $x(t)$ resultiert 
 \begin{equation}
-    s(t) w_r(t) = 
+    x(t) w_r(t) = 
     \begin{cases}
-    s(t),& \text{wenn } 0 \le t < M\\
+    x(t),& \text{wenn } 0 \le t < M\\
     0, & \text{sonst.}
     \end{cases}
 \end{equation}
 Verschieben wir $w_r(t)$ in der Zeit können wir mit 
 \begin{equation}
-    s(t) w_r(t-\tau) = 
+    x(t) w_r(t-\tau) = 
     \begin{cases}
-        s(t),& \text{wenn } \tau \le t < \tau + M\\
+        x(t),& \text{wenn } \tau \le t < \tau + M\\
         0, & \text{sonst.}
     \end{cases}
 \end{equation}
-ein beliebiges Zeitfenster von $s(t)$ extrahieren.
+ein beliebiges Zeitfenster von $x(t)$ extrahieren.
 
 TODO Grafik
 
 So lässt ich nun die Fouriertransformation von einem M langen Abschnit
-von $s$ zum Zeitpunkt $\tau$ mit
+von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
-    \mathscr{F}(s)(\omega, \tau) = \int_{-\infty}^{\infty} s(t) w_r(t) e^{-j \omega t}
+    \mathscr{F}(x)(\omega, \tau) = \int_{-\infty}^{\infty} x(t) w_r(t - \tau) e^{-i \omega t} dt
 \end{equation}
 beschreiben.
 
-\subsection{Sonogramm}
+Für die diskrete STFT ändert sich nicht viel.
+TODO Satz
+\begin{equation}
+    X(\omega, m) = \sum_{n = 0}^{L - 1} x[n] w_r[n-m] e^{ -i \omega n}
+\end{equation}
+\subsection{Spektrogramm}
 
-Das Sonogramm ist eine Art wie man die STFTs eines Signales darstellen kann.
+Das Spektrogramm, oder bei Akkustischen Signalen auch Sonogramm genannt, ist eine visuelle
+dartellung der STFTs eines Signals. 
 Dabei werden die Magnituden der einzelnen STFTs chronologisch
-als Spalten eines Bildes TODO Wort finden.
+als Spalten eines Bildes dargestellt.
+Dabei gehen Phaseninformationen verloren, was eine genaue rekonstruktion
+des Signales aus dem Spektrogramm verunmöglicht.
 
+Ein schönes Bespiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
+Signals.
+Bei der Frequenzmodulierung ist die momentane Frequenz des Trägersignales 
+\begin{equation}
+    x_{FM}(t) = A \cos\left( \omega_c t + k_f \int_{-\infty}^{t} m(\tau) d\tau\right)
+\end{equation}
+abhängig von der Amplitude des Nachrichtensignales $m(t)$.
+TODO Cite Kneubühler
+Diese änderung der momentanen Frequenz lässt sich mit einem Spektrogramm gut Abbilden, 
+wie in Abbildung \ref{sonogramm:fmsono} dargestell ist.
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/fm_sono_windows.pdf}
+    \caption{Spektrogramm eines Frequenzmodulierten Sinus cardinalis.
+    \label{sonogramm:fmsono}
+    }
+\end{figure}
 TODO Abbildung
