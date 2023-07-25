@@ -6,12 +6,15 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Wissenschaftliche Arbeit 
+\section{Analyse der Daten 
 \label{milankovic:section:WissenschaftlicheArbeit}}
 
-\subsection{Ausgangslage
-\label{milankovic:subsection:Ausgangslage}}
-Im Zuge der Arbeit werden die Milankovic-Zyklen rekonstruiert.
+\subsection{Motivation
+	\label{milankovic:subsection:Motivation}}
+In den bisherigen Kapiteln ist die Bedeutung der Milankovic-Zyklen deutlich geworden. Als Bestandteil der weiteren Arbeit werden die Milankovic-Zyklen auf selbstständiger Basis rekonstruiert und mit den Werten aus der Literatur verlichen. So werden die Daten unabhängig überprüft und allfällige Diskrepanzen aufgezeigt. Ausserdem steigt das Verständnis für die Zusammenhänge der einzelnen Parameter mit den Auswirkungen auf das ganze System. 
+
+\subsection{Vorgehen
+\label{milankovic:subsection:Vorgehen}}
 Mit einfachen Mitteln erfolgt die Untersuchung der online abrufbaren Daten.
 Der Bezug erfolgt vom IMCCE, dem Institut für Himmelsmechanik und Ephemeriedenberechnung in Paris.
 Unter den Datensätzen, die bis 250 Millionen Jahre zurückreichen, galt es sich auf einen Zeitraum von rund 5 Millionen Jahre zu beschränken, da so die Übersichtlichkeit und auch die Darstellbarkeit der Ergebnisse, bei ausreichender Genauigkeit, gewährleistet werden kann.
@@ -21,15 +24,18 @@ Es sind marginale Unterschiede feststellbar, wenn die folgenden Untersuchungen f
 \subsection{Untersuchung
 \label{milankovic:subsection:Untersuchung}}
 Aus den Daten sind die absoluten Werte der einzelnen Zyklen ablesbar.
-In der Darstellung mit Excel wird ein harmonischer Verlauf sichtbar.
+In der Darstellung mit Microsoft-Excel wird ein harmonischer Verlauf sichtbar.
 Mit der Untersuchung der Fast Fourier Transformation (FFT) werden die Häufigkeiten der massgebenden Frequenzen ermittelt.
+Um die FFT-Untersuchung durchführen zu können ist das Add-In Analyse-Funktionen zu installieren.
+Damit die Darstellung gelingt, kann in Excel direkt von der Darstellung in der komplexen Schreibweise auf die normale gewechselt werden.
 Nach der Umrechnung der Abszissenachse in besser lesbare Dimensionen, treten je nach untersuchtem Zyklus verschieden scharfe Peaks auf, die mit den Angaben der Milankovic-Zyklen übereinstimmen.
 So kann davon ausgegangen werden, dass sich die Zyklen tatsächlich in diesen Grössenordnungen bewegen.
 Einige Ausschläge sind etwas schärfer als andere.
-Diese Unschärfe wird auch bei der Bestimmung der Periodizitäten ersichtlich, denn einige Angaben schwanken im Bereich um wenige Jahrtausende. 
+Diese Unschärfe wird auch bei der Bestimmung der Periodizitäten ersichtlich, denn einige Angaben schwanken im Bereich um wenige Jahrtausende.
+Bei der Untersuchung verschiedener Perioden kann festgestellt werden, dass gewisse Ausschläge geringen Schwankungen unterliegen.
 
 Bei der Betrachtung der Analyse der Exzentrizität
-\ref{pictureUntersuchungExzentrizität}
+(Abbildung \ref{pictureUntersuchungExzentrizität})
 ist ersichtlich, dass im Bereich von 100ka (Jahrtausend) ein etwas breiterer Peak erkennbar ist, der sich aus einigen kleineren Ausschlägen und einem etwas Deutlicheren zusammensetzt, und bei 400ka der Ausschlag äusserst scharf und prägnant ist.
 
 \begin{figure}
@@ -40,7 +46,7 @@ ist ersichtlich, dass im Bereich von 100ka (Jahrtausend) ein etwas breiterer Pea
 \end{figure}
 
 Die Frequenzen der Erdachsneigung sind deutlich durch einen Peak um 41ka beeinflusst.
-	\ref{pictureUntersuchungObliquität}
+	(Abbildung \ref{pictureUntersuchungObliquität})
 Kleinere Ausschläge sind im Bereich von rund 60ka und 30ka erkennbar, die eine untergeordnete Rolle spielen und nicht an die Intensität des Hauptausschlages herankommen.
 
 \begin{figure}
@@ -68,17 +74,17 @@ Besonders bei der Präzession sind verschiedene Angaben bezüglich der Periodizi
 \subsection{Einwirkungen auf das Klima
 \label{milankovic:subsection:EinwirkungenKlima}}
 Unter Berücksichtigung aller Milankovic-Zyklen lässt sich die Veränderung der Sonneneinstrahlungsintensität auf die Erdoberfläche berechnen.
-\ref{pictureUntersuchungSonneneinstrahlungsintensität}
-Dadurch wird der Wärmeeintrag auf die Erde und somit auch auf die Atmosphäre beschrieben. Standardmässig wird dies für den 65 nördlichen Breitengrad gemacht.
+(Abbildung \ref{pictureUntersuchungSonneneinstrahlungsintensität})
+Dadurch wird der Wärmeeintrag auf die Erde und somit auch auf die Atmosphäre beschrieben. Standardmässig wird dies für den 65igsten nördlichen Breitengrad gemacht.
 Dies entspricht ungefähr dem Rand der grösstmöglichen Eisschilde in Eiszeiten.
 Bei der Untersuchung des Intensitätverlaufes mit FFT sind die beiden Frequenzen von Obliquität und Präzession deutlich erkennbar, was auf eine Abhängigkeit schliessen lässt.
-Um die berechneten Werte zu überprüfen, ist ein Abgleich mit der Tatsächlichkeit anzustreben.
+Um die berechneten Werte zu überprüfen, ist ein Abgleich mit der Realität anzustreben.
 
 Mit der Untersuchung von Bohrkernen, die an den Polen entnommen wurden, kann der geschichtliche Temperaturverlauf rekonstruiert werden.
-Dort wird der Niederschlag für unbestimmte Zeit in den Gletschern konserviert. Über das Verhältnis von stabilen Sauerstoffatomen, der sogenannten Delta O18-Methode, ist dabei die Temperaturveränderung zwischen zeitlichen Perioden bestimmbar.
+Dort wird der Niederschlag für unbestimmte Zeit in den Gletschern konserviert. Über das Verhältnis von stabilen Sauerstoffatomen, der sogenannten Sauerstoffisotopenmethode (Delta O18-Methode), ist dabei die Temperaturveränderung zwischen zeitlichen Perioden bestimmbar.
 Wird dieser Verlauf auch mit FFT untersucht, treten Ausschläge auf, die mit den Frequenzen der Milankovic-Zyklen korrespondieren.
-\ref{pictureUntersuchungKonzentration}
-Durch das Betrachten dieser Daten ist ein Kausalzusammenhang offensichtlich.
+(Abbildung \ref{pictureUntersuchungKonzentration})
+Die Daten zeigen einen zeitlich klaren Kausalzusammenhang.
 
 \begin{figure}
 	\centering
