@@ -6,38 +6,77 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 3
-\label{ct:section:teil3}}
-\rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Rekonstruktion eines CT-Scans
+\label{ct:section:rekonstruktion}}
+\rhead{Rekonstruktion eines CT-Scans}
+Im letzten Abschnitt über die Rekonstruktion von CT-Bildern wird untersucht, wie Röntgendaten in klare und aussagekräftige Bilder umwandelt werden. Dabei werden die zwei wichtigen Theoreme das Zentralschnitt-Theorem und die gefilterte Rückprojektion nochmals angewendet. In diesem Abschnitt wird ein praktisches Beispiel für die Rekonstruktion von CT-Bildern verwendet, um diese Theoreme in der Praxis zu veranschaulichen. 
 
-\subsection{De finibus bonorum et malorum
+\subsection{Das Beispiel
 \label{ct:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Als einfaches Beispielbild werden zwei Kreise in der Ebene verwendet, siehe Abbildung \ref{ct:img_example}. So bleibt auch das radontransformierte Bild übersichtlich.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{papers/ct/images/img_recon.png}
+	\caption{Das Beispielbild
+		\label{ct:img_example}}
+\end{figure}
+
+Die Rückprojektion in der Praxis verwendet nur eine endliche Anzahl von Werten. Dies führt dazu, dass die Rückprojektion nicht mit einem Integral berechnet werden kann, sondern mit einer Summe approximiert werden muss. 
+Die kontinuierliche Variable $\theta$ wird in der diskreten Umgebung der Rückprojektion mit der diskreten Variable $\theta_i$, die sich auf die Winkel ${k\pi/N: 0\le k \le N-1}$ beschränkt, ersetzt. Diese Diskretisierung wird mit 
+\begin{equation}\label{ct:discreteBP}
+		\mathscr{B}_Dh(x, y) = \big(\dfrac{1}{N}\big)\sum_{k=0}^{N-1} h(x\cos(k\pi/N)+Y\sin(k\pi/N), k\pi/N)
+\end{equation}
+beschrieben, wobei $k\pi/N$ mit $\theta_i$ zur Übersichtlichkeit ersetzt werden kann und somit resultiert
+\begin{equation}\label{ct:discreteBP}
+	\mathscr{B}_Dh(x, y) = \big(\dfrac{1}{N}\big)\sum_{k=0}^{N-1} h(x\cos(\theta_i)+y\sin(\theta_i), \theta_i).
+\end{equation}
+
+Das Bild, welches vom Scanner erhalten wird, wird in \ref{ct:img_radon} gezeigt.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{papers/ct/images/radon.png}
+	\caption{Die Radon-Transformation des Beispielbildes.
+		\label{ct:img_radon}}
+\end{figure}
+
+Auf das Bild vom Scanner wird zunächst die Rückprojektion angewendet. Dies führt dazu, dass das Bild eine \glqq geglättete\grqq{} Version des Beispielbildes wird. Dies wird in der Abbildung \ref{ct:img_bp} gezeigt.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{papers/ct/images/bp.png}
+	\caption{Die Rücktransformation des Beispielbildes.
+		\label{ct:img_bp}}
+\end{figure}
+
+Damit ein ungeglättetes Bild resultiert, wird die gefilterte Rückprojektion angewendet. Dabei wird als erstes, Abbildung \ref{ct:img_radon} Fourier-transformiert. Danach wird die Filterung mit $|S|$ durchgeführt und die inverse Fourier-Transformation wird gebildet. Schliesslich wird noch die Rückprojektion durchgeführt, was zur gefilterten Rückprojektion führt. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{papers/ct/images/fbp.png}
+	\caption{Die gefilterte Rücktransformation des Beispielbildes.
+		\label{ct:img_fbp}}
+\end{figure}
+
+Im Bild kann man noch gewisse Artefakte sehen, die sich durch Linien im Bild zeigen. Diese Artefakte kommen daher, dass die Winkelauflösung begrenzt ist. In der Abbildung \ref{ct:img_resol} werden noch zwei Rekonstruktionen gezeigt, die einerseits eine tiefere Winkelauflösung und andererseits eine noch höhere Auflösung darstellen.
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{papers/ct/images/fbp_low.png}
+	\end{minipage}
+	\begin{minipage}{0.45\linewidth}
+		\includegraphics[width=\linewidth]{papers/ct/images/fbp_high.png}
+	\end{minipage}
+	\caption{Die gefilterte Rücktransformation mit 10° (links) und 1° (rechts) Winkelauflösungen.
+	\label{ct:img_resol}}
+\end{figure}
+
+
+
+
+
+
+
+
 
 
