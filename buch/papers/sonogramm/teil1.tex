@@ -11,7 +11,7 @@
 \rhead{Parameter}
 
 \subsection{Fensterlänge}
-Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformatrin DFT erreichen
+Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformatrin DTFT erreichen
 kann, ist 
 \begin{equation}
     \Delta f = \frac{1}{T}
@@ -23,13 +23,19 @@ man verliert jedoch an präzision bei den Frequenzen.
 
 TODO Grafik
 
-
 \subsection{Rechnerische Auflösung}
-TODO ALles
+Bei einer DFT werden so viele Frequenzsamples berechnet wie das
+Zeitsignal hat. 
+TODO alot
 
 \subsection{Fensterfunktion}
-TODO Alles
-
+Der Faltungssatz beschreibt 
+\begin{align}
+    f(t) * g(t)& \xrightarrow{\mathscr{F}} F(\omega)G(\omega),\\
+    f(t) g(t)&\xrightarrow{\mathscr{F}}F(\omega) * G(\omega).
+\end{align}
+Das bedeutet, das die Verwendung von Fensterfunktionen das Frequnezspektrum
+des Signals durch eine Faltung verschmieren.
 \subsection{Überlappung}
 TODO Alles
 

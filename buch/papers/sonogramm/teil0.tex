@@ -18,7 +18,7 @@ Die simpelste Fensterfunktion ist das Rechteckfenster
 \begin{equation}
     w_r(t) = 
         \begin{cases}
-        1,& \text{wenn } 0 \le t < M\\
+        1,& \text{wenn } 0 \le t < T\\
         0, & \text{sonst, }
         \end{cases}
 \end{equation}
@@ -28,7 +28,7 @@ Verwenden wir das Rechteckfenster für das Signal $x(t)$ resultiert
 \begin{equation}
     x(t) w_r(t) = 
     \begin{cases}
-    x(t),& \text{wenn } 0 \le t < M\\
+    x(t),& \text{wenn } 0 \le t < T\\
     0, & \text{sonst.}
     \end{cases}
 \end{equation}
@@ -36,7 +36,7 @@ Verschieben wir $w_r(t)$ in der Zeit können wir mit
 \begin{equation}
     x(t) w_r(t-\tau) = 
     \begin{cases}
-        x(t),& \text{wenn } \tau \le t < \tau + M\\
+        x(t),& \text{wenn } \tau \le t < \tau + T\\
         0, & \text{sonst.}
     \end{cases}
 \end{equation}
@@ -47,14 +47,15 @@ TODO Grafik
 So lässt ich nun die Fouriertransformation von einem M langen Abschnit
 von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
-    \mathscr{F}(x)(\omega, \tau) = \int_{-\infty}^{\infty} x(t) w_r(t - \tau) e^{-i \omega t} dt
+    \mathscr{F}(x)(\omega, \tau) = \int_{\tau}^{\tau+T} x(t) w_r(t - \tau) e^{-i \omega t} dt
 \end{equation}
 beschreiben.
 
-Für die diskrete STFT ändert sich nicht viel.
-TODO Satz
+Für diskrete Signale ändert sich nicht viel.
+Die Fensterfunktion ist nun auch diskret und statt
+der Fouriertransformation wir die diskrete Fouriertransformation DFT
 \begin{equation}
-    X(\omega, m) = \sum_{n = 0}^{L - 1} x[n] w_r[n-m] e^{ -i \omega n}
+    X[k, m] = \sum_{n = 0}^{L - 1} x[n] w_r[n-m] e^{ -i \omega_k n}.
 \end{equation}
 \subsection{Spektrogramm}
 
