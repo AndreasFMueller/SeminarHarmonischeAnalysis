@@ -9,14 +9,6 @@
 \section{Grundlagen\label{opt:section:grundlagen}}
 \rhead{Von der Beugung zu Fourier}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
-    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
-    Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
-    \label{opt:fig:huygens}
-\end{figure}
-
 \subsection{Grundlagen Wellentheorie}
 \label{opt:subsection:huygens}
 Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
@@ -34,10 +26,10 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 
 \begin{figure}
     \centering
-    \includegraphics[width=100mm]{papers/opt/images/derivation.pdf}
-    \caption{Beugung am Spalt: Die ebene Welle kommt von links her an den Spalt. 
-    Von allen $dy$ geht eine Elementarwelle gemäss Kapitel \ref{opt:subsection:huygens} aus, welche sich am Auswertepunkt $P$ aufsummiert.}
-    \label{opt:fig:geometricalShape}
+    \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
+    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
+    Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
+    \label{opt:fig:huygens}
 \end{figure}
 
 \subsection{Herleitung Beugungsintegrale}
@@ -52,7 +44,7 @@ das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fra
     \label{opt:fig:maxwell}
 \end{figure}
 
-Betrachten wir zuerst, wie in Abbildung~\ref{opt:fig:maxwell} gezeigt, eine unendlich dünne linienförmige Lichtquelle, welche sich axial in positive und negative z-Richtung unendlich weit erstreckt.
+Betrachten wir zuerst, wie in Abbildung~\ref{opt:fig:maxwell} gezeigt, eine unendlich, dünne linienförmige Lichtquelle, welche sich axial in positive und negative z-Richtung unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
 Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
@@ -61,7 +53,7 @@ Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \int_{V}\rho\, dV
 \end{equation}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
-Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\varrho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
+Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
 Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r d\varphi dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
 \begin{align}
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi dl
@@ -88,13 +80,21 @@ E(r)
 =
 \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
 =
-C \cdot \frac{1}{r}
+\theta \cdot \frac{1}{r}
 ,
 \label{opt:equation:E}
 \end{equation}
-wobei der konstante Anteil als $C$ zusammengefasst wurde.
+wobei der konstante Anteil als $\theta$ zusammengefasst wurde.
 
-Angenommen eine planare elektromagentische Welle, siehe TODO, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{papers/opt/images/derivation.pdf}
+    \caption{Beugung am Spalt: Die ebene Welle kommt von links her an den Spalt. 
+    Von allen $dy$ geht eine Elementarwelle gemäss Kapitel \ref{opt:subsection:huygens} aus, welche sich am Auswertepunkt $P$ aufsummiert.}
+    \label{opt:fig:geometricalShape}
+\end{figure}
+
+Angenommen eine planare elektromagentische Welle, siehe Abbildung~\ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
 Ganz allgemein lässt sich jede Welle als
 \begin{equation}
 \zeta(x, t)
@@ -104,7 +104,7 @@ Ganz allgemein lässt sich jede Welle als
 \end{equation}
 ausdrücken.
 Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebogen.
-In Abhängigkeit von $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
+In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
@@ -126,16 +126,16 @@ dE
 =
 E(r) \cdot \zeta(r, t) \cdot dy
 =
-\frac{C}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+\frac{\theta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
 \end{equation}
 beschreiben.
 Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
 \begin{equation}
 E(y_p, t)
 =
-\int_{y_b}^{y_b+b}\frac{C\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
+\int_{y_b}^{y_b+b}\frac{\theta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
 =
-C\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\theta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
 \end{equation}
 
@@ -152,7 +152,7 @@ Somit folgt als allgemeinste Form
 \begin{align}
 E(y_p, t)
 =
-C\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\theta\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
 \label{opt:equation:integral_general}
 \end{align}
@@ -212,16 +212,16 @@ Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:d
 \begin{align}
 E(y_p, t)
 &=
-C\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
+\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
 \\
 &=
-C\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
+\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
 \\
 &=
-C\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
-C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
 \end{align}
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
@@ -233,13 +233,13 @@ Mittels $t = 0$ ergibt sich daraus
 \begin{align}
 E(y_p, t = 0)
 &=
-C\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
+\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
 \\
 &=
-\frac{C\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
+\frac{\theta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
-\frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
@@ -262,13 +262,13 @@ Daraus folgt
 \begin{align}
 E(y_p)
 &=
-\frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
 \\
 &=
-\frac{C\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
 \\
 &=
-\frac{C\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+\frac{\theta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
@@ -286,13 +286,44 @@ I(y_p)
 \kappa \cdot |E(y_p)|^2
 \\
 &=
-\kappa \cdot \left(\frac{C\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \left(\frac{\theta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \label{opt:equation:integral_intensity}
 \end{align}
-ergibt.
+ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrotechnik benötigt.
+Dieser kann Mittels des Poynting Vectors
+\begin{equation}
+\vec{S} = \vec{E} \times \vec{H}
+\label{opt:equation:poynting}
+\end{equation}
+hergeleitet werden.
+Dabei beschreibt $\vec{E}$ die elektrische Feldstärke und $\vec{H}$ die magnetische Feldstärke.
+Angenommen eine elektromagentische Welle breitet sich nun in z-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
+Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der x-Richtung, muss die magentische Feldstärke $\vec{H}$ entlang der y-Richtung verlaufen.
+Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung~\ref{opt:equation:wave}, als
+\begin{align}
+\vec{E}(z,t)
+&=
+E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}
+\\
+\vec{H}(z,t)
+&=
+H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}
+\end{align}
+geschrieben werden.
+Eingesetzt in Gleichung~\ref{opt:equation:poynting} kann der Ausdruck als
+\begin{align}
+\vec{S}
+&=
+\left(E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}\right) \times \left(H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}\right)
+\\
+&=
+E_0 H_0 \cdot e^{2j(\omega t-k z)} \cdot \vec{z}
+\end{align}
+vereinfacht werden.
+\opttodo{Weiterschreiben}
 
 \subsection{Beispiel einzelner Spalt}
 Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breit $b$ durchexerziert.
@@ -320,24 +351,24 @@ vereinfacht sich Gleichung~\ref{opt:equation:integral_intensity} demnach zu
 \begin{align}
 I(y_p)
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
 \\
 &=
-\kappa \cdot \frac{C^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
+\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
 \end{align}
