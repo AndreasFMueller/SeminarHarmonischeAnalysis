@@ -6,29 +6,17 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:ct}}
-\kopflinks{Thema}
+\chapter{Rekonstruktion eines CT-Bildes \label{chapter:ct}}
+\kopflinks{Rekonstruktion eines CT-Bildes}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Nathan Hoffman}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Im folgendem Kapitel wird die Rekonstruktion eines Computertomographie-Bildes, als CT-Bild abgekürzt, erklärt. 
+Bei der Erstellung eines CT-Bildes wird eine Vielzahl von Röntgenstrahlen verarbeitet, die in der Regel 160 oder mehr Strahlen in jede der 180 Richtungen umfassen. 
+Um die Feinheiten dieses umfangreichen Röntgensystems zu verstehen, ist es wichtig zunächst die Eigenschaften eines einzelnen Strahls zu kennen. Dies wird im ersten Unterkapitel erklärt. 
+Anschliessend folgt eine Erklärung zu der Rückprojektion von CT-Strahlen, welche aus den einzelnen Strahlen ein gesamtes Bild rekonstruieren. 
+Nach der Rückprojektion werden zwei grosse Theoreme eingeführt, die zeigen, wie die gesamte Rekonstruktion durchgeführt werden kann.
+Abgerundet wird das Kapitel über die Rekonstruktion eines CT-Bildes mit einem Beispiel.
 
 \input{papers/ct/teil0.tex}
 \input{papers/ct/teil1.tex}
