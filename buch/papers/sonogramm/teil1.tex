@@ -6,12 +6,19 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Parameter
+\section{Unschärferelation
 \label{sonogramm:section:teil1}}
-\rhead{Parameter}
-
+\rhead{Unschärferelation}
+Wie bereits in der Einleitung des Kapitels angedeutet sind die zusätzlichen
+Zeitlichen Informationen nicht gratis. 
+Mit dem aufteilen des Ursprünglichen Signals in kurze Fenster bekommen wir eine
+verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
+Zusätzlich werden durch das abrupte abschneiden des Signals mit dem Rechtecksfenster
+zusätzliche Frequenzen hinzugefügt. 
+%Dieser Effekt ist auch als "Frequency Leakage" bekannt.
+In diesem Abschnitt werden wir diese Effekte genauer untersuchen.
 \subsection{Fensterlänge}
-Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformatrin DTFT erreichen
+Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformation DTFT erreichen
 kann, ist 
 \begin{equation}
     \Delta f = \frac{1}{T}
@@ -19,7 +26,7 @@ kann, ist
 wobei $T$ die Messzeit des Signales ist.
 Diese Relation ist wahrscheinlich die grösste Limitierung des Sonogramms.
 Mit einer kurzen Fensterlänge erreicht man zwar eine grössere zeitliche Auflösung,
-man verliert jedoch an präzision bei den Frequenzen.
+man verliert jedoch an Präzision bei den Frequenzen.
 
 TODO Grafik
 

@@ -51,19 +51,30 @@ von $x$ zum Zeitpunkt $\tau$ mit
 \end{equation}
 beschreiben.
 
-Für diskrete Signale ändert sich nicht viel.
+Für diskrete Signale müssen wir auch die Fensterfunktion diskretisieren.
+Die Funktionen sind nun nicht mehr abhängig von der Zeit $t$ sondern vom 
+Index $n \in \mathbb{N}$.
+Das Rechteckfenster der Länge $L_w$ definieren wir mit
+\begin{equation}
+    w_r[n] = 
+    \begin{cases}
+    1,& \text{wenn } 0 \le n < L_w-1\\
+    0, & \text{sonst.}
+    \end{cases}
+\end{equation}
 Die Fensterfunktion ist nun auch diskret und statt
 der Fouriertransformation wir die diskrete Fouriertransformation DFT
 \begin{equation}
-    X[k, m] = \sum_{n = 0}^{L - 1} x[n] w_r[n-m] e^{ -i \omega_k n}.
+    X[k, m] = \sum_{n = m}^{m + L - 1} x[n] w_r[n-m] e^{ -i \omega_k n}.
 \end{equation}
+
 \subsection{Spektrogramm}
 
-Das Spektrogramm, oder bei Akkustischen Signalen auch Sonogramm genannt, ist eine visuelle
-dartellung der STFTs eines Signals. 
+Das Spektrogramm, oder bei akkustischen Signalen auch Sonogramm genannt, ist eine visuelle
+Darstellung der STFTs eines Signals. 
 Dabei werden die Magnituden der einzelnen STFTs chronologisch
 als Spalten eines Bildes dargestellt.
-Dabei gehen Phaseninformationen verloren, was eine genaue rekonstruktion
+Dabei gehen Phaseninformationen verloren, was eine genaue Rekonstruktion
 des Signales aus dem Spektrogramm verunmöglicht.
 
 Ein schönes Bespiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
