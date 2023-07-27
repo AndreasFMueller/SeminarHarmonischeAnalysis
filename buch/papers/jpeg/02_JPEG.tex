@@ -1,0 +1,69 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{JPEG Kompression
+\label{jpeg:section:kompjpeg}}
+\rhead{JPEG Kompression}
+Um Bilder mit der DCT transformieren zu können, ist eine Vorverarbeitung nötig. 
+in der Vorverarbeitung wird die Farbraumumrechnung um eine bessere Kompression zu erreichen.
+Zudem wird das ganze Bild in \(8x8\) Pixelblöcke unterteilt, da die zweidimensionale DCT damit arbeitet.
+
+\subsection{Farbraumumrechnung
+\label{jpeg:subsection:farbraumumrechnung}}
+Ein weit verbreiteter Farbmodell ist das Rot-Grün-Blau-Modell (RGB), dabei wird eine Pixelfarbe mit einem Rot-, Grün- und Blauwert additive erzeugt.
+
+Beim JPEG-Standart wechselt man die Basis, in der die Farben dargestellt werden und benutzt statt RGB das YCbCr-Modell.
+In diesem Modell werden die Helligkeit (Luminaz Y), sowie die Farbigkeit (Chominanz).
+\(C_b\) von Grau in Richtung Blau/Gelb und \(C_r\) von Grau nach Rot/Türkis.
+
+Die Transformation wird gemacht, weil die Augen von Menschen Empfindlicher sind auf Helligkeitsunterschiede, als auf Farbunterschiede.
+Damit lassen sich, nach einer DCT, die Koeffizienten aus den Cb und Cr teilen stärker Quantisieren als die der Y teile \ref{}.
+Der beschriebene Frabraum wechsel lässt sich
+\begin{equation}
+    \begin{pmatrix}
+        Y\\
+        C_b\\
+        C_r\\
+    \end{pmatrix}
+    \thickapprox
+    \begin{pmatrix}
+        0\\
+        128\\
+        128\\
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        0.299 & 0.587 & 0.114\\
+        -0.168736 & -0.331264 & 0.5\\
+        0.5 & -0.418688 & -0.081312\\
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+        R\\
+        G\\
+        B\\
+    \end{pmatrix}
+    \label{jpeg:equationfrab}
+\end{equation}
+berechnen.
+Durch begrenzte Rechengenauigkeit und Rundungsfehler entstehen hier Datenverluste.
+
+\subsection{Tiefpassfilter und Unterabtastung
+\label{jpeg:subsection:tiefpass}}
+In \ref{jpeg:subsection:farbraumumrechnung} wurde beschrieben, dass die Farbauflösung der \(C_b\) und \(C_r\) für Menschen deutlich geringer ist wie in \ref{} ersichtlich.
+Dazu werden sie Tiefpass gefiltert, zudem üblicherweise vertikal und horizontal um den Faktor 2 Unterabgetastet, was einer 4 fachen Datenreduktion entspricht.
+
+\subsection{Tiling
+\label{jpeg:subsection:tiling}}
+Beim Tiling wird das Bild in jeweils \(8x8\) Pixel grosse Blöcke unterteilt.
+Da normalerweise die Seitenlängen eines Bildes sich nicht durch 8 teilen lässt, werden die Restlichen Zeilen bzw. Spalten jeweils aufgefüllt.
+Wie das auffüllen geschieht ist im JPEG-Standard nicht festgelegt, es wird jedoch die letzte Pixel-Zeile oder -Spalte jeweils sooft zu wiederholen bis es aufgeht.
+Wie in \ref{label} ersichtlich.
+Auf den einzelnen Blöcken wird nun die DCT angewendet.
+
+
