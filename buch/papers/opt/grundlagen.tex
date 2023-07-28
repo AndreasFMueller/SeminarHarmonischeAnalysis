@@ -279,7 +279,7 @@ Diese elektrische Feldstärke kann leider nicht direkt auf dem Schirm beobachtet
 Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
-Auf dessen exakten Wert wird vorerst nicht weiter darauf eingegangen, woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+Woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
 \begin{align}
 I(y_p)
 &=
@@ -299,7 +299,8 @@ Dieser kann Mittels des Poynting Vectors
 \label{opt:equation:poynting}
 \end{equation}
 hergeleitet werden.
-Dabei beschreibt $\vec{E}$ die elektrische Feldstärke und $\vec{H}$ die magnetische Feldstärke.
+\opttodo{Abbildung von Poynting Vector hinzufügen}
+Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldstärke.
 Angenommen eine elektromagentische Welle breitet sich nun in z-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
 Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der x-Richtung, muss die magentische Feldstärke $\vec{H}$ entlang der y-Richtung verlaufen.
 Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung~\ref{opt:equation:wave}, als
@@ -321,8 +322,74 @@ Eingesetzt in Gleichung~\ref{opt:equation:poynting} kann der Ausdruck als
 \\
 &=
 E_0 H_0 \cdot e^{2j(\omega t-k z)} \cdot \vec{z}
+\\
+&=
+E_0 H_0 \cdot \left(\cos{(2(\omega t-kz))}+j\sin{(2(\omega t-kz))}\right) \vec{z}
 \end{align}
 vereinfacht werden.
+Da das zweite Moment des real oder imaginär Teils des Poynting Vectors gerade der gesuchten Intensität $I$ entspricht, kann dieser als 
+\begin{align}
+I
+&=
+E(\Re\{S\}^2)
+=
+E(\Im\{S\}^2)
+\\
+&=
+\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re\{S\}^2 \,dt
+\\
+&=
+\frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\cos\left({2(\omega t-kz)}\right)^2 \,dt
+\\
+&=
+\frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\frac{\cos(4(\omega t-kz)) + 1}{2} \,dt
+\end{align}
+geschrieben werden.
+Soll nur über die Zeit gemittelt werden, ist die Position $z$ nicht von belangen und kann deshalb auf $z=0$ gesetzt werden.
+Beispielsweise kann exakt über eine Periode integriert werden, was in Integrationsgrenzen von $t_0=0$ und
+\begin{align}
+4\omega t_1
+&=
+2\pi
+\\
+t_1
+&=
+\frac{\pi}{2\omega}
+\end{align}
+resultiert.
+Mit den eingesetzten Grenzen ergibt sich daraus
+\begin{align}
+I
+&=
+\frac{1}{\frac{\pi}{2\omega} - 0} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\frac{\cos(4(\omega t-k\cdot0)) + 1}{2} \,dt
+\\
+&=
+\frac{\omega}{\pi} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\cos(4\omega t) + 1 \,dt
+\\
+&=
+\frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left[\frac{\sin(4\omega t)}{4\omega} + t \right]_{0}^{\frac{\pi}{2\omega}}
+\\
+&=
+\frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left(\frac{\sin(2\pi)}{8\omega} + \frac{\pi}{2\omega}\right)
+\\
+&=
+\frac{\omega}{\pi} \cdot E_0 H_0 \cdot \frac{\pi}{2\omega}
+\\
+&=
+\frac{1}{2} \cdot E_0 H_0
+.
+\end{align}
+Leider hängt dieser Ausdruck noch von der magentischen Feldstärke $H_0$ ab.
+Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiters Mal die Maxwellschen Gleichungen angewandt werden.
+Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung am Rand der Fläche $A$ gegeben durch
+\begin{equation}
+\oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
+=
+E_y(x+\delta x,t) \cdot a - E_y(x,t) \cdot a
+.
+\end{equation}
+Nur Anteile des elektrischen Feldes in y-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
+
 \opttodo{Weiterschreiben}
 
 \subsection{Beispiel einzelner Spalt}
