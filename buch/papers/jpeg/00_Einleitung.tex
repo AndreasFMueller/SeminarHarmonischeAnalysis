@@ -8,6 +8,12 @@
 %
 \section{Einleitung\label{jpeg:section:einleitung}}
 \rhead{Einleitung}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{papers/jpeg/pictures/kompressionsschema.pdf}
+    \caption{Vorgehen bei der Kompression und Dekompression von JPEG
+        \label{jpeg:fig:kompressionsschema}}
+\end{figure}
 Sobald man Daten überträgt oder speichert, möchte man die effizienteste Form wählen, daher ist Datenkompression sehr naheliegend, das kann in vollständig rekonstruierbarer Form oder mit Verlusten erreicht werden.
 
 Verlustloses Komprimieren gelingt, indem man einen Kodieralgorithmus auf die Daten anwendet und die redundanten Informationen wie in einem Wörterbuch speichert und jeweils darauf referenziert. Beim verlustbehafteten Verfahren werden die Daten, die für Menschen nicht erkennbar sind, das entfernt um so den Inhalt zu reduzieren.
@@ -16,10 +22,12 @@ Es gibt inzwischen einige Methoden um Bilder zu komprimieren, in diesem Kapitel 
 
 Bilder werden zuerst mit einer Vorverarbeitung auf die Transformation vorbereitet, das sind Farbraum transformationen und Einteilung in kleiner Bereiche.
 Anschliessend wird die Basistransformation durchgeführt und die Koeffizienten mit einer Tabelle quantisiert und ganzzahlig gerundet.
-Die aus der Quantisierung entstandenen Werte werden noch Kodiert und in einem File abgelegt.
+Die aus der Quantisierung entstandenen Werte werden noch Entropiekodierung, meisten wird das Prinzip von Huffman verwendet und in einem File abgelegt.
+Zudem noch werden die Tabellen der unterschiedlichen Quantisierungen und Kodierungen mit abgespeichertm, was in Abb. \ref{jpeg:fig:kompressionsschema} dargestellt wird.
 Für die Dekompression werden die Schritte rückwärts angewändet, wobei die verloren gegangenen Daten bei der Quantisierung nicht wieder hergestellt werden können. 
 
-\subsection{Anwendung JPEG\label{jpeg:subsection:anwendung}}
+\subsection{Anwendung JPEG
+\label{jpeg:subsection:anwendung}}
 \rhead{Anwendung JPEG}
 Grundlegend werden die Bilder mithilfe von verschiedenen Methoden in Basisfunktionen aufgeteilt, zu den jeweils die Koeffizienten berechnet werden, um diese in einem späteren schritt Manipulieren zu können und Daten einzusparen. 
 Bei JPEG ist das die discrete cosine transform (DCT) und bei JPEG-2000 die discrete wavelet transform (DWT).
