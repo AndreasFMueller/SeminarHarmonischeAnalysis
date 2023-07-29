@@ -68,6 +68,11 @@ Dazu werden sie Tiefpass gefiltert, zudem üblicherweise vertikal und horizontal
 
 \subsection{Tiling
 \label{jpeg:subsection:tiling}}
+Beim Tiling wird das Bild in jeweils \(8\times8\) Pixel grosse Blöcke unterteilt.
+Da normalerweise die Seitenlängen eines Bildes sich nicht durch 8 teilen lässt, werden die Restlichen Zeilen bzw. Spalten jeweils aufgefüllt.
+Wie das auffüllen geschieht ist im JPEG-Standard nicht festgelegt, es wird jedoch die letzte Pixel-Zeile oder -Spalte jeweils sooft zu wiederholen bis es aufgeht.
+Wie in Abb. \ref{jpeg:fig:tiling} ersichtlich.
+Auf den einzelnen Blöcken wird nun die DCT angewendet.
 
 \begin{figure}
     \centering
@@ -76,11 +81,6 @@ Dazu werden sie Tiefpass gefiltert, zudem üblicherweise vertikal und horizontal
         \label{jpeg:fig:tiling}}
 \end{figure}
 
-Beim Tiling wird das Bild in jeweils \(8\times8\) Pixel grosse Blöcke unterteilt.
-Da normalerweise die Seitenlängen eines Bildes sich nicht durch 8 teilen lässt, werden die Restlichen Zeilen bzw. Spalten jeweils aufgefüllt.
-Wie das auffüllen geschieht ist im JPEG-Standard nicht festgelegt, es wird jedoch die letzte Pixel-Zeile oder -Spalte jeweils sooft zu wiederholen bis es aufgeht.
-Wie in Abb. \ref{jpeg:fig:tiling} ersichtlich.
-Auf den einzelnen Blöcken wird nun die DCT angewendet.
 
 \subsection{Quantisierung
 \label{jpeg:subsection:quantisierung}}
@@ -94,10 +94,12 @@ Diese ist für die Qualität und der Menge der reduzierten Daten verantwortlich.
     \frac{F(x,y)}{Q(x,y)}
     \right)
 \end{equation}
-dabei ist \(F^Q\) die resultierende Matrix, \(F\) ist der transformierte Pixelblock und \(Q\) die Quantisirungsmatrix.
+dabei ist \(F^Q\) die resultierende Matrix, \(F\) ist der transformierte Pixelblock und \(Q\) die Quantisierungsmatrix.
 Bei diesem Schritt findet die Irrelevanzreduktion statt.
+
 Das Auge ist empfindlicher auf hohe Farbunterschiede von benachbarten Pixel, das sind die tiefen Frequenzen in der DCT Matrix.
 Daher werden diese weniger Reduziert als die hohen, man sollte dafür eine optimale Tabelle verwenden.
+
 Da der JPEG-Standard das nicht vorgibt, muss die verwendete Tabelle im Header des Files mit abgelegt werden.
 In Tabelle \ref{jpeg:tab:quant} ist eine gängige für die Luminanz und eine für die Chrominanzen ersichtlich.
 
@@ -132,3 +134,17 @@ In Tabelle \ref{jpeg:tab:quant} ist eine gängige für die Luminanz und eine fü
 
 \subsection{Umsortierung und Differenzkodierung
 \label{jpeg:subsection:umsortierung}}
+Die 64 Koeffizienten des Pixelblocks werden nach der Quantisierung im Zig-Zag Muster wie ABB. \ref{jpeg:fig:zigzag} zeigt sortiert.
+Die linke obere Ecke ist der Gleichanteil (DC-Wert), das ist die mittlere Helligkeit des Blocks.
+Die Koeffizienten mit hohem Wert (die kleinen Frequenzen) stehen nun am Anfang und die kleine weiter hinten.
+Je stärker quantisiert wurde desto mehr nullen sind am Ende, was für eine Lauflängenkodierung optimal ist.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=75mm]{papers/jpeg/pictures/zigzag.pdf}
+    \caption{Zig-Zag abtastung der Koeffizienten
+        \label{jpeg:fig:zigzag}}
+\end{figure}
+
+Zudem wird der DC-Wert noch mit dem Block links davon jeweils differenziell kodiert, damit man weiss wie die einzeln transformierten und quantisierten Blöcke zusammenhängen.
+Wobei der erste Block mit dem dazugehörigen DC-Wert anfängt
