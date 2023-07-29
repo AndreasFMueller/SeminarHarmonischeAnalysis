@@ -35,6 +35,12 @@ mit $f_s$ als Abtastfrequenz.
 Ein Beispiel mit eines Rechteckfensters mit $L_w = 20$ und $f_s = 20$ Hz ist in Abbildung \ref{sonogramm:recttime}
 zu sehen.
 Das Dazugehörige Frequenzspektrum zeigt Abbildung \ref{sonogramm:rectfreq}. 
+Der grosse Peak in der Mitte kommt vom hohen DC Anteil von $w_r$. 
+Da wir aber einen Sprung von 0 auf 1 bei $n = 10$ haben und bei $n = 30$ wieder von 
+1 auf 0 springen kommen neue Frequenzen dazu. 
+Wird nun das Signal mit dem Fenster multipliziert, kommen diese sogenannten Leck-Frequenzen
+in das Frequenzspektrum des Signals.
+
 
 In diesem ist der 
 Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformation DTFT erreichen
@@ -44,9 +50,6 @@ kann, ist
 \end{equation}
 wobei $T$ die Messzeit des Signales ist.
 
-Diese Relation ist wahrscheinlich die grösste Limitierung des Sonogramms.
-Mit einer kurzen Fensterlänge erreicht man zwar eine grössere zeitliche Auflösung,
-man verliert jedoch an Präzision bei den Frequenzen.
 
 % \begin{figure}
 %     \centering
@@ -123,21 +126,3 @@ man verliert jedoch an Präzision bei den Frequenzen.
     }
 \end{figure}
 TODO Grafik
-
-\subsection{Rechnerische Auflösung}
-Bei einer DFT werden so viele Frequenzsamples berechnet wie das
-Zeitsignal hat. 
-TODO alot
-
-\subsection{Fensterfunktion}
-Der Faltungssatz beschreibt 
-\begin{align}
-    f(t) * g(t)& \xrightarrow{\mathscr{F}} F(\omega)G(\omega),\\
-    f(t) g(t)&\xrightarrow{\mathscr{F}}F(\omega) * G(\omega).
-\end{align}
-Das bedeutet, das die Verwendung von Fensterfunktionen das Frequenzspektrum
-des Signals durch eine Faltung verschmieren.
-\subsection{Überlappung}
-TODO Alles
-
-
