@@ -6,10 +6,23 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Grundlagen\label{opt:section:grundlagen}}
+\section{Von der Beugung zu Fourier\label{opt:section:grundlagen}}
 \rhead{Von der Beugung zu Fourier}
 
-\subsection{Grundlagen Wellentheorie}
+Im folgenden wird der Schritt von der Beugung zur Fouriertransformation vollzogen.
+Dazu wird mit der Wellentheorie die Grundlage gelegt für die nachfolgende Herleitung.
+Diese gliedert sich anschliessend in drei Abschnitte. 
+Zunächst wird das allgemeine Beugungsintegral hergeleitet, das allgemein gültig, aber nicht fundamental lösbar ist.
+Anschliessend wird das Integral im Unterkapitel \ref{opt:sec:fresnel} mittels der Fresnel-Approximation für kleine Winkel angenähert.
+Eine weitere Vereinfachung wird durch die Linearisierung in $y$ erreicht. 
+Diese wird im Unterkapitel \ref{opt:sec:fraunhofer} mit der Fraunhofer-Approximation durchgeführt.
+
+Im Unterkapitel \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang zwischen der elektrischen Feldstärke und der Intensität hergestellt.
+Denn nur diese kann mit dem Auge oder einem Kamerachip beobachtet werden.
+
+Das Kapitel wird mit einem Rechenbeispiel für die Beugung am Einzelspalt abgeschlossen. 
+
+\subsection{Wellentheorie}
 \label{opt:subsection:huygens}
 Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
 Im folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
@@ -32,9 +45,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
     \label{opt:fig:huygens}
 \end{figure}
 
-\subsection{Herleitung Beugungsintegrale}
-In dieser Herleitung wird darauf eingegangen, wie aus dem allgemein gültigen Beugungsintegral durch die Fresnel-Approximation 
-das gleichnamige Beugungsintegral und durch die Fraunhofer-Approximation das Fraunhofer-Beugungsintegral hergeleitet werden kann.
+\subsection{Allgemeines Beugungsintegral}
 
 \begin{figure}
     \centering
@@ -160,9 +171,9 @@ Dieses Integral ist für jeden Auswertungspunkt allgemein gültig.
 Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung~\ref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
-\subsubsection{Fresnel-Approximation}
-In näherer Umgebung um die Blende wird hierfür die Fresnel-Approximation angewendet.
-Damit wird das allgemeine Beugungsintegral für kleine Winkel approximiert.
+\subsection{Fresnel-Approximation}
+\label{opt:sec:fresnel}
+In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \ref{opt:equation:integral_general} für kleine Winkel approximiert.
 Für weitere Schritte soll die Bedingung
 \begin{equation}
 y, y_p
@@ -245,9 +256,11 @@ E(y_p, t = 0)
 \end{align}
 Das hiermit erhaltene Integral wird auch als das Fresnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
 
-\subsubsection{Fraunhofer-Approximation}
-Wird die Distanz zwischen Blende und Auswertungspunkt noch weiter erhöht, ist es möglich, mit der Fraunhofer-Approximation eine noch einfachere Form des Beugungsintegrals zu erhalten.
-Das Integral wird dabei linearisiert in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene.
+\subsection{Fraunhofer-Approximation}
+\label{opt:sec:fraunhofer}
+Die Fresnel Approximation aus \ref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
+Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
+Damit wird das möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Sei nun
 \begin{equation}
 y
@@ -274,8 +287,9 @@ E(y_p)
 \end{align}
 Das somit entstandene Integral entspricht gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 
-\subsubsection{Intensität}
-Diese elektrische Feldstärke kann leider nicht direkt auf dem Schirm beobachtet werden.
+\subsection{Intensität}
+\label{opt:sec:intensity}
+Die in \ref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden.
 Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
@@ -379,8 +393,8 @@ I
 \frac{1}{2} \cdot E_0 H_0
 .
 \end{align}
-Leider hängt dieser Ausdruck noch von der magentischen Feldstärke $H_0$ ab.
-Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiters Mal die Maxwellschen Gleichungen angewandt werden.
+Dieser Ausdruck hängt jedoch noch von der magentischen Feldstärke $H_0$ ab.
+Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
 Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung am Rand der Fläche $A$ gegeben durch
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
