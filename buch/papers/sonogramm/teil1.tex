@@ -13,7 +13,13 @@ Wie bereits in der Einleitung des Kapitels angedeutet sind die zusätzlichen
 Zeitlichen Informationen nicht gratis. 
 Mit dem aufteilen des Ursprünglichen Signals in kurze Fenster bekommen wir eine
 verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
-Zusätzlich werden durch das abrupte abschneiden des Signals mit dem Rechtecksfenster
+In der Theorie ist die bestmögliche Frequenzauflösung 
+\begin{equation}
+    \delta f = \frac{1}{T}
+\end{equation}
+wobei $T$ die zeitliche Länge der Fensterfunktion ist.
+
+Zusätzlich werden durch das abrupte abschneiden des Signals mit dem Rechteckfenster
 zusätzliche Frequenzen hinzugefügt. 
 Diese Effekte hängen mit der Unschärferelation zusammen, welche in Abschnitt
 \ref{buch:diskret:section:unschaerfe} genauer beschrieben ist.
@@ -29,26 +35,58 @@ Das bedeutet, das die Verwendung von Fensterfunktionen das Frequenzspektrum
 des Signals mit dem Frequenzspektrum der Fensterfunktion gefaltet wird.
 Die Fouriertransformation eines Rechteckfensters ist 
 \begin{equation}
-    W_r(f) = \frac{\sin(2 \ pi f  L_w / (2 f_s))}{\sin(2 \pi f / (2 f_s))} e^{-i 2 \pi f (L_w-1)/(2f_s)}
+    W_r(f) = \frac{\sin(2 \pi f  L_w / (2 f_s))}{\sin(2 \pi f / (2 f_s))} e^{-i 2 \pi f (L_w-1)/(2f_s)}
 \end{equation}
 mit $f_s$ als Abtastfrequenz.
-Ein Beispiel mit eines Rechteckfensters mit $L_w = 20$ und $f_s = 20$ Hz ist in Abbildung \ref{sonogramm:recttime}
-zu sehen.
-Das Dazugehörige Frequenzspektrum zeigt Abbildung \ref{sonogramm:rectfreq}. 
-Der grosse Peak in der Mitte kommt vom hohen DC Anteil von $w_r$. 
-Da wir aber einen Sprung von 0 auf 1 bei $n = 10$ haben und bei $n = 30$ wieder von 
-1 auf 0 springen kommen neue Frequenzen dazu. 
-Wird nun das Signal mit dem Fenster multipliziert, kommen diese sogenannten Leck-Frequenzen
-in das Frequenzspektrum des Signals.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics{papers/sonogramm/images/rect_time.pdf}
+%     \caption{Rechtecksfenster mit $L_w = 20$.
+%     \label{sonogramm:recttime}
+%     }
+% \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/rect_freq.pdf}
+    \caption{Frequenzspektrum eines Rechtecksfenster Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
+    von $1/T$.
+    \label{sonogramm:rectfreq}
+    }
+\end{figure}
+In Abbildung \ref{sonogramm:rectfreq} sind zwei solche Frequenzspektren mit unterschiedlichen $L_w$ abgebildet.
+
+Ideal wäre ein einzelner Peak bei 0, dafür müsste jedoch das Fenster eine Länge von $\infty$ haben.
+Durch die Sprünge bei $n = 0$ und $n = L-1$ im Zeitbereich kommen zusätzliche Frequenzen dazu, der sogenannte
+Leck-Effekt.
+Diese unerwünschten Frequenzen werden durch die Faltung im Frequenzbereich zu den eigentlichen Frequenzen 
+geschoben.
+Abbildung \ref{sonogramm:leakageDemo} zeigt ein solches Spektrum eines Eintonsignals.
+Man sieht dabei sehr gut wie die Leck-Frequenzen, vor allem beim kürzeren Signal, 
+sich über das ganze Spektrum verbreiten.
+Schwächere Frequenzen können dabei im Spektrum von Leck-Frequenzen von dominanten Frequenzen
+übertönt werden.
+Die schwächeren Frequenzen sind dann entweder nicht erkennbar, oder verfälscht, wie in 
+Abbildung \ref{sonogramm:leakageDemo2}
 
 
-In diesem ist der 
-Die Maximale Frequenzauflösung, welche man mit der diskreten Fouriertransformation DTFT erreichen
-kann, ist 
-\begin{equation}
-    \Delta f = \frac{1}{T}
-\end{equation}
-wobei $T$ die Messzeit des Signales ist.
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/RectWinHarmEx.pdf}
+    \caption{TODO
+    \label{sonogramm:leakageDemo}
+    }
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/twohamrrect.pdf}
+    \caption{TODO
+    \label{sonogramm:leakageDemo2}
+    }
+\end{figure}
+
 
 
 % \begin{figure}
@@ -89,23 +127,7 @@ wobei $T$ die Messzeit des Signales ist.
 %        sieht man die Nulldurchgänge bei vielfachen von $1/T$.}
 
 % \end{figure}
-\begin{figure}
-    \centering
-    \includegraphics{papers/sonogramm/images/rect_time.pdf}
-    \caption{Rechtecksfenster mit $L_w = 20$.
-    \label{sonogramm:recttime}
-    }
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics{papers/sonogramm/images/rect_freq.pdf}
-    \caption{Frequenzspektrum des Rechtecksfenster von Abbildung \ref{sonogramm:recttime}
-    mit einer Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
-    von $1/T$.
-    \label{sonogramm:rectfreq}
-    }
-\end{figure}
 
 
 \begin{figure}
@@ -125,4 +147,3 @@ wobei $T$ die Messzeit des Signales ist.
     \label{sonogramm:gaussfreq}
     }
 \end{figure}
-TODO Grafik
