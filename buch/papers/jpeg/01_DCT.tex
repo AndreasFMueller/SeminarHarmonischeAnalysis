@@ -1,0 +1,92 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Diskrete Kosinus Transformation
+\label{jpeg:section:dct}}
+\rhead{dct}
+Die Fouriertransformation und auch die diskrete Variante davon erzeugen ein komplexwertiges Spektrum, auch wenn das Ursprüngliche Signal nur aus reellen werten besteht.
+Da weder die Sinus- noch Kosinusfunktion alleine ausreichen um ein vollständiges Basisfunktionssystem bilden zu können.
+Ein Reellwertiges Signal bildet im Frequenzspektrum jeweils konjugiert komplexe paare, ist also redundant, es muss nur die Hälfte der Werte berechnet werden.
+Die Diskrete Kosinus Transformation ermöglicht genau das, sie bildet ein Reihe aus Kosinus Basisfunktionen und ist beschränkt auf reellwertige Signale, genau was wir benötigen.
+Es existiert analog dazu die diskrete Sinus Transformation, die aus Sinus Basisfunktionen besteht.
+
+Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit folgender Formel\footnote{Herleitung für DCT-II\url{https://jberner.info/data/BSc_Thesis_Berner.pdf}} benötigt 
+\begin{equation}
+    b_k
+    =
+    \sum \limits_{n=0}^{N-1} a_n 
+    \cos\left(
+        \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right),
+    \qquad k = 0,\dots,N-1.
+\label{jpeg:equationdct2}
+\end{equation}
+Wobei \(b_k\) das Transformierte und \(a_n\) das Einganssignal ist.
+Um von der Transformierten Form in die ursprüngliche zu gelangen braucht man die Inverse Kosinustransformation (DCT-III oder inverse DCT)
+\begin{equation}
+    a_n
+    =
+    \frac{b_0}{2} +
+    \sum \limits_{k=1}^{N-1} b_k 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right),
+    \qquad k = 0,\dots,N-1.
+    \label{jpeg:equationdct3}
+\end{equation}
+Dabei lässt sich mit diesen Formeln nur die eindimensionale Transformation durchführen.
+Bei Bilden handelt es sich aber um zweidimensionale Signale
+
+\subsection{Zweidimensionale Kosinus Transformation
+\label{jpeg:subsection:dct2dim}}
+Für die zweidimensionale Variante der DCT wird das Bild zunächst Zeilenweise betrachtet. Jede dieser Zeilen sind wiederum eindimensionale Signale und transformierbar.
+Werden auf jeder der Zeilen die Transformation angewandt, entsteht ein neues Bild.
+Dieses wird nun in Spalten betrachtet und ebenfalls transformiert.
+Das resultierende Bild davon ist die vollständige Transformation.
+Analog dazu lässt sich die inverse Kosinus Transformation beschreiben.
+
+Die Gleichung \eqref{jpeg:equationdct2} zweidimensional lässt sich
+\begin{equation}
+    b_{k,l}
+    =
+    \sum \limits_{n=0}^{N-1} 
+    \sum \limits_{m=0}^{N-1} a_{n,m} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right)
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right)
+    \label{jpeg:equationdct2dim2}
+\end{equation}
+und die inverse Transformation  
+\begin{align*}
+    a_{n,m}
+    =
+    \frac{b_{0,0}}{4} &+
+    \sum \limits_{k=1}^{N-1} 
+    \frac{b_{k,0}}{2} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right) \\ &+
+    \sum \limits_{l=1}^{N-1} 
+    \frac{b_{0,l}}{2} 
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right) \\ &+
+    \sum \limits_{k=1}^{N-1} 
+    \sum \limits_{l=1}^{N-1} b_{k,l} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right)
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right)
+    \label{jpeg:equationdct3dim2}
+\end{align*}
+beschreiben.

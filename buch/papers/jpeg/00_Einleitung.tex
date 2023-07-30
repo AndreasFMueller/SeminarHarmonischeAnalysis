@@ -1,0 +1,20 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Einleitung\label{jpeg:section:einleitung}}
+\rhead{Einleitung}
+Sobald man Daten überträgt oder speichert möchte man die effizienteste Form wählen, daher ist die Datenkompression sehr naheliegend, das kann in vollständig rekonstruierbare Form oder mit Verlusten erreicht werden.
+
+Verlustloses Komprimieren gelingt indem man einen Kodieralgorithmus auf die Daten anwendet und die Redundanten Informationen wie in einem Wörterbuch speichert und jeweils darauf referenziert. Beim verlustbehafteten Verfahren werden die Daten, die für uns Menschen nicht erkennbar sind entfernt um so den Inhalt zu reduzieren.
+
+Es gibt inzwischen einige Methoden um Bilder zu komprimieren, in diesem Kapitel soll es um die beiden Algorithmen von der Joint Photographic Experts Group (JPEG) gehen.
+
+\subsection{Anwendung JPEG\label{jpeg:subsection:anwendung}}
+\rhead{Anwendung JPEG}
+Grundlegend werden die Bilder mithilfe von verschiedenen Methoden in Basisfunktionen aufgeteilt, zu den jeweils die Koeffizienten berechne werden, um diese in einem späteren schritt Manipulieren zu können und Daten einzusparen. 
+Bei JPEG ist das die \glqq discrete cosine transform \grqq  (DCT) und bei JPEG-2000 die \glqq discrete wavelet transform \grqq  (DWT).

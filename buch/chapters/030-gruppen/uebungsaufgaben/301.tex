@@ -29,7 +29,7 @@ h_k
 \colon
 \mathbb{Z}/6\mathbb{Z} \to \mathbb{C}^*
 :
-x\mapsto e^{ikx}
+x\mapsto e^{2\pi ikx/6}
 \]
 für $k=0,1,\dots,5$.
 Rechnen Sie die Homomorphismuseigenschaft nach.
@@ -77,7 +77,7 @@ Gruppe kommutativ ist.
 \item
 Es ist
 \[
-h_k(x+y)=e^{ik(x+y)} = e^{ikx}e^{iky} = h_k(x)h_k(y),
+h_k(x+y)=e^{2\pi ik(x+y)/6} = e^{2\pi ikx/6}e^{2\pi iky/6} = h_k(x)h_k(y),
 \]
 also ist $h_k$ ein Homomorphismus.
 \item
@@ -89,30 +89,30 @@ Der Wert der Gelfand-Transformation ist
 =
 \sum_{x=0}^5 \overline{h_k(x)} e_l(x)
 =
-\sum_{x=0}^5 e^{-ikx}\delta_{lx}
+\sum_{x=0}^5 e^{-2\pi ikx/6}\delta_{lx}
 =
-e^{-ikl}.
+e^{-2\pi ikl/6}.
 \]
 \item
 Wir müssen nachprüfen, dass die Gleichung
 \eqref{buch:gruppen:301:gelfand-produkt}
 auf jedem $h_k$ gilt.
-Aus $(\mathscr{G}e_x)(h_k)=e^{-ikx}$ und
+Aus $(\mathscr{G}e_x)(h_k)=e^{-2\pi ikx/6}$ und
 $e_x*e_y=e_{x+y}$
 folgt
 \begin{align*}
 (\mathscr{G}(e_x*e_y))(h_k)
 =
 (\mathscr{G}e_{x+y})(h_k)
-=e^{-ik(x+y)}
+=e^{-2\pi ik(x+y)/6}
 \\
 (\mathscr{G}e_x)(h_k)
 \cdot
 (\mathscr{G}e_y)(h_k)
 =
-e^{-ikx}\cdot e^{-iky}
+e^{-2\pi ikx/6}\cdot e^{-2\pi iky/6}
 =
-e^{-ik(x+y)},
+e^{-2\pi ik(x+y)/6},
 \end{align*}
 die beiden Seiten der Gleichung
 \eqref{buch:gruppen:301:gelfand-produkt}
