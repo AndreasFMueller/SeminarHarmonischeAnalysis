@@ -38,7 +38,6 @@ Die Fouriertransformation eines Rechteckfensters ist
     W_r(f) = \frac{\sin(2 \pi f  L_w / (2 f_s))}{\sin(2 \pi f / (2 f_s))} e^{-i 2 \pi f (L_w-1)/(2f_s)}
 \end{equation}
 mit $f_s$ als Abtastfrequenz.
-
 % \begin{figure}
 %     \centering
 %     \includegraphics{papers/sonogramm/images/rect_time.pdf}
@@ -46,7 +45,6 @@ mit $f_s$ als Abtastfrequenz.
 %     \label{sonogramm:recttime}
 %     }
 % \end{figure}
-
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/rect_freq.pdf}
@@ -56,7 +54,6 @@ mit $f_s$ als Abtastfrequenz.
     }
 \end{figure}
 In Abbildung \ref{sonogramm:rectfreq} sind zwei solche Frequenzspektren mit unterschiedlichen $L_w$ abgebildet.
-
 Ideal wäre ein einzelner Peak bei 0, dafür müsste jedoch das Fenster eine Länge von $\infty$ haben.
 Durch die Sprünge bei $n = 0$ und $n = L-1$ im Zeitbereich kommen zusätzliche Frequenzen dazu, der sogenannte
 Leck-Effekt.
@@ -68,8 +65,12 @@ sich über das ganze Spektrum verbreiten.
 Schwächere Frequenzen können dabei im Spektrum von Leck-Frequenzen von dominanten Frequenzen
 übertönt werden.
 Die schwächeren Frequenzen sind dann entweder nicht erkennbar, oder verfälscht, wie in 
-Abbildung \ref{sonogramm:leakageDemo2}
+Abbildung \ref{sonogramm:leakageDemo2} zu sehen ist.
 
+Die Breite des Hauptpeaks limitiert die Frequenzauflösung.
+Bei einem Rechteckfenster ist dieser $2f_s/L_w$ Hz breit.
+Sind zwei Frequenzen genügend nahe bei einander, überlappen sich die Hauptpeaks, und können
+nicht mehr unterschieden werden.
 
 \begin{figure}
     \centering
