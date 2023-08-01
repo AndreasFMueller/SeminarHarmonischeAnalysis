@@ -82,8 +82,9 @@ Abbildung \ref{sonogramm:freqdiffdemo} zeigt ein Beispiel, des Signals
 \begin{equation}
     s(t) = \sin(2\pi 3.45 t ) + \sin (s\pi 4.45 t + \phi)
 \end{equation}
-mit $T_w = 1$ s.
-Die Frequenzen haben also den kleinsten messbaren Abstand von 1 Hz.
+mit $T_w = 1$ s, was eine Frequenzauflösung von maximal 1 Hz ergibt.
+Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau
+bestimmt werden.
 
 
 \begin{figure}
@@ -148,8 +149,20 @@ Die Frequenzen haben also den kleinsten messbaren Abstand von 1 Hz.
 %        sieht man die Nulldurchgänge bei vielfachen von $1/T$.}
 
 % \end{figure}
+\subsection{Andere Fensterfunktionen}
+Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
+Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
+ist nur eines von Vielen.
 
-
+Wie im vorherigen Abschnitt aufgezeigt, sind die Frequenzauflösung und 
+Leck-Frequenzen abhängig von der Fensterfunktion.
+Das Rechteckfenster hat den schmalsten Hauptpeak und ist darum bezüglich 
+der Frequenzauflösung optimal. TODO Wieso
+Durch die abrupten Sprünge im rechteckfenster sind die Leck-Frequenzen 
+über ein weites Frequenzband sehr prominent.
+Um dies zu verbessern wäre os besser eine Fensterfunktion zu haben,
+welche bei $n = 0$ einen Wert nahe bei 0 hat,
+bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung zu gehen. 
 
 \begin{figure}
     \centering
