@@ -15,7 +15,7 @@ Mit dem aufteilen des Ursprünglichen Signals in kurze Fenster bekommen wir eine
 verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
 In der Theorie ist die bestmögliche Frequenzauflösung 
 \begin{equation}
-    \delta f = \frac{1}{T}
+    \Delta f = \frac{1}{T}
 \end{equation}
 wobei $T$ die zeitliche Länge der Fensterfunktion ist.
 
@@ -60,7 +60,7 @@ Leck-Effekt.
 Diese unerwünschten Frequenzen werden durch die Faltung im Frequenzbereich zu den eigentlichen Frequenzen 
 geschoben.
 Abbildung \ref{sonogramm:leakageDemo} zeigt ein solches Spektrum eines Eintonsignals.
-Man sieht dabei sehr gut wie die Leck-Frequenzen, vor allem beim kürzeren Signal, 
+Man sieht wie die Leck-Frequenzen, vor allem beim kürzeren Signal, 
 sich über das ganze Spektrum verbreiten.
 Schwächere Frequenzen können dabei im Spektrum von Leck-Frequenzen von dominanten Frequenzen
 übertönt werden.
@@ -70,7 +70,21 @@ Abbildung \ref{sonogramm:leakageDemo2} zu sehen ist.
 Die Breite des Hauptpeaks limitiert die Frequenzauflösung.
 Bei einem Rechteckfenster ist dieser $2f_s/L_w$ Hz breit.
 Sind zwei Frequenzen genügend nahe bei einander, überlappen sich die Hauptpeaks, und können
-nicht mehr unterschieden werden.
+nicht mehr unterschieden werden. 
+Zwei unterschiedliche Frequenzen können dadurch nur genau bestimmt werden wenn
+\begin{equation}
+    \Delta f \geq \frac{1}{T_w},
+\end{equation}
+was beim Rechteckfenster gleich der halben Hauptpeak-Breite ist.
+Die Annahme $\Delta f = 1/T_w$ ist jedoch mit vorsicht zu gebrauchen, da $\Delta f$ je nach 
+Phase der beiden Harmonischen grösser sein muss.
+Abbildung \ref{sonogramm:freqdiffdemo} zeigt ein Beispiel, des Signals
+\begin{equation}
+    s(t) = \sin(2\pi 3.45 t ) + \sin (s\pi 4.45 t + \phi)
+\end{equation}
+mit $T_w = 1$ s.
+Die Frequenzen haben also den kleinsten messbaren Abstand von 1 Hz.
+
 
 \begin{figure}
     \centering
@@ -88,7 +102,13 @@ nicht mehr unterschieden werden.
     }
 \end{figure}
 
-
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/twoharmphasediff.pdf}
+    \caption{TODO
+    \label{sonogramm:freqdiffdemo}
+    }
+\end{figure}
 
 % \begin{figure}
 %     \centering
