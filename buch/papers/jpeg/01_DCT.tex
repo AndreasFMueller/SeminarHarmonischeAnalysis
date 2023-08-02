@@ -12,11 +12,10 @@
 Die Fouriertransformation und auch die diskrete (DFT) Variante davon erzeugen ein komplexwertiges Spektrum, auch wenn das ursprüngliche Signal nur aus reellen Werten besteht.
 Da weder die Sinus- noch Kosinusfunktion alleine ausreichen, um ein vollständiges Basisfunktionssystem bilden zu können.
 Ein reellwertiges Signal bildet im Frequenzspektrum jeweils konjugiert komplexe Paare, ist also redundant, es muss nur die Hälfte der Werte berechnet werden.
-
 Die diskrete Kosinus Transformation ermöglicht genau das, sie bildet ein Reihe aus Kosinus Basisfunktionen und ist beschränkt auf reellwertige Signale, genau was wir benötigen.
 
 Da stellt sich die Frage, wie es möglich ist, dass die diskrete Kosinus Transformation ohne die Sinus Komponenten auskommt die bei der DFT unentbehrlich sind.
-Das wird erreicht, indem das Intervall in der die Transformation durchgeführt wird, gegenüber der DFT symmetrisch verdoppelt wird.
+Das wird erreicht, indem das Intervall in der die Transformation durchgeführt wird, gegenüber der DFT gerade symmetrisch verdoppelt wird.
 Es existiert analog dazu die diskrete Sinus Transformation, die aus Sinus Basisfunktionen besteht.
 
 Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit folgender Formel\footnote{Herleitung für DCT-II\url{https://jberner.info/data/BSc_Thesis_Berner.pdf}} benötigt 
@@ -102,8 +101,9 @@ beschreiben.
         \label{jpeg:fig:dctkoeff}}
 \end{figure}
 
-In Abschnitt \ref{jpeg:fig:dctkoeff}  zeigt eine zweidimensionale DCT mit in jeder Dimension jeweils Acht Koeffizienten.
+Abbildung \ref{jpeg:fig:dctkoeff}  zeigt eine zweidimensionale DCT mit in jeder Dimension jeweils Acht Koeffizienten.
 Oben rechts ist der DC Anteil und in horizontaler Richtung sind die Frequenzanteile aufsteigend.
 Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
 Diese wird so für die Transformation von den Pixelblöcken in der Bildverarbeitung mittels JPEG verfahren verwendet.
+Möchte man das Bild berechnen muss jeweils das Element aus der Koeffizientenmatrix mit der entsprechenden Funktion multipliziert und aufaddiert werden.
 
