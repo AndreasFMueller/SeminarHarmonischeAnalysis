@@ -318,15 +318,19 @@ Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldst�
 Angenommen eine elektromagentische Welle breitet sich nun in z-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
 Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der x-Richtung, muss die magentische Feldstärke $\vec{H}$ entlang der y-Richtung verlaufen.
 Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung~\ref{opt:equation:wave}, als
-\begin{align}
+\begin{equation}
 \vec{E}(z,t)
-&=
+=
 E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}
-\\
+\label{opt:equation:wave_electric_field}
+\end{equation}
+und
+\begin{equation}
 \vec{H}(z,t)
-&=
+=
 H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}
-\end{align}
+\label{opt:equation:wave_magnetic_field}
+\end{equation}
 geschrieben werden.
 Eingesetzt in Gleichung~\ref{opt:equation:poynting} kann der Ausdruck als
 \begin{align}
@@ -395,15 +399,84 @@ I
 \end{align}
 Dieser Ausdruck hängt jedoch noch von der magentischen Feldstärke $H_0$ ab.
 Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
-Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung am Rand der Fläche $A$ gegeben durch
+Die dritte Maxwellsche Gleichung, das Inudktionsgesetz, lässt sich in Integralform als
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
 =
-E_y(x+\delta x,t) \cdot a - E_y(x,t) \cdot a
-.
+-\frac{\partial}{\partial t} \int_{A} \vec{B} \cdot\, d\vec{s}
+\label{opt:equation:maxwell_3}
 \end{equation}
-Nur Anteile des elektrischen Feldes in y-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
-
+schreiben.
+$B$ beschreibt dabei die magnetische Flussdichte, welche mit Hilfe der magnetischen Feldkonstante $\mu$ als $B = \mu H$ ausgedrückt werden kann.
+Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung $u$ am Rand der Fläche $A$ gegeben durch
+\begin{equation}
+u
+=
+\oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
+=
+E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
+.
+\label{opt:equation:induced_voltage}
+\end{equation}
+Nur Anteile des elektrischen Feldes in x-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
+Zusätzlich muss der magentische Fluss $\Phi$ durch dieselbe Fläche $A$ bestimmt werden.
+Dieser ergibt sich zu
+\begin{equation}
+\Phi
+=
+\int_{A} \vec{B} \cdot\, d\vec{s}
+=
+B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \Delta z
+.
+\label{opt:equation:magnetic_flux}
+\end{equation}
+Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magentischen Flussdichte in y-Richtung ins Gewicht.
+Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ genau in der Mitte der Fläche $A$ liegt.
+Die beiden erhaltenen Gleichungen~\ref{opt:equation:induced_voltage} und \ref{opt:equation:magnetic_flux} können nun in Gleichung~\ref{opt:equation:maxwell_3} eingesetzt werden.
+Woraus sich
+\begin{align}
+u
+&=
+-\frac{\partial\Phi}{\partial t}
+\\
+E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
+&=
+-\frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \Delta z
+\\
+\frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
+&=
+-\frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
+\end{align}
+ergibt.
+Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichung der Limes angewandt werden, woraus
+\begin{align}
+\lim_{\Delta z \to 0} \frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
+&=
+-\lim_{\Delta z \to 0} \frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
+\\
+\frac{\partial E_x(z,t)}{\partial z}
+&=
+-\frac{\partial B_y(z,t)}{\partial t}
+\label{opt:equation:differential_induction}
+\end{align}
+resultiert.
+Durch Einsetzen der Gleichungen~\ref{opt:equation:wave_electric_field} und \ref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
+\begin{align}
+-k \cdot E_0 \cdot e^{j(\omega t-k z)}
+&=
+-\mu \omega \cdot H_0 \cdot e^{j(\omega t-k z)}
+\\
+k \cdot E_0
+&=
+-\mu \omega \cdot H_0
+\\
+\frac{E_0}{H_0}
+&=
+\frac{\mu \omega}{k}
+=
+\mu c
+.
+\end{align}
 \opttodo{Weiterschreiben}
 
 \subsection{Beispiel einzelner Spalt}
