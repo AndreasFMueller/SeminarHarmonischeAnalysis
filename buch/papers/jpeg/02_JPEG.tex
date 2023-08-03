@@ -10,7 +10,7 @@
 \label{jpeg:section:kompjpeg}}
 \rhead{JPEG Kompression}
 Um Bilder mit der DCT transformieren zu können, ist eine Vorverarbeitung nötig. 
-in der Vorverarbeitung wird die Farbraumumrechnung um eine bessere Kompression zu erreichen.
+Diese beinhaltet die Farbraumumrechnung um eine bessere Kompression zu erreichen.
 Zudem wird das ganze Bild in \(8\times8\) Pixelblöcke unterteilt, da die zweidimensionale DCT damit arbeitet.
 
 \subsection{Farbraumumrechnung
@@ -18,7 +18,7 @@ Zudem wird das ganze Bild in \(8\times8\) Pixelblöcke unterteilt, da die zweidi
 Ein weit verbreiteter Farbmodell ist das Rot-Grün-Blau-Modell (RGB), dabei wird eine Pixelfarbe mit einem Rot-, Grün- und Blauwert additive erzeugt.
 
 Beim JPEG-Standart wechselt man die Basis, in der die Farben dargestellt werden und benutzt statt RGB das YCbCr-Modell.
-In diesem Modell werden die Helligkeit (Luminaz Y), sowie die Farbigkeit (Chrominanz).
+In diesem Modell sind die Komponenten die Helligkeit (Luminaz Y), sowie die Farbigkeit (Chrominanz).
 \(C_b\) von Grau in Richtung Blau/Gelb und \(C_r\) von Grau nach Rot/Türkis.
 
 Die Transformation wird gemacht, weil unsere Augen Empfindlicher sind auf Helligkeitsunterschiede, als auf Farbunterschiede.
@@ -194,22 +194,23 @@ Je stärker quantisiert wurde desto mehr nullen sind am Ende, was für eine Lauf
 \begin{figure}
     \centering
     \includegraphics[width=75mm]{papers/jpeg/pictures/zigzag.pdf}
-    \caption{Zig-Zag abtastung der Koeffizienten
+    \caption{Zig-Zag Abtastung der Koeffizienten
         \label{jpeg:fig:zigzag}}
 \end{figure}
 
 Zudem wird der DC-Wert noch mit dem Block links davon jeweils differenziell kodiert, damit man weiss wie die einzeln transformierten und quantisierten Blöcke zusammenhängen.
 Wobei der erste Block mit dem dazugehörigen DC-Wert anfängt.
+Dazu kommt noch, dass durch die Differenzbildung der kodierte Wert kleiner wird und man damit weniger Bits benötigt.
 
-Aus dem Beispielausschnitt aus Tabelle \ref{jpeg:tab:quantblock} wird vom DC-Wert 69 der Wert des vorherigen Blocks (71) abgezogen das sind in diesem Beispiel \(69-76 = -7\).
+Aus dem Beispielausschnitt in Tabelle \ref{jpeg:tab:quantblock} wird vom DC-Wert 69 der Wert des vorherigen Blocks (71) abgezogen das sind in diesem Beispiel \(69-76 = -7\).
 
 \subsection{Entropiekodierung
 \label{jpeg:subsection:entropiekodierung}}
-Der DC- und die AC-Werte werden einzel behandelt.
-Der differenzkodierte Gleichanteil wird direkt mit einem Huffmantree kodiert und um Daten zu sparen werden die AC-Werte zuerst run-lengthen coding (RLC) und danach mit einem weiteren Huffmantree kodiert in Abb. \ref{jpeg:fig:huffman} sind die Bäume dargestellt.
+Der DC- und die AC-Werte werden einzeln behandelt.
+Der differenzkodierte Gleichanteil wird direkt mit einem Huffmantree kodiert und um Daten zu sparen werden die AC-Werte zuerst run lengthen coding (RLC) und danach mit einem weiteren Huffmantree kodiert in Abb. \ref{jpeg:fig:huffman} sind die Bäume dargestellt.
 Der JPEG-Standard gibt auch hier keinen Huffmantree vor, dieser muss also auch im File header hinterlegt werden.
 
-Die RLC der Wechselanteile erfolgt in einer Klammer Sortierung, der erste in der Klammer gibt an wievile AC-Werte davor Null sind und der zweite Anzahl zum kodieren.
+Die RLC der Wechselanteile erfolgt in einer Klammer Sortierung, der erste gibt an wie viele AC-Werte davor Null sind und der zweite die Anzahl  Bits für die Kodierung.
 Darauf folgt der AC-Wert selbst also 
 \begin{equation}
     [(0,3)5],[(0,2)-2], \dots, [(2,1)-1], EOB.
@@ -227,7 +228,7 @@ Die Klammer (0,3) hat aus dem Baum den Wert 100 und die 5 als binären Wert 101,
     1000'0010'0101'0101'0000'0000'0001'1110'0011'1000'1010    
 \end{equation}
 diesen Bitstream.
-Die ersten 6 Bits sind aus dem DC-Wert der rest aus dem AC teil.
+Die ersten 6 Bits sind aus dem DC-Wert der Rest aus dem AC teil.
 
 Der Bitstream besteht aus 44 Bits, hätte man die Werte aus Tabelle \ref{jpeg:tab:quantblock} genommen bräuchte man \(8\times8\times8=512\) Bits, aus 8x8 Einträgen mit jeweils 8 Bit lange, was dem 11-fachen entspricht.
  
