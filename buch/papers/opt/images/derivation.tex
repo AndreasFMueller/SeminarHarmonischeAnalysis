@@ -5,9 +5,8 @@
 %
 
 \documentclass[tikz]{standalone}
-% \usepackage{amsmath}
-% \usepackage{txfonts}
-% \usepackage{pgfplots}
+\usepackage{times}
+\usepackage{txfonts}
 
 % \pgfplotsset{compat=1.16}
 \def\skala{1}
@@ -39,7 +38,7 @@
     \draw[line width=2, black] (YA)--(0, 2.6);
     \draw[line width=2, black] (YB)--(0, -1.5);
 
-    \node[label={45:{P($x_p$,$y_p$)}}, circle, fill, inner sep=1pt] at (P) {};
+    \node[label={45:{$P(x_p,y_p)$}}, circle, fill, inner sep=1pt] at (P) {};
 
     \draw[optBlue, dashed] (E) -- (6,1);
     \draw[optBlue, <->] (P) -- (6,1) node[midway, right]{$y_p - y$};
