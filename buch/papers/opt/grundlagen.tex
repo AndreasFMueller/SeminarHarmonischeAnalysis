@@ -54,7 +54,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
     \label{opt:fig:maxwell}
 \end{figure}
 
-Betrachten wir zuerst, wie in Abbildung~\ref{opt:fig:maxwell} gezeigt, eine unendlich, dünne linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
+Betrachten wir zuerst, wie in Abbildung \ref{opt:fig:maxwell} gezeigt, eine unendlich, dünne linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagnetische Quelle handeln.
 Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
@@ -103,7 +103,7 @@ wobei der konstante Anteil als $\theta$ zusammengefasst wurde.
     \label{opt:fig:geometricalShape}
 \end{figure}
 
-Angenommen eine planare elektromagnetische Welle, siehe Abbildung~\ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
+Angenommen eine planare elektromagnetische Welle, siehe Abbildung \ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
 Ganz allgemein lässt sich jede Welle als
 \begin{equation}
 \zeta(x, t)
@@ -129,7 +129,7 @@ l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
 \label{opt:equation:distance_r}
 \end{equation}
 beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich (wie bereits erwähnt) zur gesamten elektrischen Feldstärke am Auswertungspunkt.
-Ein solcher Einfluss lässt sich nun mittels der Gleichungen~\ref{opt:equation:E} und \ref{opt:equation:wave} als
+Ein solcher Einfluss lässt sich nun mittels der Gleichungen \eqref{opt:equation:E} und \eqref{opt:equation:wave} als
 \begin{equation}
 dE
 =
@@ -166,12 +166,12 @@ E(y_p, t)
 \label{opt:equation:integral_general}
 \end{align}
 Dieses Integral ist für jeden Auswertungspunkt allgemein gültig.
-Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung~\ref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
+Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung \eqref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
 \subsection{Fresnel-Approximation}
 \label{opt:sec:fresnel}
-In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \ref{opt:equation:integral_general} für kleine Winkel approximiert.
+In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \eqref{opt:equation:integral_general} für kleine Winkel approximiert.
 Für weitere Schritte soll die Bedingung
 \begin{equation}
 y, y_p
@@ -187,8 +187,8 @@ Durch Anwenden der Binominalexpansion
 1 + n\varepsilon
 ,
 \end{equation}
-unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung~\ref{opt:equation:distance_r} noch weiter zu vereinfachen.
-Mit Hilfe der Vorbedingungen aus Gleichung~\ref{opt:equation:condition_fresnel} ist
+unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung \eqref{opt:equation:distance_r} noch weiter zu vereinfachen.
+Mit Hilfe der Vorbedingungen aus Gleichung \eqref{opt:equation:condition_fresnel} ist
 \begin{equation}
 (y_p-y)^2
 \ll
@@ -205,7 +205,7 @@ Somit kann die Bedingung für
 \label{opt:equation:condition_epsilon}
 \end{equation}
 eingehalten werden.
-Gleichung~\ref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
+Gleichung \eqref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
 \begin{equation}
 r
 =
@@ -217,7 +217,7 @@ l - \frac{(y_p-y)^2}{2l}
 .
 \label{opt:equation:distance_r_fresnel}
 \end{equation}
-Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
+Durch Ausklammern von Konstanten und Einsetzen der Gleichung \eqref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung \eqref{opt:equation:integral_general} weiter zu
 \begin{align}
 E(y_p, t)
 &=
@@ -256,7 +256,7 @@ Das hiermit erhaltene Integral wird auch als das Fresnel Beugungsintegral bezeic
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
-Die Fresnel-Approximation aus \ref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
+Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Sei nun
@@ -267,7 +267,7 @@ y_p
 \ll
 l
 \end{equation}
-gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung~\ref{opt:equation:integral_fresnel} weiter approximiert werden.
+gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung \eqref{opt:equation:integral_fresnel} weiter approximiert werden.
 Unter Berücksichtigung dieser Bedingung ist $y^2 \ll 2y_py$, wodurch der Term $y^2$ vernachlässigt werden kann.
 Daraus folgt
 \begin{align}
@@ -287,10 +287,10 @@ Das somit entstandene Integral entspricht gerade der Fourier-Transformation der 
 
 \subsection{Intensität}
 \label{opt:sec:intensity}
-Die in \ref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
+Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
-Woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+Woraus sich aus Gleichung \eqref{opt:equation:integral_fraunhofer}
 \begin{align}
 I(y_p)
 &=
@@ -314,7 +314,7 @@ hergeleitet werden.
 Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldstärke.
 Angenommen eine elektromagnetische Welle breitet sich nun in $z$-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
 Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung, muss die magnetische Feldstärke $\vec{H}$ entlang der $y$-Richtung verlaufen.
-Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung~\ref{opt:equation:wave}, als
+Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung \eqref{opt:equation:wave}, als
 \begin{equation}
 \vec{E}(z,t)
 =
@@ -329,7 +329,7 @@ H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}
 \label{opt:equation:wave_magnetic_field}
 \end{equation}
 geschrieben werden.
-Eingesetzt in Gleichung~\ref{opt:equation:poynting} kann der Ausdruck als
+Eingesetzt in Gleichung \eqref{opt:equation:poynting} kann der Ausdruck als
 \begin{align}
 \vec{S}
 &=
@@ -395,7 +395,7 @@ I
 .
 \end{align}
 Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
-Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
+Um ihn entsprechend auf Gleichung \eqref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
 Die dritte Maxwellsche Gleichung, das Inudktionsgesetz, lässt sich in Integralform als
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
@@ -429,7 +429,7 @@ B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \Delta z
 \end{equation}
 Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magnetischen Flussdichte in $y$-Richtung ins Gewicht.
 Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ genau in der Mitte der Fläche $A$ liegt.
-Die beiden erhaltenen Gleichungen~\ref{opt:equation:induced_voltage} und \ref{opt:equation:magnetic_flux} können nun in Gleichung~\ref{opt:equation:maxwell_3} eingesetzt werden.
+Die beiden erhaltenen Gleichungen \eqref{opt:equation:induced_voltage} und \eqref{opt:equation:magnetic_flux} können nun in Gleichung \eqref{opt:equation:maxwell_3} eingesetzt werden.
 Woraus sich
 \begin{align}
 u
@@ -457,7 +457,7 @@ Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichu
 \label{opt:equation:differential_induction}
 \end{align}
 resultiert.
-Durch Einsetzen der Gleichungen~\ref{opt:equation:wave_electric_field} und \ref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
+Durch Einsetzen der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
 \begin{align}
 -k \cdot E_0 \cdot e^{j(\omega t-k z)}
 &=
@@ -498,7 +498,7 @@ und der Definition der $\sinc$ Funktion
 \begin{equation}
 \sinc(x) = \frac{\sin(x)}{x}
 \end{equation}
-vereinfacht sich Gleichung~\ref{opt:equation:integral_intensity} demnach zu
+vereinfacht sich Gleichung \eqref{opt:equation:integral_intensity} demnach zu
 \begin{align}
 I(y_p)
 &=
