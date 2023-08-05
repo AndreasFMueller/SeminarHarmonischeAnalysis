@@ -54,7 +54,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
     \label{opt:fig:maxwell}
 \end{figure}
 
-Betrachten wir zuerst, wie in Abbildung \ref{opt:fig:maxwell} gezeigt, eine unendlich, dünne linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
+Betrachten wir zuerst, wie in Abbildung \ref{opt:fig:maxwell} gezeigt, eine linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagnetische Quelle handeln.
 Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \begin{equation}
@@ -89,11 +89,11 @@ E(r)
 =
 \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
 =
-\theta \cdot \frac{1}{r}
+\vartheta \cdot \frac{1}{r}
 ,
 \label{opt:equation:E}
 \end{equation}
-wobei der konstante Anteil als $\theta$ zusammengefasst wurde.
+wobei der konstante Anteil als $\vartheta$ zusammengefasst wurde.
 
 \begin{figure}
     \centering
@@ -135,16 +135,16 @@ dE
 =
 E(r) \cdot \zeta(r, t) \cdot dy
 =
-\frac{\theta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+\frac{\vartheta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
 \end{equation}
 beschreiben.
 Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
 \begin{equation}
 E(y_p, t)
 =
-\int_{y_b}^{y_b+b}\frac{\theta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
+\int_{y_b}^{y_b+b}\frac{\vartheta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
 =
-\theta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\vartheta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
 \end{equation}
 
@@ -161,7 +161,7 @@ Somit folgt als allgemeinste Form
 \begin{align}
 E(y_p, t)
 =
-\theta\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\vartheta\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
 \label{opt:equation:integral_general}
 \end{align}
@@ -221,16 +221,16 @@ Durch Ausklammern von Konstanten und Einsetzen der Gleichung \eqref{opt:equation
 \begin{align}
 E(y_p, t)
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
 \\
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
 \\
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
 \end{align}
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
@@ -242,13 +242,13 @@ Mittels $t = 0$ ergibt sich daraus
 \begin{align}
 E(y_p, t = 0)
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
@@ -273,13 +273,13 @@ Daraus folgt
 \begin{align}
 E(y_p)
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
@@ -297,10 +297,10 @@ I(y_p)
 \kappa \cdot |E(y_p)|^2
 \\
 &=
-\kappa \cdot \left(\frac{\theta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \left(\frac{\vartheta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \label{opt:equation:integral_intensity}
 \end{align}
 ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
@@ -502,24 +502,24 @@ vereinfacht sich Gleichung \eqref{opt:equation:integral_intensity} demnach zu
 \begin{align}
 I(y_p)
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
 \end{align}
