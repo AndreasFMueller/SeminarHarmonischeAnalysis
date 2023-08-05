@@ -156,14 +156,40 @@ ist nur eines von Vielen.
 
 Wie im vorherigen Abschnitt aufgezeigt, sind die Frequenzauflösung und 
 Leck-Frequenzen abhängig von der Fensterfunktion.
-Das Rechteckfenster hat den schmalsten Hauptpeak und ist darum bezüglich 
-der Frequenzauflösung optimal. TODO Wieso
 Durch die abrupten Sprünge im rechteckfenster sind die Leck-Frequenzen 
 über ein weites Frequenzband sehr prominent.
 Um dies zu verbessern wäre os besser eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung zu gehen. 
 
+Eine bekannte Funktion, welche solche Eigenschaften Aufweist ist die Gaussche Glockenkurve
+\begin{equation}
+    f(x) = e^{\frac{x^2}{\alpha}}
+\end{equation}
+wobei $\alpha$ ein frei Wählbarer Parameter ist, welcher die Breite der Glocke 
+bestimmt.
+Die Gausssche Glocke hat ausserdem die Eigenschaft, dass ihr Frequenzspektrum 
+auch eine Gausssche Glocke ist, welche nur einen Peak hat.
+%Durch das Zuschneiden auf die gewünschte Fensterlänge kommen jedoch wieder Leck-Frequenzen
+%dazu.
+In Abbildung \ref{sonogramm:gausstime} sind zwei Gauss-Fenster mit unterschiedlichen 
+$\alpha$ Abgebildet.
+Da ein Fenster einer STFT eine definierte Länge hat, müssen wir die Gausschen-Glocken 
+zuschneiden. 
+Somit wird es wieder Leck-Frequenzen geben, die aber je nach $\alpha$ viel kleiner sind
+als beim Rechteck-Fenster, wie in Abbildung \ref{sonogramm:gaussfreq} zu sehen ist.
+
+Ausserdem sehen wir, dass die Hauptpeaks der Gauss-Fenster breiter sind als der 
+Hauptpeak des Rechteck-Fensters.
+Allgemein gilt das Rechteck-Fenster als optimal bezüglich der Frequenzauflösung
+TODO Wieso
+Wir bezahlen also die Minimierung der Leck-Frequenzen mit einer kleineren Frequenzauflösung. 
+
+Das Gauss-Fenster ist eine von vielen Fensterfunktionen. 
+Eine 'beste' Fensterfunktion gibt es nicht, denn jede hat ihre Vor- und Nachteile, welche
+je nach Anwendung anders gewichtet werden.
+Für interessierte Leser bietet Cite https://de.wikipedia.org/wiki/Fensterfunktion eine 
+gute Übersicht anderer Fensterfunktionen.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_time.pdf}
