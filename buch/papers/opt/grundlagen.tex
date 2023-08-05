@@ -57,15 +57,15 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 Betrachten wir zuerst, wie in Abbildung \ref{opt:fig:maxwell} gezeigt, eine linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
 Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagnetische Quelle handeln.
 Somit kann durch Anwenden der ersten Maxwellschen Gleichung
-\begin{equation}
+\begin{equation*}
 \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
 =
 \int_{V}\rho\, dV
-\end{equation}
+\end{equation*}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit vom radialen Abstand $r$ berechnet werden.
 Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
 Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r\, d\varphi\, dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
-\begin{align}
+\begin{align*}
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi\, dl
 &=
 Q
@@ -77,7 +77,7 @@ Q
 2\pi ra\varepsilon E
 &=
 Q
-\end{align}
+\end{align*}
 schreiben.
 Die durch die Deckflächen entstehenden Randeffekte des elektrischen Feldes können aufgrund der infiniten Länge $a$ des Zylinders vernachlässigt werden.
 Des Weiteren beschreibt $Q$ die durch den Zylindermantel eingeschlossene Ladung.
@@ -91,7 +91,7 @@ E(r)
 =
 \vartheta \cdot \frac{1}{r}
 ,
-\label{opt:equation:E}
+\label{opt:equation:electric_field}
 \end{equation}
 wobei der konstante Anteil als $\vartheta$ zusammengefasst wurde.
 
@@ -129,31 +129,31 @@ l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
 \label{opt:equation:distance_r}
 \end{equation}
 beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich (wie bereits erwähnt) zur gesamten elektrischen Feldstärke am Auswertungspunkt.
-Ein solcher Einfluss lässt sich nun mittels der Gleichungen \eqref{opt:equation:E} und \eqref{opt:equation:wave} als
-\begin{equation}
+Ein solcher Einfluss lässt sich nun mittels der Gleichungen \eqref{opt:equation:electric_field} und \eqref{opt:equation:wave} als
+\begin{equation*}
 dE
 =
 E(r) \cdot \zeta(r, t) \cdot dy
 =
 \frac{\vartheta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
-\end{equation}
+\end{equation*}
 beschreiben.
 Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
-\begin{equation}
+\begin{equation*}
 E(y_p, t)
 =
 \int_{y_b}^{y_b+b}\frac{\vartheta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
 =
 \vartheta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
-\end{equation}
+\end{equation*}
 
 Soll nun aber anstelle eines einzelnen Spalts mehrere davon in beliebigen Abständen zueinander betrachtet werden, kann dieses Integral mit Hilfe der Blendenfunktion
-\begin{equation}
+\begin{equation*}
 f(y)
 \in
 [0, 1]
-\end{equation}
+\end{equation*}
 dargestellt werden.
 Zu beachten ist, dass $f(y)$ nicht nur die Werte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
 Dies würde einer teilweise transparenten Blende entsprechen.
@@ -181,29 +181,28 @@ l
 \end{equation}
 gelten.
 Durch Anwenden der Binominalexpansion
-\begin{equation}
+\begin{equation*}
 (1 + \varepsilon)^n
 \approx
 1 + n\varepsilon
 ,
-\end{equation}
+\end{equation*}
 unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung \eqref{opt:equation:distance_r} noch weiter zu vereinfachen.
 Mit Hilfe der Vorbedingungen aus Gleichung \eqref{opt:equation:condition_fresnel} ist
-\begin{equation}
+\begin{equation*}
 (y_p-y)^2
 \ll
 l^2
-\end{equation}
+\end{equation*}
 gegeben.
 Somit kann die Bedingung für
-\begin{equation}
+\begin{equation*}
 \varepsilon
 =
 \frac{(y_p-y)^2}{l^2}
 \ll
 1
-\label{opt:equation:condition_epsilon}
-\end{equation}
+\end{equation*}
 eingehalten werden.
 Gleichung \eqref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
 \begin{equation}
@@ -218,7 +217,7 @@ l - \frac{(y_p-y)^2}{2l}
 \label{opt:equation:distance_r_fresnel}
 \end{equation}
 Durch Ausklammern von Konstanten und Einsetzen der Gleichung \eqref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung \eqref{opt:equation:integral_general} weiter zu
-\begin{align}
+\begin{align*}
 E(y_p, t)
 &=
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
@@ -232,7 +231,7 @@ E(y_p, t)
 &=
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
-\end{align}
+\end{align*}
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
 Des Weiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
 Zulässig ist dies nur, weil $(y_p - y)^2 \ll l$ erfüllt ist.
@@ -243,9 +242,11 @@ Mittels $t = 0$ ergibt sich daraus
 E(y_p, t = 0)
 &=
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
+\notag
 \\
 &=
 \frac{\vartheta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
+\notag
 \\
 &=
 \frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
@@ -260,13 +261,13 @@ Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann weiter 
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Sei nun
-\begin{equation}
+\begin{equation*}
 y
 \ll
 y_p
 \ll
 l
-\end{equation}
+\end{equation*}
 gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung \eqref{opt:equation:integral_fresnel} weiter approximiert werden.
 Unter Berücksichtigung dieser Bedingung ist $y^2 \ll 2y_py$, wodurch der Term $y^2$ vernachlässigt werden kann.
 Daraus folgt
@@ -274,9 +275,11 @@ Daraus folgt
 E(y_p)
 &=
 \frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+\notag
 \\
 &=
 \frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+\notag
 \\
 &=
 \frac{\vartheta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
@@ -295,9 +298,11 @@ Woraus sich aus Gleichung \eqref{opt:equation:integral_fraunhofer}
 I(y_p)
 &=
 \kappa \cdot |E(y_p)|^2
+\notag
 \\
 &=
 \kappa \cdot \left(\frac{\vartheta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\notag
 \\
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
@@ -330,7 +335,7 @@ H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}
 \end{equation}
 geschrieben werden.
 Eingesetzt in Gleichung \eqref{opt:equation:poynting} kann der Ausdruck als
-\begin{align}
+\begin{align*}
 \vec{S}
 &=
 \left(E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}\right) \times \left(H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}\right)
@@ -340,29 +345,29 @@ E_0 H_0 \cdot e^{2j(\omega t-k z)} \cdot \vec{z}
 \\
 &=
 E_0 H_0 \cdot \left(\cos{(2(\omega t-kz))}+j\sin{(2(\omega t-kz))}\right) \vec{z}
-\end{align}
+\end{align*}
 vereinfacht werden.
 Da das zweite Moment des Real- oder Imaginärteils des Poynting Vectors gerade der gesuchten Intensität $I$ entspricht, kann dieser als 
-\begin{align}
+\begin{align*}
 I
 &=
-E(\Re\{S\}^2)
+E(\Re^2(S))
 =
-E(\Im\{S\}^2)
+E(\Im^2(S))
 \\
 &=
-\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re\{S\}^2 \,dt
+\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re^2(S) \,dt
 \\
 &=
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\cos\left({2(\omega t-kz)}\right)^2 \,dt
 \\
 &=
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\frac{\cos(4(\omega t-kz)) + 1}{2} \,dt
-\end{align}
+\end{align*}
 geschrieben werden.
 Soll nur über die Zeit gemittelt werden, ist die Position $z$ nicht von belang und kann deshalb auf $z=0$ gesetzt werden.
 Beispielsweise kann exakt über eine Periode integriert werden, was in Integrationsgrenzen von $t_0=0$ und
-\begin{align}
+\begin{align*}
 4\omega t_1
 &=
 2\pi
@@ -370,10 +375,10 @@ Beispielsweise kann exakt über eine Periode integriert werden, was in Integrati
 t_1
 &=
 \frac{\pi}{2\omega}
-\end{align}
+\end{align*}
 resultiert.
 Mit den eingesetzten Grenzen ergibt sich daraus
-\begin{align}
+\begin{align*}
 I
 &=
 \frac{1}{\frac{\pi}{2\omega} - 0} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\frac{\cos(4(\omega t-k\cdot0)) + 1}{2} \,dt
@@ -393,7 +398,7 @@ I
 &=
 \frac{1}{2} \cdot E_0 H_0
 .
-\end{align}
+\end{align*}
 Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
 Um ihn entsprechend auf Gleichung \eqref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
 Die dritte Maxwellsche Gleichung, das Inudktionsgesetz, lässt sich in Integralform als
@@ -431,7 +436,7 @@ Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magnetischen Fluss
 Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ genau in der Mitte der Fläche $A$ liegt.
 Die beiden erhaltenen Gleichungen \eqref{opt:equation:induced_voltage} und \eqref{opt:equation:magnetic_flux} können nun in Gleichung \eqref{opt:equation:maxwell_3} eingesetzt werden.
 Woraus sich
-\begin{align}
+\begin{align*}
 u
 &=
 -\frac{\partial\Phi}{\partial t}
@@ -443,10 +448,10 @@ E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
 \frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
 &=
 -\frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
-\end{align}
+\end{align*}
 ergibt.
 Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichung der Limes angewandt werden, woraus
-\begin{align}
+\begin{align*}
 \lim_{\Delta z \to 0} \frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
 &=
 -\lim_{\Delta z \to 0} \frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
@@ -454,11 +459,10 @@ Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichu
 \frac{\partial E_x(z,t)}{\partial z}
 &=
 -\frac{\partial B_y(z,t)}{\partial t}
-\label{opt:equation:differential_induction}
-\end{align}
+\end{align*}
 resultiert.
-Durch Einsetzen der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
-\begin{align}
+Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
+\begin{align*}
 -k \cdot E_0 \cdot e^{j(\omega t-k z)}
 &=
 -\mu \omega \cdot H_0 \cdot e^{j(\omega t-k z)}
@@ -473,33 +477,31 @@ k \cdot E_0
 =
 \mu c
 .
-\end{align}
+\end{align*}
 \opttodo{Weiterschreiben}
 
 \subsection{Beispiel einzelner Spalt}
 Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breite $b$ durchexerziert.
 In diesem Fall beträgt die Blendenfunktion
-\begin{equation}
+\begin{equation*}
 f(y)
 =
-\left.
 \begin{cases}
 1 & \text{für } -\frac{b}{2} \leq x \leq \frac{b}{2} \\
 0 & \text{sonst}
 \end{cases}
-\right\}
 .
-\end{equation}
+\end{equation*}
 Mit Hilfe der Eulerschen Identität des Sinus
-\begin{equation}
+\begin{equation*}
 \sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
-\end{equation}
+\end{equation*}
 und der Definition der $\sinc$ Funktion
-\begin{equation}
+\begin{equation*}
 \sinc(x) = \frac{\sin(x)}{x}
-\end{equation}
+\end{equation*}
 vereinfacht sich Gleichung \eqref{opt:equation:integral_intensity} demnach zu
-\begin{align}
+\begin{align*}
 I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
@@ -522,4 +524,4 @@ I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
-\end{align}
+\end{align*}
