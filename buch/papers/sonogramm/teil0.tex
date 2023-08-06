@@ -6,10 +6,10 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Short Time Fourier Trasform STFT\label{sonogramm:section:teil0}}
+\section{Short Time Fourier Transform STFT\label{sonogramm:section:teil0}}
 \rhead{Teil 0}
-Mit der Short-Time Fourier Transform kann man einen Teil der fehlenden zeitlichen Informartionen zurükhohlen.
-Die Idee ist die Fouriertransfromation nicht auf das ganze Signal anzuwenden, sondern dieses zuerst in kleinere
+Mit der Short-Time Fourier Transform kann man einen Teil der fehlenden zeitlichen Informationen zurückholen.
+Die Idee ist die Fouriertransformation nicht auf das ganze Signal anzuwenden, sondern dieses zuerst in kleinere
 Abschnitte zu unterteilen, und diese dann zu transformieren.
 
 Um das Signal zu unterteilen werden sogenannte Fensterfunktionen $w(t)$ verwendet, mit welchen das Signal
@@ -42,8 +42,6 @@ Verschieben wir $w_r(t)$ in der Zeit können wir mit
 \end{equation}
 ein beliebiges Zeitfenster von $x(t)$ extrahieren.
 
-TODO Grafik
-
 So lässt ich nun die Fouriertransformation von einem M langen Abschnit
 von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
@@ -68,18 +66,16 @@ der Fouriertransformation wir die diskrete Fouriertransformation DFT
     X[k, m] = \sum_{n = m}^{m + L - 1} x[n] w_r[n-m] e^{ -i \omega_k n}.
 \end{equation}
 
-\subsection{Spektrogramm}
+\subsection{Spektogramm}
 
-Das Spektrogramm, oder bei akkustischen Signalen auch Sonogramm genannt, ist eine visuelle
+Das Spektrogramm, oder bei akustischen Signalen auch Sonogramm genannt, ist eine visuelle
 Darstellung der STFTs eines Signals. 
 Dabei werden die Magnituden der einzelnen STFTs chronologisch
 als Spalten eines Bildes dargestellt.
 Dabei gehen Phaseninformationen verloren, was eine genaue Rekonstruktion
 des Signales aus dem Spektrogramm verunmöglicht.
 
-TODO Kleines Beispiel mit Grafik
-
-Ein schönes Bespiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
+Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
 Signals.
 Bei der Frequenzmodulierung ist die momentane Frequenz des Trägersignales 
 \begin{equation}
@@ -87,8 +83,8 @@ Bei der Frequenzmodulierung ist die momentane Frequenz des Trägersignales
 \end{equation}
 abhängig von der Amplitude des Nachrichtensignales $m(t)$.
 TODO Cite Kneubühler
-Diese änderung der momentanen Frequenz lässt sich mit einem Spektrogramm gut Abbilden, 
-wie in Abbildung \ref{sonogramm:fmsono} dargestell ist.
+Diese Änderung der momentanen Frequenz lässt sich mit einem Spektrogramm gut Abbilden, 
+wie in Abbildung \ref{sonogramm:fmsono} dargestellt ist.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/fm_sono_windows.pdf}
@@ -96,4 +92,3 @@ wie in Abbildung \ref{sonogramm:fmsono} dargestell ist.
     \label{sonogramm:fmsono}
     }
 \end{figure}
-TODO Abbildung
