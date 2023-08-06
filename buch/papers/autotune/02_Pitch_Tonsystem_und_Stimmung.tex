@@ -1,0 +1,96 @@
+%
+% 02_Pitch_Tonsystem_und_Stimmung.tex
+%
+% (c) 2023 Florian Baumgartner, OST Ostschweizer Fachhochschule
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Tonsystem und Stimmung
+\label{autotune:section:tonsystemUndStimmung}}
+\rhead{Tonsystem und Stimmung}
+In der westlichen Musik wird das Tonsystem in 12 (Halb)-Töne pro Oktave unterteilt (chromatische Skala).
+Dabei gibt es verschiedene Möglichkeiten wie diese zueinander gestimmt werden, also wie sich die Anordnung der Töne unterscheiden.
+
+Als Kammerton, auch Normalstimmton genannt, wird der Ton bezeichnet auf den sich alle Instrumente einstellen.
+International hat sich der Kammerton A4 mit einer Frequenz von 440\;Hz durchgesetzt.
+Jedoch gibt Länder welche andere Frequenzen verwenden, so ist in der Schweiz der Kammerton A4 mit 442\;Hz üblich.
+Im Rahmen dieser Arbeit wird der Kammerton A4 definiert als 
+\begin{equation}
+    f_{A4}
+    =
+    440\;\text{Hz}.
+\end{equation}
+
+\subsection{Gleichstufige Stimmung
+\label{autotune:subsection:gleichstuffigeStimmung}}
+Die gleichstufige Stimmung ist das meist verbreitetet Stimmungssystem in der westlichen Musik, insbesondere bei Tasteninstrumenten.
+Es ist ein System, bei dem die Oktave in zwölf Halbtöne aufgeteilt ist,
+wobei das Frequenzverhältnis zwischen jedem Paar aufeinanderfolgender Töne gleich ist.
+Dieses Verhältnis ist die zwölfte Wurzel aus zwei ($\approx 1.05946$) und berechnet sich als
+
+\begin{equation}
+    f_n
+    =
+    \sqrt[12]{2^n} \cdot f_{A4}
+    \quad | \quad
+    n \in \mathbb{Z}.
+\end{equation}
+
+Der Vorteil der gleichstufigen Stimmung ist, dass sie in allen Tonarten gleich funktioniert, was bedeutet,
+dass ein Musikstück in jede Tonart transponiert werden kann, ohne dass sich die harmonischen Beziehungen zwischen den Tönen ändern.
+Ein Nachteil ist jedoch, dass die Intervalle (ausser Oktaven) nicht völlig rein sind, das heisst,
+sie weichen leicht von den einfachen ganzzahligen Frequenzverhältnissen ab, die in der reinen Stimmung verwendet werden.
+
+\subsection{Reine Stimmung
+\label{autotune:subsection:reineStimmung}}
+Die reine Stimmung, auch bekannt als natürliche oder harmonische Stimmung, ist ein System,
+das auf den natürlichen Harmonischen basiert, die in den Schwingungsmustern physikalischer Objekte wie Saiten oder Luftsäulen gefunden werden.
+In diesem System werden die Frequenzen der Noten so gewählt, dass sie einfache ganzzahlige Verhältnisse zueinander haben.
+Zum Beispiel beträgt das Verhältnis der Frequenzen zweier Töne in einer reinen Quinte 3:2, und in einer reinen Quarte 4:3.
+Dies führt zu besonders harmonisch klingenden Intervallen ohne stark bemerkbare Schwebungen.
+Allerdings bringt die reine Stimmung einige Probleme mit sich.
+Während sie innerhalb einer einzelnen Tonart sehr gut funktioniert, führt sie zu Unstimmigkeiten,
+wenn man versucht, zwischen verschiedenen Tonarten zu wechseln.
+Deshalb ist die reine Stimmung in der Praxis eher auf Streich- und Blasinstrumente beschränkt,
+bei denen die Musiker die Intonation von Noten anpassen können.
+
+In der Tabelle \ref{autotune:table:stimmung} werden die Frequenzen der Töne mit reiner Stimmung verglichen mit der gleichstufigen Stimmung.
+
+\begin{table}[htb]
+    \begin{tabular}{ccrlrlll}\toprule
+    \begin{tabular}[c]{@{}c@{}}$Tonname$\\ $(gleich)$\end{tabular}   & \begin{tabular}[c]{@{}c@{}}$Tonname$\\ $(rein)$\end{tabular}   & $f_{gleich}$                    & $(Hz)$             & $f_{rein}$                    & $(Hz)$                 & $\Delta{f}\;(Hz)$ & $Abweichung$  \\\midrule
+    a                                                                & a                                                              & $\sqrt[12]{2^{ 0}}\cdot f_{A4}$ & $=\textbf{440.00}$ & $\sfrac{1}{1}  \cdot f_{A4}$  & $=\textbf{440.00}$     & $0.00$            & $ 0.00\;\%$   \\
+    ais/b                                                            & b                                                              & $\sqrt[12]{2^{ 1}}\cdot f_{A4}$ & $\approx 469.16$   & $\sfrac{16}{15}\cdot f_{A4}$  & $= 469.\overline{33}$  & $3.17$            & $11.73\;\%$   \\
+    h                                                                & h                                                              & $\sqrt[12]{2^{ 2}}\cdot f_{A4}$ & $\approx 493.88$   & $\sfrac{9}{8}  \cdot f_{A4}$  & $= 495.00$             & $1.12$            & $ 1.96\;\%$   \\
+    c                                                                & c                                                              & $\sqrt[12]{2^{ 3}}\cdot f_{A4}$ & $\approx 523.25$   & $\sfrac{6}{5}  \cdot f_{A4}$  & $= 528.00$             & $4.75$            & $ 5.21\;\%$   \\
+    cis/des                                                          & des                                                            & $\sqrt[12]{2^{ 4}}\cdot f_{A4}$ & $\approx 554.37$   & $\sfrac{5}{4}  \cdot f_{A4}$  & $= 550.60$             & $4.37$            & $ 3.42\;\%$   \\
+    d                                                                & d                                                              & $\sqrt[12]{2^{ 5}}\cdot f_{A4}$ & $\approx 587.33$   & $\sfrac{4}{3}  \cdot f_{A4}$  & $= 586.\overline{66}$  & $0.66$            & $ 0.39\;\%$   \\
+    dis/es                                                           & es                                                             & $\sqrt[12]{2^{ 6}}\cdot f_{A4}$ & $\approx 622.25$   & $\sfrac{45}{32}\cdot f_{A4}$  & $= 618.75$             & $3.50$            & $ 1.63\;\%$   \\
+    e                                                                & e                                                              & $\sqrt[12]{2^{ 7}}\cdot f_{A4}$ & $\approx 659.26$   & $\sfrac{3}{2}  \cdot f_{A4}$  & $= 660.00$             & $0.74$            & $ 0.28\;\%$   \\
+    f                                                                & f                                                              & $\sqrt[12]{2^{ 8}}\cdot f_{A4}$ & $\approx 698.46$   & $\sfrac{8}{5}  \cdot f_{A4}$  & $= 704.00$             & $5.54$            & $ 1.71\;\%$   \\
+    fis/ges                                                          & fis                                                            & $\sqrt[12]{2^{ 9}}\cdot f_{A4}$ & $\approx 739.99$   & $\sfrac{5}{3}  \cdot f_{A4}$  & $= 733.\overline{33}$  & $6.66$            & $ 1.74\;\%$   \\
+    g                                                                & g                                                              & $\sqrt[12]{2^{10}}\cdot f_{A4}$ & $\approx 783.99$   & $\sfrac{9}{5}  \cdot f_{A4}$  & $= 792.00$             & $8.01$            & $ 1.76\;\%$   \\
+    gis/as                                                           & as                                                             & $\sqrt[12]{2^{12}}\cdot f_{A4}$ & $\approx 830.61$   & $\sfrac{15}{8} \cdot f_{A4}$  & $= 825.00$             & $5.61$            & $ 1.07\;\%$   \\
+    a                                                                & a                                                              & $\sqrt[12]{2^{12}}\cdot f_{A4}$ & $=880.00$          & $\sfrac{2}{1}  \cdot f_{A4}$  & $= 880.00$             & $0.00$            & $ 0.00\;\%$   \\\bottomrule
+    \end{tabular}
+    \caption{Vergleich von Frequenzen der Töne mit reiner und gleichstufiger Stimmung.}
+    \label{autotune:table:stimmung}
+\end{table}
+
+Es zeigt sich, dass teilweise grosse Abweichungen zwischen den Tönen der reiner und gleichstufiger Stimmung bestehen.
+In der gleichstufigen Stimmung kommt es beim Spielen von Kadenzen (z.B. Akkorden) zu Schwebungen.
+Dies kann gut anhand eines Beispiels, der c-g Quinte, gezeigt werden. Die Schwebung berechnet sich als
+
+\begin{equation}
+    \frac{f_{G4}}{f_{C4}}
+    =
+    \frac{2^{\frac{10}{12}}\cdot f_{A4}}{2^{\frac{3}{12}}\cdot f_{A4}}
+    =
+    2^{\frac{7}{12}}
+    \approx
+    1.4983\;.
+\end{equation}
+
+% TODO: Wie gross ist die Schwebung in Hz?
+
