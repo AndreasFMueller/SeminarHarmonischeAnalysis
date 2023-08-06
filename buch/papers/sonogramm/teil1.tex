@@ -98,7 +98,9 @@ bestimmt werden.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/twohamrrect.pdf}
-    \caption{TODO
+    \caption{Frequenzspektrum des Signals $\sin(3.45 2\pi x) + 0.3  \cos(5.7  2\pi x$).
+    Durch die Leck-Frequenzen kann bei einer kurzen Messzeit die Frequenz des Kosinus 
+    nicht richtig bestimmt werden.
     \label{sonogramm:leakageDemo2}
     }
 \end{figure}
@@ -106,49 +108,13 @@ bestimmt werden.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/twoharmphasediff.pdf}
-    \caption{TODO
+    \caption{Frequenzspektrum eines Zweitonsignals mit $\Delta f = 1$ Hz.
+    Je nach phasenunterschied der beiden Sinusse, lassen sich die Frequenzen unterschiedlich
+    genau bestimmen.
     \label{sonogramm:freqdiffdemo}
     }
 \end{figure}
 
-% \begin{figure}
-%     \centering
-%     \subfigure[Rechtecksfenster mit $L_w = 20$ und T = 1 Sekunde. \label{sonogramm:recttime}]
-%       {\includegraphics[width=.45\linewidth]{papers/sonogramm/images/rect_time.pdf}}
-%     \qquad
-%     \subfigure[Frequenzspektrum des Rechtecksfenster von Abbildung \ref{sonogramm:recttime}
-%          mit einer Abtastfrequenz von 20 Hz. \label{sonogramm:rectfreq}]
-%       {\includegraphics[
-%         width=.45\linewidth
-%         % scale = 1.2,
-%         % trim = 0 40 0 0, clip,
-%       ]{papers/sonogramm/images/rect_freq.pdf}}
-%     \caption{
-%         Frequenzanalyse eines Rechteckfensters. In (b)
-%         sieht man die Nulldurchgänge bei vielfachen von $1/T$.
-%     }
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \begin{subfigure}
-%         \centering
-%         \includegraphics[width=1\linewidth]{papers/sonogramm/images/rect_time.pdf}
-%         \caption{Rechtecksfenster mit $L_w = 20$ und T = 1 Sekunde.}
-%         \label{sonogramm:recttime}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}
-%         \centering
-%         \includegraphics[width=1\linewidth]{papers/sonogramm/images/rect_freq.pdf}
-%         \caption{Frequenzspektrum des Rechtecksfenster von Abbildung \ref{sonogramm:recttime}
-%         mit einer Abtastfrequenz von 20 Hz.}
-%         \label{sonogramm:rectfreq}
-%     \end{subfigure}
-%     \label{fig:three graphs}
-%        \caption{Frequenzanalyse eines Rechteckfensters. In Abbildung \ref*{sonogramm:rectfreq}
-%        sieht man die Nulldurchgänge bei vielfachen von $1/T$.}
-
-% \end{figure}
 \subsection{Andere Fensterfunktionen}
 Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
 Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
@@ -162,19 +128,34 @@ Um dies zu verbessern wäre os besser eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung zu gehen. 
 
-Eine bekannte Funktion, welche solche Eigenschaften Aufweist ist die Gaussche Glockenkurve
+Eine bekannte Funktion, welche solche Eigenschaften Aufweist ist die Gausssche Glockenkurve
 \begin{equation}
-    f(x) = e^{\frac{x^2}{\alpha}}
+    f(x) = e^{-\frac{x^2}{\alpha}}
 \end{equation}
 wobei $\alpha$ ein frei Wählbarer Parameter ist, welcher die Breite der Glocke 
 bestimmt.
-Die Gausssche Glocke hat ausserdem die Eigenschaft, dass ihr Frequenzspektrum 
-auch eine Gausssche Glocke ist, welche nur einen Peak hat.
-%Durch das Zuschneiden auf die gewünschte Fensterlänge kommen jedoch wieder Leck-Frequenzen
-%dazu.
+Damit wir sehen, wie sich ein Gauss-Fenster auf das Signal auswirkt, brauchen wir
+die Fouriertransformation einer Gaussschen Glocke.
+Diese berechnet sich mit 
+\begin{align}
+    W_g(f) &= \int_{-\infty}^{\infty} e^{-\frac{x^2}{\alpha}} e^{- 2 \pi i f x} dx\\
+    &= \int_{-\infty}^{\infty} e^{-\frac{x^2}{\alpha}} \cos(2 \pi f x) dx -
+    i \int_{-\infty}^{\infty} e^{-\frac{x^2}{\alpha}} \sin(2 \pi f x) dx .
+\end{align}
+Das zweite Integral ist 0, da wir eine Ungerade Funktion von $-\infty$ bis $\infty$ integrieren.
+Die Lösung des ersten Integrals lässt sich mit der Integral Tabelle in TODO Cite Bronstein finden und ist mit
+\begin{equation}
+    W_g(f) = \int_{-\infty}^{\infty} e^{-\frac{x^2}{\alpha}} \cos(2 \pi f x) dx =
+    \frac{\sqrt[2]{\alpha \pi}}{2} e^{-\alpha \pi^2 f^2}
+\end{equation}
+wieder eine Gausssche Glocke, bei welcher der Parameter $\alpha$ invertiert vorkommt.
+Das bedeutet, dass eine in der Zeit schmale Gausssche Glocke ein breites Frequenzspektrum hat und umgekehrt eine
+breite Gausssche Glocke in der Zeit ein schmales Frequenzspektrum hat.
+Das Deckt sich mit unseren Beobachtung bezüglich der Frequenzauflösung un der Länge eines Fensters.
+
 In Abbildung \ref{sonogramm:gausstime} sind zwei Gauss-Fenster mit unterschiedlichen 
 $\alpha$ Abgebildet.
-Da ein Fenster einer STFT eine definierte Länge hat, müssen wir die Gausschen-Glocken 
+Da ein Fenster einer STFT eine definierte Länge hat, müssen wir die Gaussschen Glocken 
 zuschneiden. 
 Somit wird es wieder Leck-Frequenzen geben, die aber je nach $\alpha$ viel kleiner sind
 als beim Rechteck-Fenster, wie in Abbildung \ref{sonogramm:gaussfreq} zu sehen ist.
@@ -193,7 +174,7 @@ gute Übersicht anderer Fensterfunktionen.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_time.pdf}
-    \caption{Gauss mit $L_w = 20$.
+    \caption{Gauss Fenster mit $L_w = 20$ mit unterschiedlichen $\alpha$.
     \label{sonogramm:gausstime}
     }
 \end{figure}
@@ -201,8 +182,9 @@ gute Übersicht anderer Fensterfunktionen.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_freq.pdf}
-    \caption{Frequenzspektrum des Rechtecksfenster von Abbildung \ref{sonogramm:recttime}
-    mit einer Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
+    \caption{Frequenzspektrum der Gauss Fenster von Abbildung \ref{sonogramm:gausstime}
+    mit einer Abtastfrequenz von 20 Hz. Zum Vergleich ist in schwarz das Spektrum eines Rechteck Fenster 
+    von der selben Länge.
     von $1/T$.
     \label{sonogramm:gaussfreq}
     }
