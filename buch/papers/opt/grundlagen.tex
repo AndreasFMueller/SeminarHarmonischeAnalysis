@@ -27,10 +27,10 @@ Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Well
 Im Folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
 
 Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären. 
-Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Welle.
-Diese lässt sich als Superposition von unendlichen Elementarwellen betrachten.
-An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront.
-Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront.
+Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Wellenfront.
+Diese lässt sich als Superposition von unendlichen Elementarwellen (Teilabbildung a) betrachten.
+An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront (Teilabbildung b).
+Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront (Teilabbildung c).
 Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
 
 Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
@@ -39,7 +39,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \begin{figure}
     \centering
     \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
-    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
+    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlich vieler Elementarwellen aufgefasst werden.
     Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
     \label{opt:fig:huygens}
 \end{figure}
@@ -49,7 +49,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \begin{figure}
     \centering
     \includegraphics[width=57.34mm]{papers/opt/images/maxwell.pdf}
-    \caption{In grau entlang der z-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
+    \caption{In grau entlang der $z$-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
     Das elektrische Feld $\vec{E}$ breitet sich immer radial und rechtwinklig zur Lichtquelle aus.}
     \label{opt:fig:maxwell}
 \end{figure}
@@ -112,7 +112,7 @@ Ganz allgemein lässt sich jede Welle als
 \label{opt:equation:wave}
 \end{equation}
 ausdrücken.
-Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebogen.
+Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
@@ -253,7 +253,7 @@ E(y_p, t = 0)
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fresnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
+Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
@@ -309,7 +309,7 @@ I(y_p)
 \label{opt:equation:integral_intensity}
 \end{align}
 ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
-Dieser kann Mittels des Poynting Vectors
+Dieser kann mittels des Poynting Vectors
 \begin{equation}
 \vec{S} = \vec{E} \times \vec{H}
 \label{opt:equation:poynting}
@@ -401,7 +401,7 @@ I
 \end{align*}
 Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
 Um ihn entsprechend auf Gleichung \eqref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
-Die dritte Maxwellsche Gleichung, das Inudktionsgesetz, lässt sich in Integralform als
+Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralform als
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
 =
@@ -428,7 +428,7 @@ Dieser ergibt sich zu
 =
 \int_{A} \vec{B} \cdot\, d\vec{s}
 =
-B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \Delta z
+B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
 .
 \label{opt:equation:magnetic_flux}
 \end{equation}
@@ -481,6 +481,7 @@ k \cdot E_0
 \opttodo{Weiterschreiben}
 
 \subsection{Beispiel einzelner Spalt}
+\label{opt:sec:exampleSingleSlit}
 Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breite $b$ durchexerziert.
 In diesem Fall beträgt die Blendenfunktion
 \begin{equation*}

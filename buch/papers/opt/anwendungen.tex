@@ -6,9 +6,13 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Anwendungen
-  \label{opt:section:anwendungen}}
+\section{Anwendungen}
+\label{opt:section:anwendungen}
 \rhead{Praktische Anwendungen}
+
+Nach den Grundlagen und den durchgeführten Versuchen wird in diesem Abschnitt auf die tatsächlichen Anwendungsgebiete eingegangen.
+Es werden drei verschiedene Bereiche erläutert, in denen die Beugung und die optische Fourier-Transformation zur Anwendung kommen.
+Das Spektrum reicht dabei von der Mustererkennung über neuronale Netze bis hin zu Artefakten auf Weltraumbildern.
 
 \subsection{Mustererkennung}
 Die schnelle Erstellung einer Fouriertransformation kann für die Erkennung von vordefinierten Mustern verwendet werden.
@@ -26,9 +30,9 @@ Dies entspricht einer Frequenz im Bereich von 1 GHz, mit welcher Muster erkennt 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{papers/opt/images/pattern_YT.png}
-    \label{opt:fig:patternYT}
     \caption{Frequenzspektrum der verschiedenen Muster. 
     Mittels einer Maskierung und einer Helligkeitsmessung kann das entsprechende Muster detektiert werden.}
+    \label{opt:fig:patternYT}
 \end{figure}
 
 \subsection{Diffractive deep neural network}
@@ -40,6 +44,8 @@ Dies entspricht im Ansatz den verschiedenen Verknüpften Neutronen eines neurona
 Nach den Beugungsebenen wird das Licht durch mehrere Detektoren erkannt.
 Xing et al. konnten damit erfolgreich handschriftliche Zahlen detektieren.
 Mittels fünf aufeinanderfolgenden Ebenen und zehn Detektoren gelang es ihnen, mehr als 90\% der Schriften korrekt zuzuordnen.
+Dieser Wert ist relativ schlecht im Vergleich zu konventionellen Methoden der Mustererkennung.
+Für die erreichte Erkennungsgeschwindigkeit ist dies jedoch trotzdem sehr beachtlich.
 
 \begin{figure}
     \centering
