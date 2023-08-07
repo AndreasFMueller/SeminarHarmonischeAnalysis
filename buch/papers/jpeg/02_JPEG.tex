@@ -198,7 +198,7 @@ Um den Fehler so gering wie möglich zu halten und trotzdem eine gute Datenreduk
 
 \subsection{Umsortierung und Differenzkodierung
 \label{jpeg:subsection:umsortierung}}
-Die 64 Koeffizienten des Pixelblocks werden nach der Quantisierung im Zig-Zag Muster abgetastet wie in Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
+Die 64 Koeffizienten des Pixelblocks \ref{jpeg:tab:quantblock} werden nach der Quantisierung im Zig-Zag Muster abgetastet wie in Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
 \begin{equation}
     69, 5, -2, -1, -1, -1, 1, 0, 0, -1, 0, 0, -1, 0, 0,\dots, 0.
     \label{jpeg:equation:abgetastet}
@@ -218,7 +218,7 @@ Je stärker quantisiert wurde, desto mehr Nullen sind am Ende, was für eine Lau
 
 Der DC-Wert und die AC-Werte werden getrennt behandelt.
 Der Grund dafür liegt darin, dass Bilder oft grössere, fast gleichfarbige Flächen besitzen.
-Dadurch haben benachbarte Blöcke ähnliche Gleichanteile (der Mittelwert eines Blocks), die differenziell kodiert werden.
+Dadurch haben benachbarte Blöcke ähnliche Gleichanteile, die differenziell kodiert werden.
 
 Das bedeutet, man betrachtet nicht jeden DC-Wert einzeln, sondern die Differenzen zwischen den Blöcken.
 Die Differenzkodierung beginnt mit dem zweiten Block des Bildes.
