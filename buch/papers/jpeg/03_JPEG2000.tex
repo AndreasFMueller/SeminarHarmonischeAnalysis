@@ -9,63 +9,30 @@
 \section{JPEG-2000 
 \label{jpeg:section:jpeg2000}}
 \rhead{JPEG-2000}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+JPEG-2000 ist die Weiterentwicklung des JPEG-Standards.
+Der JPEG-Standard konnte sich schnell verbreiten, weil er lizenzfrei zur Verfügung steht und eine entsprechend effiziente Software bereitgestellt wurde.
+Wie Abschnitt \ref{jpeg:subsection:probleme} angedeutet hatte die JPEG Kompression eine Grenze.
+Diese sollte mit der Weiterentwicklung behoben werden. 
+JPEG kann Bilder verlustlos und verlustbehaftet Komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+JPEG-2000 bietet einige Vorteile gegenüber dem älteren JPEG-Standard.
+Um ein paar zu nennen, es stehen bis zu 38 Bits pro Farbkanal zur Verfügung (HDR Bilder komprimierbar), Bilder die grösser als 64000x64000 Pixel komprimierbar, höhere Fehlerresilienz, auf verschiedenen Farbmodelle anwendbar (RGB, CMYK, YCbCr und weitere), Raum für Metadaten und zusätzlicher Alphakanal für die Transparenz.
 
 
-\subsection{De finibus bonorum et malorum
-\label{jpeg:subsection:dfsadf}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Dies führte zur Anforderungsliste an JPEG-2000:
+\begin{itemize}
+    \item JPEG-2000 soll bei höherer Kompressionsrate eine bessere Bildqualität haben als JPEG.
+    \item Verlustfreie und verlustbehaftete Kompression soll mit demselben Algorithmus funktionieren.
+    \item Progressive Übertragung ermöglicht, dass Bilder mit zunehmender Qualität geladen werden.
+\end{itemize}
+Zusätzlich erhielt JPEG-2000 neue Funktionen:
+\begin{itemize}
+    \item Region of interest(ROI): ermöglicht es Anwender Bildbereiche mit verschiedenen stark zu komprimieren.
+    \item Der Aufbau des Datenstroms ermöglicht das leichtere erkennen von Übertragungsfehler.
+    \item Bilder dekodieren, ohne das gesamte Bild zwischenspeichern zu müssen (Sequentieller Bildaufbau).
+\end{itemize}
+Der JPEG-2000-Standard ist in 13 Unterstandards aufgegliedert, in diverse Ergänzungen und Erweiterungen für unterschiedliche Anwendungsgebiete. 
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Anwendungsgebiet
+\label{jpeg:subsection:anwendungsgebiet}}
+JPEG-2000 konnte sich noch nicht 

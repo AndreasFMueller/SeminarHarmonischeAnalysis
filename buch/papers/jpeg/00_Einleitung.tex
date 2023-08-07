@@ -20,9 +20,9 @@ Verlustloses Komprimieren gelingt, indem man einen Kodieralgorithmus auf die Dat
 
 Es gibt inzwischen einige Methoden um Bilder zu komprimieren, in diesem Kapitel soll es um die beiden Algorithmen von der Joint Photographic Experts Group (JPEG) gehen.
 
-Bilder werden zuerst mit einer Vorverarbeitung auf die Transformation vorbereitet, das sind Farb\-raum transformationen und Einteilung in kleinere Bereiche.
+Bilder werden zuerst mit einer Vorverarbeitung auf die Transformation vorbereitet, das sind Farb\-raumtransformationen und Einteilung in kleinere Bereiche, dieser Schritt heisst Tiling.
 Anschliessend wird die Basistransformation durchgeführt und die Koeffizienten mit einer Tabelle quantisiert und ganzzahlig gerundet.
-Die aus der Quantisierung entstandenen Werte werden Entropiekodiert, meisten wird das Prinzip von Huffman verwendet.
+Die aus der Quantisierung entstandenen Werte werden entropiekodiert, meisten wird das Prinzip von Huffman verwendet.
 Die verwendete Methode wird im File abgelegt.
 Zudem werden die Tabellen der unterschiedlichen Quantisierungen und Kodierungen mit abgespeichert, was in Abb. \ref{jpeg:fig:kompressionsschema} dargestellt wird.
 Für die Dekompression werden diese Schritte rückwärts angewandt, wobei die verloren gegangenen Daten bei der Quantisierung nicht wieder hergestellt werden können. 

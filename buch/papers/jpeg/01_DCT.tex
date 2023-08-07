@@ -31,6 +31,10 @@ Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (D
 \label{jpeg:equation:dct2}
 \end{equation}
 benötigt wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
+
+Bei der Formel \eqref{jpeg:equation:dct2} fällt gegenüber der Formel für die DFT auf, dass die Frequenz halbiert und die Funktion um \(\frac{1}{2}\) verschoben wurde.
+Man könnte die Funktion beliebig strecken und verschieben damit das Kriterium der Basisfunktion erfüllt ist.
+Hier wird die Halbierung und Verschiebung um \(\frac{1}{2}\) gewählt damit die DCT auch orthogonal ist.
 Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinustransformation (DCT-III oder inverse DCT):
 \begin{equation}
     a_n
@@ -44,7 +48,7 @@ Um von der transformierten Form in die ursprüngliche zu gelangen braucht man di
     \label{jpeg:equation:dct3}
 \end{equation}
 Dabei lässt sich mit diesen Formeln nur die eindimensionale Transformation durchführen.
-Bei Bilden handelt es sich aber um zweidimensionale Signale.
+Bei Bildern handelt es sich aber um zweidimensionale Signale.
 
 \subsection{Zweidimensionale Kosinus Transformation
 \label{jpeg:subsection:dctdim2}}
@@ -103,12 +107,12 @@ beschreiben.
         \label{jpeg:fig:dctkoeff}}
 \end{figure}
 
-Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimension jeweils Acht Koeffizienten.
+Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimen\-sion jeweils acht Koeffizienten.
 Jedes Feld entspricht einer Basisfunktion.
 Oben rechts ist der DC Anteil und in horizontaler Richtung sind die Frequenzanteile aufsteigend.
 Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
-Aus jedem Pixelblock des Ursprungsbildes wird mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
-Die Koeffizienten geben an wie stark die entsprechende Basisfunktion gewichtet ist. 
+Aus jedem Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
+Die Koeffizienten geben an, wie stark die entsprechende Basisfunktion gewichtet ist. 
 
 
 
