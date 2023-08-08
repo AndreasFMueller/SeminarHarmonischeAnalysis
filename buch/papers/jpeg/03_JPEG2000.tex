@@ -11,12 +11,9 @@
 \rhead{JPEG-2000}
 JPEG-2000 ist die Weiterentwicklung des JPEG-Standards.
 Der JPEG-Standard konnte sich schnell verbreiten, weil er lizenzfrei zur Verfügung steht und eine entsprechend effiziente Software bereitgestellt wurde.
-Wie Abschnitt \ref{jpeg:subsection:probleme} angedeutet hatte die JPEG Kompression eine Grenze.
+Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet hat die JPEG Kompression seine Grenzen.
 Diese sollte mit der Weiterentwicklung behoben werden. 
-JPEG kann Bilder verlustlos und verlustbehaftet Komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
-
-JPEG-2000 bietet einige Vorteile gegenüber dem älteren JPEG-Standard.
-Um ein paar zu nennen, es stehen bis zu 38 Bits pro Farbkanal zur Verfügung (HDR Bilder komprimierbar), Bilder die grösser als 64000x64000 Pixel komprimierbar, höhere Fehlerresilienz, auf verschiedenen Farbmodelle anwendbar (RGB, CMYK, YCbCr und weitere), Raum für Metadaten und zusätzlicher Alphakanal für die Transparenz.
+JPEG konnte schon Bilder verlustlos und verlustbehaftet Komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
 
 
 Dies führte zur Anforderungsliste an JPEG-2000:
@@ -33,6 +30,38 @@ Zusätzlich erhielt JPEG-2000 neue Funktionen:
 \end{itemize}
 Der JPEG-2000-Standard ist in 13 Unterstandards aufgegliedert, in diverse Ergänzungen und Erweiterungen für unterschiedliche Anwendungsgebiete. 
 
+
 \subsection{Anwendungsgebiet
 \label{jpeg:subsection:anwendungsgebiet}}
-JPEG-2000 konnte sich noch nicht 
+JPEG-2000 konnte sich noch nicht richtig durchsetzten, da es sehr rechenintensiv ist und einige Algorithmen geschützt sind.
+Zudem wird es nur in wenigen kommerziellen Programmen unterstützt.
+Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
+\begin{itemize}
+    \item In der Medizinaltechnik, Speicherung der Röntgenbilder, CT- und MRI-Scans.
+    Festgelegt durch die Digital Imaging and Communications in Medicine (DICOM).
+    Dort kann man z.B. nur den Teil des Bildes übertragen, der von Interesse ist um Übertragungszeiten zu verringern.
+    \item Die Digital Cinema Initiative (DCI) nutzt das Motion-JPEG, ein teil von JPEG-2000, um Kinofilme digital zu Speichern und den Kinos zur Verfügung zu stellen.
+    \item Speicherung von Passbildern.
+    \item Das Bundesarchiv legt Bilder in TIFF und JPEG-2000 ab.
+    \item Live HDTV wird mit JPEG-2000 komprimierten Bildern übertragen.
+    \item Die Raumfahrt übermittelt die Bilder der Marsrover in einem JPEG-2000 verwandten Format.
+    \item Satelliten-Technik für zivilen und militärischen nutzen.   
+\end{itemize}
+
+
+\subsection{Prinzip
+\label{jpeg:subsection:prinzip}}
+Die JPEG-2000 Komprimierung funktioniert ähnlich wir der ältere Standard JPEG.
+Bilder werden zunächst einer Vorverarbeitung unterzogen, das ist das Aufteilen in Bildbereiche von höherem Interesse (ROIs).
+Die Farbraum Umrechnung ist nicht zwingen, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
+Die vorbereiteten Bilder werden nun mit der 2D-Wavelttransformation umgewandelt.
+JPEG-2000 verwendet die Cohen-Daubechies-Feauveau-Wavelets (CDF), 5/3 bei verlustfreier und 9/7 bei verlustbehafteter Kompression.
+Darauf folgt die Entropiekodierung, was die komprimierten Daten liefert. 
+
+\subsection{Verbesserungen gegenüber JPEG
+\label{jpeg:subsection:verbesserungen}}
+JPEG-2000 bietet einige Vorteile gegenüber dem älteren JPEG-Standard.
+Die Farbtiefe wurde erhöht, es stehen nun bis zu 38 Bits pro Farbkanal zur Verfügung für z.B. HDR Bilder.
+Es können grössere Bilder komprimiert werden als bei JPEG.
+Es wurde zusätzlich Raum für die Metadaten geschaffen und einen Alphakanal für die Transparenz.
+ 
