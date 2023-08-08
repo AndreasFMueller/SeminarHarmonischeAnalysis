@@ -42,6 +42,23 @@ Formal kann dies folgendermaßen notiert werden,
 
 wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".
 
+\begin{align*}
+		b = 
+	\begin{pmatrix}
+		b_{1} \\
+		...\\
+		b_{m}\\ 
+	\end{pmatrix}
+	, \quad
+	B = 
+	\begin{pmatrix}
+		B_{11} & ... & B_{1m} \\
+		& ... & \\
+		B_{n1} & ... & B_{nm} 
+	\end{pmatrix}
+\end{align*}
+
+
 \subsection{Rauschen als Random Walk und Wiener Prozess
 \label{brown:SDGL:Wiener}}
 
@@ -90,7 +107,7 @@ Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den A
 \label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Die Brownische Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode.
+Die Brownsche Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode.
 
 Die Euler-Maruyama-Methode ist eine numerische Methode zur Simulation von stochastischen Differentialgleichungen (SDE). SDEs sind Differenzialgleichungen, welche den Einfluss von zufälligen Prozessen, wie zum Beispiel Rauschen, auf ein dynamisches System berücksichtigen können. Sie bestehen aus einem deterministischen Anteil, der die zugrundeliegende Dynamik beschreibt, und einem stochastischen Anteil, der einen zufälligen Einfluss in Betracht zieht. Die Methode basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen (ODEs). Die Idee ist, die SDE in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen hinsichtlich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
