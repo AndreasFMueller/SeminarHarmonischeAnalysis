@@ -13,15 +13,13 @@ JPEG-2000 ist die Weiterentwicklung des JPEG-Standards.
 Der JPEG-Standard konnte sich schnell verbreiten, weil er lizenzfrei zur Verfügung steht und eine entsprechend effiziente Software bereitgestellt wurde.
 Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet hat die JPEG Kompression seine Grenzen.
 Diese sollte mit der Weiterentwicklung behoben werden. 
-JPEG konnte schon Bilder verlustlos und verlustbehaftet Komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
+JPEG konnte schon verlustlos und verlustbehaftet Bilder komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
 
-
-Dies führte zur Anforderungsliste an JPEG-2000:
-\begin{itemize}
-    \item JPEG-2000 soll bei höherer Kompressionsrate eine bessere Bildqualität haben als JPEG.
-    \item Verlustfreie und verlustbehaftete Kompression soll mit demselben Algorithmus funktionieren.
-    \item Progressive Übertragung ermöglicht, dass Bilder mit zunehmender Qualität geladen werden.
-\end{itemize}
+Dazu wurden folgende Anforderungen definiert.
+JPEG-2000 sollt bei einer höheren Kompressionsrate eine bessere Bildqualität haben als JPEG.
+Der verlustfreie und verlustbehaftete Modus sollten den gleichen Algorithmus nutzen und man wollte eine Progressive Übertragung.
+Das Bedeutet Bilder werden mit zunehmender Qualität aufgebaut, man sieht zuerst das Grundgerüst und mit der Zeit kommen immer mehr Details hinzu.
+Dazu kommt, dass man nur ein Ausschnitt aus dem Bild fein auflösen kann für schnellere Übertragung.
 Zusätzlich erhielt JPEG-2000 neue Funktionen:
 \begin{itemize}
     \item Region of interest(ROI): ermöglicht es Anwender Bildbereiche mit verschiedenen stark zu komprimieren.
@@ -54,7 +52,7 @@ Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
 Die JPEG-2000 Komprimierung funktioniert ähnlich wir der ältere Standard JPEG.
 Bilder werden zunächst einer Vorverarbeitung unterzogen, das ist das Aufteilen in Bildbereiche von höherem Interesse (ROIs).
 Die Farbraum Umrechnung ist nicht zwingen, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
-Die vorbereiteten Bilder werden nun mit der 2D-Wavelttransformation umgewandelt.
+Die vorbereiteten Bilder werden nun mit der 2D-Wavelet-Transformation umgewandelt.
 JPEG-2000 verwendet die Cohen-Daubechies-Feauveau-Wavelets (CDF), 5/3 bei verlustfreier und 9/7 bei verlustbehafteter Kompression.
 Darauf folgt die Entropiekodierung, was die komprimierten Daten liefert. 
 
@@ -65,3 +63,13 @@ Die Farbtiefe wurde erhöht, es stehen nun bis zu 38 Bits pro Farbkanal zur Verf
 Es können grössere Bilder komprimiert werden als bei JPEG.
 Es wurde zusätzlich Raum für die Metadaten geschaffen und einen Alphakanal für die Transparenz.
  
+Um die Blockartefakte zu vermeiden wird das Bild in gössere Teilbilder unterteilt und nicht in kleine \(8\times8\) Pixelblöcke.
+Da die DCT nicht zurechtkommt mit grösseren Blöcken als \(8\times8\), wurde auf die Wavelet-Transformation (WT) gewechselt.
+Die WT ist in Zweierpotenzen leicht zu skalieren und lässt sich somit auf beliebig grosse Zweierpotenz-Blöcke anwenden.
+
+\subsubsection{Nachteile von JPEG-2000
+\label{jpeg:subsubsection:nachteil}}
+Wie in Abschnitt \ref{jpeg:subsection:anwendungsgebiet} schon geschrieben, ist auch der JPEG-2000-Standard nicht perfekt.
+Er biete sehr viele neue Möglichkeiten, ist dafür aber sehr rechenintensiv und lässt sich nicht besonders gut in Hardware umsetzen.
+Hat keine so weite Verbreitung wie JPEG und ist mit dem älteren Standard inkompatibel.
+Das JPEG-2000 Komitee garantiert nicht mögliche Lizenzansprüche dritter.
