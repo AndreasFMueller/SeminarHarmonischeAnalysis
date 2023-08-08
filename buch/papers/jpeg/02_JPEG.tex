@@ -101,7 +101,7 @@ Auf diesen einzelnen Blöcken wird nun die DCT angewendet.
         149.99 & 149.22 & 148.46 & 147.7\phantom{0}  & 144.74 & 138.07 & 129.47 & 123.85 \\
         160.7\phantom{0}  & 156.66 & 151.9\phantom{0}  & 147.7\phantom{0}  & 143.03 & 138.07 & 132.9\phantom{0}  & 128.61
     \end{tabular}
-    \caption{Beispiel: Originale Luminanzen eines \(8\times8\) Pixelblocks.
+    \caption{Beispiel: Luminanz eines \(8\times8\) Pixelblocks aus einem Bild.
         \label{jpeg:tab:orgblock}}
 \end{table}
 
@@ -204,7 +204,7 @@ Die 64 Koeffizienten des Pixelblocks \ref{jpeg:tab:quantblock} werden nach der Q
     \label{jpeg:equation:abgetastet}
 \end{equation}
 Die linke obere Ecke ist der Gleichanteil (DC-Wert), das ist die mittlere Helligkeit des Blocks.
-Der Rest ist der Wechselanteil (AC-Wert), wenn man dem Zig-Zag folgt, erreicht man den Wert mit der höchsten Frequenz zuletzt.
+Der Rest ist der Wechselanteil (AC-Wert), wenn man dem Zig-Zag folgt, erreicht man die höchste Frequenz zuletzt.
 
 Die Koeffizienten mit hohem Wert (die niedrigen Frequenzen) stehen nun am Anfang und die kleine Koeffizienten weiter hinten.
 Je stärker quantisiert wurde, desto mehr Nullen sind am Ende, was für eine Lauflängenkodierung optimal ist.
@@ -232,7 +232,7 @@ Die Entropiekodierung ist bei der JPEG Kompression das Verfahren, das von David 
 Bei der Entropiekodierung wird eine Zeichenfolge (z.B. aus einem Text) in eine Bitfolge umgewandelt.
 Die Huffman Kodierung zweigt von jedem Knoten nach links 0 und nach rechts 1.
 Um z.B. den Wert 4 zu erhalten, braucht man die Bitfolge 101.
-Um mittels der Kodierung den verschlüsselten Wert zu erhalten, muss man bei jedem Knoten weiter gehen, bis man im Huffmantree ein Ende erreicht (z.B. 1110 entspricht 6 (orange)).
+Um mittels der Kodierung den verschlüsselten Wert zu erhalten, muss man bei jedem Knoten weiter gehen, bis man im Huffmantree ein Ende erreicht (z.B. 1110 entspricht 6 (orange Abb. \ref{jpeg:fig:huffman})).
 
 Der Huffmantree ist im JPEG-Standard nicht vorgegeben und muss deshalb im File header hinterlegt werden.
 Dazu kommt, dass die Binären-Werte aus Tabelle \ref{jpeg:tab:huffman} alternativ kodiert werden können.
@@ -250,7 +250,7 @@ Der differenzkodierte Gleichanteil wird direkt mit einem Huffmantree kodiert.
 In Abb. \ref{jpeg:fig:huffman} sind die Bäume dargestellt.
 
 
-Nun kann man mit Hilfe der Tabelle \ref{jpeg:tab:huffman} und den Bäumen den Bitstream für diesen Pixelblock erstellen.
+Nun kann man mit Hilfe der Tabelle \ref{jpeg:tab:huffman} und den Bäumen, den Bitstream für diesen Pixelblock erstellen.
 Der DC-Wert \(-7\) hat laut Tabelle \ref{jpeg:tab:huffman} die binäre Länge 3.
 Aus dem Baum gemäss Abb. \ref{jpeg:fig:huffman} ergibt sich dafür 100.
 Aus der Tabelle \ref{jpeg:tab:huffman} liest man für den Wert \(-7\) den binären Wert 000.
@@ -259,11 +259,12 @@ Die binäre Länge 100 und der binäre Wert von \(-7\) mit 000 wird zusammen als
 \subsubsection{Wechselanteil
 \label{jpeg:subsubsection:wechselanteil}}
 Um Speicherplatz zu reduzieren, werden die AC-Werte zuerst einer run length coding (RLC) unterzogen.
+Dabei werden nur die Nullen Lauflängen kodiert. 
 Diese verschlüsselt ein Huffmantree anschliessend.
 
 Die RLC der Wechselanteile erfolgt in einer Klammer-Sortierung.
-Der erste Wert gibt an, wie viele AC-Werte vor dem, der kodiert werden soll, gleich Null sind und der zweite Wert in der Klammer die Anzahl der Bits für die Kodierung.
-Darauf folgt der eigentliche AC-Wert selbst also 
+Der erste Wert gibt an, wie viele AC-Werte vor dem, der kodiert werden soll, gleich Null sind und der zweite Wert in der Klammer die Anzahl der benötigten Bits für die Kodierung.
+Darauf folgt der eigentliche AC-Wert selbst also aus \eqref{jpeg:equation:abgetastet} wird:
 \begin{equation}
     [(0,3)5],[(0,2)-2], \dots, [(2,1)-1], EOB.
     \label{jpeg:equation:kette}
