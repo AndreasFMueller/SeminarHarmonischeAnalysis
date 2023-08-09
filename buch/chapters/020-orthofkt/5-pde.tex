@@ -6,3 +6,376 @@
 \section{Partielle Differentialoperatoren
 \label{buch:orthofkt:section:pde}}
 \kopfrechts{Partielle Differentialoperatoren}
+Selbstadjungierte partielle Differentialoperatoren auf einem Gebiet 
+$\Omega$ führen auf natürlich Art und Weise zu einer verallgemeinerten
+Theorie der harmonischen Analysis, die auch zur Lösung der
+partiellen Differentialgleichung verwendet werden kann.
+Die Vorgehensweise wird zunächst in
+Abschnitt~\ref{buch:orthfkt:pde:subsection:pdeharm}
+allgemein skizziert und anschliessend für ein paar interessante
+Gebiete und Differentialoperatoren durchgeführt.
+
+%
+% Partielle Differentialgleichungen udn harmonische Analysis
+%
+\subsection{Partielle Differentialgleichung und harmonische Analysis
+\label{buch:orthfkt:pde:subsection:pdeharm}}
+In diesem Abschnitt soll illustriert werden, wie sich aus Aufgabenstellungen
+aus der Theorie der partiellen Differentialgleichungen 
+
+%
+% Partielle Differentialoperatoren
+%
+\subsubsection{Lineare partielle Differentialoperatoren}
+Ein linearer partieller Differentialoperator ist eine lineare
+Funktion der partiellen Ableitungen einer Funktion, die auf einem
+Gebiet definiert ist.
+
+\begin{definition}
+Ein Gebiet $\Omega$ ist eine offene Teilmenge von $\mathbb{R}^n$.
+Ein partieller Differentialoperator der Ordnung $r$ ist eine Linearkombination
+\[
+L
+=
+\sum_{k_1+\dots+k_n\le r}
+a_{k_1\dots k_n}(x)
+\frac{\partial^{k_1+\dots+k_n}}{\partial x_1^{k_1}\dots\partial x_n^{k_n}}.
+\]
+\end{definition}
+
+\begin{beispiel}
+Der Laplace-Operator auf einem beliebigen Gebiet $\Omega\subset\mathbb{R}^n$
+ist definiert als
+\[
+\Delta
+=
+\frac{\partial^2}{\partial x_1^2}
++
+\dots
++
+\frac{\partial^2}{\partial x_n^2}
+\]
+ist ein partieller Differentialoperator zweiter Ordnung.
+\end{beispiel}
+
+%
+% Skalarprodukt
+%
+\subsubsection{Skalarprodukt}
+Da $\Omega$ eine offene Teilmenge von $\mathbb{R}^n$ ist, lässt sich
+sofort ein Skalarprodukt von Funktionen auf $\Omega$ definieren.
+
+\begin{definition}
+Ist $\Omega\subset \mathbb{R}^n$ ein Gebiet in $\mathbb{R}^n$, dann ist
+\begin{equation}
+\langle u,v\rangle_\Omega
+=
+\int_{\Omega}  \overline{u(x)} v(x)\,dx
+\label{buch:orthofkt:pde:eqn:skalarprodukt}
+\end{equation}
+ein Skalarprodukt für Funktionen auf $\Omega$.
+\end{definition}
+
+Mit einer Gewichtsfunktion $w\colon \Omega \to \mathbb{R}^+$ lässt sich
+das Skalarprodukt noch etwas verallgemeinern, es wird zu
+\[
+\langle u,v\rangle_{\Omega,w}
+=
+\int_{\Omega} \overline{u(x)}v(x)\,w(x)\,dx.
+\]
+Diese Erweiterung ist auch deshalb nötig, weil bei einem Wechsel
+der Koordinaten nach $x_i=x_i(x_1',\dots,x_n')$, das Integral
+\eqref{buch:orthofkt:pde:eqn:skalarprodukt}
+den zusätzlichen Faktor der Funktionaldeterminante 
+\[
+\langle u,v\rangle_{\Omega}
+=
+\int_{\Omega} \overline{u(x)} v(x)\,dx 
+=
+\int_{\Omega'} \overline{u(x')} v(x')
+\det\frac{\partial(x_1,\dots,x_n)}{\partial(x_1',\dots,x_n')}
+\,dx'
+\]
+erhält, wobei $\Omega'$ das Gebiet in $\mathbb{R}^n$ ist, welches
+durch die Koordinatenfunktionen $x_i(x_1',\dots,x_n')$ bijektiv auf
+$\Omega$ abgebildet wird.
+
+
+%
+% Randbedingungen
+%
+\subsubsection{Randbedingungen}
+Wie beim Sturm-Liouville-Problem entsteht ein interessantes 
+erst dadurch, dass zusätzlich Randbedingungen formuliert werden.
+Der Operator $L=d^2/dx^2$ auf dem Intervall $(a,b)\subset\mathbb{R}$
+ist zum Beispiel nur selbstadjungiert, wenn man ihn auf Funktionen
+einschränkt, die gewisse Randbedingungen erfüllen.
+$L$ ist der Sturm-Liouville-Operator von Abschnitt
+\ref{buch:orthofkt:sturmliouville:subsection:operator}
+mit $p(x)=1$ und $q(x)=0$.
+In Abschnitt~\ref{buch:orthofkt:sturmliouville:subsection:operator}
+wurde gezeigt, dass der Operator $L$ nur selbstadjungiert bezüglich
+des $L^2$-Skalarproduktes wird, wenn Randbedinungen der Form
+\begin{equation}
+h_a u(a) + k_a u'(a) =  0
+\qquad\text{und}\qquad
+h_b u(b) + k_a u'(b) =  0
+\end{equation}
+gefordert werden.
+Die Wahl $h_a=h_b=1$ und $k_a=k_b=0$ hat zum Beispiel zur Folge,
+dass die Funktionen die Randwerte $u(a)=u(b)=0$ haben müssen.
+Die Wahl $h_a=h_b=0$ und $k_a=k_b=1$ hat dagegen zur Folge,
+dass die Ableitungen der Funktionen in den Endpunkten $=0$ sein
+müssen.
+Für partielle Differentialoperatoren und die 
+
+\begin{definition}[Dirichlet-Randbedingungen]
+Sei $\Omega\subset\mathbb{R}^n$ ein Gebiet mit Rand $\partial\Omega$
+und $f\colon \partial\Omega\mathbb R$ eine Funktion auf dem Rand.
+Man sagt, eine Funktion $u\colon\overline{\Omega}\to\mathbb{R}$ erfüllt 
+{\em Dirichlet-Randbedingungen}, wenn
+\index{Randbedingung!Dirichlet-}%
+\index{Dirichlet-Randbedingung}%
+\(
+u(x) = f(x)
+\)
+für $x\in \partial\Omega$ ist.
+\end{definition}
+
+Dirichlet-Randbedinungen entsprechen also der Vorgabe von Werten
+oder dem Fall $h_a=h_b=0$ und $k_a=k_b=0$.
+
+\begin{definition}
+Sei $\Omega\in\mathbb{R}^n$ ein Gebiet mit glattem Rand und
+$n(x)$ der Einheitsnormalenvektor im Punkt $x\in\partial\Omega$
+auf dem Rand.
+Die {\em Normalableitung} einer Funktion
+\index{Normalableitung}%
+$u\colon\overline{\Omega}\to \mathbb{R}$ auf dem Rand ist die
+Richtungsableitung
+\[
+\frac{\partial u}{\partial n}
+=
+\frac{d}{dt} u(x+tn(x))\bigg|_{t=0}.
+\]
+Man sagt, die Funktion $u$ erfüllt eine Neumann-Randbedingung, wenn
+\index{Neumann-Randbedingung}%
+\index{Randbedingung!Neumann-}%
+\[
+\frac{\partial u}{\partial n}(x) = g(x)
+\]
+erfüllt ist.
+\end{definition}
+
+Neumann-Randbedingungen entsprechen also der Vorgabe der Ableitungen
+oder dem Fall $h_a=h_b=0$ und $k_a=k_b=0$.
+Die Dirichlet- und Neumann-Randbedingungen können auch in sogenannte
+gemischte Randbedingungen zusammengefasst werden, indem 
+\index{Randbedingung!gemischt}%
+\index{gemischte Randbedingung}%
+\begin{equation}
+h(x) u(x) + k(x) \frac{\partial u}{\partial n}(x) = g(x)
+\label{buch:orthofunkt:pde:eqn:gemischterandbedingung}
+\end{equation}
+für  $x \in\partial \Omega$ für auf dem Rand definierte Funktion
+$h(x)$ und $k(x)$ gefordert wird.
+
+%
+% Homogene und inhomogene Differentialgleichungen und Randbedingungen
+%
+\subsubsection{Homogene und inhomogene Differentialgleichungen und
+Randbedingungen}
+Eine partielle Differentialgleichung ist eine Differentialgleichung
+der Form
+\begin{equation}
+L u = v,
+\label{buch:orthofunkt:pde:eqn:dgl}
+\end{equation}
+wobei $L$ ein Differentialoperator auf dem Gebiet $\Omega$ ist und
+$h$ eine Funktion auf $\Omega$.
+Eine Lösung der partiellen Differentialgleichung ist eine Funktion
+$u\colon\overline{\Omega}\to \mathbb{R}$ derart, dass die Gleichung
+\eqref{buch:orthofunkt:pde:eqn:dgl} in $\Omega$ gilt.
+Ohne zusätzliche Randbedingungen wird die Lösung der Gleichung
+im Allgemeinen nicht eindeutig sein.
+Sind $u_1$ und $u_2$ Lösungen der Differentialgleichung
+\eqref{buch:orthofunkt:pde:eqn:dgl}, dann ist
+\[
+L(u_1-u_2)
+=
+Lu_1-Lu_2
+=
+v-v
+=0,
+\]
+die Differenz $u_1-u_2$ ist also eine Lösung der zugehörigen
+{\em homogenen} Differentialgleichung.
+\index{homogen}%
+Eine Lösung $u_p$ von 
+\eqref{buch:orthofunkt:pde:eqn:dgl} heisst auch eine
+{\em partikuläre Lösung}.
+
+Die beiden Lösungen können sich durch die Werte der Funktionen
+oder der Normalableitungen auf dem Rand unterscheiden.
+Es ist also im allgemeinen nötig, eine Randbedingung vorzugeben.
+Eine partikuläre Lösung $u_p$ erfüllt die Randbedingung möglicherweise
+nicht.
+Eine Lösung $u$, die auch die Randbedingung erfüllt, unterschiedet sich
+von $u_p$ um 
+$\tilde{u} = u-u_p$ und erfüllt die Differentialgleichung
+\[
+L\tilde{u}
+=
+Lu - Lu_p
+=
+f - f
+=
+0
+\]
+und die Randbedingung
+\begin{align}
+h(x)\tilde{u}(x) + k(x)\frac{\partial \tilde{u}}{\partial x} (x)
+&=
+h(x)u(x) + k(x)\frac{\partial u}{\partial n}(x)
+-
+h(x)u_p(x) - k(x)\frac{\partial u_p}{\partial n}(x)
+\notag
+\\
+&=
+g(x)
+-
+h(x)u_p(x) - k(x)\frac{\partial u_p}{\partial n}(x).
+\label{buch:orthofunkt:pde:eqn:utilderand}
+\end{align}
+Um die Lösung $\tilde{u}$ zu finden, reicht es daher, eine Lösung der
+homogenen Differentialgleichung $L\tilde{u}=0$ zu finden, die die
+Randbedingungen \eqref{buch:orthofunkt:pde:eqn:utilderand}
+erfüllt.
+Das Problem ist damit reduziert auf eine homogene Differentialgleichung
+mit möglicherweise inhomogenen Randbedingungen.
+
+Durch Vorgabe einer Randbedingung werden die möglichen Lösungen
+eingeschränkt, es ist aber immer noch möglich, dass die Lösung
+nicht eindeutig ist.
+Seien also $u_1$ und $u_2$ Lösungen der Differentialgleichung mit der 
+Randbedingung~\eqref{buch:orthofunkt:pde:eqn:gemischterandbedingung},
+dann ist die Differenz $u=u_1-u_2$ eine Lösung der homogenen
+Differentialgleichung $Lu=0$ und die Randbedingungen sind
+\[
+h(x) u(x) + k(x) \frac{\partial u}{\partial n}(x)
+=
+h(x) u_1(x) + k(x) \frac{\partial u_1}{\partial n}(x)
+-
+h(x) u_2(x) + k(x) \frac{\partial u_2}{\partial n}(x)
+=
+g(x)-g(x)=0.
+\]
+Die Differenz erfüllt also die homogene Differentialgleichung
+{\em und} zusätzlich homogene Randbedingungen.
+Die Frage nach der Eindeutigkeit der Lösung der partiellen
+Differentialgleichung mit den gegebenen Randbedingungen wird also
+beantwortet von der Lösungsmenge der homogenen Differentialgleichung
+mit homogenen Randbedingungen.
+
+%
+% Harmonische Analysis
+%
+\subsubsection{Harmonische Analysis}
+Die im Fall des Eigenwertproblems für den Sturm-Liouville-Operator
+beschriebene Situation tritt sehr häufig auch bei partiellen
+Differentialgleichungen auf.
+Wir erwarten daher, dass zu einem partiellen Differentialoperator $L$
+auf einem Gebiet $\Omega$ jeweils eine orthogonale Funktionenfamilie
+von Eigenfunktionen  $u_n(x)$ des Operators mit Eigenwerten $\lambda_n$
+gehört, die zur Synthese beliebiger Funktionen auf $\Omega$ verwendet
+werden kann.
+
+Für sogenannte elliptische partielle Differentialoperatoren zweiter
+Ordnung lassen sich dann die Lösungsfunktionen der Gleichungen
+\begin{align*}
+Lu &= \varrho                            &&\text{Poisson-Gleichung}      \\
+\intertext{oder für den Fall, dass $u(t,x)$ zusätzlich von der Zeit abhängt}
+\frac{\partial u}{\partial t}     &= Lu  &&\text{Wärmeleitungsgleichung} \\
+\frac{\partial^2 u}{\partial t^2} &= LU  &&\text{Wellengleichung}
+\end{align*}
+als Reihe 
+geeigneten Randbedingungen lassen sich die Lösungsfunktionen dann in 
+der Form
+\begin{equation}
+u(x)
+=
+\sum_{n=0}^\infty a_n u_n(x)
+\label{buch:orthofkt:eqn:unreihe}
+\end{equation}
+entwickeln, wobei die Koeffizienten $a_n$ 
+im Falle der Wärmeleitungslgeichung und der Wellengleichung
+Funktionen der Zeit sind.
+Eingesetzt in die Differentialgleichung ergeben sich dann für die
+Koeffizienten $a_n$ die Gleichungenn
+\begin{align}
+\lambda_n a_n  &=  b_n      &&\text{Poisson-Gleichung} 
+\notag
+\\
+\dot{a}_n &= \lambda_n a_n  &&\text{Wärmeleitungsgleichung}
+\label{buch:orthfkt:eqn:waermeleitung:ode}
+\\
+\ddot{a}_n &= \lambda_n a_n &&\text{Wellengleichung,}
+\label{buch:orthfkt:eqn:wellen:ode}
+\end{align}
+wobei die $b_n$ die Koeffizienten der Entwicklung von $\varrho$ nach
+den Funktionen $u_n(x)$ ist.
+Im Falle der Wärmeleitungsgleichung wird das Problem also reduziert
+auf die Lösung einer gewöhnlichen Differentialgleichung.
+
+Zusätzlich zu den Randbedingungen auf dem Rand des Gebietes $\Omega$,
+auf dem der Differentialoperator $L$ definiert ist, braucht die
+Wärmeleitungsgleichung auch noch eine Randbedingung der Form
+\[
+u(0,x) = f(x)
+\]
+hinzu, die durch Anwendung der Entwicklung~\eqref{buch:orthofkt:eqn:unreihe}
+zur Anfangsbedinung 
+\[
+a_n(0) = f_n
+\]
+für \eqref{buch:orthfkt:eqn:waermeleitung:ode} wird, wobei $f_n$ die
+Koeffizienten der Entwicklung der Funktion $f(x)$ nach den Eigenfunktionen
+$u_n$ sind.
+Für die Wellengleichung \eqref{buch:orthfkt:eqn:wellen:ode} wird 
+auch noch eine Neumann-Randbedingung der Form
+\[
+\frac{\partial u}{\partial t}(0,x) = g(x)
+\]
+nötig, die zu einer Anfangsbedingung für die Ableitungen
+\[
+\dot{a}_n(0) = g_n
+\]
+für die gewöhnliche Differentialgleichung \eqref{buch:orthfkt:eqn:wellen:ode}
+wird.
+
+Die Bestimmung der Entwicklungskoeffizienten erfolgt jeweils mit Hilfe
+der Skalarprodukte
+\[
+b_n = \langle u_n, \varrho\rangle,
+\qquad
+f_n = \langle u_n, f\rangle,
+\qquad
+g_n = \langle u_n, g\rangle
+\]
+gewonnen ist.
+
+%
+% Fourier-Theorie
+%
+\subsection{Fourier-Theorie}
+
+%
+% Funktionen auf einem Rechteck
+%
+\subsection{Funktionen auf einem Rechteck}
+
+%
+%
+%
+\subsection{Funktionen auf einer Kugeloberfläche}
+
