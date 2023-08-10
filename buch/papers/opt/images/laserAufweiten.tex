@@ -1,0 +1,64 @@
+%
+% laserAufweiten.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\usetikzlibrary{arrows,intersections,math}
+\usetikzlibrary{decorations.markings, calc}
+
+\input{opt_common.tex}
+
+%% Axis (x, textAbove, textBelow)
+\newcommand{\xAxis}[3]{%
+    \def\lenseX{2.5}
+    \draw[-, thin] (#1,-\lenseX)--(#1,\lenseX) node[above]{#2};
+    \node[] at (#1, -\lenseX - 0.5){#3};
+}
+
+% Styles
+%% Arrow in the Middle
+\tikzset{arrow inside/.style = {postaction=decorate,decoration={markings,mark=at position 0.52 with \arrow{stealth}}}}
+
+\begin{document}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+    % xAxis
+    \xAxis{-1}{}{Bildlinse}
+    \xAxis{0}{}{}
+    \xAxis{3}{}{Objektlinse}
+
+    % Optical plane
+    \draw[dashed] (-2,0)--(4,0);
+
+    \optMeasurement{-1}{0}{-2.3}{$f_b$}
+    \optMeasurement{0}{3}{-2.3}{$f_o$}
+
+    % Laser
+    \draw[fill=lightgray] (-3, -1) rectangle (-2, 1) node[rotate=90, pos=0.5] {Laser};
+
+    % Lenses
+    \lense{-1}{1}{.1}
+    \lense{3}{2}{.2}
+
+    % Rays
+    \draw[ray arrow] (-2, 0.5) -- (-1, 0.5);
+    \draw[ray arrow] (-2, -0.5) -- (-1, -0.5);
+
+    \draw[ray arrow] (3, 1.5) -- (4, 1.5);
+    \draw[ray arrow] (3, -1.5) -- (4, -1.5);
+
+    \draw[red ray] (-1, 0.5) -- (3, -1.5);
+    \draw[red ray] (-1, -0.5) -- (3, 1.5);
+
+\end{tikzpicture}
+\end{document}
+

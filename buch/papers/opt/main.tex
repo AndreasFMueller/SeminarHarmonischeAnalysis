@@ -1,39 +1,33 @@
 %
-% main.tex -- Paper zum Thema <opt>
+% main.tex -- Paper zum Thema Optische Fouriertransformation <opt>
 %
-% (c) 2020 Autor, OST Ostschweizer Fachhochschule
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:opt}}
-\kopflinks{Thema}
+
+% TODO markings
+\newcommand{\opttodo}[1] {\textbf{\textcolor{red}{TODO: #1}}}
+\newcommand{\optrh}{\opttodo{REF HERE}}
+
+\chapter{Optische Fouriertransformation\label{chapter:opt}}
+\kopflinks{Optische Fouriertransformation}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Marco Niederberger, Yanick Schoch}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Die Fouriertransformation ist in der Technik und insbesondere auch in der Elektrotechnik allgegenwärtig.
+Die Berechnung wurde mehrmals verbessert und es sind diverse schnelle Algorithmen vorhanden.
+Mit der optischen Fouriertransformation ist jedoch ein Werkzeug vorhanden, welches jeden aktuellen Computer überholt.
 
-\input{papers/opt/teil0.tex}
-\input{papers/opt/teil1.tex}
-\input{papers/opt/teil2.tex}
-\input{papers/opt/teil3.tex}
+In diesem Kapitel wird gezeigt, wie aus dem physikalischen Prinzip der Beugung eine zweidimensionale Fouriertransformation entsteht.
+Dabei werden zuerst die physikalischen Grundlagen erläutert und anschliessend wird das Beugungsintegral sowie dessen Näherungen hergeleitet.
+Abgeschlossen wird das Kapitel mit einem praktischen Versuchsaufbau sowie einer Übersicht über mögliche Anwendungen und aktuelle Forschung.
+
+\input{papers/opt/grundlagen.tex}
+\input{papers/opt/versuch.tex}
+\input{papers/opt/anwendungen.tex}
+\input{papers/opt/filter.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

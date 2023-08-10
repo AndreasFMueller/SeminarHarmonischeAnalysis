@@ -1,0 +1,79 @@
+%
+% 4fAufbau.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\usetikzlibrary{arrows,intersections,math}
+\usetikzlibrary{decorations.markings, calc}
+
+\input{opt_common.tex}
+
+%% Axis (x, textAbove, textBelow)
+\newcommand{\xAxis}[3]{%
+    \def\lenseX{2.1}
+    \draw[->, thin] (#1,-\lenseX)--(#1,\lenseX) node[above]{#2};
+    \node[] at (#1, -\lenseX - 0.5){#3};
+}
+
+\begin{document}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+    % Force the boundary to be symmetric around (0,0)
+    \draw[draw=none](-7,0)--(7,0);
+
+    % xAxis
+    \xAxis{-6}{$g(x,y)$}{Originalbild}
+    \xAxis{-3}{}{Erste Linse}
+    \xAxis{0}{$\mathfrak{F}[g(x,y)]$}{Fourierebene}
+    \xAxis{3}{}{Zweite Linse}
+    \xAxis{6}{$g(-x,-y)$}{Neues Bild}
+
+    % Optical plane
+    \draw[dashed] (-6,0)--(6,0);
+
+    % Dimension between the lenses
+    \foreach \n in {-2,...,1}{
+        \optMeasurement{\n * 3}{\n * 3 + 3}{-2}{$f$}
+    }
+
+    % Lenses
+    \lense{-3}{1.5}{.12}
+    \lense{3}{1.5}{.12}
+
+    % Aperture
+    \draw[-, line width=2, optBlue] (-6,-1.7)--(-6,-1.5);
+    \draw[-, line width=2, optBlue] (-6,-1.2)--(-6,-0.3);
+    \draw[-, line width=2, optBlue] (-6,0.3)--(-6,0.8);
+    \draw[-, line width=2, optBlue] (-6,1.2)--(-6,1.7);
+
+    % Laser wave
+    % \draw[red ray] (-6.1, -2.1)--(-6.1,2.1);
+    % \draw[red ray] (-6.5, -2.1)--(-6.5,2.1) node[above,midway, sloped, inner sep = 2] {\small{Gerade Wellenfront}};
+    % \draw[red ray] (-6.9, -2.1)--(-6.9,2.1);
+    % \optMeasurement{-6.5}{-6.1}{-2}{$\lambda$}
+
+    % Low pass filter
+    \draw[-, line width=2, black] (0,-1.7)--(0,-0.3);
+    \draw[-, line width=2, black] (0,0.3)--(0,1.7);
+
+    % Rays
+    \draw[ray arrow] (-6,0.9) -- (-3,0.9);
+    \draw[red ray] (-3,0.9) -- (3,-0.9);
+    \draw[ray arrow] (3,-0.9) -- (6,-0.9);
+
+    \draw[ray arrow] (-6,-0.9) -- (-3,-0.9);
+    \draw[red ray] (-3,-0.9) -- (3,0.9);
+    \draw[ray arrow] (3,0.9) -- (6,0.9);
+
+\end{tikzpicture}
+\end{document}
+

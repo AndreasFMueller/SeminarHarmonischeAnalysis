@@ -1,0 +1,65 @@
+%
+% herleitung.tex -- Bild zum Thema Optische Fouriertransformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+\documentclass[tikz]{standalone}
+% \usepackage{amsmath}
+% \usepackage{txfonts}
+% \usepackage{pgfplots}
+
+% \pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\input{opt_common.tex}
+
+% \usetikzlibrary{arrows,intersections,math}
+\usetikzlibrary{decorations.markings, } %calc
+
+
+\begin{document}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+    % \draw[help lines, color=gray!30, dashed] (-10,-5) grid (10,5);
+
+    \draw[draw=none] (-2,0)--(8,0);
+    % Define points
+    \coordinate (P) at (6,1.5);
+    \coordinate (E) at (0,1);
+    \coordinate (YA) at (0,1.5);
+    \coordinate (YB) at (0,-0.5);
+
+    % x and y axis
+    \draw[->, thin] (-0.5,0)--(7,0) node[right]{$x$};
+    \draw[-, thin, dashed] (6,-1.5)--(6,3);
+    \draw[->, thin] (0,-1.5)--(0,3) node[left]{$y$};
+
+    % Aperture
+    \draw[line width=2, black] (YA)--(0, 2.6);
+    \draw[line width=2, black] (YB)--(0, -1.5);
+
+    \node[label={45:{P($x_p$,$y_p$)}}, circle, fill, inner sep=1pt] at (P) {};
+
+    \draw[optBlue, dashed] (E) -- (6,1);
+    \draw[optBlue, <->] (P) -- (6,1) node[midway, right]{$y_p - y$};
+
+    \draw[optRed] (E) -- (P) node[midway, sloped, above]{$r$};
+
+    % Charge
+    \foreach \offset in {0, -0.5, -1} {
+        \draw[fill=gray, gray] (E)++(0,\offset) circle (1pt);
+    }
+    \node[black, left] at (E) {$dy$};
+
+    % Measurement
+    \optMeasurement{0}{6}{-1}{$x_p = l$};
+    \draw[<->] (-1,-0.5) -- (-1,1.5) node[anchor=east, midway]{$b$};
+    \draw[-,thin, dashed] (-1,1.5)--(YA);
+    \draw[-,thin, dashed] (-1,-0.5)--(YB);
+    \draw[-,thin] (-0.1,-0.5)--(0.1,-0.5) node[right]{$y_b$};
+    \draw[-,thin] (-0.1,1.5)--(0.1,1.5) node[right]{$y_b+b$};
+
+\end{tikzpicture}
+\end{document}
+
