@@ -23,19 +23,19 @@ In diesem Fall sind die Werte der Funktion die Knoten des Gitters und Ableitunge
 
 Vorwärtsdifferenz:
 \begin{equation}
-\frac{\mathrm{d}u}{\mathrm{d}t} = \frac{u(t + \Delta{t}) - u(t)}{\Delta{t}}
+\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t)}{\Delta{t}}
 \label{spektral:equation1}
 \end{equation}
 
 Rückwärtsdifferenz:
 \begin{equation}
-\frac{\mathrm{d}u}{\mathrm{d}t} = \frac{u(t) - u(t - \Delta{t})}{\Delta{t}}
+\frac{du}{dt} = \frac{u(t) - u(t - \Delta{t})}{\Delta{t}}
 \label{spektral:equation2}
 \end{equation}
 
 Zentraledifferenz
 \begin{equation}
-\frac{\mathrm{d}u}{\mathrm{d}t} = \frac{u(t + \Delta{t}) - u(t - \Delta{t})}{2\Delta{t}}
+\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t - \Delta{t})}{2\Delta{t}}
 \label{spektral:equation3}
 \end{equation}
 
@@ -52,7 +52,6 @@ In einem zweidimensionalen kartesischen Koordinatensystem stellen die Gitterzell
 Auf der Abbildung 16.1 sieht man, dass für eine 1d-Funktion werden viele Punkte für die Vorheraussage benötigt. In der 3-Dimensionen es sind die Millionen von Datenpunkten und, damit man eine gute Wetterprognose mit der Methode machen kann, werden höhe Rechnungsleistungen benötigt.
 
 Ein Optimierung ist, die Prognosenfunktion auf eine andere Art zu aproximieren.
-
 
 \subsection{Was sind die spektrale Modelle?
 \label{spektral:subsection:spektralemodelle}}
@@ -71,33 +70,55 @@ Dies ermöglicht es, die Atmosphäre kontinuierlich und mit höherer Auflösung 
 
 Insgesamt sind spektrale Modelle ein wichtiger Ansatz, um detaillierte Einblicke in atmosphärische Prozesse zu gewinnen und präzise Wettervorhersagen zu erstellen, insbesondere wenn es um die Wellen und die Schwingungen geht.
 
+\subsection{Vorteile der spektralen Modellen
+\label{spektral:subsection:vorteile}}
+
+\begin{itemize}
+\item
+\textbf{Genauere Erfassung von Wellenphänomenen:} Spektrale Modelle sind besonders gut darin, atmosphärische Wellenphänomene wie Schallwellen, Rossby-Wellen und atmosphärische Oszillationen zu erfassen.
+Sie können die räumliche Ausbreitung und Interaktion dieser Wellen genau simulieren.
+\item
+\textbf{Bessere Darstellung von großen und kleinen Skalen:} Spektrale Modelle haben eine hohe räumliche Auflösung, die es ermöglicht, sowohl großräumige globale Muster als auch kleinräumige lokale Effekte detailliert zu modellieren.
+Dadurch können sie sowohl makroskalige als auch mikroskalige Phänomene abdecken.
+\item
+\textbf{Konsistente Erhaltung bestimmter Größen:} Spektrale Modelle haben oft eine bessere Erhaltung von Energie, Impuls und anderen wichtigen physikalischen Größen.
+Dies trägt zur Erzielung physikalisch konsistenterer Simulationen bei.
+\item
+\textbf{Effiziente Modellierung periodischer Phänomene:} Spektrale Modelle sind gut geeignet zur Modellierung periodischer Phänomene, da sie periodische Signale genau erfassen können, ohne hohe räumliche Auflösung überall zu erfordern.
+\item
+\textbf{Reduzierter Diffusionseffekt (Rauschen resistent):} Im Vergleich zu einigen gitterbasierten Methoden, die zur Stabilisierung numerischer Instabilitäten künstliche Diffusion einführen müssen, weisen spektrale Modelle oft einen geringeren Diffusionseffekt auf, was zu genaueren und detaillierteren Simulationen führen kann.
+\item
+\textbf{Adaptivität und Flexibilität:} Spektrale Modelle können auf verschiedene Geometrien und Randbedingungen angewendet werden und sind nicht auf regelmäßige Gitterstrukturen beschränkt. Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
+\item
+\textbf{Einfachere Lösung:} Spektralen Modellen führen auf viel einfache algebraische Gleichungen.
+\end{itemize}
+
 \subsection{Kugelkoordinaten
 \label{spektral:subsection:kugelkoordinaten}}
 
 Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden. Siehe Abbildung 16.2
 
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{figure}[h]
 	\centering
 	\includegraphics[height=120pt,width=120pt]{papers/spektral/images/spherical_coordinates.png}
 	\caption{Sphärische Koordinaten}
     \label{spektral:fig:sphericalcoords}
-\end{wrapfigure}
-
+\end{figure}
+\pagebreak
 \begin{equation}
- x = r*sin(\theta)*cos(\phi)
+ x = r*\sin(\theta)*\cos(\phi)
 \label{spektral:equation4}
 \end{equation}
 
 \begin{equation}
- y = r*sin(\theta)*sin(\phi)
+ y = r*\sin(\theta)*\sin(\phi)
 \label{spektral:equation5}
 \end{equation}
 
 \begin{equation}
- z = r*cos(\theta)
+ z = r*\cos(\theta)
 \label{spektral:equation6}
 \end{equation}
-
 wobei |r| > 0 sein muss, sonst können $\theta$ und $\phi$ nicht definiert werden.
 
 

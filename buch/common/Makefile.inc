@@ -43,7 +43,7 @@ TEXFILES = $(BUCHFILES) $(THEMA_FILES)
 
 # References des ersten Teils
 
-buch.bbl:		build/buch.aux
+$(workdir)/buch.bbl:		build/buch.aux
 	cd build; bibtex buch
 
 clean:	cleansubdir
