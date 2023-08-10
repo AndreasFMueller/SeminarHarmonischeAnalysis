@@ -7,8 +7,8 @@ dependencies-milankovic =						\
 	papers/milankovic/packages.tex					\
 	papers/milankovic/main.tex					\
 	papers/milankovic/references.bib				\
-	papers/milankovic/teil0.tex					\
-	papers/milankovic/teil1.tex					\
-	papers/milankovic/teil2.tex					\
-	papers/milankovic/teil3.tex
+	papers/milankovic/teil0_Einleitung.tex				\
+	papers/milankovic/teil1_VorstellungderMilankovic-Zyklen.tex	\
+	papers/milankovic/teil2_WissenschaftlicheArbeit.tex		\
+	papers/milankovic/teil3_Konklusion.tex
 

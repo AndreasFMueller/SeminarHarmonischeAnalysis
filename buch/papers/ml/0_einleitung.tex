@@ -1,0 +1,38 @@
+%
+% 0_einleitung.tex
+%
+% (c) 2023 Dominik Gschwind, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Einleitung\label{ml:section:einleitung}}
+\rhead{Einleitung}
+
+Wir wollen untersuchen ob ein künstliches neuronales Netzwerk in der Lage ist die Zerlegung beliebiger
+Daten in Fourier-Koeffizienten zu lernen. Dazu wollen wir die algorithmische
+Komplexität untersuchen und mit der schnellen Fouriertransformation vergleichen.
+
+\paragraph{Was ist ein künstliches neuronales Netzwerk?} \emph{Künstliche neuronale Netze} (KNN
+oder englisch \emph{artificial neural networks}, ANN) werden vor allem im Gebiet der
+künstlichen Intelligenz und \emph{data science} eingesetzt. Ihre Struktur und Funktionsweise ist den
+biologischen neuronalen Netzwerken zum Beispiel im Gehirn nachempfunden. Prinzipiell sind
+sie universelle Approximatoren\footnote{Ein Beweis dafür ist in
+\cite{ml:universala-approximator-theorem} zu finden.}, das heisst sie können beliebige
+Sachverhalte beliebig genau approximieren (natürlich abhängig von Struktur, Rechenaufwand,
+vorhandenen Daten und weiterem).
+
+Diese Eigenschaft ist im Gebiet der künstlichen Intelligenz zwingend,
+da allein schon die Definition von ``Intelligenz'' ein offenes Problem in der
+Philosophie ist. Andere, traditionelle Methoden wie zum Beispiel \emph{expert systems} können
+nur begrenzt und mit viel Aufwand Intelligenz darstellen.
+
+ANNs werde aber auch vor allem dort eingesetzt, wo es keine oder nur sehr wenig erforschte
+Theorie und Lösungsmethoden für eine Problemstellung gibt, oder auch Schwierigkeit und
+Komplexität des Problems, dessen Lösung verunmöglichen. Einige Beispiele sind
+Bilderkennung, Klassifizierung, Spracherkennung oder maschinelle Übersetzung.
+
+\medskip
+In den nächsten zwei Kapitel wollen wir diesen universellen Approximator konstruieren.
+Wir fangen mit einem linearen Modell an, welches uns schliesslich zum allgemein
+nichtlinearen feedforward künstlichen neuronalen Netzwerk bringt.

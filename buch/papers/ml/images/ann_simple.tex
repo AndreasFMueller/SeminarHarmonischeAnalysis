@@ -1,0 +1,92 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{ifthen}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.5}
+\newboolean{draft}
+\setboolean{draft}{false}
+
+
+% Input layer neurons'number
+\newcommand{\inputnum}{4} 
+% Hidden layer neurons'number
+\newcommand{\hiddennum}{4}  
+% Output layer neurons'number
+\newcommand{\outputnum}{4} 
+
+\tikzset{%
+  every neuron/.style={
+    circle,
+    draw,
+    minimum size=7 mm
+  },
+  neuron missing/.style={
+    draw=none, 
+    scale=3,
+    text height=0.333cm,
+    yshift=0.5 mm,
+    execute at begin node=\color{black}$\vdots$
+  },
+}
+
+% \begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth]
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\foreach \m/\l [count=\y] in {1,2,missing,3}
+  \node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+
+\foreach \m [count=\y] in {1,2,missing,3}
+  \node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y) {};
+\foreach \m [count=\y] in {1,2,missing,3}
+  \node [every neuron/.try, neuron \m/.try ] (hidden1-\m) at (3.5,2.5-\y) {};
+
+\foreach \m [count=\y] in {1,2,missing,3}
+  \node [every neuron/.try, neuron \m/.try ] (output-\m) at (5.5,2.5-\y) {};
+
+\foreach \l [count=\i] in {1,2,n}{
+   \draw [<-] (input-\i) -- ++(-0.5,0);
+   \node [] at (input-\i) {\small$x_\l$};
+}
+
+\foreach \l [count=\i] in {1,2,n}
+  \node [] at (hidden-\i) {\small$h_\l^{(1)}$};
+\foreach \l [count=\i] in {1,2,n}
+  \node [] at (hidden1-\i) {\small$h_\l^{(2)}$};
+
+\foreach \l [count=\i] in {1,2,n}{
+  \draw [->] (output-\i) -- ++(0.5,0);
+  \node [] at (output-\i) {$y_\l$};
+}
+
+\foreach \i in {1,...,3}
+  \foreach \j in {1,...,3}
+    \draw [->] (input-\i) -- (hidden-\j) node (conn-ih-\i\j) {};
+
+\foreach \i in {1,...,3}
+  \foreach \j in {1,...,3}
+    \draw [->] (hidden-\i) -- (hidden1-\j) node (conn-hh-\i\j) {};
+
+\foreach \i in {1,...,3}
+  \foreach \j in {1,...,3}
+    \draw [->] (hidden1-\i) -- (output-\j) node (conn-ho-\i\j) {};
+
+\node [align=center,above,xshift=-1.5 cm] at (conn-ih-11) {${\boldsymbol \thetaup}^{(1)}$};
+\node [align=center,above,xshift=-1 cm] at (conn-hh-11) {${\boldsymbol \thetaup}^{(2)}$};
+\node [align=center,above,xshift=-1.5 cm] at (conn-ho-11) {${\boldsymbol \thetaup}^{(3)}$};
+
+\node [align=center, above, yshift=0.5 cm] at (input-1) {Input layer};
+\node [align=center, above, yshift=0.5 cm,xshift=1 cm] at (hidden-1) {Hidden layers};
+\node [align=center, above, yshift=0.5 cm] at (output-1) {Output layer};
+
+\end{tikzpicture}
+\end{document}
