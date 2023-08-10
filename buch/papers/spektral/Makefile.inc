@@ -1,7 +1,7 @@
 #
 # Makefile.inc -- dependencies for this article
 #
-# (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+# (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 dependencies-spektral =						\
 	papers/spektral/packages.tex					\

@@ -1,7 +1,7 @@
 #
 # Makefile -- make file for the paper spektral
 #
-# (c) 2020 Prof Dr Andreas Mueller
+# (c) 2023 Prof Dr Andreas Mueller
 #
 
 images:
