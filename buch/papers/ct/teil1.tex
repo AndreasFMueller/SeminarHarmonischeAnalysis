@@ -12,9 +12,9 @@ Die zentrale Frage bei der Bildrekonstruktion lautet, ob es möglich ist, ein Bi
 
 \subsection{Definition und Eigenschaften
 	\label{ct:subsection:defnprop}}
-Hier wird der Prozess zur Rückgewinnung der Werte einer Funktion des Dämpfungskoeffizienten $f(x, y)$ aus den Werten ihrer Radon-Transformation, bezeichnet als $\mathscr{R}f$, eingeführt. Ein Punkt $(x_0, y_0)$ in der Ebene liegt auf vielen verschiedenen Linien in dieser Ebene. Insgesamt gibt es für jeden einzelnen Wert von $\theta$ genau eine reelle Zahl $t$, die mit der Linie $l_{t,\theta}$ den Punkt $(x_0, y_0)$ schneidet. Genauer gesagt, schneidet die Linie mit dem Wert $t = x_0\cos(\theta) + y_0\sin(\theta)$ den Punkt in $(x_0, y_0)$.  
+Hier wird der Prozess zur Rückgewinnung der Werte einer Funktion des Dämpfungskoeffizienten $f(x, y)$ aus den Werten ihrer Radon-Transformation, bezeichnet als $\mathscr{R}f$, eingeführt. Ein Punkt $(x_0, y_0)$ in der Ebene liegt auf vielen verschiedenen Geraden in dieser Ebene. Insgesamt gibt es für jeden einzelnen Wert von $\theta$ genau eine reelle Zahl $t$, die mit der Gerade $l_{t,\theta}$ den Punkt $(x_0, y_0)$ schneidet. Genauer gesagt, schneidet die Gerade mit dem Wert $t = x_0\cos(\theta) + y_0\sin(\theta)$ den Punkt in $(x_0, y_0)$.  
 
-Die Zusammensetzung der Materie am Punkt $(x_0, y_0)$ innerhalb einer Probe wirkt sich in der Praxis direkt auf die Intensität eines Röntgenstrahls, der diesen Punkt durchquert. Das bedeutet, dass sich der Dämpfungskoeffizient $f(x_0, y_0)$ der Materie an $(x0, y0)$ in der Radon-Transformation $\mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta); \theta)$ für jeden Winkel $\theta$ widerspiegelt. Der erste Schritt bei der Ermittlung von $f(x_0, y_0)$ besteht in der Berechnung des Durchschnittswerts dieser Linienintegrale unter Berücksichtigung aller Linien, die sich im Punkt $(x_0, y_0)$ schneiden. Dies bedeutet, dass
+Die Zusammensetzung der Materie am Punkt $(x_0, y_0)$ innerhalb einer Probe wirkt sich in der Praxis direkt auf die Intensität eines Röntgenstrahls, der diesen Punkt durchquert. Das bedeutet, dass sich der Dämpfungskoeffizient $f(x_0, y_0)$ der Materie in $(x_0, y_0)$ in der Radon-Transformation $\mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta); \theta)$ für jeden Winkel $\theta$ widerspiegelt. Der erste Schritt bei der Ermittlung von $f(x_0, y_0)$ besteht in der Berechnung des Durchschnittswerts dieser Linienintegrale unter Berücksichtigung aller Geraden, die sich im Punkt $(x_0, y_0)$ schneiden. Dies bedeutet, dass
 \begin{equation}
 	\dfrac{1}{\pi}\int_{0}^{\pi} \mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta), \theta) \,d\theta
 \end{equation}
@@ -24,12 +24,10 @@ Die Rückprojektion einer Funktion $h = h(t, \theta)$ im Punkt $(x, y)$ ist defi
 \begin{equation}\label{ct:backproj}
 	\mathscr{B}h(x, y) := \dfrac{1}{\pi}\int_{0}^{\pi} h(x_0\cos(\theta) + y_0\sin(\theta), \theta) \,d\theta.
 \end{equation}
-
 Beachtet werden sollte, dass die Eingaben für $\mathscr{B}h$ kartesische Koordinaten sind, während die Eingaben für $h$ Polarkoordinaten sind.
 Aus der Gleichung \eqref{ct:backproj} kann für den Bereich der medizinischen Bildgebung das Integral der Rückprojektion von der radontransformierten Dämpfungskoeffizientenfunktion repräsentiert werden, als
 \begin{equation}\label{ct:medBackproj}
 	\mathscr{B}\mathscr{R}f(x, y) := \dfrac{1}{\pi}\int_{0}^{\pi} \mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta), \theta) \,d\theta.
 \end{equation}
-
-Jede der Zahlen $\mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta), \theta)$, die Integrale darstellen, misst effektiv die kumulative Wirkung der Dämpfungskoeffizientenfunktion $f$ entlang einer bestimmten Linie. Folglich bleibt der Wert der Radon-Transformation entlang einer bestimmten Linie unverändert, wenn man die gesamte Materie in dieser Region durch eine homogene Probe mit einem konstanten Dämpfungskoeffizienten ersetzt, der dem Durchschnitt der Dämpfung der tatsächlichen Probe entspricht. Für das Integral in \eqref{ct:medBackproj} muss nun der Mittelwert dieser Durchschnittswerte berechnet werden. Als Ergebnis erhalten wir eine \glqq gemittelte\grqq{} oder \glqq verschmierte\grqq{} Version von $f$ und nicht $f$ selbst.
+Jede der Zahlen $\mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta), \theta)$, die Integrale darstellen, misst effektiv die kumulative Wirkung der Dämpfungskoeffizientenfunktion $f$ entlang einer bestimmten Gerade. Folglich bleibt der Wert der Radon-Transformation entlang einer bestimmten Gerade unverändert, wenn man die gesamte Materie in dieser Region durch eine homogene Probe mit einem konstanten Dämpfungskoeffizienten ersetzt, der dem Durchschnitt der Dämpfung der tatsächlichen Probe entspricht. Für das Integral in \eqref{ct:medBackproj} muss nun der Mittelwert dieser Durchschnittswerte berechnet werden. Als Ergebnis erhalten wir eine \glqq gemittelte\grqq{} oder \glqq verschmierte\grqq{} Version von $f$ und nicht $f$ selbst.
 
