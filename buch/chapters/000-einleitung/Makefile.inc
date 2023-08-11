@@ -6,4 +6,5 @@
 
 CHAPTERFILES += 							\
 	chapters/000-einleitung/chapter.tex				\
-	chapters/000-einleitung/inhalt.tex
+	chapters/000-einleitung/1-motivation.tex			\
+	chapters/000-einleitung/2-inhalt.tex
