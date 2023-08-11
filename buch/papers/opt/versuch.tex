@@ -28,7 +28,14 @@ Ganz am Ende des Aufbaus, eine weitere Brennweite hinter der zweiten Linse ist d
 Im weiteren Verlauf dieses Kapitels werden die erwarteten Ergebnisse simuliert und anschliessend mit den Beobachtungen verglichen.
 
 \subsection{Simulation der erwarteten Ergebnissen}
-\opttodo{Vergleich der Simulation / Versuch hinzufügen}
+Der $4f$ Versuch kann auch simuliert werden.
+In unserem Fall geschah dies mit \emph{Python} und der \emph{numpy} Bibliothek.
+In einem ersten Schritt wird ein Input-Bild erstellt, auf welchem eine oder mehrere Gitter ersichtlich sind.
+Mittels zweidimensionaler diskreter Fouriertransformation wird das Originalbild in den Frequenzbereich transformiert.
+Anschliessend kann dies mit einem digitalen Filter gefiltert werden.
+Die Filter werden so ausgeführt, wie sie in Abbildung \ref{opt:fig:filterarten} aufgeführt sind.
+Das bedeutet, dass zum Beispiel ein Tiefpass einen runden Durchlassbereich um den Nullpunkt hat.
+Schlussendlich wird das gefilterte Frequenzspektrum mittels zweidimensionaler FFT wieder rücktransformiert.
 
 \subsection{Versuchsdurchführung}
 Zuerst wurde die Funktion des Aufbaus mit einem $2f$ Versuch verifiziert.
@@ -39,6 +46,9 @@ Für den Einzelspalt war, wie in Abschnitt \ref{opt:sec:exampleSingleSlit} berec
 Nach dieser Verifizierung wurde die zweite Linse ebenfalls montiert und die Abbildungsebene hinter die zweite Linse gelegt.
 Beim Dreifachspalt konnte die Fouriertransformation und Rücktransformation erfolgreich ausgeführt werden.
 Die Filterung mittels eines optischen Tiefpasses konnte jedoch nicht nachgebildet werden.
+Der genaue Grund dafür konnte nicht eruiert werden.
+Mögliche Ursachen wären eine zu grosse Blende, eine nicht optimale Ausrichtung der optischen Achse oder eine zu geringe Auflösung der Auswerteeinheit.
+
 
 \subsection{Vergleich der Simulation}
 

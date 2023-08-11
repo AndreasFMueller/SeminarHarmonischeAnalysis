@@ -21,6 +21,8 @@ Im Abschnitt \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang z
 
 Das Kapitel wird mit einem Rechenbeispiel für die Beugung am Einzelspalt abgeschlossen. 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Wellentheorie}
 \label{opt:subsection:huygens}
 Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
@@ -44,6 +46,8 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
     \label{opt:fig:huygens}
 \end{figure}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Allgemeines Beugungsintegral}
 
 \begin{figure}
@@ -115,7 +119,7 @@ ausdrücken.
 Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
-Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
+Unendlich viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
@@ -169,17 +173,19 @@ Dieses Integral ist für jeden Auswertungspunkt allgemein gültig.
 Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung \eqref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fresnel-Approximation}
 \label{opt:sec:fresnel}
 In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \eqref{opt:equation:integral_general} für kleine Winkel approximiert.
-Für weitere Schritte soll die Bedingung
+Für weitere Schritte ist die Bedingung
 \begin{equation}
 y, y_p
 \ll
 l
 \label{opt:equation:condition_fresnel}
 \end{equation}
-gelten.
+nötig.
 Durch Anwenden der Binominalexpansion
 \begin{equation*}
 (1 + \varepsilon)^n
@@ -223,9 +229,9 @@ E(y_p, t)
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
 \\
 &=
-\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr}}{r} \,dy
 \\
-&=
+&\approx
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
@@ -233,10 +239,18 @@ E(y_p, t)
 .
 \end{align*}
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
-Des Weiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
+Des Weiteren kann der Ausdruck 
+\begin{equation*}
+    l - \frac{(y_p-y)^2}{2l}
+\end{equation*}
+im Nenner des Integrals als $l$ vereinfacht werden.
 Zulässig ist dies nur, weil $(y_p - y)^2 \ll l$ erfüllt ist.
-Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da dieser mit dem Faktor der Wellenzahl multipliziert wird und der Term $k \frac{(y_p-y)^2}{2l}$ somit nicht vernachlässigbar klein wird.
-Der Zeitpunkt der Auswertung ist nicht von Interesse, da dieser lediglich den Momentanwert der Welle beeinflusst.
+Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da dieser mit dem Faktor der Wellenzahl multipliziert wird und der Term
+\begin{equation*}
+    k \frac{(y_p-y)^2}{2l}
+\end{equation*}
+somit nicht vernachlässigbar klein wird.
+Der Zeitpunkt der Auswertung ist nicht von Interesse, da dieser lediglich die Phase der Welle beeinflusst.
 Mittels $t = 0$ ergibt sich daraus
 \begin{align}
 E(y_p, t = 0)
@@ -260,7 +274,7 @@ Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeic
 Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
-Sei nun
+Ist nun
 \begin{equation*}
 y
 \ll
@@ -273,7 +287,7 @@ Unter Berücksichtigung dieser Bedingung ist $y^2 \ll 2y_py$, wodurch der Term $
 Daraus folgt
 \begin{align}
 E(y_p)
-&=
+&\approx
 \frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
 \notag
 \\
@@ -288,6 +302,8 @@ E(y_p)
 \end{align}
 Das somit entstandene Integral entspricht gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Intensität}
 \label{opt:sec:intensity}
 Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
@@ -480,6 +496,8 @@ k \cdot E_0
 \end{align*}
 \opttodo{Weiterschreiben}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beispiel einzelner Spalt}
 \label{opt:sec:exampleSingleSlit}
 Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breite $b$ durchexerziert.
@@ -518,7 +536,7 @@ I(y_p)
 \\
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
-\\
+\intertext{Mithilfe der Eulerschen Identität wird daraus wieder ein Sinus und anschliessend ein sinc}
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
 \\
@@ -526,3 +544,7 @@ I(y_p)
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
 \end{align*}
+
+Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgewertet für einen Einzelspalt ergibt schlussendlich eine sinc-Funktion.
+Wie in Abschnitt \ref{opt:sec:intensity} erläutert, wird die elektrische Feldstärke quadriert, um abschliessend die sichtbare Intensität zu erhalten.
+Das somit erhaltene Schlussresultat wird in Abschnitt \ref{opt:section:versuch} praktisch nachgewiesen.
