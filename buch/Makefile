@@ -24,7 +24,7 @@ $(workdir):
 buch.pdf:	$(workdir)/buch.pdf
 	cp $(workdir)/buch.pdf buch.pdf
 
-$(workdir)/buch.pdf:	$(workdir) buch.tex $(TEXFILES) $(workdir)/buch.ind
+$(workdir)/buch.pdf:	$(workdir) buch.tex $(TEXFILES) $(workdir)/buch.ind $(BLXFILES)
 	$(pdflatex) buch.tex
 	cd $(workdir); $(bibtex) buch
 
