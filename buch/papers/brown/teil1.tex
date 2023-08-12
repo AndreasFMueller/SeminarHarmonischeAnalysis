@@ -9,29 +9,32 @@
 \section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
 \rhead{Stochastische DGLs}
 
-Ist einer gewöhnlichen Differenzialgleichtung (DGL) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert und wert der Laufvariabel, kann ein bestimmter Funktionswert ermittelt werden.
+Ist eine gewöhnliche Differenzialgleichtung (DGL) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. Für einen bestimmten Startwert und wert der Laufvariabel, kann ein bestimmter Funktionswert ermittelt werden.
 
-In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit der Wirklichkeit deckt und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Störeinflüsse das Resultat maßgeblich beeinflussen. Dies führt dazu, dass sich die Lösung einer DGL  gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder sogar komplett divergiert.
+In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt und somit einen eher Geringen Wert hat. In gewissen Systemen können kleine Störeinflüsse das Resultat maßgeblich beeinflussen. Dies führt dazu, dass sich die Lösung einer DGL  gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder sogar komplett divergiert.
 
 Ein gutes Beispiel dafür ist folgendes System:
 \begin{equation}
-	\frac{dy}{dt} = x - y
+	\frac{dx}{dt} = - y
+	\frac{dy}{dt} = x^2 + y
 \end{equation}
+
+In der Grafik XXX sind zwei unterschiedliche Trajektorien im mit dem Intervall  t = [0,3] eingezeichnet. Einer mit dem Startwert (-1.7, -1.4) und einer mit dem Startwert (-1.8, -1.4).
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{papers/brown/images/vektorfeld_01.png}
-	\caption{My caption}
+	\includegraphics[width=\linewidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
+	\caption{Zwei Pfade mit fast gleichem Startpunkt}
+	\label{key}
 \end{figure}
 
-In diesem System konvergieren alle Trajektorien zum Ursprung, ausser diese, welche Ihren Startwert exakt auf der Geraden $ y = x $ haben. Also kann ein kleiner Störeinfluss darüber entscheiden ob, der Wert zum gegen (0,0) konvergiert oder nach Unendlich divergiert. Wobei bei diesem Beispiel gesagt werden muss, dass in Realität der Startwert nie exakt auf die Gerade $ y = x $ fallen würde.
+Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den System-Verlauf auswirken kann, wobei in diesem speziellen Fall die Lösung mit grösserem $t$ wieder konvergieren würde. Bedenkt man nun, dass eine solch kleine Variation durch stochastisches Rauschen erzeugt werden könnte, scheint es unsinnig eine Lösung für das Problem anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung hinzuweisen oder sogar den Lösungsraum genauer zu spezifizieren.
 
+%In diesem System konvergieren alle Trajektorien zum Ursprung, ausser diese, welche Ihren Startwert exakt auf der Geraden $ y = x $ haben. Also kann ein kleiner Störeinfluss darüber entscheiden ob, der Wert zum gegen (0,0) konvergiert oder nach Unendlich divergiert. Wobei bei diesem Beispiel gesagt werden muss, dass in Realität der Startwert nie exakt auf die Gerade $ y = x $ fallen würde.
 
+Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgleichung (SDGL).
 
-
-Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von Zufälligen Störungen beim Aufstellen des Modells miteinbeziehen - et. voilà, man hat eine stochastische Differenzialgleichung (SDE).
-
-Nun ist die Aussage, also die Lösung der SDE, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von Störeinflüssen.
+Nun ist die Aussage, also die Lösung der SDGL, nicht mehr ein Zustand zum Zeitpunkt $ t $, sondern eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände unter Einbezug von Störeinflüssen.
 
 Formal kann dies folgendermaßen notiert werden, 
 
@@ -40,7 +43,9 @@ Formal kann dies folgendermaßen notiert werden,
 \dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen ..... des Systems auswirken. $ m $ ist die Dimension der Störfunktion. Also $ m $ eindimensionales "white noise".
+wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen inneren Zustände des Systems auswirken. $ m $ ist demzufolge die Dimension der Störfunktion. In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $\xi(t)$ modelliert.
+
+$ b $ ist der Driftvektor und beschreibt die werwartete Veränderung für jede Dimension des Systems. $ B $ ist die Dispersionsmatrix und beschreibt wies ich das m-dimensionale Rauschen aud das n-dimensionale System auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander(Korrelation). Alles in allem beschreiben b und B die Dynamik des Systems. 
 
 \begin{align*}
 		b = 
@@ -64,33 +69,34 @@ wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störu
 
 Um das sogenannte \textit{white noise} zu modellieren, muss eine Definition für einen stochastischen Prozess gefunden werden. Zwei zentrale Konzepte sind der \textit{random walk} und der Wienerprozess.
 
+
 \textbf{Random Walk:}
-Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt eine zufällige Schritt nach vorne oder hinten, oft dient dazu die Beinominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden order als konstant definiert sein.
+Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt eine zufällige Schritt nach vorne oder hinten, oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden order als konstant definiert sein.
 
 \textbf{Wiener-Prozess:}
-Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, er kann als Grenzwert eines Random Walks betrachtet werden, wenn die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert der Startpunkt bleibt.
+Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, er kann als Grenzwert eines Random Walks betrachtet werden, wenn die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert dem Ausgangswert entspricht. Er muss also folgende Eigenschaften erfüllen: 
 
-Man könnte also den Random Walk als eine diskrete Version eines Wiener-Prozesses bezeichnen oder umgekehrt, dass ein Wiener-Prozess eine kontinuierliche Version eines Random Walks ist. Sie unterscheiden sich jedoch bezüglich ihrer zeitlichen Diskretisierung und in den verwendeten Wahrscheinlichkeitsverteilungen.
+%Man könnte also den Random Walk als eine diskrete Version eines Wiener-Prozesses bezeichnen oder umgekehrt, dass ein Wiener-Prozess eine kontinuierliche Version eines Random Walks ist. Sie unterscheiden sich jedoch bezüglich ihrer zeitlichen Diskretisierung und in den verwendeten Wahrscheinlichkeitsverteilungen.
 
-Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t) $ ein zentrales Konzept, welches folgendermaßen definiert ist:
+
 \begin{itemize}
 	\item $ W(0) = 0 $; Der Startwert von $ t = 0 $ ist 0.
 	\item $ W(t_{1}) - W(t_{2}) $ ist ein normalverteilte Zufalls-Variable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $.
 	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten.
 \end{itemize}
 
-Weiter wird auf den Wienerprozess nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
+Weiter wird auf den Wienerprozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
-\textit{White noise} $ \xi(t) $ kann als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
+Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
 
 \begin{equation}
 	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
-Nun sollte man mit $ dt $  multiplizieren, da die Gleichung so nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
+Nun sollte man mit $ dt $  multiplizieren, da die Gleichung so nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht klar differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
 ! Überarbeiten, nicht differenzierbar? ! 
 
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen, welche leichter zu interpretieren und zu bearbeiten ist.
+Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen.
 
 \begin{equation}
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
@@ -109,15 +115,17 @@ Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den A
 
 Die Brownsche Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode.
 
-Die Euler-Maruyama-Methode ist eine numerische Methode zur Simulation von stochastischen Differentialgleichungen (SDE). SDEs sind Differenzialgleichungen, welche den Einfluss von zufälligen Prozessen, wie zum Beispiel Rauschen, auf ein dynamisches System berücksichtigen können. Sie bestehen aus einem deterministischen Anteil, der die zugrundeliegende Dynamik beschreibt, und einem stochastischen Anteil, der einen zufälligen Einfluss in Betracht zieht. Die Methode basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen (ODEs). Die Idee ist, die SDE in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen hinsichtlich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
+Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen hinsichtlich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
-Gegeben sei eine SDE der folgenden Form:
+%SDEs sind Differenzialgleichungen, welche den Einfluss von zufälligen Prozessen, wie zum Beispiel Rauschen, auf ein dynamisches System berücksichtigen können. Sie bestehen aus einem deterministischen Anteil, der die zugrundeliegende Dynamik beschreibt, und einem stochastischen Anteil, der einen zufälligen Einfluss in Betracht zieht. 
+
+Gegeben sei eine SDGL der folgenden Form:
 \begin{equation}
 	\mathrm{d}X(t) = a(X(t), t) \mathrm{d}t + b(X(t), t) \mathrm{d}W(t),
 \end{equation}
 wobei $ a(X(t), t) $ den deterministische Anteil darstellt, $ b(X(t), t) $ der stochastische Anteil ist und $ W(t) $ ein Wiener-Prozess ist, der das Rauschen repräsentiert. Die Methode beginnt mit einer Anfangsbedingung $X(0) = X_0$.
 
-Um die SDE mit der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
+Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
 
 \begin{enumerate}
 	\item Man wählt eine Schrittweite $\Delta t > 0$ und teilt das Zeitintervall $[0, T]$ in $N$ gleich große Teilintervalle der Länge $\Delta t$: $t_0 = 0, t_1 = \Delta t, \dots, t_i = i\Delta t, \dots, t_N = T$.
@@ -133,7 +141,7 @@ Um die SDE mit der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
 	X_{n+1} = X_n + f(X_n,t_n) \Delta t + g(X_n,t_n) \Delta W_n
 \end{equation}
 
-Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SDE, im Kontext der Brown'schen Bewegung kann man es auch "drift nennen", welcher nicht nur von zufälligen Einflüssen bestimmt ist. Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener Prozess oder die Brownische Bewegung als Ganzes.
+Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SDGL, im Kontext der Brown'schen Bewegung kann man es auch "drift nennen", welcher nicht nur von zufälligen Einflüssen bestimmt ist. Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener Prozess oder die Brownische Bewegung als Ganzes.
 
 \begin{figure}
 	\centering
@@ -156,13 +164,13 @@ In der Abbildung ... ist wurde diese Simulations-Methode in einer Dimension ange
 \subsection{ITO
 \label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
-Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis zählt. So legte er auch einen Grossteil des Fundaments auf dem stochastische Differenzialgleichungen beruhen.
+Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis zählt. So legte er auch einen Grossteil des Fundaments auf dem stochastische Differenzialgleichungen beruhen. 
 
-Ein wichtiges Werkzeug, um mit stochastischen DIfferenzialgleichungen umzugenhen ist das Äquivalent zur Kettenregel und der Substitutionsregel, dem sogenannten Lemma von Ito. Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.
+Nach ihm ist auch die Itō'sche Form einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form ist Ausgangslage viele seiner "Konzepte?", bietet jedoch auch den Vorteil, dass keine Differenzierbarkeit suggeriert wird. Denn ein stochastische Prozess kann nicht ohne weiteres abgeleitet werden.
 
-Hier ein Beispiel:
+Ein wichtiges Werkzeug, um mit stochastischen DIfferenzialgleichungen umzugenhen ist das Äquivalent zur Kettenregel, dem sogenannten Lemma von Ito. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
 
-Die stochastische Differentialgleichung (SDG) für einen Prozess X(t):
+Hier ein Beispiel einer stochastischen Differentialgleichung (SDG) für einen Prozess X(t) in Ito-Form:
 \begin{equation}
 	dX = a(X,t) dt + b(X,t) dW
 \end{equation}
@@ -178,13 +186,19 @@ Die Funktion f(X,t) und das Ito-Lemma:
 
 Dieses Lemma erlaubt es uns, Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten, was bei der Lösung von SDGs hilfreich ist.
 
+
 Das Einsetzen der SDG in das Ito-Lemma ergibt:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
 \end{equation}
 
-Die Funktion $ a(X,t) $ ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der "Diffusion"- oder "Volatilitäts"-Term ist, der den stochastischen Teil der Bewegung darstellt.
+Die Funktion $ a(X,t) $ ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der "Diffusions-" oder "Volatilitäts-Term" ist, der den stochastischen Teil der Bewegung darstellt.
 
-Ein wichtiger Aspekt des Ito-Kalküls ist die Ito'sche Lemma, eine Erweiterung der Kettenregel aus der gewöhnlichen Differentialrechnung für Funktionen von stochastischen Prozessen. Die genaue Form des Ito'schen Lemmas kann komplex sein, aber in einer einfacheren Form lautet es wie folgt:
+%Ein wichtiger Aspekt des Ito-Kalküls ist die Ito'sche Lemma, eine Erweiterung der Kettenregel aus der gewöhnlichen Differentialrechnung für Funktionen von stochastischen Prozessen. Die genaue Form des Ito'schen Lemmas kann komplex sein, aber in einer einfacheren Form lautet es wie folgt:
+
+
+%Gemäss Itō ist das Integral einer gewöhnlichen SDGL folgendermassen definiert:
+%Weglassen?
+
 
 
