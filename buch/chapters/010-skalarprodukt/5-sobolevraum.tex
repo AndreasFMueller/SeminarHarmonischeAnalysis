@@ -53,21 +53,517 @@ In diesem Abschnitt sollen die wesentlichen Ideen der Konstruktion
 dieser sogenannten Sobolev-Räume skizziert werden.
 
 %
-% Ableitungen
-%
-\subsection{Ableitungen}
-
-%
 % Skalaraprodukt mit Ableitungen
 %
 \subsection{Skalarprodukt mit Ableitungen}
+So wie es einfach ist, stetig der Grenzfunktion mit Hilfe der Supremum-Norm
+zu erzwingen, kann man ähnliche Normen mit den Ableitungen definieren, zum
+Beispiel die Norm
+\begin{equation}
+\|f\|_{C^n}
+=
+\sup_{x\in [a,b]}\sup_{k\le n} \biggl|\frac{d^kf}{dx^k}(x)\biggr|.
+\label{buch:skalarprodukt:sobolevraum:norm}
+\end{equation}
+Eine Cauchy-Folge in dieser Norm ist auch eine Cauchy-Folge in der
+Supremum-Norm, die Grenzfunktion ist also stetig.
+Für $k\le n$ ist aber auch die $k$-te Ableitung eine Cauchy-Folge
+in der Supremum-Norm, es konvergiert also auch die Folge der $k$-ten
+Ableitungen gegen eine stetige Funktione.
+Die Norm~\eqref{buch:skalarprodukt:sobolevraum:norm} stellt also sicher,
+dass Cauchy-Folgen gegen $n$-mal stetig differenzierbare Funktionen
+konvergieren.
+
+Die Norm~\eqref{buch:skalarprodukt:sobolevraum:norm} lässt sich aber
+nicht aus einem Skalarprodukt ableiten.
+Das hat zur Folge, dass es schwierig ist, Funktionen als Linearkombinationen
+von Basisvektoren zusammenzusetzen.
+Dafür ist es nötig, eine Skalarprodukt zu verwenden, welches ebenfalls
+gross wird, wenn die Ableitungen der Funktion gross sind.
+
+\begin{definition}
+Seien $f$ und $g$ stetig differenzierbare Funktionen auf dem Intervall
+$[a,b]$, dann ist
+\begin{equation}
+\langle f,g\rangle_{W^{1,2}}
+=
+\int_a^b \overline{f(x)} g(x)\,dx
++
+\int_a^b \overline{f'(x)} g'(x)\,dx
+\label{buch:skalarprodukt:sobolevraum:eqn:W12produkt}
+\end{equation}
+ein Skalarprodukt.
+\end{definition}
+
+Es ist nachzuprüfen, dass $\langle\;\,,\;\rangle_{W^{1,2}}$ tatsächlich ein
+Skalarprodukt ist.
+Zunächst ist klar, dass $\langle\;\,,\;\rangle_{W^{1,2}}$ konjugiert
+symmetrisch ist, und positiv definit ist, denn für eine Funktion $f\ne 0$
+ist
+\[
+\langle f,f\rangle_{W^{1,2}}
+=
+\langle f,f\rangle + \langle f',f'\rangle
+\ge
+\|f\|^2
+\ge
+0.
+\]
+Es ist also nur noch zu überprüfen, dass $\langle\;\,,\;\rangle_{W^{1,2}}$ 
+sesquilinear ist:
+\begin{align*}
+\langle f,\lambda g_1+\mu g_2\rangle_{W^{1,2}}
+&=
+\langle f,\lambda g_1+\mu g_2\rangle + \langle f',\lambda g_1'+\mu g_2'\rangle
+=
+\lambda \langle f,g_1\rangle
++
+\mu \langle f,g_2\rangle
++
+\lambda \langle f',g_1'\rangle
++
+\mu \langle f',g_2'\rangle
+\\
+&=
+\lambda \langle f,g_1\rangle_{W^{1,2}}
++
+\mu \langle f,g_2\rangle_{W^{1,2}}.
+\end{align*}
+Konjugierte Linearität im ersten Argument folgt aus der Linearität
+im zweiten Argument und der hermiteschen Symmetrie.
+
+Aus dem Skalarprodukt $\langle\;\,,\;\rangle_{W^{1,2}}$ entsteht jetzt
+die Norm
+\[
+\|f\|_{W^{1,2}}^2
+=
+\int_a^b |f(x)|^2 + |f'(x)|^2 \,dx.
+\]
+Die $L^2$-Norm einer Funktion in $C^1$ ist immer nach oben beschränkt
+durch die $\|f\|_{W^{1,2}}$.
+Eine Cauchy-Folge $f_n$ in der Norm $\|\;\cdot\;\|_{W^{1,2}}$ ist also
+automatisch eine Cauchy-Folge in der gewöhnlichen $L^2$-Norm, sie
+konvergiert also gegen eine Funktion $f=\lim_{n\to\infty} f_n \in L^2([a,b])$.
+Gleichzeitig ist die Folge $f_n'$ ebenfalls eine Cauchy-Folge
+in $L^2([a,b])$, es gibt also eine Funktion $f'\in L^2([a,b])$,
+die Grenzfunktion der Folge $f_n'$ ist: $\lim_{n\to\infty} f_n' = f'$
+in $L^2([a,b])$.
+Der Grenzwert einer $L^2$-Folge ist nicht notwendigerweise eine
+stetige Funktion, die Norm kann also nicht garantieren, dass die
+Grenzwertfunktion $f$ überhaupt differenzierbar ist.
+Es ist also nicht zulässig zu sagen, dass $f'$ die Ableitung von $f$
+ist.
+
+Der Raum $C^1([a,b])$ der stetig differenzierbaren Funktionen mit
+dem Skalarprodukt ist ein Prähilbertraum, durch Vervollständigung mit
+allen Grenzwerten von Cauchy-Folgen entsteht ein Hilbert-Raum.
+
+\begin{definition}
+Der Sobolev-Raum $W^{1,2}([a,b])$ ist die Vervollständigung des
+Prähilbertraumes $C^1([a,b])$ der differenzierbaren Funktionen auf
+dem Intervall $[a,b]$ mit dem Skalarprodukt
+\[
+\langle f,g\rangle_{W^{1,2}}
+=
+\int_a^b \overline{f(x)}g(x) + \overline{f'(x)}g'(x)\,dx.
+\]
+\end{definition}
+
+Der Sobolev-Raum $W^{1,2}$ ist also der natürliche Raum, in dem
+Aufgabenstellungen, bei denen es nicht nur auf Integrale, sondern
+auch auf Ableitungen ankommt, bearbeitet werden können.
 
 %
-% Konvergenz der Ableitungen
+% Höhere Ableitungen
 %
-\subsection{Konvergenz der Ableitungen}
+\subsection{Höhere Ableitungen}
+Das Skalarprodukt~\eqref{buch:skalarprodukt:sobolevraum:eqn:W12produkt}
+hat dabei geholfen, einen Hilbert-Raum von Funktionen zu konstruieren,
+mit dem erste Ableitungen behandelt werden können.
+Leider reicht das noch nicht, um höhere Ableitungen zu behandeln oder
+Definitionsgebiete höherer Dimension also nur einfache Intervalle.
+Im Folgenden sei also $\Omega\subset\mathbb{R}^n$ ein $n$-dimensionales
+Gebiet.
+Wir bezeichnen die Koordinaten mit $x_1,\dots,x_n$.
 
+\subsubsection{Multiindizes und höhere Ableitungen}
+Eine $k$-mal stetig differenzierbare Funktion $f\colon\Omega\to \mathbb{R}$ 
+hat die partiellen ersten Ableitungen
+\[
+\frac{\partial f}{\partial x_1},
+\dots,
+\frac{\partial f}{\partial x_n}.
+\]
+Für höhere partielle Ableitungen wird diese Notation sehr schwerfällig.
+Die mehrfache Ableitung, die $k_i$-fach nach der Variablen $x_i$ abgeleitet
+ist, wird
+\[
+\frac{
+\partial^{k_1+k_2+\dots+k_n} f
+}{
+\partial x_1^{k_1}\,\partial x_2^{k_2} \dots \partial x_n^{k_n}
+}
+\]
+geschrieben.
+Die Ordnung der Ableitung ist $k_1+k_2+\dots+k_n$.
+Die Ableitung ist offensichtlich durch die natürlichen Zahlen
+$(k_1,\dots,k_n)$ definiert.
+Dies führt auf die folgende Definition.
 
+\begin{definition}
+Ein Element $\bm{k}\in \mathbb{N}^n$ heisst ein $n$-dimensionaler
+{\em Multiindex} der Ordnung $|\bm{k}|= k_1+\dots+k_n$.
+\index{Multiindex}%
+\end{definition}
 
+Mit Multiindizes lassen sich jetzt viele Operationen, die bei
+Funktionen mit mehreren Variablen häufig auftauchen, sehr elegant
+abkürzen.
+
+\begin{itemize}
+\item Gleichheit:
+$\bm{k}=\bm{l}\;\Leftrightarrow\; k_1=l_1\wedge\dots\wedge k_n=l_n$.
+\item Vergleich:
+$\bm{k}\le \bm{l}\;\Leftrightarrow\; k_1\le l_1\wedge\dots\wedge k_n\le l_n$.
+\item Summe:
+$\bm{k}+\bm{l} = \bm{m}
+\;\Leftrightarrow\;
+m_i=k_i+l_i,\; i = 1,\dots,n$.
+\item Fakultät: $\bm{k}! = k_1!\cdots k_n!$
+\item Multinomialkoeffizient:
+\(
+\displaystyle
+\binom{|\bm{k}|}{\bm{k}}
+=
+\frac{|\bm{k}|!}{\bm{k}!}
+=
+\frac{|\bm{k}|!}{k_1!\cdots k_n!}
+\)
+\item Potenz: seien die Variablen $x=(x_1,\dots,x_n)$ gegeben, dann soll
+\(
+x^{\bm{k}} = x_1^{k_1}\cdot x_n^{k_n}
+\)
+bedeuten.
+\item Ableitungen: sei $f$ eine Funktion der Variablen $x_1,\dots,x_n$, dann
+ist die $\bm{k}$-te Ableitung
+\[
+D^{\bm{k}}f(x_1,\dots,x_n)
+=
+D_1^{k_1}\dots D_n^{k_n} f(x_1,\dots,x_n)
+=
+\frac{
+\partial^{|\bm{k}|}f
+}{
+\partial x_1^{k_1}\dots\partial x_n^{k_n}
+}(x_1,\dots,x_n),
+\]
+darin ist $D_i$ die partielle Ableitung nach $x_i$.
+\end{itemize}
+Die Multiindex-Notation kann zum Beispiel verwendet werden, um die
+Taylor-Reihe der Ordnung $k$ einer Funktionen $f(x_1,\dots,x_n)$ von
+$n$-Variablen zu formulieren.
+Die Taylor-Reihe im Punkt $(0,\dots,0)$ ist
+\begin{align*}
+\mathscr{T}^kf(x_1,\dots,x_n)
+&=
+\sum_{|\bm{k}|\le k} \frac{1}{\bm{k}!} D^{\bm{k}} f(0,\dots,0)\cdot x^{\bm{k}},
+\intertext{in einem beliebigen Punkt $x^*=(x_1^*,\dots,x_n^*)$:}
+\mathscr{T}^kf(x_1,\dots,x_n)
+&=
+\sum_{|\bm{k}|\le k} \frac{1}{\bm{k}!} D^{\bm{k}} f(x^*) \cdot (x-x^*)^{\bm{k}}.
+\end{align*}
+
+%
+% Skalarprodukt
+%
+\subsubsection{Skalarprodukt}
+Die Multiindex Notation ermöglich jetzt, auf sehr elegante Art und 
+Weise ein Skalarprodukt für $k$-mal stetig differenzierbare Funktionen
+zu definieren.
+
+\begin{definition}
+Seien $f$ und $g$ $k$-mal stetig differenzierbare Funktionen auf dem
+Gebiet $\Omega$, dann ist
+\[
+\langle f,g\rangle_{W^{k,2}(\Omega)}
+=
+\int_\Omega
+\sum_{|\bm{k}|\le k}
+\overline{D^{\bm{k}}f(x)}
+D^{\bm{k}}g(x)
+\,dx
+\]
+das {\em $W^{k,2}(\Omega)$-Skalarprodukt}.
+Die zugehörige {\em $W^{k,2}(\omega)$-Norm} ist
+\[
+\|f\|_{W^{k,2}(\Omega)}^2
+=
+\int_\Omega
+\sum_{|\bm{k}|\le k}
+|D^{\bm{k}}f(x)|^2
+\,dx
+\]
+\end{definition}
+
+Es ist aus der Definition unmittelbar klar, dass
+$\langle\;\,,\;\rangle_{W^{k,2}(\Omega)}$
+konjugiert symmetrisch ist.
+Wie im eindimensionalen Fall kann man nachrechnen, dass 
+$\langle\;\,,\;\rangle_{W^{k,2}(\Omega)}$
+linear ist.
+Dazu seien $f,g_1$ und $g_2$ $k$-fach stetig differenzierbare Funktionen
+und $\lambda,\mu\in\mathbb{C}$.
+Damit kann man berechnen
+\begin{align*}
+\langle f,\lambda g_1+\mu g_2\rangle_{W^{k,2}(\Omega)}
+&=
+\int_{\Omega}
+\sum_{|\bm{k}|\le k}
+\overline{D^{\bm{k}}f(x)}
+D^{\bm{k}}(\lambda g_1(x)+\mu g_2(x))
+\,dx
+\\
+&=
+\lambda
+\int_{\Omega}
+\sum_{|\bm{k}|\le k}
+\overline{D^{\bm{k}}f(x)}
+\,D^{\bm{k}}g_1(x)
+\,dx
++
+\mu
+\int_{\Omega}
+\sum_{|\bm{k}|\le k}
+\overline{D^{\bm{k}}f(x)}
+\,D^{\bm{k}}g_2(x)
+\,dx
+\\
+&=
+\lambda
+\langle f,g_1\rangle_{W^{k,2}(\Omega)}
++
+\mu
+\langle f,g_2\rangle_{W^{k,2}(\Omega)}.
+\end{align*}
+Wegen $\|f\|_{W^{k,p}(\Omega)}^2 \ge \|f\|_{L^2(\Omega)}$ ist 
+$\langle\;\,,\;\rangle_{W^{k,2}(\Omega)}$ positiv definit und damit
+ein Skalarprodukt.
+
+%
+% Sobolev-Raum 
+%
+\subsubsection{Der Sobolev-Raum $W^{k,2}(\Omega)$}
+Der Vektorraum der $k$-mal stetig differenzierbaren Funktionen 
+ist bezüglich der Norm $\|\;\cdot\;\|_{W^{k,2}(\Omega)}$-Norm
+ein Prähilbertraum, aber nicht vollständig.
+Wenn $f_n$ eine Cauchy-Folge von $k$-mal stetig differenzierbaren
+Funktionen in der $W^{k,2}(\Omega)$-Norm ist, dann ist $D^{\bm{k}}f$
+für jeden Multiindex $|\bm{k}|\le k$ eine Cauchy-Folge in der
+$L^2(\Omega)$-Norm.
+Da $L^2(\Omega)$ ein Hilbert-Raum ist, gibt es für jeden Multiindex $\bm{k}$
+eine Funktion $f^{\bm{k}}\in L^2(\Omega)$, die Grenzwert
+\[
+f^{\bm{k}} = \lim_{n\to\infty} D^{\bm{k}}f(x)
+\]
+der Cauchy-Folge $D^{\bm{k}}f$ ist.
+Wie im eindimensionalen Fall ist auch in $W^{k,2}(\Omega)$ nicht
+sichergestellt, dass die Grenzfunktion differenzierbar ist, dass ein
+Ausdruck wie $D^{\bm{k}}f(x)$ überhaupt sinnvoll ist.
+
+\begin{definition}
+Der Sobolev-Raum $W^{k,2}(\Omega)$ ist der Hilbert-Raum, der durch
+Vervollständigung des Vektorraums der $k$-mal stetig differenzierbaren
+Funktionen bezüglich der $W^{k,2}(\Omega)$-Norm entsteht.
+\end{definition}
+
+%
+% Ableitungen
+%
+\subsection{Schwache Ableitung}
+Die Diskussion der $W^{k,2}(\Omega)$-Norm hat gezeigt, dass es in diesem
+erweiterten Funktionenraum nicht mehr sinnvoll sein kann, die Ableitung
+als Grenzwert eines Differenzenquotienten zu definieren.
+Nur für genügend oft stetig differenzierbare Funktionen ist diese
+Definition praktikabel.
+
+Die schwache Ableitung ist ein Ersatz, der sich an der Idee des
+Skalarproduktes orientiert.
+Sei $f\colon \Omega\to\mathbb{R}$ eine genügend oft differenzierbare
+Funktion.
+Statt die Ableitung direkt zu studieren untersuchen wir das Skalarprodukt
+der Ableitung mit besonders einfach zu handhabenden Funktionen.
+Diese Funktionen sollen keine Schwierigkeiten beim Ableiten
+verursachen können, sie sollen also unendlich oft stetig differenzierbar
+sein.
+Der Wert der Ableitung einer Funktion in einem Punkt $x\in\Omega$ hängt nur 
+von den Werten von $f$ in der unmittelbaren Umgebung dieses Punktes ab.
+Wenn wir die Ableitung mit Hilfe eines Skalarproduktes testen wollen,
+dann muss dies mit Funktionen möglich sein, die nur in unmittelbarer
+Umgebung eines Punktes von $0$ verschieden sind.
+
+\begin{definition}
+Sei $f\colon\Omega\to\mathbb{R}$ eine Funktion.
+Der {\em Träger} oder {\em Support} einer Funktion ist die
+Menge
+\[
+\operatorname{supp} f = \{x\in\Omega\mid f(x)\ne 0\}.
+\]
+Man sagt, eine Funktion $f$ hat {\em kompakten Support}, wenn 
+der Abschluss des Trägers in $\Omega$ kompakt ist.
+\end{definition}
+
+Die Forderung, dass der Abschluss des Trägers einer Funktion $f$
+in $\Omega$ hat zur Folge, dass $f(x)=0$ überall auf dem Rand
+von $\Omega$ und dies gilt auch für alle Ableitungen.
+
+\begin{definition}
+Die Menge $C_c^{\infty}(\Omega)$ der beliebig of stetig differenzierbar
+Funktionen mit kompaktem Träger heisst die Menge der {\em Testfunktionen}.
+\end{definition}
+
+Sei jetzt $f$ eine $k$-mal stetig differenzierbare Funktion.
+Wir möchten die Ableitung $D^{\bm{k}}f$ durch ihre Skalarprodukte mit
+Testfunktionen charakterisieren.
+Dazu betrachten wir das Skalarprodukt
+\(
+\langle D^{\bm{k}}f,\varphi\rangle
+\)
+mit einer Testfunktion $\varphi\in C_c^{\infty}$.
+Da $\varphi$ beliebig oft differenzierbar ist, können wir
+partielle Integration verwenden, um die Ableitung von $f$ auf $\varphi$
+hinüberzuschieben.
+Dabei treten Randterme an den Integrationsgrenzen auf.
+Da $\varphi$ kompakten Träger hat, sind die Randwerte von $\varphi$
+immer 0, die Randterme verschwinden daher.
+Somit können wir berechnen:
+\begin{align*}
+\langle D^{\bm{k}}f,\varphi\rangle
+&=
+\int_{\Omega} \overline{D^{\bm{k}}f(x)}\, \varphi(x)\,dx
+=
+-\int_{\Omega}
+\overline{D^{\bm{k}-(1,0,\dots,0)}f(x)}\, 
+D_1 \varphi(x)
+\,dx
+= \dots
+\\
+&=
+(-1)^{|\bm{k}|} \int_{\Omega} \overline{f(x)} \, D^{\bm{k}}\varphi(x) \,dx
+=
+(-1)^{|\bm{k}|} \langle f,D^{\bm{k}}\varphi\rangle.
+\end{align*}
+Die Rechnung zeigt, dass das Skalarprodukt mit der $\bm{k}$-ten
+Ableitung durch die Skalarprodukt mit Ableitungen von Testfunktionen
+charakterisiert werden kann.
+
+\begin{definition}
+Sei $f\colon\Omega\to\mathbb{R}$  eine integrierbare Funktion.
+Wir sagen, eine integrierbare Funktion $v\colon\Omega\to\mathbb{R}$ 
+ist eine {\em schwache $\bm{k}$-te Ableitung} von $f$ wenn 
+\[
+\langle v,\varphi\rangle
+=
+(-1)^{|\bm{k}|} \langle v,D^{\bm{k}}\varphi\rangle
+\]
+für alle Testfunktionen $\varphi C_c^{\infty}(\Omega)$ gilt.
+\end{definition}
+
+Man kann zeigen, dass die schwache Ableitung einer Funktion
+in $L^2$ eindeutig ist und dass viele der gewohnten Rechenregeln
+sich auf schwache Ableitungen übertragen lassen.
+Besonders wichtig dabei ist die Beobachtung, dass die Funktione
+in $W^{k,2}(\Omega)$ aus integrierbaren Funktionen besteht, die 
+schwache Ableitungen vom Grad höchstens $k$ in $L^2$ haben.
+
+\begin{beispiel}
+Die Funktion
+\[
+f\colon (0,1) \to \mathbb{R}
+:
+x \mapsto
+\begin{cases}
+x&\qquad\text{für $0<x<1$}\\
+1&\qquad\text{für $1\le x<2$}
+\end{cases}
+\]
+ist stetig und integrierbar, aber sie ist an der Stelle $x=1$ nicht
+differenzierbar.
+Wir suchen die schwache Ableitung $v$ von $f$.
+
+In einer Umgebung eines Punktes $x>1$ können wir Testfunktionen $\varphi$
+so wählen, dass ihr Träger vollständig im Inneren des Intervals $(1,2)$
+enthalten ist.
+Mit diesen Testfunktionen können wir so rechnen, wie wenn $f$ die Konstante
+Funktion $1$ ist.
+Das bedeutet für das Skalarprodukt
+\[
+\langle f,\varphi'\rangle
+=
+\int_1^2 \varphi'(x)\,dx
+=
+[\varphi(x)]_0^1 = 0.
+\]
+Das Skalarprodukt mit jeder beliebigen Testfunktion ist also $0$, wir
+müssen also $v(x)=0$ wählen.
+
+Für $x$ im Teilinterval $(0,1)$ können wir die Testfunktionen so wählen,
+dass der Träger vollständig im Inneren  von $(0,1)$ enthalten ist und
+somit $f$ als die beliebig oft stetig differenzierbare Funktion $x$
+behandelt werden darf..
+Für das Skalarprodukt folgt dann
+\[
+-\langle f,\varphi'\rangle
+=
+-\int_0^1 f(x)\,\varphi'(x)\,dx
+=
+-\int_0^1 x\varphi'(x)\,dx
+=
+-[x\varphi(x)]_0^1 +\int_0^1 \varphi(x)\,dx
+=
+\langle 1,\varphi(x)\rangle,
+\]
+in diesem Teil des Intervals muss die schache Ableitung den Wert $1$ 
+haben.
+
+Wir haben somit gefunden, dass die schwache Ableitung von $f$ die
+Funktion
+\[
+v(x) = \begin{cases}
+1&\qquad\text{für $0\le x<1$}
+\\
+0&\qquad\text{für $1< x<2$}
+\end{cases}
+\]
+ist.
+Wir kontrollieren dies, indem wir das Skalarprodukt für beliebige 
+Testfunktionen $\varphi$ nachrechnen:
+\begin{align*}
+\langle v,\varphi\rangle
+&=
+\int_0^2 v(x)\,\varphi(x)\,dx
+=
+\int_0^1 1\,\varphi(x)\,dx
++
+\int_1^2 0\,\varphi(x)\,dx.
+\intertext{Jedes dieser Integrale kann man partiell integrieren:}
+&=
+[x\varphi(x)]_0^1 - \int_0^1 x\varphi'(x)\,dx
++
+[1\varphi(x)]_1^2 - \int_1^2 1\varphi'(x)\,dx
+\\
+&=
+\varphi(1) + \varphi(2) - \varphi(1) - \int_0^2 f(x)\,\varphi'(x)\,dx
+\intertext{Da $2$ ein Randpunkt ist, ist $\varphi(2)=0$, so dass sich}
+&=-\langle f,\varphi'\rangle.
+\end{align*}
+ergibt.
+Die Funktion $v$ ist also die schwache Ableitung von $f$.
+\end{beispiel}
+
+Die schwache Ableitung ermöglicht also mit Funktionen zu arbeiten,
+die keine Ableitung im traditionellen Sinne haben.
+Dank der Definition mit Hilfe eines Skalarproduktes in einem 
+Hilbertraum darf man sich die Funktionen als Grenzwerte von
+Cauchy-Folgen vorstellen.
 
 
