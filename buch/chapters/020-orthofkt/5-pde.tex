@@ -367,15 +367,1239 @@ gewonnen ist.
 %
 % Fourier-Theorie
 %
-\subsection{Fourier-Theorie}
+\subsection{Fourier-Theorie
+\label{buch:orthofkt:subsection:fourier-theorie}}
+Die Funktionen der Fourier-Theorie entstehen als Eigenfunktionen des
+Differentialoperators
+\begin{equation}
+D^2 = \frac{d^2}{dx^2}
+\end{equation}
+der zweiten Ableitung auf dem Intervall $[0,l]$.
+Das Skalarprodukt ist das übliche $L^2$-Skalarprodukt.
+
+\subsubsection{$D^2$ ist selbstadjungiert}
+Seien $f$ und $g$ zwei zweimal stetig differenzierbare Funktionen,
+wir berechnen das Skalarprodukt $\langle D^2f,g\rangle$ und
+$\langle f,D^2g\rangle$:
+\begin{align*}
+\langle D^2f,g\rangle
+&=
+\int_0^{l}
+f''(x) g(x)\,dx
+=
+\left[ f'(x) g(x) \right]_0^{l}
+-
+\int_0^{l} f'(x)g'(x)\,dx
+\\
+\langle f,D^2g\rangle
+&=
+\int_0^{l} f(x)g''(x)\,dx
+=
+\left[ f(x) g'(x) \right]_0^{l}
+-
+\int_0^{l} f'(x)g'(x)\,dx
+\end{align*}
+Die Integrale auf der rechten Seite stimmen überein.
+Der Operator $D^2$ ist also genau dann selbstadjungiert, wenn die anderen
+Terme auch übereinstimmen, wenn also
+\[
+\left[ f'(x) g(x) \right]_0^{l}
+=
+\left[ f(x) g'(x) \right]_0^{l}.
+\]
+Ausgeschrieben ist dies
+\begin{align}
+f'(l)g(l) - f'(0)g(0)
+&=
+f(l)g'(l) - f(0)g'(0)
+\notag
+\\
+\Rightarrow\qquad
+f'(l)g(l) - f(l)g'(l)
+&=
+f'(0)g(0)-f(0)g'(0)
+\notag
+\intertext{oder mit Determinanten geschrieben}
+\biggl|\begin{matrix}
+f'(l) & g'(l) \\
+f(l)  & g(l)
+\end{matrix}\biggr|
+&=
+\biggl|\begin{matrix}
+f'(0) & g'(0) \\
+f(0)  & g(0)
+\end{matrix}\biggr|
+\label{buch:orthofkt:pde:eqn:detfg}
+\end{align}
+Bei der Diskussion des Sturm-Liouville-Problems haben wir die beiden
+Intervallenden unabhängig voneinander betrachtet und zwei unabhängige
+Randbedingungen gefunden, welche erzwingen, dass 
+\eqref{buch:orthofkt:pde:eqn:detfg} erfüllt ist.
+Es gibt aber noch eine weitere Lösung, nämlich zu verlangen, dass
+die Funktionswerte und Ableitung für $x=0$ und $x=l$ übereinstimmen.
+Eine Funktion mit $f(0)=f(l)$ und $f'(0)=f'(l)$ kann periodisch
+auf ganz $\mathbb{R}$ ausgedehnt werden.
+Wegen $f(0)=f(l)$ ist die ausgedehnte Funktion stetig auf ganz $\mathbb{R}$
+und wegen $f'(0)=f'(l)$ ist sogar die Ableitung stetig.
+
+%
+% Eigenfunktionen
+%
+\subsubsection{Eigenfunktionen}
+Eigenfunktionen des Differentialoperators $D^2$ sind Lösungen der
+Differentialgleichung
+\[
+y'' = \lambda y.
+\]
+Die übliche Lösungsmethode liefert Lösungen
+\[
+y(x) = e^{\pm\!\sqrt{\lambda} x} \quad
+\text{ für $\lambda > 0$ und }
+\qquad
+y(x)
+=
+\begin{cases}
+\cos\sqrt{-\lambda} x \\
+\sin\sqrt{-\lambda} x
+\end{cases}
+\quad\text{für $\lambda < 0$.}
+\]
+Natürlich sind auch Linearkombinationen wieder Eigenfunktionen.
+
+Die Funktionen erfüllen aber die Randbedingungen nicht.
+Zum Beispiel ist es unmöglich, die periodischen Randbedingungen
+mit den Exponentialfunktionen zu erfüllen, denn dazu müsste
+$1=e^{0}=e^{\pm\!\sqrt{\lambda}l}$ sein, was nur für $\lambda=0$
+gilt.
+
+%
+% Randbedingungen für \lambda < 0
+%
+\subsubsection{Randbedingungen für $\lambda<0$}
+Je nach gewählten Randbedingungen sind die Eigenfunktionen des Operators
+$D^2$, die auch die Randbedingungen erfüllen, verschieden.
+Die allgemeine Theorie garantiert aber dass die Eigenfunktionen die
+Form einer Linearkombination
+\begin{equation}
+y(x)
+=
+A\cos \sqrt{-\lambda}x
++
+B\sin \sqrt{-\lambda}x
+\label{buch:orthofkt:pde:periodisch}
+\end{equation}
+haben und untereinander orthogonal sind.
+Wir untersuchen die Bedingungen an $A$ und $B$, die sich aus verschiedenen
+Randbedingungen ergeben.
+
+Homogene Dirichlet-Randbedingungen werden erfüllt, wenn $y(0)=y(l)=0$ ist.
+In Folgenden bestimmen wir $A$ und $B$ für $l=\pi$.
+Wegen
+\[
+y(0)
+=
+A\cos \sqrt{-\lambda}0
++
+B\sin \sqrt{-\lambda}0
+=
+A
+=
+0
+\]
+folgt, dass eine Eigenfunktion eine Sinus-Funktion sein muss.
+Die Randbedingung bei $x=\pi$ wird nur erfüllt, wenn
+\[
+y(\pi)
+=
+B\sin\sqrt{-\lambda}\pi
+=
+0
+\qquad
+\pi\sqrt{-\lambda}
+=
+k\pi,\; k\in\mathbb{Z},
+\]
+weil die Nullstellen der Sinusfunktion Vielfache von $\pi$ sind.
+Es folgt, dass $\lambda = -k^2$ und dass die Funktionen $\sin kx$
+die Eigenfunktionen dazu sind.
+
+Homogene Neumann-Randbedingungen werden erfüllt, wenn $y'(0)=y'(l)=0$,
+wir untersuchen wieder den Fall $l=\pi$.
+Aus
+\[
+y'(x)
+=
+-A\sqrt{-\lambda}\sin\sqrt{-\lambda} x 
++
+B\sqrt{-\lambda}\cos\sqrt{-\lambda} x 
+\]
+folgt für $x=0$, dass
+\[
+y'(0)
+=
+B\sqrt{-\lambda}
+\qquad\Rightarrow\qquad B=0.
+\]
+Am rechten Rand $x=\pi$ folgt dann
+\[
+y'(\pi)
+=
+-A\sqrt{-\lambda}\sin\sqrt{-\lambda}\pi
+=
+0
+\qquad\Rightarrow\qquad
+\sqrt{-\lambda}\pi = k\pi,\; k\in\mathbb{Z}
+\qquad\Rightarrow\qquad
+\lambda=-k^2,\;k\in\mathbb{Z}.
+\]
+In diesem Fall sind also die Kosinusfunktionen die Eigenfunktionen.
+
+Als Beispiel für eine gemischte Randbedingung betrachten wir den
+Fall $y(0)=0$ und $y'(\pi)=0$.
+Zunächst folgt aus der Diskussion der Dirichlet-Randbedingung, dass
+$y(x)=A\sin\sqrt{-\lambda}x$ sein muss.
+Am rechten Rand folgt dann
+\[
+y'(\pi)
+=
+A\sqrt{-\lambda}\cos\sqrt{-\lambda}\pi
+=
+0
+\quad\Rightarrow\quad
+\sqrt{-\lambda}\pi = (k+{\textstyle\frac12})\pi,\;k\in\mathbb{Z}
+\]
+und $\lambda = -(k+{\textstyle\frac12})^2$
+Die Eigenfunktionen sind wieder Sinusfunktionen, aber mit anderen
+Frequenzen.
+
+Die Beispiele zeigen, dass die Eigenfunktionen entweder Sinus-
+oder Kosinusfunktionen sind.
+Mit diesen Funktionen lassen sich beliebige Funktionen approximieren,
+die die Randbedingungen erfüllen.
+
+%
+% Periodische Randbedingungen für \lambda < 0
+%
+\subsubsection{Periodische Randbedingungen für $\lambda < 0$}
+Beliebige periodische Funktionen auf dem Intervall $[0,2\pi]$ lassen sich
+mit den im vorangegangenen Abschnitt gefundenen Funktionen nicht
+approximieren, dazu müssen periodische Randbedingungen verlangt werden.
+Die Funktion $y(x)$ von
+\eqref{buch:orthofkt:pde:periodisch}
+erfüllt periodische Randbedingungen für die Werte und Ableitungen, wenn
+\begin{align*}
+y(0) &= y(2\pi) 
+&&\Rightarrow&
+A &= A\cos\sqrt{-\lambda}2\pi + B\sin\sqrt{-\lambda}2\pi
+\\
+y'(0)&=y'(2\pi)
+&&\Rightarrow&
+\sqrt{-\lambda}B
+&=
+-
+A\sqrt{-\lambda}\sin\sqrt{-\lambda}2\pi
++
+B\sqrt{-\lambda}\cos\sqrt{-\lambda}2\pi.
+\end{align*}
+Die Koeffizienten $A$ und $B$ sind Lösungen des linearen Gleichungssystems
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcrcr}
+\cos2\pi\sqrt{-\lambda} \cdot A
+&+&
+\sin2\pi\sqrt{-\lambda} \cdot B
+&=& A
+\\
+-\sin2\pi\sqrt{-\lambda} \cdot A
+&+&
+\cos2\pi\sqrt{-\lambda} \cdot B
+&=& B
+\end{array}
+\Leftrightarrow
+\begin{array}{rcrcl}
+(\cos2\pi\sqrt{-\lambda}-1) \cdot A
+&+&
+\sin2\pi\sqrt{-\lambda} \cdot B
+&=&
+0
+\\
+-\sin2\pi\sqrt{-\lambda} \cdot A
+&+&
+(\cos2\pi\sqrt{-\lambda}-1) \cdot B
+&=& 0.
+\end{array}
+\]
+Als homogenes lineares Gleichungssystems kann es nur dann eine nichttriviale
+Lösung geben, wenn die Determinante der Koeffizientenmatrix verschwindet,
+wenn also
+\begin{align*}
+0
+&=
+\biggl|\begin{matrix}
+\cos 2\pi\sqrt{-\lambda}-1 & \sin 2\pi\sqrt{-\lambda}   \\
+-\sin 2\pi\sqrt{-\lambda}  & \cos 2\pi\sqrt{-\lambda}-1
+\end{matrix}\biggr|
+\\
+&=
+\cos^2 2\pi\sqrt{-\lambda} -2\cos2\pi\sqrt{-\lambda}+1
++
+\sin^22\pi\sqrt{-\lambda}
+\\
+&=
+2(1-\cos2\pi\sqrt{-\lambda})
+\qquad\Rightarrow\qquad
+2\pi\sqrt{-\lambda} = 2k\pi,\;k\in\mathbb{Z},
+\end{align*}
+da die Maxima der Kosinusfunktion bei den Vielfachen von $2\pi$ liegen.
+Somit sind die möglichen Eigenwerte $\lambda=-k^2$.
+
+Die Matrix des Gleichungssystems zur Bestimmung der Koeffizienten $A$ und $B$
+wird für $\lambda=-k^2$ zur Nullmatrix, somit sind beliebige Koeffizienten
+$A$ und $B$ möglich.
+Jede Linearkombination von $\cos kx$ und $\sin kx$ ist Eigenfunktion
+des Operators $D^2$ mit Eigenwerte $-k^2$ mit periodischen Randbedingungen.
+Dies sind die Basisfunktionen, die für die Fourier-Theorie verwendet
+werden.
+
+%
+% Randbedingungen für \lambda > 0
+%
+\subsubsection{Randbedingungen für $\lambda > 0$}
+Im Fall $\lambda >0$ muss eine Eigenfunktion die Form
+\[
+y(x)
+=
+Ae^{\sqrt{\lambda}x}
++
+Be^{-\sqrt{\lambda}x}
+\quad\text{mit}\quad
+y'(x)
+=
+A\sqrt{\lambda}e^{\sqrt{\lambda}x}
+-
+B\sqrt{\lambda}e^{-\sqrt{\lambda}x}
+\]
+haben.
+Die Diskussion der Eigenfunktionen wird etwas einfacher auf einem
+symmetrischen Intervall $[-l,l]$.
+
+Homogene Dirichlet-Randbedingungen werden erfüllt, wenn
+\begin{align*}
+0&=y(\phantom{-}l) = Ae^{l\sqrt{\lambda}} + Be^{-l\sqrt{\lambda}}
+\\
+0&=y(         - l) = Ae^{-l\sqrt{\lambda}} + Be^{l\sqrt{\lambda}}
+\end{align*}
+Dies ist ein homogenes lineares Gleichungssystem, es hat nur dann eine
+nichttriviale Lösung, wenn die Determinante nicht verschwindet, wenn also
+\[
+0
+=
+\biggl|
+\begin{matrix}
+e^{l\sqrt{\lambda}}  & e^{-l\sqrt{\lambda}} \\
+e^{-l\sqrt{\lambda}} & e^{l\sqrt{\lambda}}
+\end{matrix}
+\biggr|
+=
+e^{2l\sqrt{\lambda}} - e^{-2l\sqrt{\lambda}}
+0
+e^{2l\sqrt{\lambda}} ( 1 - e^{-4l\sqrt{\lambda}}).
+\]
+Die Exponentialfunktion hat keine reellen Nullstellen, daher
+muss der Klammerausdruck verschwinden.
+Dies ist aber nur für $\lambda=0$ möglich.
+Homogene Randbedingungen lassen sich also für $\lambda>0$ nicht erfüllen.
+
+Für homogene Neumann-Randbedingungen sind die zu erfüllenden Gleichungen
+\begin{align*}
+0&= y'(\phantom{-}l)
+=
+A\sqrt{\lambda} e^{l\sqrt{\lambda}} - B\sqrt{\lambda}e^{-l\sqrt{\lambda}}
+\\
+0&= y'(         - l) =
+A\sqrt{\lambda} e^{-l\sqrt{\lambda}} - B\sqrt{\lambda}e^{l\sqrt{\lambda}}.
+\end{align*}
+Die Determinante dieses homogenen linearen Gleichungssystems ist
+\[
+\biggl|\begin{matrix}
+\sqrt{\lambda} e^{l\sqrt{\lambda}}  & -\sqrt{\lambda}e^{-l\sqrt{\lambda}}
+\\
+\sqrt{\lambda} e^{-l\sqrt{\lambda}} & -\sqrt{\lambda}e^{l\sqrt{\lambda}}
+\end{matrix}\biggr|
+=
+-\lambda
+\biggl|\begin{matrix}
+e^{l\sqrt{\lambda}}  & e^{-l\sqrt{\lambda}}
+\\
+e^{-l\sqrt{\lambda}} & e^{l\sqrt{\lambda}}
+\end{matrix}\biggr|
+=
+-\lambda
+(
+e^{2l\sqrt{\lambda}} - e^{-2l\lambda}
+).
+\]
+Wie für Dirichlet-Randbedingungen folgt, dass auch diese Randbedingungen
+nicht erfüllt werden können.
+
+Wir versuchen auch noch periodische Randbedingungen zu erfüllen, also
+die Gleichungen
+\[
+\begin{aligned}
+y(-l) &= y(l)\\
+y'(-l)&=y'(l)
+\end{aligned}
+\quad\Rightarrow\quad
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcrcrcr}
+e^{-l\sqrt{\lambda}}A
+&+&
+e^{l\sqrt{\lambda}}B
+&=&
+e^{l\sqrt{\lambda}}A
+&+&
+e^{-l\sqrt{\lambda}}B
+\phantom{.}
+\\
+\sqrt{\lambda}e^{-l\sqrt{\lambda}}A
+&-&
+\sqrt{\lambda}e^{l\sqrt{\lambda}}B
+&=&
+\sqrt{\lambda}e^{l\sqrt{\lambda}}A
+&-&
+\sqrt{\lambda}e^{-l\sqrt{\lambda}}B.
+\end{array}
+\]
+Bringt man alles auf eine Seite, entsteht ein Gleichungssystem mit der
+Koeffizientenmatrix
+\[
+\begin{pmatrix}
+-e^{l\sqrt{\lambda}} + e^{-l\sqrt{\lambda}}
+	& e^{l\sqrt{\lambda}} - e^{-l\sqrt{\lambda}}
+\\
+\sqrt{\lambda}(
+-
+e^{l\sqrt{\lambda}}
++
+e^{-l\sqrt{\lambda}}
+)
+	& \sqrt{\lambda}(-e^{l\sqrt{\lambda}} + e^{-l\sqrt{\lambda}})
+\end{pmatrix}
+=
+\begin{pmatrix*}[r]
+-              2\sinh(l\sqrt{\lambda})&               2\sinh(l\sqrt{\lambda})\\
+-\sqrt{\lambda}2\sinh(l\sqrt{\lambda})&-\sqrt{\lambda}2\sinh(l\sqrt{\lambda})
+\end{pmatrix*}
+\]
+mit der Determinante
+\[
+4\sqrt{\lambda}
+\bigl(
+\sinh^2(l\!\sqrt{\lambda})
++
+\sinh^2(l\!\sqrt{\lambda})
+\bigr)
+=
+8\sqrt{\lambda} \sinh^2(l\sqrt{\lambda}),
+\]
+die nur verschwindet, wenn $l=0$ ist.
+Somit lassen sich auch periodische Randbedingungen für $\lambda > 0$
+nicht erfüllen.
 
 %
 % Funktionen auf einem Rechteck
 %
 \subsection{Funktionen auf einem Rechteck}
+In diesem Abschnitt betrachten wir den Operator 
+\[
+\Delta
+=
+\frac{\partial^2}{\partial x^2}
++
+\frac{\partial^2}{\partial y^2}
+\]
+auf einem Rechteck $\Omega = (0,l_x)\times (0,l_y)$.
+Das Skalarprodukt ist wieder das übliche $L^2$-Skalarprodukt.
+
 
 %
+% $\Delta$ ist selbstadjungiert
 %
+\subsubsection{$\Delta$ ist selbstadjungiert}
+Seien $f$ und $g$ zweimal stetig differenzierbare Funktionen und berechnen
+das Skalarprodukt
+\begin{align}
+\langle \Delta f, g\rangle
+&=
+\int_0^{l_x}\int_0^{l_y} \Delta f(x,y) g(x,y) \,dx\,dy
+\notag
+\\
+&=
+\int_0^{l_x}\int_0^{l_y} \frac{\partial^2 f}{\partial x^2}(x,y)\,g(x,y)\,dx\,dy
++
+\int_0^{l_x}\int_0^{l_y} \frac{\partial^2 f}{\partial y^2}(x,y)\,g(x,y)\,dx\,dy
+\notag
+\\
+&=
+\int_0^{l_x}\int_0^{l_y} \frac{\partial^2 f}{\partial x^2}(x,y)\,g(x,y)\,dx\,dy
++
+\int_0^{l_y}\int_0^{l_x} \frac{\partial^2 f}{\partial y^2}(x,y)\,g(x,y)\,dy\,dx
+\notag
+\\
+&=\phantom{+}
+\int_0^{l_y}
+\left[ \frac{\partial f}{\partial x}(x,y)\, g(x,y)\right]_0^{l_x}
+\,dy
+-
+\int_0^{l_y}\int_0^{l_x}
+\frac{\partial f}{\partial x}(x,y)\, \frac{\partial g}{\partial x}(x,y)
+\,dx\,dy
+\notag
+\\
+&\phantom{=}+
+\int_0^{l_x}
+\left[ \frac{\partial f}{\partial y}(x,y)\, g(x,y)\right]_0^{l_x}
+\,dx
+-
+\int_0^{l_x}\int_0^{l_y}
+\frac{\partial f}{\partial y}(x,y)\, \frac{\partial g}{\partial y}(x,y)
+\,dy\,dx
+\notag
+\\
+&=\phantom{+}
+\int_0^{l_x} \frac{\partial f}{\partial y}(x,l_y)\, g(x,l_y) \,dx
+-
+\int_0^{l_x} \frac{\partial f}{\partial y}(x,0)\, g(x,0) \,dx
+\label{buch:orthofkt:pdf:eqn:rechteck:r1}
+\\
+&\phantom{=}+
+\int_0^{l_y} \frac{\partial f}{\partial x}(l_x,y)\, g(l_x,y) \,dy
+-
+\int_0^{l_y} \frac{\partial f}{\partial x}(0,y)\, g(0,y) \,dy
+\label{buch:orthofkt:pdf:eqn:rechteck:r2}
+\\
+&\phantom{=}
+-
+\int_0^{l_x}
+\int_0^{l_y}
+\frac{\partial f}{\partial x} \frac{\partial g}{\partial x}
++
+\frac{\partial f}{\partial y} \frac{\partial g}{\partial y}
+\,dy\,dx.
+\label{buch:orthofkt:pdf:eqn:rechteck:total}
+\end{align}
+Die ersten vier Integrale auf der rechten Seite hängen nur ab
+von den Werten der Funktionen und der Ableitungen auf dem Rand.
+Erfüllen die Funktionen homogene Dirichlet-Randbedingungen, dann
+ist der Integrand immer 0 und auf der rechten Seite bleibt nur
+der Term \eqref{buch:orthofkt:pdf:eqn:rechteck:total}.
+%\[
+%-\int_0^{l_x} \int_0^{l_y}
+%\frac{\partial f}{\partial x} \frac{\partial g}{\partial x}
+%+
+%\frac{\partial f}{\partial y} \frac{\partial g}{\partial y}
+%\,dy\,dx.
+%\]
+Der gleiche Term bleibt auch bei der Berechnung von
+$\langle f,\Delta g\rangle$
+stehen, so dass für Funktionen, die homogene Dirichlet-Randbedingungen
+erfüllen, der Operator $\Delta$ selbstadjungiert ist.
+
+Die Integrale
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r1}
+über $x$ sind Integrale entlang der zur $x$-Achse parallelen Teile des
+Randes von $\Omega$.
+Die Ableitung $\partial f/\partial y$ ist die Ableitung in Richtung
+senkrecht auf den Rand des Gebietes, die Normalableitung.
+In den Integralen
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r2}
+über $y$ sind Integrale entlang der zur $y$-Achse parallelen Teile
+tritt die Ableitung $\partial f/\partial x$ auf, die die Normalableitung
+ist.
+Erfüllen die Funktionen homogene Neumann-Randbedingungen, dann sind
+diese Normalableitungen $=0$ und die Integrale
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r1}
+und
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r2}
+verschwinden.
+Auch in diesem Fall ist $\Delta$ auf den Funktionen, die homogene
+Neumann-Randbedingungen erfüllen, selbstadjungiert.
+
+%
+% Eigenfunktionen
+%
+\subsubsection{Eigenfunktionen}
+Eigenfunktionen des Laplace-Operators auf einem Rechteck sind
+Lösungen der Differentialgleichung $\Delta f=\lambda f$.
+Nimmt man an, dass die Funktion $f$ als Produkte zweier Funktionen
+$X(x)$ und $Y(y)$ geschrieben werden kann, kann man den Ansatz
+$f(x,y) = X(x)Y(y)$ in die Differentialgleichung einsetzen und erhält
+\[
+X''(x)Y(y) + X(x)Y''(y) = \lambda X(x)Y(y).
+\]
+Ausserhalb der Nullstellen von $X(x)$ und $Y(y)$ kann man durch das
+Produkt teilen und bekommt
+\[
+\frac{X''(x)}{X(x)}
++
+\frac{Y''(y)}{Y(y)}
+=
+\lambda
+\qquad\Rightarrow\qquad
+\frac{X''(x)}{X(x)}
+=
+\lambda
+-
+\frac{Y''(y)}{Y(y)}.
+\]
+Die linke Seite der letzten Gleichung hängt nur von $x$ ab,
+die rechte Seite hängt nur von $y$ ab.
+Dies bedeutet, dass beide Seiten konstant sind.
+Es gibt also eine Konstante $\mu$ derart, dass
+\begin{align*}
+\frac{X''(x)}{X(x)}&= \mu
+&&\Rightarrow
+&
+X''(x)&=\mu X(x)
+&&\text{für $x\in (0,l_x)$}
+\\
+\frac{Y''(y)}{Y(y)}&=\lambda-\mu
+&&\Rightarrow
+&
+Y''(y)&=(\lambda-\mu)Y(y)
+&&\text{für $y\in (0,l_y)$}
+\end{align*}
+Damit ist das Problem auf das einimensionale Problem von
+Abschnitt~ \ref{buch:orthofkt:subsection:fourier-theorie}
+reduziert.
+Für Dirichlet-Randbedingungen sind die Funktionen
+\[
+X(x) = \sin\frac{\pi k_x}{l_x} x
+\quad\text{und}\quad
+Y(y) = \sin\frac{\pi k_y}{l_y} y
+\]
+zu verwenden, die zugehörigen Eigenwerte sind
+\[
+\lambda
+=
+-\pi^2\biggl(
+\frac{k_{x\mathstrut}^2\mathstrut}{l_x^2}
++
+\frac{k_{y\mathstrut}^2\mathstrut}{l_y^2}
+\biggr),
+\quad
+k_x,k_y\in\mathbb{Z}.
+\]
+Auf die gleiche Art und Weise können
+auch für homogene Neumann-Randbedingungen Lösungen mit 
+den Kosinusfunktionen gefunden werden.
+
+%
+% Periodische Randbedingungen
+%
+\subsubsection{Perdiodische Randbedingungen}
+Die Integrale 
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r1}
+und
+\eqref{buch:orthofkt:pdf:eqn:rechteck:r2}
+können aber auch zum verschwinden gebracht werden, wenn man sicherstellt,
+wenn die Funktionswerte und Normalableitungen auf den Rändern des Gebietes
+übereinstimmen.
+Die Bedingungen
+\begin{align*}
+f(x,l_y) &= f(x,0)
+&&\text{und}&
+\frac{\partial f}{\partial x}(x,l_y) &= \frac{\partial f}{\partial x}(x,0)
+\\
+f(l_x,y) &= f(0,y)
+&&\text{und}&
+\frac{\partial f}{\partial y}(l_x,y) &= \frac{\partial f}{\partial y}(0,y).
+\intertext{Aus den  ersten beiden Gleichung folgt ausserdem, dass}
+\frac{\partial f}{\partial x}(x,0) &=
+\frac{\partial f}{\partial x}(x,l_y)
+&&\text{und}&
+\frac{\partial f}{\partial y}(0,y) &=
+\frac{\partial f}{\partial y}(l_x,y).
+\end{align*}
+Eine solche Funktion kann also $l_x$-periodisch in $x$ und $l_y$-periodisch
+in $y$ auf ganz $\mathbb{R}$ erweitert werden, so dass die erweiterte Funktion
+und ihre Ableitungen immer noch stetig sind.
+
+%
+% Funktionen in einem Kreisgebiet
+%
+\subsection{Funktionen in einem Kreisgebiet}
+Ein Kreisgebiet $\Omega = \{(x,y)\mid x^2+y^2< r^2\}$ ist am einfachsten
+mit Polarkoordinaten zu beschreiben.
+Der Laplace-Operator in Polarkoordinaten ist
+\[
+\Delta 
+=
+\frac1r \frac{\partial}{\partial r} r \frac{\partial}{\partial r}
++
+\frac{1}{r^2} \frac{\partial}{\partial\varphi}.
+\]
+Funktionen auf dem Kreisgebiet sind Funktion $f(r,\varphi)$ müssen
+\[
+f(0,\varphi) = f(0,0)
+\qquad\text{und}\qquad
+f(r,\varphi) = f(r,\varphi+2\pi)
+\]
+erfüllt sein, da die Funktion sonst nicht stetig sein kann.
+Damit die Funktion auch im Nullpunkt differenzierbar ist, müssen die
+Ableitungen für $r=0$ zusammenpassen.
+Die Richtungsableitungen in $x$- und $y$-Richtung sind
+\[
+\frac{\partial f}{\partial r}(0,0)
+\qquad\text{und}\qquad
+\frac{\partial f}{\partial r}(0,{\textstyle\frac{\pi}2}).
+\]
+In jeder anderen Richtung ist die Richtungsableitung
+\begin{equation}
+\frac{\partial f}{\partial r}(0,\varphi)
+=
+\begin{pmatrix}
+\frac{\partial f}{\partial r}(0,0)\\
+\frac{\partial f}{\partial r}(0,{\textstyle\frac{\pi}2})\\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\cos\varphi\\
+\sin\varphi
+\end{pmatrix}
+=
+\frac{\partial f}{\partial r}(0,0)\cos\varphi
++
+\frac{\partial f}{\partial r}(0,{\textstyle\frac{\pi}2})\sin\varphi.
+\label{buch:orthofkt:eqn:phibed}
+\end{equation}
+Die Gleichung
+\eqref{buch:orthofkt:eqn:phibed}
+ist eine Bedingung, die Funktion $f$ erfüllen muss, damit $f$
+differenzierbar ist.
+
+%
+% \Delta ist selbstadjungiert
+%
+\subsubsection{$\Delta$ ist selbstadjungiert}
+Seien $f$ und $g$ auf dem Kreisgebiet definiert, dann können wir damit
+das Skalarprodukt
+\begin{align}
+\langle \Delta f, g\rangle
+&=
+\int_0^R \int_0^{2\pi}  \Delta f(r,\varphi) g(r,\varphi)\,r\,d\varphi\,dr
+\notag
+\\
+&=
+\int_0^R \int_0^{2\pi}
+\biggl(
+\frac1r \frac{\partial}{\partial r}r\frac{\partial f}{\partial r}(r,\varphi)
++
+\frac1{r^2}\frac{\partial^2 f}{\partial\varphi^2}(r,\varphi)
+\biggr)
+g(r,\varphi)
+\, r\,d\varphi\,dr
+\notag
+\\
+&=
+\int_0^{2\pi}
+\int_0^R
+\frac{\partial}{\partial r}r\frac{\partial f}{\partial r}(r,\varphi)
+g(r,\varphi)
+\,dr
+\,
+d\varphi
++
+\int_0^R
+\frac1{r}
+\int_0^{2\pi}
+\frac{\partial^2 f}{\partial\varphi^2}(r,\varphi)
+g(r,\varphi)
+\,d\varphi
+\,dr
+\notag
+\\
+&=
+\phantom{+}
+\int_0^{2\pi}
+\biggl[
+\frac{\partial f}{\partial r}(r,\varphi)\, g(r,\varphi)
+\biggr]_0^R
+\,r
+\,d\varphi
+-
+\int_0^R
+\int_0^{2\pi}
+\frac{\partial f}{\partial r}
+\frac{\partial g}{\partial r}
+\,d\varphi
+\,dr
+\label{buch:orthofkt:pde:eqn:kreisdr}
+\\
+&\phantom{=}
++
+\int_{0}^R
+\frac1r
+\biggl[
+\frac{\partial f}{\partial \varphi}(r,\varphi)
+g(r,\varphi)
+\biggr]_0^{2\pi}
+\,dr
+-
+\int_{0}^R
+\frac1r
+\int_0^{2\pi}
+\frac{\partial f}{\partial\varphi}(r,\varphi)
+\frac{\partial g}{\partial\varphi}(r,\varphi)
+\,d\varphi
+\,dr
+\label{buch:orthofkt:pde:eqn:kreisdphi}
+\end{align}
+berechnen.
+Das erste Integral in 
+\eqref{buch:orthofkt:pde:eqn:kreisdphi}
+verschwindet, weil $f$ und $g$ $2\pi$-periodisch sind in $\varphi$.
+Das erste Integral in 
+\eqref{buch:orthofkt:pde:eqn:kreisdr}
+hängt nur von den Werten von $g$ und der Ableitung von $f$ in $r$-Richtung
+auf dem Rand des Gebietes ab.
+Die doppelten Integrale sind symmetrisch in $f$ und $g$.
+Daraus kann man wieder folgern, dass $\Delta$ auf Funktionen mit
+einer homogenen Dirichlet- oder einer homogenen Neumann-Randbedingung
+selbstadjungiert ist.
+
+%
+% Eigenfunktionen
+%
+\subsubsection{Eigenfunktionen}
+Mit dem Ansatz $f(r,\varphi) = R(r) \Phi(\varphi)$ kann man versuchen,
+Lösungen der partiellen Differentialgleichung $\Delta f=\lambda f$
+zu finden.
+Einsetzen in die Differentialgleichung führt auf
+\[
+\frac1r \frac{d}{dr} rR'(r) \Phi(\varphi)
++
+\frac1{r^2} \Phi''(\varphi)
+=
+\lambda R(r)\Phi(\varphi).
+\]
+Auch hier können die Funktionen $R(r)$ und $\Phi(\varphi)$ mittels
+Division durch $f(r,\varphi)$ getrennt werden.
+Aus
+\[
+\frac1r \frac{R'(r) + rR''(r)}{R(r)}
++
+\frac{1}{r^2}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+=
+\lambda
+\]
+werden die beiden Gleichungen
+\[
+\frac{r^2R''(r) + rR'(r)}{R(r)}
+-
+\lambda r^2
+=
+-\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+\quad\Rightarrow\quad
+\left\{
+\begin{aligned}
+r^2R''(r) + rR'(r) +(m^2 - \lambda r^2)R(r) &= 0
+\\
+\Phi''(\varphi)&=-m^2 \Phi(\varphi)
+\end{aligned}
+\right.
+\]
+Die zweite Gleichung hat die trigonometrischen Funktionen
+als Lösungen.
+Die erste Gleichung ist etwas schwieriger zu lösen.
+Sie kann zum Beispiel mit der Potenzreihenmethode gelöst werden, die
+Lösungsfunktionen sind die Bessel-Funktionen.
+
+%
+% Funktionen auf einer Kugeloberfläche
 %
 \subsection{Funktionen auf einer Kugeloberfläche}
+Die Wellenausbreitung auf der Erdoberfläche kann mit Funktionen
+auf einer Kugeloberfläche modelliert werden.
+Die Wellengleichung verwendet den Laplace-Operator, der in Kugelkoordinaten
+die Form
+\[
+\Delta
+=
+\frac{1}{r^2}
+\frac{\partial}{\partial r}
+r^2
+\frac{\partial}{\partial r}
++
+\frac{1}{r^2\sin\vartheta}
+\frac{\partial}{\partial\vartheta}
+\biggl(\sin\vartheta\frac{\partial}{\partial\vartheta}\biggr)
++
+\frac{1}{r^2\sin^2\vartheta}
+\frac{\partial^2}{\partial\varphi^2}
+\]
+hat.
+Die Abhängigkeit von $r$ wird auf der Kugeloberfläche nicht benötigt,
+so dass sich der Operator vereinfacht auf
+\[
+\Delta
+=
+\frac{1}{\sin\vartheta}
+\frac{\partial}{\partial\vartheta}
+\biggl(\sin\vartheta\frac{\partial}{\partial\vartheta}\biggr)
++
+\frac{1}{\sin^2\vartheta}
+\frac{\partial^2}{\partial\varphi^2}.
+\]
+Als Skalarprodukt wird das gewöhnliche $L^2$-Skalarprodukt
+\[
+\langle f,g\rangle
+=
+\int_{0}^{2\pi}
+\int_0^\pi
+f(\vartheta,\varphi)
+g(\vartheta,\varphi)
+\sin \vartheta
+\,d\vartheta
+\,d\varphi
+\]
+verwendet.
+
+%
+% \Delta ist selbstadjungiert
+%
+\subsubsection{$\Delta$ ist selbstadjungiert}
+Der Laplace-Operator ist auch für Funktionen auf der Kugeloberfläche
+selbstadjungiert.
+Da die Kugeloberfläche keinen Rand hat, sind die einzige Bedingungen an
+die Funktionen, dass sie auf der Kugeloberfläche differenzierbar sind.
+Dazu müssen sie in $\varphi$ $2\pi$-periodisch sein und 
+$f(0,\varphi)$ und $f(\pi,\varphi)$ müssen konstant sein.
+Damit die Ableitungen an den Polen der Kugel existieren, müssen die
+Bedingungen
+\[
+\frac{\partial f}{\partial\vartheta}(\vartheta,\varphi)
+=
+\frac{\partial f}{\partial\vartheta}(\vartheta,0)
+\cos\varphi
++
+\frac{\partial f}{\partial\vartheta}(\vartheta,{\textstyle\frac{\pi}2})
+\sin\varphi
+\]
+erfüllen.
+\begin{align}
+\langle \Delta f, g\rangle
+&=
+\int_{0}^{2\pi}
+\int_0^\pi
+\Delta
+f(\vartheta,\varphi)
+g(\vartheta,\varphi)
+\sin \vartheta
+\,d\vartheta
+\,d\varphi
+\notag
+\\
+&=
+\int_{0}^{2\pi}
+\int_0^\pi
+\biggl(
+\frac{1}{\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\biggl(
+\sin\vartheta\frac{\partial f}{\partial\vartheta}
+\biggr)
++
+\frac{1}{\sin^2\vartheta}
+\frac{\partial^2 f}{\partial\varphi^2}
+\biggr)
+g(\vartheta,\varphi)
+\sin \vartheta
+\,d\vartheta
+\,d\varphi
+\notag
+\\
+&=
+\int_{0}^{2\pi}
+\int_0^\pi
+\frac{\partial}{\partial\vartheta}
+\biggl(
+\sin\vartheta\frac{\partial f}{\partial\vartheta}
+\biggr)
+\,d\vartheta
+\,d\varphi
++
+\int_{0}^{2\pi}
+\int_0^\pi
+\frac{1}{\sin^2\vartheta}
+\frac{\partial^2 f}{\partial\varphi^2}
+g(\vartheta,\varphi)
+\sin \vartheta
+\,d\vartheta
+\,d\varphi
+\notag
+\\
+&=\phantom{+}
+\int_0^{2\pi}
+\biggl[
+\sin\vartheta\frac{\partial f}{\partial\vartheta}(\vartheta,\varphi)
+g(\vartheta,\varphi)
+\biggr]_0^\pi
+\,d\varphi
+-
+\int_0^{2\pi}
+\int_0^\pi
+\frac{\partial f}{\partial\vartheta}(\vartheta,\varphi)
+\frac{\partial g}{\partial\vartheta}(\vartheta,\varphi)
+\sin\vartheta
+\,d\vartheta
+\,d\varphi
+\label{buch:orthofkt:pde:deltakugel1}
+\\
+&\phantom{=}+
+\int_0^\pi \frac{1}{\sin\vartheta}
+\biggl[
+\frac{\partial f}{\partial\varphi}(\vartheta,\varphi)\, g(\vartheta,\varphi)
+\biggr]_0^{2\pi}
+\,d\vartheta
+-
+\int_0^\pi
+\int_{0}^{2\pi}
+\frac{\partial f}{\partial\varphi}
+\frac{\partial g}{\partial\varphi}
+\sin\vartheta
+\,d\varphi
+\,d\vartheta
+\label{buch:orthofkt:pde:deltakugel2}
+\end{align}
+Das erste Integral in
+\eqref{buch:orthofkt:pde:deltakugel2} verschwindet, weil die
+Funktion und die Ableitungen $2\pi$-periodisch in $\varphi$
+sind.
+Das erste Integral in
+\eqref{buch:orthofkt:pde:deltakugel1}
+kann man durch die Beobachtung vereinfachen, dass für
+$\vartheta=0$ und $\vartheta=\pi$.
+die Funktionen konstant sein müssen.
+Das erste Integral in \eqref{buch:orthofkt:pde:deltakugel1}
+verschwindet, weil $\sin0=\sin\vartheta=0$.
+Die verbleibenden doppelten Integrale in \eqref{buch:orthofkt:pde:deltakugel1}
+und \eqref{buch:orthofkt:pde:deltakugel2} sind symmetrisch in $f$ und $g$.
+Somit ist der Laplace-Operator auf beliebigen auf der Kugeloberfläche
+differenzierbaren Funktionen selbstadjungiert.
+
+%
+% Lösungen der Legendre-Differentialgleichung
+%
+\subsubsection{Lösungen der Legendre-Differentialgleichung}
+Die Eigenfunktionen des Laplace-Operators auf der Kugeloberfläche
+kann wieder mit einem Ansatz
+$f(\vartheta,\varphi)=\Theta(\vartheta)\Phi(\varphi)$
+gefunden werden.
+Einsetzen in die Differentialgleichung gibt
+\begin{align*}
+\frac{1}{\sin\vartheta}
+\frac{\partial}{\partial\vartheta}\bigl(
+\sin\vartheta \Theta'(\vartheta)\Phi(\varphi)
+\bigr)
++
+\frac{1}{\sin^2\vartheta} \Phi''(\varphi)\Theta(\vartheta)
+&=
+\lambda
+\Theta(\vartheta)\Phi(\varphi)
+\\
+\frac{1}{\sin\vartheta}
+\bigl(
+\cos\vartheta \Theta'(\vartheta)
++
+\sin\vartheta\Theta''(\vartheta)
+\bigr)
+\Phi(\varphi)
++
+\frac{1}{\sin^2\vartheta} \Phi''(\varphi)\Theta(\vartheta)
+&=
+\lambda
+\Theta(\vartheta)\Phi(\varphi).
+\intertext{Division durch $f(\vartheta,\varphi)$ und Multiplikation
+mit $\sin^2\vartheta$ ergibt}
+\sin\vartheta
+\frac{
+\cos\vartheta \Theta'(\vartheta) +\sin\vartheta\Theta''(\vartheta)
+}{
+\Theta(\vartheta)
+}
++
+\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+&=
+\lambda\sin^2\vartheta,
+\intertext{in der man $\vartheta$ auf die linke Seite und $\varphi$ auf
+die rechte Seite verschieben kann}
+\sin\vartheta
+\frac{
+\cos\vartheta\Theta'(\vartheta)
++
+\sin\vartheta\Theta''(\vartheta)
+-\lambda\sin\vartheta \Theta(\vartheta)
+}{
+\Theta(\vartheta)
+}
+&=
+-\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+=
+m^2
+\end{align*}
+Für die Funktionen $\Phi(\varphi)$ sind wieder beliebige Linearkombinationen
+der trigonometrischen Funktionen $\cos m\varphi$ und $\sin m\varphi$
+die Lösungen.
+Die Funktion $\Theta(\vartheta)$ erfüllt die Differentialgleichung
+\[
+\sin^2\vartheta \Theta''(\vartheta)
++
+\sin\vartheta\cos\vartheta
+\Theta'(\vartheta)
+-
+\lambda\sin^2\vartheta
+\Theta(\vartheta)
+=
+m^2 \Theta(\vartheta).
+\]
+Division durch $\sin^2\vartheta$ kann die Gleichung etwas vereinfachen:
+\begin{equation}
+\Theta''(\vartheta)
++
+\frac{\cos\vartheta}{\sin\vartheta} \Theta'(\vartheta)
+-
+\lambda\Theta(\vartheta)
+-
+\frac{m^2}{\sin^2\vartheta} 
+\Theta(\vartheta)
+=
+0
+\label{buch:orthfkt:pde:dglthetaphi}
+\end{equation}
+Diese Gleichung ist bekannt als die {\em assoziierte
+Legendre-Differentialgleichung}.
+Man kann zeigen, dass sie $\lambda=-l(l+1)$ mit $l\in\mathbb{N}$
+als Eigenwerte hat.
+
+%
+% Koordinatentransformation z = cos theta
+%
+\subsubsection{Koordinatentransformation $z=\cos\vartheta$}
+Die Parametrisierung mit $\vartheta$
+in \eqref{buch:orthfkt:pde:dglthetaphi}
+ist etwas unhandlich, daher soll der Parameter
+$\vartheta$ durch $z=\cos\vartheta$ und
+$\sin\vartheta = \sqrt{1-z^2}$
+ersetzt werden.
+Die Funktion $\Theta(\vartheta)$ ist dann eine Funktion $P(z)$ mit
+$P(\cos\vartheta)=\Theta(\vartheta)$.
+Die Ableitungen von $\Theta$ können durch Ableitungen von $P$
+ausgedrückt werden wie folgt.
+Zunächst sind die Ableitungen nach $\vartheta$:
+\begin{align*}
+\Theta'(\vartheta)
+&=
+\frac{d}{d\vartheta} P(\cos\vartheta)
+=
+-P'(\cos\vartheta) \sin\vartheta
+\\
+&=
+-
+\sqrt{1-z^2}
+P'(z)
+\\
+\Theta''(\vartheta)
+&=
+\frac{d}{d\vartheta} 
+\Theta'(\vartheta)
+=
+-\frac{d}{d\vartheta}\bigl(P'(\cos\vartheta) \sin\vartheta\bigr)
+=
+P''(\cos\vartheta)\sin^2\vartheta
+-
+P'(\cos\vartheta)\cos\vartheta
+\\
+&=
+(1-z^2)
+P''(z)
+-
+z
+P'(z)
+\end{align*}
+Damit kann man die Differentialgleichung
+\eqref{buch:orthfkt:pde:dglthetaphi}
+in die Form
+\[
+(1-z^2)P''(z)
+-
+zP'(z)
+-
+\frac{z}{\sqrt{1-z^2}}\sqrt{1-z^2}P'(z)
+-
+\lambda P(z)
+-
+\frac{m^2}{1-z^2}P(z)
+=
+0
+\]
+für die Funktion $P(z)$ finden.
+\begin{equation}
+(1-z^2)P''(z) - 2zP'(z)
++
+\biggl(
+-
+\lambda
+-
+\frac{m^2}{1-z^2}
+\biggr)
+P(z)
+=
+0
+\label{buch:orthofkt:pde:eqn:legendreassocz}
+\end{equation}
+Diese Differentialgleichung kann auch in der Form des
+Sturm-Liouville-Operators
+\[
+L
+=
+\frac{d}{dz}
+(1-z^2)
+\frac{d}{dz}
++
+\biggl(-\lambda-\frac{m^2}{1-z^2}\biggr)
+\]
+geschrieben werden.
+Solche Operatoren haben wir früher studiert.
+
+%
+% Eigenfunktionen
+%
+\subsubsection{Eigenfunktionen}
+Die Lösungen der assozierten Legendre-Differentialgleichung
+in der Form 
+\[
+(1-z^2)P''(z)
+-2z P'(z) +
+\biggl(
+-l(l+1)-\frac{m^2}{1-z^2}
+\biggr)P(z)
+=
+0
+\]
+können mit Polynomen gelöst werden.
+Sie heissen die {\em assoziierten Legendre-Polynome} $P_l^m(z)$.
+Eine ausführliche Diskussion dieser Lösungen kann in
+\cite{buch:mathsem-spezfunk}
+gefunden werden.
+
+Mit Hilfe der assoziierten Legendre-Polynomen können die Eigenfunktion
+von $\Delta$ als
+\[
+e^{im\varphi}
+P_l^m(z)
+\qquad\text{mit $-l\le m\le l$}
+\]
+geschrieben werden.
+
+
 
