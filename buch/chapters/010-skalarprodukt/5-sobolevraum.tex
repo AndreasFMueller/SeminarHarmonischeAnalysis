@@ -552,7 +552,7 @@ Testfunktionen $\varphi$ nachrechnen:
 [1\varphi(x)]_1^2 - \int_1^2 1\varphi'(x)\,dx
 \\
 &=
-\varphi(1) + \varphi(2) - \varphi(1) - \int_0^2 f(x)\,\varphi'(x)\,dx
+\varphi(1) + \varphi(2) - \varphi(1) - \int_0^2 f(x)\,\varphi'(x)\,dx.
 \intertext{Da $2$ ein Randpunkt ist, ist $\varphi(2)=0$, so dass sich}
 &=-\langle f,\varphi'\rangle.
 \end{align*}
@@ -560,10 +560,232 @@ ergibt.
 Die Funktion $v$ ist also die schwache Ableitung von $f$.
 \end{beispiel}
 
+Eine Funktion in $W^{1,2}(\Omega)$ hat eine schwache Ableitung,
+wie das Beispiel gezeigt hat, muss die Ableitung keine stetige
+Funktion sein.
+Ausserdem ist jede andere Funktion, die sich von der schwachen
+Ableitung auf einer Menge vom Mass 0 unterscheidet, genauso eine
+schwache Ableitung.
+Trotzdem kann eine Funktion mit einer schwachen Ableitung nicht
+beliebig ``wild'' sein, wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Die Signum-Funktion
+\[
+f\colon (-1,1) = \operatorname{sgn}(x) =
+\begin{cases}
+         - 1&\qquad\text{für $-1<x<0$}\\
+\phantom{-}0&\qquad\text{für $x=0$}\\
+\phantom{-}1&\qquad\text{für $0<x<1$}
+\end{cases}
+\]
+ist nicht stetig.
+$f$ ist fast überall konstant, in beiden Teilintervallen $(-1,0)$ und
+$(0,1)$ ist die einzige mögliche schwache Ableitung von $f$ die
+Nullfunktion.
+Trotzdem kann $0$ nicht die schwache Ableitung von $f$ sein.
+Wir wählen eine Testfunktion $\varphi$, die im Punkt $x=0$ von
+Null verschieden ist.
+Wäre $v$ eine schwache Ableitung von $f$, dann müsste
+\begin{align*}
+\langle v,\varphi\rangle
+&=
+-\langle f,\varphi'\rangle
+=
+-\int_{-1}^1 f(x) \varphi'(x)\,dx
+\\
+&=
+-\int_{-1}^0 (-1)\cdot \varphi'(x)\,dx
+-\int_{0}^1 1\cdot \varphi'(x)\,dx
+=
+\int_{-1}^0 \varphi'(x)\,dx
+-
+\int_{0}^1 \varphi'(x)\,dx
+\\
+&=
+[\varphi(x)]_{-1}^0
+-
+[\varphi(x)]_{0}^1
+=
+\varphi(0)-\varphi(-1)
+-
+\varphi(1)+\varphi(0)
+\\
+&=
+2\varphi(0)
+\ne 0.
+\end{align*}
+Andererseits ist die Nullfunktion der einzige Kandidat für die
+schwache Ableitun, für die das Skalarprodukt $\langle v,\varphi\rangle=0$
+ist.
+Dieser Widerspruch zeigt, dass die Funktion $f$ kein schwache
+Ableitung hat.
+\end{beispiel}
+
 Die schwache Ableitung ermöglicht also mit Funktionen zu arbeiten,
 die keine Ableitung im traditionellen Sinne haben.
 Dank der Definition mit Hilfe eines Skalarproduktes in einem 
 Hilbertraum darf man sich die Funktionen als Grenzwerte von
 Cauchy-Folgen vorstellen.
+
+%
+% Physikalische Rechtfertigung
+%
+\subsection{Physikalische Rechtfertigung der schwachen Ableitung}
+Die schwache Ableitung ersetzt die mit Hilfe eines Differenzenquotienten
+definierte Änderungsrate durch eine Änderungsrate, die durch Vergleich
+mit einer in der Umgebung eines Punktes konzentrierten Testfunktion
+ermittelt wird.
+Auf den ersten Blick mag das als Konzession an die Präzision der Ideen
+der Analysis erscheinen, die Newton erfunden hat, um die Physik auf eine
+neue Grundlage zu stellen.
+Dabei wird aber vergessen, dass der Differenzenquotient eine physikalisch
+nicht erreichbare Idealisierung darstellt.
+Keine Messung kann in einem Punkt im geometrischen Sinn erfolgen.
+Die Bestimmung einer Position eines Massepunktes zum Beispiel erfolgt
+durch Beobachtung des Lichtes, das vom Massepunkt reflektiert wird.
+Doch der Massepunkt ist kein Punkt im geometrischen Sinn, er ist ausgedehnt
+über ein endliches Gebiet.
+Auch ist die Messung nicht instantan, es wird Licht gemessen, welches
+über ein Zeitintervall vom Massepunkt reflektiert wird.
+Das Messresultat entsteht also notwendigerweise als Mittelwert der
+Beobachtung einer sehr grossen Zahl von Photonen, die von verschiedenen
+Stellen zu verschiedenen Stellen reflektiert wurden.
+Ein solcher Mittelwert ist genau das, was ein Skalarprodukt
+$\langle f,\varphi\rangle$ mit einer Testfunktion ermittelt.
+
+Die Feldgleichungen der Elektrodynamik wurden von Maxwell ausgehend
+von Faradays Ideen als partielle Differentialgleichungen formuliert.
+Sie verknüpfen die Werte es elektrischen Feldes $\vec{E}$ und des
+magnetischen Feldes $\vec{B}$ mit der Ladungsdichte $\varrho$
+und der Stromdichte $\vec{\jmath}$, die die Felder erzeugen.
+Doch sowohl die Ladungsdichte wie auch die Stromdichte sind Idealisierungen.
+Ladungen und Ströme sind nicht stetig über den Raum verteilt, sondern 
+in Elektronen oder Atomkernen konzentriert.
+Die Ladungsdichte entsteht daraus durch Messung der Ladung in einem kleine
+Raumgebiet und Mittelung, was man wieder als Skalarprodukt mit einer
+Testfunktion beschreiben kann.
+
+Das elektrische Feld wird gemessen, indem die Kraft auf eine Testladung
+im Feld ermittelt wird.
+Ausser den prinzipiellen Einschränkungen an die Genauigkeit der
+Positionsmessung wissen wir auch aus der Quantenmechanik, dass so etwas
+wie die exakte Position eines Teilchens nicht gibt, wir können nur eine
+Wahrscheinlichkeitsverteilung dafür bekommen.
+Die Kraft äussert sich in einer Geschwindigkeitsänderung, die aber erst
+messbar wird, wenn man die Beschleunigung eine gewisse Zeit lang aufrecht
+erhält.
+Das Messresultat ist also wieder ein Mittelwert über viele Positionen
+und Zeitpunkte, oder ein Skalarprodukt mit einer Testfunktion.
+
+Weitere Beispiele kann man auch in der Fluiddynamik finden.
+Die Navier-Stokes-Gleichungen beschreiben die Strömung eines Mediums
+unter der Annahme, dass es durch die Dichte $\varrho$ und die
+Geschwindigkeit exakt beschreiben lässt.
+Das Medium setzt sich aber aus einzelnen Atomen zusammen, die Dichte
+ist also bereits ein Mittelwertbildung.
+Bei der Geschwindigkeit wird das Problem noch deutlicher.
+Auch die Strömungsgeschwindigkeit eines Gases ist der Mittelwert der
+Strömungsgeschwindigkeit der Teilchen. 
+Die Geschwindigkeit einzelner Teilchen ist dabei meistens sehr viel
+grösser, nämlich im Bereich der Schallgeschwindigkeit, und äussert sich
+in der Temperatur des Gases, also der mittleren kinetischen Energie.
+Es ist nicht sinnvoll, von der Temperatur eines einzelnen Atoms zu
+sprechen.
+
+Alle diese Beispiele zeigen, dass die Ableitung als Änderungsrate, die
+mit einem Differenzenquotienten bestimmt werden kann, eine Idealisierung
+ist.
+Sei $x(t)$ die Koordinate eines Massepunktes zur Zeit $t$.
+Die Messung kann nicht instantan erfolgen, im besten Fall ist die
+gemessene Position ein Integral der Form
+\[
+\hat{x}(t)
+=
+\int_{-\infty}^\infty x(\tau) \varphi(\tau - t)\,d\tau.
+\]
+Darin ist $\varphi$ eine Testfunktion mit Träger in der Nähe von $0$.
+Schreiben wir $T_t\varphi(\tau) = \varphi(\tau -t)$, dann können wir
+das Messresultat auch als Skalarprodukt
+$\hat{x}(t)=\langle x,T_t\varphi\rangle$
+schreiben.
+Die Messung mit der gleichen Aparatur einen Moment $\Delta t$ später ergibt
+\[
+\hat{x}(t+\Delta t)
+=
+\int_{-\infty}^\infty x(\tau) \varphi(\tau-t-\Delta t)\,dt
+=
+\langle x, T_{t+\Delta t}\varphi\rangle.
+\]
+Die Geschwindigkeit als Differenzenquotient ist
+\begin{equation}
+\frac{
+\hat{x}(t+\Delta t)-\hat{x}(t)
+}{\Delta t}
+=
+\frac{
+\langle f,T_{t+\Delta t}\varphi\rangle
+-
+\langle f,T_{t}\varphi\rangle
+}{
+\Delta t
+}
+=
+\left\langle
+f,\frac{T_{t+\Delta t}\varphi - \varphi}{\Delta t}
+\right\rangle
+\label{buch:skalarprodukt:sobolevlraum:eqn:geschwindigkeit}
+\end{equation}
+Die Funktion $(T_{t+\Delta t}\varphi-T_t\varphi)/\Delta t$ ist eine 
+beliebig oft stetig differenzierbare Funktion, die in der Grenze
+$\Delta t\to 0$ gegen die
+\[
+\frac{
+\varphi(\tau - t - \Delta t)
+-
+\varphi(\tau - t)
+}{
+\Delta t
+}
+=
+-
+\frac{
+\varphi(\tau - t + \delta) - \varphi(\tau - t)
+}{
+\delta
+}
+\to 
+-
+\varphi'(\tau - t)
+\quad
+\text{für $\delta = - \Delta \to 0$}
+\]
+konvergiert.
+Der Differenzenquotient
+\eqref{buch:skalarprodukt:sobolevlraum:eqn:geschwindigkeit}
+konvergiert daher gegen
+\[
+\lim_{\Delta t\to 0}
+\frac{
+\hat{x}(t+\Delta t)-\hat{x}(t)
+}{\Delta t}
+=
+\left\langle
+x,
+\lim_{\Delta t\to 0}
+\frac{T_{t+\Delta t}\varphi-T_t\varphi}{\Delta t}
+\right\rangle
+=
+\langle f,-\varphi'\rangle
+=
+-
+\langle f, \varphi'\rangle.
+\]
+Dieses einfache Modell einer ``unscharfen'' Messung führt also automatisch
+auf das Konzept der schwachen Ableitung.
+
+
+
+
 
 
