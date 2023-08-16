@@ -6,11 +6,138 @@
 \section{Charaktere und Gelfand-Transformation
 \label{buch:gruppen:section:gelfand}}
 \kopfrechts{Charaktere und Gelfand-Transformation}
+In diesem Abschnitt suchen wir nach weiteren Möglichkeiten, einen
+Zusammenhang zwischen der Algebra der Funktionen auf $G$ mit der Faltung
+als Multiplikationsoperation und der Gruppe zu rekonstruieren.
+
+%
+% Charaktere der Faltungsalgebra
+%
+\subsection{Charaktere der Faltungsalgebra}
+Die Faltung ist eine ziemlich komplizierte Operation.
+Der Vektorraum der Funktionen auf $G$ ist ein unendlichdimensionaler
+Vektorraum.
+Die Unübersichtlichkeit der Faltung und die Dimension kann etwas
+vorborgen werden, indem man komplexwertige Abbildungen untersucht,
+die möglichst viel der Struktur erhalten.
+
+\begin{definition}
+Ein Vektorraum $A$ heisst {\em Algebra}, wenn aus auf $A$ eine bilineare
+und assoziative Multiplikation $A\times A\to A$.
+Wenn auf dem Vektorraunm $A$ ausserdem eine Norm definiert ist, dann
+heisst $A$ eine normierte Algebra, wenn die Multiplikation die
+Ungleichung
+\[
+\| xy \| \le \|x\|\cdot \|y\|\quad\text{für alle $x,y\in A$}.
+\]
+\end{definition}
+
+\begin{definition}
+Sei $A$ eine normierte Algebra.
+Ein Charakter $\chi$ ist eine lineare Abbildung $\chi\colon A\to\mathbb{C}$,
+die auch ein stetiger Algebrahomomorphismus ist, d.~h.~es gilt
+$\chi(xy)=\chi(x)\chi(y)$.
+\end{definition}
+
+Als Beispiel betrachten wir den Vektorraum $C([a,b])$ der stetigen Funktionen
+auf dem Intervall $[a,b]$ mit der Supremum Norm.
+$C([a,b])$ ist aber auch eine Algebra, da Funktionen punktweise
+multipliziert werden können.
+Wenn $f,g\in C([a,b])$ zwei stetige Funktionen sind, dann ist
+$fg\colon [a,b]\to\mathbb{C}:x\mapsto f(x)g(x)$ ein bilineares und
+stetigs Produkt.
+Für jeden Punkt $x\in[a,b]$ ist
+\[
+\chi_x
+\colon
+C([a,b] \to \mathbb{C}
+:
+f\mapsto f(x)
+\]
+eine stetige lineare Abbildung.
+Sie ist aber auch ein Algebrahomomorphismus.
+Dazu muss man nachrechnen, dass $\chi_x(fg)=\chi_x(f)\chi_y(f)$ ist.
+Einsetzen der Definition von $\chi_x$ ergibt
+\[
+\chi_x(fg)
+=
+(fg)(x)
+=
+f(x)g(x)
+=
+\chi_x(f)\chi_x(g).
+\]
+Es gibt also zu jedem Punkt des Definitionsbereichs einen Charakter
+der Algebra $C([a,b])$.
+
+Man kann zeigen, dass die Homomorphismen von der Form $\chi_x$ 
+die einzigen Homomorphismen $A\to\mathbb{C}$ sind.
+Dies bedeutet, dass sich der Definitionsbereich der Algebra der
+stetigen Funktionen vollständig aus der Algebra rekonstruiert werden 
+kann.
+Der Unterschied ist aber, dass die $[a,b]$ einfach nur eine Menge ist,
+während $C([a,b])$ eine reichhaltige Algebrastruktur hat.
 
 %
 % Homomorphismen G \to C^*
 %
 \subsection{Homomorphismen $G\to \mathbb{C}^*$}
+Sei jetzt $G$ eine Gruppe mit einem Haarschen Mass und der Faltung 
+von Funktionen mit kompaktem Träger.
+Da die Funktionen alle in $L^2(G)$ drin sind, muss eine lineare
+Abbildung nach dem Darstellungssatz von Riesz als ein Skalarprodukt
+geschrieben werden können.
+Für einen Charakter $\chi\colon L^2(G)\to\mathbb{C}$ muss es also eine
+Funktion $\omega\colon G\to\mathbb{C}$ geben derart, dass
+\begin{equation}
+\langle \omega, f*g\rangle
+=
+\langle \omega, f\rangle
+\langle \omega, g\rangle
+\label{buch:gruppen:gelfand:eqn:omegahomo}
+\end{equation}
+gilt.
+Aus dieser Bedingung lässt sich ableiten, dass $\omega$ sehr spezielle
+Eigenschaften haben muss.
+
+Seien $s,t\in G$ zwei Elemente der Gruppe.
+Sei ausserdem $f$ eine Funktion, die nur in einer kleinen Umgebung 
+des neutralen Elementes von $0$ verschieden ist.
+Im Skalarprodukt
+\[
+\langle \omega, T_{s}f\rangle
+=
+\int_{G} \overline{\omega(x)} f(s^{-1}x) \,dx
+\]
+ist der Integrand nur für $x$ in unmittelbarer Nähe von $s$ 
+$0$ verschieden.
+Indem man die Funktion so verändert, dass der Träger kleiner wird,
+dann konvergiert das Skalarprodukt gegen den Wert $\omega(s)$.
+Aus \eqref{buch:gruppen:gelfand:eqn:omegahomo} folgt dann
+\[
+\omega(st) = \omega(s)\omega(t).
+\]
+Die Charaktere der Faltungsalgebra sind also genau die Homomorphismen
+$G\mapsto\mathbb{C}^*$ von der Gruppe $G$ in die multiplikative
+Gruppe von $\mathbb{C}$.
+
+\begin{beispiel}
+Sei $G= \mathbb{R}/2\pi\mathbb{Z}$ die Gruppe der Winkel mit der 
+Addition von Winkeln als Gruppenoperation.
+Um die Charaktere der Faltungsalgebra der $2\pi$-periodischen Funktionen
+zu bestimmen, müssen Homomorphismen $G\to\mathbb{C}$ gefunden werden.
+Ist $\omega$ ein solcher Homomorphismus, dann folgt aus
+$h=\omega(\frac{2\pi}{n}$, $\omega(2\pi/n)^n = \omega(2\pi)=\omega(0)=1$.
+Daher muss $h$ eine komplexe Zahl vom Betrag $1$ sein, die man als
+$h=e^{it}$ schreiben kann.
+Somit ist $\omega(2\pi k/n) = e^{ikt}$ eine Exponentialfunktion.
+Da wir auch gefordert haben, das $\omega$ stetig sein muss folgt,
+dass alle Homomorphismen von der Form $x\mapsto e^{ikx}$.
+Da $\omega(2\pi)=1$ sein muss, folgt ausserdem, dass $k\in \mathbb{Z}$
+ist.
+Die Menge der Homomorphismen $G\to\mathbb{R}$ ist daher $\mathbb{Z}$ und
+die Menge der Charaktere der Faltungsalgebra ist ebenfalls $\mathbb{Z}$.
+\end{beispiel}
 
 %
 % Die duale Gruppe
