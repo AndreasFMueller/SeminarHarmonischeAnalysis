@@ -78,6 +78,22 @@ kann.
 Der Unterschied ist aber, dass die $[a,b]$ einfach nur eine Menge ist,
 während $C([a,b])$ eine reichhaltige Algebrastruktur hat.
 
+\begin{definition}
+\label{buch:gruppen:gelfand:def:spektrum}
+Ist $A$ eine Algebra, dann heisst die Menge
+\[
+\mathrm{X}(A)
+=
+\operatorname{Hom}(A,\mathbb{C})
+\]
+der Algebrahomomorphismen von $A$ nach $\mathbb{C}$ heisst das
+{\em Spektrum} der Algebra $A$.
+\end{definition}
+
+Das Spektrum der Algebra der stetigen Funktionen auf einem Intervall
+enthält die Charaktere $\chi_x$ mit $x\in [a,b]$, das Intervall
+$[a,b]$ ist eine Teilmenge von $\mathbb{X}(C([a,b]))$.
+
 %
 % Homomorphismen G \to C^*
 %
@@ -139,13 +155,185 @@ Die Menge der Homomorphismen $G\to\mathbb{R}$ ist daher $\mathbb{Z}$ und
 die Menge der Charaktere der Faltungsalgebra ist ebenfalls $\mathbb{Z}$.
 \end{beispiel}
 
-%
-% Die duale Gruppe
-%
-\subsection{Die duale Gruppe}
 
 %
 % Die Gelfand-Transformation
 %
 \subsection{Die Gelfand-Transformation}
+Das Spektrum der Algebra $C([a,b])$ ist das Intervall $[a,b]$,
+Es ist also möglich, aus der Algebra mit einer für alle Algebren
+durchführbaren Prozedur eine Funktionenalgebra zu machen.
+Den Funktionswert $f(x)$  kann man auch als Wert eines 
+Algebrahomomorphismus $\chi_x(f) = f(x)$ bekommen.
+Dies ist die Motivation für die folgende Definition.
+
+\begin{definition}
+Ist $A$ eine Algebra, dann ist die Gelfand-Transformation
+die Abbildung
+\[
+\mathscr{G}
+\colon
+A \to C(\mathbb{X}(A))
+:
+a
+\mapsto \mathscr{G}a = \hat{a}
+\colon \chi \mapsto \hat{a}(\chi) = \chi(a).
+\]
+\end{definition}
+
+\begin{satz}
+Die Gelfand-Transformation ist ein Homomorphismus von Algebren.
+\end{satz}
+
+\begin{proof}
+Es ist zu zeigen, dass $\mathscr{G}$ linear ist, ein Algebrahomomorphismus
+und ausserdem stetig ist.
+\begin{itemize}
+\item
+Linearität:
+\begin{align*}
+\mathscr{G}(\lambda a+\mu b) (\chi)
+&=
+\chi( \lambda a + \mu b)
+=
+\lambda\chi(a) + \mu\chi(b)
+=
+\lambda(\mathscr{G}a)(\chi)
++
+\mu(\mathscr{G}b)(\chi)
+\\
+\Rightarrow\qquad
+\mathscr{G}(\lambda a+ \mu b)
+&=
+\lambda\mathscr{G}a + \mu\mathscr{G}b.
+\end{align*}
+Somit ist $\mathscr{G}$ linear.
+\item
+Algebrahomomorphismus:
+\begin{align*}
+\mathscr{G}(ab)(\chi)
+&=
+\chi(ab)
+=
+\chi(a)\chi(b)
+=
+(\mathscr{G}a)(\chi)
+(\mathscr{G}b)(\chi)
+\\
+\Rightarrow\qquad
+\mathscr{G}(ab)
+&=
+\mathscr{G}a\cdot \mathscr{G}b.
+\end{align*}
+\item
+\end{itemize}
+\end{proof}
+
+Sei jetzt $G$ eine Gruppe und $\mathscr{K}(G)$ die Algebra der
+stetige Funktionen mit kompaktem Träger mit der Faltung.
+Die Gelfand-Transformation macht aus einer Funktion auf $G$ 
+eine Funktion auf dem Spektrum von $\mathscr{K}(G)$.
+Ist $\chi\in\mathbb{X}(\mathscr{K}(G))$, dann hat die Gelfandtransformation
+von $f\in\mathscr{K}(G)$ den Wert
+\[
+(\mathscr{G}f)(\chi) = \chi(f).
+\]
+Da die Gelfand-Transformatioin ein Algebrahomomorophismus ist,
+muss  für jeden Homomorphismus $\chi$
+\[
+\mathscr{G}(f*g)(\chi)
+=
+(\mathscr{G}f\cdot \mathscr{G}g) (\chi)
+=
+\mathscr{G}f(\chi)
+\mathscr{G}g(\chi)
+\]
+gelten.
+Als Funktion auf $\mathbb{X}(\mathscr{K}(G))$ gilt für die
+Gelfand-Transformtion daher
+\[
+\mathscr{G}(f*g)
+=
+\mathscr{G}f
+\cdot
+\mathscr{G}g,
+\]
+die Gelfand-Transformation macht also aus der Faltung die
+gewöhnliche Multiplikation von Funktionen.
+
+Für eine nichtabelsche Gruppe $G$ ist die Faltungsalgebra nicht
+kommutativ.
+Für zwei Funktionen $f$ und $g$ auf $G$ gilt jetzt aber
+\[
+\mathscr{G}(f*g)
+=
+\mathscr{G}f\cdot\mathscr{G}g
+=
+\mathscr{G}g\cdot\mathscr{G}f
+=
+\mathscr{G}(g*f).
+\]
+Die Gelfand-Transformation ignoriert also die Tatsache, dass im allgemeinen
+$f * g\ne g*f$ ist.
+Eine andere Möglichkeit, dies auszudrücken ist, dass der Kommutator
+$f*g-g*f$ im Kern der Gelfand-Transformation liegt, also
+\[
+\mathscr{G}(f*g-g*f)=0.
+\]
+
+Wir wissen auch bereits, dass ein Algebrahomomorphismus
+$\chi\colon \mathscr{K}(G)\to\mathbb{C}$ als Skalarprodukt mit
+einem Gruppenhomomorphismus 
+$\omega\colon G\to\mathbb{C}^*$ geschrieben werden kann.
+Die Gelfand-Transformierte hat daher den Wert
+\[
+(\mathscr{G}f)(\chi)
+=
+\chi(f)
+=
+\langle \omega ,f\rangle
+=
+\int_G \overline{\omega(x)}\,f(x)\,dx.
+\]
+
+\begin{beispiel}
+Für die Gruppe $\mathbb{R}/2\pi\mathbb{Z}$ der Winkel haben wir die
+Menge der Homomorphismen bereits bestimmt, sie ist die Menge der
+ganzen Zahlen $k\in\mathbb{Z}$ und der zugehörige Gruppenhomomorphismus
+ist $\omega_k(x) = e^{ikx}$.
+Die Gelfand-Transformation einer Funktion $f$ ist daher eine Funktion
+auf den Zahlen $k\in \mathbb{Z}$ definiert durch
+\[
+(\mathscr{G}f)(k)
+=
+\hat{f}(k)
+=
+\langle \omega_k f\rangle
+=
+\int_{G/2\pi \mathbb{Z}} \overline{\omega_k(x)}\, f(x) \,dx
+=
+\int_0^{2\pi} \overline{e^{ikx}} f(x)\,dx
+=
+\int_0^{2\pi} e^{-ikx} f(x)\,dx.
+\]
+Die Werte der Fourier-Transformation auf $k\in\mathbb{Z}$ sind bis auf einen
+Normierungsfaktor die Fourier-Koeffizienten der Funktion $f$.
+\end{beispiel}
+
+Die Gelfand-Transformation ist also eine Verallgemeinerung der
+Fourier-Transformation, die automatisch auf eine Art von harmonischer
+Analyse von Funktionen auf einer Gruppe führt.
+Im Beispiel sind die Funktione $\omega_k$ bezüglich des
+Skalarproduktes orthogonal, aber im Allgemeinen wissen wir dies 
+noch nicht.
+Wir werden in Abschnitt~\ref{buch:gruppen:section:darstellung}
+auf diese Frage zurückkommen.
+
+
+
+%
+% Die duale Gruppe
+%
+\subsection{Die duale Gruppe}
+
 
