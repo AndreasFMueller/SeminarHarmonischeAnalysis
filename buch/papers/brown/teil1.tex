@@ -23,9 +23,9 @@ In der Grafik XXX sind zwei unterschiedliche Trajektorien im mit dem Intervall  
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
 	\caption{Zwei Pfade mit fast gleichem Startpunkt}
-	\label{key}
+	\label{divergentAndConvergentSystem}
 \end{figure}
 
 Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den System-Verlauf auswirken kann, wobei in diesem speziellen Fall die Lösung mit grösserem $t$ wieder konvergieren würde. Bedenkt man nun, dass eine solch kleine Variation durch stochastisches Rauschen erzeugt werden könnte, scheint es unsinnig eine Lösung für das Problem anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung hinzuweisen oder sogar den Lösungsraum genauer zu spezifizieren.
@@ -43,7 +43,7 @@ Formal kann dies folgendermaßen notiert werden,
 \dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen inneren Zustände des Systems auswirken. $ m $ ist demzufolge die Dimension der Störfunktion. In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $\xi(t)$ modelliert.
+wobei B eine n x m Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen inneren Zustände des Systems auswirken. $ m $ ist demzufolge die Dimension der Störfunktion. In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} ?oder? \glqq{}white noise\glqq{} $\xi(t)$ modelliert.
 
 $ b $ ist der Driftvektor und beschreibt die werwartete Veränderung für jede Dimension des Systems. $ B $ ist die Dispersionsmatrix und beschreibt wies ich das m-dimensionale Rauschen aud das n-dimensionale System auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander(Korrelation). Alles in allem beschreiben b und B die Dynamik des Systems. 
 
@@ -64,10 +64,10 @@ $ b $ ist der Driftvektor und beschreibt die werwartete Veränderung für jede D
 \end{align*}
 
 
-\subsection{Rauschen als Random Walk und Wiener Prozess
+\subsection{Rauschen mittels Random Walk oder Wiener Prozess
 \label{brown:SDGL:Wiener}}
 
-Um das sogenannte \textit{white noise} zu modellieren, muss eine Definition für einen stochastischen Prozess gefunden werden. Zwei zentrale Konzepte sind der \textit{random walk} und der Wienerprozess.
+Um das sogenannte \textit{white noise} ???korrekt oder einfach Rauschen??? zu modellieren, muss eine Definition für einen stochastischen Prozess gefunden werden. Zwei zentrale Konzepte sind der \textit{random walk} und der Wienerprozess.
 
 
 \textbf{Random Walk:}
@@ -82,7 +82,7 @@ Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, er kann als 
 \begin{itemize}
 	\item $ W(0) = 0 $; Der Startwert von $ t = 0 $ ist 0.
 	\item $ W(t_{1}) - W(t_{2}) $ ist ein normalverteilte Zufalls-Variable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $.
-	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten.
+	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen verlauf abhängt.
 \end{itemize}
 
 Weiter wird auf den Wienerprozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
@@ -93,8 +93,8 @@ Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t
 	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
-Nun sollte man mit $ dt $  multiplizieren, da die Gleichung so nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht klar differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
-! Überarbeiten, nicht differenzierbar? ! 
+Nun sollte man mit $ dt $  multiplizieren, weil die Gleichung sonst nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht klar differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
+! Überarbeiten, nicht differenzierbar? ?erweitern? ! 
 
 Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen.
 
@@ -141,7 +141,10 @@ Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt
 	X_{n+1} = X_n + f(X_n,t_n) \Delta t + g(X_n,t_n) \Delta W_n
 \end{equation}
 
-Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SDGL, im Kontext der Brown'schen Bewegung kann man es auch "drift nennen", welcher nicht nur von zufälligen Einflüssen bestimmt ist. Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener Prozess oder die Brownische Bewegung als Ganzes.
+Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SDGL, im Kontext der Brown'schen Bewegung kann man es auch "drift nennen", welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
+
+
+Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener Prozess oder die Brownische Bewegung als Ganzes.
 
 \begin{figure}
 	\centering
@@ -156,6 +159,7 @@ Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SD
 		\includegraphics[width=\linewidth]{papers/brown/images/Brownische-Bewegung-Simuliert_2.png}
 		\caption{Simulation einer Brownischen Bewegung in 2D}
 	\end{minipage}
+	\label{2D3Dbrownian}
 \end{figure}
 
 In der Abbildung ... ist wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen Brownischen Bewegung.
