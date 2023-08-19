@@ -1,7 +1,7 @@
 %
 % Spektrale Modelle.tex -- Beispiel-File für teil2 
 %
-% (c) 2023 Dmitri Grigoriev, OST Ostschweizer Fachhochschule
+% (c) 2023 Dmitry Grigoriev, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
@@ -13,13 +13,13 @@
 Wir werden die Idee der Spektralemethode auf einem Beispiel anschauen. Dafür nehmen wir die Wellengleichung.
 
 \begin{equation}
- \dfrac{\partial^2U}{\partial{t^2}} = \alpha^2\Delta U
+ \dfrac{\partial^2U}{\partial{t^2}} = \alpha^2\Delta{U}.
 \label{spektral:equation7}
 \end{equation}
-Durch eine sehr aufwändige Rechnung, kann die Wellengleichung in den Kugelkoordinaten folgendermaßen geschrieben werden: (siehe [5] Anhang B)
+Durch eine sehr aufwändige Rechnung, kann die Wellengleichung in den Kugelkoordinaten folgendermaßen geschrieben werden (siehe \cite[Anhang B]{spektral:QuantenmechanikMathemathischesSeminar})
 
 \begin{equation}
- \frac{1}{r^2}\frac{\partial}{\partial{r}}\left[r^2\frac{\partial{U}}{\partial{r}}\right] + \frac{1}{r^2}\left[\frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left[\sin(\theta)\frac{\partial{U}}{\partial{\theta}}\right] + \frac{1}{\sin^2(\theta)}\frac{\partial^2{U}}{\partial{\phi^2}}\right] = \frac{1}{\alpha^2}\frac{\partial^2{U}}{\partial{t^2}}
+ \frac{1}{r^2}\frac{\partial}{\partial{r}}\left(r^2\frac{\partial{U}}{\partial{r}}\right) + \frac{1}{r^2}\left(\frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left(\sin(\theta)\frac{\partial{U}}{\partial{\theta}}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2{U}}{\partial{\phi^2}}\right) = \frac{1}{\alpha^2}\frac{\partial^2{U}}{\partial{t^2}}.
 \label{spektral:equation8}
 \end{equation}
 Diese Gleichung ist sehr schwer zu lösen und bei der Lösung werden uns die spektrale Modelle helfen.
@@ -27,77 +27,89 @@ Diese Gleichung ist sehr schwer zu lösen und bei der Lösung werden uns die spe
 \subsection{Kugelflächenfunktionen
 \label{spektral:subsection:kugelflaechenfunktionen}}
 
-Damit wir das spektrale Modell für die Gleichung 16.8 entwicklen können, werden wir ein vollständigen und orthogonaler Satz von Basisfunktionen benötigt.
-Dafür muss die Eigenwertgleichung des Laplace-Operators (Gleichung 16.8)
+Damit wir das spektrale Modell für die Gleichung \eqref{spektral:equation7} entwicklen können, werden wir ein vollständigen und orthogonaler Satz von Basisfunktionen benötigt.
+Dafür muss die Eigenwertgleichung des Laplace-Operators \refeq{spektral:equation8}
 
 \begin{equation}
- \Delta{V} = -\lambda{V(x)}
+ \Delta{V} = -\lambda{V(x)}.
 \label{spektral:equation9}
 \end{equation}
-Die vollständige Lösung ist in [4] (Seite 62) gezeigt.
-Für uns ist wichtig, dass wir die Basisfunktionen finden und durch diese Funktionen - Kugelflächenfunktionen (siehe [6] und [4]) - unsere gesuchte Funktion aus der Gleichung 16.7 darstellen können (Gleichung 16.10):
+Die vollständige Lösung ist in \cite[Seite 62]{spektral:NichtkommutativeBildvearbeitung} gezeigt.
+Für uns ist wichtig, dass wir die Basisfunktionen finden und durch diese Funktionen - Kugelflächenfunktionen (siehe \cite{spektral:MathsemSpezfunk} und \cite{spektral:NichtkommutativeBildvearbeitung}) - unsere gesuchte Funktion aus der Gleichung \eqref{spektral:equation7} darstellen können
 
 \begin{equation}
-u(\phi,\theta,t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)Y_n^m(\phi, \theta)
+u(\phi,\theta,t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)Y_n^m(\phi, \theta).
 \label{spektral:equation10}
 \end{equation}
 
-\subsection{????
-\label{spektral:subsection:???}}
+\subsection{Wellengleichung
+\label{spektral:subsection:wellengleichung}}
+Jetzt sind wir bereit die Wellengleichung mit der spektrale Methode zu lösen.
 
-Für die Vereinfachung nehmen wir an, dass in der Gleichung 16.7 $\alpha=1$ ist und Radius des Kugels auch $r=1$ ist.
-Dann wird der Laplacian-Operator für die Kugelflächenfunktion so aussehen:
+Für die Vereinfachung nehmen wir an, dass in der Gleichung \eqref{spektral:equation7} $\alpha=1$ ist und der Kugelradius auch $r=1$ ist.
+Dann wird der Laplace-Operator für die Kugelflächenfunktion so aussehen:
 \begin{equation}
- \frac{\partial}{\partial{r}}\left[r^2\frac{\partial{Y_n^m}}{\partial{r}}\right] + \frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left[\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right] + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = 0
+ \frac{\partial}{\partial{r}}\left(r^2\frac{\partial{Y_n^m}}{\partial{r}}\right) + \frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left(\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = 0.
 \label{spektral:equation11}
 \end{equation}
-
-Wenn wir die Gleichung 16.10 für die Gelichung 16.7 anwenden, dann bekommen wir
+Wenn wir die Gleichung \eqref{spektral:equation10} für die Gelichung \eqref{spektral:equation7} anwenden, dann bekommen wir
 \begin{equation}
-\Delta{U} = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)\Delta{Y_n^m(\phi, \theta)}
+\Delta{U} = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)\Delta{Y_n^m(\phi, \theta)}.
 \label{spektral:equation12}
 \end{equation}
 Wir müssen jetzt die $\Delta{Y_n^m(\phi, \theta)}$ finden.
-Das können wir aus den Laplacian-operator in shpärischen Koordinaten ausrechnen.
-Im [3] (Seite 656) wir nachgewiesen, dass 
+Das können wir aus den Laplace-Operator in sphärischen Koordinaten ausrechnen.
+Im \cite[Seite 656]{spektral:DynamicOfTheAtmosphere} wurde nachgewiesen, dass 
 \begin{equation}
-\frac{\partial}{\partial{r}}\left[r^2\frac{\partial{Y_n^m}}{\partial{r}}\right] = n(n+1)Y_n^m(\phi, \theta)
+\frac{\partial}{\partial{r}}\left(r^2\frac{\partial{Y_n^m}}{\partial{r}}\right) = n(n+1)Y_n^m(\phi, \theta)
 \label{spektral:equation13}
 \end{equation}
 ist.
-Jetzt wenden wir die Gleichung 16.13 für die linke Seite der Gleichung 16.11 an und bekommen:
+Jetzt wenden wir die Gleichung \eqref{spektral:equation13} für die linke Seite der Gleichung \eqref{spektral:equation11} an und bekommen
 \begin{equation}
-n(n+1)Y_n^m(\phi, \theta) + \frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left[\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right] + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = 0
+n(n+1)Y_n^m(\phi, \theta) + \frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left(\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = 0
 \label{spektral:equation14}
 \end{equation}
 und
 \begin{equation}
-\frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left[\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right] + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = -n(n+1)Y_n^m(\phi, \theta)
+\frac{1}{\sin(\phi)}\frac{\partial}{\partial{\theta}}\left(\sin(\theta)\frac{\partial{Y_n^m}}{\partial{\theta}}\right) + \frac{1}{\sin^2(\theta)}\frac{\partial^2{Y_n^m}}{\partial{\phi^2}} = -n(n+1)Y_n^m(\phi, \theta).
 \label{spektral:equation15}
 \end{equation}
-Die linke Seite der Gleichung 16.15 ist ein horizontal Laplacian-Operator in den sphärischen Koordinaten.
+Die linke Seite der Gleichung \eqref{spektral:equation15} ist ein horizontal Laplace-Operator in den sphärischen Koordinaten.
 Somit bekommen wir
 \begin{equation}
-\Delta{Y_n^m(\phi, \theta)} = -n(n+1)Y_n^m(\phi, \theta)
+\Delta{Y_n^m(\phi, \theta)} = -n(n+1)Y_n^m(\phi, \theta).
 \label{spektral:equation16}
 \end{equation}
-Laplacian-Operator der Kugelfklächenfunktion ist proportional der Funktion selbst. Das ist sehr wichtige Eigenschaft, die wir gleich anwenden werden. Aus der Gleichung 16.12 bekommen wir:
+Laplace-Operator der Kugelfklächenfunktion ist proportional der Funktion selbst. Das ist sehr wichtige Eigenschaft, die wir gleich anwenden werden.
+Aus der Gleichung \eqref{spektral:equation12} bekommen wir:
 \begin{equation}
 \Delta{U} = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)n(n+1)Y_n^m(\phi, \theta)
 \label{spektral:equation17}
 \end{equation}
-und wenn wir die Gleichung 16.10 auf die linke Seite der Gleichung 16.7 anwenden, bekommen wir
+und wenn wir die Gleichung \eqref{spektral:equation10} auf die linke Seite der Gleichung \eqref{spektral:equation7} anwenden, bekommen wir
 \begin{equation}
-\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}\ddot{a}_n^m(t)Y_n^m(\phi, \theta) = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)n(n+1)Y_n^m(\phi, \theta)
+\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}\ddot{a}_n^m(t)Y_n^m(\phi, \theta) = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)n(n+1)Y_n^m(\phi, \theta).
 \label{spektral:equation18}
 \end{equation}
-Wir sehen, dass auf den beiden Seiten der Gleichung die Kugelflächenfunktion $Y_n^m(\phi, \theta)$ vorkommt und kann umgeschrieben werden:
+Wir sehen, dass auf den beiden Seiten der Gleichung die Kugelflächenfunktion $Y_n^m(\phi, \theta)$ vorkommt und die Gleichung \eqref{spektral:equation18} kann umgeschrieben werden
 \begin{equation}
-\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}\ddot{a}_n^m(t) = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)n(n+1)
+\ddot{a}_n^m(t) = -n(n+1)a_n^m(t).
 \label{spektral:equation19}
 \end{equation}
-D.h. wir bekommen das System der Differenzialgleichungen zweiten Grades
+D.h. wir bekommen das System der Differenzialgleichungen zweiten Grades.
+Die Lösung dieser Differenzialgleichung ist
 \begin{equation}
-\ddot{a}_n^m(t) = -n(n+1)a_n^m(t)
+a_n^m(t) = a_n^m(0)e^{i\sqrt{n(n+1)}t}
 \label{spektral:equation20}
 \end{equation}
+und die gesuchte Funktion
+\begin{equation}
+u(\phi, \theta, t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(0)e^{i\sqrt{n(n+1)}t}Y_n^m(\phi, \theta).
+\label{spektral:equation21}
+\end{equation}
+
+\subsection{Ergebnis
+\label{spektral:subsection:ergebnis}}
+
+Als Ergebnis bekommen wir die Gleichung, die im Vergleich zu Differenzialgleichung \eqref{spektral:equation8}, viel einfache zu lösen ist. Das Vorteil wurde bereits im Kapitel \ref{spektral:subsection:vorteile} erwähnt. Jetzt haben wir das bestätigt.
