@@ -1,43 +1,205 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil2.tex
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Vincent Haufe, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
-\section{Teil 2 
+
+\section{Konstruktion der Mellin-Transformation
 \label{mellin:section:teil2}}
-\rhead{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{mellin:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\rhead{Mellin-Transformation}
+Wie schon bemerkt, sind wir bei diesem Problem mit der multiplikativen Gruppe der positiven reellen Zahlen $(\mathbb{R^+},\cdot)$ 
+konfrontiert. 
+Diese Information ist der Startpunkt auf der Suche nach einer Integraltransformation die unser Problem lösen kann.
+Die Gelfandtheorie \ref{buch:gruppen:section:gelfand} ist die verallgemeinerte Theorie der Fourieranalyse und beschreibt die notwendigen Bausteine einer solchen.
+Zum einen sind \emph{Analysefunktionen} zu bestimmen, welche die Gruppenoperation in die Multiplikation überführt und zueinander 
+orthogonal sind. 
+Des Weiteren muss das \emph{Skalarprodukt} auf die Gruppe angepasst werden, mit dem die Integraltransformation durchgeführt werden 
+soll.
+Aus Gruppe, Analysefunktionen und Skalarprodukt folgt dann \footnote{für kommutative Lie-Gruppen} die entsprechende Transformation.
+% Diese Bedingungen mögen dem Ingenieur auf den ersten Blick etwas ominös und sehr abstrahiert erscheinen, was aber auch der im Sinne 
+% einer verallgemeinerten Theorie ist.
+% Im Folgenden soll konkret gezeigt werden, wie sich also mithilfe dieser Theorie
 
 
+
+% Prinzipien:
+
+% -Gruppe 
+% -Analysefunktionen sind Homomorphismen und orthogonal zueinander: h (Eigenfunktionen (Differential)operator?)
+% -Skalarprodukt (Integral)
+% -Analyse <h,f> = Gf(h)
+% -Faltung: Integral über ganze Gruppe mit Gruppenoperation
+% -Faltungsformel: Aus Faltung wird Produkt
+% -zulässige h bilden duale Gruppe -> Plancherel
+
+
+\subsection{Analysefunktionen der Mellin-Transformation
+\label{mellin:subsection:analysefunktionen}}
+
+Unser Ziel ist es, die für unser Registrierungsproblem neu definierte Kreuzkorrelation mithilfe einer Integraltransformation in 
+einfache Multiplikation zu verwandeln.
+Dafür braucht es spezielle Funktionen, sogenannte Homomorphismen, welche die Gruppenoperation in die Multiplikation überführen 
+können. Bei der Fouriertransformation, dessen Gruppenoperation die Additon ist, müssen die Analysefunktionen also die Gleichung 
+\begin{equation}
+    f(x + y) = f(x) \cdot f(y)
+    \label{mellin:hom1}
+\end{equation}
+erfüllen. 
+Die Funktion, die diese Eigenschaft besitzt ist natürlich die Exponentialfunktionen, denn 
+\begin{equation}
+    e^{x + y} = e^x \cdot e^y,
+    \label{mellin:exp}
+\end{equation}
+und somit die bekannte Analysefunktion der Fouriertransformation.
+In der Fortsetzung bedeutet das für die neue Transformation, dass dessen Analysefunktionen die Gleichung
+\begin{equation}
+    f(x \cdot y) = f(x) \cdot f(y)
+    \label{mellin:hom2}
+\end{equation}
+erfüllen müssen.
+Erfüllt wird die Gleichung durch jede Potenzfunktion $h(x) = x^z$ für beliebige $z \in \mathbb{C}$
+\begin{equation}
+    h(x \cdot y) =  (x \cdot y)^{z} = x^{z} \cdot y^{z},
+\end{equation}
+% denn Potenzen lassen sich bekanntlich beliebig zusammenfassen so wie
+% \begin{equation}
+%     (a \cdot b)^2 = a^2 \cdot b^2 \left(\frac{a}{b}\right)^2  = \frac{a^2}{b^2} 
+% \end{equation}
+Unsere Analysefunktionen müssen also vom Typ Potenzfunktion sein jedoch langt die Homomorphismuseigenschaft noch nicht aus. 
+Sie müssen ebenfalls eine Menge von zueinander orthogonalen Funktionen bilden um eine Zerlegung einer Funktion in diese 
+Analysefunktionen zu ermöglichen, analog wie bei der Fouriertransformation. 
+% Homomorphismen -> Charaktere
+Glücklicherweise ist dies, wie man zeigen kann, automatisch der Fall bezüglich des der Gruppe entsprechenden Skalarproduktes, 
+auf welches im nächsten Abschnitt eingegangen wird.
+% Die komplexe Exponentialfunktion $e^{j\omega_l t}$ ist orthogonal zu $e^{j\omega_k t}$, sofern $\omega_l \neq \omega_k$, da diese 
+% immer ein Skalarprodukt gleich Null haben wie sich leicht zeigen lässt
+% \begin{proof}
+%     \begin{align*}
+%         \langle h_l,h_k \rangle &= \int_\mathbb{R} e^{j\omega_l t} \cdot e^{-j\omega_k t}\,dt \\
+%         &= \int_\mathbb{R} e^{j(\omega_l - \omega_l) t}\,dt \\
+%         &= \int_\mathbb{R} e^{j\omega_l-k t}\,dt = 0 \vert \omega_l \neq \omega_k 
+%     \end{align*}
+%     Da die komplexe Exponentialfunktion periodisch ist.
+% \end{proof}
+% Bei den komplexen Exponentialfunktionen der Fouriertransformation ist dies auch intuitiv, da dahinter die Sinus- und 
+% Cosinusschwingungen unterschiedlicher Frequenzen stehen, in die eine Funktion zerlegt werden kann.
+% Die Frage der Orthogonalität für die Potenzfunktion $f(x) = x^z$ verlangt...
+
+
+\subsection{Skalarprodukt der Mellin-Transformation
+\label{mellin:subsection:skalarprodukt}}
+Die Entdeckung der Fourierreihen brachte die Notwendigkeit mit sich, den Riemannschen Integralbegriff
+\footnote{text} zu überdenken und zu präzisieren.
+Dafür wurde vor allem die aufkommende Masstheorie angewendet.
+Relevant ist dabei nun, dass wir für unser Integral und somit Skalarprodukt mit welchem wir die Transformation durchführen wollen, 
+mit einem \emph{Mass}\footnote{in diesem Kontext genauer: ein Haar-Mass} ausstatten. 
+Damit gelingt es uns, das Integral \emph{invariant bezüglich der Gruppenoperation} zu machen, was für den Erfolg der Fouriertheorie 
+zwingend nötig ist. 
+Invariant bezüglich der Gruppenoperation bedeutet, dass sich das Integral über den gesamten Definitionsbereich der Gruppe nicht 
+ändert, wenn das Argument der zu integrierenden Funktion ``verschoben'' wird. 
+Das gewöhnliche Integral der Fouriertransformation erfüllt diese Eigenschaft 
+\begin{equation}
+    \int_\mathbb{R} f(x)\,dx = \int_\mathbb{R} f(x + x_0)\,dx
+\end{equation}
+da hier ja von $-\infty$ bis $+\infty$ integriert wird und somit eine nur endlich verschobene Funktion stets vollständig abmisst.
+Verschoben meint in diesem Sinne aber Verschiebung mit der Gruppenoperation, was bei Fourier also ein ``+'' war, wird bei unserer 
+neuen Transformation zu einem ``$\cdot$'', das heisst zu einer Streckung des Arguments. 
+Es wird schnell klar, dass das herkömmliche Integral eben \emph{nicht} invariant bezüglich dieser Streckung ist und allgemein gilt 
+\begin{equation}
+    \int_\mathbb{R^+} f(x)\,dx \neq \int_\mathbb{R^+} f(s \cdot x)\,dx
+\end{equation}
+da, einfach gesagt, eine Streckung der x-Achse die Funktion und somit deren Flächeninhalt auseinderzieht.
+Es braucht nun also eine Anpassung, um diese Veränderung des Flächeninhalts zu kompensieren.
+Das kann überraschend einfach mithilfe einer Division durch die Variable des Arguments $x$ erreicht werden, was auch sehr einfach gzeigt 
+werden kann.
+\begin{proof}[Beweis]
+    Zu beweisen ist die folgende Gleichung:
+    \[
+        \int_\mathbb{R^+} f(s \cdot x)\,\frac{dx}{x} = \int_\mathbb{R^+} f(x)\,\frac{dx}{x}
+    \]
+    Eine Substitution von $sx$ mit $u$
+    \[
+    \left[
+    \begin{aligned}
+        u &= sx \\
+        x &= \frac{u}{s} \\
+        dx &= \frac{1}{s} du
+    \end{aligned}
+    \right]
+    \]
+    führt auf
+    \[
+        \int_\mathbb{R^+} f(sx) \cdot x^{-1}\,dx = \int_\mathbb{R^+} f(u) \cdot \frac{s}{u} \frac{1}{s}\,du 
+        = \int_\mathbb{R^+} f(u)\,\frac{du}{u}
+    \]
+    Was beweist, dass sich der Faktor $s$ durch das zusätzliche Mass $x^{-1}$ herauskürzt. 
+\end{proof}
+Eine Intuition für diesen Umstand liefert auch ein Beispiel.
+\begin{beispiel}
+Man betrachte die Funktion 
+\[
+f(x) = \begin{cases}
+    x^3, & 0\leq x\leq 1\\
+    0, & \text{sonst}
+\end{cases}
+\]
+% to do
+\end{beispiel}
+Das für die Multiplikation als Gruppenoperation modifizierte Integral ist somit
+\begin{equation}
+    \int_\mathbb{R^+} f(x)\,\frac{dx}{x},
+\end{equation}
+und das Skalarprodukt mit dem die Transformation erfolgt
+\begin{equation}
+    \langle f,g \rangle = \int_\mathbb{R^+} f(x) \cdot \overline{g(x)} \,\frac{dx}{x}.
+\end{equation}
+
+% Werden nun für die Funktion $g(x)$ die Potenzfunktionen aus dem vorhergehenden Abschnitt eingesetzt, erhalten wir so die 
+% Formel für der Mellin-Transformation
+% \begin{align*}
+%     \langle h,f \rangle &= \int\limits_{0}^{\infty} x^{z} f(x) \,\frac{\mathrm{d}x}{x}\\
+%     &= \int\limits_{0}^{\infty} x^{z-1} f(x) \,\mathrm{d}x = \mathcal{M}\{f \}(z)
+% \end{align*}
+
+
+
+
+\subsection{Korrelation und Faltung auf $\mathbb{R^+}$
+\label{mellin:subsection:faltung}}
+Wir haben nun alle essenziellen Bausteine beisammen um die gesuchte Transformation zu formulieren: grundlegende Gruppe, 
+Analysefunktionen und Skalarprodukt.
+Das Rezept dafür lautet nun wie folgt. Es wird das mit dem modifiziertem Integral definierte Skalarprodukt der Analysefunktion 
+mit der zu transformierenden Funktion über den gesamten Definitionsbereich der Gruppe gebildet.
+\begin{equation}
+    \langle h,f \rangle = \int\limits_{0}^{\infty} x^{z} f(x) \,\frac{\mathrm{d}x}{x}
+\end{equation}
+eine kleine Umformung führt zu einer kompakten Formel der \emph{Mellin-Transformation}
+\begin{equation}
+    \mathcal{M}\{f \}(z) = \int\limits_{0}^{\infty} x^{z-1} f(x) \,\mathrm{d}x
+    \label{mellin:mellin}
+\end{equation}
+Ebenfalls lassen sich die Korrelation sowie die Faltung über die Gruppenoperation und das modifizierte Skalarprodukt bestimmen:
+\begin{equation}
+    (f \star g)(\sigma ) = \int_\mathbb{R^+} f(x) \cdot g(\sigma ^{-1} \cdot x)\,\frac{dx}{x}
+    \label{mellin:kreuzkorrelation*}
+\end{equation}
+\begin{equation}
+    (f \ast g)(x) = \int_\mathbb{R^+} f(y) \cdot g(x \cdot y^{-1})\,\frac{dy}{y} 
+\end{equation}
+Damit erhalten wir von der Gelfandtheorie zum krönenden Abschluss das Faltungstheorem
+\begin{equation}
+    \mathcal{M}\{f \ast g\} = \mathcal{M}\{f\} \cdot \mathcal{M}\{g\}.
+\end{equation}
+
+\subsection{Rücktransformation
+\label{mellin:subsection:ruecktransformation}}
+%     Gamma-Funktion
+%     Mellin-Barnes
+
+
+% Bem. Konvergenz und Scope
+% Beispiel Skaleninvarianz
+% Orthogonalität ausführen (Charaktere?)
+% Integralbegriff und Masstheorie?

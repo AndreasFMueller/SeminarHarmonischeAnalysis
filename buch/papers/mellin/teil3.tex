@@ -1,43 +1,83 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teil3.tex
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Vincent Haufe, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 3
+\section{Vergleich mit der Fouriertransformation
 \label{mellin:section:teil3}}
 \rhead{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+Im vorangehenden Abschnitt wurde die Mellin-Transformation aus den Regeln der Gelfandtheorie konstruiert. 
+Dabei wurde auch immer wieder auf die bekannte Fouriertransformation verwiesen und deren Parallelen gezogen, um die doch sehr abstrahierte 
+Theorie etwas zu bodigen.
+Das hat dabei in diesem Fall besonders gut funktioniert, da die Fourier- und Mellin-Transformation nämlich nicht nur beide eine generische 
+Gelfandtransformation sind, sondern auch untereinander enger verwandt sind als prinzipiell nötig wäre.
+Der folgende Abschnitt erkundet eine Alternative, wie man auf die Mellin-Transformation auf sehr einfache Weise auch direkt vom Integral 
+der Fouriertransformation hätte kommen können.
 
-\subsection{De finibus bonorum et malorum
-\label{mellin:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Von Fourier zu Mellin
+\label{mellin:subsection:foumel}}
+Was folgt ist eine einzelne Rechnung.
+Wir starten mit dem bekannten Integral der Fouriertransformation
+\begin{equation}
+    \mathcal{F}\{f \}(\omega) = \int\limits_{-\infty}^{\infty} e^{-i\omega{}t} f(t) \,\mathrm{d}t
+    \label{mellin:fourier}
+\end{equation}
+Jetzt gilt es, zwei Substitution durchzuführen
+\[
+    \left[
+    \begin{aligned}
+        -j\omega &= z
+    \end{aligned}
+    \right]
+\]
+und
+\[
+    \left[
+    \begin{aligned}
+        t &= \ln x \\
+        dt &= \frac{1}{x} dx
+    \end{aligned}
+    \right]
+\]
+Eingesetzt in das Fourier-Integral ergibt sich
+\[
+    \int e^{z \ln x} \cdot f(\ln x) \,\frac{dx}{x} = \int e^{\ln x^z} \cdot f(\ln x) \,\frac{dx}{x}
+    = \int x^{z} \cdot f(\ln x) \,\frac{dx}{x} = \int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x
+\]
+Nun gilt es bei der Substitution der Integrationsvariablen $t$ noch die neuen Grenzen zu berechnen
+\[
+    \begin{aligned}
+        &e^{t} =& x \\
+        &e^{-\infty} &\rightarrow 0 \\
+        &e^{\infty} &\rightarrow \infty 
+    \end{aligned}
+\]
+Dies führt auf das Integral
+\[
+    \int\limits_{0}^{\infty} x^{z-1} f(\ln x) \,\mathrm{d}x
+\]
+Das nun bekannt vorkommen sollte, denn es entspricht exakt der Mellin-Transformation!
 
+Die Fouriertransformation einer Funktion ist also dasselbe wie die Mellin-Transformation derselben Funktion, welche aber
+mit dem natürlichen Logarithmus logarithmiert wurde, oder andersherumn, nimmt man das Argument einer Funktion 
+in den Exponent von $e$ $f(e^x)$ und fouriertransformiert diese, ergibt dies die Mellin-Transformation der Funktion $f(x)$.
+Dies ergibt zusätzlich Sinn, da die Exponentialfunktion eine Funktion von $\mathbb{R} \mapsto \mathbb{R^+}$ ist, ein 
+Gruppenhomomorphismus.
+Das ist eine erstaunliche Erkenntnis und lässt ein paar einfache Relationen zur Fourier- und Laplace-Transformation 
+formulieren.
+\begin{align*}
+    \mathcal{M}\{f(x)\}(z) &= \mathcal{F}\{f (e^{x}\}(jz) \\ \\
+    \mathcal{M}\{f(x)\}(z) &= \mathcal{L}\{f (e^{-x}\}(-z) + \mathcal{L}\{f (e^{x}\}(z) 
+\end{align*}
+In Theorie könnte die Mellin-Transformation also alle Aufgaben der in der modernen Welt allgegenwärtigen Fouriertransformation 
+übernehmen.
+Joseph Fourier hätte die Wärmeleitgleichung damals ebenso mit der Mellin-Transformation lösen können und ein Grossteil der modernen 
+Elektrotechnik könnte darauf basieren. 
+In der Praxis wäre diese aber bedeutend weniger handlich und intuitiv als die Fouriertransformation bei der man eine sehr genaue, 
+physikalische Vorstellung des Frequenzraumes und deren Wirkung hat. 
 
+Auch überrascht nun gar nicht mehr, dass eigentlich alle Eigenschaften der Fouriertransformation übersetzt werden können, 
+was vorher im Kontext der abstrakten Gelfandtheorie vielleicht noch etwas undurchsichtig erschienen ist.

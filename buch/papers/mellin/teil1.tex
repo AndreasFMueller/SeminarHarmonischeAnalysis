@@ -1,58 +1,129 @@
 %
-% teil1.tex -- Beispiel-File für das Paper
+% teil1.tex
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Vincent Haufe, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
-\section{Teil 1
+
+\section{Motivation
 \label{mellin:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\rhead{Motivation}
+
+Folgendes Kapitel orientiert sich stark am Kapitel 2 von \footnote{\cite{mellin:mellin-transform-method}}.
+
+Es sei folgendes Registrierungsproblem gegeben: Wir haben zwei Funktionen $f(x)$ und $g(x)$, welche bis auf eine Verschiebung 
+identisch sind \ref{fig:mellin:f1}. Dieses einfache Beispiel mit eindimensialonen Funktion soll symbolisch für das Problem gelten,
+in der Bildverarbeitung könnten dies gegeneinander verschobene Bilder sein, die zur Deckung gebracht werden sollen, das Prinzip 
+bleibt hierbei dasselbe.
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{papers/mellin/images/f1}
+    \caption{}
+    \label{fig:mellin:f1}
+\end{figure}
+
+Die Aufgabe besteht nun darin, bei gegebenen Funktionen $f(x)$ und $g(x)$ die unbekannte Verschiebung $x_0$ zu ermitteln. 
+Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt \ref{buch:chapter:skalarprodukte}, welches ein quantitatives 
+Mass für die Ähnlichkeit zweier Funktionen liefert \footnote{Die beiden Funktionen müssen so geschaffen sein, dass das Skalarprodukt 
+konvergiert}.
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{mellin:equation1}
+    \langle f,g \rangle = \int f(x) \cdot \overline{g(x)} \,dx
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+Der Wert den das Skalarprodukt liefert ist genau dann am grössten, wenn die beiden Funktionen identisch sind.
+Wir lassen also eine Verschiebung der zweiten Funktion zu und ermitteln, für welche Verschiebung das Skalarprodukt maximal wird.
+Dies führt auf die Kreuzkorrelation
+\begin{equation}
+    (f \star g)(\tau) = \int_\mathbb{R} f(x) \cdot g(x-\tau)\,dx
+    ,
+    \label{mellin:kreuzkorrelation+}
+\end{equation}
+die selber eine Funktion der Verschiebung $\tau$ ist. 
+Wenn $\tau =  x_0$ liegen die ursprünglichen Funktionen exakt übereinander da
+% \begin{proof}
+%     \begin{equation}
+%         g(x)
+%         = f(x + x_0)
+%         g(x - \tau)
+%         = f(x + x_0 - \tau) = f(x)
+%     \end{equation}
+% \end{proof}
+$g(x) = f(x + x_0)$ und $g(x - \tau) = f(x + x_0 - \tau) = f(x)$ für $\tau =  x_0$ und die Kreuzkorrelation ist maximal. 
+Mathematisch ausgedrückt findet sich $x_0$ mit
+\begin{equation}
+    x_0 = \argmax\limits_{\tau \in \mathbb{R}}{(f \star g)(\tau)}
+    .
+    \label{mellin:x0}
+\end{equation}
+Die Kreuzkorrelation führt zum Erfolg, ist aber, sofern sie sich nicht analytisch berechnen lässt (in Anwendungen generell nicht der Fall) 
+eine ziemlich rudimentäre Methode, die mit sehr grossem Rechenaufwand verbunden ist, da für jeden Wert der Verschiebung $\tau$ ein 
+Integral berechnet werden soll.
+Die effizientere Lösung bietet die Fouriertheorie.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{mellin:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{mellin:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{mellin:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{mellin:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+Durch Spiegeln von $g(x)$ verwandelt sich die Korrelation in eine \emph{Faltung}.
+Das Faltungstheorem der Fouriertheorie lässt uns aus der Faltung im Ortsraum eine Multiplikation im Frequenzraum machen.
+Die Fouriertransformierte der gespiegelten Funktion ${g}(-x)$ ist dabei die konjugiert-komplexe Fouriertransformierte von $g(x)$:
+$\overline{\mathcal{F}\{g \}} = \overline{\hat{g}(\omega)}$.
+Der Faltungssatz auf die Korrelation angewendet lautet also
+\begin{equation}
+    \mathcal{F}\{(f \star g)\} = \mathcal{F}\{f \} \cdot \overline{\mathcal{F}\{g \}}
+\end{equation}
+und somit findet sich die Lösung nach \eqref{mellin:x0}
+\begin{equation}
+    x_0 = \argmax\limits_{x \in \mathbb{R}}{\mathcal{F}^{-1}(\hat{f}(\omega) \cdot \overline{\hat{g}(\omega)})}
+    \label{mellin:x0ft}
+\end{equation}
+Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen zahlreicher bekannten Funktion gut untersucht sind. 
+Viele Standardfunktionen sind tabelliert und mathematische Software bietet ausgefeilte Methoden zur schnellen und effizienten Berechnung 
+der Transformationspaare. 
 
 
+\subsection{Registrierungsproblem für skalierte Funktionen
+\label{mellin:subsection:regskal}}
+Wie im ersten Beispiel gezeigt lässt sich jenes Registrierungsproblem mithilfe der Fouriertransformation elegant lösen.
+Dies hat deshalb funktioniert, weil das gestellte Problem eine Verschiebung beinhaltete, also eine Addition im Argument, die der 
+Gruppenoperation der Fouriertransformation entspricht und somit automatisch auf die ``normale'' Faltung der additiven reellen 
+Gruppe $(\mathbb{R},+)$ geführt hat. Als nächstes wollen wir eine Variante dieses Registrierungsproblems betrachten, die uns auf eine andere Korrelation 
+und somit einer leicht anderen Faltungsformel führt.
+
+Wieder haben wir zwei Funktion $f(x)$ und $g(x)$, die zur Deckung gebracht werden sollen. Dieses mal unterscheiden sie sich nur 
+über einen positiven \emph{Skalierungsfaktor} $s \in \mathbb{R^+}$ im Argument gemäss Abbildung \ref{fig:mellin:f2}.
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{papers/mellin/images/f2}
+    \caption{}
+    \label{fig:mellin:f2}
+\end{figure}
+Das Vorgehen verläuft nun analog zum ersten Beispiel. Wir lassen eine Skalierung von $g(x)$ so zu, dass für den richtigen Wert von
+$\sigma$, der ursprüngliche Skalierungsunterschied der Funktionen genau aufgehoben wird und das Skalarprodukt
+\begin{equation}
+    k(\sigma) = \int_\mathbb{R^+} f(x) \cdot g(\sigma^{-1} \cdot x)\,dx
+    \label{mellin:ksigma}
+\end{equation}
+maximal wird.
+Die Funktion $k(\sigma)$ wirkt wie eine Kreuzkorrelation auf der multiplikativen Gruppe der positiven reellen Zahlen 
+$(\mathbb{R^+},\cdot)$, jedoch fehlt dafür noch eine kleine Anpassung der Formel, auf die später eingengangen werden soll. 
+Wieder könnte man das Integral für verschiedene Werte von $\sigma$ numerisch auswerten und so den richtigen Faktor zu finden. 
+Da dies aber die gleichen Probleme wie vorher beinhaltet, drängt sich die Frage auf, lässt sich die Lösung auch hier über 
+Fourieranalyse finden?
+
+
+% Abbildungen Python -> pgfplots
+
+% \begin{tikzpicture}
+%     \begin{axis}[
+%         xlabel=$x$,
+%         ylabel=$y$,
+%         axis lines=left,
+%         xmax=5,
+%         xmin=-5,
+%         ymax=1.2,
+%         ymin=0,
+%         samples=100 % Adjust the number of samples for smoothness
+%     ]
+%     \addplot[blue, domain=-5:5, samples = 100,] {exp(-(x-2)^2) + 0.8 * exp(-(x+2)^2/2)};
+%     \addplot[purple, domain=-5:5, samples = 100,] {exp(-((x+1)-2)^2) + 0.8 * exp(-((x+1)+2)^2/2)};
+%     % \addlegendentry{\(f(x)\)}
+%     \end{axis}
+%     \label{fig:mellin:f2}
+% \end{tikzpicture}
