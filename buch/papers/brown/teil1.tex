@@ -63,36 +63,6 @@ $ b $ ist der Driftvektor und beschreibt die erwartete Veränderung für jede Di
 \end{align*}
 
 
-\subsection{Rauschen mittels Random Walk oder Wiener Prozess
-\label{brown:SDGL:Wiener}}
-
-Um Rauschen zu modellieren muss als Grundlage ein stochastischer Prozess definiert werden. Zwei zentrale Konzepte sind dabei der \textit{random walk} und der Wienerprozess.
-
-\begin{definition}\textbf{Random Walk:}
-	\label{randomWalk}
-	Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt eine zufällige Schritt nach vorne oder hinten, oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden order als konstant definiert sein.
-\end{definition}
-
-\begin{definition}\textbf{Wiener-Prozess:}
-	\label{wienerprozess}
-	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, er kann als Grenzwert eines Random Walks betrachtet werden, wenn die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert dem Ausgangswert entspricht.	
-\end{definition}
-
-Er muss also folgende Eigenschaften erfüllen: 
-
-%Man könnte also den Random Walk als eine diskrete Version eines Wiener-Prozesses bezeichnen oder umgekehrt, dass ein Wiener-Prozess eine kontinuierliche Version eines Random Walks ist. Sie unterscheiden sich jedoch bezüglich ihrer zeitlichen Diskretisierung und in den verwendeten Wahrscheinlichkeitsverteilungen.
-
-
-\begin{enumerate}
-	\item $ W(0) = 0 $; Der Startwert von $ t = 0 $ ist 0.
-	\item $ W(t_{1}) - W(t_{2}) $ ist ein normalverteilte Zufalls-Variable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $.
-	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen verlauf abhängt.
-\end{enumerate}
-
-Weiter wird auf den Wienerprozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird. ???Abstand???
-
-  
-
 Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
 
 \begin{equation}
