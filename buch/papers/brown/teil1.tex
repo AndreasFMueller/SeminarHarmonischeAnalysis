@@ -9,32 +9,6 @@
 \section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
 \rhead{Stochastische DGL}
 
-Ist eine gewöhnliche Differenzialgleichung (DGL) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. %Für einen bestimmten Startwert und wert der Laufvariabel, kann ein bestimmter Funktionswert ermittelt werden.
-
-In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt und somit einen eher Geringen Wert hat. Es gibt viele Systemen, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert.
-
-Ein gutes Beispiel dafür ist folgendes System:
-\begin{equation}
-	\frac{dx}{dt} = - y
-	\frac{dy}{dt} = x^2 + y
-	\label{divergentEquation}
-\end{equation}
-
-In der Abbildung~\ref{divergentAndConvergentSystem} sind zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet, welches durch die Gleichung~\ref{divergentEquation} gegeben ist. In rot ist der Verlauf im Intervall  t = [0,3] mit dem Startwert (-1.7, -1.4) gegeben und in grün mit dem Startwert (-1.8, -1.4).
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
-	\caption{Zwei Pfade mit fast gleichem Startpunkt}
-	\label{divergentAndConvergentSystem}
-\end{figure}
-
-Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den System-Verlauf auswirken kann. In diesem speziellen Fall konvergieren die Lösung mit grösserem $t$ wieder. Bedenkt man nun, dass eine solch kleine Variation durch stochastisches Rauschen erzeugt werden könnte, scheint es unsinnig eine fixe Lösung für ein solches System anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung hinzuweisen oder sogar den Lösungsraum genauer zu spezifizieren.
-
-%In diesem System konvergieren alle Trajektorien zum Ursprung, ausser diese, welche Ihren Startwert exakt auf der Geraden $ y = x $ haben. Also kann ein kleiner Störeinfluss darüber entscheiden ob, der Wert zum gegen (0,0) konvergiert oder nach Unendlich divergiert. Wobei bei diesem Beispiel gesagt werden muss, dass in Realität der Startwert nie exakt auf die Gerade $ y = x $ fallen würde.
-
-Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von zufälligen Störungen beim Aufstellen eines Modells miteinbeziehen (in diesem Fall \textit{white noise}). Anstatt eine fixe Lösung zum Zeitpunkt $ t $ anzugeben, kann man eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände definieren - et. voilà, man hat den Lösungsraum einer stochastische Differenzialgleichung (SDGL).
-
 Formal kann eine stochastische DGL folgendermaßen notiert werden, 
 
 \begin{equation}
