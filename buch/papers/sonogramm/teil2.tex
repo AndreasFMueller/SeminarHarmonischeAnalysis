@@ -24,7 +24,7 @@ genauer beschrieben.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/audioTimeDern.pdf}
-    \caption{Audo Spur für die Tonanalyse.
+    \caption{Audio Spur für die Tonanalyse.
     \label{sonogramm:dernTime}
     }
 \end{figure}
@@ -39,7 +39,7 @@ Die benötigte Zeitauflösung können wir anhand der Geschwindigkeit des Lieds a
 Diese beträgt 83 Schläge pro Minute mit einem 4/4 Takt, also jeweils alle 0.69 Sekunden ein viertel Takt.
 Möchten wir sechzehntel Noten erkennen darf die STFT über maximal 0.17 Sekunden
 angewendet werden.
-Damit die sechzehntel Noten nicht nur in einem Segment zu sehen sind teilen
+Damit die sechzehntel Noten nicht nur in einem Segment zu sehen sind, teilen
 wir die 0.17 Sekunden nochmals durch zwei.
 Das liefert uns bei einer Abtastfrequenz von 44100 Hz eine ungefähre Segmentlänge von 
 3800 Samples. 
@@ -48,6 +48,21 @@ von 4096 Samples.
 Um die Leckfrequenzen zu unterdrücken verwenden wir ein Hamming Fenster.
 Somit resultiert das Sonogramm in Abbildung \ref{sonogramm:dernSono}.
 
+Die gespielten Töne können wir nun anhand der Frequenzen 
+der Peaks in den Segmenten errechnen.
+Abbildung \ref{sonogramm:dernSonoPeaks} zeigt die gefundenen Frequenzen, und die
+jeweiligen interessanten Abschnitte.
+Die Frequenzen müssen wir nun noch in die Töne umrechnen, wobei wir jeweils auf den
+nächsten Ton runden.
+Wir machen die Annahme, dass der gespielte der Ton derjenige mit der höchsten Amplitude im Spektrum 
+ist. 
+Tabelle \ref{sonogramm:tabDern} zeigt den Vergleich mit den tatsächlich gespielten Tönen.
+Diese lassen sich in diesem Fall tatsächlich gut ermitteln.
+Sogar nur kurz gespielte Noten, wie das B4 im Abschnitt 10 
+wurden korrekt erkannt.
+Was wir vernachlässigt haben, ist der Rhythmus der gespielten Noten.
+Um diesen herauszufinden, bräuchten wir jeweils die exakten Zeitpunkte, wo die Töne
+beginnen und enden, was weitere Analysen erfordern würde.
 
 \begin{figure}
     \centering
@@ -56,11 +71,6 @@ Somit resultiert das Sonogramm in Abbildung \ref{sonogramm:dernSono}.
     \label{sonogramm:dernSono}
     }
 \end{figure}
-
-Die gespielten Töne könne wir nun anhand der Frequenzen 
-der Peaks in den Segmenten errechnen.
-Abbildung \ref{sonogramm:dernSonoPeaks} zeigt die gefundenen Frequenzen.
-Diese müssen wir nur noch in 
 
 \begin{figure}
     \centering
@@ -71,8 +81,35 @@ Diese müssen wir nur noch in
     \label{sonogramm:dernSonoPeaks}
     }
 \end{figure}
-
-\subsection{De finibus bonorum et malorum
-\label{sonogramm:subsection:bonorum}}
-
-
+\begin{table}
+    \begin{center}
+    \begin{tabular}{c | c c  } 
+     \hline
+     Abschnitt & Gespielter Ton & Gefundener Ton \\ [0.5ex] 
+     \hline
+     1 & E3 & E3 \\ 
+     2 & F\musSharp3 & F\musSharp3 \\
+     3 & A3 & A3 \\
+     4 & B3 & B3 \\
+     5 & A3 & A3 \\
+     6 & D4 & D4 \\
+     7 & B3  & B3 \\
+     8 & E4 slide F\musSharp4  & E4 - F4 - F\musSharp4 \\
+     9 & B4  & B4 \\
+     10 & A4 - B4 - A4   & A4 - B4 - A4 \\
+     11 & F\musSharp4 slide E4 & F\musSharp4 - F4 - E4 \\
+     12 & E4 - D3 - B3 - A3 & E4 - D3 - B3 - A3 \\
+     \hline
+    \end{tabular}
+\end{center}
+\caption{\label{sonogramm:tabDern} Vergleich der gespielten und gefundenen Töne im Analysierten Abschnitt von Dern Kala.}
+\end{table}
+\subsection{Weiter Anwendungen}
+Das Sonogramm wird in vielen Bereichen der Audioanalyse eingesetzt.
+So basierten zum Beispiel frühere Spracherkennung und Sprachsynthese Methoden 
+aus Sonogramme.
+Nicht nur gesprochene Wörter, sondern auch Tiere wie Vögel können mit Hilfe
+von Sonogrammen von ihrem Gesang bestimmt werden.
+Dabei wird das Sonogramm als Input eines Neuronalen Netzwerks verwendet.
+Es ermöglicht mit Neuronalen Netzwerken, welche für Bilder gemacht sind
+Audiosignale zu analysieren.
