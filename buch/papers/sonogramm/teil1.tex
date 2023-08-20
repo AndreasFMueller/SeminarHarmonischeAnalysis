@@ -88,10 +88,27 @@ Phase der beiden Harmonischen grösser sein muss.
 Abbildung \ref{sonogramm:freqdiffdemo} zeigt als Beispiel das Signal
 \begin{equation}
     s(t) = \sin(2\pi 3.45 t ) + \sin (s\pi 4.45 t + \varphi)
+    \label{sonogramm:eq:twoHarmPhi}
 \end{equation}
 mit $T_w = 1$ s, was eine Frequenzauflösung von maximal 1 Hz ergibt.
-Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau
+Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau, oder sogar überhaupt nicht
 bestimmt werden.
+Wieso das so ist, lässt sich in der Zeit zeigen.
+Werden zwei Sinuse mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
+was im fall von \eqref{sonogramm:eq:twoHarmPhi}
+\begin{equation}
+    s(t) = \sin(2\pi 3.45 t ) + \sin (s\pi 4.45 t) = 2 \sin(2 \pi \frac{3.45 + 4.45}{2}t)
+    cos(2 \pi  \frac{3.45 - 4.45}{2} t),
+\label{sonogramm:eq:twoHarm}
+\end{equation}
+ergibt.
+Abbildung \ref{sonogramm:twoHarmTime} zeigt \eqref{sonogramm:eq:twoHarm} über vier Sekunden.
+Die Phase $\varphi$ bewirkt eine Verschiebung von \eqref{sonogramm:eq:twoHarm} in der Zeit, 
+was bedeutet, dass abhängig von $\varphi$ ein anderer Abschnitt des Signales gefenstert wird.
+Im Fall von $\varphi = \pi$ ist das gefensterte Segment genau zwischen zwei Nulldurchgänge
+vom Kosinus.
+Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit einem 
+Sinus-fenster segmentiert wurde. 
 
 
 \begin{figure}
@@ -123,6 +140,15 @@ bestimmt werden.
     }
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics{papers/sonogramm/images/twoharmTime.pdf}
+    \caption{Funktion in \eqref{sonogramm:eq:twoHarm} über 4 Sekunden in blau, und der resultierende
+    umhüllende Kosinus in rot.
+    \label{sonogramm:twoHarmTime}
+    }
+\end{figure}
+
 \subsection{Andere Fensterfunktionen}
 Bis jetzt haben wir uns auf das Rechteck-fenster beschränkt.
 Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
@@ -135,6 +161,7 @@ Durch die abrupten Sprünge im Rechteck-fenster sind die Leck-Frequenzen
 Um dies zu verbessern wäre os besser eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung 0 zu gehen. 
+
 
 Eine bekannte Funktion, welche solche Eigenschaften aufweist ist die gausssche Glockenkurve
 \begin{equation}
