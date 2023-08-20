@@ -108,8 +108,14 @@ was bedeutet, dass abhängig von $\varphi$ ein anderer Abschnitt des Signales ge
 Im Fall von $\varphi = \pi$ ist das gefensterte Segment genau zwischen zwei Nulldurchgänge
 vom Kosinus.
 Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit einem 
-Sinus-fenster segmentiert wurde. 
+Sinus-fenster multipliziert wurde. 
+Ein Sinus-fenster der Länge T ist ein 2T-periodischer Sinus, welcher nach T abgeschnitten wird.
+Da damit die Phasensprünge nicht im gefensterten Bereich enthalten sind, 
+gehen die Informationen über die eigentlichen addierten Sinuse verloren.
+Ist $\varphi = 0$ ist der Phasensprung in der Mitte des Segmentes und damit optimal gelegen.
 
+Man sollte daher mit der theoretischen Frequenzauflösung nicht ans Limit gehen, wenn man
+zuverlässige Resultate erzielen möchte.
 
 \begin{figure}
     \centering
@@ -145,6 +151,7 @@ Sinus-fenster segmentiert wurde.
     \includegraphics{papers/sonogramm/images/twoharmTime.pdf}
     \caption{Funktion in \eqref{sonogramm:eq:twoHarm} über 4 Sekunden in blau, und der resultierende
     umhüllende Kosinus in rot.
+    Bei den Nulldurchgängen hat der multiplizierte Sinus der Frequenz 3.95 Hz Phasensprünge.
     \label{sonogramm:twoHarmTime}
     }
 \end{figure}
