@@ -43,28 +43,29 @@ Damit die sechzehntel Noten nicht nur in einem Segment zu sehen sind teilen
 wir die 0.17 Sekunden nochmals durch zwei.
 Das liefert uns bei einer Abtastfrequenz von 44100 Hz eine ungefähre Segmentlänge von 
 3800 Samples. 
-Nach einem Bisschen Ausprobieren ergibt sich 4000 als eine geeignete Segmentlänge.
-
-Um die Leckfrequenzen verwenden wir ein Hamming Fenster.
+Nach einem Bisschen Ausprobieren ergaben sich gute Resultate bei einer Segmentlänge
+von 4096 Samples.
+Um die Leckfrequenzen zu unterdrücken verwenden wir ein Hamming Fenster.
 Somit resultiert das Sonogramm in Abbildung \ref{sonogramm:dernSono}.
 
 
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/dernSono1.pdf}
-    \caption{Sonogram des Abschnitts von Dern Kala.
+    \caption{Sonogram des Audiosignalabschnitts.
     \label{sonogramm:dernSono}
     }
 \end{figure}
 
 Die gespielten Töne könne wir nun anhand der Frequenzen 
 der Peaks in den Segmenten errechnen.
-Abbildung \ref{sonogramm:dernSonoPeaks} zeigt TODO
+Abbildung \ref{sonogramm:dernSonoPeaks} zeigt die gefundenen Frequenzen.
+Diese müssen wir nur noch in 
 
 \begin{figure}
     \centering
-    \includegraphics{papers/sonogramm/images/dernSonoPeaks.pdf}
-    \caption{Gefundene Frequenzen in Rot eingezeichnet. Bei gewissen 
+    \includegraphics{papers/sonogramm/images/dernNoten.pdf}
+    \caption{Gefundene Frequenzen in rot eingezeichnet. Bei gewissen 
     Segmenten werden Peaks auch bei der doppelten Frequenz gefunden.
     Dies sind die Obertöne der gespielten Gitarrensaiten.
     \label{sonogramm:dernSonoPeaks}
