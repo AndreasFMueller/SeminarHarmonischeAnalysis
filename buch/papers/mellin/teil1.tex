@@ -10,11 +10,12 @@
 \label{mellin:section:teil1}}
 \rhead{Motivation}
 
-Folgendes Kapitel orientiert sich stark am Kapitel 2 von \footnote{\cite{mellin:mellin-transform-method}}.
+Folgendes Kapitel orientiert sich zu Beginn stark am Kapitel 2 von \cite{mellin:mendezmueller-book}.
+\smallskip
 
 Es sei folgendes Registrierungsproblem gegeben: Wir haben zwei Funktionen $f(x)$ und $g(x)$, welche bis auf eine Verschiebung 
-identisch sind \ref{fig:mellin:f1}. Dieses einfache Beispiel mit eindimensialonen Funktion soll symbolisch für das Problem gelten,
-in der Bildverarbeitung könnten dies gegeneinander verschobene Bilder sein, die zur Deckung gebracht werden sollen, das Prinzip 
+identisch sind (siehe Abb. \ref{fig:mellin:f1}). Dieses einfache Beispiel mit eindimensionalen Funktionen soll symbolisch für das Problem 
+gelten, in der Bildverarbeitung könnten dies gegeneinander verschobene Bilder sein, die zur Deckung gebracht werden sollen, das Prinzip 
 bleibt hierbei dasselbe.
 \begin{figure}
     \centering
@@ -24,11 +25,12 @@ bleibt hierbei dasselbe.
 \end{figure}
 
 Die Aufgabe besteht nun darin, bei gegebenen Funktionen $f(x)$ und $g(x)$ die unbekannte Verschiebung $x_0$ zu ermitteln. 
-Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt \ref{buch:chapter:skalarprodukte}, welches ein quantitatives 
-Mass für die Ähnlichkeit zweier Funktionen liefert \footnote{Die beiden Funktionen müssen so geschaffen sein, dass das Skalarprodukt 
-konvergiert}.
+Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt \footnote{Siehe auch Kapitel \ref{buch:chapter:skalarprodukte}}, 
+welches ein quantitatives Mass für die Ähnlichkeit zweier Funktionen liefert 
+\footnote{Anmerkung: Die beiden Funktionen müssen so geschaffen sein, dass das Skalarprodukt konvergiert}.
 \begin{equation}
-    \langle f,g \rangle = \int f(x) \cdot \overline{g(x)} \,dx
+    \langle f,g \rangle = \int \overline{f(x)} \cdot g(x) \,dx
+    \label{mellin:skalaprodukt}
 \end{equation}
 Der Wert den das Skalarprodukt liefert ist genau dann am grössten, wenn die beiden Funktionen identisch sind.
 Wir lassen also eine Verschiebung der zweiten Funktion zu und ermitteln, für welche Verschiebung das Skalarprodukt maximal wird.
@@ -60,9 +62,9 @@ eine ziemlich rudimentäre Methode, die mit sehr grossem Rechenaufwand verbunden
 Integral berechnet werden soll.
 Die effizientere Lösung bietet die Fouriertheorie.
 
-Durch Spiegeln von $g(x)$ verwandelt sich die Korrelation in eine \emph{Faltung}.
+Durch Spiegeln von $g(x) \rightarrow \check{g}(x)$ verwandelt sich die Korrelation in eine \emph{Faltung}.
 Das Faltungstheorem der Fouriertheorie lässt uns aus der Faltung im Ortsraum eine Multiplikation im Frequenzraum machen.
-Die Fouriertransformierte der gespiegelten Funktion ${g}(-x)$ ist dabei die konjugiert-komplexe Fouriertransformierte von $g(x)$:
+Die Fouriertransformierte der gespiegelten Funktion $\check{g}(x) = {g}(-x)$ ist dabei die konjugiert-komplexe Fouriertransformierte von $g(x)$:
 $\overline{\mathcal{F}\{g \}} = \overline{\hat{g}(\omega)}$.
 Der Faltungssatz auf die Korrelation angewendet lautet also
 \begin{equation}
@@ -73,8 +75,8 @@ und somit findet sich die Lösung nach \eqref{mellin:x0}
     x_0 = \argmax\limits_{x \in \mathbb{R}}{\mathcal{F}^{-1}(\hat{f}(\omega) \cdot \overline{\hat{g}(\omega)})}
     \label{mellin:x0ft}
 \end{equation}
-Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen zahlreicher bekannten Funktion gut untersucht sind. 
-Viele Standardfunktionen sind tabelliert und mathematische Software bietet ausgefeilte Methoden zur schnellen und effizienten Berechnung 
+Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen zahlreicher bekannten Funktionen gut untersucht sind. 
+Viele Standardfunktionen sind tabelliert und mathematische Software bieten ausgefeilte Methoden zur schnellen und effizienten Berechnung 
 der Transformationspaare. 
 
 

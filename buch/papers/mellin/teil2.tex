@@ -12,11 +12,11 @@
 Wie schon bemerkt, sind wir bei diesem Problem mit der multiplikativen Gruppe der positiven reellen Zahlen $(\mathbb{R^+},\cdot)$ 
 konfrontiert. 
 Diese Information ist der Startpunkt auf der Suche nach einer Integraltransformation die unser Problem lösen kann.
-Die Gelfandtheorie \ref{buch:gruppen:section:gelfand} ist die verallgemeinerte Theorie der Fourieranalyse und beschreibt die notwendigen Bausteine einer solchen.
-Zum einen sind \emph{Analysefunktionen} zu bestimmen, welche die Gruppenoperation in die Multiplikation überführt und zueinander 
-orthogonal sind. 
-Des Weiteren muss das \emph{Skalarprodukt} auf die Gruppe angepasst werden, mit dem die Integraltransformation durchgeführt werden 
-soll.
+Die Gelfandtheorie \footnote{Siehe auch Kapitel \ref{buch:gruppen:section:gelfand}} ist die verallgemeinerte Theorie der Fourieranalyse und beschreibt die notwendigen Bausteine einer solchen.
+Zum einen sind \textbf{Analysefunktionen} zu bestimmen, welche die Gruppenoperation in die Multiplikation überführt und gewisse 
+Orthogonalitätsbedingungen erfüllen. 
+Des Weiteren muss das \textbf{Skalarprodukt} auf die multiplikative Gruppe angepasst werden, mit dem die Integraltransformation durchgeführt 
+werden soll.
 Aus Gruppe, Analysefunktionen und Skalarprodukt folgt dann \footnote{für kommutative Lie-Gruppen} die entsprechende Transformation.
 % Diese Bedingungen mögen dem Ingenieur auf den ersten Blick etwas ominös und sehr abstrahiert erscheinen, was aber auch der im Sinne 
 % einer verallgemeinerten Theorie ist.
@@ -39,9 +39,31 @@ Aus Gruppe, Analysefunktionen und Skalarprodukt folgt dann \footnote{für kommut
 \label{mellin:subsection:analysefunktionen}}
 
 Unser Ziel ist es, die für unser Registrierungsproblem neu definierte Kreuzkorrelation mithilfe einer Integraltransformation in 
-einfache Multiplikation zu verwandeln.
+einfache Multiplikation der transformierten Funktionen zu verwandeln.
 Dafür braucht es spezielle Funktionen, sogenannte Homomorphismen, welche die Gruppenoperation in die Multiplikation überführen 
-können. Bei der Fouriertransformation, dessen Gruppenoperation die Additon ist, müssen die Analysefunktionen also die Gleichung 
+können. 
+\begin{satz}
+    \label{buch:papers:mellin:teil2:satz:hom}
+    Eine (kommutative?) Integraltransformation enthält das Faltungstheorem.
+    Dafür braucht es Funktionen, welche die Gruppenoperation in eine \textbf{Multiplikation} überführt. 
+    \[
+        f(x \diamond y) = f(x) \cdot f(y),
+    \]
+    wobei $\diamond$ der Gruppenoperation enstpricht.
+\end{satz}
+Dies gilt sowohl für die Gruppenoperationen der Gruppe im Ortsraum als auch für die Gruppenoperation der dualen Gruppe im Bildraum der Transformation.
+% Satz: Eine (kommutative?) Integraltransformation enthält das Faltungstheorem!
+% Dafür braucht es Funktionen, welche die Gruppenoperation in eine \textbf{Multiplikation} überführt. Dies gilt sowohl für die Gruppenoperationen 
+% der Gruppe im Ortsraum als auch für die Gruppenoperation der dualen Gruppe im Bildraum der Transformation.
+% \begin{equation}
+%     f(x \diamond y) = f(x) \cdot f(y)
+% \end{equation}
+% Wobei $\diamond$ der Gruppenoperation enstpricht.
+Mit dem Konzept der dualen Gruppe werden wir uns am Ende des Abschnitts nochmals genauer befassen, fürs Erste konzentrieren wir uns auf 
+die multiplikative Gruppe in $\mathbb{R^+}$, welche relevant für unsere skalierten Funktionen ist, also im Ortsraum.
+\medskip
+
+Bei der Fouriertransformation, dessen Gruppenoperation die Additon ist, müssen die Analysefunktionen also die Gleichung 
 \begin{equation}
     f(x + y) = f(x) \cdot f(y)
     \label{mellin:hom1}
@@ -59,7 +81,9 @@ In der Fortsetzung bedeutet das für die neue Transformation, dass dessen Analys
     \label{mellin:hom2}
 \end{equation}
 erfüllen müssen.
-Erfüllt wird die Gleichung durch jede Potenzfunktion $h(x) = x^z$ für beliebige $z \in \mathbb{C}$
+Erfüllt wird die Gleichung durch jede Potenzfunktion $h(x) = x^{-z}$ für beliebige $z \in \mathbb{C}$
+\footnote{das Minus vor dem $z$ ist bezüglich der Homomorphismuseigenschaft unbedeutend, muss aber aus demselben Grund wie 
+bei der Fouriertransformation ($e^{-j\omega t}$) enthalten sein, auf den hier aber nicht eingegangen werden soll}
 \begin{equation}
     h(x \cdot y) =  (x \cdot y)^{z} = x^{z} \cdot y^{z},
 \end{equation}
@@ -70,7 +94,14 @@ Erfüllt wird die Gleichung durch jede Potenzfunktion $h(x) = x^z$ für beliebig
 Unsere Analysefunktionen müssen also vom Typ Potenzfunktion sein jedoch langt die Homomorphismuseigenschaft noch nicht aus. 
 Sie müssen ebenfalls eine Menge von zueinander orthogonalen Funktionen bilden um eine Zerlegung einer Funktion in diese 
 Analysefunktionen zu ermöglichen, analog wie bei der Fouriertransformation. 
-% Homomorphismen -> Charaktere
+% BEI DER RÜCKTRANSFORMATION WIRD ÜBER U INTEGRIERT, SOMIT ERFOLGT DIE ZERLEGUNG DER FUNKTION WIEDER IN EXPONENTIALFUNKTIONEN REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+% LEDIGLICH DIE ANALYSE DER FUNKTION, ALSO DIE GEWICHTUNG DER EXPONENTIALFUNKTIONEN, DER ZERLEGUNG, ALSO DIE KOEFFIZIENTEN ERFOLGT ÜBER 
+% POTENZFUNKTIONEN!!!!!!!!!!!!!
+% ist demfall wahrscheinlich bei allen Gelfand-Transformation in etwa der Fall?
+% aber: die Basis der Exponentialfunktionen in die f(x) zerlegt wird, ist die Variable x selbst, somit besteht für jeden Punkt x nach f(x)
+% aus einer unendlichen Reihe von Schwingungen mit Basis x? Wie ist eine komplexe Exponentialfunktion mit anderer Basis als e überhaupt 
+% definiert?
+% In der Fourierzerlegung kommt die Variable x im Exponent der komplexen Schwingungen vor, bei Mellin in der Basis Bedeutung?
 Glücklicherweise ist dies, wie man zeigen kann, automatisch der Fall bezüglich des der Gruppe entsprechenden Skalarproduktes, 
 auf welches im nächsten Abschnitt eingegangen wird.
 % Die komplexe Exponentialfunktion $e^{j\omega_l t}$ ist orthogonal zu $e^{j\omega_k t}$, sofern $\omega_l \neq \omega_k$, da diese 
@@ -85,7 +116,6 @@ auf welches im nächsten Abschnitt eingegangen wird.
 % \end{proof}
 % Bei den komplexen Exponentialfunktionen der Fouriertransformation ist dies auch intuitiv, da dahinter die Sinus- und 
 % Cosinusschwingungen unterschiedlicher Frequenzen stehen, in die eine Funktion zerlegt werden kann.
-% Die Frage der Orthogonalität für die Potenzfunktion $f(x) = x^z$ verlangt...
 
 
 \subsection{Skalarprodukt der Mellin-Transformation
@@ -97,6 +127,14 @@ Relevant ist dabei nun, dass wir für unser Integral und somit Skalarprodukt mit
 mit einem \emph{Mass}\footnote{in diesem Kontext genauer: ein Haar-Mass} ausstatten. 
 Damit gelingt es uns, das Integral \emph{invariant bezüglich der Gruppenoperation} zu machen, was für den Erfolg der Fouriertheorie 
 zwingend nötig ist. 
+\begin{satz}
+    \label{buch:papers:mellin:teil2:satz:int}
+    Das Integral, mit dem eine Integraltransformation durchgeführt wird, muss \textbf{invariant bezüglich der Gruppenoperation} 
+    der Gruppe der zu transformierenden Funktionen sein.
+    \[
+        \int_\mathbb{G} f(x)\,dx = \int_\mathbb{G} f(x \diamond x_0)\,dx
+    \]
+\end{satz}
 Invariant bezüglich der Gruppenoperation bedeutet, dass sich das Integral über den gesamten Definitionsbereich der Gruppe nicht 
 ändert, wenn das Argument der zu integrierenden Funktion ``verschoben'' wird. 
 Das gewöhnliche Integral der Fouriertransformation erfüllt diese Eigenschaft 
@@ -112,22 +150,22 @@ Es wird schnell klar, dass das herkömmliche Integral eben \emph{nicht} invarian
 \end{equation}
 da, einfach gesagt, eine Streckung der x-Achse die Funktion und somit deren Flächeninhalt auseinderzieht.
 Es braucht nun also eine Anpassung, um diese Veränderung des Flächeninhalts zu kompensieren.
-Das kann überraschend einfach mithilfe einer Division durch die Variable des Arguments $x$ erreicht werden, was auch sehr einfach gzeigt 
+Das kann überraschend einfach mithilfe einer Division durch die Variable des Arguments $x$ erreicht werden, was auch sehr einfach gezeigt 
 werden kann.
 \begin{proof}[Beweis]
     Zu beweisen ist die folgende Gleichung:
     \[
         \int_\mathbb{R^+} f(s \cdot x)\,\frac{dx}{x} = \int_\mathbb{R^+} f(x)\,\frac{dx}{x}
     \]
-    Eine Substitution von $sx$ mit $u$
+    Eine Substitution von $s \cdot x$ mit $u$
     \[
-    \left[
+    % \left[
     \begin{aligned}
         u &= sx \\
         x &= \frac{u}{s} \\
         dx &= \frac{1}{s} du
     \end{aligned}
-    \right]
+    % \right]
     \]
     führt auf
     \[
@@ -153,8 +191,10 @@ Das für die Multiplikation als Gruppenoperation modifizierte Integral ist somit
 \end{equation}
 und das Skalarprodukt mit dem die Transformation erfolgt
 \begin{equation}
-    \langle f,g \rangle = \int_\mathbb{R^+} f(x) \cdot \overline{g(x)} \,\frac{dx}{x}.
+    \langle f,g \rangle = \int_\mathbb{R^+} \overline{f(x)} \cdot g(x) \,\frac{dx}{x}.
 \end{equation}
+% Are you sure?
+
 
 % Werden nun für die Funktion $g(x)$ die Potenzfunktionen aus dem vorhergehenden Abschnitt eingesetzt, erhalten wir so die 
 % Formel für der Mellin-Transformation
@@ -195,11 +235,80 @@ Damit erhalten wir von der Gelfandtheorie zum krönenden Abschluss das Faltungst
 
 \subsection{Rücktransformation
 \label{mellin:subsection:ruecktransformation}}
-%     Gamma-Funktion
-%     Mellin-Barnes
+Die Mellin-Transformation wurde nun aus den Regeln der Gelfandtheorie konstruiert und findet mit Gleichung \eqref{mellin:mellin} ihre
+definitive Form .
+% \footnote{obschon je nach Literatur und Geschmack auch noch Konstanten $\frac{1}{\sqrt{2\pi j}}$, $\frac{1}{2\pi j}$ vorkommen können.}
+Jedoch haben wir damit eigentlich erst die Hälfte des Bildes, schliesslich wollen wir aus dem Bildraum der Transformation, 
+nennen wir ihn \textbf{Mellin-Raum}, wieder in den Ortsraum zurücktransformieren. 
+Bei Fourier ging dies mit dem fast gleichen Integral wie die Hintransformation, mit Ausnahme der Skalierungskonstante $\frac{1}{2\pi}$
+und dem Kehren des Vorzeichens vor der Integrationsvariablen.
+\[
+\begin{aligned}
+    \hat{f}(\omega) &= \int\limits_{-\infty}^{\infty} e^{-i\omega{}t} f(t) \,\mathrm{d}t \\
+    f(x) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} e^{j\omega t} \hat{f}(\omega) \,\mathrm{d}\omega
+\end{aligned}
+\]
+Tatsächlich beruht diese Symmetrie der Hin- und Rücktransformation auf der zur Fouriertransformation gehörenden \emph{dualen} Gruppe.
+% \begin{definition}
+%     Def: Die duale Gruppe einer Integraltransformation ist die Gruppe, auf de
+% \end{definition}
 
+% Wichtig ist zu unterscheiden, dass sich der Satz \ref{buch:papers:mellin:teil2:satz:hom} auf das Faltungstheorem bezieht, und 
+% \emph{nicht} auf die Gruppenoperation des dualen Raums. <-- this probably gugus aber verwechslungsgefahr, Erklärungsbedarf?
+Untersucht man also, was die duale Gruppe der Fouriertransformation ist, also die Gruppe des Frequenzraums, kommt man auf die 
+Gruppe $(\mathbb{R},+)$, welche diesselbe ist wie die des Zeitraums!
+Aus diesem Grund sind die Transformationsintegrale diesselben, nämlich die der Gruppe $(\mathbb{R},+)$.
+Was also vielleicht vorher als selbstverständliche Symmetrie angesehen wurde, ist in Tat und Wahrheit nicht immer so.
+Die duale Gruppe der Mellin-Transformation ist ebenfalls, wie die der Fouriertransformation, die Gruppe $(\mathbb{R},+)$.
+Das liegt auch daran, dass bei der Rücktransformation die Analysefunktion nicht mehr über $x$, sondern neu über die Variable des 
+Frequenzraums $z$ integriert wird. 
+Durch diesen feinen Unterschied, wandelt sich die Natur der Analysefunktion von einer Potenzfunktion in Richtung der Hintransformation zu 
+einer Exponentialfunktion in Richtung der Rücktransformation.
+Wie in der Fouriertheorie, erfolgt die Zerlegung einer Funktion in komplexe Exponentialfunktion, oder eben komplexe Schwingungen im Fall, 
+dass $\operatorname{Re}(z) = 0$.
+Der kleine Unterschied ist dabei nur, dass die Variable $x$ der Funktion als Basis eben jener Exponentialfunktionen vorkommt, und nicht 
+im Exponent.
+% Was heisst das?
+Da wir nun verstehen, dass die duale Gruppe der Mellin-Transformation die Gruppe $(\mathbb{R},+)$ ist, können wir auf gleiche Weise wie 
+die Hintransformation konstruiert wurde, auch die Rücktransformation konstruieren.
+Dieses Mal müssen wir aber nichts Neues herleiten, denn die Analysefunktionen müssen diesselben sein, und das Skalarprodukt auf der 
+Gruppe $(\mathbb{R},+)$ ist dasselbe wie bei der Fouriertransformation, das normale Skalarprodukt aus \eqref{mellin:skalaprodukt}. 
+Das Zusammensetzen dieser Bausteine sowie das Hinzumultiplizieren einer Skalierungskonstante liefert die Inversionsformel der 
+Mellin-Transformation
+\begin{equation}
+    f(x) = \frac{1}{2\pi j} \int\limits_{-j\infty}^{j\infty} x^{-z} \hat{f}(z) \,\mathrm{d}z
+    \label{mellin:mellininv}
+\end{equation}
+Somit vervollständigt sich das Bild der Mellin-Transformation.
+
+
+
+
+% Zum Abschluss dieses Abschnitts soll noch ein BLick auf die Rücktransformation der Mellin-Transformation geworfen werden.
+% Diese deckt sich grösstenteils
+% \begin{equation}
+%     f(x) = \frac{1}{2\pi j} \int\limits_{-\infty}^{\infty} x^{-z} \hat{f}(z) \,\mathrm{d}z
+%     \label{mellin:mellininv}
+% \end{equation}
+% Etwas anders als bei der Inversionsformel der Fouriertransformation ist, dass das sich Integral für Hin- und Rücktransformation leicht 
+% voneinander unterscheidet. 
+% Der Grund dafür liegt bei einem recht wichtigen , die duale Gruppe.
+% Dies liegt daran, dass bei der Fouriertransformation beide Variablen, die des Ortsraum und des Frequenzraumes, beide nebeneinander in 
+% der Exponentialfunktion stehen, während bei der Mellin-Transformation in der Analysefunktion die Variable des Ortsraums die Basis der 
+% Potenz bildet, die Variable des Bildraums den Exponent.
+% Das führt zu mehreren Asymmetrien der Transformationsrichtungen.
+% Die Grenzen der Rücktransformation gehen von $-\infty \rightarrow \infty$, da hier über $z$, die nicht an die Menge $\mathbb{R^+}$ 
+% gebunden ist, integriert wird. 
+% Aus dem selben Grund fällt das Mass der Hintransformation $x^{-1}$ weg.
+
+
+
+
+
+% Analysefunktionen zur Bestimmung der dualen Gruppe: Fourier & Mellin
 
 % Bem. Konvergenz und Scope
 % Beispiel Skaleninvarianz
 % Orthogonalität ausführen (Charaktere?)
 % Integralbegriff und Masstheorie?
+
