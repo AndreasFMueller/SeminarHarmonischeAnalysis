@@ -1,37 +1,23 @@
 %
-% einleitung.tex -- Beispiel-File für die Einleitung
+% teil0.tex -- Einleitung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Lukas Reitemeier, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Brownische Bewegung\label{brown:BrownBewegung}}
-\rhead{Brownische Bewegung} %Kurz-Titel der Section
 
-Als der Schottische Botaniker Robert Brown im Jahr 1827 in sein Mikroskop schaut, beobachtet er kleine Partikel von Pflanzenpollen in einer Flüssigkeit. Er bemerkt, dass sich die Teilchen scheinbar zufällig bewegen, obwohl scheinbar keine Kräfte auf die Teilchen einwirken. Eine abschließende Erklärung hatte Robert Brown zu diesem Zeitpunkt für das Verhalten noch nicht.
+\chapter{Brownische Bewegung und stochastische Differenzialgleichungen\label{chapter:brown}}
+\kopflinks{Brownische Bewegung und stochastische Differenzialgleichungen}
+% Kurzform des Kapitel-Titels
+\begin{refsection}
+	\chapterauthor{Lukas Reitemeier}
+
+Es gibt keine klare Definition vom Gegenteil von Harmonischer Analysis, jedoch werden folgende Seiten konträre Eigenschaften beleuchten und hoffentlich einen Beitrag zum Verständnis des Buchthemas leisten.
 
 
-Es dauerte fast ein Jahrhundert, bis Albert Einstein diese Beobachtung auf ein solides theoretisches Fundament stellt und nutzbar machte. Er schloss darauf, dass die unregelmäßige Bewegung auf Kollisionen mit umgebenden Molekülen zurückzuführen ist, welche ständig in Bewegung sind. Albert Einstein entwickelte eine Mathematische Theorie, mit welcher die beobachtete Bewegung mit stochastischen Zusammenstößen von Molekülen erklärt werden kann. So konnte er auch einen Zusammenhang zwischen den Messungen der Bewegung, der Bolzmankonstante und der  Avogadrozahl herstellen.\footnote{Die Avogadrozahl ($N_\mathrm{A}$) ist die Anzahl der Teilchen (Atome oder Moleküle) in einem Mol einer Substanz. Die Boltzmannkonstante ($k$) ist eine physikalische Konstante, die den Zusammenhang zwischen der thermischen Energie und der Temperatur eines Systems herstellt. Beide Konstanten sind miteinander verbunden durch die Gleichung $k = \frac{R}{N_\mathrm{A}}$, wobei $R$ die allgemeine Gaskonstante ist.}
+Dieses Kapitel befasst sich mit der Brown'schen Bewegung und stochastischen Differenzialgleichungen - zwei eng verbundene Themen, welche interdisziplinär in vielen verschiedenen Gebieten zur Anwendung kommen.
 
+Die Entdeckungsgeschichte widerspiegelt diese Interdisziplinarität. Der Botaniker Robert Brown entdeckte im 19. Jahrhundert, dass in Flüssigkeit suspendierte Pollenteilchen unter seinem Mikroskop scheinbar zufällige Bewegungen ausführen. Der französische Mathematiker Luis Bachelier, der für seine Arbeit \textit{Théorie de la spéculation} in der Wahrscheinlichkeitstheorie und Finanzmathematik bekannt ist, hat die erste mathematische Modellierung einer Brownischen Bewegung versucht, analog zu Fluktuationen von Börsenkursen. Später trug der Physiker Albert Einstein mit seiner Arbeit \textit{Investigaions on the Theory of the Brwonian Movement} maßgeblich zum theoretischen Verständnis dieses beobachteten Phänomens bei. Dies wiederum diente dem Mathematiker Norbert Wiener als Grundlage für die Entwicklung des Wiener Prozesses, welcher ein zentrales Konzept in der Wahrscheinlichkeitstheorie darstellt. Stochastische Differenzialgleichungen (SDE) basieren genau auf diesem Wienerprozess, um sogenannten "white noise" bei der Modellbildung zu berücksichtigen. 
 
-Dies hatte auch Auswirkungen auf das Verständnis von Materie, da dies einen empirischen Beleg für die Existenz von Atomen und Moleküle liefert. Die Atomhypothese besagt, dass Materie aus diskreten unteilbaren Einheiten besteht, sprich einzelnen Atomen oder ganzen Molekülen. 
-Man muss dazu sagen, dass es schon zuvor Indizien für deren Existenz gab, doch es fehlte am entscheidenden experimentellen Beweis.
-Die Einstein-Smoluchowski-Gleichung ist eine zentrale Gleichung seiner Arbeit beschreibt die mittlere quadratische Verschiebung (MSD: "Mean square displacement")
-\begin{equation}
-	\mathrm{MSD} = 2nDt
-\end{equation}
-in Beziehung zur Diffusionskonstanten $ D $ , der Anzahl Raumdimensionen $ n $ und der Zeit $ t $.
-
-Die Avogadrozahl $ \mathrm{A} $ kann indirekt über die Stokes-Einstein-Gleichung, anhand von Messungen berechnet werden. Die Diffusionskonstante $ D $ kann dabei mittels des Radius des suspendierten Teilchens, der Boltzmann-Konstante  $ k $, der Temperatur $ T $ und der Viskosität $ \eta $ des umgebenden Mediums, beschrieben werden:
-\begin{equation}
-	D = \frac{kT}{6\pi\eta r}
-\end{equation}
-$ r $ beschreibt dabei den Radius des supendierten Teilchens. Die Boltzmannkonstante $ k $ kann auch durch die allgemeine Gaskonstante $ R $ a und die Avogadrozahl $ \mathrm{A} $ ausgedrückt werden: $ k = R/\mathrm{A} $
-
-So ergibt sich folgender Zusammenhang:
-\begin{equation}
-	\mathrm{A} = \frac{R T}{D (6 \pi \eta r)}
-\end{equation}
-
-So ermöglichen die beiden Gleichungen einen experimentellen Ansatz zur Bestimmung der Avogadro-Konstante und ferner zur quantitativen Analyse der Brownischen Bewegung.
+Dank all diesen Entdeckungen ist es heute möglich Finanzmathematik zu betreiben, bessere Populationsmodelle zu erstellen, Diffusion zu beschreiben und Wärmeaustausch zu erklären. Viele dieser Systeme können sensibel auf Störeinflüsse stochastischer Natur reagieren. Auf die Einflüsse von Rauschen und wie man damit umgehen kann, wird im letzten Teil dieses Kapitels noch eingegangen.

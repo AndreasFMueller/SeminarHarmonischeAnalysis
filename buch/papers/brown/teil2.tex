@@ -1,102 +1,192 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil2.tex -- Harmonische Systeme und Rauschen
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Lukas Reitemeier, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
 
-\section{Black-Scholes-Merton-Modell\label{brown:BlackScholes}}
-\rhead{Black-Scholes-Merton}
+\section{Harmonische Systeme und Rauschen\label{brown:Rauschen}}
+\rhead{Implikationen}
 
-Das Black-Scholes-Merton-Modell wurde von Robert Merton, Myron Scholes und Fischer Black entwickelt. Es dient zur Bewertung von Optionen. Es vereint beinahe schon wunderschön SDGLs mit dem Wienerprozess zur Modellbildung und die diskrete Fourriertransformation zur Auswertung.
+Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden, um mit Rauschen umzugehen und dieses zu charakterisieren. 
+So ist zum Beispiel die \textit{Fast Fourrier Transform} eine wichtige Methode, um periodische Signale von Rauschen unterscheiden zu können. 
+Weiter können mittels harmonischer Analysis auch Filter entwickelt werden, welche ein Signal von Rauschen befreien. Ein gutes Beispiel dafür sind Bandpassfilter, welche nur ein bestimmtes Band an Frequenzen durchlassen.
 
 
-\subsection{Exkurs zu Optionen\label{brown:BlackScholes:exkurs}}
-Eine Option ist ein Vertrag, der einem das Recht gibt zukünftig etwas zu einem festgelegten Preis zu kaufen oder zu verkaufen. Das Ausübungsdatum an dem der Vertrag wirksam wird, ist im Vertrag festgelegt und wird begrenzt von einem Verfallsdatum. Man ist jedoch nicht verpflichtet von seinem Recht gebrauch zu machen - man kauft lediglich das Recht, dass man den Kauf oder Verkauf zu diesen Konditionen zukünftig ausüben könnte. 
+Für viele Anwendungen ist es auch möglich mittels hochfrequenter überlagerten Schwingungen Rauschen zu modellieren. Dies ist natürlich nur eine Annäherung, da "echtes" Rauschen - je nach Fachbereich und Definition - weder vorhersagbar sein sollte, noch Information beinhaltet. 
+Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen kann eine Aussage getroffen werden, wie das System auf Rauschen - also eine zufällige Störung - reagieren könnte.
 
-\textit{Oder anders gesagt, man wettet, dass der Markt zum Zeitpunkt des Ausübungsdatums sich zum eigenen Vorteil verändert hat. Die überwältigende Masse an Geschäften mit Optionen würde ich persönlich als reine Wettgeschäfte von Spekulanten abtun - dies ist jedoch meine eher finanz-zynische Meinung als Ingenieur.}
 
-Natürlich gibt es viele Argumente, wesshalb Optionen den Markt stabilisieren und Sicherheit bieten können, zum Beispiel wenn man das Recht kauft, seine Ernte zum Erntedatum zu einem fixen Preis zu verkaufen oder ein Produzent die Sicherheit braucht einen Rohstoff zu einem bestimmten Datum zu einem fixen Preis zu kaufen, um sein Produkt auf dem Markt verkaufen zu können.
+All diese Beispiele basieren auf Methoden der Harmonischen Analysis. Um den Bogen zur Anfangsbemerkung dieses Kapitels zu schliessen: Durch Zufälle kann Rauschen entstehen, was meist ungewollt ist. Rauschen kann als "Gegenteil" der harmonischen Analysis erachtet werden, obwohl dafür keine klare mathematische Definition besteht. Dank Methoden der hamronsichen Analysis ist es möglich diese gegenteiligen Eigenschaften zu untersuchen und zu bewerten.
 
-Eine Option zum Verkauf wird dabei \textit{"Put-Option} genannt und eine Option mit dem Recht auf Kauf \textit{Call-Option}.
 
-\subsection{Bewertung einer Option\label{brown:BlackScholes:bewertung}}
+\subsection{Was ist Rauschen?\label{brown:Rauschen:Arten}}
+Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichtiger Faktor. So kann es auch in verschiedenen Kontexten unterschiedlich definiert werden. Zum Beispiel in der Signal- und Kommunikationstechnik kann Rauschen als zufällige ungewollte Störung beschrieben werden. 
 
-Damit die Black-Scholes-Merton-Modell zur Anwendung kommen kann, müssen folgende Grundannahmen stimmen:
-%https://finanzderivate.info/optionen/bewertung-von-optionen/das-black-scholes-modell-zur-optionsbewertung/
+
+Mathematisch können unterschiedliche Arten von Rauschen beschrieben werden, einige der wichtigsten sind folgende: 
+% https://www.elektroniktutor.de/elektrophysik/rauschen.html
+
+\begin{definition}{\bf Weisses Rauschen:}
+	\begin{itemize}
+		\item Alle Frequenzen haben die gleiche Amplitude.
+		\item Das Leistungsdichtespektrum ist konstant über alle Frequenzen. 
+	\end{itemize}
+	Ein Beispiel dafür ist das Rauschen von Radios, wenn die Frequenz nicht ganz eingestellt ist. Zu diesen Störeinflüsse zählen zum Beispiel: Elektrische Interferenzen, kosmische Einflüsse oder auch Blitzentladungen. Analog zu weissem Licht, kann weisses Rauschen so interpretiert werden, dass sich verschiedene Frequenzen überlagern, wobei anzumerken ist, dass weisses Licht kein konstantes Frequenz-Spektrum aufweisst.
+\end{definition}
+
+\begin{definition}{\bf Rosa Rauschen}
+	\begin{itemize}
+		\item Die Amplitude des Rauschens nimmt mit zunehmender Frequenz ab, ist also invers proportional zur Frequenz ($ 1/f $).
+		\item Ist technisch in der Elektronik relevant und mit 3 dB Abfall der Leistungsdicht pro Oktave charakterisiert.
+	\end{itemize}
+	Um bei einem hörbaren Beispiel zu bleiben: Rosa Rauschen klingt als Schall ausgewogener und "weicher" als weißes Rauschen. Dies, da unangenehme hohe Frequenzen wegfallen. Der Begriff "Rosa" ist eine Analogie zum sichtbaren Licht, bei dem tiefere Frequenzen auch eher rötlich erscheinen und überlagert mit Weiss (weisses Rauschen), Rosa ergeben.
+\end{definition}
+
+\begin{definition}{\bf Braunes Rauschen (Brownschess Rauschen):}
+	\begin{itemize}
+		\item Die Amplituden des Rauschens nehmen mit zunehmender Frequenz invers quadratisch ab ($ 1/f^2 $).
+		\item Ist auch technisch relevant und mit 6 dB Abfall der Leistungsdicht pro Oktave charakterisiert.
+	\end{itemize}
+	"Braun" bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownische Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern.
+\end{definition}
+
+\begin{definition}{\bf Gaussisches Rauschen:}
+	\begin{itemize}
+		\item Die Leistungsdichte weist bezüglich der Amplituden eine Normalverteilung (Gauß-Verteilung) um eine zentrale Frequenz auf.
+	\end{itemize}
+	Diese Art von Rauschen ist auf digitalen Bildern zu finden deshalb speziell für die digitale Bildverarbeitung relevant. 
+\end{definition}
+
+\begin{definition}{\bf Impulsrauschen:}
+	\begin{itemize}
+		\item Plötzliche, unerwartete Spitzen der Amplitude 
+		\item Nicht kontinuierlicher Signalverlauf (skalierter Impuls)
+		\item Eine unregelmässig verteilte Leistungsdichte
+	\end{itemize}
+	In der Bildverarbeitung ist diese Art von Rauschen als \textit{slat \& pepper Rauschen} bekannt, bei dem einzelne Pixel plötzlich extreme Werte annehmen. Dies wirkt visuell auf dem Bild wie verstreutes Salz oder Pfeffer.
+\end{definition}
+
+Es gibt noch viele weitere Unterscheidungen, doch auf diese wird nicht eingegangen. Man merkt, dass sich eine Verbindung zur harmonischen Analysis knüpfen lässt. Rauschen wird vielfach neben der Intensität bezüglich des Frequenzbereichs und der Verteilung der Amplituden charakterisiert.
+
+
+% Absatz?
+Es gibt aber auch Signale, welche wie Rauschen wirken können, jedoch kein Rauschen sind. So zum Beispiel hochfrequente überlagerte Schwingungen. Diese Überlagerungen sind in der Nachrichtentechnik häufig anzutreffen als auf modulierte Signale oder auch überlagerte Signale verschiedener Frequenzen um mehr Information über den selben Signalträger zu senden.
+
+
+In den zwei Abbildungen ~\ref{stochastischesRauschen} \& ~\ref{überlagerteSchwingungen} sind zwei Signale aufgetragen - eines stellt echtes stochastisches Rauschen dar, das andere besteht aus vielen hochfrequenten überlagerten Schwingungen. Dieses Beispiel soll verdeutlichen, dass es nicht reicht nur den zeitlichen Verlauf eines Signals zu betrachten. So könnte man fälschlicherweise die Signale als ähnlich erachten - eine krasse Täuschung, welche sich im Frequenzspektrum klar zeigt - um das Signal zu verstehen, sind also die Methoden  der harmonischen Analysis essenziell. 
+
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschen.png}
+		\caption{Echtes weisses Rauschen}
+		\label{weissesRauschenSignal}
+	\end{minipage}
+	\hspace{0.05\linewidth}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/brown/images/RauschenDurchUeberlagerteHarmonsicheSchwingungen.png}
+		\caption{Überlagerte harmonische Schwingungen}
+		\label{überlagerteSchwingungen}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/brown/images/FFTweissesRauschen.png}
+		\caption{FFT eines weissen Rausch-Signals}
+		\label{FFTweissesRauschen}
+	\end{minipage}
+	\hspace{0.05\linewidth}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/brown/images/FFT-ueberlagerteSchwingungen.png}
+		\caption{FFT von überlagerten harmonischen Schwingungen}
+		\label{FFTüberlagerteSchwingungen}
+	\end{minipage}
+\end{figure}
+
+
+\subsection{Rauschen mittels Random Walk oder Wiener Prozess\label{brown:Rauschen:RandomWalkWiener}}
+
+Um Rauschen zu modellieren muss als Grundlage ein stochastischer Prozess definiert werden. Zwei zentrale Konzepte sind dabei der \textit{random walk} und der Wienerprozess.
+
+\begin{definition}\textbf{Random Walk:}
+	\label{randomWalk}
+	Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt eine zufällige Schritt nach vorne oder hinten, oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden order als konstant definiert sein.
+\end{definition}
+
+\begin{definition}\textbf{Wiener-Prozess:}
+	\label{wienerprozess}
+	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, er kann als Grenzwert eines Random Walks betrachtet werden, wenn die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert dem Ausgangswert entspricht.	
+\end{definition}
+
+Er muss also folgende Eigenschaften erfüllen: 
+
+%Man könnte also den Random Walk als eine diskrete Version eines Wiener-Prozesses bezeichnen oder umgekehrt, dass ein Wiener-Prozess eine kontinuierliche Version eines Random Walks ist. Sie unterscheiden sich jedoch bezüglich ihrer zeitlichen Diskretisierung und in den verwendeten Wahrscheinlichkeitsverteilungen.
+
+
 \begin{enumerate}
-	\item Die Option ist Europäisch (kann erst zum vereinbarten Termin ausgeübt werden)
-	\item Es gibt keine Dividenden (Fussnote) oder sonstige Cashflows während der Laufzeit.
-	\item Es gibt keine Transaktionskosten
-	\item Die Erträge der Basiswerte sind normalverteilt.
-	\item Der risikolose Zins ist bekannt und über die Laufzeit der Options hinweg bekannt.
-	\item Die Volatilität (Schwankung des Preises) des Basiswertes ist bekannt und über die Laufzeit der Option hinweg konstant.
+	\item $ W(0) = 0 $; Der Startwert von $ t = 0 $ ist 0.
+	\item $ W(t_{1}) - W(t_{2}) $ ist ein normalverteilte Zufalls-Variable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $.
+	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen verlauf abhängt.
 \end{enumerate}
 
+Weiter wird auf den Wienerprozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird. ???Abstand???
 
-Die Eigenschaft, dass kein risikoloses Geschäft möglich ist, wird auch als Arbitragefreiheit bezeichnet. 
 
-\begin{definition}
-	Die Arbitragefreiheit bezeichnet das Fehlen jeglicher Arbitrage-Möglichkeit auf einem Handelsmarkt. Arbitrage ist ein risikoloses Geschäft, das aus der Ausnutzung von Preis-, Kurs- oder Zinsdifferenzen für gleiche Handelsobjekte zum selben Zeitpunkt auf verschiedenen Teilmärkten einen Gewinn erzielt.
-\end{definition} 
+\subsection{Implikationen\label{brown:Rauschen:Implikationen}}
 
-Um das Black-Scholes-Modell zu bilden, müssen folgende Variablen und Parameter eingeführt werden:
+Eines der häufigsten Probleme im Zusammenhang mit Rauschen ist die Differenzierbarkeit unter Einfluss eines störenden Rauschens. Dies ist klassisch beim Umgang mit Messdaten der Fall. Die eigentliche Messung ist gestört, was das bestimmen einer lokalen Steigung verfälschen kann. Die einfachste Methode und häufig auch ein erster Schritt ist die Anwendung eines Tiefpass-Filters. Dieser entfernt jedoch nicht nur das Rauschen, sondern auch ein Teil der im Signal enthaltenen Information - hochfrequente Informationen gehen verloren.
 
-\begin{itemize}
-	\item Der Wert der Aktie $ S $ und die Zeit $ t $  sind Variablen.
-	\item Die Volatilität $ \sigma $ und die Drift-Rate $ \mu $ sind Parameter. Die Drift-Rate beschreibt den zeitlichen Wertzuwachs oder Verlust einer Aktie. Die Volatilität beschreibt die Standardabweichung der Drift-Rate.
-	\item Der Ausübungspreis $ E / K $ !entscheiden! (engl. \glqq \textit{Strike Price}\glqq{}), welcher zuvor für die Option bestimmt wurde, um das zu Grunde liegende Wertpapier zu kaufen -  also das Recht etwas zu einem abgemachten Preis in Zukunft zu kaufen oder verkaufen. 
-	\item Der Verfallstag $ T $, an dem die Option abläuft und nicht mehr ausgeübt werden kann und $ t $ die verbleibende Zeit bis zu diesem Datum in Jahren.
-	\item Der risikofreie Zinssatz $ r $ ist ein hypothetischer Zinssatz. Dieser dient als einer Art Vergleich, um die Option gegenüber einem risikofreien erwarteten Gewinn zu bewerten. Dazu werden oft kurzzeitige Staatsanleihen verwendet, da diese näherungsweise als Risikofrei angesehen werden können.
-	\item $ V(S,t) $ bildet den Wert der Option ab, in Abhängigkeit des Aktienwerts und der verstrichenen Zeit.
-	\item $ N $ ist die kumulative Verteilungsfunktion der Standardnormalverteilung. ! Nötig!?
-\end{itemize}
+\begin{figure}
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{papers/brown/images/idealSignal.png}
+		\caption{Ideales Signal}
+		\label{idealSignal}
+	\end{minipage}
+	\hspace{0.05\linewidth}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{papers/brown/images/realSignal.png}
+		\caption{Reales Signal}
+		\label{realSignal}
+	\end{minipage}
+\end{figure}
 
-??? 
-Die lognormale Verteilung wird in diesem Modell verwendet, da sie bestimmte Eigenschaften aufweist, die mit den beobachteten Preisänderungen von Finanzanlagen übereinstimmen. Insbesondere impliziert die lognormale Verteilung, dass die Renditen der Vermögenswerte symmetrisch um den Erwartungswert verteilt sind und dass große Preisschwankungen seltener auftreten als kleine.
+Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt.
+%mehr dazu schreiben?
 
-Um die Veränderung des zugrundeliegenden Aktienwertes zu modellieren, kann $ dS $ mittels des Wiener-Prozess modelliert werden, woraus sich folgender Zusammenhang ergibt:
+Ist eine gewöhnliche Differenzialgleichung (DGL) gegeben, kann das Verhalten eines Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. %Für einen bestimmten Startwert und wert der Laufvariabel, kann ein bestimmter Funktionswert ermittelt werden.
+
+In vielen Bereichen entspricht ein solch deterministisches System  nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt und somit einen eher Geringen Wert hat. Es gibt viele Systemen, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert.
+
+Ein gutes Beispiel dafür ist folgendes System:
 \begin{equation}
-	dS = \mu S dt + \sigma S dX
+	\frac{dx}{dt} = - y
+	\frac{dy}{dt} = x^2 + y
+	\label{divergentEquation}
 \end{equation}
 
-$ dX $ entspricht in dieser Gleichung einer Brownischen Bewegung. Nach der Kettenregel von ITO und der ITOS's lemma Gleichung kann folgende Gleichung formuliert werden:
+In der Abbildung~\ref{divergentAndConvergentSystem} sind zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet, welches durch die Gleichung~\ref{divergentEquation} gegeben ist. In rot ist der Verlauf im Intervall  t = [0,3] mit dem Startwert (-1.7, -1.4) gegeben und in grün mit dem Startwert (-1.8, -1.4).
 
-\begin{equation}
-	dV = \frac{\partial{V}}{\partial{t}} dt + \frac{\partial{V}}{\partial{S}} dS+ \frac{1}{2} \sigma^2 S^2 \frac{\partial^2{V}}{\partial{S^2}} dt
-\end{equation}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
+	\caption{Zwei Pfade mit fast gleichem Startpunkt}
+	\label{divergentAndConvergentSystem}
+\end{figure}
+
+Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den System-Verlauf auswirken kann. In diesem speziellen Fall konvergieren die Lösung mit grösserem $t$ wieder. Bedenkt man nun, dass eine solch kleine Variation durch stochastisches Rauschen erzeugt werden könnte, scheint es unsinnig eine fixe Lösung für ein solches System anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung hinzuweisen oder sogar den Lösungsraum genauer zu spezifizieren.
 
 
+Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen (sogenannte bistabile Systeme) und dem entsprechend komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein zufällige Störungen des Systems nicht zu berücksichtigen.
+%Beispiel?
 
+%In diesem System konvergieren alle Trajektorien zum Ursprung, ausser diese, welche Ihren Startwert exakt auf der Geraden $ y = x $ haben. Also kann ein kleiner Störeinfluss darüber entscheiden ob, der Wert zum gegen (0,0) konvergiert oder nach Unendlich divergiert. Wobei bei diesem Beispiel gesagt werden muss, dass in Realität der Startwert nie exakt auf die Gerade $ y = x $ fallen würde.
 
-
-Die Black-Scholes-Gleichung ist eine partielle Differentialgleichung, die den Preis einer Option im Laufe der Zeit in Bezug auf verschiedene Variablen darstellt:
-
-
-\begin{equation}
-	\frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS \frac{\partial V}{\partial S} - rV = 0
-\end{equation}
-
-Das Black-Scholes-Modell sieht dabei zwei Lösungen vor, eine für den Fall einer Call-Option" und eine für den Fall einer "Put-Option".
-
-\begin{equation}
-	C(S, t) = SN(d_1) - Ke^{-rt}N(d_2)
-\end{equation}
-
-\begin{equation}
-	P(S, t) = Ke^{-rt}N(-d_2) - SN(-d_1)
-\end{equation}
-
-, wobei $ d1 $ und $ d2 $ folgendermaßen definiert sind.
-
-\begin{equation}
-	d_1 = \frac{1}{\sigma \sqrt{t}} \left[\ln\left(\frac{S}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)t\right]
-\end{equation}
-
-\begin{equation}
-	d_2 = d_1 - \sigma \sqrt{t}
-\end{equation}
-
-So kann mittels den Werten: $ S $, $ K $, $ t $, $ r $ und $ \sigma $ der mathematisch korrekte Wert einer europäischen Option berechnet werden. 
+Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von zufälligen Störungen beim Aufstellen eines Modells miteinbeziehen (in diesem Fall \textit{white noise}). Anstatt eine fixe Lösung zum Zeitpunkt $ t $ anzugeben, kann man eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände definieren - et. voilà, man hat den Lösungsraum einer stochastische Differenzialgleichung (SDGL).

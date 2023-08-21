@@ -1,158 +1,40 @@
 %
-% teil1.tex -- Beispiel-File für das Paper
+% teil1.tex -- Brownische Bewegung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Lukas Reitemeier, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
-\rhead{Stochastische DGL}
 
-Formal kann eine stochastische DGL folgendermaßen notiert werden, 
+\section{Brownische Bewegung\label{brown:BrownBewegung}}
+\rhead{Brownische Bewegung} %Kurz-Titel der Section
 
+Als der Schottische Botaniker Robert Brown im Jahr 1827 in sein Mikroskop schaut, beobachtet er kleine Partikel von Pflanzenpollen in einer Flüssigkeit. Er bemerkt, dass sich die Teilchen scheinbar zufällig bewegen, obwohl scheinbar keine Kräfte auf die Teilchen einwirken. Eine abschließende Erklärung hatte Robert Brown zu diesem Zeitpunkt für das Verhalten noch nicht.
+
+
+Es dauerte fast ein Jahrhundert, bis Albert Einstein diese Beobachtung auf ein solides theoretisches Fundament stellt und nutzbar machte. Er schloss darauf, dass die unregelmäßige Bewegung auf Kollisionen mit umgebenden Molekülen zurückzuführen ist, welche ständig in Bewegung sind. Albert Einstein entwickelte eine Mathematische Theorie, mit welcher die beobachtete Bewegung mit stochastischen Zusammenstößen von Molekülen erklärt werden kann. So konnte er auch einen Zusammenhang zwischen den Messungen der Bewegung, der Bolzmankonstante und der  Avogadrozahl herstellen.\footnote{Die Avogadrozahl ($N_\mathrm{A}$) ist die Anzahl der Teilchen (Atome oder Moleküle) in einem Mol einer Substanz. Die Boltzmannkonstante ($k$) ist eine physikalische Konstante, die den Zusammenhang zwischen der thermischen Energie und der Temperatur eines Systems herstellt. Beide Konstanten sind miteinander verbunden durch die Gleichung $k = \frac{R}{N_\mathrm{A}}$, wobei $R$ die allgemeine Gaskonstante ist.}
+
+
+Dies hatte auch Auswirkungen auf das Verständnis von Materie, da dies einen empirischen Beleg für die Existenz von Atomen und Moleküle liefert. Die Atomhypothese besagt, dass Materie aus diskreten unteilbaren Einheiten besteht, sprich einzelnen Atomen oder ganzen Molekülen. 
+Man muss dazu sagen, dass es schon zuvor Indizien für deren Existenz gab, doch es fehlte am entscheidenden experimentellen Beweis.
+Die Einstein-Smoluchowski-Gleichung ist eine zentrale Gleichung seiner Arbeit beschreibt die mittlere quadratische Verschiebung (MSD: "Mean square displacement")
 \begin{equation}
-\label{brown:SDGL:whiteNoise}
-\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
+	\mathrm{MSD} = 2nDt
+\end{equation}
+in Beziehung zur Diffusionskonstanten $ D $ , der Anzahl Raumdimensionen $ n $ und der Zeit $ t $.
+
+Die Avogadrozahl $ \mathrm{A} $ kann indirekt über die Stokes-Einstein-Gleichung, anhand von Messungen berechnet werden. Die Diffusionskonstante $ D $ kann dabei mittels des Radius des suspendierten Teilchens, der Boltzmann-Konstante  $ k $, der Temperatur $ T $ und der Viskosität $ \eta $ des umgebenden Mediums, beschrieben werden:
+\begin{equation}
+	D = \frac{kT}{6\pi\eta r}
+\end{equation}
+$ r $ beschreibt dabei den Radius des supendierten Teilchens. Die Boltzmannkonstante $ k $ kann auch durch die allgemeine Gaskonstante $ R $ a und die Avogadrozahl $ \mathrm{A} $ ausgedrückt werden: $ k = R/\mathrm{A} $
+
+So ergibt sich folgender Zusammenhang:
+\begin{equation}
+	\mathrm{A} = \frac{R T}{D (6 \pi \eta r)}
 \end{equation}
 
-wobei $ B $ eine $ n $ x $ m $ Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen inneren Zustände des Systems auswirken. $ m $ ist demzufolge die Dimension der Störfunktion. In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $ \xi(t) $ modelliert.
-
-$ b $ ist der Driftvektor und beschreibt die erwartete Veränderung für jede Dimension des Systems. $ B $ ist die Dispersionsmatrix und beschreibt wies ich das $m$-dimensionale Rauschen aud das $n$-dimensionale System auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander. Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
-
-\begin{align*}
-		b = 
-	\begin{pmatrix}
-		b_{1} \\
-		...\\
-		b_{m}\\ 
-	\end{pmatrix}
-	, \quad
-	B = 
-	\begin{pmatrix}
-		B_{11} & ... & B_{1m} \\
-		& ... & \\
-		B_{n1} & ... & B_{nm} 
-	\end{pmatrix}
-\end{align*}
-
-
-Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
-
-\begin{equation}
-	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
-\end{equation}
-
-Nun sollte man mit $ dt $  multiplizieren, weil die Gleichung sonst nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht klar differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
-! Überarbeiten, nicht differenzierbar? ?erweitern? ! 
-
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen.
-
-\begin{equation}
-	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
-\end{equation}
-
-%In dieser Form erkennt man auch besser, dass die SDGL aus zwei Teilen besteht. Der Term $ b((X(t)) $ ist der \glqq{}Drift\glqq{}-Term, der den deterministischen Teil der Bewegung darstellt, während $ B((X(t)) $ der \glqq{}Diffusions- oder Volatilitäts-Term\glqq{} ist, der den stochastischen Teil der Bewegung darstellt.
-
-% So kommt man auf die ITO-sche Kettenregel????
-
-Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den Ausschnitt des zufällig beeinflussten Prozesses beliebig gross oder klein wählen kann und die keinen Einfluss auf die Eigenschaften des beobachteten Verhalten hat.
-
-
-\subsection{Simulation mittels der Euler-Maruyama-Methode
-\label{brown:Simulation}}
-\rhead{Simulation} %Kurz-Titel der Section
-
-Die Brownsche Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode.
-
-Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen hinsichtlich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
-
-%SDEs sind Differenzialgleichungen, welche den Einfluss von zufälligen Prozessen, wie zum Beispiel Rauschen, auf ein dynamisches System berücksichtigen können. Sie bestehen aus einem deterministischen Anteil, der die zugrundeliegende Dynamik beschreibt, und einem stochastischen Anteil, der einen zufälligen Einfluss in Betracht zieht. 
-
-Gegeben sei eine SDGL der folgenden Form:
-\begin{equation}
-	\mathrm{d}X(t) = a(X(t), t) \mathrm{d}t + b(X(t), t) \mathrm{d}W(t),
-\end{equation}
-wobei $ a(X(t), t) $ den deterministische Anteil darstellt, $ b(X(t), t) $ der stochastische Anteil ist und $ W(t) $ ein Wiener-Prozess ist, der das Rauschen repräsentiert. Die Methode beginnt mit einer Anfangsbedingung $X(0) = X_0$.
-
-Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
-
-\begin{enumerate}
-	\item Man wählt eine Schrittweite $\Delta t > 0$ und teilt das Zeitintervall $[0, T]$ in $N$ gleich große Teilintervalle der Länge $\Delta t$: $t_0 = 0, t_1 = \Delta t, \dots, t_i = i\Delta t, \dots, t_N = T$.
-	\item Für jeden Zeitschritt $i$ von $0$ bis $N-1$ werden die Werte der Funktion $X(t)$ an den diskreten Zeitpunkten $t_i$ berechnet,
-	\begin{equation}
-		X(t_{i+1}) = X(t_i) + a(X(t_i), t_i) \Delta t + b(X(t_i), t_i) \sqrt{\Delta t} \cdot Z_i,
-	\end{equation}
-	wobei $Z_i$ unabhängige standardnormalverteilte Zufallsvariablen sind.
-	\item Diese Berechnungen führt man iterativ für alle Zeitschritte durch.
-\end{enumerate}
-
-\begin{equation}
-	X_{n+1} = X_n + f(X_n,t_n) \Delta t + g(X_n,t_n) \Delta W_n
-\end{equation}
-
-Diese Funktion $ f(X_n,t_n) $ beschreibt dabei den deterministischen Teil der SDGL, im Kontext der Brown'schen Bewegung kann man es auch "drift nennen", welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
-
-
-Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener Prozess oder die Brownische Bewegung als Ganzes.
-
-\begin{figure}
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/Aktienkurs-als-Brownische-Bewegung_2.png}
-		\caption{1D Brownische Bewegung als Aktienkurs}
-	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/Brownische-Bewegung-Simuliert_2.png}
-		\caption{Simulation einer Brownischen Bewegung in 2D}
-	\end{minipage}
-	\label{2D3Dbrownian}
-\end{figure}
-
-In der Abbildung ... ist wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen Brownischen Bewegung.
-
-
-\subsection{ITO
-\label{brown:ito}}
-\rhead{Ito} %Kurz-Titel der Section
-Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis zählt. So legte er auch einen Grossteil des Fundaments auf dem stochastische Differenzialgleichungen beruhen. 
-
-Nach ihm ist auch die Itō'sche Form einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form ist Ausgangslage viele seiner "Konzepte?", bietet jedoch auch den Vorteil, dass keine Differenzierbarkeit suggeriert wird. Denn ein stochastische Prozess kann nicht ohne weiteres abgeleitet werden.
-
-Ein wichtiges Werkzeug, um mit stochastischen DIfferenzialgleichungen umzugenhen ist das Äquivalent zur Kettenregel, dem sogenannten Lemma von Ito. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
-
-Hier ein Beispiel einer stochastischen Differentialgleichung (SDG) für einen Prozess X(t) in Ito-Form:
-\begin{equation}
-	dX = a(X,t) dt + b(X,t) dW
-\end{equation}
-
-Angenommen, wir haben eine Funktion f(X,t), wobei X eine Lösung der obigen SDG ist. Dann kann die Änderung von f in Bezug auf X und t wie folgt geschrieben werden:
-
-Die Funktion f(X,t) und das Ito-Lemma:
-\begin{equation}
-	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} dX + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (dX)^2	
-\end{equation}
-
-%Dabei sind ∂f/∂t und ∂f/∂X die partiellen Ableitungen von f nach t und X, und ∂²f/∂X² ist die zweite partielle Ableitung von f nach X. Der Term (dX)² ist im Ito-Kalkül durch (b^2 dt) ersetzt, was auf die Eigenschaften der Brown'schen Bewegung (oder Wiener-Prozess) zurückzuführen ist.
-
-Dieses Lemma erlaubt es uns, Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten, was bei der Lösung von SDGs hilfreich ist.
-
-
-Das Einsetzen der SDG in das Ito-Lemma ergibt:
-\begin{equation}
-	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
-\end{equation}
-
-Die Funktion $ a(X,t) $ ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der "Diffusions-" oder "Volatilitäts-Term" ist, der den stochastischen Teil der Bewegung darstellt.
-
-%Ein wichtiger Aspekt des Ito-Kalküls ist die Ito'sche Lemma, eine Erweiterung der Kettenregel aus der gewöhnlichen Differentialrechnung für Funktionen von stochastischen Prozessen. Die genaue Form des Ito'schen Lemmas kann komplex sein, aber in einer einfacheren Form lautet es wie folgt:
-
-
-%Gemäss Itō ist das Integral einer gewöhnlichen SDGL folgendermassen definiert:
-%Weglassen?
-
+So ermöglichen die beiden Gleichungen einen experimentellen Ansatz zur Bestimmung der Avogadro-Konstante und ferner zur quantitativen Analyse der Brownischen Bewegung.
 
 
