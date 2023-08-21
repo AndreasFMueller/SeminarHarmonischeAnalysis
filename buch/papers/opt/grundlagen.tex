@@ -142,7 +142,7 @@ E(r) \cdot \zeta(r, t) \cdot dy
 \frac{\vartheta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
 \end{equation*}
 beschreiben.
-Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
+Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich der Ausdruck
 \begin{equation*}
 E(y_p, t)
 =
@@ -159,8 +159,9 @@ f(y)
 [0, 1]
 \end{equation*}
 dargestellt werden.
-Zu beachten ist, dass $f(y)$ nicht nur die Werte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
+Zu beachten ist, dass $f(y)$ nicht nur die Extremwerte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
 Dies würde einer teilweise transparenten Blende entsprechen.
+Ein Wert von 0 bedeutet dabei, dass kein Licht durchgelassen wird und ein Wert von 1, dass alles Licht die Blende durchdringen kann.
 Somit folgt als allgemeinste Form
 \begin{align}
 E(y_p, t)
@@ -251,7 +252,7 @@ Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da diese
 \end{equation*}
 somit nicht vernachlässigbar klein wird.
 Der Zeitpunkt der Auswertung ist nicht von Interesse, da dieser lediglich die Phase der Welle beeinflusst.
-Mittels $t = 0$ ergibt sich daraus
+Mittels $t = 0$ vereinfacht sich der Ausdruck zu
 \begin{align}
 E(y_p, t = 0)
 &=
@@ -267,11 +268,13 @@ E(y_p, t = 0)
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
+Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeichnet und ist in der Umgebung von $y, y_p \ll l$ um die Blende gültig.
+Dieses Integral ist lösbar, was aber mit relativ hohem Aufwand verbunden ist.
+Die Fraunhofer-Approximation soll hierbei eine weitere Vereinfachung bieten.
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
-Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
+Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann mittels der Fraunhofer-Approximation weiter vereinfacht werden.
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Ist nun
@@ -300,7 +303,11 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
-Das somit entstandene Integral entspricht gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
+Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
+Das somit entstandene Integral entspricht bis auf einige Vorfaktoren gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
+Gleichung \eqref{opt:equation:integral_fraunhofer} ist bereits das zentrale Ergebnis dieses Papers.
+In einem weiteren Schritt könnte das Resultat so erweitert werden, dass die Blendenfunktion auf eine Funktion mehrere Variablen $f(y,z)$ in $y$ und $z$-Richtung zu liegen kommt.
+Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf eingegangen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,7 +400,7 @@ t_1
 \frac{\pi}{2\omega}
 \end{align*}
 resultiert.
-Mit den eingesetzten Grenzen ergibt sich daraus
+Mit den eingesetzten Grenzen ergibt sich der Ausdruck
 \begin{align}
 I
 &=
@@ -483,7 +490,7 @@ Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichu
 -\frac{\partial B_y(z,t)}{\partial t}
 \end{align*}
 resultiert.
-Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$ und $\omega = kc$, ergibt sich schliesslich
+Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field} (unter Berücksichtigung von $B = \mu H$ und $\omega = kc$) ergibt sich schliesslich der Ausdruck
 \begin{align}
 -k \cdot E_0 \cdot e^{j(\omega t-k z)}
 &=
@@ -539,7 +546,7 @@ und
 \end{equation*}
 definiert.
 Die relative Permittivität $\varepsilon_r$ und die relative Permeabilität $\mu_r$ sind beides materialabhängige Faktoren und müssen je nach Medium, in welchem sich die Welle fortbewegt, nachgeschlagen und eingesetzt werden.
-Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt ergibt sich
+Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt folgt der Ausdruck
 \begin{equation*}
 I
 =
@@ -556,7 +563,7 @@ Verglichen mit Gleichung \eqref{opt:equation:intensity_integral} stellt sich her
 \end{equation*}
 entsprechen muss.
 
-Nach aufwendigen Berechnungen stellt stellt sich schliesslich heraus, dass $\kappa$ eine relativ einfache, materialabhängige Konstante ist.
+Nach aufwendigen Berechnungen stellt sich schliesslich heraus, dass $\kappa$ eine relativ einfache, materialabhängige Konstante ist.
 Die Intensität an einer bestimmten Stelle im Raum ist also lediglich abhängig von der an diesem Ort herrschenden elektrischen Feldstärke $E$ und der Medium spezifischen Konstante $\kappa$.
 
 
