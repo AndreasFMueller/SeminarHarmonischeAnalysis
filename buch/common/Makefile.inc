@@ -6,9 +6,12 @@
 
 SUBDIRECTORIES = chapters 
 
+topdir := ${PWD}
+workdir := build
+
 # change the following variables to suit your environment
 
-pdflatex = pdflatex
+pdflatex = pdflatex --output-directory=$(workdir)
 bibtex = bibtex
 makeindex = makeindex
 touch = touch
@@ -30,6 +33,8 @@ BUCHFILES =								\
 	common/teilnehmer.tex						\
 	$(CHAPTERS) 							\
 	chapters/references.bib 					\
+	papers/common/addpackages.tex					\
+	papers/common/addpapers.tex					\
 	$(PAPERFILES)
 
 THEMA_FILES = 
@@ -38,8 +43,8 @@ TEXFILES = $(BUCHFILES) $(THEMA_FILES)
 
 # References des ersten Teils
 
-buch.bbl:		buch.aux
-	bibtex buch
+$(workdir)/buch.bbl:		build/buch.aux
+	cd build; bibtex buch
 
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \

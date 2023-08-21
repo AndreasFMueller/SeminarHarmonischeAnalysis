@@ -6,5 +6,10 @@
 *.ind
 *.run.xml
 *.toc
+*.out
+*.fdb_latexmk
+*.fls
+*.gz
+errata.pdf
 buch.pdf
 SeminarHarmonischeAnalysis.pdf

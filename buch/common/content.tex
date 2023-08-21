@@ -1,5 +1,5 @@
 %
-% buch.tex -- Buch zum mathematischen Seminar Harmonische Analysis
+% content.tex -- Buch zum mathematischen Seminar Harmonische Analysis
 %
 % (c) 2023 Prof. Dr. Andreas Mueller, OST Ostschweizer Fachhochschule
 %
@@ -20,7 +20,7 @@ pdfauthor={Andreas Müller}
 \makeatletter
 \def\blx@maxline{77}
 \makeatother
-\addbibresource{chapters/references.bib}
+\addbibresource{../chapters/references.bib}
 
 % Bibresources for each article
 \input{papers/common/addbibresources.tex}
@@ -56,7 +56,11 @@ pdfauthor={Andreas Müller}
 \lhead{Index}
 \rhead{}
 \addcontentsline{toc}{chapter}{\indexname}
-\InputIfFileExists{buch.ind}{}{}
+\ifthenelse{\boolean{includecover}}{
+\InputIfFileExists{build/SeminarHarmonischeAnalysis.ind}{}{}
+}{
+\InputIfFileExists{build/buch.ind}{}{}
+}
 
 % cover page
 \ifthenelse{\boolean{includecover}}{

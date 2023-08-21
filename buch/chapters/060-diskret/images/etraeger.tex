@@ -1,0 +1,60 @@
+%
+% etraeger.tex -- epsilon-Traeger als Lokalisierungsmass
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{etraegerpath.tex}
+\def\dx{1}
+\def\dy{1}
+\def\xmin{6}
+\def\xmax{8}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!20] (0,0) rectangle (12,{\eps*\dy});
+\draw[color=blue,line width=0.1pt] (0,{\eps*\dy}) -- (12,{\eps*\dy});
+\fill[color=blue!20] (\xmin,0) rectangle (\xmax,6);
+
+\draw[color=red] (0,6) --(12,6);
+\node[color=red] at ({\xmin/2},6) [above] {$\|u\|_\infty$};
+
+\draw[->] (-0.1,0) -- (13.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+
+\node at ({0.5*(\xmin+\xmax)},0) [below] {$T=\operatorname{supp}_\varepsilon^1(u)$};
+
+\draw[color=blue,line width=1.4pt]
+	(\xmin,{\eps*\dy}) -- (\xmin,6) -- (\xmax,6) -- (\xmax,{\eps*\dy});
+
+\begin{scope}
+	\clip (0,0) rectangle (12,6);
+	\fill[color=darkgreen!40,opacity=0.5] 
+		(0,0) -- \kurve -- (12,0) -- cycle;
+
+	\draw[color=darkgreen,line width=1.4pt]
+		\kurve;
+
+	\node[color=darkgreen] at ({0.5*(\xmin+\xmax)},2) {$\|u\|_1$};
+\end{scope}
+
+\node[color=blue] at (\xmin,3) [above,rotate=90] {$\|u\|_\infty\cdot\chi_T$};
+
+\node[color=blue] at (\xmax+0.5,5) [right] {$\|u\|_\infty\cdot |T|$};
+\draw[<-,color=blue] ({\xmax-0.3},5) -- ({\xmax+0.5},5);
+
+\fill[color=blue] (12,{\eps*\dy}) circle[radius=0.03];
+\draw[color=blue,line width=0.1pt] (12,{\eps*\dy}) -- (12.7,1);
+\node[color=blue] at (12.7,1) [right] {$\varepsilon$};
+
+\end{tikzpicture}
+\end{document}
+

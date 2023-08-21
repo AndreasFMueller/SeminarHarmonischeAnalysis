@@ -1,0 +1,183 @@
+%
+% 5-koerper.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Fourier-Transformation in endlichen Körpern
+\label{buch:diskret:section:koerper}}
+\kopfrechts{Endliche Körper}
+Sowohl die Fourier-Transformation wie auch die Faktorisierung
+der Fourier-Matrix beschränkt sich nicht auf die komplexen Zahlen
+als Wertebereich für die Funktionen.
+Damit wird es möglich, die Fourier-Transformation zur Codierung von
+digitalen Signalen oder Bildern zu verwenden, die dann auch verlustlos
+rekonstruiert werden können.
+Sie eigenen sich aber nicht für Approximationen wie sie zum Beispiel
+bei der JPEG-Codierung verwendet werden sollen.
+Diese beruhen darauf, dass hochfrequente Komponenten in der
+Fourier-Transformierten weggelassen werden können, weil sie für die
+meisten Bilder ``klein'' sind.
+In einem endlichen Körper gibt es kein sinnvolles Konzept ``kleiner''
+Werte.
+
+%
+% Endliche Körper
+%
+\subsection{Endliche Körper
+\label{buch:diskret:koerper:subsection:koerper}}
+
+%
+% Forier-Transformation
+%
+\subsection{Fourier-Transformation
+\label{buch:diskret:koeper:subsection:fourier}}
+Die Fourier-Transformation verwendet die duale Gruppe $\hat{G}$ einer
+Gruppe $G$, also die Menge der Homomorphismen $G\to \mathbb{C}$.
+Für die Fourier-Transformation über einen endlichen Körper
+$\mathbb{F}_{p^l}$ sind Homomorphismen
+\(
+G \to \mathbb{F}_{p^l}
+\)
+gesucht.
+
+Für die zyklischen Gruppen $G=\mathbb{Z}/n\mathbb{Z}$ sind diese wie
+im komplexen Fall durch den Wert auf dem erzeugenden Element
+$1\in\mathbb{Z}/n\mathbb{Z}$ gegeben.
+Gesucht ist daher ein Element $\omega\in\mathbb{F}_{p^l}$ derart,
+dass $\omega^n=1$.
+Ausserdem müssen alle Potenzen $\omega^k$ mit $k=0,\dots,n-1$
+verschieden sein.
+Das Elemente $\omega\in\mathbb{F}_{p^l}$ muss also eine
+zyklische Untergruppe der Ordnung $n$ in $\mathbb{F}_{p^l}$ 
+erzeugen.
+Da das Polynom $X^n-1$ immer als
+\[
+X^n-1
+=
+(X-1)(X^{n-1}+X^{n-2}+\dots+X^2+X+1)
+\]
+faktorisiert werden kann und $\omega$ keine Nullstelle des Faktors
+$X-1$ sein kann, muss $\omega$ eine Nullstelle des zweiten Faktors sein,
+es muss also
+\begin{equation}
+\omega^{n-1}+\omega^{n-2}+\dots+\omega^2 + \omega + 1 = 0
+\label{buch:diskret:koerper:eqn:summeomega}
+\end{equation}
+sein.
+
+Die Fourier-Matrix $\mathscr{F}_n$ über dem Körper $\mathbb{F}_{p^l}$
+ist dann wie im komplexen Fall die Vandermonde-Matrix
+\begin{align*}
+\mathscr{F}_n
+&=
+V(1,\omega,\omega^2,\dots,\omega^{n-1})
+\\
+&=
+\begin{pmatrix}
+1&1&1&\dots&1\\
+1&\omega&\omega^2&\dots&\omega^{n-1}\\
+1&\omega^2&\omega^4&\dots&\omega^{2(n-1)}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+1&\omega^{n-1}&\omega^{2(n-1)}&\dots&\omega^{(n-1)^2}
+\end{pmatrix}
+\end{align*}
+Für die ``konjugierte'' Matrix muss
+\begin{align*}
+\overline{\mathscr{F}}_n
+&=
+V(1,\omega^{-1},\omega^{-2},\dots,\omega^{-(n-1)})
+\\
+&=
+\begin{pmatrix}
+1&1&1&\dots&1\\
+1&\omega^{-1}&\omega^{-2}&\dots&\omega^{-(n-1)}\\
+1&\omega^{-2}&\omega^{-4}&\dots&\omega^{-2(n-1)}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+1&\omega^{-(n-1)}&\omega^{-2(n-1)}&\dots&\omega^{-(n-1)^2}
+\end{pmatrix}
+\end{align*}
+Das Produkt $\overline{\mathscr{F}}_n\mathscr{F}_n$ kann direkt
+berechnet werden.
+Die Zeile $i$ der Matrix $\mathscr{F}_n$ enthält die Elemente 
+\[
+1,\omega^{i-1},\omega^{2(i-1)},\dots,\omega^{(n-1)(i-1)},
+\]
+die der Matrix $\overline{\mathscr{F}}_n$ die Elemente
+\[
+1,\omega^{-(i-1)},\omega^{-2(i-1)},\dots,\omega^{-(n-1)(i-1)}.
+\]
+Das Diagonalelement des Produktes ist daher
+\[
+(\overline{\mathscr{F}}_n
+\mathscr{F}_n)_{ii}
+=
+\sum_{k=0}^{n-1}
+\omega^{-(i-1)k}\omega^{(i-1)k}
+=
+\sum_{k=0}^{n-1} 1
+=
+n.
+\]
+Die Matrix $\overline{\mathscr{F}}_n$ kann also nur dann zur
+inversen Matrix von $\mathscr{F}_n$ werden, wenn im Körper
+$\mathbb{F}_{p^l}$ durch $n$ geteilt werden kann.
+Das ist genau dann möglich, wenn $p$ kein Teiler von $p$ ist.
+
+Für das ausserdiagonale Element in Zeile $i$ und Spalte $j$
+findet man entsprechend
+\begin{equation}
+(\overline{\mathscr{F}}_n
+\mathscr{F}_n)_{i\!j}
+=
+\sum_{k=0}^{n-1}
+\omega^{-(i-1)k}\omega^{(j-1)k}
+=
+\sum_{k=0}^{n-1} \omega^{(j-i)k}.
+\label{buch:diskret:koerper:eqn:ausserdiagonal}
+\end{equation}
+Da $p$ und $n$ teilerfremd sind, sind die Exponenten $(j-i)k$
+modulo $n$ genau die Exponenten $0$ bis $n-1$.
+Die Summe
+\eqref{buch:diskret:koerper:eqn:ausserdiagonal}
+ist daher wegen
+\eqref{buch:diskret:koerper:eqn:summeomega}
+immer $=0$.
+Damit ist gezeigt, dass $\frac1n\overline{\mathscr{F}}_n$ die
+inverse Matrix von $\mathscr{F}_n$ ist.
+
+%
+% Faktorisierung und schnelle Algorithmen
+%
+\subsection{Faktorisierung und schnelle Algorithmen
+\label{buch:diskret:koerper:subsection:faktorisierung}}
+In Abschnitt~\ref{buch:diskret:koeper:subsection:fourier} wurde
+gezeigt, wie die Fourier-Transformation auf der Gruppen
+$\mathbb{Z}/n\mathbb{Z}$ über jedem endlichen Körper $\mathbb{F}_{p^l}$
+konstruiert werden kann, wenn $p$ kein Teiler von $n$ ist und
+der endliche Körper so gewählt wird, dass eine primitive $n$-te
+Einheitswurzel darin gefunden werden kann.
+
+Die Faktorisierung der Fourier-Transformation in
+Abschnitt~\ref{buch:diskret:section:vandermonde}
+und die konstruktion schneller Algorithmen in
+Abschnitt~ \ref{buch:diskret:section:schnell} können damit
+genauso versucht werden.
+Dabei treten die Fourier-Transformationen $\mathscr{q}$ für Primfaktoren
+$q$ von $n$ auf.
+Um diese zu konstruieren wird eine primitive $q$-te Einheitswurzel benötigt.
+Da aber $\omega$ eine primitive $n$-te Einheitswurzel von ist, ist
+$\omega^{n/q}$ eine primitive $q$-te Einheitswurzel.
+
+Für die inverse Abbildung wird die inverse Fourier-Transformation
+benötigt, die durch $\frac{1}{q}\overline{\mathscr{F}}_q$ ist.
+Da $q$ ein Primfaktor von $n$ ist, sind $p$ und $q$ verschieden.
+Damit ist auch $q$ in $\mathbb{F}_{p^l}$ invertierbar und es steht
+der Konstruktion der inversen Fourier-Transformation nichts im Wege.
+
+Die schnelle Fourier-Transformation für die Dimension $n$ funktioniert
+also ganz genau gleich wie im Fall $\mathbb{C}$, es werden die gleichen
+Matrizen verwendet, nur die arithmetischen Operationen in $\mathbb{C}$
+müssen durch arithmetische Operationen in $\mathbb{F}_{p^l}$ ersetzt
+werden und es muss die primitve $n$-te Einheitswurzel
+$\omega\in\mathbb{F}_{p^l}$ verwendet werden.
+

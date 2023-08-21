@@ -4,11 +4,12 @@
 # (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 dependencies-jpeg =						\
-	papers/jpeg/packages.tex					\
+	papers/jpeg/packages.tex				\
 	papers/jpeg/main.tex					\
 	papers/jpeg/references.bib				\
-	papers/jpeg/teil0.tex					\
-	papers/jpeg/teil1.tex					\
-	papers/jpeg/teil2.tex					\
-	papers/jpeg/teil3.tex
+	papers/jpeg/00_Einleitung.tex				\
+	papers/jpeg/01_DCT.tex					\
+	papers/jpeg/02_JPEG.tex					\
+	papers/jpeg/03_JPEG2000.tex				\
+
 

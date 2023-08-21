@@ -1,0 +1,114 @@
+%
+% 01_DCT.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Diskrete Kosinus-Transformation
+\label{jpeg:section:dct}}
+\rhead{dct}
+Die Fouriertransformation und auch die diskrete (DFT) Variante davon erzeugen ein komplexwertiges Spektrum, auch wenn das ursprüngliche Signal nur aus reellen Werten besteht.
+Bei der DFT reichen weder die Sinus- noch Kosinusfunktion alleine aus, um ein vollständiges Basisfunktionssystem zu bilden.
+Ein reellwertiges Signal bildet im Frequenzspektrum jeweils konjugiert komplexes Paar, ist also redundant.
+Daraus folgt, dass nur die Hälfte der Werte berechnet werden müssen.
+Die diskrete Kosinus Transformation ermöglicht genau das, sie bildet ein Reihe aus Kosinus Basisfunktionen und ist beschränkt auf reellwertige Signale, genau was wir benötigen.
+
+Da stellt sich die Frage, wie es möglich ist, dass die diskrete Kosinus Transformation ohne die Sinus Komponenten auskommt die bei der DFT unentbehrlich sind.
+Das wird erreicht, indem das Intervall in der die Transformation durchgeführt wird, gegenüber der DFT gerade symmetrisch verdoppelt wird.
+Es existiert analog dazu die diskrete Sinus Transformation, die aus Sinus Basisfunktionen besteht.
+
+Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit folgender Formel  
+\begin{equation}
+    b_k
+    =
+    \sum \limits_{n=0}^{N-1} a_n 
+    \cos\left(
+        \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right),
+    \qquad k = 0,\dots,N-1
+\label{jpeg:equation:dct2}
+\end{equation}
+benötigt wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
+Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinustransformation (DCT-III oder inverse DCT):
+\begin{equation}
+    a_n
+    =
+    \frac{b_0}{2} +
+    \sum \limits_{k=1}^{N-1} b_k 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right),
+    \qquad k = 0,\dots,N-1.
+    \label{jpeg:equation:dct3}
+\end{equation}
+Dabei lässt sich mit diesen Formeln nur die eindimensionale Transformation durchführen.
+Bei Bilden handelt es sich aber um zweidimensionale Signale.
+
+\subsection{Zweidimensionale Kosinus Transformation
+\label{jpeg:subsection:dctdim2}}
+Für die zweidimensionale Variante der DCT wird das Bild zunächst zeilenweise betrachtet. Jede dieser Zeilen sind wiederum eindimensionale Signale und transformierbar.
+Werden auf jeder der Zeilen die Transformation angewandt, entsteht ein neues Bild.
+Dieses wird nun in Spalten betrachtet und ebenfalls transformiert.
+Das resultierende Bild davon ist die vollständige Transformation.
+Analog dazu lässt sich die inverse Kosinus Transformation beschreiben.
+
+Die Gleichung \eqref{jpeg:equation:dct2} zweidimensional lässt sich
+\begin{equation}
+    b_{k,l}
+    =
+    \sum \limits_{n=0}^{N-1} 
+    \sum \limits_{m=0}^{N-1} a_{n,m} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right)
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right)
+    \label{jpeg:equation:dct2dim2}
+\end{equation}
+und die inverse Transformation  
+\begin{align}
+    a_{n,m}
+    =
+    \frac{b_{0,0}}{4} &+
+    \sum \limits_{k=1}^{N-1} 
+    \frac{b_{k,0}}{2} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right) \notag\\ &+
+    \sum \limits_{l=1}^{N-1} 
+    \frac{b_{0,l}}{2} 
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right) \\ &+
+    \sum \limits_{k=1}^{N-1} 
+    \sum \limits_{l=1}^{N-1} b_{k,l} 
+    \cos\left(
+    \frac{k\pi}{N}\left(n + \frac{1}{2} \right) 
+    \right)
+    \cos\left(
+    \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
+    \right) \notag
+    \label{jpeg:equation:dct3dim2}
+\end{align}
+beschreiben.
+\(a_{n,m}\) ist das Eingangssignal (Bild) und \(b_{k,l}\) das Transformierte, dabei steht \(n,m\) bzw. \(l,k\) für die Dimensionen
+
+\begin{figure}
+    \centering
+    \includegraphics[width=55mm]{papers/jpeg/pictures/dctjpeg.pdf}
+    \caption{Basisfunktionen der zweidimensionalen DCT mit \(N=8\).
+        \label{jpeg:fig:dctkoeff}}
+\end{figure}
+
+Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimension jeweils Acht Koeffizienten.
+Jedes Feld entspricht einer Basisfunktion.
+Oben rechts ist der DC Anteil und in horizontaler Richtung sind die Frequenzanteile aufsteigend.
+Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
+Aus jedem Pixelblock des Ursprungsbildes wird mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
+Die Koeffizienten geben an wie stark die entsprechende Basisfunktion gewichtet ist. 
+
+
+

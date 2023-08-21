@@ -4,4 +4,6 @@ buchcover.pdf
 buchcover.png
 front.pdf
 lncover.pdf
-
+*.o
+*.a
+wavreader
