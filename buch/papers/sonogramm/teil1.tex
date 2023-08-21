@@ -165,9 +165,15 @@ Wie im vorherigen Abschnitt aufgezeigt, sind die Frequenzauflösung und
 Leck-Frequenzen abhängig von der Fensterfunktion.
 Durch die abrupten Sprünge im Rechteck-fenster sind die Leck-Frequenzen 
 über ein weites Frequenzband sehr prominent.
-Um dies zu verbessern wäre os besser eine Fensterfunktion zu haben,
+
+Um dies zu verbessern wäre es besser eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung 0 zu gehen. 
+Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteck-fenster einen 
+Peak bei $f = 0$ hat. aber mit $f \rightarrow \infty$ schneller
+gegen 0 geht.
+Da die Fensterfunktionen nur in einem bestimmten Intervall ungleich 0 ist, und finite Werte
+hat ist die L2 Norm $< \infty$.
 
 
 Eine bekannte Funktion, welche solche Eigenschaften aufweist ist die gausssche Glockenkurve
