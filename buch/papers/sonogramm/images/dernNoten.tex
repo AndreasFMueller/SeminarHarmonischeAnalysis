@@ -1,0 +1,52 @@
+
+\documentclass[tikz]{standalone}
+\usepackage{musicography}
+\tikzset{
+  font={\fontsize{8pt}{12}\selectfont}}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[]{dernSonoPeaks.pdf}};
+%    \node[draw] at (0,0) {\footnotesize F\musSharp};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \draw[black, thin, name=b1] (0.117,0.147) rectangle (0.166, 0.964);
+        \draw[anchor=south west] (0.117, 0.147) node {1};
+
+        \draw[black, thin, name=b1] (0.166,0.147) rectangle (0.206, 0.964);
+        \draw[anchor=south west] (0.166,0.147) node {2};
+
+        \draw[black, thin, name=b1] (0.217, 0.147) rectangle (0.2565, 0.964);
+        \draw[anchor=south west] (0.217,0.147) node {3};
+
+        \draw[black, thin, name=b1] (0.2665, 0.147) rectangle (0.318, 0.964);
+        \draw[anchor=south west] (0.2665,0.147) node {4};
+
+        \draw[black, thin, name=b1] (0.318, 0.147) rectangle (0.357, 0.964);
+        \draw[anchor=south west] (0.318,0.147) node {5};
+
+        \draw[black, thin, name=b1] (0.381, 0.147) rectangle (0.468, 0.964);
+        \draw[anchor=south west] (0.381,0.147) node {6};
+
+        \draw[black, thin, name=b1] (0.4812, 0.147) rectangle (0.4938, 0.964);
+        \draw[anchor=south west] (0.47,0.147) node {7};
+
+        \draw[black, thin, name=b1] (0.52, 0.147) rectangle (0.62, 0.964);
+        \draw[anchor=south west] (0.52,0.147) node {8};
+
+        \draw[black, thin, name=b1] (0.632, 0.147) rectangle (0.656, 0.964);
+        \draw[anchor=south west] (0.627,0.147) node {9};
+
+        \draw[black, thin, name=b1] (0.67, 0.147) rectangle (0.721, 0.964);
+        \draw[anchor=south west] (0.67,0.147) node {10};
+
+        \draw[black, thin, name=b1] (0.721, 0.147) rectangle (0.847, 0.964);
+        \draw[anchor=south west] (0.721,0.147) node {11};
+
+        \draw[black, thin, name=b1] (0.87, 0.147) rectangle (0.9585, 0.964);
+        \draw[anchor=south west] (0.87,0.147) node {12};
+
+
+        
+    \end{scope}
+\end{tikzpicture}
+\end{document}
