@@ -1223,7 +1223,7 @@ Die Wellenausbreitung auf der Erdoberfläche kann mit Funktionen
 auf einer Kugeloberfläche modelliert werden.
 Die Wellengleichung verwendet den Laplace-Operator, der in Kugelkoordinaten
 die Form
-\[
+\begin{equation}
 \Delta
 =
 \frac{1}{r^2}
@@ -1237,7 +1237,8 @@ r^2
 +
 \frac{1}{r^2\sin^2\vartheta}
 \frac{\partial^2}{\partial\varphi^2}
-\]
+\label{buch:orthofkt:pde:laplacekugel}
+\end{equation}
 hat.
 Die Abhängigkeit von $r$ wird auf der Kugeloberfläche nicht benötigt,
 so dass sich der Operator vereinfacht auf
@@ -1386,6 +1387,8 @@ Die verbleibenden doppelten Integrale in \eqref{buch:orthofkt:pde:deltakugel1}
 und \eqref{buch:orthofkt:pde:deltakugel2} sind symmetrisch in $f$ und $g$.
 Somit ist der Laplace-Operator auf beliebigen auf der Kugeloberfläche
 differenzierbaren Funktionen selbstadjungiert.
+Aus der allgemeinen Theorie folgt somit, dass die Eigenfunktionen orthogonal
+sind.
 
 %
 % Lösungen der Legendre-Differentialgleichung
@@ -1450,6 +1453,9 @@ m^2
 Für die Funktionen $\Phi(\varphi)$ sind wieder beliebige Linearkombinationen
 der trigonometrischen Funktionen $\cos m\varphi$ und $\sin m\varphi$
 die Lösungen.
+Alternativ können sie auch als komplexe Funktionen
+$\Phi_m(\varphi) = e^{im\varphi}$ geschrieben werden.
+
 Die Funktion $\Theta(\vartheta)$ erfüllt die Differentialgleichung
 \[
 \sin^2\vartheta \Theta''(\vartheta)
@@ -1467,10 +1473,12 @@ Division durch $\sin^2\vartheta$ kann die Gleichung etwas vereinfachen:
 \Theta''(\vartheta)
 +
 \frac{\cos\vartheta}{\sin\vartheta} \Theta'(\vartheta)
++\biggl(
 -
-\lambda\Theta(\vartheta)
+\lambda
 -
 \frac{m^2}{\sin^2\vartheta} 
+\biggr)
 \Theta(\vartheta)
 =
 0
@@ -1480,6 +1488,22 @@ Diese Gleichung ist bekannt als die {\em assoziierte
 Legendre-Differentialgleichung}.
 Man kann zeigen, dass sie $\lambda=-l(l+1)$ mit $l\in\mathbb{N}$
 als Eigenwerte hat.
+
+\begin{satz}
+\label{buch:orthofkt:pde:satz:kugel}
+Der Laplace-Operator auf der Kugeloberfläche hat die Form
+\eqref{buch:orthofkt:pde:laplacekugel}.
+Seine Eigenfunktionen sind von der Form
+$Y_l^m(\vartheta,\varphi)=e^{im\varphi}\Theta_l^m(\vartheta)$,
+mit $l\in \mathbb{N}$ und ganzzahligen $m$ mit $-l\le m\le l$.
+Die Funktionen $\Theta_l^m(\vartheta)$ sind Lösungen der
+Differentialgleichung \eqref{buch:orthfkt:pde:dglthetaphi}, wobei
+der Eigenwert $\lambda = -l(l+1)$ ist.
+\end{satz}
+
+Die Berechnung der Funktionen $\Theta_l^m(\vartheta)$ wird viel
+einfacher in Abhängigkeit von der Koordinaten $z=\cos\vartheta$
+anstelle von $\vartheta$.
 
 %
 % Koordinatentransformation z = cos theta
