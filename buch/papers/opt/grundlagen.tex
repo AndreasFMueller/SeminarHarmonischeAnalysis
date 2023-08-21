@@ -268,9 +268,19 @@ E(y_p, t = 0)
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
+\opttodo{Zusammen anschauen}%
+
 Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeichnet und ist in der Umgebung von $y, y_p \ll l$ um die Blende gültig.
 Dieses Integral ist lösbar, was aber mit relativ hohem Aufwand verbunden ist.
 Die Fraunhofer-Approximation soll hierbei eine weitere Vereinfachung bieten.
+
+
+Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral
+\footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
+bezeichnet und entspricht einer Nahfeld-Näherung.
+Anders als von der Bezeichnung zu erwarten wäre, darf diese Näherung nicht direkt hinter der Blende angewendet werden.
+Die Voraussetzung $y, y_p \ll l$ aus Gleichung \eqref{opt:equation:condition_fresnel} muss erfüllt sein.
+Ansonsten muss das allgemeine Beugungsintegral für die Berechnung verwendet werden.
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
@@ -303,9 +313,12 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
-Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
+Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation
+\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.}
+konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
 Das somit entstandene Integral entspricht bis auf einige Vorfaktoren gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
-Gleichung \eqref{opt:equation:integral_fraunhofer} ist bereits das zentrale Ergebnis dieses Papers.
+
+Gleichung \eqref{opt:equation:integral_fraunhofer} ist dementsprechend bereits das zentrale Ergebnis dieses Papers.
 In einem weiteren Schritt könnte das Resultat so erweitert werden, dass die Blendenfunktion auf eine Funktion mehrere Variablen $f(y,z)$ in $y$ und $z$-Richtung zu liegen kommt.
 Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf eingegangen.
 
@@ -314,9 +327,9 @@ Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf e
 \subsection{Intensität}
 \label{opt:sec:intensity}
 Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
-Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
+Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur quadrierten elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
-Woraus sich aus Gleichung \eqref{opt:equation:integral_fraunhofer}
+Somit kann aufbauend auf der Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} die Intensität als
 \begin{align}
 I(y_p)
 &=
@@ -331,7 +344,7 @@ I(y_p)
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \label{opt:equation:intensity_integral}
 \end{align}
-ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
+geschrieben werden. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
 Dieser kann mittels des Poynting Vectors
 \begin{equation}
 \vec{S} = \vec{E} \times \vec{H}
@@ -546,7 +559,7 @@ und
 \end{equation*}
 definiert.
 Die relative Permittivität $\varepsilon_r$ und die relative Permeabilität $\mu_r$ sind beides materialabhängige Faktoren und müssen je nach Medium, in welchem sich die Welle fortbewegt, nachgeschlagen und eingesetzt werden.
-Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt folgt der Ausdruck
+Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt, folgt der Ausdruck
 \begin{equation*}
 I
 =
@@ -581,20 +594,15 @@ f(y)
 \end{cases}
 .
 \end{equation*}
-Mit Hilfe der Eulerschen Identität des Sinus
-\begin{equation*}
-\sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
-\end{equation*}
-und der Definition der $\sinc$ Funktion
-\begin{equation*}
-\sinc(x) = \frac{\sin(x)}{x}
-\end{equation*}
-vereinfacht sich Gleichung \eqref{opt:equation:intensity_integral} demnach zu
+Als Ausgangslage wird die Gleichung
 \begin{align*}
 I(y_p)
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
-\\
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\intertext{aus \eqref{opt:equation:intensity_integral} verwendet. Durch Einsetzten der Grenzen vereinfacht sich diese zu}
+&=
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2.
+\intertext{Anschliessend kann die Stammfunktion an den Grenzen ausgewertet werden.}
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
 \\
@@ -606,7 +614,18 @@ I(y_p)
 \\
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
-\intertext{Mithilfe der Eulerschen Identität wird daraus wieder ein Sinus und anschliessend ein sinc}
+\end{align*}
+Das daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
+\begin{equation*}
+\sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
+\end{equation*}
+und der Definition der $\sinc$ Funktion
+\begin{equation*}
+\sinc(x) = \frac{\sin(x)}{x}
+\end{equation*}
+weiter zu
+\begin{align*}
+I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
 \\
@@ -614,7 +633,7 @@ I(y_p)
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
 \end{align*}
+vereinfacht werden.
 
-Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgewertet für einen Einzelspalt ergibt schlussendlich eine sinc-Funktion.
-Wie in Abschnitt \ref{opt:sec:intensity} erläutert, wird die elektrische Feldstärke quadriert, um abschliessend die sichtbare Intensität zu erhalten.
-Das somit erhaltene Schlussresultat wird in Abschnitt \ref{opt:section:versuch} praktisch nachgewiesen.
+Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgewertet für einen Einzelspalt ergibt schlussendlich eine quadrierte sinc-Funktion.
+Das hier erhaltene Schlussresultat wird in Abschnitt \ref{opt:section:versuch} praktisch nachgewiesen.
