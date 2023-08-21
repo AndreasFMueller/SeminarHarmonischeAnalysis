@@ -67,7 +67,7 @@ Somit kann durch Anwenden der ersten Maxwellschen Gleichung
 \int_{V}\rho\, dV
 \end{equation*}
 die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit vom radialen Abstand $r$ berechnet werden.
-Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
+Dabei ist $\varepsilon$ die Permittivität, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
 Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r\, d\varphi\, dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
 \begin{align*}
 \int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi\, dl
@@ -322,7 +322,7 @@ I(y_p)
 \\
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
-\label{opt:equation:integral_intensity}
+\label{opt:equation:intensity_integral}
 \end{align}
 ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
 Dieser kann mittels des Poynting Vectors
@@ -394,29 +394,35 @@ t_1
 \end{align*}
 resultiert.
 Mit den eingesetzten Grenzen ergibt sich daraus
-\begin{align*}
+\begin{align}
 I
 &=
 \frac{1}{\frac{\pi}{2\omega} - 0} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\frac{\cos(4(\omega t-k\cdot0)) + 1}{2} \,dt
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\cos(4\omega t) + 1 \,dt
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left[\frac{\sin(4\omega t)}{4\omega} + t \right]_{0}^{\frac{\pi}{2\omega}}
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left(\frac{\sin(2\pi)}{8\omega} + \frac{\pi}{2\omega}\right)
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \frac{\pi}{2\omega}
+\notag
 \\
 &=
 \frac{1}{2} \cdot E_0 H_0
+\label{opt:equation:intensity_simple}
 .
-\end{align*}
+\end{align}
 Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
-Um ihn entsprechend auf Gleichung \eqref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
+Um ihn entsprechend auf Gleichung \eqref{opt:equation:intensity_integral} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
 Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralform als
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
@@ -425,7 +431,7 @@ Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralf
 \label{opt:equation:maxwell_3}
 \end{equation}
 schreiben.
-$B$ beschreibt dabei die magnetische Flussdichte, welche mit Hilfe der magnetischen Feldkonstante $\mu$ als $B = \mu H$ ausgedrückt werden kann.
+$B$ beschreibt dabei die magnetische Flussdichte, welche mit Hilfe der Permeabilität $\mu$ als $B = \mu H$ ausgedrückt werden kann.
 Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung $u$ am Rand der Fläche $A$ gegeben durch
 \begin{equation}
 u
@@ -477,15 +483,17 @@ Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichu
 -\frac{\partial B_y(z,t)}{\partial t}
 \end{align*}
 resultiert.
-Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$, ergibt sich schliesslich
-\begin{align*}
+Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field}, unter Berücksichtigung von $B = \mu H$ und $\omega = kc$, ergibt sich schliesslich
+\begin{align}
 -k \cdot E_0 \cdot e^{j(\omega t-k z)}
 &=
 -\mu \omega \cdot H_0 \cdot e^{j(\omega t-k z)}
+\notag
 \\
 k \cdot E_0
 &=
 -\mu \omega \cdot H_0
+\notag
 \\
 \frac{E_0}{H_0}
 &=
@@ -493,8 +501,63 @@ k \cdot E_0
 =
 \mu c
 .
-\end{align*}
-\opttodo{Weiterschreiben}
+\label{opt:equation:impedance}
+\end{align}
+Diese Verhältnis von $E_0$ zu $H_0$ wird auch als Wellenimpedanz bezeichnet und spielt in der Elektrodynamik eine essentielle Rolle.
+Ohne weiter darauf einzugehen kann der Zusammenhang
+\begin{equation}
+c
+=
+\frac{1}{\sqrt{\varepsilon\mu}}
+\label{opt:equation:speed_of_light}
+\end{equation}
+durch abermaliges Anwenden der Maxwellschen Gleichungen erhalten werden.
+Wird nun Gleichung \eqref{opt:equation:speed_of_light} in \eqref{opt:equation:impedance} eingesetzt, kann durch Vereinfachung der Ausdruck
+\begin{equation}
+\frac{E_0}{H_0}
+=
+\mu \frac{1}{\sqrt{\varepsilon\mu}}
+=
+\sqrt{\frac{\mu}{\varepsilon}}
+=
+\sqrt{\frac{\mu_r\mu_0}{\varepsilon_r\varepsilon_0}}
+\label{opt:equation:impedance_simple}
+\end{equation}
+erhalten werden.
+Bei der letzten Umformung wurden die Abhängigkeiten $\varepsilon = \varepsilon_r \varepsilon_0$ und $\mu = \mu_r \mu_0$ eingesetzt.
+Die elektrische Feldkonstante $\varepsilon_0$ und die magnetische Feldkonstante $\mu_0$ sind beides Naturkonstanten und werden als
+\begin{equation*}
+\varepsilon_0
+=
+8.854 \cdot 10^{-12}
+\end{equation*}
+und
+\begin{equation*}
+\mu_0
+=
+4\pi \cdot 10^{-7}
+\end{equation*}
+definiert.
+Die relative Permittivität $\varepsilon_r$ und die relative Permeabilität $\mu_r$ sind beides materialabhängige Faktoren und müssen je nach Medium, in welchem sich die Welle fortbewegt, nachgeschlagen und eingesetzt werden.
+Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt ergibt sich
+\begin{equation*}
+I
+=
+\frac{1}{2} \cdot E_0 H_0
+=
+\frac{1}{2} \cdot \sqrt{\frac{\varepsilon}{\mu}} \cdot E_0^2
+.
+\end{equation*}
+Verglichen mit Gleichung \eqref{opt:equation:intensity_integral} stellt sich heraus, dass
+\begin{equation*}
+\kappa
+=
+\frac{1}{2} \cdot \sqrt{\frac{\varepsilon}{\mu}}
+\end{equation*}
+entsprechen muss.
+
+Nach aufwendigen Berechnungen stellt stellt sich schliesslich heraus, dass $\kappa$ eine relativ einfache, materialabhängige Konstante ist.
+Die Intensität an einer bestimmten Stelle im Raum ist also lediglich abhängig von der an diesem Ort herrschenden elektrischen Feldstärke $E$ und der Medium spezifischen Konstante $\kappa$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -519,7 +582,7 @@ und der Definition der $\sinc$ Funktion
 \begin{equation*}
 \sinc(x) = \frac{\sin(x)}{x}
 \end{equation*}
-vereinfacht sich Gleichung \eqref{opt:equation:integral_intensity} demnach zu
+vereinfacht sich Gleichung \eqref{opt:equation:intensity_integral} demnach zu
 \begin{align*}
 I(y_p)
 &=
