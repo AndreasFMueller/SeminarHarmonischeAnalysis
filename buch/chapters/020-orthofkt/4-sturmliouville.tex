@@ -18,7 +18,8 @@ erweitert werden kann.
 %
 % Der Sturm-Liouville-Differentialoperator
 %
-\subsection{Der Sturm-Liouville-Differentialgoperator}
+\subsection{Der Sturm-Liouville-Differentialgoperator
+\label{buch:orthofkt:sturmliouville:subsection:operator}}
 Sie $a<b$ und seien zwei Funktionen
 $p(x)\in C^2([a,b])$, $q(x)\in C([a,b])$ gegeben.
 Wir definieren den Sturm-Liouville-Operator
@@ -295,6 +296,279 @@ gefunden werden.
 % Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen
 %
 \subsubsection{Das verallgemeinerte Eigenwertproblem für symmetrische Matrizen}
+Das Eigenwertproblem für eine symmetrische Matrix $A$ sucht einen
+Vektor $v\ne 0$ und eine Zahl $\lambda$ derart, dass $Av=\lambda v$.
+Es ist aus der elementaren linearen Algebra bekannt, dass eine
+symmetrische Matrix mit einer orthogonalen Matrix diagonalisiert werden
+kann, es existiert also eine Basis aus Eigenvektoren.
+
+Aus der linearen Algebra ist auch bekannt, dass eine zweite symmetrische
+Matrix $B$ gleich mitdiagonalisiert werden kann.
+Dazu wird das verallgemeinerte Skalarprodukt $\langle\;\,,\;\rangle_B$ 
+verwendet, welches die Werte $\langle u,v\rangle_B=\transpose{u}Bv$ hat.
+Der Beweis dieser Tatsache verwendet das Skalarprodukt
+$\langle\;\,,\;\rangle_B$ an Stelle des Standardskalarproduktes
+$\transpose{u}v$.
+Damit dies funktioniert, muss für alle $u,v$
+\[
+\langle Au,v\rangle_B
+=
+\langle u,Av\rangle_B
+\]
+sein.
+Dies bedeutet
+\[
+\left.
+\begin{aligned}
+\langle Au,v\rangle_B
+&=
+\transpose{(Au)}Bv
+=
+\transpose{u}\transpose{A}Bv
+=
+\transpose{u}ABv
+\\
+\langle u,Av\rangle_B
+&=
+\transpose{u}BAv
+\end{aligned}
+\quad
+\right\}
+\qquad
+\Rightarrow
+\quad
+AB=BA
+\]
+gelten, die beiden Matrizen müssen also vertauschen.
+Da immer noch gilt, dass die Eigenvektoren von $A$ orthogonal bezüglich
+des Standardskalarproduktes sind, ist die Diagonalisierung immer noch
+mit einer orthogonalen Matrix möglich.
+
+Das gewöhnliche Eigenwertproblem sucht nach Vektoren, die nur gestreckt
+werden.
+Eine interessante Verallgemeinerung ist die Frage nach Vektoren, die
+die Richtung nicht unbedingt behalten, sondern sie so ändern, wie eine
+andere Matrix vorgibt.
+Sind $A$ und $B$ $n\times n$-Matrizen, dann ist $v\ne 0$ ein
+{\em verallgemeinerter}
+Eigenvektor zum Eigenwert $\lambda$, wenn $Av=\lambda Bv$ ist.
+Die Matrix $A$ heisst verallgemeinert diagonalisierbar, wenn es
+eine Basis aus verallgemeinerten Eigenvektoren von $A$ und $B$ gibt.
+
+Ein Vektor im Nullraum von $A$ ist ein verallgemeinerter Eigenvektor
+zum Eigenwert $0$.
+Ein Vektor im Nullraum von $B$ erfüllt $Bv=0$.
+Er kann daher nur dann ein verallgemeinerter Eigenvektor sein,
+wenn auch $Av=0$ ist.
+
+Wenn die Matrix $B$ zusätzlich invertierbar ist, dann erfüllt ein
+verallgemeinerter Eigenvektor $B$ zusätzlich 
+$B^{-1}Av=\lambda v$, er ist also ein gewöhnlicher Eigenvektor von $B^{-1}A$.
+Selbst wenn die Matrizen $A$ und $B$ symmetrisch sind, ist nicht garantiert,
+dass $B^{-1}A$ symmetrisch ist.
+Das bekannte Resultat, dass symmetrische Matrizen diagonalisierbar sind,
+kann also nicht garantieren, dass $A$ und $B$ verallgemeinert diagonalisierbar
+sind.
+Nur wenn $A$ und $B$ vertauschen, ist
+\[
+\transpose{(B^{-1}A)}
+=
+\transpose{A}\transpose{B}^{-1}
+=
+AB^{-1},
+\]
+Symmetrie ist also nur gegeben, wenn die Matrizen $A$ und $B$
+vertauschen, was wir im allgemeinen nicht voraussetzen wollen.
+
+Eine etwas stärkere Bedingung als Invertierbarkeit der Matrix $B$
+ist, dass $B$ positiv definit ist.
+Dies bedeutet, dass $\transpose{v} Bv > 0$ ist für alle Vektoren
+$v\ne 0$.
+Daraus folgt, dass $B$ invertierbar ist.
+Wäre nämlich $v\ne 0$ ein Vektor mit $Bv=0$, dann wäre auch 
+$\transpose{v} Bv=\transpose{v}0=0$.
+Unter dieser Voraussetzung kann eine Diagonalisierung gefunden
+werden:
+
+\begin{satz}
+Sind $A$ und $B$ symmetrische Matrizen mit $B$ positiv definit und ist
+$v\ne 0$ ein Vektor, der  ein stationärer Punkt von
+\[
+f(v) = \frac{\transpose{v}Av}{\transpose{v}Bv}
+\]
+ist, dann ist $v$ ein verallgemeinerter Eigenvektor.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $u$ ein beliebiger anderer Vektor und $\lambda = f(v)$.
+Da $f(v)$ ein stationärer Punkt ist, muss die Ableitung der Funktion 
+$t\mapsto f(v+tu)$ verschwinden.
+Für eine Matrix $C$ ist
+\begin{align*}
+\frac{d}{dt}
+\transpose{(v+tu)}C(v+tu)
+&=
+\frac{d}{dt}\bigl(
+\transpose{v}Cv
++
+t(\transpose{u}Cv+\transpose{v}Cu)
++
+t^2 \transpose{u}Cu
+\bigr)
+=
+(\transpose{u}Cv+\transpose{v}Cu)
++
+2t \transpose{u}Cu
+\\
+\Rightarrow\quad
+\frac{d}{dt}
+\transpose{(v+tu)}C(v+tu)
+\bigg|_{t=0}
+&=
+\transpose{u}Cv+ \transpose{v}Cu
+=
+\transpose{u}Cv+ \transpose{u}\transpose{C}v
+=
+2\transpose{u}Cv
+.
+\end{align*}
+Angewendet auf die Funktion $f(v)$ folgt
+\[
+0
+=
+\frac{d}{dt}f(v+tu)\bigg|_{t=0}
+=
+\frac{
+\transpose{u}Av \cdot \transpose{v}Bv - \transpose{v}Av\cdot\transpose{u}Bv
+}{
+(\transpose{v}Bv)^2
+}
+)
+=
+\frac{1}{\transpose{v}Bv}
+\bigl(
+\transpose{u}Au - f(v)\transpose{u}Bu
+\bigr)
+=
+\frac{1}{\transpose{v}Bv}
+\bigl(
+\transpose{u}Av - \lambda\transpose{u}Bv
+\bigr)
+\]
+und daraus
+\[
+\transpose{u}(Av-\lambda  Bv)
+=
+0
+\]
+für beliebige Vektoren $u$.
+Das ist aber genau dann möglich, wenn 
+\[
+Av-\lambda Bv = 0
+\qquad
+\Rightarrow
+\qquad
+Av = \lambda Bv,
+\]
+und somit genau dann, wenn $v$ ein verallgemeinerter Eigenvektor von 
+$A$ und $B$ ist.
+\end{proof}
+
+\begin{satz}
+Sind $A$ und $B$ symmetrische Matrizen, $B$ positiv definit und $v_1,v_2$
+verallgemeinerte Eigenvektoren zu verschiedenen Eigenwerten $\lambda_i$,
+$i=1,2$, dann sind die Vektoren $v_i$ bezüglich des Skalarproduktes
+$\langle\;\,,\;\rangle_B$ orthogonal: $\langle v_1,v_2\rangle_B=0$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Ähnlich wie bei der entsprechenden Resultaten für Eigenvektoren
+symmetrischer Matrizen, berechnen wir das Skalarprodukt $\langle u,Av\rangle$
+auf zwei verschiedene Arten.
+\[
+\renewcommand{\arraycolsep}{2pt}
+\left.
+\begin{array}{rclclcl}
+\langle v_1,Av_2\rangle
+&=&
+\transpose{v}_1Av_2
+&=&
+\transpose{v}_1\lambda_2 Bv_2
+&=&
+\lambda_2
+\langle v_1,Bv_2 \rangle
+\\
+\mathstrut=
+\langle Av_1,v_2\rangle
+&=&
+\transpose{(\lambda_1Bv_1)}v_2
+&=&
+\lambda_1
+\langle Bv_1,v_2\rangle
+&=&
+\lambda_1
+\langle v_1,Bv_2\rangle
+\end{array}
+\;\right\}
+\quad\Rightarrow\quad
+0
+=
+(\underbrace{\lambda_2-\lambda_1}_{\displaystyle \ne 0})
+\langle v_1,Bv_2\rangle.
+\]
+Da die Eigenwerte verschieden sind, muss
+$\langle v_1,Bv_2\rangle=\langle v_1,v_2\rangle_B=0$
+sein,
+was bedeutet, dass die Vektoren $v_1$ und $v_2$ bezüglich des
+verallgemeinerten Skalarproduktes $\langle \;\,,\;\rangle_B$ 
+orthogonal sind.
+\end{proof}
+
+\begin{satz}
+Sind $A$ und $B$ symmetrische Matrizen, $B$ positiv definit, dann 
+ist $L=B^{-1}A$ bezüglich des Skalarproduktes $\langle\;\,,\;\rangle_B$
+selbstadjungiert.
+\end{satz}
+
+\begin{proof}[Beweis]
+Da $A$ und $B$ symmetrisch sind, kann man nachrechnen, dass
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rclclcl}
+\langle Lu,v\rangle_B
+&=&
+\langle B^{-1}Au,Bv\rangle
+&=&
+\langle BB^{-1}Au,v\rangle
+&=&
+\langle Au,v\rangle
+\\
+\langle u,Lv\rangle_B
+&=&
+\langle u,B(B^{-1}A)v\rangle
+&=&
+\langle u,Av\rangle
+&=&
+\langle Au,v\rangle
+\end{array}
+\]
+gleich sind.
+Damit ist $L$ selbstadjungiert.
+\end{proof}
+
+\begin{satz}
+Seien $A$ und $B$ symmetrische Matrizen, $B$ positiv definit, dann gibt
+es eine bezüglich des Skalarproduktes $\langle\;\,,\;\rangle_B$
+orthonormierte Basis aus verallgemeinerten Eigenvektoren von $A$ und $B$.
+\end{satz}
+
+\begin{proof}[Beweis]
+In einer beliebigen bezüglich $\langle\;\,,\;\rangle_B$ orthonormierten
+Basis wird $B$ zur Einheitsmatrix und $A$ und $L=B^{-1}A$ zu einer
+symmetrischen Matrix.
+Damit ist das Problem zurückgeführt auf das klassische Problem der
+Diagonalisierung einer symmetrischen Matrix.
+\end{proof}
 
 %
 % Das verallgemeinerte Sturm-Liouville-Eigenwertproblem
@@ -311,16 +585,18 @@ eine Lösung $y(x)$ der Differentialgleichung
 zu finden.
 Das Problem unterscheidet sich von dem vorher untersuchten Problem durch
 den zusätzlichen Faktor $w(x)>0$, der auch Gewichtsfunktion heisst.
-Das Eigenwertproblem auf die bereits studierte Situation zurückgeführt
-werden, indem das Skalarprodukt mit der Gewichtsfunktion $w(x)$ verwendet
-wird.
+Im verallgemeinerten Eigenwertproblem für Matrizen entspricht $w(x)$ 
+der Matrix $B$ und $A$ dem Sturm-Liouville-Operator.
+Auf Grund dieser Analogie erwarten wir, dass der wie folgt
+definierte Operator $L_w$ bezüglich des Skalarproduktes mit Gewichtsfunktion
+$w(x)$ selbstadjungiert ist.
 
 \begin{definition}
 Gegeben ist $p(x)\in C^1([a,b])$, $q(x),w(x)\in C([a,b])$ und $w(x)>0$
 in $(a,b)$.
 Der {\em allgemeine Sturm-Liouville-Operator} ist
 \[
-L
+L_w
 =
 \frac{1}{w(x)}
 \biggl(
@@ -332,13 +608,19 @@ q(x)
 Das {\em verallgemeinerte Sturm-Liouville-Eigenwertproblem} ist die Aufgabe,
 eine Lösung $y(x)$ der Gleichung
 \(
-Ly(x) = \lambda y(x)
+L_wy(x) = \lambda y(x)
 \)
 zu finden.
 \end{definition}
 
+Das verallgemeinerte Eigenwertproblem für $L$ und $w(x)$ kann auf
+deas gewöhnliche Eigenwertproblem für den Operator $L_w$ 
+zurückgeführt werden, indem das Skalarprodukt mit der Gewichtsfunktion
+$w(x)$ verwendet wird.
+Dies ist der Inhalt des folgenden Satzes.
+
 \begin{satz}
-Der Operator $L$ ist selbstadjungiert im Prähilbertraum
+Der Operator $L_w$ ist selbstadjungiert im Prähilbertraum
 \[
 H(h_a,h_b,k_a,k_b,w)
 =
@@ -349,7 +631,7 @@ f \in C^1([a,b])
 \;
 \begin{aligned}
 &\int_a^b |f(x)|^2w(x)\,dx < \infty,
-\int_a^b |p(x)| |f'(x)|^2w(x)\,dx < \infty,
+\int_a^b |p(x)|\, |f'(x)|^2w(x)\,dx < \infty,
 \\
 &
 \begin{aligned}
@@ -365,13 +647,13 @@ $w(x)$.
 \end{satz}
 
 \begin{proof}[Beweis]
-Wir müssen nachrechnen, dass der Operator $L$ selbstadfjungiert ist.
+Wir müssen nachrechnen, dass der Operator $L$ selbstadjungiert ist.
 Dazu seien $f,g\in H(h_a,h_b,k_a,k_b,w)$, wir berechnen die
 Skalarprodukte
 \begin{align*}
-\langle Lf,g\rangle_w
+\langle L_wf,g\rangle_w
 &=
-\int_a^b (Lf)(x)g(x)w(x)\,dx
+\int_a^b (L_wf)(x)g(x)w(x)\,dx
 =
 \int_a^b
 \biggl(
@@ -397,6 +679,6 @@ q(x) g(x)
 Da der Operator $L_0$ und der Multiplikationsoperator mit $q(x)$ bezügich
 des Standardskalarproduktes $\langle\;\,,\;\rangle$ selbstadjungiert sind,
 sind die beiden Ausdrücke gleich.
-Damit ist gezeigt, dass $L$ bezüglich $\langle\;\,,\;\rangle_w$
+Damit ist gezeigt, dass $L_w$ bezüglich $\langle\;\,,\;\rangle_w$
 selbstadjungiert ist.
 \end{proof}

@@ -6,6 +6,32 @@
 \section{Haar-Maß
 \label{buch:gruppen:section:haar}}
 \kopfrechts{Haar-Maß}
+Die Integration von Funktionen einer reellen Variablen oder auch
+das in Abschnitt
+\ref{buch:skalarprodukt:funktionenraeume:subsection:grenzen-riemann}
+erwähnte Lebesque-Integral hat die Eigenschaft, dass das
+Integral einer Funktion sich nicht ändert, wenn man die Funktion
+entlang der reellen Achse verschiebt.
+Für eine integrierbare Funktion $f\colon\mathbb{R}\to\mathbb{R}$
+gilt
+\[
+\int_{-\infty}^\infty f(x)\,dx
+=
+\int_{-\infty}^\infty f(x-s)\,dx
+=
+\int_{-\infty}^\infty T_sf(x)\,dx,
+\]
+wobei die $T_s$ die in Definition~\ref{buch:gruppen:gruppe:def:translation}
+eingeführt Translationsoperation ist.
+Die harmonische Analysis mit den Exponentialfunktion $e^{ikx}$ 
+verwendet diese Translationsinvarianz der Integration auf wesentliche Art,
+das Skalarprodukt von Funktionen ändert sich ebenfalls nicht, wenn sie
+entlang der Zeitachse verschoben werden.
+
+Wenn die harmonische Analysis auf andere Gruppen als auf die reellen
+Zahlen ausgedehnt werden soll, dann wird eine Integration auf diesen
+Gruppen benötigt, welche die gleiche Invarianzeigenschaft unter
+Translationen hat.
 
 %
 % Mittelung auf einer endlichen Gruppe
@@ -13,14 +39,454 @@
 \subsection{Mittelung auf einer endlichen Gruppen
 \label{buch:haar:subsection:endlich}}
 
+\begin{definition}
+\label{buch:gruppen:haar:def:mittelung}
+Sei $G$ ein endliche Gruppe und $f$ eine Funktion $f\colon G\to \mathbb{R}$.
+Die {\em Mittelungsoperation} über die Gruppe ist die Operation
+\[
+Mf = \frac{1}{|G|}\sum_{g\in G} f(g).
+\]
+\index{Mittelungsoperation}
+\end{definition}
+
+Die Mittelungsoperation ist natürlich linear, denn
+\[
+M(\lambda f + \mu g)
+=
+\frac{1}{|G|}
+\sum_{h\in G}
+(\lambda f(h)+\mu g(h))
+=
+\lambda \frac{1}{|G|}\sum_{h\in G}f(h)
++
+\mu \frac{1}{|G|}\sum_{h\in G}g(h)
+=
+\lambda Mf + \mu Mg.
+\]
+Die Operation ist aber auch translationsinvariant.
+Dazu muss
+\begin{equation}
+MT_sf
+=
+\frac{1}{|G|}
+\sum_{g\in G} f(s^{-1}g)
+\label{buch:gruppen:haar:eqn:mitteltranslation}
+\end{equation}
+mit $Mf$ verglichen werden.
+Die Abbildung $g\mapsto s^{-1}g$ ist aber nur eine Permutation der endlich
+vielen Elemente der Gruppe $G$.
+Die Summe auf der rechten Seite von
+\eqref{buch:gruppen:haar:eqn:mitteltranslation}
+ist daher nur die Summe über alle Funktionswerte $f(g)$ in einer anderen
+Reihenfolge oder
+\[
+MT_sf
+=
+\frac{1}{|G|} \sum_{g\in G}f(g)
+=Mf.
+\]
+Damit ist gezeigt, dass die Mittelungsoperation translationsinvariant
+ist.
+
+Die Mittelungsoperation von Definition~\ref{buch:gruppen:haar:def:mittelung}
+ermöglicht jetzt ein, das translationsinvariantes Skalarprodukt
+\[
+\langle f,g\rangle_G
+=
+M(\overline{f}g)
+=
+\frac{1}{|G|}
+\sum_{h\in G}
+\overline{f(h)}g(h)
+\]
+zu definieren.
+
+Im Nachweis, dass die Mittelungsoperation invariant ist bezüglich
+der Translation wurde ausschliesslich verwendet, dass die Abbildung
+$g\mapsto s^{-1}g$ ein Permutation der Gruppenelemente ist.
+Die Rechtstranslation $R_s\colon g\mapsto gs$ ist ebenfalls eine
+Permutation, es folgt also, dass die Mittelungsoperation auch
+bezüglich der Rechtstranslation invariant ist.
+
+%
+% Integration auf Lie-Gruppen
+%
+\subsection{Integration auf Lie-Gruppen
+\label{buch:haar:subsection:lie-gruppen}}
+Die Gruppe der reellen Zahlen ist auch ein Lie-Gruppe, da sie eine
+eindimensionale Mannigfaltigkeit ist und die Translationsoperation
+eine differenzierbare Abbildung ist.
+Die Translationsinvarianz bedeutet dann, dass man einen Massstab für
+die Längenmessung durch Translation vom Nullpunkt an jeden beliebigen
+anderen Punkt von $\mathbb{R}$ transportieren kann.
+Der Transport mit $T_s$ ist die Variablentransformation $x\mapsto x-t$,
+die $dx$ in $dx$ überführt, das Integral also unverändert lässt.
+
+Diese Idee lässt sich auf beliebige Lie-Gruppen übertragen.
+Um ein Integral auf der Lie-Gruppe zu definieren, muss man in jedem
+Punkt ein Koordinatensystem haben und ausserdem wissen, wie die
+Integration bezüglich dieses Koordinatensystems durchzuführen ist,
+man braucht das ``Volumenelement'' ausgedrückt in diesen Koordinaten.
+
+Wir betrachten ein Koordinatensystem mit Koordinaten $x_1,\dots,x_n$
+in einer Umgebung $U$ des neutralen Elementes $e$ einer Lie-Gruppe $G$.
+Das Integral
+\[
+\int_{U} f(x_1,\dots,x_n) \,dx_1\,\dots\,dx_n
+\]
+der Funktion $f$ in der Umgebung $U$ ist aber nicht unbedingt
+translationsinvariant.
+Für ein Gruppenelement $s$ nahe beim neutralen Element der Gruppe
+ist die Translation mit $T_s$ eine Koordinatentransformation
+$(x_1,\dots,x_n)\mapsto (x_1',\dots,x_n')$.
+Das Integral kann auch in den gestrichenen Koordinaten als
+\[
+\int_{U} f(x_1,\dots,x_n) \,dx_1\,\dots\,dx_n
+=
+\int_{U'} f(x_1',\dots,x_n')
+\frac{\partial (x_1,\dots,x_n)}{\partial(x_1',\dots,x_n')}
+\,dx_1'\,\dots\,dx_n'
+\]
+berechnet werden.
+Die Funktionaldeterminante hängt natürlich von $s$ ab.
+Die Integrale unterscheiden sich nur durch eine skalare Gewichtsfunktion.
+Durch geeignete Wahl einer Funktion $w(x_1,\dots,x_n)$ kann man 
+das Integral
+\[
+\int_{U} f(x_1,\dots,x_n) w(x_1,\dots,x_n)\,dx_1\dots\,dx_n
+\]
+mindestens in einer Umgebung des neutralen Elementes
+translationsinvariant machen.
+
+Möglicherweise gibt es kein globales Koordinatensystem für die 
+die Gruppe $G$, aus diesem Grund wurde ja das Konzept der Karte
+und des Atlas eingeführt.
+Das Koordinatensystem in einer Umgebung des neutralen Elements und
+die zugehörige translationsinvariante Integration kann aber mit
+dem Operator $T_s$ in jeden beliebigen anderen Punkt $s$ transportiert
+werden.
+In einer Umgebung von $s$ gibt es daher ebenfalls eine
+translationsinvariante Integration.
+Da es nur genau ein einziges Element in $G$ gibt, welches die Translation
+von $e$ nach $s$ ausführen kann, ist diese translationsinvariante 
+Integration daher auf der ganzen Gruppe wohldefiniert.
+
+Wir schliessen daher, dass es auf einer Lie-Gruppe ganz analog 
+zu den reellen Zahlen ein translationsinvariante Integration
+gibt.
+
+\begin{beispiel}
+Die Lie-Gruppe $S^1 = \operatorname{SO}(2)$ der Drehungen in der Ebene
+kann mit dem Drehwinkel parametrisiert werden:
+\[
+g(x)
+=
+\begin{pmatrix*}[r]
+\cos x&-\sin x\\
+\sin x& \cos x
+\end{pmatrix*}
+\in
+\operatorname{SO}(2)
+\]
+Die Koordinaten $x$ ist also ein mögliches Koordinatensystem in einer
+Umgebung des neutralen Elementes.
+Als Koordinatensystem für die ganze Gruppe ist problematisch daran,
+dass das gleiche Gruppenelement für viele verschiedene $x$-Werte
+erreicht wird, nämlich für alle, die sich um ein ganzzahliges
+Vielfaches von $2\pi$ unterscheiden.
+Die $x$-Werte im Intervall $[0,2\pi)$ beschreiben also alle Elemente
+der Gruppe $\operatorname{SO}(2)$. 
+
+Die Koordinatentransformation, die mit der Translation $T_s$ einhergeht,
+ist die Abbildung $x\mapsto x-s$, die die Funktionaldeterminante $1$
+hat.
+Die Integration
+\[
+\int_{\operatorname{SO}(2)} f(g) \,dg
+=
+\int_0^{2\pi} f(g(x))\,dx
+\]
+ist daher eine translationsinvariante Integration.
+Jedes skalare Vielfache davon ist aber ebenfalls eine translationsinvariante
+Integration.
+Die Integration
+\[
+\frac{1}{2\pi} f(g(x))\,dx
+\]
+hat die Eigenschaft, dass die konstante Funktion $1$ das Integral $1$
+hat.
+\end{beispiel}
+
 %
 % Das Haar-Maß
 %
 \subsection{Das Haar-Maß
 \label{buch:haar:subsection:haar}}
+Man kann zeigen, dass die Konstruktion, die im vorangegangenen Abschnitt
+für Lie-Gruppen mit ihrer differenzierbaren Struktur auch wesentlich
+abstrakter für beliebige topologische Gruppen durchgeführt werden kann.
+Sie geht auf Alfred Haar zurück.
+
+\begin{satz}[Haar]
+\label{buch:gruppen:haar:satz:haar}
+Ist $G$ eine lokal kompakte, topologische Gruppe, dann gibt es ein
+translationsinvariantes Mass $\mu$ auf $G$, also ein Mass derart,
+dass 
+\[
+\int_G f(g)\,d\mu(g)
+=
+\int_G T_sf(g)\,d\mu(g)
+=
+\int_G f(s^{-1}g)\,d\mu(g)
+\]
+gilt für alle $s\in G$.
+Das Mass $\mu$ ist bis auf einen skalaren Faktor eindeutig bestimmt.
+\end{satz}
+
+Das im Satz~\ref{buch:gruppen:haar:satz:haar} definierte Mass
+heisst das {\em linksinvariante haarsche Mass}.
+Die Voraussetzung {\em lokal kompakt} ist eine Endlichkeitsbedingung,
+die unendlichdimensionale Gruppen ausschliesst.
+Sie verlangt, dass jeder Punkt eine kompakte Umgebung hat, dass also
+in der Nähe eines Punktes die Gruppe wie ein endlichdimensioinaler 
+Raum aussieht.
+
+Die Konstruktion, die auf Satz~\ref{buch:gruppen:haar:satz:haar}
+führt, kann auch für die Rechtstranslation mit $R_s$ durchgeführt
+werden.
+Es gibt also auf einer topologischen Gruppe auch ein bis auf einen
+skalaren Faktor eindeutig bestimmtes rechtsinvariantes Haarsches Mass,
+der Satz sagt aber nichts darüber aus, ob das linksinvariante und das
+rechtsinvariante Mass übereinstimmen.
 
 %
 % Unimodulare Gruppen
 %
 \subsection{Unimodulare Gruppen
 \label{buch:haar:subsection:unimodular}}
+Für eine abelsche Gruppe wie die Gruppe der reellen Zahlen
+oder $\mathbb{R}^n$ gibt es keinen Unterschied zwischen links- und
+rechtstranslation, daher sind auch die links- und rechtsinvarianten
+haarschen Masse identisch.
+Die Mittelungsoperation einer endlichen Gruppe ist sowohl rechts-
+als auch linksinvariant, selbst dann, wenn die Gruppe nicht abelsch
+ist.
+Für eine nicht kommutative Gruppe wie die Gruppe $\operatorname{SO}(3)$
+der Drehungen des Raumes dagegen ist es nicht mehr klar, dass 
+die rechts und linksinvarianten Masse gleich sein müssen.
+
+Sei $G$ eine Gruppe mit dem linksinvarianten Mass $\mu$.
+Dann ist $R_s\mu$ ebenfalls ein linksinvariantes Mass definiert
+durch das Integral
+\[
+\int_G f(g) \, dR_r\mu(g)
+=
+\int_G R_rf(g) \,d\mu(g)
+=
+\int_G f(gr)\,d\mu(g).
+\]
+Setzen wir darin $T_sf$ ein, zeigt sich, dass wegen
+\[
+\int_G T_sf(gr)\,d\mu(g)
+=
+\int_G f(s^{-1}gr)\,d\mu(g)
+=
+\int_G f(gr)\,d\mu(g)
+\]
+$R_r\mu$ ein linksinvariantes Mass ist.
+Nach dem Satz~\ref{buch:gruppen:haar:satz:haar} unterscheiden sich
+die beiden Masse um einen skalaren Faktor.
+
+\begin{definition}
+Es gibt eine Funktion $\delta\colon G\to \mathbb{R}$ derart, dass
+\[
+R_r \mu = \delta(r) \mu
+\]
+für $r\in G$
+ist.
+Die Gruppe $G$ heisst {\em unimodular}, wenn $\delta(r)=1$ ist für
+alle $r\in G$.
+\end{definition}
+
+Für eine unimodulare Gruppe unterscheiden sich die linksinvarianten
+und die rechtsinvarianten Masse also nicht.
+Abelsche Gruppen sind unimodular.
+Man kann auch zeigen, dass $\delta(r)$ ein Homomorphismus ist,
+was sich als ziemlich starke Einschränkung herausstellt.
+
+\begin{satz}
+Ist die lokalkompakte topologische Gruppe $G$ kompakt, dann ist
+sie unimodular.
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Funktion $\delta\colon G\to\mathbb{R}$ ist ein stetiger Homomorphismus.
+Als stetige Funktion hat sie auf dem kompakten Definitionsbereich $G$
+mindestens ein Maximum und ein Minimum.
+Wir bezeichen die Stellen des Maximums mit $g$.
+Wenn $\delta(g)>1$ wäre, dann wäre auch
+\[
+\delta(gg)
+=
+\delta(g)
+\delta(g)
+>
+\delta(g),
+\]
+der Wert an  der Stelle $gg$ wäre also grösser als das Maximum.
+Der Widersprich zeigt, dass das Maximum $\delta(g)=1$ sein muss.
+Analog sieht man ein, dass auch das Minimum von $\delta(g)=1$
+sein muss, dass also $\delta(r)=1$ ist.
+\end{proof}
+
+\begin{beispiel}
+Die Gruppe der Streckungen und Verschiebungen 
+\[
+G
+=
+\mathbb{R^+}\ltimes \mathbb{R}
+\]
+besteht aus Paaren $(s,t)$ mit der Verknüpfung
+\[
+(s_1,t_1)\cdot(s_2,t_2)
+=
+(s_1s_2,t_1 + s_1t_2).
+\]
+Die zweite Komponente im Produkt ist offensichtlich nicht symmetrisch
+in den beiden Indizes $1$ und $2$, die Gruppe $G$ ist nicht abelsch.
+Das inverse Element von $(s,t)$ ist $(s^{-1},-s^{-1}t)$, denn
+\begin{align*}
+(s,t)\cdot(s^{-1},-s^{-1}t)
+&=
+(ss^{-1}, t-ss^{-1}t)
+=
+(1,0)
+\\
+(s^{-1},-s^{-1}t)\cdot(s,t)
+&=
+(s^{-1}s,-s^{-1}t+s^{-1}t)
+=
+(1,0).
+\end{align*}
+Das linksinvariante haarsche Mass muss von der Form
+\[
+\int_G f(g) w(g)\,dg
+=
+\int_0^\infty \int_{-\infty}^\infty
+f(\sigma,\tau)
+w(\sigma,\tau)
+\,d\tau\,d\sigma
+\]
+sein.
+Die Linkstranslation mit $(s,t)$ ist 
+\begin{align*}
+\int_G f(h^{-1}g) w(g)\,dg
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f((s^{-1},-s^{-1}t)(\sigma,\tau)\,
+w(\sigma,\tau)
+\,d\tau
+\,d\sigma
+\\
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f(s^{-1}\sigma,-s^{-1}t+s^{-1}\tau)\,
+w(\sigma,\tau)
+\,d\tau
+\,d\sigma.
+\intertext{Wir schreiben $\sigma'=s^{-1}\sigma$ und
+$\tau'=-s^{-1}t+s^{-1}\tau$ oder gleichbedeutend
+$\sigma=s\sigma'$ und $\tau=s\tau'+t$ und bekommen
+}
+&=
+\int_{0}^\infty
+\int_{-\infty}^\infty
+f(\sigma',\tau')\,
+w(s\sigma',s\tau'+t)
+\,s\,d\tau'
+\,s\,d\sigma',
+\intertext{
+dabei wurde $d\tau = sd\tau'$ und $d\sigma=sd\sigma'$ verwendet.
+Linksinvarianz würde bedeuten, dass dieses Integral für
+alle Funktionen $f$ übereinstimmt mit}
+&=
+\int_{0}^\infty
+\int_{-\infty}^\infty
+f(\sigma',\tau')\,
+w(\sigma',\tau')\, s^2
+\,d\tau'
+\,d\sigma'.
+\end{align*}
+Es folgt, dass die Funktion $w$ die Funktionalgleichung
+\[
+w(s\sigma',s\tau'+t) = w(\sigma',\tau') s^2
+\]
+für alle $s$ und $t$ erfüllen muss.
+Daraus folgt zunächst, dass $w$ nicht vom zweiten Argument abhängt,
+und weiter, dass $w(s,t)=as^2$.
+
+Für die Rechtsinvarianz suchen wir eine Funktion $\tilde{w}(s,t)$ derart,
+dass
+\begin{align*}
+\int_0^\infty
+\int_{-\infty}^\infty
+f(\sigma,\tau)
+\,\tilde{w}(\sigma,\tau)
+\,d\sigma\,d\tau
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f((\sigma,\tau)\cdot(s,t))
+\,\tilde{w}(\sigma,\tau)
+\,d\sigma\,d\tau
+\\
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f(\sigma s,\tau +\sigma t)
+\,\tilde{w}(\sigma,\tau)
+\,d\sigma\,d\tau.
+\intertext{Wie vorhin verwenden wir die Substitution $\sigma'=s\sigma$ und
+$\tau' = \tau+\sigma t$ oder umgekehrt $\sigma=s^{-1}\sigma'$  und
+$\tau = \tau' - \sigma t = \tau' - s^{-1}t\sigma'$ und erhalten}
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f(\sigma',\tau')
+\,
+\tilde{w}(s^{-1}\sigma', \tau'-\sigma t)
+\,d\sigma\,d\tau.
+\\
+&=
+\int_0^\infty
+\int_{-\infty}^\infty
+f(\sigma',\tau')
+\,
+\tilde{w}(s^{-1}\sigma', \tau'-\sigma t)
+\,s^{-1}\,d\sigma'
+\,d\tau'.
+\end{align*}
+Dies muss für beliebige $(s,t)$ und beliebige Funktionen gelten,
+woraus man schliessen kann, dass $\tilde{w}$ die Funktionalgleichung
+\[
+\tilde{w}(\sigma',\tau')
+=
+\tilde{w}(s^{-1}\sigma', \tau'-s^{-1}\sigma't)\,s^{-1}
+\]
+Wieder folgt, dass $\tilde{w}$ nicht vom zweiten Argument abhängt, und
+die Abhängigkeit vom ersten Argument ist $\tilde{w}(s,t)=s$.
+
+Da die beiden Funktionen $w(s,t)$ und $\tilde{w}(s,t)$ verschieden sind,
+sind das rechtsinvariante und das linksinvariante Haarmass verschieden
+und die Gruppe $G$ ist nicht unimodular.
+\end{beispiel}
+
+Die Tatsache dass $\mathbb{R}^+\ltimes\mathbb{R}$ nicht kompakt
+und nicht abelsch ist, ist ist nicht ein ausreichender Grund zu
+schliessen, dass $G$ nicht unimodular sein könne.
+Wir werden später die Gruppe der Drehungen und Verschiebungen
+$\operatorname{SO}(2)\ltimes \mathbb{R}^2$ kennenlernen,
+die ebenfalls nicht abelsch und nicht kompakt aber trotzdem
+unimodular ist.

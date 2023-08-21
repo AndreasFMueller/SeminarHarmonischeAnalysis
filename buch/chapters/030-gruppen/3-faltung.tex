@@ -22,9 +22,95 @@ Funktionswerte auf verschiedenen Gruppenelemente miteinander verrechnen.
 
 %
 % Hall
-%
-\subsection{Hall
+% 
+\subsection{Hall und andere Phänomene
 \label{buch:gruppen:faltung:subsection:hall}}
+Wie verändern die Reflektionen des Schalls in einem Konzertsaal
+den Klang eines Musikinstruments?
+Das Instrument produziert Schallwellen, die sich als Druckschwankungen
+$f(t)$ ausbreiten.
+Die Wände und Einrichtungsgegenstände reflektieren dies auftreffenden
+Schallenwellen in unterschiedlichem Ausmass.
+Die Reflektionen treffen beim Zuhörer mit verschiedenen Verzögerungen ein.
+Das um $\tau$ verzögerte Signal ist $t\mapsto f(t-\tau)$.
+Ist $g(\tau)$ der Anteil des Signals, des mit Verzögerung $\tau$ beim
+Zuhörer eintrifft.
+Das gesamte vom Zuhörer wahrgenommene Signal ist daher die Überlagerung
+all dieser Signale, also
+\begin{equation}
+\int_{-\infty}^\infty
+g(\tau) 
+\,
+f(t-\tau)
+\,d\tau.
+\label{buch:gruppen:faltung:eqn:hall}
+\end{equation}
+Das Integral wird auch als die Faltung $g*f$ bezeichnet.
+
+Die Abbildung mit einem realen Objektiv ist nicht in der Lage,
+Punkte beliebig scharf abzubilden.
+Stattdessen wird jeder Punkt auf ein Fleck abgebildet, dessen Intensität
+mit zunehmender Entfernung vom idealen Bildpunkt abnimmt.
+Dafür ist die Wellennatur des Lichts über das Phänomen der Beugung
+verantwortlich.
+Wir beschreiben das ideal abgebildete Bild als Funktion
+$f\colon\mathbb{R}^2\to\mathbb{R}$.
+Die Funktion $g(\xi)$ mit $\xi\in\mathbb{R}^2$ beschreibt die
+Helligkeit des Flecks, der von einem Punkt erzeugt wird.
+Die Helligkeit in einem Punkt $x$ des Bildes setzt sich zusammen
+aus der Helligkeit $f(x-\xi)$ in Nachbarpunkten, gewichtet mit
+$g(\xi)$, also
+\begin{equation}
+g*f(x)
+=
+\int_{\mathbb{R}^2} f(x-\xi)\,g(\xi)\,d\xi.
+\label{buch:gruppen:faltung:eqn:pointspread}
+\end{equation}
+Die Funktion $g(\xi)$ heisst auch die {\em point spread function}.
+
+%
+% Faltung für Funktionen auf einer beliebigen Gruppe
+%
+\subsection{Faltung für Funktionen auf einer beliebigen Gruppe}
+Die Integrale \eqref{buch:gruppen:faltung:eqn:hall} und
+\eqref{buch:gruppen:faltung:eqn:pointspread} sind die Faltung
+der Fuktionen $f$ und $g$.
+Sie verwendet auf wesentliche Art die Gruppenstruktur des
+Definitionsbereichs $\mathbb{R}$ der Funktionen.
+Die Funktion $f(x-\xi)$ in \eqref{buch:gruppen:faltung:eqn:pointspread}
+betrachtet als Funktion von $x$ ist die um $\xi$ verschobene
+Funktion $T_\xi f(x)$.
+In der Bestrebung, das Integral als Skalarprodukt zu schreiben,
+dies als Funktion von $\xi$ ausgedrückt werden.
+
+\begin{definition}
+Zu einer Funktion $f\colon G\to X$ ist $\check{f}\colon G\to X$ die
+Funktion mit den Werten $\check{f}(g) = f(g^{-1})$.
+\end{definition}
+
+Mit dieser Definition kann man
+\[
+T_s f(g)
+=
+f(s^{-1}g)
+=
+\check{f}(g^{-1}s)
+=
+T_g\check{f}(s)
+\]
+schreiben und damit das Faltungsintegral als
+\[
+\int_G g(\xi) T_\xi f(x)\,d\xi
+=
+\int_G g(\xi) T_x \check{f}(\xi)\,d\xi
+=
+\langle g, T_x\check{f}\rangle
+\]
+In dieser Form verschwindet das Integral im Skalarprodukt.
+
+Die obenstehenden Vorbereitungen können verwendet werden als
+Ausgangspunkt für die Verallgemeinerung auf eine beliebige Gruppe
+in der folgenden Definition.
 
 \begin{definition}
 Die Faltung zweier Funktion $f,g\in C(G)$ ist die Funktion
@@ -38,7 +124,7 @@ Im Fall einer additiv geschriebenen, abelschen Gruppe wird die Faltung zu
 \begin{equation}
 (f*g)(x)
 =
-\int_G f(y)g(x-y)\,dy
+\int_G f(y)g(x-y)\,dy.
 \label{buch:gruppen:faltung:eqn:deffaltungadditiv}
 \end{equation}
 \end{definition}
@@ -160,7 +246,7 @@ Die Faltung von Funktionen auf $\mathbb{R}$ mit der Addition ist
 &=
 \int_{\mathbb{R}} f(y)g(x-y)\,dy
 \intertext{mit der Substitution $s=x-y$ wird daraus}
-=
+&=
 \int_{-\infty}^\infty f(x-s) g(s)\,ds
 =
 (g*f)(x).
@@ -174,6 +260,7 @@ Es gibt zwei Permutationen $\sigma$ und $\tau$, für die
 $\sigma\tau\ne \tau\sigma$ gilt.
 Wir berechnen die Faltung der beiden Funktionen 
 \[
+\raisebox{0.3cm}{$\displaystyle
 \delta_\sigma(x) 
 =
 \begin{cases}
@@ -186,8 +273,91 @@ Wir berechnen die Faltung der beiden Funktionen
 \begin{cases}
 1&\qquad \text{falls $x=\tau$}\\
 0&\qquad \text{sonst}
-\end{cases}
+\end{cases}$}
+\qedhere
 \]
 \end{beispiel}
+
+Man kann das auch noch etwas allgemeiner als in diesem Beispiel einer
+endlichen Gruppe zeigen.
+Dazu sei $G$ eine nichtabelsche Gruppe und $s,t\in G$ seien
+zwei verschiedene Elemente, die nicht vertauschen, für die
+also $st\ne ts$ ist.
+Da die Verknüpfung in der Gruppe stetig ist, gibt es eine kleine
+Umgebung $U$ des neutralen Elements derart, dass sich $sU$ und $tU$
+nicht schneiden und auch keine gemeinsamen Punkte mit $stU$ und $tsU$, die
+sich ebenfalls nicht schneiden.
+Und wenn nötig kann man die Umgebung immer noch kleiner machen.
+Sei ausserdem $f$ eine nichtnegative Funktion, deren Träger in $U$ enthalten
+ist.
+Wir rechnen jetzt nach, dass die Faltungen $T_sf*T_tf$ und $T_tf*T_sf$ 
+nicht gleich sein können, was beweist, dass das Faltungsprodukt
+nicht kommutativ sein kann.
+
+Zu diesem Zweck untersuchen wir, wo die Faltung
+\begin{equation}
+(T_sf * T_tf)(x)
+=
+\int_G
+T_sf(g) 
+T_tf(g^{-1}x)
+\,dg
+=
+\int_G
+f(s^{-1}g)
+f(t^{-1}g^{-1}x)
+\,dg
+\label{buch:gruppen:faltung:eqn:kommst}
+\end{equation}
+von $0$ verschieden sein kann.
+Der erste Faktor ist höchstens in der Umgebung $sU$ von $0$ verschieden,
+der zweite Faktor ist höchstens dann von $0$ verschieden, wenn
+$t^{-1}g^{-1}x$ in der Nähe des neutralen Elementes ist.
+Da $g$ in der Nähe von $s$ sein muss, ist $t^{-1}g^{-1}$ in der Nähe
+von $t^{-1}s^{-1}=(st)^{-1}$.
+Der zweite Faktor ist also höchstens dann von $0$ verschieden, wenn
+$x$ in der Nähe von $st$ ist.
+Der Träger der Faltung ist in einer Umgebung von $st$ enthalten.
+
+Die Gruppenelemente $s$ und $t$ kommen in der Faltung
+\eqref{buch:gruppen:faltung:eqn:kommst}
+und in der nachfolgenden Diskussion symmetrisch vor.
+Daraus folgt, dass die Faltung $T_sf*T_tf$ nur in einer Umgebung von $st$
+von $0$ verschieden ist, während $T_tf*T_sf$ nur einer davon diskunkten
+Umgebung von $ts\ne st$ von $0$ verschieden ist.
+Die beiden Funktionen $T_sf*T_tf$ und $T_tf*T_sf$ können daher
+nicht gleich sein, die Faltung ist nicht kommutativ.
+
+%
+% Rekonstruktion der Gruppenoperation aus der Faltung
+%
+\subsubsection{Rekonstruktion der Gruppenoperation aus der Faltung}
+Die Diskussion zeigt auch, dass die Verknüpfung in der Gruppe aus
+der Faltung rekonstruieren kann.
+Gegeben zwei Elemente $s,t\in G$ und Funktionen $f_n$,
+deren Träger in einer Umgebung des neutralen Elementes
+enthalten sind, und die für grösser werdendes $n$ schnell kleiner werden..
+Dann zeigt die Diskussion oben, dass der Träger der Faltung 
+$T_sf_{\varepsilon}*T_tf_{\varepsilon}$ in einer Umgebung von $st$
+enthalten sein muss.
+Der Träger von $T_sf_n*T_tf_n$ wird kleiner, je grösser man $n$ macht.
+Wählt man für jedes $n$ ein Element $g_n$ im Träger der Faltung,
+entsteht eine Folge in $G$, die gegen $st$ konvergiert.
+
+Statt die Gruppe und ihre Elemente zu studieren, kann man also die
+gleichen Informationen auch aus dem Studium der Faltung von Funktionen
+auf der Gruppe gewinnen.
+Der Vorteil des Zugangs über Funktionen auf der Gruppe besteht
+darin, dass Funktionen einen Vektorraum bilden, auf dem zwei
+verschiedene Multiplikationen definiert sind.
+Das Skalarprodukt sorgt aber auch dafür, dass die quadratintegrierbaren
+Funktionen einen Hilbertraum bilden.
+Diese zusätzlichen algebraischen Strukturelemente geben uns zusätzliche
+Werkzeuge in die Hand, die Gruppe zu studieren.
+
+
+
+
+
 
 

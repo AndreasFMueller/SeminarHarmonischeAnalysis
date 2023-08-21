@@ -1,5 +1,5 @@
 %
-% 02_Pitch_Tonsystem_und_Stimmung.tex
+% 01_Pitch_Tonsystem_und_Stimmung.tex
 %
 % (c) 2023 Florian Baumgartner, OST Ostschweizer Fachhochschule
 %
@@ -27,7 +27,7 @@ Im Rahmen dieser Arbeit wird der Kammerton A4 definiert als
 Die gleichstufige Stimmung ist das meist verbreitetet Stimmungssystem in der westlichen Musik, insbesondere bei Tasteninstrumenten.
 Es ist ein System, bei dem die Oktave in zwölf Halbtöne aufgeteilt ist,
 wobei das Frequenzverhältnis zwischen jedem Paar aufeinanderfolgender Töne gleich ist.
-Dieses Verhältnis ist die zwölfte Wurzel aus zwei ($\approx 1.05946$) und berechnet sich als
+Dieses Verhältnis ist die zwölfte Wurzel aus zwei ($\approx 1.05946$). Somit kann die Frequenz eines Tons $f_n$ berechnet werden als
 
 \begin{equation}
     f_n
@@ -36,11 +36,16 @@ Dieses Verhältnis ist die zwölfte Wurzel aus zwei ($\approx 1.05946$) und bere
     \quad | \quad
     n \in \mathbb{Z}.
 \end{equation}
-
 Der Vorteil der gleichstufigen Stimmung ist, dass sie in allen Tonarten gleich funktioniert, was bedeutet,
 dass ein Musikstück in jede Tonart transponiert werden kann, ohne dass sich die harmonischen Beziehungen zwischen den Tönen ändern.
 Ein Nachteil ist jedoch, dass die Intervalle (ausser Oktaven) nicht völlig rein sind, das heisst,
 sie weichen leicht von den einfachen ganzzahligen Frequenzverhältnissen ab, die in der reinen Stimmung verwendet werden.
+
+Im Anwendungsbereich von Auto-Tune wird praktisch ausschliesslich die gleichstufige Stimmung verwendet.
+Dies hat den einfachen Grund, dass in den Musik-Genres in welchen Auto-Tune verbreitet ist (Pop, Hip-Hop, Elektonische Musik, etc.), die gleichstufige Stimmung üblich ist.
+Somit lässt sich elegant eine Tabelle aus Referenzfrequenzen von gleichstufigen Tönen erstellen.
+Als Korrekturfrequenz wird dann die Frequenz des nächstgelegenen gleichstufigen Tons aus der Tabelle verwendet.
+
 
 \subsection{Reine Stimmung
 \label{autotune:subsection:reineStimmung}}
@@ -53,7 +58,7 @@ Allerdings bringt die reine Stimmung einige Probleme mit sich.
 Während sie innerhalb einer einzelnen Tonart sehr gut funktioniert, führt sie zu Unstimmigkeiten,
 wenn man versucht, zwischen verschiedenen Tonarten zu wechseln.
 Deshalb ist die reine Stimmung in der Praxis eher auf Streich- und Blasinstrumente beschränkt,
-bei denen die Musiker die Intonation von Noten anpassen können.
+bei denen die Musiker die Intonation anpassen können.
 
 In der Tabelle \ref{autotune:table:stimmung} werden die Frequenzen der Töne mit reiner Stimmung verglichen mit der gleichstufigen Stimmung.
 
@@ -78,19 +83,21 @@ In der Tabelle \ref{autotune:table:stimmung} werden die Frequenzen der Töne mit
     \label{autotune:table:stimmung}
 \end{table}
 
+
+\subsection{Schwebungen
+\label{autotune:subsection:schwebungen}}
 Es zeigt sich, dass teilweise grosse Abweichungen zwischen den Tönen der reiner und gleichstufiger Stimmung bestehen.
 In der gleichstufigen Stimmung kommt es beim Spielen von Kadenzen (z.B. Akkorden) zu Schwebungen.
-Dies kann gut anhand eines Beispiels, der c-g Quinte, gezeigt werden. Die Schwebung berechnet sich als
+Dies kann gut anhand eines Beispiels, der a-e Quinte, in einem a-dur gestimmten Tonsystem gezeigt werden. 
+Dabei teilen sich beim gleichstufig- und reingestimmten Interval beide den Grundton A4 = 440 Hz.
+Die Schwebung entsteht nun beim Zweitton E4 und berechnet sich als 
 
 \begin{equation}
-    \frac{f_{G4}}{f_{C4}}
+    f_\text{Schwebung}
     =
-    \frac{2^{\frac{10}{12}}\cdot f_{A4}}{2^{\frac{3}{12}}\cdot f_{A4}}
+    \left| \sqrt[12]{2^{7}} \cdot f_{A4} - \frac{3}{2} \cdot f_{A4} \right|
     =
-    2^{\frac{7}{12}}
+    f_{A4} \left| \sqrt[12]{2^{7}} - \frac{3}{2} \right|
     \approx
-    1.4983\;.
+    0.744\;\text{Hz}\;. 
 \end{equation}
-
-% TODO: Wie gross ist die Schwebung in Hz?
-
