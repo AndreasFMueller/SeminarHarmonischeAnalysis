@@ -1,7 +1,7 @@
 %
 % 01_NWP.tex -- Beispiel-File für das Paper
 %
-% (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+% (c) 2023 Dmitry Grigoriev, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
@@ -23,19 +23,19 @@ In diesem Fall sind die Werte der Funktion die Knoten des Gitters und Ableitunge
 
 Vorwärtsdifferenz:
 \begin{equation}
-\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t)}{\Delta{t}}
+\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t)}{\Delta{t}}.
 \label{spektral:equation1}
 \end{equation}
 
 Rückwärtsdifferenz:
 \begin{equation}
-\frac{du}{dt} = \frac{u(t) - u(t - \Delta{t})}{\Delta{t}}
+\frac{du}{dt} = \frac{u(t) - u(t - \Delta{t})}{\Delta{t}}.
 \label{spektral:equation2}
 \end{equation}
 
 Zentraledifferenz
 \begin{equation}
-\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t - \Delta{t})}{2\Delta{t}}
+\frac{du}{dt} = \frac{u(t + \Delta{t}) - u(t - \Delta{t})}{2\Delta{t}}.
 \label{spektral:equation3}
 \end{equation}
 
@@ -49,7 +49,7 @@ In einem zweidimensionalen kartesischen Koordinatensystem stellen die Gitterzell
     \label{spektral:fig:gittermodelle}
 \end{figure}
 
-Auf der Abbildung 16.1 sieht man, dass für eine 1d-Funktion werden viele Punkte für die Vorheraussage benötigt. In der 3-Dimensionen es sind die Millionen von Datenpunkten und, damit man eine gute Wetterprognose mit der Methode machen kann, werden höhe Rechnungsleistungen benötigt.
+Auf der Abbildung \ref{spektral:fig:gittermodelle} sieht man, dass für eine 1d-Funktion werden viele Punkte für die Vorheraussage benötigt. In der 3-Dimensionen es sind die Millionen von Datenpunkten und, damit man eine gute Wetterprognose mit der Methode machen kann, werden höhe Rechnungsleistungen benötigt.
 
 Ein Optimierung ist, die Prognosenfunktion auf eine andere Art zu aproximieren.
 
@@ -88,15 +88,16 @@ Dies trägt zur Erzielung physikalisch konsistenterer Simulationen bei.
 \item
 \textbf{Reduzierter Diffusionseffekt (Rauschen resistent):} Im Vergleich zu einigen gitterbasierten Methoden, die zur Stabilisierung numerischer Instabilitäten künstliche Diffusion einführen müssen, weisen spektrale Modelle oft einen geringeren Diffusionseffekt auf, was zu genaueren und detaillierteren Simulationen führen kann.
 \item
-\textbf{Adaptivität und Flexibilität:} Spektrale Modelle können auf verschiedene Geometrien und Randbedingungen angewendet werden und sind nicht auf regelmäßige Gitterstrukturen beschränkt. Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
+\textbf{Adaptivität und Flexibilität:} Spektrale Modelle können auf verschiedene Geometrien und Randbedingungen angewendet werden und sind nicht auf regelmäßige Gitterstrukturen beschränkt.
+Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
 \item
-\textbf{Einfachere Lösung:} Spektralen Modellen führen auf viel einfache algebraische Gleichungen.
+\textbf{Einfachere Lösung:} Spektrale Modelle führen auf viel einfachere algebraische Gleichungen.
 \end{itemize}
 
 \subsection{Kugelkoordinaten
 \label{spektral:subsection:kugelkoordinaten}}
 
-Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden. Siehe Abbildung 16.2
+Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden. Siehe Abbildung \ref{spektral:fig:sphericalcoords}
 
 \begin{figure}[h]
 	\centering
@@ -105,20 +106,17 @@ Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesi
     \label{spektral:fig:sphericalcoords}
 \end{figure}
 \pagebreak
-\begin{equation}
- x = r*\sin(\theta)*\cos(\phi)
+
+\begin{align}
+x &= r\cdot\sin(\theta)\cdot\cos(\phi)
 \label{spektral:equation4}
-\end{equation}
-
-\begin{equation}
- y = r*\sin(\theta)*\sin(\phi)
+\\
+ y &= r\cdot\sin(\theta)\cdot\sin(\phi)
 \label{spektral:equation5}
-\end{equation}
-
-\begin{equation}
- z = r*\cos(\theta)
+\\
+ z &= r\cdot\cos(\theta).
 \label{spektral:equation6}
-\end{equation}
-wobei |r| > 0 sein muss, sonst können $\theta$ und $\phi$ nicht definiert werden.
+\end{align}
+wobei $r > 0$ sein muss, sonst können $\theta$ und $\phi$ nicht definiert werden.
 
 

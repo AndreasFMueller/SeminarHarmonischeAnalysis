@@ -8,7 +8,7 @@ dependencies-autotune =							\
 	papers/autotune/main.tex					\
 	papers/autotune/references.bib					\
 	papers/autotune/00_Einleitung.tex				\
-	papers/autotune/01_Pitch_Detektion.tex				\
-	papers/autotune/02_Pitch_Tonsystem_und_Stimmung.tex		\
+	papers/autotune/01_Pitch_Tonsystem_und_Stimmung.tex		\
+	papers/autotune/02_Pitch_Detektion.tex				\
 	papers/autotune/03_Pitch_Korrektur.tex				\
 	papers/autotune/04_Fazit.tex

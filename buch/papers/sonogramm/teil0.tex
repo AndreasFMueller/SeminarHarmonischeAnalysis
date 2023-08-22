@@ -42,7 +42,7 @@ Verschieben wir $w_r(t)$ in der Zeit können wir mit
 \end{equation}
 ein beliebiges Zeitfenster von $x(t)$ extrahieren.
 
-So lässt ich nun die Fouriertransformation von einem M langen Abschnit
+So lässt ich nun die Fouriertransformation von einem T langen Abschnitt
 von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
     \mathscr{F}(x)(\omega, \tau) = \int_{\tau}^{\tau+T} x(t) w_r(t - \tau) e^{-i \omega t} dt
@@ -54,16 +54,16 @@ Die Funktionen sind nun nicht mehr abhängig von der Zeit $t$ sondern vom
 Index $n \in \mathbb{N}$.
 Das Rechteckfenster der Länge $L_w$ definieren wir mit
 \begin{equation}
-    w_r[n] = 
+    w_r(n) = 
     \begin{cases}
     1,& \text{wenn } 0 \le n < L_w-1\\
     0, & \text{sonst.}
     \end{cases}
 \end{equation}
 Die Fensterfunktion ist nun auch diskret und statt
-der Fouriertransformation wir die diskrete Fouriertransformation DFT
+der Fouriertransformation wir die diskrete Fouriertransformation (DFT)
 \begin{equation}
-    X[k, m] = \sum_{n = m}^{m + L - 1} x[n] w_r[n-m] e^{ -i \omega_k n}.
+    X(k, m) = \sum_{n = m}^{m + L - 1} x(n) w_r(n-m) e^{ -i \omega_k n}.
 \end{equation}
 
 \subsection{Spektogramm}
@@ -74,21 +74,28 @@ Dabei werden die Magnituden der einzelnen STFTs chronologisch
 als Spalten eines Bildes dargestellt.
 Dabei gehen Phaseninformationen verloren, was eine genaue Rekonstruktion
 des Signales aus dem Spektrogramm verunmöglicht.
+Es gibt auch die Möglichkeit, die Phaseninformationen in einem anderen Kanal im 
+Bild zu decodieren, und somit das Spektrogramm invertierbar zu machen.
+So kann man zum Beispiel ein Bild im HSV Farbraum erzeugen, wobei
+der H-Kanal die Phase und der V-Kanal die Amplitude darstellt.
 
 Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
 Signals.
-Bei der Frequenzmodulierung ist die momentane Frequenz des Trägersignales 
+Bei der Frequenzmodulierung \cite{sonogramm:NAT} ist die momentane Frequenz des Trägersignales 
 \begin{equation}
     x_{FM}(t) = A \cos\left( \omega_c t + k_f \int_{-\infty}^{t} m(\tau) d\tau\right)
 \end{equation}
 abhängig von der Amplitude des Nachrichtensignales $m(t)$.
-TODO Cite Kneubühler
-Diese Änderung der momentanen Frequenz lässt sich mit einem Spektrogramm gut Abbilden, 
-wie in Abbildung \ref{sonogramm:fmsono} dargestellt ist.
+Stellt man ein Frequenzmoduliertes Signal in einem Spektrogramm dar,
+sieht man $m(t)$ auf der Höhe von $\omega_c$, wie in Abbildung \ref{sonogramm:fmsono} mit 
+\begin{align}
+    m(t) = 1.5 \frac{\sin(23 \pi (t-0.5))}{23 \pi (t-0.5)}
+\end{align}
+und $\omega_c =2000\cdot 2\pi$ rad/s dargestellt ist.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/fm_sono_windows.pdf}
-    \caption{Spektrogramm eines Frequenzmodulierten Sinus cardinalis.
+    \caption{Spektrogramm eines mit einem Sinus cardinalis frequenzmodulierten Sinus.
     \label{sonogramm:fmsono}
     }
 \end{figure}
