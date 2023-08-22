@@ -27,25 +27,25 @@ Wir starten mit dem bekannten Integral der Fouriertransformation
 \end{equation}
 Jetzt gilt es, zwei Substitution durchzuführen
 \[
-    \left[
     \begin{aligned}
         -j\omega &= z
     \end{aligned}
-    \right]
 \]
 und
 \[
-    \left[
     \begin{aligned}
         t &= \ln x \\
         dt &= \frac{1}{x} dx
     \end{aligned}
-    \right]
 \]
 Eingesetzt in das Fourier-Integral ergibt sich
 \[
-    \int e^{z \ln x} \cdot f(\ln x) \,\frac{dx}{x} = \int e^{\ln x^z} \cdot f(\ln x) \,\frac{dx}{x}
-    = \int x^{z} \cdot f(\ln x) \,\frac{dx}{x} = \int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x
+    \begin{aligned}
+    \int e^{z \ln x} \cdot f(\ln x) \,\frac{dx}{x} 
+    &= \int e^{\ln x^z} \cdot f(\ln x) \,\frac{dx}{x} \\
+    &= \int x^{z} \cdot f(\ln x) \,\frac{dx}{x} \\
+    &= \int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x \\
+    \end{aligned}
 \]
 Nun gilt es bei der Substitution der Integrationsvariablen $t$ noch die neuen Grenzen zu berechnen
 \[
@@ -60,27 +60,38 @@ Dies führt auf das Integral
     \int\limits_{0}^{\infty} x^{z-1} f(\ln x) \,\mathrm{d}x
 \]
 Das nun bekannt vorkommen sollte, denn es entspricht exakt der Mellin-Transformation!
+\medskip
 
 Die Fouriertransformation einer Funktion ist also dasselbe wie die Mellin-Transformation derselben Funktion, welche aber
 mit dem natürlichen Logarithmus logarithmiert wurde, oder andersherumn, nimmt man das Argument einer Funktion 
-in den Exponent von $e$ $f(e^x)$ und fouriertransformiert diese, ergibt dies die Mellin-Transformation der Funktion $f(x)$.
-Dies ergibt zusätzlich Sinn, da die Exponentialfunktion eine Funktion von $\mathbb{R} \mapsto \mathbb{R^+}$ ist, ein 
+in den Exponent von $e \mapsto e^x$ und fouriertransformiert diese, ergibt dies die Mellin-Transformation der Funktion $f(x)$.
+Dies rührt daher, da die Exponentialfunktion eine Funktion von $\mathbb{R} \mapsto \mathbb{R^+}$ ist, 
 Gruppenhomomorphismus.
 Das ist eine erstaunliche Erkenntnis und lässt ein paar einfache Relationen zur Fourier- und Laplace-Transformation 
 formulieren.
 \begin{align*}
-    \mathcal{M}\{f(x)\}(z) &= \mathcal{F}\{f (e^{x}\}(jz) \\ \\
-    \mathcal{M}\{f(x)\}(z) &= \mathcal{L}\{f (e^{-x}\}(-z) + \mathcal{L}\{f (e^{x}\}(z) 
+    \mathcal{M}\{f(x)\}(z) &= \mathcal{F}\{f (e^{t})\}(jz) \\ \\
+    \mathcal{M}\{f(x)\}(z) &= \mathcal{L}\{f (e^{-t})\}(-z) + \mathcal{L}\{f (e^{t})\}(z) 
 \end{align*}
-Wie die Hintransformation, die in diesem Abschnitt hergeleitet wurde, kann auch die Rücktransformation der Mellin-Transformation gegen 
-Ende des letzten Abschnitts aus dieser Relation einfach hergeleitet werden, auch ohne Kenntnis der zugrundeliegenden Gruppentheorie.
+und
+\begin{align*}
+    \mathcal{M^{-2}}\{f(z)\}(x) &= \mathcal{F^{-1}}\{f (jz)\}(e^t) \\ \\
+    \mathcal{M^{-2}}\{f(z)\}(x) &= \mathcal{L}\{f (-z)\}(e^{-t}) + \mathcal{L}\{f (z)\}(e^{t}) 
+\end{align*}
+Aus diesen Relationen können also Hin- und Rücktransformationsformeln der Mellin-Transformation einfachst aus den Formeln der 
+Fourier- oder Laplacetransformation hergeleitet werden, ganz ohne Kenntnis der zugrundeliegenden Gruppen- 
+beziehungweise Gelfandtheorie.
+Auch überrascht nun gar nicht mehr, dass eigentlich alle Eigenschaften der Fouriertransformation übersetzt werden können, 
+was vorher im Kontext der abstrakten Gelfandtheorie vielleicht noch etwas undurchsichtig erschienen ist.
 
-In Theorie könnte die Mellin-Transformation also alle Aufgaben der in der modernen Welt allgegenwärtigen Fouriertransformation 
+In der Theorie könnte die Mellin-Transformation also alle Aufgaben der in der modernen Welt allgegenwärtigen Fouriertransformation 
 übernehmen. 
 Joseph Fourier hätte die Wärmeleitgleichung damals ebenso mit der Mellin-Transformation lösen können und ein Grossteil der modernen 
 Elektrotechnik könnte darauf basieren. 
-In der Praxis wäre diese aber bedeutend weniger handlich und intuitiv als die Fouriertransformation, deren Gleichungen etwas symmetrischer
-daherkommen. %und bei der man eine sehr genaue, physikalische Vorstellung des Frequenzraumes und deren Wirkung hat. -really?
+Aus diesem Vergleich offenbart sich aber auch die Schönheit der Fouriertransformation. 
+Durch die Symmetrie der Gruppen und dadurch der Transformationsgleichungen kommt diese extrem handlich und intuitiv daher und ist der 
+Mellin-Transformation in dieser Hinsicht wohl doch überlegen.
+Die Vorstellung der Fouriertransformation, als das Aus- und Einrollen eines Seiles in einer Seiltrommel ist in diesem Kontext einzigartig.
 
-Auch überrascht nun gar nicht mehr, dass eigentlich alle Eigenschaften der Fouriertransformation übersetzt werden können, 
-was vorher im Kontext der abstrakten Gelfandtheorie vielleicht noch etwas undurchsichtig erschienen ist.
+
+
