@@ -90,6 +90,8 @@ bei der Fouriertransformation ($e^{-j\omega t}$) enthalten sein, auf den hier ab
 %     (a \cdot b)^2 = a^2 \cdot b^2 \left(\frac{a}{b}\right)^2  = \frac{a^2}{b^2} 
 % \end{equation}
 Unsere Analysefunktionen müssen also vom Typ Potenzfunktion sein.
+% Zudem muss, damit eine Transformation existiert, sichergestellt sein, dass die Integrale der Transformation konvergieren.
+% Deshalb 
 % Die komplexe Exponentialfunktion $e^{j\omega_l t}$ ist orthogonal zu $e^{j\omega_k t}$, sofern $\omega_l \neq \omega_k$, da diese 
 % immer ein Skalarprodukt gleich Null haben wie sich leicht zeigen lässt
 % \begin{proof}
@@ -236,29 +238,38 @@ und dem Kehren des Vorzeichens vor der Integrationsvariable.
 \]
 Tatsächlich beruht diese Symmetrie der Hin- und Rücktransformation auf der zur Fouriertransformation gehörenden \emph{dualen} Gruppe.
 \begin{definition}
-    Die duale Gruppe einer Integraltransformation ist ...
+    Die duale Gruppe einer Integraltransformation charakterisiert den (dualen) Raum von denjenigen Funktionen, mit denen sich die ursprüngliche 
+    Funktion wieder zusammensetzen lässt.
 \end{definition}
-% Wichtig ist zu unterscheiden, dass sich der Satz \ref{buch:papers:mellin:teil2:satz:hom} auf das Faltungstheorem bezieht, und 
-% \emph{nicht} auf die Gruppenoperation des dualen Raums. <-- this probably gugus aber verwechslungsgefahr, Erklärungsbedarf?
-Untersucht man also, was die duale Gruppe der Fouriertransformation ist, also die Gruppe des Frequenzraums, kommt man auf die 
-Gruppe $(\mathbb{R},+)$, welche diesselbe ist wie die des Zeitraums!
-Aus diesem Grund sind die Transformationsintegrale diesselben, nämlich das Skalarprodukt der Gruppe $(\mathbb{R},+)$.
+Die Funktionen aus denen sich die ursprüngliche Funktion zusammenbauen lässt, beziehungsweise in die sie sich zerlegen lässt, 
+sind immer komplexe Exponentialfunktion und damit Frequenzen in einer Form. 
+Wie wir schon festgestellt haben, ist die Gruppenoperation von solchen Exponentialfunktionen immer die Addition \eqref{mellin:exp}.
+Das zweite Element der Gruppe, die Menge, ist dabei von der Variable abhängig, welche die Menge dieser Exponentialfunktionen charakterisiert.
+Bei den Fourierreihen beispielsweise war diese Variable Element der ganzen Zahlen $k \in \mathbb{Z}$.
+Das bedeutete, dass für jedes $k \in \mathbb{Z}$ eine solche Exponentialfunktion $e^{jkx}$ sowie ein Koeffizient existiert haben, 
+aus welchen sich die ursprüngliche, dort $2\pi$- periodische Funktion wieder zusammensetzen liess.
+Die Menge der dualen Gruppe war hier also die der ganzen Zahlen $\mathbb{Z}$. 
+Bei der Fouriertransformation ist die Variable $\omega \in \mathbb{R}$, somit ist auch die Menge der dualen Gruppe $\mathbb{R}$.
+Wir erinnern uns, dass die Fouriertransformation für Funktionen auf der Gruppe $(\mathbb{R},+)$ definiert ist. 
+Somit tritt bei der Fouriertransformation der seltene Fall auf, dass die Gruppe der Transformation diesselbe ist, wie die duale Gruppe!
+Aus diesem Grund sind die Transformationsintegrale diesselben, nämlich das normale Skalarprodukt der Gruppe $(\mathbb{R},+)$.
 Was also vielleicht vorher als selbstverständliche Symmetrie angesehen wurde, ist in Tat und Wahrheit nicht immer so.
 Will man nun die duale Gruppe der Mellin-Transformation bestimmen kommt es auf die Definition an. 
 
+% Wichtig ist zu unterscheiden, dass sich der Satz \ref{buch:papers:mellin:teil2:satz:hom} auf das Faltungstheorem bezieht, und 
+% \emph{nicht} auf die Gruppenoperation des dualen Raums. <-- this probably gugus aber verwechslungsgefahr, Erklärungsbedarf?
 Die duale Gruppe der Mellin-Transformation aus Gleichung \eqref{mellin:mellinu} ist ebenfalls, wie die der Fouriertransformation, die Gruppe 
 $(\mathbb{R},+)$.
-Das liegt auch daran, dass bei der Rücktransformation die Analysefunktion nicht mehr über $x$, sondern neu über die Variable des 
-Frequenzraums $u$ integriert wird. 
-Durch diesen feinen Unterschied, wandelt sich die Natur der Analysefunktion von einer Potenzfunktion in Richtung der Hintransformation zu 
-einer Exponentialfunktion in Richtung der Rücktransformation.
-Wie in der Fouriertheorie, erfolgt die Zerlegung einer Funktion in komplexe Exponentialfunktion, oder eben komplexe Schwingungen.
+Die Analysefunktion, die vorher noch Potenzfunktionen waren, wandeln nun bei der Rücktransformation ihre Natur zu ebenjenigen Exponentialfunktion
+der dualen Gruppe, da diese in dieser Richtung durch die Variable $u \in \mathbb{R}$ charakterisiert und darüber integriert wird.
+Wie in der Fouriertheorie, erfolgt die Zerlegung einer Funktion also in komplexe Exponentialfunktion, oder eben komplexe Schwingungen, die mit einem 
+Koeffizienten $\hat{f}(u)$, der aus der Hintransformation gewonnen wurden, multipliziert werden.
 Der kleine Unterschied ist dabei nur, dass die Variable $x$ der Funktion als Basis eben jener Exponentialfunktionen vorkommt, und nicht 
-im Exponent.
-% Was heisst das?
-Da wir nun verstehen, dass die duale Gruppe der Mellin-Transformation die Gruppe $(\mathbb{R},+)$ ist, können wir auf gleiche Weise wie 
-die Hintransformation konstruiert wurde, auch die Rücktransformation konstruieren.
-Dieses Mal müssen wir aber nichts Neues herleiten, denn die Analysefunktionen müssen diesselben sein, und das Skalarprodukt auf der 
+im Exponent, was der Tatsache beipflichtet, dass die Gewinnung der Transformation, also der Koeffizientenfunktion $\hat{f}(u)$, über Potenzfunktionen 
+(in abhängig von der Ortsvariable $x$) erfolgt ist.
+Da wir nun verstehen, dass die duale Gruppe der Mellin-Transformation nach Definition \eqref{mellin:mellinu} die Gruppe $(\mathbb{R},+)$ ist, 
+können wir auf gleiche Weise wie die Hintransformation konstruiert wurde, auch die Rücktransformation konstruieren.
+Dieses Mal müssen wir aber nichts Neues herleiten, denn die Analysefunktionen bleiben diesselben, und das Skalarprodukt auf der 
 Gruppe $(\mathbb{R},+)$ ist dasselbe wie bei der Fouriertransformation, das normale Skalarprodukt aus \eqref{mellin:skalaprodukt}. 
 Das Zusammensetzen dieser Bausteine sowie das Hinzumultiplizieren einer Skalierungskonstante liefert die Inversionsformel der 
 Mellin-Transformation
@@ -271,7 +282,9 @@ Gehen wir der Definition der Mellin-Transformation aus \eqref{mellin:mellin} nac
 was einer zusätzlichen Dämpfung oder Verstärkung der komplexen Exponentialfunktionen entspricht, ist die Menge der dualen Gruppe nun die gesamten 
 komplexen Zahlen $\mathbb{C}$.
 Weil dadurch die Variable des Mellin-Raums komplex ist, ist diese gewissermassen zweidimensional hinsichtlich des Real- und Imaginärteils. 
-Da bezüglich der Konvergenz des Transformationsintegrals nicht alle Werte von $\delta$ zulässig sind, bedeutet das, dass die Mellin-Transformation 
+Weil durch die zusätzliche Dämpfung oder Verstärkung der komplexen Exponentialfunktionen deren Betrag nicht länger $1$ ist, existiert die Transformation 
+nur für bestimmte Werte von $\delta$, für welche das Transformationsintegral noch konvergiert.
+Da bezüglich der Konvergenz des Transformationsintegrals nur bestimmte Werte von $\delta$ zulässig sind, bedeutet das, dass die Mellin-Transformation 
 für komplexe $z$ in einem Streifen der komplexen Zahlenebene existiert, auch \emph{Streifen der Analyzität} 
 \footnote{aus dem Englischen: strip of analyticity oder SOA} gennant.
 % pgfplot SOA und Integrationspfad entlang vertikaler linie
@@ -284,36 +297,9 @@ Integriert wird daraufhin über die Parallele der imaginäre Achse an der Stelle
     f(x) = \frac{1}{2\pi j} \int\limits_{\delta -j\infty}^{\delta +j\infty} x^{-z} \hat{f}(z) \,\mathrm{d}z
     \label{mellin:mellininv}
 \end{equation}
-Somit vervollständigt sich das Bild der Mellin-Transformation.
+Somit vervollständigt sich das Bild der Mellin-Transformation und fügt sich ein in bereits bekannte Integraltransformationen, wie Fourierreihen, 
+die Fourier- und Laplacetransformationen sowie deren diskrete Varianten, die DFT und z-Transformation.
 
 
-
-
-% Zum Abschluss dieses Abschnitts soll noch ein BLick auf die Rücktransformation der Mellin-Transformation geworfen werden.
-% Diese deckt sich grösstenteils
-% \begin{equation}
-%     f(x) = \frac{1}{2\pi j} \int\limits_{-\infty}^{\infty} x^{-z} \hat{f}(z) \,\mathrm{d}z
-%     \label{mellin:mellininv}
-% \end{equation}
-% Etwas anders als bei der Inversionsformel der Fouriertransformation ist, dass das sich Integral für Hin- und Rücktransformation leicht 
-% voneinander unterscheidet. 
-% Der Grund dafür liegt bei einem recht wichtigen , die duale Gruppe.
-% Dies liegt daran, dass bei der Fouriertransformation beide Variablen, die des Ortsraum und des Frequenzraumes, beide nebeneinander in 
-% der Exponentialfunktion stehen, während bei der Mellin-Transformation in der Analysefunktion die Variable des Ortsraums die Basis der 
-% Potenz bildet, die Variable des Bildraums den Exponent.
-% Das führt zu mehreren Asymmetrien der Transformationsrichtungen.
-% Die Grenzen der Rücktransformation gehen von $-\infty \rightarrow \infty$, da hier über $z$, die nicht an die Menge $\mathbb{R^+}$ 
-% gebunden ist, integriert wird. 
-% Aus dem selben Grund fällt das Mass der Hintransformation $x^{-1}$ weg.
-
-
-
-
-
-% Analysefunktionen zur Bestimmung der dualen Gruppe: Fourier & Mellin
-
-% Bem. Konvergenz und Scope
 % Beispiel Skaleninvarianz
-% Orthogonalität ausführen (Charaktere?)
-% Integralbegriff und Masstheorie?
 
