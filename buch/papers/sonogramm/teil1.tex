@@ -9,7 +9,7 @@
 \section{Unschärferelation
 \label{sonogramm:section:teil1}}
 \rhead{Unschärferelation}
-Wie bereits in der Einleitung des Kapitels angedeutet sind die zusätzlichen
+Wie bereits in der Einleitung des Kapitels angedeutet, sind die zusätzlichen
 zeitlichen Informationen nicht gratis. 
 Mit dem Aufteilen des ursprünglichen Signals in kurze Fenster bekommen wir eine
 verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
@@ -18,7 +18,7 @@ verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
 %     \Delta f = \frac{1}{T}
 % \end{equation}
 % wobei $T$ die zeitliche Länge der Fensterfunktion ist.
-Zusätzlich werden durch das abrupte Abschneiden des Signals mit dem Rechteck-fenster
+Zusätzlich werden durch das abrupte Abschneiden des Signals mit dem Rechteckfenster
 zusätzliche Frequenzen hinzugefügt. 
 Diese Effekte hängen mit der Unschärferelation zusammen, welche in Abschnitt
 \ref{buch:diskret:section:unschaerfe} genauer beschrieben ist.
@@ -32,11 +32,11 @@ Der Faltungssatz beschreibt
 \end{align}
 Das bedeutet, dass die Verwendung von Fensterfunktionen das Frequenzspektrum
 des Signals mit dem Frequenzspektrum der Fensterfunktion gefaltet wird.
-Die Fouriertransformation eines diskreten Rechteck-fensters ist 
+Die Fouriertransformation eines diskreten Rechteckfensters ist 
 \begin{equation}
     W_r(f) = \frac{\sin(2 \pi f  L_w / (2 f_s))}{\sin(2 \pi f / (2 f_s))} e^{-i 2 \pi f (L_w-1)/(2f_s)}
 \end{equation}
-mit $f_s$ als Abtastfrequenz.
+mit $f_s$ als Abtastfrequenz \cite{sonogramm:digsig}.
 % \begin{figure}
 %     \centering
 %     \includegraphics{papers/sonogramm/images/rect_time.pdf}
@@ -47,21 +47,23 @@ mit $f_s$ als Abtastfrequenz.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/rect_freq.pdf}
-    \caption{Frequenzspektrum eines ein Sekunden langes Rechteck-fensters mit Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
+    \caption{Frequenzspektrum eines ein Sekunden langes Rechteckfensters mit Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
     von $1/T$.
     \label{sonogramm:rectfreq}
     }
 \end{figure}
 In Abbildung \ref{sonogramm:rectfreq} sind zwei solche Frequenzspektren mit unterschiedlichen $L_w$ abgebildet.
 Ideal wäre ein einzelner Peak bei 0, dafür müsste jedoch das Fenster eine Länge von $\infty$ haben.
+
+\subsubsection{Leck-Effekt}
 Durch die Sprünge bei $n = 0$ und $n = L-1$ im Zeitbereich kommen zusätzliche Frequenzen dazu, der sogenannte
 Leck-Effekt.
 Diese unerwünschten Frequenzen werden durch die Faltung im Frequenzbereich zu den eigentlichen Frequenzen 
 geschoben.
 Abbildung \ref{sonogramm:leakageDemo} zeigt ein solches Spektrum eines Eintonsignals.
-Man sieht wie die Leck-Frequenzen, vor allem beim kürzeren Signal,
+Man sieht wie die Leckfrequenzen, vor allem beim kürzeren Fenster,
 sich über das ganze Spektrum verbreiten.
-Schwächere Frequenzen können dabei im Spektrum von Leck-Frequenzen von dominanten Frequenzen
+Schwächere Frequenzen können dabei im Spektrum von Leckfrequenzen von dominanten Frequenzen
 übertönt werden.
 Die schwächeren Frequenzen sind dann entweder nicht erkennbar, oder es entsteht ein Peak 
 bei einer falschen Frequenz. 
@@ -74,15 +76,16 @@ mit 20 Hz über eine und fünf Sekunden gesampled.
 Die Frequenz des Kosinus lässt sich mit einer Sekunde Messzeit nicht korrekt bestimmen, 
 da die Leck-Frequenzen vom Sinus zu dominant sind.
 
+\subsubsection{Frequenzauflösung}
 Die Breite des Hauptpeaks limitiert die Frequenzauflösung.
-Bei einem Rechteck-fenster ist dieser $2f_s/L_w$ Hz breit.
+Bei einem Rechteckfenster ist dieser $2f_s/L_w$ Hz breit.
 Sind zwei Frequenzen genügend nahe bei einander, überlappen sich die Hauptpeaks, und können
 nicht mehr unterschieden werden. 
 Zwei unterschiedliche Frequenzen können dadurch nur genau bestimmt werden wenn
 \begin{equation}
     \Delta f \geq \frac{1}{T_w},
 \end{equation}
-was beim Rechteck-fenster gleich der halben Hauptpeak-Breite ist.
+was beim Rechteckfenster gleich der halben Hauptpeakbreite ist.
 Die Annahme $\Delta f = 1/T_w$ ist jedoch mit Vorsicht zu gebrauchen, da $\Delta f$ je nach 
 Phase der beiden Harmonischen grösser sein muss.
 Abbildung \ref{sonogramm:freqdiffdemo} zeigt als Beispiel das Signal
@@ -108,8 +111,8 @@ was bedeutet, dass abhängig von $\varphi$ ein anderer Abschnitt des Signales ge
 Im Fall von $\varphi = \pi$ ist das gefensterte Segment genau zwischen zwei Nulldurchgänge
 vom Kosinus.
 Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit einem 
-Sinus-fenster multipliziert wurde. 
-Ein Sinus-fenster der Länge T ist ein 2T-periodischer Sinus, welcher nach T abgeschnitten wird.
+Sinusfenster multipliziert wurde. 
+Ein Sinusfenster der Länge T ist ein 2T-periodischer Sinus, welcher nach T abgeschnitten wird.
 Die Informationen über die eigentlichen Frequenzen müssen also in den Phasensprüngen bei den 
 Nulldurchgänen des Kosinus sein
 Geht $\varphi$ von $\pi$ gegen 0 kommt der Phasensprung ins Segment und, die eigentlichen Frequenzen
@@ -122,7 +125,7 @@ zuverlässige Resultate erzielen möchte.
     \centering
     \includegraphics{papers/sonogramm/images/RectWinHarmEx.pdf}
     \caption{Frequenzspektrum Sinus mit Frequenz 3.45 Hz, welcher mit einem T langen 
-    Rechteck-fenster zugeschnitten wurde.
+    Rechteckfenster zugeschnitten wurde.
     \label{sonogramm:leakageDemo}
     }
 \end{figure}
@@ -156,20 +159,21 @@ zuverlässige Resultate erzielen möchte.
     }
 \end{figure}
 
-\subsection{Andere Fensterfunktionen}
-Bis jetzt haben wir uns auf das Rechteck-fenster beschränkt.
+\subsection{Fensterfunktionen}
+\label{sonogramm:section:windows}
+Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
 Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
 es ist aber nicht immer das beste.
 
 Wie im vorherigen Abschnitt aufgezeigt, sind die Frequenzauflösung und 
 Leck-Frequenzen abhängig von der Fensterfunktion.
-Durch die abrupten Sprünge im Rechteck-fenster sind die Leck-Frequenzen 
+Durch die abrupten Sprünge im Rechteckfenster sind die Leck-Frequenzen 
 über ein weites Frequenzband sehr prominent.
 
 Um dies zu verbessern wäre es besser eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung 0 zu gehen. 
-Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteck-fenster einen 
+Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteckfenster einen 
 Peak bei $f = 0$ hat, aber mit $f \rightarrow \infty$ schneller
 gegen 0 geht.
 Ein Mass wie schnell das Frequenzspektrum einer Funktion gegen 0 geht, liefert
@@ -186,14 +190,15 @@ Da $(i f)^n X(f)$ Rücktransfomrierbar ist, gilt
 was zur Folge hat, dass $X(f)$ bei grösser werdenden $f$ mit mit $1/(f^n)$ gegen 
 0 gehen muss.
 
+\subsubsection{Gaussfenster}
 Eine bekannte $\infty$-mal stetige Funktion ist die gausssche Glockenkurve
 \begin{equation}
-    f(t) = e^{-\frac{t^2}{\alpha}}
+    f(t) = e^{-\frac{t^2}{\alpha}},
 \end{equation}
 wobei $\alpha$ ein frei wählbarer Parameter ist, welcher die Breite der Glocke 
 bestimmt.
-Damit wir sehen, wie sich ein Gauss-fenster auf das Signal auswirkt, brauchen wir
-die Fouriertransformation einer gaussschen Glocke.
+Damit wir sehen, wie sich ein Gaussfenster auf das Signal auswirkt, brauchen wir
+die Fourier-Transformation einer gaussschen Glocke.
 Diese berechnet sich mit 
 \begin{align}
     W_g(f) &= \int_{-\infty}^{\infty} e^{-\frac{t^2}{\alpha}} e^{- 2 \pi i f t}\, dt\\
@@ -212,16 +217,16 @@ breite gausssche Glocke in der Zeit ein schmales Frequenzspektrum hat.
 Das Deckt sich mit unseren Beobachtung bezüglich dem Zusammenhang der 
 Frequenzauflösung und der Länge eines Fensters.
 
-In Abbildung \ref{sonogramm:gausstime} sind zwei Gauss-fenster mit unterschiedlichen 
+In Abbildung \ref{sonogramm:gausstime} sind zwei Gaussfenster mit unterschiedlichen 
 $\alpha$ abgebildet.
 Da das Fenster einer STFT eine endliche Länge hat, müssen wir die gaussschen Glocken 
-mit einem Rechteck-fenster zuschneiden. 
-Somit wird es wieder Leck-Frequenzen geben, die aber je nach $\alpha$ viel kleiner sind
-als beim Rechteck-fenster, wie in Abbildung \ref{sonogramm:gaussfreq} zu sehen ist.
-Ausserdem sehen wir, dass die Hauptpeaks der Gauss-fenster breiter sind als der 
-Hauptpeak des Rechteck-fensters.
-Allgemein gilt das Rechteck-fenster als optimal bezüglich der Frequenzauflösung.
-Wir bezahlen also die Minimierung der Leck-Frequenzen mit einer kleineren Frequenzauflösung. 
+mit einem Rechteckfenster zuschneiden. 
+Somit wird es wieder Leckfrequenzen geben, die aber je nach $\alpha$ viel kleiner sind
+als beim Rechteckfenster, wie in Abbildung \ref{sonogramm:gaussfreq} zu sehen ist.
+Ausserdem sehen wir, dass die Hauptpeaks der Gaussfenster breiter sind als der 
+Hauptpeak des Rechteckfensters.
+Allgemein gilt das Rechteckfenster als optimal bezüglich der Frequenzauflösung.
+Wir bezahlen also die Minimierung der Leckfrequenzen mit einer kleineren Frequenzauflösung. 
 Mit einem passend gewählten $\alpha$ kann man somit die Fensterfunktion auf eine spezifische
 Anwendung optimieren.
 
@@ -236,32 +241,33 @@ Anwendung optimieren.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_freq.pdf}
-    \caption{Frequenzspektrum der Gauss-fenster von Abbildung \ref{sonogramm:gausstime}
-    mit einer Abtastfrequenz von 20 Hz. Zum Vergleich ist in schwarz das Spektrum eines Rechteck-fenster 
+    \caption{Frequenzspektrum der Gaussfenster von Abbildung \ref{sonogramm:gausstime}
+    mit einer Abtastfrequenz von 20 Hz. Zum Vergleich ist in schwarz das Spektrum eines Rechteckfenster 
     von der selben Länge.
     von $1/T$.
     \label{sonogramm:gaussfreq}
     }
 \end{figure}
 
-Nehmen wir das Signal \eqref{sonogramm:eq:sigLeck} und wenden statt dem Rechteck-fenster
-ein Gauss-fenster an, resultiert das Frequenzspektrum in Abbildung \ref{sonogramm:twoHarmGauss}.
+Nehmen wir das Signal \eqref{sonogramm:eq:sigLeck} und wenden statt dem Rechteckfenster
+ein Gaussfenster an, resultiert das Frequenzspektrum in Abbildung \ref{sonogramm:twoHarmGauss}.
 Der Kosinus lässt sich somit beim kürzeren Signal genauer bestimmen.
 $\alpha$ musste dabei sorgfältig gewählt werden, da bei einem zu kleinen $\alpha$ die 
-Frequenzauflösung zu klein gewesen wäre, und bei einem zu grossen $\alpha$ die Leck-Frequenzen
+Frequenzauflösung zu klein gewesen wäre, und bei einem zu grossen $\alpha$ die Leckfrequenzen
 noch immer dominiert hätten.
 
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/twoHarmGauss.pdf}
     \caption{Frequenzspektrum des Signals \eqref{sonogramm:eq:sigLeck} mit
-    einem Gauss-fenster. Das Spektrum ist bei den Frequenzen, welche nicht im Signal vorkommen
+    einem Gaussfenster. Das Spektrum ist bei den Frequenzen, welche nicht im Signal vorkommen
     nun beinahe bei 0.
     \label{sonogramm:twoHarmGauss}
     }
 \end{figure}
 
-Das Gauss-fenster ist eine von vielen Fensterfunktionen. 
+\subsubsection{Andere Fensterfunktionen}
+Das Gaussfenster ist eine von vielen Fensterfunktionen. 
 Eine beste Fensterfunktion gibt es nicht, denn jede hat ihre Vor- und Nachteile, welche
 je nach Anwendung anders gewichtet werden.
 Für interessierte Leser bietet \cite{sonogramm:wikiWin} eine 
