@@ -6,53 +6,156 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Mathematische Grundlagen
 \label{wavelets:section:teil1}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+
+\subsection{Diskrete Fouriertransformation (DFT)
+\label{wavelets:subsection:DFT}}
+Um die CWT richtig nachvollziehen zu können lohnt es sich vorab mit dem klassischen Modell der diskreten Fourier Transformation
+
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{wavelets:equation1}
+	X(k)=\frac{1}{N}\sum_{n=0}^{N-1}x(n)\cdot e^{-j\frac{2\pi}{N}\cdot n}
+	\label{wavelets:equation1}
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+ 
+(DFT) auseinanderzusetzen. Hierbei beschreibt $X(k)$  das fouriertransformierte Signal in Abhängigkeit der Frequenz $k$.
+Die Funktionsweise lässt sich aus der Gleichung direkt ableiten.
+Ein Signal $x(n)$ wird an jeder diskreten Stelle $x(n)$, wobei $n$ ganze Zahlen von $0-N$ beschreibt, mit der Exponentialfunktion \[e^{-j\frac{2\pi}{N}\cdot k\cdot n}\] verrechnet.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Die Expontialfunktion kann auch mit
 
-\subsection{De finibus bonorum et malorum
-\label{wavelets:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{wavelets:equation1}.
+\begin{equation}
+	cos(\frac{2\pi}{N}kn)-j\cdot sin(\frac{2\pi}{N}kn)
+	\label{wavelets:equation2}
+\end{equation} 
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{wavelets:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{wavelets:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+beschrieben werden. Das Minuszeichen bestimmt nur den Umlaufsinn des komplexen Einheitsvektors im Einheitskreis.
+Es wird also ein Signal an jeder Stelle $x(n)$ mit der komplexen Exponentialfunktion für die betrachtete Frequenz $k$ verrechnet und das über alle Punkte $x(n)$ für $n=0,1,2,...N$. Die resultierende Summe wird dann über die Anzahl verrechneter Punkte geteilt, was dem arithmetischen Mittelwert entspricht.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.49\textwidth]{papers/wavelets/images/2_DFT1.png}
+	\includegraphics[width=0.49\textwidth]{papers/wavelets/images/2_DFT2.png}
+	\caption{Darstellung zur Funktionsweise der DFT}
+	\label{wavelet:fig:2_DFT1&2}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{papers/wavelets/images/3_AmplitudengangExtraktionDFT.png}
+	\caption{Erzeugung des Amplitudenganges bei der DFT. Extraktion der vorhandenen Sinusanteile (blau) aus dem Zeitsignal (rot) }
+	\label{wavelet:fig:AmplitudengangExtraktionDFT}
+\end{figure}
+
+Anstatt der \[cos(\frac{2\pi}{N}kn)-j\cdot sin(\frac{2\pi}{N}kn)\] Funktion kann man sich im 2D vereinfacht die Verrechnung des Wertes $x(n)$ an der Stelle n mit dem $sin(\frac{2\pi}{N}kn+\phi)$ vorstellen (wobei $\phi$, die Phasenverschiebung des Sinuses beschreibt, was in der Formulierung oben mittels dem Cosinus Anteil gemacht wird). Wenn nun das Signal die Sinusfunktion in sich trägt wie in Abbildung \ref{wavelet:fig:2_DFT1&2}, kommt es zu einer Überdeckung und dementsprechend hoher Aufsummierung, was einem Amplitudenausschlag auf der entsprechenden Frequenz ergibt (Abbildung \ref{wavelet:fig:AmplitudengangExtraktionDFT}). Im Gegensatz dazu werden Anteile von anderen Frequenzen oder zufallsverteilte Anteile durch der ständigen Wechsel von plus und minus in der Summe gegen Null gehen. Mit diesem Prinzip kann die DFT die Frequenzanteile ermitteln.
+An der Stelle soll noch der Link zwischen Frequenzspektrum (Autospektrum) und Frequenzgang (englisch Frequency Response Function FRF gemacht werden):
+
+\begin{itemize}
+	\item Beim Autospektrum handelt es sich lediglich um die Fouriertransformierte eines Signales, meistens des Ausgangssignals.
+	\item Wohingegen der FRF die Übertragungsfunktion zwischen Eingang und Ausgang beschreibt. D.h. dabei wird der Quotient aus der Fouriertransformierten des Ausgang $Y$ über dem ebenfalls transformierten Eingang $X$ gebildet. \[FRF = \frac{FFT(Y)}{FFT(X)}\]
+	Dieses Verhältnis von der Antwort zur Erregung lässt eine eindeutige Bestimmung der Resonanzen und des Phasenverlauf zu.
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\textwidth]{papers/wavelets/images/4_FRF_iso.png}
+	\caption{3D-Darstellung eines Frequenzganges aus einem gemessenen Eingang (Shakersignal) und Antwort (Piezo-Sensor an einer Struktur).}
+	\label{wavelet:fig:FRF_iso}
+\end{figure}
+
+Die 3D-Abbildung\ref{wavelet:fig:FRF_iso} zeigt einen FRF. Dabei können seine Bestandteil nachvollzogen werden.
+
+\begin{itemize}
+	\item Der Realteil (Re) entspricht dem auf die reale Ebene abgebildete Projektion des FRF. Der Re geht in der Resonanz auf Null, d.h. alle Energie liegt im Imaginärteil (Im). Ausserdem kann die Resonanz am vorhanden Phasensprung im Re abgelesen werden.
+	\item Der Imaginärteil des FRF ist analog die Projektion auf die imaginäre Ebene , hier lassen sich eindeutig die Resonanzfrequenzen auslesen, weil das System in Resonanz um 90° Phasenverschoben ist zur Phase der Anregung.
+	\item Die Ortskurve ist die auf den Einheitskreis abgebildete Projektion des FRF. Anhand der Ortskurve kann der Verlauf der Phase nachvollzogen werden.
+\end{itemize}
+
+\subsection{kontinuierliche Wavelettransformation (CWT) - anhand des Morlet Wavelet
+	\label{wavelets:subsection:CWT}}
+Wird ein Signal $f(t)$ wavelettransformiert, kann das mit
+
+\begin{equation}
+	W_{a,b}=\langle f \; , \; \psi_{a,b} \rangle = \frac{1}{\sqrt{a}}\int_{-\infty}^{\infty} f(t)\cdot\psi\left(\frac{t-b}{a}\right) dt
+	\label{wavelets:equation3}
+\end{equation}
+wobei
+\[\psi_{a,b}(t)=\psi\left(\frac{t-b}{a}\right)\]
+
+beschrieben werden. Was sofort auffällt ist, dass man nun zwei unabhängige Variablen besitzt. Zum einen ist das die Frequenzskalierung a, so genannt weil mit diesem Faktor das Mutterwavelet gedehnt oder komprimiert wird, man somit die Frequenz des Wavelets festgelegt. Zum anderen die Verschiebung b (auf der Zeitachse), also wo das Wavelet sich zeitlich befindet (Abbildung \ref{wavelet:fig:5_WaveletKompUndShift}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{papers/wavelets/images/5_WaveletKompUndShift.png}
+	\caption{Darstellung der Wavelet Komprimierung a und der Verschiebung b}
+	\label{wavelet:fig:5_WaveletKompUndShift}
+\end{figure}
+
+Hierbei handelt es sich um einen Kernpunkt der Anwendung der Wavelet Transformation, ihre grosse Stärke ist nämlich die zeitlich exakte Auflösung. Um der Wavelet Transformation die gleiche Maske wie der DFT zu geben, kann man
+
+\begin{equation}
+	W_{a,b}=\sum_{a=f_0}^{a_n}\sum_{b=0}^{b_m}\frac{1}{N(a)}\sum_{n=0}^{N-1} x(n)\cdot\psi\left(\frac{t-b}{a}\right)
+	\label{wavelets:equation4}
+\end{equation}
+
+als Summenformel nachvollziehen. Die Formel deutet an, dass der Berechnungsaufwand deutlich ansteigen wird, sofern mit hoher Frequenz und Zeitauflösung gerechnet wird (mehr dazu in der Programmierung).
+Die Thematik von Frequenz und Zeitauflösung ist ein Kernthema in der Signalanalyse und bei der DFT (analog FFT) kann entweder die Zeit oder die Frequenz genau aufgelöst werden. Beides zusammen ist an sich nicht möglich (was mit der Unschärferelation zusammenhängt), ausser man bedient sich gewisser Kniffe, beispielsweise Zeropadding (was an der Stelle nicht weiter vertieft wird). Dieses konträre Verhalten kann relativ einfach mit folgender Überlegung nachvollzogen werden.
+Um eine Frequenzauflösung von 0.1 Herz zu erhalten, braucht es mit $f=1⁄T$ eine Zeitperiode von 10s, was einer sehr guten Frequenzauflösung entspricht, handkehrum bekommt man auch immer nur für die Periode von 10 Sekunden eine zeitliche Information. Wenn bei dieser Auflösung bestimmt werden soll ob es nach 1, 4 oder 10 Sekunden zum Event kam, kann man das nicht sagen. Natürlich gibt es auch hier mit Hilfe von Signalüberlappung Wege dagegen zu wirken, aber die Problematik bleibt bestehen (Abbildungen \ref{wavelet:fig:FFTAufloesung} und \ref{wavelet:fig:AufloesungZeitVsFrequenz}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.2\textwidth]{papers/wavelets/images/6-1_FFTAufloesung.png}
+	\caption{Schematische Darstellung der Unschärfeproblematik, entweder wird die Zeit oder die Frequenzgenauigkeit verfeinert (dargestellt anhand er beiden Achsrichtungen)}
+	\label{wavelet:fig:FFTAufloesung}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{papers/wavelets/images/6-2_AufloesungZeitVsFrequenz.png}
+	\caption{Unschärfeproblematik dargestellt an der FFT mit einem Hanning-Fenster. Im obersten Plot pro Gruppe ist jeweils das Zeitsignal das mit dem darunter liegenden Fenster verrechnet wird. Im untersten Plot der Gruppe ist der zugehörige Amplitudengang abgebildet. Mit grün hinterlegt ist die Ausgangsauswertung mit einer Fensterbreite von 1s, was einer Frequenzauflösung von 1Hz entspricht. Der Weg a beschreibt die Möglichkeit der Signalüberdeckung (also das verhindern von Informationsverlust), die Fensterbreite bleibt dabei 1s. Der Weg b stellt die Auswertung mit einem Fenster der breite $1/5$ s dar (5Hz Auflösung). Die zeitliche Auflösung kann dadurch deutlich verbessert werden. Am Amplitudengang ist aber die schlechtere Frequenzauflösung an den breiter werdenden Peaks zu erkennen.}
+	\label{wavelet:fig:AufloesungZeitVsFrequenz}
+\end{figure}
+
+Das Wavelet dagegen besitzt die Eigenschaft, dass sowohl zeitlich als auch auf der Frequenz zugleich eine hohe Auflösung erzielt werden kann. Den man besitzt sowohl in der Skalierung als auch in der Verschiebung einen freien Parameter. Wie bereits erwähnt geht das aber Hand in Hand mit einem hohen Berechnungsaufwand, sofern beides hoch aufgelöst werden soll. Ausserdem unterliegt das Wavelet durch seine endliche Energie Formulierung einer gewissen Verschmierung bei der Transformation ins Frequenzspektrum. Die Frequenzdifferenzierung im Amplitudengang ist nicht mit der gleichen Qualität wie bei der FFT zu erreichen. Die zeitliche Auflösung und die Detektion von zeitlichen Veränderungen durch das Wavelet ist hingegen fantastisch Abbildung \ref{wavelet:fig:CWTAufloesungRadix2}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.2\textwidth]{papers/wavelets/images/6-3_CWTAufloesungRadix2.png}
+	\caption{Schematische Darstellung der Auflösungsmöglichkeit bei der Wavelettransformation. Zeit und Frequenz können nach freiem belieben aufgelöst werden (separate Parameter), im der Darstellung verdeutlicht an einer Radix 2 Filterbank. Die Idee dahinter, das bei tiefen Frequenzen bedingt durch die Wellenlänge eine schlechtere Zeitauflösung genügt und erst bei kurzen Wellenlängen (hoher Frquenz) eine höhere zeitliche Auflösung benötigt wird.}
+	\label{wavelet:fig:CWTAufloesungRadix2}
+\end{figure}
+
+Das Mutter-Wavelet $\psi\left(\frac{t-b}{a}\right)$ kann ganz verschiedene Funktionen besitzen Abbildung \ref{wavelet:fig:MutterwavletTypen}, welche aber zwei Vorgaben einhalten müssen:
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{papers/wavelets/images/6-4_MutterwavletTypen.png}
+	\caption{Beispiele von verschiedenen Mutterwavelettypen.}
+	\label{wavelet:fig:MutterwavletTypen}
+\end{figure}
+
+\begin{itemize}
+	\item Der Mittelwert des Wavelet muss Null sein, ansonsten würde das Signal bei der Verrechnung durch das Wavelet gewichtet.
+	\item Das Wavelet muss eine endliche Energie $||\psi||_2<\infty$ besitzen. Als Konsequenz aus Cauchy-Schwarz muss \[\int_{-\infty}^{\infty} f(t)\cdot\psi\left(\frac{t-b}{a}\right) dt\] einen endlichen Wert besitzen. Im Gegensatz dazu hat beispielsweise ein reiner Sinus bei dieser Integration einen unendlichen Wert. In dieser Bedingung versteckt sich gerade auch noch eine weitere Eigenschaft welche Wavelettransformation gegenüber der herkömmlichen Fourier Transformation besitzt. Die Gewichtung wird vom Wavelet selbst und nicht über die Verrechnung mit einer Fensterfunktion getätigt.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+%\subsection{De finibus bonorum et malorum
+%\label{wavelets:subsection:finibus}}
+%blabla \eqref{wavelets:equation1}.
+
+%Et harum quidem rerum facilis est et expedita distinctio
+%\ref{wavelets:section:teil2}.
+%test
+%\ref{wavelets:section:teil3}.
+
 
 
