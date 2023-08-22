@@ -170,12 +170,15 @@ In vielen Bereichen entspricht ein solch deterministisches System  nicht der Rea
 
 Ein gutes Beispiel dafür ist folgendes System:
 \begin{equation}
-	\frac{dx}{dt} = - y
+	\frac{dx}{dt} = - y 
+\end{equation}
+	
+\begin{equation}
 	\frac{dy}{dt} = x^2 + y
 	\label{divergentEquation}
 \end{equation}
 
-In der Abbildung~\ref{divergentAndConvergentSystem} sind zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet, welches durch die Gleichung~\ref{divergentEquation} gegeben ist. In rot ist der Verlauf im Intervall  t = [0,3] mit dem Startwert (-1.7, -1.4) gegeben und in grün mit dem Startwert (-1.8, -1.4).
+In der Abbildung~\ref{divergentAndConvergentSystem} sind zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet, welches durch die Gleichung~\ref{divergentEquation} gegeben ist. In rot ist der Verlauf im Intervall  $ t = [0, 3] $ mit dem Startwert $ (-1.7, -1.4) $ gegeben und in grün mit dem Startwert $ (-1.8, -1.4) $.
 
 \begin{figure}
 	\centering
@@ -184,11 +187,9 @@ In der Abbildung~\ref{divergentAndConvergentSystem} sind zwei unterschiedliche T
 	\label{divergentAndConvergentSystem}
 \end{figure}
 
-Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den System-Verlauf auswirken kann. In diesem speziellen Fall konvergieren die Lösung mit grösserem $t$ wieder. Bedenkt man nun, dass eine solch kleine Variation durch stochastisches Rauschen erzeugt werden könnte, scheint es unsinnig eine fixe Lösung für ein solches System anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung hinzuweisen oder sogar den Lösungsraum genauer zu spezifizieren.
+Dieses System veranschaulicht schön, wie sich eine kleine Störung der Startbedingung auf den Verlauf der Lösung auswirken kann. In diesem speziellen Fall konvergieren die Lösung zu einem späteren Zeitpunkt $ t $ wieder. Bedenkt man nun, dass eine solche Störung durch Rauschen herbeigeführt werden könnte, scheint es unsinnig eine einzige fixe Lösung für ein solches System anzugeben - zumindest nicht ohne auf die Aussagekraft der Lösung unter Rauscheinfluss hinzuweisen oder den Lösungsraum genauer zu spezifizieren.
 
 
-Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen (sogenannte bistabile Systeme) und dem entsprechend komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein zufällige Störungen des Systems nicht zu berücksichtigen.
-
-Andere Systeme beinhalten eine zufällige Komponente, welche nicht vernachlässigt werden soll.
+Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen und komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein, zufällige Störungen des Systems nicht zu berücksichtigen. Andere Systeme beinhalten selbst eine zufällige Komponente, welche nicht vernachlässigt werden soll.
 
 Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von zufälligen Störungen beim Aufstellen eines Modells miteinbeziehen (in diesem Fall \textit{white noise}). Anstatt eine fixe Lösung zum Zeitpunkt $ t $ anzugeben, kann man eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände angeben - et. voilà, man hat den Lösungsraum einer stochastische Differenzialgleichung (SDGL).

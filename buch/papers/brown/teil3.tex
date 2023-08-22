@@ -10,16 +10,17 @@
 \section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
 \rhead{Stochastische DGL}
 
-Formal kann eine stochastische DGL folgendermaßen notiert werden, 
+Formal kann eine stochastische DGL folgendermaßen notiert werden: 
 
 \begin{equation}
 	\label{brown:SDGL:whiteNoise}
 	\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-wobei $ B $ eine $ n $ x $ m $ Matrize mit Faktoren ist, welche beschreiben, wie sich Störungen auf die unterschiedlichen inneren Zustände des Systems auswirken. $ m $ ist demzufolge die Dimension der Störfunktion. In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $ \xi(t) $ modelliert.
-
-$ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand / jede Dimension des Systems. $ B $ ist die Dispersionsmatrix und beschreibt wie sich das $m$-dimensionale Rauschen auf das $n$-dimensionale System auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander. Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
+In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $ \xi(t) $ modelliert.
+$ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander.
+$ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand / jede Dimension des Systems.
+Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
 
 \begin{align*}
 	b = 
@@ -44,20 +45,16 @@ Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t
 	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
-Nun sollte man mit $ dt $  multiplizieren, weil die Gleichung sonst nicht sinnvoll ist, denn $ \frac{dW(t)}{dt} $ ist nicht klar differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufalls variable in jedem Schritt dem Erwartungswert und der Varianz entsprechend, ohne dabei von vorhergehenden Werten abzuhängen. Dieses unstetige verhalten ist nicht auf Grund (nicht definierter) Änderungsraten nicht differenzierbar.
-! Überarbeiten, nicht differenzierbar? ?erweitern? ! 
+Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
 
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen.
+Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
 
 \begin{equation}
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
 \end{equation}
 
-%In dieser Form erkennt man auch besser, dass die SDGL aus zwei Teilen besteht. Der Term $ b((X(t)) $ ist der \glqq{}Drift\glqq{}-Term, der den deterministischen Teil der Bewegung darstellt, während $ B((X(t)) $ der \glqq{}Diffusions- oder Volatilitäts-Term\glqq{} ist, der den stochastischen Teil der Bewegung darstellt.
 
-% So kommt man auf die ITO-sche Kettenregel????
-
-Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den Ausschnitt des zufällig beeinflussten Prozesses beliebig gross oder klein wählen kann und die keinen Einfluss auf die Eigenschaften des beobachteten Verhalten hat.
+%Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den Ausschnitt des zufällig beeinflussten Prozesses beliebig gross oder klein wählen kann und die keinen Einfluss auf die Eigenschaften des beobachteten Verhalten hat.
 
 
 \subsection{Simulation mittels der Euler-Maruyama-Methode
