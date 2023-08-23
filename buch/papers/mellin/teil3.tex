@@ -32,36 +32,28 @@ Wir starten mit dem bekannten Integral der Fouriertransformation
     \label{mellin:fourier}
 \end{equation}
 Jetzt gilt es, zwei Substitution durchzuführen
-\[
-    \begin{aligned}
-        -j\omega &= z
-    \end{aligned}
-\]
+\begin{align*}
+    -j\omega &= z
+\end{align*}
 und
-\[
-    \begin{aligned}
-        t &= \ln x \\
-        \mathrm{d}t &= \frac{1}{x} \mathrm{d}x
-    \end{aligned}
-\]
+\begin{align*}
+    t &= \ln x \\
+    \mathrm{d}t &= \frac{1}{x} \mathrm{d}x
+\end{align*}
 Eingesetzt in das Fourier-Integral ergibt sich
-\[
-    \begin{aligned}
-    &\int e^{z \ln x} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
+\begin{align*}
+    \int e^{z \ln x} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x}
     = &\int e^{\ln x^z} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
     = &\int x^{z} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
     = &\int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x \\
-    \end{aligned}
-\]
+\end{align*}
 Nun gilt es bei der Substitution der Integrationsvariablen $t$ noch die 
 neuen Grenzen zu berechnen
-\[
-    \begin{aligned}
-        &e^{t} &= x \\
-        &e^{-\infty} &\rightarrow 0 \\
-        &e^{\infty} &\rightarrow \infty 
-    \end{aligned}
-\]
+\begin{align*}
+    e^{t} &= x \\
+    e^{-\infty} &\rightarrow 0 \\
+    e^{\infty} &\rightarrow \infty 
+\end{align*}
 Dies führt auf das Integral
 \[
     \int\limits_{0}^{\infty} x^{z-1} f(\ln x) \,\mathrm{d}x

@@ -62,7 +62,9 @@ die Gruppenoperation in die Multiplikation überführen können.
     Dafür braucht es Funktionen, welche die Gruppenoperation in eine 
     \textbf{Multiplikation} überführt. 
     \[
-        f(x \diamond y) = f(x) \cdot f(y),
+        f(x \diamond y) 
+        = f(x) \cdot f(y)
+        ,
     \]
     wobei $\diamond$ der Gruppenoperation enstpricht.
 \end{satz}
@@ -77,21 +79,25 @@ skalierten Funktionen ist, also im Ortsraum.
 Bei der Fouriertransformation, dessen Gruppenoperation die Additon ist, 
 müssen die Analysefunktionen also die Gleichung 
 \begin{equation}
-    f(x + y) = f(x) \cdot f(y)
+    f(x + y) 
+    = f(x) \cdot f(y)
     \label{mellin:hom1}
 \end{equation}
 erfüllen. 
 Die Funktion, die diese Eigenschaft besitzt ist natürlich die 
 Exponentialfunktionen, denn 
 \begin{equation}
-    e^{x + y} = e^x \cdot e^y,
+    e^{x + y} 
+    = e^x \cdot e^y
+    ,
     \label{mellin:exp}
 \end{equation}
 und somit die bekannte Analysefunktion der Fouriertransformation.
 In der Fortsetzung bedeutet das für die neue Transformation, dass dessen 
 Analysefunktionen die Gleichung
 \begin{equation}
-    f(x \cdot y) = f(x) \cdot f(y)
+    f(x \cdot y) 
+    = f(x) \cdot f(y)
     \label{mellin:hom2}
 \end{equation}
 erfüllen müssen.
@@ -101,7 +107,9 @@ der Homomorphismuseigenschaft unbedeutend, muss aber aus demselben Grund
 wie bei der Fouriertransformation ($e^{-j\omega t}$) enthalten sein, auf 
 den hier aber nicht eingegangen werden soll}
 \begin{equation}
-    h(x \cdot y) =  (x \cdot y)^{z} = x^{z} \cdot y^{z},
+    h(x \cdot y) 
+    = (x \cdot y)^{z} = x^{z} \cdot y^{z}
+    ,
 \end{equation}
 % denn Potenzen lassen sich bekanntlich beliebig zusammenfassen so wie
 % \begin{equation}
@@ -182,15 +190,11 @@ kann.
         = \int_\mathbb{R^+} f(x)\,\frac{\mathrm{d}x}{x}
     \]
     Eine Substitution von $s \cdot x$ mit $u$
-    \[
-    % \left[
-    \begin{aligned}
+    \begin{align*}
         u &= sx \\
         x &= \frac{u}{s} \\
         \mathrm{d}x &= \frac{1}{s} \mathrm{d}u
-    \end{aligned}
-    % \right]
-    \]
+    \end{align*}
     führt auf
     \[
         \int_\mathbb{R^+} f(sx) \cdot x^{-1}\,\mathrm{d}x 
@@ -216,12 +220,14 @@ f(x)
 Das für die Multiplikation als Gruppenoperation modifizierte Integral ist 
 somit
 \begin{equation}
-    \int_\mathbb{R^+} f(x)\,\frac{\mathrm{d}x}{x},
+    \int_\mathbb{R^+} f(x)\,\frac{\mathrm{d}x}{x}
+    ,
 \end{equation}
 und das Skalarprodukt mit dem die Transformation erfolgt
 \begin{equation}
     \langle f,g \rangle 
-    = \int_\mathbb{R^+} \overline{f(x)} \cdot g(x) \,\frac{\mathrm{d}x}{x}.
+    = \int_\mathbb{R^+} \overline{f(x)} \cdot g(x) \,\frac{\mathrm{d}x}{x}
+    .
 \end{equation}
 % Are you sure?
 
@@ -252,7 +258,8 @@ beschränkt $\operatorname{Re}(z) = \delta = 0$ erhält man die Formel
 \begin{equation}
     \mathcal{M}\{f \}(u) 
     = \int\limits_{0}^{\infty} x^{ju-1} f(x) \,\mathrm{d}x 
-    \qquad\text{für $u \in \mathbb{R}$},
+    \qquad\text{für $u \in \mathbb{R}$}
+    ,
     \label{mellin:mellinu}
 \end{equation}
 die sich noch als nützlich und intuitiv erweisen wird.
@@ -273,8 +280,9 @@ Gruppenoperation und das modifizierte Skalarprodukt bestimmen:
 Damit erhalten wir von der Gelfandtheorie zum krönenden Abschluss das 
 Faltungstheorem
 \begin{equation}
-    \mathcal{M}\left\{f \ast g\right\} = 
-    \mathcal{M}\left\{f\right\} \cdot \mathcal{M}\left\{g\right\}.
+    \mathcal{M}\left\{f \ast g\right\} 
+    = \mathcal{M}\left\{f\right\} \cdot \mathcal{M}\left\{g\right\}
+    .
 \end{equation}
 
 \subsection{Rücktransformation
@@ -289,14 +297,12 @@ wollen wir aus dem Bildraum der Transformation, nennen wir ihn
 Bei Fourier ging dies mit dem fast gleichen Integral wie das der 
 Hintransformation, mit Ausnahme der Skalierungskonstante $\frac{1}{2\pi}$
 und dem Kehren des Vorzeichens vor der Integrationsvariable.
-\[
-\begin{aligned}
+\begin{align*}
     \hat{f}(\omega) &= \int\limits_{-\infty}^{\infty} 
     e^{-j\omega{}t} f(t) \,\mathrm{d}t \\
     f(x) &= \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} 
     e^{j\omega t} \hat{f}(\omega) \,\mathrm{d}\omega
-\end{aligned}
-\]
+\end{align*}
 Tatsächlich beruht diese Symmetrie der Hin- und Rücktransformation auf der 
 zur Fouriertransformation gehörenden \emph{dualen} Gruppe.
 \begin{definition}
@@ -361,7 +367,8 @@ normale Skalarprodukt aus \eqref{mellin:skalaprodukt}.
 Das Zusammensetzen dieser Bausteine sowie das Hinzumultiplizieren einer 
 Skalierungskonstante liefert die Inversionsformel der Mellin-Transformation
 \begin{equation}
-    f(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} 
+    f(x) = 
+    \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} 
     x^{-ju} \hat{f}(u) \,\mathrm{d}u
     \label{mellin:mellininvu}
 \end{equation}
@@ -383,6 +390,24 @@ Mellin-Transformation für komplexe $z$ in einem Streifen der komplexen
 Zahlenebene existiert, auch \emph{Streifen der Analyzität} 
 \footnote{aus dem Englischen: strip of analyticity oder SOA} gennant.
 % pgfplot SOA und Integrationspfad entlang vertikaler linie
+% \begin{figure}
+%     \centering
+%     \begin{tikzpicture}[scale=0.70]
+%     \draw[->] (-1,0) -- (9,0) coordinate[label={right:$Re$}];
+%     \draw[->] (0,-4) -- (0,4) coordinate[label={$Im$}];
+%     \node at (7,4) [right, color=purple] {$\displaystyle z \text{-Ebene}$};
+%     \draw[-] (0,-4) -- (0,4);
+%     % \node at (2.5,2.4) [right, color=blue] {$\displaystyle f(x)$};
+%     % \draw[color=purple,line width=1.4pt]
+%     % plot[domain=0:{10},samples=100]
+%     % ({\x},{4*(exp(-(\x-2-4)^2) + 0.5 * exp(-(\x+2-4)^2/3))});
+%     % \draw[color=blue,line width=1.4pt]
+%     % plot[domain=0:{10},samples=100]
+%     % ({\x},{4*(exp(-(\x-2-5)^2) + 0.5 * exp(-(\x+2-5)^2/3))});
+%     \end{tikzpicture}
+%     \caption{Integrationspfad der Rücktransformation in der $z$-Ebene
+%     \label{fig:mellin:z}}
+% \end{figure}
 \begin{figure}
     \centering
     \includegraphics[width=.5\textwidth]{papers/mellin/images/mellin_z}
@@ -398,7 +423,8 @@ Integriert wird daraufhin über die Parallele der imaginäre Achse an der
 Stelle von $\delta$, wie dargestellt in Abbildung \ref{fig:mellin:z}.
 
 \begin{equation}
-    f(x) = \frac{1}{2\pi j} 
+    f(x) = 
+    \frac{1}{2\pi j} 
     \int\limits_{\delta -j\infty}^{\delta +j\infty} 
     x^{-z} \hat{f}(z) \,\mathrm{d}z
     \label{mellin:mellininv}
