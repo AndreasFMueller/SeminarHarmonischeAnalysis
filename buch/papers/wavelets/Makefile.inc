@@ -10,5 +10,7 @@ dependencies-wavelets =						\
 	papers/wavelets/teil0.tex					\
 	papers/wavelets/teil1.tex					\
 	papers/wavelets/teil2.tex					\
-	papers/wavelets/teil3.tex
-
+	papers/wavelets/teil3.tex	\
+	papers/wavelets/teil4.tex	\
+	papers/wavelets/teil5.tex	\
+	papers/wavelets/teil6.tex
