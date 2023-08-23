@@ -6,9 +6,13 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Anwendungen
-  \label{opt:section:anwendungen}}
+\section{Anwendungen}
+\label{opt:section:anwendungen}
 \rhead{Praktische Anwendungen}
+
+Nach den Grundlagen und den durchgeführten Versuchen wird in diesem Abschnitt auf die tatsächlichen Anwendungsgebiete eingegangen.
+Es werden drei verschiedene Bereiche erläutert, in denen die Beugung und die optische Fourier-Transformation zur Anwendung kommen.
+Das Spektrum reicht dabei von der Mustererkennung über neuronale Netze bis hin zu Artefakten auf Weltraumbildern.
 
 \subsection{Mustererkennung}
 Die schnelle Erstellung einer Fouriertransformation kann für die Erkennung von vordefinierten Mustern verwendet werden.
@@ -26,20 +30,22 @@ Dies entspricht einer Frequenz im Bereich von 1 GHz, mit welcher Muster erkennt 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{papers/opt/images/pattern_YT.png}
-    \label{opt:fig:patternYT}
     \caption{Frequenzspektrum der verschiedenen Muster. 
     Mittels einer Maskierung und einer Helligkeitsmessung kann das entsprechende Muster detektiert werden.}
+    \label{opt:fig:patternYT}
 \end{figure}
 
 \subsection{Diffractive deep neural network}
 Beim obenstehenden Beispiel wurde nur mit einer einzelnen Blende gearbeitet, um das gesuchte Muster zu erkennen.
 In \cite{opt:Lin.2018} wurde dieser Ansatz durch Xing et al. erweitert und mit mehreren Ebenen erfolgreich getestet.
 Abbildung \ref{opt:fig:handwriting}a zeigt den schematische Aufbau mit fünf Ebenen.
-Der Grundsatz bleibt gleich; koheräntes Licht wird von einer ersten Input Ebene gebogen und anschliessend an fünf weiteren Ebenen.
+Der Grundsatz bleibt gleich; kohärentes Licht wird von einer ersten Input Ebene gebeugt und anschliessend an fünf weiteren Ebenen.
 Dies entspricht im Ansatz den verschiedenen Verknüpften Neutronen eines neuronalen Netzwerkes.
 Nach den Beugungsebenen wird das Licht durch mehrere Detektoren erkannt.
-Xing et al. konnten somit erfolgreich handschriftliche Zahlen detektieren.
+Xing et al. konnten damit erfolgreich handschriftliche Zahlen detektieren.
 Mittels fünf aufeinanderfolgenden Ebenen und zehn Detektoren gelang es ihnen, mehr als 90\% der Schriften korrekt zuzuordnen.
+Dieser Wert ist relativ schlecht im Vergleich zu konventionellen Methoden der Mustererkennung.
+Für die erreichte Erkennungsgeschwindigkeit ist dies jedoch trotzdem sehr beachtlich.
 
 \begin{figure}
     \centering
@@ -63,7 +69,7 @@ Zusammen ergeben diese beiden Effekte in Abbildung \ref{opt:fig:jwst} die charak
 den veröffentlichten Bildern des JWST zu sehen sind.
 
 Im Gegensatz dazu sind beim Hubble Teleskop vier (beziehungsweise zwei durchgehende) Strahlen ersichtlich.
-Dies kommt davon, dass bei diesem Teleskop der runde Spiegel mittels vier Stützen mit der restlichen Struktur verbunden ist.
+Dies kommt davon, dass bei diesem Teleskop der Sekundärspiegel mittels vier Stützen mit der restlichen Struktur verbunden ist.
 
 \begin{figure}
     \centering

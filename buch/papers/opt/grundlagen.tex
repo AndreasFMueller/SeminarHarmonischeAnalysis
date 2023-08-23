@@ -13,25 +13,26 @@ Im folgenden wird der Schritt von der Beugung zur Fouriertransformation vollzoge
 Dazu wird mit der Wellentheorie die Grundlage gelegt für die nachfolgende Herleitung.
 Diese gliedert sich anschliessend in drei Abschnitte. 
 Zunächst wird das allgemeine Beugungsintegral hergeleitet, das allgemein gültig, aber nicht fundamental lösbar ist.
-Anschliessend wird das Integral im Unterkapitel \ref{opt:sec:fresnel} mittels der Fresnel-Approximation für kleine Winkel angenähert.
+Anschliessend wird das Integral im Abschnitt \ref{opt:sec:fresnel} mittels der Fresnel-Approximation für kleine Winkel angenähert.
 Eine weitere Vereinfachung wird durch die Linearisierung in $y$ erreicht. 
-Diese wird im Unterkapitel \ref{opt:sec:fraunhofer} mit der Fraunhofer-Approximation durchgeführt.
+Diese wird im Abschnitt \ref{opt:sec:fraunhofer} mit der Fraunhofer-Approximation durchgeführt.
 
-Im Unterkapitel \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang zwischen der elektrischen Feldstärke und der Intensität hergestellt.
-Denn nur diese kann mit dem Auge oder einem Kamerachip beobachtet werden.
+Im Abschnitt \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang zwischen der elektrischen Feldstärke und der Intensität hergestellt, denn nur diese kann mit dem Auge oder einem Kamerachip beobachtet werden.
 
 Das Kapitel wird mit einem Rechenbeispiel für die Beugung am Einzelspalt abgeschlossen. 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Wellentheorie}
 \label{opt:subsection:huygens}
 Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
-Im folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
+Im Folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
 
 Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären. 
-Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Welle.
-Diese lässt sich als Superposition von unendlichen Elementarwellen betrachten.
-An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront.
-Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront.
+Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Wellenfront.
+Diese lässt sich als Superposition von unendlichen Elementarwellen (Teilabbildung a) betrachten.
+An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront (Teilabbildung b).
+Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront (Teilabbildung c).
 Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
 
 Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
@@ -40,50 +41,51 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \begin{figure}
     \centering
     \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
-    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlicher Elementarwellen aufgefasst werden.
+    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlich vieler Elementarwellen aufgefasst werden.
     Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
     \label{opt:fig:huygens}
 \end{figure}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Allgemeines Beugungsintegral}
 
 \begin{figure}
     \centering
     \includegraphics[width=57.34mm]{papers/opt/images/maxwell.pdf}
-    \caption{In grau entlang der z-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
+    \caption{In grau entlang der $z$-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
     Das elektrische Feld $\vec{E}$ breitet sich immer radial und rechtwinklig zur Lichtquelle aus.}
     \label{opt:fig:maxwell}
 \end{figure}
 
-Betrachten wir zuerst, wie in Abbildung~\ref{opt:fig:maxwell} gezeigt, eine unendlich, dünne linienförmige Lichtquelle, welche sich axial in positive und negative z-Richtung unendlich weit erstreckt.
-Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagentische Quelle handeln.
+Betrachten wir zuerst, wie in Abbildung \ref{opt:fig:maxwell} gezeigt, eine linienförmige Lichtquelle, welche sich axial in positive und negative $z$-Richtung unendlich weit erstreckt.
+Verallgemeinert kann es sich bei dieser Art von Quelle um eine beliebige elektromagnetische Quelle handeln.
 Somit kann durch Anwenden der ersten Maxwellschen Gleichung
-\begin{equation}
+\begin{equation*}
 \oint_{S=\partial V} \varepsilon\vec{E} \cdot\, d\vec{S}
 =
 \int_{V}\rho\, dV
-\end{equation}
-die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit des radialen Abstandes $r$ berechnet werden.
-Dabei ist $\varepsilon$ die dielektrische Feldkonstante, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
-Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r d\varphi dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
-\begin{align}
-\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi dl
+\end{equation*}
+die elektrische Feldstärke $\vec{E}$ an jedem beliebigen Punkt in Abhängigkeit vom radialen Abstand $r$ berechnet werden.
+Dabei ist $\varepsilon$ die Permittivität, $\rho$ die Ladungsdichte und $V$ das Volumen über dessen Oberfläche $S$ integriert werden muss.
+Angewendet auf die gegebene Geometrie des Zylindermantels lässt sich diese Gleichung mittels $\vec{dS} = r\, d\varphi\, dl \cdot \hat{r}$ und $\vec{E} = E \cdot \hat{r}$ als
+\begin{align*}
+\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot \hat{r} \cdot \hat{r} \cdot r\, d\varphi\, dl
 &=
 Q
 \\
-\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi dl
+\int_{0}^{a}\int_{0}^{2\pi} \varepsilon E\cdot 1 \cdot r\, d\varphi\, dl
 &=
 Q
 \\
 2\pi ra\varepsilon E
 &=
 Q
-\end{align}
+\end{align*}
 schreiben.
 Die durch die Deckflächen entstehenden Randeffekte des elektrischen Feldes können aufgrund der infiniten Länge $a$ des Zylinders vernachlässigt werden.
-Wobei es bereits langen würde, wenn $r \ll a$ ist.
 Des Weiteren beschreibt $Q$ die durch den Zylindermantel eingeschlossene Ladung.
-Zu beachten sei zudem, dass die normierten vektoriellen Grössen $\hat{E} = \hat{r}$ und $\hat{S} = \hat{r}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
+Zu beachten ist zudem, dass die normierten vektoriellen Grössen $\hat{E} = \hat{r}$ und $\hat{S} = \hat{r}$ parallel verlaufen und sich ihr Skalarprodukt dementsprechend zu 1 vereinfacht.
 In anderen Worten, das elektrische Feld $E$ durchtritt die Mantelfläche des Zylinders immer im rechten Winkel.
 Nach der elektrischen Feldstärke umgeformt lautet die Gleichung
 \begin{equation}
@@ -91,11 +93,11 @@ E(r)
 =
 \frac{Q}{2\pi\varepsilon a} \cdot \frac{1}{r}
 =
-\theta \cdot \frac{1}{r}
+\vartheta \cdot \frac{1}{r}
 ,
-\label{opt:equation:E}
+\label{opt:equation:electric_field}
 \end{equation}
-wobei der konstante Anteil als $\theta$ zusammengefasst wurde.
+wobei der konstante Anteil als $\vartheta$ zusammengefasst wurde.
 
 \begin{figure}
     \centering
@@ -105,7 +107,7 @@ wobei der konstante Anteil als $\theta$ zusammengefasst wurde.
     \label{opt:fig:geometricalShape}
 \end{figure}
 
-Angenommen eine planare elektromagentische Welle, siehe Abbildung~\ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
+Angenommen eine planare elektromagnetische Welle, siehe Abbildung \ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
 Ganz allgemein lässt sich jede Welle als
 \begin{equation}
 \zeta(x, t)
@@ -114,10 +116,10 @@ Ganz allgemein lässt sich jede Welle als
 \label{opt:equation:wave}
 \end{equation}
 ausdrücken.
-Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebogen.
+Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
-Infinit viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
+Unendlich viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
@@ -130,84 +132,86 @@ r
 l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
 \label{opt:equation:distance_r}
 \end{equation}
-beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich, wie bereits erwähnt, zur gesamten elektrischen Feldstärke am Auswertungspunkt.
-Ein solcher Einfluss lässt sich nun mittels der Gleichungen~\ref{opt:equation:E} und \ref{opt:equation:wave} als
-\begin{equation}
+beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich (wie bereits erwähnt) zur gesamten elektrischen Feldstärke am Auswertungspunkt.
+Ein solcher Einfluss lässt sich nun mittels der Gleichungen \eqref{opt:equation:electric_field} und \eqref{opt:equation:wave} als
+\begin{equation*}
 dE
 =
 E(r) \cdot \zeta(r, t) \cdot dy
 =
-\frac{\theta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
-\end{equation}
+\frac{\vartheta}{r} \cdot \zeta_0 \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \cdot dy
+\end{equation*}
 beschreiben.
-Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich
-\begin{equation}
+Werden die Einflüsse der Linienquellen über den Spalt integriert, ergibt sich der Ausdruck
+\begin{equation*}
 E(y_p, t)
 =
-\int_{y_b}^{y_b+b}\frac{\theta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
+\int_{y_b}^{y_b+b}\frac{\vartheta\zeta_0}{r} \cdot e^{j(\omega t - \vec{k}\cdot\vec{r})} \,dy
 =
-\theta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\vartheta\zeta_0 \cdot \int_{y_b}^{y_b+b}\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
-\end{equation}
+\end{equation*}
 
 Soll nun aber anstelle eines einzelnen Spalts mehrere davon in beliebigen Abständen zueinander betrachtet werden, kann dieses Integral mit Hilfe der Blendenfunktion
-\begin{equation}
+\begin{equation*}
 f(y)
 \in
 [0, 1]
-\end{equation}
+\end{equation*}
 dargestellt werden.
-Zu beachten ist, dass $f(y)$ nicht nur die Werte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
+Zu beachten ist, dass $f(y)$ nicht nur die Extremwerte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
 Dies würde einer teilweise transparenten Blende entsprechen.
+Ein Wert von 0 bedeutet dabei, dass kein Licht durchgelassen wird und ein Wert von 1, dass alles Licht die Blende durchdringen kann.
 Somit folgt als allgemeinste Form
 \begin{align}
 E(y_p, t)
 =
-\theta\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
+\vartheta\zeta_0 \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{j(\omega t - \vec{k}\cdot\vec{r})}}{r} \,dy
 .
 \label{opt:equation:integral_general}
 \end{align}
 Dieses Integral ist für jeden Auswertungspunkt allgemein gültig.
-Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung~\ref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
+Wie sich aber zeigen wird, ist dieses Integral, genauer gesagt $r$ aus Gleichung \eqref{opt:equation:distance_r}, nicht fundamental genug, um es analytisch lösen zu können.
 Die folgenden Approximationen von $r$ sollen dabei diese Hürde umgehen.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fresnel-Approximation}
 \label{opt:sec:fresnel}
-In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \ref{opt:equation:integral_general} für kleine Winkel approximiert.
-Für weitere Schritte soll die Bedingung
+In einer ersten Vereinfachung wird das allgemeine Beugungsintegral aus \eqref{opt:equation:integral_general} für kleine Winkel approximiert.
+Für weitere Schritte ist die Bedingung
 \begin{equation}
 y, y_p
 \ll
 l
 \label{opt:equation:condition_fresnel}
 \end{equation}
-gelten.
+nötig.
 Durch Anwenden der Binominalexpansion
-\begin{equation}
+\begin{equation*}
 (1 + \varepsilon)^n
 \approx
 1 + n\varepsilon
 ,
-\end{equation}
-unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung~\ref{opt:equation:distance_r} noch weiter zu vereinfachen.
-Mit Hilfe der Vorbedingungen aus Gleichung~\ref{opt:equation:condition_fresnel} ist
-\begin{equation}
+\end{equation*}
+unter der Voraussetzung, dass $\varepsilon \ll 1$ gilt, ist es möglich den Wurzelausdruck aus Gleichung \eqref{opt:equation:distance_r} noch weiter zu vereinfachen.
+Mit Hilfe der Vorbedingungen aus Gleichung \eqref{opt:equation:condition_fresnel} ist
+\begin{equation*}
 (y_p-y)^2
 \ll
 l^2
-\end{equation}
+\end{equation*}
 gegeben.
 Somit kann die Bedingung für
-\begin{equation}
+\begin{equation*}
 \varepsilon
 =
 \frac{(y_p-y)^2}{l^2}
 \ll
 1
-\label{opt:equation:condition_epsilon}
-\end{equation}
+\end{equation*}
 eingehalten werden.
-Gleichung~\ref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
+Gleichung \eqref{opt:equation:distance_r} vereinfacht sich demnach näherungsweise zu
 \begin{equation}
 r
 =
@@ -219,117 +223,159 @@ l - \frac{(y_p-y)^2}{2l}
 .
 \label{opt:equation:distance_r_fresnel}
 \end{equation}
-Durch Ausklammern von Konstanten und Einsetzen der Gleichung~\ref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung~\ref{opt:equation:integral_general} weiter zu
-\begin{align}
+Durch Ausklammern von Konstanten und Einsetzen der Gleichung \eqref{opt:equation:distance_r_fresnel} vereinfacht sich das Integral aus Gleichung \eqref{opt:equation:integral_general} weiter zu
+\begin{align*}
 E(y_p, t)
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-j\vec{k}\cdot\vec{r}}}{r} \,dy
 \\
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr \cdot 1}}{r} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkr}}{r} \,dy
+\\
+&\approx
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 \\
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{-jkl} \cdot e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
-\\
-&=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
-\end{align}
+\end{align*}
 Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
-Des Weiteren kann der Ausdruck $l - \frac{(y_p-y)^2}{2l}$ im Nenner des Integrals als $l$ vereinfacht werden.
+Des Weiteren kann der Ausdruck 
+\begin{equation*}
+    l - \frac{(y_p-y)^2}{2l}
+\end{equation*}
+im Nenner des Integrals als $l$ vereinfacht werden.
 Zulässig ist dies nur, weil $(y_p - y)^2 \ll l$ erfüllt ist.
-Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da dieser mit dem Faktor der Wellenzahl multipliziert wird und der Term $k \frac{(y_p-y)^2}{2l}$ somit nicht vernachlässigbar klein wird.
-Der Zeitpunkt der Auswertung sei nicht von Interesse, da dieser lediglich den Momentanwert der Welle beeinflusst.
-Mittels $t = 0$ ergibt sich daraus
+Dasselbe Prinzip darf jedoch nicht auf den Exponenten angewandt werden, da dieser mit dem Faktor der Wellenzahl multipliziert wird und der Term
+\begin{equation*}
+    k \frac{(y_p-y)^2}{2l}
+\end{equation*}
+somit nicht vernachlässigbar klein wird.
+Der Zeitpunkt der Auswertung ist nicht von Interesse, da dieser lediglich die Phase der Welle beeinflusst.
+Mittels $t = 0$ vereinfacht sich der Ausdruck zu
 \begin{align}
 E(y_p, t = 0)
 &=
-\theta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
+\vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l} \,dy
+\notag
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot 1 \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p-y)^2}{2l}} \,dy
+\notag
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py + y^2)}{2l}} \,dy
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fresnel Beugungsintegral bezeichnet und ist in näherer Umgebung um die Blende gültig.
+Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral
+\footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
+bezeichnet und entspricht einer Nahfeld-Näherung.
+Anders als von der Bezeichnung zu erwarten wäre, darf diese Näherung nicht direkt hinter der Blende angewendet werden.
+Die Voraussetzung $y, y_p \ll l$ aus Gleichung \eqref{opt:equation:condition_fresnel} muss erfüllt sein.
+Ansonsten muss das allgemeine Beugungsintegral für die Berechnung verwendet werden.
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
-Die Fresnel Approximation aus \ref{opt:equation:integral_fresnel} kann weiter vereinfacht werden.
+Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann mittels der Fraunhofer-Approximation weiter vereinfacht werden.
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
-Damit wird das möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
-Sei nun
-\begin{equation}
+Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
+Ist nun
+\begin{equation*}
 y
 \ll
 y_p
 \ll
 l
-\end{equation}
-gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung~\ref{opt:equation:integral_fresnel} weiter approximiert werden.
-Unter Berücksichtigung dieser Bedingung sei $y^2 \ll 2y_py$, wodurch der Term $y^2$ vernachlässigt werden kann.
+\end{equation*}
+gegeben, kann der Ausdruck $y_p^2 - 2y_py + y^2$ aus Gleichung \eqref{opt:equation:integral_fresnel} weiter approximiert werden.
+Unter Berücksichtigung dieser Bedingung ist $y^2 \ll 2y_py$, wodurch der Term $y^2$ vernachlässigt werden kann.
 Daraus folgt
 \begin{align}
 E(y_p)
-&=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+&\approx
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{jk\frac{(y_p^2 - 2y_py)}{2l}} \,dy
+\notag
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jkl} \cdot e^{jk\frac{y_p^2}{2l}} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-jk\frac{y_py}{l}} \,dy
+\notag
 \\
 &=
-\frac{\theta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
-Das somit entstandene Integral entspricht gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
+Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation
+\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.}
+konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
+Das somit entstandene Integral entspricht bis auf einige Vorfaktoren gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 
+Gleichung \eqref{opt:equation:integral_fraunhofer} ist dementsprechend bereits das zentrale Ergebnis dieses Papers.
+In einem weiteren Schritt könnte das Resultat so erweitert werden, dass die Blendenfunktion auf eine Funktion mehrere Variablen $f(y,z)$ in $y$ und $z$-Richtung zu liegen kommt.
+Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf eingegangen.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Intensität}
 \label{opt:sec:intensity}
-Die in \ref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden.
-Denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
-Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur elektrischen Feldstärke verhält.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave.pdf}
+    \caption{Die elektromagnetische Welle breitet sich in $z$-Richtung aus. 
+    Wenn dabei die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung verläuft, muss die magnetische Feldstärke $\vec{H}$ 
+    in einem homogenen Medium entlang der $y$-Richtung verlaufen.}
+    \label{opt:fig:electromagnetic_wave}
+\end{figure}
+
+Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
+Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur quadrierten elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
-Woraus sich aus Gleichung~\ref{opt:equation:integral_fraunhofer}
+Somit kann aufbauend auf der Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} die Intensität als
 \begin{align}
 I(y_p)
 &=
 \kappa \cdot |E(y_p)|^2
+\notag
 \\
 &=
-\kappa \cdot \left(\frac{\theta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \left(\frac{\vartheta\zeta_0}{l} \cdot 1 \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\notag
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
-\label{opt:equation:integral_intensity}
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\label{opt:equation:intensity_integral}
 \end{align}
-ergibt. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrotechnik benötigt.
-Dieser kann Mittels des Poynting Vectors
+geschrieben werden. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
+Dieser Wert kann mittels des Poynting Vectors
 \begin{equation}
 \vec{S} = \vec{E} \times \vec{H}
 \label{opt:equation:poynting}
 \end{equation}
 hergeleitet werden.
-\opttodo{Abbildung von Poynting Vector hinzufügen}
 Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldstärke.
-Angenommen eine elektromagentische Welle breitet sich nun in z-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
-Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der x-Richtung, muss die magentische Feldstärke $\vec{H}$ entlang der y-Richtung verlaufen.
-Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung~\ref{opt:equation:wave}, als
-\begin{align}
+Angenommen eine elektromagnetische Welle breitet sich nun in $z$-Richtung in einem homogenen Medium aus, 
+was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
+Verläuft nun die elektrische Feldstärke $\vec{E}$, wie in Abbildung \ref{opt:fig:electromagnetic_wave} gezeigt, entlang der $x$-Richtung, 
+muss die magnetische Feldstärke $\vec{H}$ entlang der $y$-Richtung verlaufen.
+Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung \eqref{opt:equation:wave}, als
+\begin{equation}
 \vec{E}(z,t)
-&=
+=
 E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}
-\\
+\label{opt:equation:wave_electric_field}
+\end{equation}
+und
+\begin{equation}
 \vec{H}(z,t)
-&=
+=
 H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}
-\end{align}
+\label{opt:equation:wave_magnetic_field}
+\end{equation}
 geschrieben werden.
-Eingesetzt in Gleichung~\ref{opt:equation:poynting} kann der Ausdruck als
-\begin{align}
+Eingesetzt in Gleichung \eqref{opt:equation:poynting} kann der Ausdruck als
+\begin{align*}
 \vec{S}
 &=
 \left(E_0 \cdot e^{j(\omega t-k z)} \cdot \vec{x}\right) \times \left(H_0 \cdot e^{j(\omega t-k z)} \cdot \vec{y}\right)
@@ -339,29 +385,29 @@ E_0 H_0 \cdot e^{2j(\omega t-k z)} \cdot \vec{z}
 \\
 &=
 E_0 H_0 \cdot \left(\cos{(2(\omega t-kz))}+j\sin{(2(\omega t-kz))}\right) \vec{z}
-\end{align}
+\end{align*}
 vereinfacht werden.
-Da das zweite Moment des real oder imaginär Teils des Poynting Vectors gerade der gesuchten Intensität $I$ entspricht, kann dieser als 
-\begin{align}
+Da das zweite Moment des Real- oder Imaginärteils des Poynting Vectors gerade der gesuchten Intensität $I$ entspricht, kann dieser als 
+\begin{align*}
 I
 &=
-E(\Re\{S\}^2)
+E(\Re^2(S))
 =
-E(\Im\{S\}^2)
+E(\Im^2(S))
 \\
 &=
-\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re\{S\}^2 \,dt
+\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re^2(S) \,dt
 \\
 &=
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\cos\left({2(\omega t-kz)}\right)^2 \,dt
 \\
 &=
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\frac{\cos(4(\omega t-kz)) + 1}{2} \,dt
-\end{align}
+\end{align*}
 geschrieben werden.
-Soll nur über die Zeit gemittelt werden, ist die Position $z$ nicht von belangen und kann deshalb auf $z=0$ gesetzt werden.
+Soll nur über die Zeit gemittelt werden, ist die Position $z$ nicht von belang und kann deshalb auf $z=0$ gesetzt werden.
 Beispielsweise kann exakt über eine Periode integriert werden, was in Integrationsgrenzen von $t_0=0$ und
-\begin{align}
+\begin{align*}
 4\omega t_1
 &=
 2\pi
@@ -369,87 +415,229 @@ Beispielsweise kann exakt über eine Periode integriert werden, was in Integrati
 t_1
 &=
 \frac{\pi}{2\omega}
-\end{align}
+\end{align*}
 resultiert.
-Mit den eingesetzten Grenzen ergibt sich daraus
+Mit den eingesetzten Grenzen ergibt sich der Ausdruck
 \begin{align}
 I
 &=
 \frac{1}{\frac{\pi}{2\omega} - 0} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\frac{\cos(4(\omega t-k\cdot0)) + 1}{2} \,dt
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \int_{0}^{\frac{\pi}{2\omega}}\cos(4\omega t) + 1 \,dt
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left[\frac{\sin(4\omega t)}{4\omega} + t \right]_{0}^{\frac{\pi}{2\omega}}
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \left(\frac{\sin(2\pi)}{8\omega} + \frac{\pi}{2\omega}\right)
+\notag
 \\
 &=
 \frac{\omega}{\pi} \cdot E_0 H_0 \cdot \frac{\pi}{2\omega}
+\notag
 \\
 &=
 \frac{1}{2} \cdot E_0 H_0
+\label{opt:equation:intensity_simple}
 .
 \end{align}
-Dieser Ausdruck hängt jedoch noch von der magentischen Feldstärke $H_0$ ab.
-Um ihn entsprechend auf Gleichung~\ref{opt:equation:integral_intensity} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
-Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung am Rand der Fläche $A$ gegeben durch
+Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
+Um ihn entsprechend auf Gleichung \eqref{opt:equation:intensity_integral} umformen zu können, müssen ein weiteres Mal die Maxwellschen Gleichungen angewandt werden.
+Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralform als
 \begin{equation}
 \oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
 =
-E_y(x+\delta x,t) \cdot a - E_y(x,t) \cdot a
-.
+-\frac{\partial}{\partial t} \int_{A} \vec{B} \cdot\, d\vec{s}
+\label{opt:equation:maxwell_3}
 \end{equation}
-Nur Anteile des elektrischen Feldes in y-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
-
-\opttodo{Weiterschreiben}
-
-\subsection{Beispiel einzelner Spalt}
-Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breit $b$ durchexerziert.
-In diesem Fall beträgt die Blendenfunktion
+schreiben.
+$B$ beschreibt dabei die magnetische Flussdichte, welche mit Hilfe der Permeabilität $\mu$ als $B = \mu H$ ausgedrückt werden kann.
+Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung $u$ am Rand der Fläche $A$ gegeben durch
 \begin{equation}
+u
+=
+\oint_{C=\partial A} \vec{E} \cdot\, d\vec{l}
+=
+E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
+.
+\label{opt:equation:induced_voltage}
+\end{equation}
+Nur Anteile des elektrischen Feldes in $x$-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
+Zusätzlich muss der magnetische Fluss $\Phi$ durch dieselbe Fläche $A$ bestimmt werden.
+Dieser ergibt sich zu
+\begin{equation}
+\Phi
+=
+\int_{A} \vec{B} \cdot\, d\vec{s}
+=
+B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
+.
+\label{opt:equation:magnetic_flux}
+\end{equation}
+Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magnetischen Flussdichte in $y$-Richtung ins Gewicht.
+Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ genau in der Mitte der Fläche $A$ liegt.
+Die beiden erhaltenen Gleichungen \eqref{opt:equation:induced_voltage} und \eqref{opt:equation:magnetic_flux} können nun in Gleichung \eqref{opt:equation:maxwell_3} eingesetzt werden.
+Woraus sich
+\begin{align*}
+u
+&=
+-\frac{\partial\Phi}{\partial t}
+\\
+E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
+&=
+-\frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \Delta z
+\\
+\frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
+&=
+-\frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
+\end{align*}
+ergibt.
+Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichung der Limes angewandt werden, woraus
+\begin{align*}
+\lim_{\Delta z \to 0} \frac{E_x(z+\Delta z,t) - E_x(z,t)}{\Delta z}
+&=
+-\lim_{\Delta z \to 0} \frac{\partial}{\partial t} B_y\left(z+\frac{\Delta z}{2},t\right)
+\\
+\frac{\partial E_x(z,t)}{\partial z}
+&=
+-\frac{\partial B_y(z,t)}{\partial t}
+\end{align*}
+resultiert.
+Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field} (unter Berücksichtigung von $B = \mu H$ und $\omega = kc$) ergibt sich schliesslich der Ausdruck
+\begin{align}
+-k \cdot E_0 \cdot e^{j(\omega t-k z)}
+&=
+-\mu \omega \cdot H_0 \cdot e^{j(\omega t-k z)}
+\notag
+\\
+k \cdot E_0
+&=
+-\mu \omega \cdot H_0
+\notag
+\\
+\frac{E_0}{H_0}
+&=
+\frac{\mu \omega}{k}
+=
+\mu c
+.
+\label{opt:equation:impedance}
+\end{align}
+Diese Verhältnis von $E_0$ zu $H_0$ wird auch als Wellenimpedanz bezeichnet und spielt in der Elektrodynamik eine essentielle Rolle.
+Ohne weiter darauf einzugehen kann der Zusammenhang
+\begin{equation}
+c
+=
+\frac{1}{\sqrt{\varepsilon\mu}}
+\label{opt:equation:speed_of_light}
+\end{equation}
+durch abermaliges Anwenden der Maxwellschen Gleichungen erhalten werden.
+Wird nun Gleichung \eqref{opt:equation:speed_of_light} in \eqref{opt:equation:impedance} eingesetzt, kann durch Vereinfachung der Ausdruck
+\begin{equation}
+\frac{E_0}{H_0}
+=
+\mu \frac{1}{\sqrt{\varepsilon\mu}}
+=
+\sqrt{\frac{\mu}{\varepsilon}}
+=
+\sqrt{\frac{\mu_r\mu_0}{\varepsilon_r\varepsilon_0}}
+\label{opt:equation:impedance_simple}
+\end{equation}
+erhalten werden.
+Bei der letzten Umformung wurden die Abhängigkeiten $\varepsilon = \varepsilon_r \varepsilon_0$ und $\mu = \mu_r \mu_0$ eingesetzt.
+Die elektrische Feldkonstante $\varepsilon_0$ und die magnetische Feldkonstante $\mu_0$ sind beides Naturkonstanten und werden als
+\begin{equation*}
+\varepsilon_0
+=
+8.854 \cdot 10^{-12}
+\end{equation*}
+und
+\begin{equation*}
+\mu_0
+=
+4\pi \cdot 10^{-7}
+\end{equation*}
+definiert.
+Die relative Permittivität $\varepsilon_r$ und die relative Permeabilität $\mu_r$ sind beides materialabhängige Faktoren und müssen je nach Medium, in welchem sich die Welle fortbewegt, nachgeschlagen und eingesetzt werden.
+Wird Gleichung \eqref{opt:equation:impedance_simple} nach $H_0$ umgeformt und in \eqref{opt:equation:intensity_simple} eingesetzt, folgt der Ausdruck
+\begin{equation*}
+I
+=
+\frac{1}{2} \cdot E_0 H_0
+=
+\frac{1}{2} \cdot \sqrt{\frac{\varepsilon}{\mu}} \cdot E_0^2
+.
+\end{equation*}
+Verglichen mit Gleichung \eqref{opt:equation:intensity_integral} stellt sich heraus, dass
+\begin{equation*}
+\kappa
+=
+\frac{1}{2} \cdot \sqrt{\frac{\varepsilon}{\mu}}
+\end{equation*}
+entsprechen muss.
+
+Nach aufwendigen Berechnungen stellt sich schliesslich heraus, dass $\kappa$ eine relativ einfache, materialabhängige Konstante ist.
+Die Intensität an einer bestimmten Stelle im Raum ist also lediglich abhängig von der an diesem Ort herrschenden elektrischen Feldstärke $E$ und der Medium spezifischen Konstante $\kappa$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Beispiel einzelner Spalt}
+\label{opt:sec:exampleSingleSlit}
+Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breite $b$ durchexerziert.
+In diesem Fall beträgt die Blendenfunktion
+\begin{equation*}
 f(y)
 =
-\left.
 \begin{cases}
 1 & \text{für } -\frac{b}{2} \leq x \leq \frac{b}{2} \\
 0 & \text{sonst}
 \end{cases}
-\right\}
 .
-\end{equation}
-Mit Hilfe der Eulerschen Identität des Sinus
-\begin{equation}
-\sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
-\end{equation}
-und der Definition der $\sinc$ Funktion
-\begin{equation}
-\sinc(x) = \frac{\sin(x)}{x}
-\end{equation}
-vereinfacht sich Gleichung~\ref{opt:equation:integral_intensity} demnach zu
-\begin{align}
+\end{equation*}
+Als Ausgangslage wird die Gleichung
+\begin{align*}
 I(y_p)
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
+\intertext{aus \eqref{opt:equation:intensity_integral} verwendet. Durch Einsetzten der Grenzen vereinfacht sich diese zu}
+&=
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2.
+\intertext{Anschliessend kann die Stammfunktion an den Grenzen ausgewertet werden.}
+&=
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\end{align*}
+Das daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
+\begin{equation*}
+\sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
+\end{equation*}
+und der Definition der $\sinc$ Funktion
+\begin{equation*}
+\sinc(x) = \frac{\sin(x)}{x}
+\end{equation*}
+weiter zu
+\begin{align*}
+I(y_p)
+&=
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
 \\
 &=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
-\\
-&=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \sin\left(\frac{bky_p}{2l}\right)\right)^2
-\\
-&=
-\kappa \cdot \frac{\theta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot b^2 \cdot \sinc^2\left(\frac{bky_p}{2l}\right)
 .
-\end{align}
+\end{align*}
+vereinfacht werden.
+
+Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgewertet für einen Einzelspalt ergibt schlussendlich eine quadrierte sinc-Funktion.
+Das hier erhaltene Schlussresultat wird in Abschnitt \ref{opt:section:versuch} praktisch nachgewiesen.
