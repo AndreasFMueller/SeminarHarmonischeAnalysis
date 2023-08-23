@@ -12,30 +12,36 @@
 
 Der durchgeführte Versuch entspricht im Aufbau demjenigen aus Abbildung \ref{opt:fig:4fAufbau}.
 Als Linsen für die Fouriertransformation wurden eine mit 300 mm Brennweite genutzt, damit der Effekt am besten sichtbar war.
-Um die gerade Wellenfront in ausreichendem Durchmesser zu erhalten, wurde der Laser mittels eines umgekehrten keplerschen Teleskops aufgeweitet.
+Der vorhandene Helium-Neon-Laser erzeugte ein Laserstrahl mit dem Durchmesser $0.8$ mm.
+Um die gerade Wellenfront in ausreichendem Durchmesser zu erhalten, wurde der Strahl mittels eines umgekehrten keplerschen Teleskops aufgeweitet.
 Der schematische Aufbau ist in Abbildung \ref{opt:fig:laserAufweiten} ersichtlich.
 Dafür wird direkt hinter der Laserblende eine konkave Linse mit einer Brennweite $f_b = 50\,\text{mm}$ montiert 
 und in einem Abstand von $f_b + f_o = 200\,\text{mm}$ eine weitere mit einer Brennweite von $f_o = 150\,\text{mm}$.
 Somit wird der Laserstrahl um ein Faktor $\frac{f_o}{f_b} = 3$ vergrössert.
 Dies war ausreichend, um die vorhandenen Blenden vollständig auszuleuchten.
 
-Nachdem der Laserstrahl vorbereitet wurde, wird eine erste Blende montiert.
+Anschliessend konnte eine erste Blende montiert werden.
 In Abbildung \ref{opt:fig:4fAufbau} ist dies als Originalbild beschrieben.
 Im Abstand $f=300\,\text{mm}$ wird jetzt die erste Linse montiert und nach weiteren zwei Brennweiten die zweite Linse.
 Genau in der Mitte der beiden Linsen ergibt sich die Fourierebene.
-Ganz am Ende des Aufbaus, eine weitere Brennweite hinter der zweiten Linse ist das rücktransformierte Bild ersichtlich.
+Ganz am Ende des Aufbaus, eine weitere Brennweite hinter der zweiten Linse, ist das rücktransformierte Bild ersichtlich.
 
 Im weiteren Verlauf dieses Kapitels werden die erwarteten Ergebnisse simuliert und anschliessend mit den Beobachtungen verglichen.
 
 \subsection{Simulation der erwarteten Ergebnissen}
 Der $4f$ Versuch kann auch simuliert werden.
 In unserem Fall geschah dies mit \emph{Python} und der \emph{numpy} Bibliothek.
-In einem ersten Schritt wird ein Input-Bild erstellt, auf welchem eine oder mehrere Gitter ersichtlich sind.
+Zuerst wird ein Input-Bild erstellt, welches anschliessend bearbeitet wird.
+Als Input wurden ein Dreifachspalt sowie ein Gitter verwendet.
 Mittels zweidimensionaler diskreter Fouriertransformation wird das Originalbild in den Frequenzbereich transformiert.
 Anschliessend kann dies mit einem digitalen Filter gefiltert werden.
 Die Filter werden so ausgeführt, wie sie in Abbildung \ref{opt:fig:filterarten} aufgeführt sind.
 Das bedeutet, dass zum Beispiel ein Tiefpass einen runden Durchlassbereich um den Nullpunkt hat.
 Schlussendlich wird das gefilterte Frequenzspektrum mittels zweidimensionaler FFT wieder rücktransformiert.
+Abbildung \ref{opt:fig:three_slit_simulation} zeigt diesen Vorgang am Beispiel eines Dreifachspalts und 
+in Abbildung \ref{opt:fig:grid_simulation} wird das selbe mit einem Gitter simuliert.
+
+Die verwendeten Python-Scripte sind im Repository des Buches \footnote{\url{https://github.com/AndreasFMueller/SeminarHarmonischeAnalysis/tree/master/buch/papers/opt/code}} für weitere Versuche abgelegt.
 
 \subsection{Versuchsdurchführung}
 Zuerst wurde die Funktion des Aufbaus mit einem $2f$ Versuch verifiziert.
@@ -49,6 +55,7 @@ Die Filterung mittels eines optischen Tiefpasses konnte jedoch nicht nachgebilde
 Der genaue Grund dafür konnte nicht eruiert werden.
 Mögliche Ursachen wären eine zu grosse Blende, eine nicht optimale Ausrichtung der optischen Achse oder eine zu geringe Auflösung der Auswerteeinheit.
 
+Des weiteren konnte die Fouriertransformation bei einem Gitter gut beobachtet werden. 
 
 \subsection{Vergleich der Simulation}
 
@@ -68,4 +75,19 @@ Mögliche Ursachen wären eine zu grosse Blende, eine nicht optimale Ausrichtung
     In dieser Abbildung wird die transformierte Funktion mit einem Tiefpass gefiltert.
     Weitere Details zu den Filtern folgen im Kapitel \ref{opt:section:filter}.}
     \label{opt:fig:4fAufbau}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/opt/images/dreifachspalt_hochpass.pdf}
+    \caption{Der Dreifachspalt wird zunächst fouriertransformiert, dann mit einem Hochpass gefiltert und wieder rücktransformiert.}
+    \label{opt:fig:three_slit_simulation}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/opt/images/gitter_hochpass.pdf}
+    \caption{Das Gitter wird zunächst fouriertransformiert, dann mit einem Hochpass gefiltert und wieder rücktransformiert.
+    In der Rücktransformation sind insbesondere die harten Kanten des Gitters erkennbar.}
+    \label{opt:fig:grid_simulation}
 \end{figure}

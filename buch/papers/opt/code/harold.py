@@ -1,28 +1,12 @@
-import math
 import os
 import numpy
 import matplotlib.pyplot as plot
 import PIL as pil
+from opt_module import image_filter
 
 # Relative to this file
 input_path = "../images/harold_input.jpg"
 output_path = "../images/"
-
-
-def image_filter(image, radius, highpass=True):
-    image_modified = image.copy()
-    size_x, size_y = image_modified.shape
-    position_x = size_x / 2 - 0.5
-    position_y = size_y / 2 - 0.5
-
-    for x in range(size_x):
-        for y in range(size_y):
-            distance = math.sqrt((position_x - x)**2 + (position_y - y)**2)
-            if ((highpass is False and radius < distance) or
-                    (highpass is True and radius >= distance)):
-                image_modified[x][y] = 0
-
-    return image_modified
 
 
 # Try to read the picture and convert it to grey scale
