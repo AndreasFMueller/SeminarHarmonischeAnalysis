@@ -41,7 +41,9 @@ Schlussendlich wird das gefilterte Frequenzspektrum mittels zweidimensionaler FF
 Abbildung \ref{opt:fig:three_slit_simulation} zeigt diesen Vorgang am Beispiel eines Dreifachspalts und 
 in Abbildung \ref{opt:fig:grid_simulation} wird das selbe mit einem Gitter simuliert.
 
-Die verwendeten Python-Scripte sind im Repository des Buches \footnote{\url{https://github.com/AndreasFMueller/SeminarHarmonischeAnalysis/tree/master/buch/papers/opt/code}} für weitere Versuche abgelegt.
+Die verwendeten Python-Skripte der Simulation sind im Repository des Buches 
+\footnote{\url{https://github.com/AndreasFMueller/SeminarHarmonischeAnalysis/tree/master/buch/papers/opt/code}}
+abgelegt.
 
 \subsection{Versuchsdurchführung}
 Zuerst wurde die Funktion des Aufbaus mit einem $2f$ Versuch verifiziert.
@@ -55,9 +57,15 @@ Die Filterung mittels eines optischen Tiefpasses konnte jedoch nicht nachgebilde
 Der genaue Grund dafür konnte nicht eruiert werden.
 Mögliche Ursachen wären eine zu grosse Blende, eine nicht optimale Ausrichtung der optischen Achse oder eine zu geringe Auflösung der Auswerteeinheit.
 
-Des weiteren konnte die Fouriertransformation bei einem Gitter gut beobachtet werden. 
-
 \subsection{Vergleich der Simulation}
+In der Abbildung \ref{opt:fig:experiment} sind die Resultate aus dem Versuch mit dem Dreifachspalt ersichtlich.
+Wenn das erhaltene Spektrum mit demjenigen aus der Simulation in Abbildung \ref{opt:fig:three_slit_simulation} verglichen wird, ist eine Übereinstimmung ersichtlich.
+In beiden Fällen ist auf der $x$-Achse eine erhöhte Intensität zu beobachten mit einem grossen Anteil im Ursprung.
+Ebenfalls in beiden Fällen kann auf der $y$-Achse eine kleiner Intensität beobachtet werden.
+Dieser folgt davon, dass der Spalt eine beschränkte Dimension in der $y$-Richtung hat und somit auch dort die Welle gebeugt wird.
+Beim reellen Experiment können noch weitere Bereiche mit einer sichtbaren Intensität ausgemacht werden, welche in der Simulation nicht ersichtlich sind.
+Dies war jedoch zu erwarten, da die Rechnung im Gegensatz zum realen Versuchsaufbau viel genauer ist und sich nicht durch Störungen im Aufbau beeinflussen lässt.
+
 
 \begin{figure}
     \centering
@@ -79,8 +87,9 @@ Des weiteren konnte die Fouriertransformation bei einem Gitter gut beobachtet we
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/opt/images/dreifachspalt_hochpass.pdf}
-    \caption{Der Dreifachspalt wird zunächst fouriertransformiert, dann mit einem Hochpass gefiltert und wieder rücktransformiert.}
+    \includegraphics[width=\textwidth]{papers/opt/images/dreifachspalt_tiefpass.pdf}
+    \caption{Der Dreifachspalt wird zunächst fouriertransformiert, dann mit einem Tiefpass gefiltert und wieder rücktransformiert.
+    Die ursprünglich scharfen Kanten des Spalts werden dadurch unscharf wiedergegeben.}
     \label{opt:fig:three_slit_simulation}
 \end{figure}
 
@@ -90,4 +99,12 @@ Des weiteren konnte die Fouriertransformation bei einem Gitter gut beobachtet we
     \caption{Das Gitter wird zunächst fouriertransformiert, dann mit einem Hochpass gefiltert und wieder rücktransformiert.
     In der Rücktransformation sind insbesondere die harten Kanten des Gitters erkennbar.}
     \label{opt:fig:grid_simulation}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/opt/images/experiment.pdf}
+    \caption{Der $4f$ Versuch aus dem Abschnitt \ref{opt:section:versuch} wurde hier mit einem Dreifachspalt durchgeführt.
+    Abbildung a) zeigt das daraus entstandene Spektrum und in der Abbildung b) ist die Rücktransformation davon zu sehen.}
+    \label{opt:fig:experiment}
 \end{figure}

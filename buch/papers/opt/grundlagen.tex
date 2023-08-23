@@ -268,13 +268,6 @@ E(y_p, t = 0)
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
-\opttodo{Zusammen anschauen}%
-
-Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral bezeichnet und ist in der Umgebung von $y, y_p \ll l$ um die Blende gültig.
-Dieses Integral ist lösbar, was aber mit relativ hohem Aufwand verbunden ist.
-Die Fraunhofer-Approximation soll hierbei eine weitere Vereinfachung bieten.
-
-
 Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral
 \footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
 bezeichnet und entspricht einer Nahfeld-Näherung.
@@ -326,6 +319,16 @@ Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Intensität}
 \label{opt:sec:intensity}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave.pdf}
+    \caption{Die elektromagnetische Welle breitet sich in $z$-Richtung aus. 
+    Wenn dabei die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung verläuft, muss die magnetische Feldstärke $\vec{H}$ 
+    in einem homogenen Medium entlang der $y$-Richtung verlaufen.}
+    \label{opt:fig:electromagnetic_wave}
+\end{figure}
+
 Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden, denn ein Beobachter, sei es das menschliche Auge oder ein Kamera Chip, kann negative und positive Amplituden sowie komplexwertige Grössen nicht unterscheiden.
 Gesehen werden kann lediglich die Intensität $I$, welche sich proportional zur quadrierten elektrischen Feldstärke verhält.
 Als Proportionalitätskonstante wird $\kappa$ verwendet.
@@ -345,16 +348,17 @@ I(y_p)
 \label{opt:equation:intensity_integral}
 \end{align}
 geschrieben werden. Soll nun der exakte Wert von $\kappa$ bestimmt werden, werden weitere Kenntnisse der Elektrodynamik benötigt.
-Dieser kann mittels des Poynting Vectors
+Dieser Wert kann mittels des Poynting Vectors
 \begin{equation}
 \vec{S} = \vec{E} \times \vec{H}
 \label{opt:equation:poynting}
 \end{equation}
 hergeleitet werden.
-\opttodo{Abbildung von Poynting Vector hinzufügen}
 Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldstärke.
-Angenommen eine elektromagnetische Welle breitet sich nun in $z$-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
-Verläuft nun die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung, muss die magnetische Feldstärke $\vec{H}$ entlang der $y$-Richtung verlaufen.
+Angenommen eine elektromagnetische Welle breitet sich nun in $z$-Richtung in einem homogenen Medium aus, 
+was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
+Verläuft nun die elektrische Feldstärke $\vec{E}$, wie in Abbildung \ref{opt:fig:electromagnetic_wave} gezeigt, entlang der $x$-Richtung, 
+muss die magnetische Feldstärke $\vec{H}$ entlang der $y$-Richtung verlaufen.
 Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung \eqref{opt:equation:wave}, als
 \begin{equation}
 \vec{E}(z,t)

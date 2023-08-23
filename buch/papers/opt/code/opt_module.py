@@ -81,12 +81,12 @@ class OptFourier:
              highpass=True):
 
         mm = 1/25.4
-        plt.figure(name, figsize=(140*mm, 70*mm))
+        plt.figure(name, figsize=(140*mm, 35*mm))
         plt.rcParams.update({'font.size': 10})
         plt.rcParams['font.family'] = 'Times New Roman'
 
         plt.subplots_adjust(left=0.1,
-                            bottom=0.1,
+                            bottom=0.3,
                             right=.9,
                             top=.9,
                             wspace=0.5,
