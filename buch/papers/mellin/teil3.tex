@@ -9,12 +9,17 @@
 \section{Vergleich mit der Fouriertransformation
 \label{mellin:section:teil3}}
 \rhead{Teil 3}
-Im vorangehenden Abschnitt wurde die Mellin-Transformation aus den Regeln der Gelfandtheorie konstruiert. 
-Dabei wurde auch immer wieder auf die bekannte Fouriertransformation verwiesen und deren Parallelen gezogen, um die doch sehr abstrahierte 
+Im vorangehenden Abschnitt wurde die Mellin-Transformation aus den 
+Regeln der Gelfandtheorie konstruiert. 
+Dabei wurde auch immer wieder auf die bekannte Fouriertransformation 
+verwiesen und deren Parallelen gezogen, um die doch sehr abstrahierte 
 Theorie etwas zu bodigen.
-Das hat dabei in diesem Fall besonders gut funktioniert, da die Fourier- und Mellin-Transformation nämlich nicht nur beide eine generische 
-Gelfandtransformation sind, sondern auch untereinander enger verwandt sind als prinzipiell nötig wäre.
-Der folgende Abschnitt erkundet eine Alternative, wie man auf die Mellin-Transformation auf sehr einfache Weise auch direkt vom Integral 
+Das hat dabei in diesem Fall besonders gut funktioniert, da die Fourier- 
+und Mellin-Transformation nämlich nicht nur beide eine generische 
+Gelfandtransformation sind, sondern auch untereinander enger verwandt 
+sind als prinzipiell nötig wäre.
+Der folgende Abschnitt erkundet eine Alternative, wie man auf die 
+Mellin-Transformation auf sehr einfache Weise auch direkt vom Integral 
 der Fouriertransformation hätte kommen können.
 
 \subsection{Von Fourier zu Mellin
@@ -22,7 +27,8 @@ der Fouriertransformation hätte kommen können.
 Was folgt ist eine einzelne Rechnung.
 Wir starten mit dem bekannten Integral der Fouriertransformation
 \begin{equation}
-    \mathcal{F}\{f \}(\omega) = \int\limits_{-\infty}^{\infty} e^{-i\omega{}t} f(t) \,\mathrm{d}t
+    \mathcal{F}\{f \}(\omega) = 
+    \int\limits_{-\infty}^{\infty} e^{-j\omega{}t} f(t) \,\mathrm{d}t
     \label{mellin:fourier}
 \end{equation}
 Jetzt gilt es, zwei Substitution durchzuführen
@@ -35,22 +41,23 @@ und
 \[
     \begin{aligned}
         t &= \ln x \\
-        dt &= \frac{1}{x} dx
+        \mathrm{d}t &= \frac{1}{x} \mathrm{d}x
     \end{aligned}
 \]
 Eingesetzt in das Fourier-Integral ergibt sich
 \[
     \begin{aligned}
-    \int e^{z \ln x} \cdot f(\ln x) \,\frac{dx}{x} 
-    &= \int e^{\ln x^z} \cdot f(\ln x) \,\frac{dx}{x} \\
-    &= \int x^{z} \cdot f(\ln x) \,\frac{dx}{x} \\
-    &= \int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x \\
+    &\int e^{z \ln x} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
+    = &\int e^{\ln x^z} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
+    = &\int x^{z} \cdot f(\ln x) \,\frac{\mathrm{d}x}{x} \\
+    = &\int x^{z-1} \cdot f(\ln x) \,\mathrm{d}x \\
     \end{aligned}
 \]
-Nun gilt es bei der Substitution der Integrationsvariablen $t$ noch die neuen Grenzen zu berechnen
+Nun gilt es bei der Substitution der Integrationsvariablen $t$ noch die 
+neuen Grenzen zu berechnen
 \[
     \begin{aligned}
-        &e^{t} =& x \\
+        &e^{t} &= x \\
         &e^{-\infty} &\rightarrow 0 \\
         &e^{\infty} &\rightarrow \infty 
     \end{aligned}
@@ -59,38 +66,58 @@ Dies führt auf das Integral
 \[
     \int\limits_{0}^{\infty} x^{z-1} f(\ln x) \,\mathrm{d}x
 \]
-Das nun bekannt vorkommen sollte, denn es entspricht exakt der Mellin-Transformation!
+Das nun bekannt vorkommen sollte, denn es entspricht exakt der 
+Mellin-Transformation!
 \medskip
 
-Die Fouriertransformation einer Funktion ist also dasselbe wie die Mellin-Transformation derselben Funktion, welche aber
-mit dem natürlichen Logarithmus logarithmiert wurde, oder andersherumn, nimmt man das Argument einer Funktion 
-in den Exponent von $e \mapsto e^x$ und fouriertransformiert diese, ergibt dies die Mellin-Transformation der Funktion $f(x)$.
-Dies rührt daher, da die Exponentialfunktion eine Funktion von $\mathbb{R} \mapsto \mathbb{R^+}$ ist, 
-Gruppenhomomorphismus.
-Das ist eine erstaunliche Erkenntnis und lässt ein paar einfache Relationen zur Fourier- und Laplace-Transformation 
-formulieren.
+Die Fouriertransformation einer Funktion ist also dasselbe wie die 
+Mellin-Transformation derselben Funktion, welche aber mit dem natürlichen 
+Logarithmus logarithmiert wurde, oder andersherumn, nimmt man das 
+Argument einer Funktion in den Exponent von $e \mapsto e^x$ und 
+fouriertransformiert diese, ergibt dies die Mellin-Transformation 
+der Funktion $f(x)$.
+Dies rührt daher, da die Exponentialfunktion eine Funktion von 
+$\mathbb{R} \mapsto \mathbb{R^+}$ ist.
+Das ist eine erstaunliche Erkenntnis und lässt ein paar einfache 
+Relationen zur Fourier- und Laplace-Transformation formulieren.
 \begin{align*}
-    \mathcal{M}\{f(x)\}(z) &= \mathcal{F}\{f (e^{t})\}(jz) \\ \\
-    \mathcal{M}\{f(x)\}(z) &= \mathcal{L}\{f (e^{-t})\}(-z) + \mathcal{L}\{f (e^{t})\}(z) 
+    \mathcal{M}\left\{f(x)\right\}(z) 
+    &= \mathcal{F}\left\{f (e^{t})\right\}(jz) \\ \\
+    \mathcal{M}\left\{f(x)\right\}(z) 
+    &= \mathcal{L}\left\{f (e^{-t})\right\}(-z) 
+    + \mathcal{L}\left\{f (e^{t})\right\}(z) 
 \end{align*}
 und
 \begin{align*}
-    \mathcal{M^{-2}}\{f(z)\}(x) &= \mathcal{F^{-1}}\{f (jz)\}(e^t) \\ \\
-    \mathcal{M^{-2}}\{f(z)\}(x) &= \mathcal{L}\{f (-z)\}(e^{-t}) + \mathcal{L}\{f (z)\}(e^{t}) 
+    \mathcal{M}^{-1}\left\{f(z)\right\}(x) 
+    &= \mathcal{F}^{-1}\left\{f (jz)\right\}(e^t) \\ \\
+    \mathcal{M}^{-1}\left\{f(z)\right\}(x) 
+    &= \mathcal{L}^{-1}\left\{f (-z)\right\}(e^{-t}) 
+    + \mathcal{L}^{-1}\left\{f (z)\right\}(e^{t}) 
 \end{align*}
-Aus diesen Relationen können also Hin- und Rücktransformationsformeln der Mellin-Transformation einfachst aus den Formeln der 
-Fourier- oder Laplacetransformation hergeleitet werden, ganz ohne Kenntnis der zugrundeliegenden Gruppen- beziehungweise Gelfandtheorie.
-Auch überrascht nun gar nicht mehr, dass eigentlich alle Eigenschaften der Fouriertransformation übersetzt werden können, 
-was vorher im Kontext der abstrakten Gelfandtheorie vielleicht noch etwas undurchsichtig erschienen ist.
+Aus diesen Relationen können also Hin- und Rücktransformationsformeln 
+der Mellin-Transformation einfachst aus den Formeln der Fourier- oder 
+Laplacetransformation hergeleitet werden, ganz ohne Kenntnis der 
+zugrundeliegenden Gruppen- beziehungweise Gelfandtheorie.
+Auch überrascht nun gar nicht mehr, dass eigentlich alle Eigenschaften 
+der Fouriertransformation übersetzt werden können, was vorher im Kontext 
+der abstrakten Gelfandtheorie vielleicht noch etwas undurchsichtig 
+erschienen ist.
 
-In der Theorie könnte die Mellin-Transformation also alle Aufgaben der in der modernen Welt allgegenwärtigen Fouriertransformation 
-übernehmen. 
-Joseph Fourier hätte die Wärmeleitgleichung damals ebenso mit der Mellin-Transformation lösen können und ein Grossteil der modernen 
+In der Theorie könnte die Mellin-Transformation also alle Aufgaben der 
+in der modernen Welt allgegenwärtigen Fouriertransformation übernehmen. 
+Joseph Fourier hätte die Wärmeleitgleichung damals ebenso mit der 
+Mellin-Transformation lösen können und ein Grossteil der modernen 
 Elektrotechnik könnte darauf basieren. 
-Aus diesem Vergleich offenbart sich aber auch die Schönheit der Fouriertransformation. 
-Durch die Symmetrie der Gruppen und dadurch der Transformationsgleichungen kommt diese extrem handlich und intuitiv daher und ist der 
+Aus diesem Vergleich offenbart sich aber auch die Schönheit der 
+Fouriertransformation. 
+Durch die Symmetrie der Gruppen und dadurch der Transformationsgleichungen 
+kommt diese extrem handlich und intuitiv daher und ist der 
 Mellin-Transformation in dieser Hinsicht wohl doch überlegen.
-Die Vorstellung der Fouriertransformation, als das Aus- und Einrollen eines Seiles in einer Seiltrommel ist in diesem Kontext einzigartig.
+Die Vorstellung der Fouriertransformation, als das Aus- und 
+Einrollen eines Seiles in einer Seiltrommel ist in diesem Kontext 
+einzigartig.
+% to be elaborated
 
 
 
