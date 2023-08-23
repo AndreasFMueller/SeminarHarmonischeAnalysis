@@ -9,22 +9,22 @@
 \section{JPEG Kompression
 \label{jpeg:section:kompjpeg}}
 \rhead{JPEG Kompression}
-Bei der JPEG Kompression nutzt man aus, dass Bilder kaum harte Übergänge der Helligkeit und Farbe zeigen.
-Diese Informationen kann man also getrost reduzieren, ohne einen grossen Qualitätsverlust in Kauf nehmen zu müssen. 
+Bei der JPEG Kompression nutzt man aus, dass Bilder kaum harte Übergänge bei Helligkeit und Farbe zeigen.
+Diese Informationen kann man also, ohne einen grossen Qualitätsverlust reduzieren. 
 
 Um Bilder mit der DCT transformieren zu können, ist eine Vorverarbeitung nötig. 
-Diese beinhaltet die Farbraumumrechnung um eine bessere Kompression zu erreichen.
-Zudem wird das ganze Bild in \(8\times8\) Pixelblöcke unterteilt, da die zweidimensionale DCT damit arbeitet.
+Mit der Farbraumumrechnung erreicht man eine bessere Kompression.
+Ausserdem wird das gesamte Bild in \(8\times8\) Pixelblöcke unterteilt, da die zweidimensionale DCT damit arbeitet.
 
 \subsection{Farbraumumrechnung
 \label{jpeg:subsection:farbraumumrechnung}}
-Ein weit verbreiteter Farbmodell ist das Rot-Grün-Blau-Modell (RGB), dabei wird eine Pixelfarbe mit einem Rot-, Grün- und Blauwert additive erzeugt.
+Ein weit verbreitetes Farbmodell ist Rot-Grün-Blau (RGB), dabei wird eine Pixelfarbe mit einem Rot-, Grün- und Blauwert additiv erzeugt.
 
 Beim JPEG-Standart wechselt man die Basis, in der die Farben dargestellt werden und benutzt statt RGB das YCbCr-Modell.
-In diesem Modell sind die Komponenten die Helligkeit (Luminaz Y), sowie die Farbigkeit (Chrominanz).
-\(C_b\) von Grau in Richtung Blau/Gelb und \(C_r\) von Grau nach Rot/Türkis.
+Dieses Modell teilt sich in die Komponenten Helligkeit (Luminanz Y) und Farbigkeit (Chrominanz) auf.
+Die Chrominanz \(C_b\) steht für die Abweichung von Grau in Richtung Blau/Gelb und \(C_r\) für die Abweichung von Grau nach Rot/Türkis.
 
-Die Transformation wird gemacht, weil unsere Augen empfindlicher sind auf Helligkeitsunterschiede als auf Farbunterschiede.
+Das YCbCr-Modell wird angewandt, weil unsere Augen empfindlicher sind auf Helligkeitsunterschiede als auf Farbunterschiede.
 Damit lassen sich, nach einer DCT, die Koeffizienten aus den \(C_b\) und \(C_r\) Matrizen stärker reduzieren als die in der Y Matrix.
 Der beschriebene Farbraumwechsel lässt sich mittels
 \begin{equation}
@@ -59,27 +59,27 @@ Durch begrenzte Rechengenauigkeit und Rundungsfehler entstehen hier erste Datenv
 \subsection{Tiefpassfilter und Unterabtastung
 \label{jpeg:subsection:tiefpass}}
 
-\begin{figure}
+\begin{figure}[b]
     \centering
     \includegraphics[width=\linewidth]{papers/jpeg/pictures/ycbcr.pdf}
-    \caption{Von links Original, Luminanz, Chrominanz Blau/Gelb und Rot/Türkis
+    \caption{Original, Luminanz(Y), Chrominanz Blau/Gelb(\(C_b\)) und Rot/Türkis(\(C_r\))
         \label{jpeg:fig:ycbcr}}
 \end{figure}
 
 Im Abschnitt \ref{jpeg:subsection:farbraumumrechnung} wurde beschrieben, dass die Farbauflösung der \(C_b\) und \(C_r\) für Menschen deutlich geringer ist wie in Abb. \ref{jpeg:fig:ycbcr} ersichtlich.
 Dazu werden sie Tiefpass gefiltert, zudem üblicherweise vertikal und horizontal um den Faktor 2 unterabgetastet, was einer vierfachen Datenreduktion entspricht.
-Die Farbunterabtastung bedeutet, dass jeder Pixel des Bild sein eigener Helligkeitswert behält, aber vier benachbarte Pixel sich die Farbinformationen teilen.
+Die Farbunterabtastung bedeutet, dass jeder Pixel des Bild seinen eigenen Helligkeitswert behält, wobei vier benachbarte Pixel sich die Farbinformationen teilen.
 
-Beispiel: Die \(8\times8\) Pixelblöcke der Luminanz hat jeder Pixel einen einzelnen Grauwert.
+Beispiel: Beim \(8\times8\) Pixelblock der Luminanz hat jeder Pixel einen einzelnen Grauwert.
 Bei den beiden Chrominanzen \(C_b\) und \(C_r\) werden jeweils \(2\times2\) Blöcke (innerhalb der \(8\times8\) Blöcke) den gleichen Wert zugewiesen.
 Die Chrominanzen haben daher eine geringere Auflösung, als die Luminanz.
 
 \subsection{Tiling
 \label{jpeg:subsection:tiling}}
-Beim Tiling wird das Bild in jeweils \(8\times8\) Pixel grosse Blöcke unterteilt.
-Da normalerweise die Seitenlängen eines Bildes sich nicht durch 8 teilen lässt, werden die restlichen Zeilen bzw. Spalten jeweils aufgefüllt.
+Beim Tiling wird das Bild in Blöcke von jeweils \(8\times8\) Pixel unterteilt.
+Da sich die Seitenlängen eines Bildes normalerweise nicht durch 8 teilen lassen, werden die restlichen Zeilen bzw. Spalten jeweils aufgefüllt.
 Wie das Auffüllen geschieht, ist im JPEG-Standard nicht festgelegt.
-Eine gängige Methode ist das Wiederholen der letzte Pixel-Zeile oder -Spalte bis es aufgeht, wie in Abb. \ref{jpeg:fig:tiling} ersichtlich.
+Eine gängige Methode ist das Wiederholen der letzte Pixel-Zeile oder -Spalte bis es durch 8 teilbar ist, siehe Abb. \ref{jpeg:fig:tiling}.
 Auf diesen einzelnen Blöcken wird nun die DCT angewendet.
 
 \begin{figure}
@@ -107,9 +107,9 @@ Auf diesen einzelnen Blöcken wird nun die DCT angewendet.
 
 \subsection{Quantisierung
 \label{jpeg:subsection:quantisierung}}
-Bei allen verlustbehafteten Komprimierungsverfahren entsteht die eigentliche Datenreduktion erst bei der Quantisierung.
-Dazu werden die Koeffizienten aus der DCT Matrix \ref{jpeg:tab:dctblock} mit einer Quantisierungsmatrix elementweise dividiert und auf den nächsten ganzzahligen Wert gerundet.
-Diese ist für die Qualität und der Menge der reduzierten Daten verantwortlich.
+Bei allen verlustbehafteten Komprimierungsverfahren geschieht die eigentliche Datenreduktion erst bei der Quantisierung.
+Dazu werden die Koeffizienten aus der DCT Matrix  Tabelle \ref{jpeg:tab:dctblock} mit einer Quantisierungsmatrix elementweise dividiert und auf den nächsten ganzzahligen Wert gerundet.
+Die Quantisierungsmatrix ist für die Qualität und Menge der reduzierten Daten verantwortlich.
 Die Quantisierung erfolgt mittels: 
 \begin{equation}
     F^Q(x,y)
@@ -119,19 +119,19 @@ Die Quantisierung erfolgt mittels:
     \right)
 \end{equation}
 dabei ist \(F^Q\) die resultierende Matrix, \(F\) ist der transformierte Pixelblock und \(Q\) die Quantisierungsmatrix.
-In \ref{jpeg:tab:quantblock} sind die Werte des Beispielblocks Quantisiert.
+In Tabelle \ref{jpeg:tab:quantblock} sind die Werte des Beispielblocks quantisiert.
 Bei diesem Schritt findet die Irrelevanzreduktion statt.
-Irrelevanzreduktion meint die Daten zu entfernen, die durch mathematische Modelle oder mittels empirische Werte als irrelevant gekennzeichnet sind.
-Das ist z.B. wenn man ein Bild für Rot/Grün blinde Personen speichern möchte, wahlweise die Rot- oder Grün-Anteile speichert.
-Da diese Personen sowieso nur einen Teil davon sehen können.
+Irrelevanzreduktion meint, die Daten zu entfernen, die durch mathematische Modelle oder mittels empirischer Werte als irrelevant gekennzeichnet sind.
+Beispiel: Personen mit Rot/Grün Blindheit erkennen kaum Unterschiede zwischen Rot und Grün, deshalb ist eine der beiden Farben irrelevant.
+Es könnten daher entweder nur die Rot- oder nur die Grün-Anteile gespeichert werden.
 
 Das Auge ist empfindlicher auf hohe Farbunterschiede von benachbarten Pixel, das sind die tiefen Frequenzen in der DCT Matrix.
 Daher werden diese weniger reduziert als die hohen, man sollte dafür eine optimale Tabelle verwenden.
 
 Da der JPEG-Standard dies nicht vorgibt, muss die verwendete Tabelle im Header des Files mit abgelegt werden.
-In Tabelle \ref{jpeg:tab:quant} ist eine gängige Quantisierungstabelle für die Luminanz und eine für die Chrominanzen ersichtlich.
-Was auffällt ist das die Tabelle \ref{jpeg:tab:quant} nicht symmetrisch ist, der Grund dafür ist, dass die Tabellen aus Untersuchung des Sehverhalten entwickelt worden sind.
-Um den Fehler so gering wie möglich zu halten und trotzdem eine gute Datenreduktion zu erzielen.
+Tabelle \ref{jpeg:tab:quant} zeigt je eine gängige Quantisierungstabelle für die Luminanz und für die Chrominanzen.
+Was auffällt ist, dass die Tabelle für die Luminanz aus \ref{jpeg:tab:quant} nicht symmetrisch ist.
+Die Tabellen sind aus Untersuchungen des Sehverhaltens entwickelt worden, um Fehler so gering wie möglich zu halten und trotzdem eine gute Datenreduktion zu erzielen.
 
 \begin{table}[t]
     \centering
@@ -190,7 +190,7 @@ Um den Fehler so gering wie möglich zu halten und trotzdem eine gute Datenreduk
         99 & 99 & 99 & 99 & 99 & 99 & 99 & 99  \\ \hline
         99 & 99 & 99 & 99 & 99 & 99 & 99 & 99  \\ \hline  	  
     \end{tabularx}
-    \caption{Beispiel Quantisierungstabelle für Luminanz (links) und Chominanzen.
+    \caption{Beispiel Quantisierungstabelle für Luminanz(links) und Chominanzen(rechts).
         \label{jpeg:tab:quant}}
 \end{table}
 
@@ -198,16 +198,17 @@ Um den Fehler so gering wie möglich zu halten und trotzdem eine gute Datenreduk
 
 \subsection{Umsortierung und Differenzkodierung
 \label{jpeg:subsection:umsortierung}}
-Die 64 Koeffizienten des Pixelblocks \ref{jpeg:tab:quantblock} werden nach der Quantisierung im Zig-Zag Muster abgetastet wie in Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
+Die 64 Koeffizienten des Pixelblocks Tabelle \ref{jpeg:tab:quantblock} werden nach der Quantisierung im Zig-Zag Muster abgetastet wie Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
 \begin{equation}
     69, 5, -2, -1, -1, -1, 1, 0, 0, -1, 0, 0, -1, 0, 0,\dots, 0.
     \label{jpeg:equation:abgetastet}
 \end{equation}
-Die linke obere Ecke ist der Gleichanteil (DC-Wert), das ist die mittlere Helligkeit des Blocks.
-Der Rest ist der Wechselanteil (AC-Wert), wenn man dem Zig-Zag folgt, erreicht man die höchste Frequenz zuletzt.
+Links oben ist der Gleichanteil (DC-Wert), der die mittlere Helligkeit des Blocks angibt.
+Die restlichen Werte des Blocks nennt man den Wechselanteil (AC-Wert).
+Der AC-Wert steigt im Verlauf des Zig-Zag und erreicht im letzten Wert die höchste Frequenz.
 
-Die Koeffizienten mit hohem Wert (die niedrigen Frequenzen) stehen nun am Anfang und die kleine Koeffizienten weiter hinten.
-Je stärker quantisiert wurde, desto mehr Nullen sind am Ende, was für eine Lauflängenkodierung optimal ist.
+Die Koeffizienten mit hohem Wert (die niedrigen Frequenzen) stehen nun am Anfang, die Koeffizienten mit niedrigem Wert weiter hinten.
+Je stärker quantisiert wurde, desto mehr Nullen sind am Ende der Zahlenfolge, das ist für eine Lauflängenkodierung optimal.
 
 \begin{figure}
     \centering
@@ -217,7 +218,7 @@ Je stärker quantisiert wurde, desto mehr Nullen sind am Ende, was für eine Lau
 \end{figure}
 
 Der DC-Wert und die AC-Werte werden getrennt behandelt.
-Der Grund dafür liegt darin, dass Bilder oft grössere, fast gleichfarbige Flächen besitzen.
+Der Grund dafür ist, dass Bilder oft grössere, fast gleichfarbige Flächen besitzen.
 Dadurch haben benachbarte Blöcke ähnliche Gleichanteile, die differenziell kodiert werden.
 
 Das bedeutet, man betrachtet nicht jeden DC-Wert einzeln, sondern die Differenzen zwischen den Blöcken.
@@ -228,19 +229,19 @@ Wenn an dem Beispiel in Tabelle \ref{jpeg:tab:quantblock} die differenzielle Kod
 
 \subsection{Entropiekodierung
 \label{jpeg:subsection:entropiekodierung}}
-Die Entropiekodierung ist bei der JPEG Kompression das Verfahren, das von David A. Huffman entwickelt wurde.
+Die Entropiekodierung der JPEG Kompression basiert auf dem Prinzip von David A. Huffman (Huffmancoding).
 Bei der Entropiekodierung wird eine Zeichenfolge (z.B. aus einem Text) in eine Bitfolge umgewandelt.
-Die Huffman Kodierung zweigt von jedem Knoten nach links 0 und nach rechts 1.
+Die Huffman Kodierung zweigt beim Huffmantree von jedem Knoten nach links mit 0 und nach rechts mit 1 ab.
 Um z.B. den Wert 4 zu erhalten, braucht man die Bitfolge 101.
-Um mittels der Kodierung den verschlüsselten Wert zu erhalten, muss man bei jedem Knoten weiter gehen, bis man im Huffmantree ein Ende erreicht (z.B. 1110 entspricht 6 (orange Abb. \ref{jpeg:fig:huffman})).
+Um mittels der Kodierung den verschlüsselten Wert zu erhalten, muss man bei jedem Knoten weiter gehen, bis man im Huffmantree ein Ende erreicht. Beispiel: 1110 entspricht 6, in Abb. \ref{jpeg:fig:huffman} orange gekennzeichnet.
 
 Der Huffmantree ist im JPEG-Standard nicht vorgegeben und muss deshalb im File header hinterlegt werden.
-Dazu kommt, dass die Binären-Werte aus Tabelle \ref{jpeg:tab:huffman} alternativ kodiert werden können.
+Dazu kommt, dass die binären Werte aus Tabelle \ref{jpeg:tab:huffman} alternativ kodiert werden können.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{papers/jpeg/pictures/huffman.pdf}
-    \caption{Beispiel für einen Huffman-Baum für DC-Wert(links) und AC-Wert als Paar 
+    \caption{Beispiel für einen Huffmantree für DC-Wert(links)\cite{jpeg:dccomponentyoutube} und AC-Wert als Paar(rechts)\cite{jpeg:accomponentsyoutube}
         \label{jpeg:fig:huffman}}
 \end{figure}
 
@@ -249,22 +250,23 @@ Dazu kommt, dass die Binären-Werte aus Tabelle \ref{jpeg:tab:huffman} alternati
 Der differenzkodierte Gleichanteil wird direkt mit einem Huffmantree kodiert.
 In Abb. \ref{jpeg:fig:huffman} sind die Bäume dargestellt.
 
-
 Nun kann man mit Hilfe der Tabelle \ref{jpeg:tab:huffman} und den Bäumen, den Bitstream für diesen Pixelblock erstellen.
 Der DC-Wert \(-7\) hat laut Tabelle \ref{jpeg:tab:huffman} die binäre Länge 3.
-Aus dem Baum gemäss Abb. \ref{jpeg:fig:huffman} ergibt sich dafür 100.
+Aus dem Baum links gemäss Abb. \ref{jpeg:fig:huffman} ergibt sich dafür 100.
 Aus der Tabelle \ref{jpeg:tab:huffman} liest man für den Wert \(-7\) den binären Wert 000.
 Die binäre Länge 100 und der binäre Wert von \(-7\) mit 000 wird zusammen als 100000 geschrieben.
 
 \subsubsection{Wechselanteil
 \label{jpeg:subsubsection:wechselanteil}}
-Um Speicherplatz zu reduzieren, werden die AC-Werte zuerst einer run length coding (RLC) unterzogen.
-Dabei werden nur die Nullen Lauflängen kodiert. 
-Diese verschlüsselt ein Huffmantree anschliessend.
+Um Speicherplatz zu reduzieren, werden die AC-Werte zuerst einer run length coding (RLC) unterzogen, dabei werden nur die Nullen berücksichtigt. 
+Die kodierten Werte verschlüsselt ein Huffmantree anschliessend.
 
 Die RLC der Wechselanteile erfolgt in einer Klammer-Sortierung.
-Der erste Wert gibt an, wie viele AC-Werte vor dem, der kodiert werden soll, gleich Null sind und der zweite Wert in der Klammer die Anzahl der benötigten Bits für die Kodierung.
-Darauf folgt der eigentliche AC-Wert selbst also aus \eqref{jpeg:equation:abgetastet} wird:
+Jede eckige Klammer steht für einen Wechselanteil aus \eqref{jpeg:equation:abgetastet}.
+Der erste Wert in der runden Klammer gibt an, wie viele AC-Werte vor dem zu kodierenden Wert gleich Null sind.
+Der zweite Wert in der runden Klammer die Anzahl der benötigten Bits für die Kodierung (s. Tabelle \ref{jpeg:tab:huffman}).
+Darauf folgt der eigentliche AC-Wert selbst.
+Aus den Wechselanteilen von \eqref{jpeg:equation:abgetastet} wird:
 \begin{equation}
     [(0,3)5],[(0,2)-2], \dots, [(2,1)-1], EOB.
     \label{jpeg:equation:kette}
@@ -304,12 +306,12 @@ Hätte man die Werte aus Tabelle \ref{jpeg:tab:quantblock} genommen, bräuchte m
 \subsection{Probleme JPEG
 \label{jpeg:subsection:probleme}}
 Wenn man ein Bild zu stark komprimiert, treten Artefakte auf.
-Artefakte zeigen sich bei Bildern als kleine Klötzchen wie in Abb. \ref{jpeg:fig:blockart} erkennbar.
+Artefakte zeigen sich bei Bildern als kleine Klötzchen, in Abb. \ref{jpeg:fig:blockart} deutlich erkennbar.
 Die Ursache dafür ist das zu starke Quantisieren der \(8\times8\) Pixelblöcke nach der DCT.
 Dadurch gehen zu viele Daten verloren und der gesamte Block besitzt dieselbe Farbe.
 
-Für die Text- und Fingerprint-Kompression eignet sich der JPEG-Standard nicht.
-Texte und Fingerprints haben Typischerweise harte Pixelübergänge.
+Aus diesem Grund eignet ist der JPEG-Standard ungeeignet für die Text- und Fingerprint-Kompression.
+Texte und Fingerprints haben typischerweise harte Pixelübergänge.
 Für die eindeutige Erkennung eines Fingerprints darf seine Struktur nicht verändert werden.
 Für diese beiden Anwendungen trifft die Annahme, die in Abschnitt \ref{jpeg:section:kompjpeg} über Bilder gemacht wurde nicht mehr zu.
 
@@ -321,14 +323,14 @@ Beispiel: die Farben der Sonnenblume aus Abb. \ref{jpeg:fig:blockart} könnte si
 
 \begin{figure}[h]
     \centering
+    \subfigure[Blockartefakte\label{jpeg:fig:blockart}]{
+        \includegraphics[width=0.32\textwidth]{papers/jpeg/pictures/sonnenblume.pdf}}
+    \hfill
     \subfigure[Textartefakt\label{jpeg:fig:textart}]{
         \includegraphics[width=0.34\textwidth]{papers/jpeg/pictures/artifakte.pdf}}
     \hfill
     \subfigure[Fingerprint\label{jpeg:fig:fingerprint}]{
         \includegraphics[width=0.28\textwidth]{papers/jpeg/pictures/fingerprint.pdf}}
-    \hfill
-    \subfigure[Blockartefakte\label{jpeg:fig:blockart}]{
-        \includegraphics[width=0.32\textwidth]{papers/jpeg/pictures/sonnenblume.pdf}}
     \caption{Verschiedene Artefakte von JPEG 
     \label{jpeg:fig:bspproblem}}
 \end{figure}

@@ -15,27 +15,27 @@ Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet hat die JPEG Kompression s
 Diese sollte mit der Weiterentwicklung behoben werden. 
 JPEG konnte schon verlustlos und verlustbehaftet Bilder komprimieren, nutzt dafür aber verschiedene Algorithmen im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
 
-Dazu wurden folgende Anforderungen definiert.
+Bei der Weiterentwicklung wurden folgende Anforderungen definiert:
 JPEG-2000 sollt bei einer höheren Kompressionsrate eine bessere Bildqualität haben als JPEG.
-Der verlustfreie und verlustbehaftete Modus sollten den gleichen Algorithmus nutzen und man wollte eine Progressive Übertragung.
-Das Bedeutet Bilder werden mit zunehmender Qualität aufgebaut, man sieht zuerst das Grundgerüst und mit der Zeit kommen immer mehr Details hinzu.
-Dazu kommt, dass man nur ein Ausschnitt aus dem Bild fein auflösen kann für schnellere Übertragung.
-Zusätzlich erhielt JPEG-2000 neue Funktionen:
+Der verlustfreie und verlustbehaftete Modus sollten den gleichen Algorithmus nutzen und man wollte eine progressive Übertragung.
+Das bedeutet, Bilder werden mit zunehmender Qualität aufgebaut, man sieht zuerst das Grundgerüst und mit der Zeit werden weitere Details hinzugefügt.
+Ausserdem sollte es möglich sein, um eine schnellere Übertragung zu erreichen, nur einen Ausschnitt aus dem Bild fein aufzulösen.
+Zusätzliche neue Funktionen:
 \begin{itemize}
-    \item Region of interest(ROI): ermöglicht es Anwender Bildbereiche mit verschiedenen stark zu komprimieren.
-    \item Der Aufbau des Datenstroms ermöglicht das leichtere erkennen von Übertragungsfehler.
+    \item Region of interest(ROI): ermöglicht es Anwendern Bildbereiche verschiedenen stark zu komprimieren.
+    \item Der Aufbau des Datenstroms ermöglicht das leichtere erkennen von Übertragungsfehlern.
     \item Bilder dekodieren, ohne das gesamte Bild zwischenspeichern zu müssen (Sequentieller Bildaufbau).
 \end{itemize}
 Der JPEG-2000-Standard ist in 13 Unterstandards aufgegliedert, in diverse Ergänzungen und Erweiterungen für unterschiedliche Anwendungsgebiete. 
 
 
-\subsection{Anwendungsgebiet
-\label{jpeg:subsection:anwendungsgebiet}}
+\subsection{Anwendungsgebiete
+\label{jpeg:subsection:anwendungsgebiete}}
 JPEG-2000 konnte sich noch nicht richtig durchsetzten, da es sehr rechenintensiv ist und einige Algorithmen geschützt sind.
 Zudem wird es nur in wenigen kommerziellen Programmen unterstützt.
 Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
 \begin{itemize}
-    \item In der Medizinaltechnik, Speicherung der Röntgenbilder, CT- und MRI-Scans.
+    \item In der Medizinaltechnik, Speicherung von Röntgenbildern, CT- und MRI-Scans.
     Festgelegt durch die Digital Imaging and Communications in Medicine (DICOM).
     Dort kann man z.B. nur den Teil des Bildes übertragen, der von Interesse ist um Übertragungszeiten zu verringern.
     \item Die Digital Cinema Initiative (DCI) nutzt das Motion-JPEG, ein teil von JPEG-2000, um Kinofilme digital zu Speichern und den Kinos zur Verfügung zu stellen.
@@ -43,18 +43,18 @@ Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
     \item Das Bundesarchiv legt Bilder in TIFF und JPEG-2000 ab.
     \item Live HDTV wird mit JPEG-2000 komprimierten Bildern übertragen.
     \item Die Raumfahrt übermittelt die Bilder der Marsrover in einem JPEG-2000 verwandten Format.
-    \item Satelliten-Technik für zivilen und militärischen nutzen.   
+    \item Satelliten-Technik für zivile und militärische Zwecke.   
 \end{itemize}
 
 
 \subsection{Prinzip
 \label{jpeg:subsection:prinzip}}
-Die JPEG-2000 Komprimierung funktioniert ähnlich wir der ältere Standard JPEG.
+Die JPEG-2000 Komprimierung funktioniert ähnlich wie der ältere Standard JPEG.
 Bilder werden zunächst einer Vorverarbeitung unterzogen, das ist das Aufteilen in Bildbereiche von höherem Interesse (ROIs).
-Die Farbraum Umrechnung ist nicht zwingen, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
+Die Farbraum Umrechnung ist nicht zwingend, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
 Die vorbereiteten Bilder werden nun mit der 2D-Wavelet-Transformation umgewandelt.
 JPEG-2000 verwendet die Cohen-Daubechies-Feauveau-Wavelets (CDF), 5/3 bei verlustfreier und 9/7 bei verlustbehafteter Kompression.
-Darauf folgt die Entropiekodierung, was die komprimierten Daten liefert. 
+Darauf folgt die Entropiekodierung, welche die komprimierten Daten liefert. 
 
 \subsection{Verbesserungen gegenüber JPEG
 \label{jpeg:subsection:verbesserungen}}
@@ -69,9 +69,9 @@ Die WT ist in Zweierpotenzen leicht zu skalieren und lässt sich somit auf belie
 
 \subsubsection{Nachteile von JPEG-2000
 \label{jpeg:subsubsection:nachteil}}
-Wie in Abschnitt \ref{jpeg:subsection:anwendungsgebiet} schon geschrieben, ist auch der JPEG-2000-Standard nicht perfekt.
-JPEG-2000 Bilder mit hoher Kompression, tendieren zu Unschärfe und Schatten bei starken Kontrasten, im Gegensatz zu JPEG mit störenden Blockartefakte.
-Bei grossen Bildern ist JPEG-2000 besser geeignet als JPEG, aber bei kleinen Bildern kann, je nach Bildinhalt JPEG besser geeignet sein. 
-JPEG-2000-Standard biete sehr viele neue Möglichkeiten, ist dafür aber sehr rechenintensiv und lässt sich nicht besonders gut in Hardware umsetzen.
-Hat keine so weite Verbreitung wie JPEG und ist mit dem älteren Standard inkompatibel.
-Das JPEG-2000 Komitee garantiert keine mögliche Lizenzansprüche dritter.
+Wie in Abschnitt \ref{jpeg:subsection:anwendungsgebiete} schon beschrieben, ist auch der JPEG-2000-Standard nicht perfekt.
+JPEG-2000 Bilder mit hoher Kompression, tendieren zu Unschärfe und Schatten bei starken Kontrasten. 
+JPEG-2000-Standard ist sehr rechenintensiv und hat einen hohen Arbeitsspeicherbedarf. 
+Die Wavelettransformation lässt sich bisher noch nicht in Hardware umsetzen, kann also nicht auf einem Microchip implementiert werden.
+Der neue Standard hat keine so weite Verbreitung wie JPEG und ist mit dem älteren Standard inkompatibel.
+Das JPEG-2000 Komitee garantiert keine mögliche Lizenzansprüche Dritter.
