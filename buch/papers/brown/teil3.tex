@@ -17,7 +17,7 @@ Formal kann eine stochastische DGL folgendermaßen notiert werden:
 	\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales \textit{white noise} $ \xi(t) $ modelliert.
+In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales weisses Rauschen $ \xi(t) $ modelliert.
 $ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander.
 $ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand / jede Dimension des Systems.
 Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
@@ -26,15 +26,15 @@ Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems.
 	b = 
 	\begin{pmatrix}
 		b_{1} \\
-		...\\
+		\vdots \\
 		b_{m}\\ 
 	\end{pmatrix}
 	, \quad
 	B = 
 	\begin{pmatrix}
-		B_{11} & ... & B_{1m} \\
-		& ... & \\
-		B_{n1} & ... & B_{nm} 
+		B_{11} & \vdots & B_{1m} \\
+		& \vdots & \\
+		B_{n1} & \vdots & B_{nm} 
 	\end{pmatrix}
 \end{align*}
 
@@ -47,7 +47,7 @@ Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t
 
 Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
 
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte \glqq{}Ito-Form\glqq{} zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
+Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte ``Ito-Form'' zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
 
 \begin{equation}
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
@@ -61,7 +61,7 @@ Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichu
 	\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Die Brownsche Bewegung kann relativ einfach simuliert werden mittels der Eueler-Maruyama-Methode. Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
+Die brownsche Bewegung kann relativ einfach mittels der Euler-Maruyama-Methode simuliert werden. Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
 %Gegeben sei eine SDGL der folgenden Form:
 
@@ -87,28 +87,28 @@ Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt
 	X_{n+1} = X_n + f(X_n,t_n) \Delta t + g(X_n,t_n) \Delta W_n
 \end{equation}
 
-Diese Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, im Kontext der Brownschen Bewegung kann man es "Drift" nennen, welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
+Diese Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, im Kontext der brownschen Bewegung kann man es "Drift" nennen, welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
 
 
-Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen ("white noise"), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wienerprozess oder die Brownische Bewegung als Ganzes.
+Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen (\textit{white noise}), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wienerprozess oder die brownsche Bewegung als Ganzes.
 
 %Abbildung hier?
 
-In der Abbildung \ref{1Dbrownian} wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen Brownischen Bewegung, wie dies in der Abbildung \ref{2Dbrownian} zu sehen ist.
+In der Abbildung \ref{1Dbrownian} wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen brownschen Bewegung, wie dies in der Abbildung \ref{2Dbrownian} zu sehen ist.
 
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/Aktienkurs-als-Brownische-Bewegung_3.png}
-		\caption{Aktienkurs als 1D Brownische Bewegung}
+		\caption{Aktienkurs als 1D brownsche Bewegung}
 		\label{1Dbrownian}
 	\end{minipage}
 	\hspace{0.05\linewidth}
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/Brownische-Bewegung-Simuliert_3.png}
-		\caption{Brownischen Bewegung simultiert in 2D}
+		\caption{Brownschen Bewegung simultiert in 2D}
 		\label{2Dbrownian}
 	\end{minipage}
 \end{figure}
@@ -116,7 +116,7 @@ In der Abbildung \ref{1Dbrownian} wurde diese Simulations-Methode in einer Dimen
 \subsection{ITO\label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
 
-Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit Stochastische Differenzialgleichungen beruht. 
+Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit stochastische Differenzialgleichungen beruht. 
 
 Nach ihm ist auch die \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form ist Ausgangslage viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine Differenzierbarkeit suggeriert wird.
 
@@ -144,7 +144,7 @@ Das Einsetzen der SDG in das Ito-Lemma ergibt:
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
 \end{equation}
 
-Die Funktion $ a(X,t) $ ist der "Drift"-Term, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der sogenannte \textit{Diffusions-Term} ist, welcher den stochastischen Teil der Bewegung darstellt.
+Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der sogenannte \textit{Diffusions-Term} ist, welcher den stochastischen Teil der Bewegung darstellt.
 
 
 %Gemäss Itō ist das Integral einer gewöhnlichen SDGL folgendermassen definiert:
