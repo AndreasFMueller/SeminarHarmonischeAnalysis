@@ -159,7 +159,7 @@ zuverlässige Resultate erzielen möchte.
     }
 \end{figure}
 
-\subsection{Fensterfunktionen}
+\section{Fensterfunktionen}
 \label{sonogramm:section:windows}
 Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
 Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
@@ -187,10 +187,10 @@ Da $(i f)^n X(f)$ Rücktransfomrierbar ist, gilt
 \begin{equation}
     |(i f)^n X(f)| < \infty \quad \forall -\infty \leq f \leq \infty,
 \end{equation}
-was zur Folge hat, dass $X(f)$ bei grösser werdenden $f$ mit mit $1/(f^n)$ gegen 
+was zur Folge hat, dass $X(f)$ bei grösser werdenden $f$ mit mindestens $1/f^n$ gegen 
 0 gehen muss.
 
-\subsubsection{Gaussfenster}
+\subsection{Gaussfenster}
 Eine bekannte $\infty$-mal stetige Funktion ist die gausssche Glockenkurve
 \begin{equation}
     f(t) = e^{-\frac{t^2}{\alpha}},
@@ -266,10 +266,17 @@ noch immer dominiert hätten.
     }
 \end{figure}
 
-\subsubsection{Andere Fensterfunktionen}
+\subsection{Andere Fensterfunktionen}
 Das Gaussfenster ist eine von vielen Fensterfunktionen. 
+So gibt es zum Beispiel eine ganze Gruppe von Fensterfunktionen, die mit
+\begin{equation}
+    w(n) = \sum_{k=0}^{K} (-1)^k a_k \cos\left(\frac{2 \pi k n}{N}\right), \quad 0 \leq n < N
+\end{equation}
+beschrieben werden.
+Zu diesen gehört auch das Hammingfenster mit $k = 1$, $a_0 \approx 0.54$ und $a_1 \approx 0.46$.
+
 Eine beste Fensterfunktion gibt es nicht, denn jede hat ihre Vor- und Nachteile, welche
 je nach Anwendung anders gewichtet werden.
 Für interessierte Leser bietet \cite{sonogramm:wikiWin} eine 
-gute Übersicht anderer Fensterfunktionen.
+gute Übersicht von Fensterfunktionen.
 
