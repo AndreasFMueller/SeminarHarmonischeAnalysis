@@ -16,8 +16,8 @@ In den bisherigen Kapiteln ist die Bedeutung der Milankovic-Zyklen deutlich gewo
 \subsection{Vorgehen
 \label{milankovic:subsection:Vorgehen}}
 Mit einfachen Mitteln erfolgt die Untersuchung der online abrufbaren Daten.
-Der Bezug erfolgt vom IMCCE, dem Institut für Himmelsmechanik und Ephemeriedenberechnung in Paris.
-\cite{milankovic:vo.imcce.fr}
+Der Bezug erfolgt vom IMCCE, dem Institut für Himmelsmechanik und Ephemeriedenberechnung in Paris
+\cite{milankovic:vo.imcce.fr}.
 Unter den Datensätzen, die bis 250 Millionen Jahre zurückreichen, galt es sich auf einen Zeitraum von rund 5 Millionen Jahre zu beschränken, da so die Übersichtlichkeit und auch die Darstellbarkeit der Ergebnisse, bei ausreichender Genauigkeit, gewährleistet werden kann.
 Die Auswahl ist dabei auf den Zeitraum von 6 bis 2 Millionen Jahre vor heute gefallen.
 Es sind marginale Unterschiede feststellbar, wenn die folgenden Untersuchungen für andere oder längere Zeiträume geführt werden.
@@ -26,35 +26,44 @@ Es sind marginale Unterschiede feststellbar, wenn die folgenden Untersuchungen f
 \label{milankovic:subsection:Untersuchung}}
 Aus den Daten sind die absoluten Werte der einzelnen Zyklen ablesbar.
 In der Darstellung mit Microsoft-Excel wird ein harmonischer Verlauf sichtbar.
-Mit der Untersuchung der Fast Fourier Transformation (FFT) werden die Häufigkeiten der massgebenden Frequenzen ermittelt.
-Um die FFT-Untersuchung durchführen zu können ist das Add-In Analyse-Funktionen zu installieren.
-Damit die Darstellung gelingt, kann in Excel direkt von der Darstellung in der komplexen Schreibweise auf die normale gewechselt werden.
+Mit der Untersuchung der Fast Fourier Transformation (FFT) werden die Amplituden der massgebenden Frequenzen ermittelt.
+Um die FFT-Untersuchung durchführen zu können ist das Add-In
+{\em Analyse-Funktionen}
+zu installieren.
+Damit die Darstellung gelingt, kann in Excel direkt von der Darstellung in der komplexen Schreibweise auf die reelle gewechselt werden.
 Nach der Umrechnung der Abszissenachse in besser lesbare Dimensionen, treten je nach untersuchtem Zyklus verschieden scharfe Peaks auf, die mit den Angaben der Milankovic-Zyklen übereinstimmen.
-So kann davon ausgegangen werden, dass sich die Zyklen tatsächlich in diesen Grössenordnungen bewegen.
+So kann davon ausgegangen werden, dass sich die Zyklen tatsächlich in diesen Wiederkehrperioden bewegen.
 Einige Ausschläge sind etwas schärfer als andere.
 Diese Unschärfe wird auch bei der Bestimmung der Periodizitäten ersichtlich, denn einige Angaben schwanken im Bereich um wenige Jahrtausende.
 Bei der Untersuchung verschiedener Perioden kann festgestellt werden, dass gewisse Ausschläge geringen Schwankungen unterliegen.
 
 Bei der Betrachtung der Analyse der Exzentrizität
 (Abbildung \ref{pictureUntersuchungExzentrizität})
-ist ersichtlich, dass im Bereich von 100ka (Jahrtausend) ein etwas breiterer Peak erkennbar ist, der sich aus einigen kleineren Ausschlägen und einem etwas Deutlicheren zusammensetzt, und bei 400ka der Ausschlag äusserst scharf und prägnant ist.
+ist ersichtlich, dass im Bereich von 100ka
+\footnote{1ka = 1000 Jahre}
+ein etwas breiterer Peak erkennbar ist, der sich aus einigen kleineren Ausschlägen und einem etwas deutlicheren zusammensetzt, und bei 400ka der Ausschlag äusserst scharf und prägnant ist.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{papers/milankovic/pictures/02_Exzentrizität.pdf}
-	\caption{Untersuchung Exzentrizität
-		\label{pictureUntersuchungExzentrizität}}
+	\label{pictureUntersuchungExzentrizität}
+	\caption{Exzentrizität der Erdumlaufbahn über einen Zeitraum von 4Ma.
+	Die Fourier-Analyse zeigt zwei deutliche Periodizitäten. 
+	Einen scharfen Ausschlag bei 400ka und einen breitern um 100ka.
 \end{figure}
 
 Die Frequenzen der Erdachsneigung sind deutlich durch einen Peak um 41ka beeinflusst.
 	(Abbildung \ref{pictureUntersuchungObliquität})
 Kleinere Ausschläge sind im Bereich von rund 60ka und 30ka erkennbar, die eine untergeordnete Rolle spielen und nicht an die Intensität des Hauptausschlages herankommen.
+Eine mögliche Herkunft des Ausschlags um 30ka ist der Einfluss der Präzession auf die Erdachsneigung. 
+Weil sich die Bahnebene des Mondes, einem wesentlichen Treiber der Präzession, von der Erdbahnebene in der Lage unterscheidet, hat dies Auswirkungen auf die Erdachsneigung.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{papers/milankovic/pictures/03_Obliquität.pdf}
-	\caption{Untersuchung Obliquität
-		\label{pictureUntersuchungObliquität}}
+	\label{pictureUntersuchungObliquität}
+	\caption{Obliquität der Erdachse  über einen Zeitraum von 4Ma. 
+	Den deutlichsten und prägnantesten Peak erkennt man bei 41ka.  
 \end{figure}
 
 Bei der Präzession
@@ -68,7 +77,8 @@ Besonders bei der Präzession sind verschiedene Angaben bezüglich der Periodizi
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{papers/milankovic/pictures/04_Präzession.pdf}
-	\caption{Untersuchung Präzession
+	\caption{Präzession der Erdachse über einen Zeitraum von 4Ma.
+	Neben verstärktem Rauschen sind Peaks um 23ka deutlich erkennbar.
 		\label{pictureUntersuchungPräzession}}
 \end{figure}
 
@@ -82,7 +92,8 @@ Bei der Untersuchung des Intensitätverlaufes mit FFT sind die beiden Frequenzen
 Um die berechneten Werte zu überprüfen, ist ein Abgleich mit der Realität anzustreben.
 
 Mit der Untersuchung von Bohrkernen, die an den Polen entnommen wurden, kann der geschichtliche Temperaturverlauf rekonstruiert werden.
-Dort wird der Niederschlag für unbestimmte Zeit in den Gletschern konserviert. Über das Verhältnis von stabilen Sauerstoffatomen, der sogenannten Sauerstoffisotopenmethode (Delta O18-Methode), ist dabei die Temperaturveränderung zwischen zeitlichen Perioden bestimmbar.
+Dort wird der Niederschlag für unbestimmte Zeit in den Gletschern konserviert. Über das Verhältnis von stabilen Sauerstoffatomen, der sogenannten Sauerstoffisotopenmethode ($\delta^{18}\text{O}$-Methode)
+,ist dabei die Temperaturveränderung zwischen zeitlichen Perioden bestimmbar.
 Wird dieser Verlauf auch mit FFT untersucht, treten Ausschläge auf, die mit den Frequenzen der Milankovic-Zyklen korrespondieren.
 (Abbildung \ref{pictureUntersuchungKonzentration})
 Die Daten zeigen einen zeitlich klaren Kausalzusammenhang.
@@ -90,13 +101,15 @@ Die Daten zeigen einen zeitlich klaren Kausalzusammenhang.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{papers/milankovic/pictures/05_Sonneneinstrahlungsintensität.pdf}
-	\caption{Untersuchung Sonneneinstrahlungsintensität
+	\caption{Sonneneinstrahlungsintensität auf dem 65igsten Breitengrad über 4Ma.
+	Erkennbare Ausschläge sind bei 41ka, 23ka und 19ka.
 		\label{pictureUntersuchungSonneneinstrahlungsintensität}}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{papers/milankovic/pictures/06_O18-Konzentration.pdf}
-	\caption{Untersuchung Sauerstoffisotopgehalt mittles O18-Methode
+	\caption{Sauerstoffisotopgehalt mittles O18-Methode ermittelt.
+	Bei den Periodizitäten der Milankovi\'c-Zyklen um 100ka, 41ka und 23ka sind Ausschläge feststellbar. 
 		\label{pictureUntersuchungKonzentration}}
 \end{figure}
 
@@ -106,7 +119,7 @@ Da wir die Milankovic-Zyklen berechnen können und diese das Klima direkt beeinf
 Grundsätzlich ist dies, wie eingangs beschrieben, der Fall, denn infolge der Zyklen steuert die Erde auf eine gemässigte Glazialperiode zu.
 Jedoch ist festzuhalten, dass das Klima durch viele weitere Effekte beeinflusst wird.
 Die klimatischen Bedingungen ausschliesslich den Zyklen zuzuordnen wäre falsch.
-Es ist ein äusserst komplexes Thema rund um die Bildung des Klimas.
+Es ist ein äusserst komplexes Thema um die Bildung des Klimas zu verstehen.
 Viele Phänomene wirken sich auf das Klima aus.
 Einen besonders starken Effekt erzielt dabei der Eintrag von Treibhausgasen und Aerosolen in die Atmosphäre, ungeachtet dessen, ob der Ursprung bei der Natur oder dem Menschen liegt.
 
@@ -115,7 +128,6 @@ Im Bereich der Erdbewegung wird in Jahrtausenden gerechnet, wo der wesentliche E
 Auch die Unsicherheiten betrachtend fällt ein Vergleich schwer.
 Zwischen absoluten aktuellen Werten mit noch nie zuvor erreichter Präzision und Jahrtausende gelagertem Gletschereis, das bei deren Bildung unterschiedlichen Einflüssen ausgesetzt war besteht eine grosse Diskrepanz in der Hinsicht auf die Unsicherheit bei der Festlegung der Temperatur.
 
-jl
 
 
 
