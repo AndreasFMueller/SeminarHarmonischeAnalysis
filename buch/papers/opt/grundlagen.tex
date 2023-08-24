@@ -456,7 +456,7 @@ Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralf
 \end{equation}
 schreiben.
 $B$ beschreibt dabei die magnetische Flussdichte, welche mit Hilfe der Permeabilität $\mu$ als $B = \mu H$ ausgedrückt werden kann.
-Durch Abbildung \opttodo{Abbildung hinzufügen} ist die Umlaufspannung $u$ am Rand der Fläche $A$ gegeben durch
+Durch Abbildung \ref{opt:fig:electromagnetic_wave_2} ist die Umlaufspannung $u$ am Rand der Fläche $A$ gegeben durch
 \begin{equation}
 u
 =
@@ -466,7 +466,7 @@ E_x(z+\Delta z,t) \cdot \Delta x - E_x(z,t) \cdot \Delta x
 .
 \label{opt:equation:induced_voltage}
 \end{equation}
-Nur Anteile des elektrischen Feldes in $x$-Richtung sind in diesem Resultat enthalten, da in den übrigen Richtung das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
+Nur Anteile des elektrischen Feldes in $x$-Richtung sind in diesem Resultat enthalten, da in den restlichen Richtungen das Skalarprodukt $\vec{E} \cdot d\vec{l} = 0$ ergibt, unabhängig von der gewählten Kontur $C = \partial A$.
 Zusätzlich muss der magnetische Fluss $\Phi$ durch dieselbe Fläche $A$ bestimmt werden.
 Dieser ergibt sich zu
 \begin{equation}
@@ -478,6 +478,17 @@ B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
 .
 \label{opt:equation:magnetic_flux}
 \end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave_2.pdf}
+    \caption{Grau eingefärbt ist die die Fläche $A$, welche in der $xz$-Ebene liegt.
+    Um sie herum verläuft in schwarz die Kontur $C = \partial A$.
+    Zu beachten ist die Umlaufrichtung dieser Kontur, welche bestimmt, wann das Skalarprodukt $\vec{E} \cdot d\vec{l}$ ein positives oder negatives Vorzeichen aufweist.
+    }
+    \label{opt:fig:electromagnetic_wave_2}
+\end{figure}
+
 Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magnetischen Flussdichte in $y$-Richtung ins Gewicht.
 Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ genau in der Mitte der Fläche $A$ liegt.
 Die beiden erhaltenen Gleichungen \eqref{opt:equation:induced_voltage} und \eqref{opt:equation:magnetic_flux} können nun in Gleichung \eqref{opt:equation:maxwell_3} eingesetzt werden.

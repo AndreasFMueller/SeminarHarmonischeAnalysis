@@ -1,0 +1,46 @@
+\newcommand{\electromagneticWave}{
+    \def\A{1.5}
+    \def\nNodes{5}
+    \def\nVectorsPerNode{2}
+    \def\N{\nNodes*40}
+    \def\xmax{\nNodes*pi/2*1.01}
+    \pgfmathsetmacro\nVectors{(\nVectorsPerNode+1)*\nNodes}
+
+    % draw E node and vector with some offset
+    \def\drawENode{
+        \draw[optGreen,thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+        plot (\t,{\A*sin(\t*360/pi)},0);
+        \foreach \k [evaluate={\t=\k*pi/2/(\nVectorsPerNode+1); \angle=\k*90/(\nVectorsPerNode+1);}]
+            in {1,...,\nVectorsPerNode}{\draw[->, thin,optGreen!50]  (\iOffset*pi/2+\t,0,0) -- ++(0,{\A*sin(2*\angle+\iOffset*180)},0);
+        }
+    }
+
+    % draw B node and vectors with some offset
+    \def\drawBNode{
+        \draw[optBlue,thick,variable=\t,domain=\iOffset*pi/2:(\iOffset+1)*pi/2*1.01,samples=40]
+        plot (\t,0,{\A*sin(\t*360/pi)});
+        \foreach \k [evaluate={\t=\k*pi/2/(\nVectorsPerNode+1); \angle=\k*90/(\nVectorsPerNode+1);}]
+            in {1,...,\nVectorsPerNode}{\draw[->, thin,optBlue!50]  (\iOffset*pi/2+\t,0,0) -- ++(0,0,{\A*sin(2*\angle+\iOffset*180)});
+        }
+    }
+
+    % main axes
+    \draw[->, thin] (0,0,0) -- ++(\xmax*1.1,0,0) node[below left] {$z$};
+    \draw[->, thin] (0,-\A*1.4,0) -- (0,\A*1.4,0) node[right] {$x$};
+    \draw[->, thin] (0,0,-\A*1.4) -- (0,0,\A*1.4) node[below right] {$y$};
+
+    % small axes
+    \def\xOffset{{(\nNodes-2)*pi/2}}
+    \def\yOffset{\A*1.2}
+    \def\zOffset{\A*1.2}
+    \draw[->, thin,black] (\xOffset,\yOffset,-\zOffset) -- ++(\A*0.6,0,0) node[right,align=center] {$S$};
+    \draw[->, thin,optGreen]  (\xOffset,\yOffset,-\zOffset) -- ++(0,\A*0.6,0) node[right] {$E$};
+    \draw[->, thin,optBlue]   (\xOffset,\yOffset,-\zOffset) -- ++(0,0,\A*0.6) node[above left] {$H$};
+
+    % draw (anti-)nodes
+    \foreach \iNode [evaluate={\iOffset=\iNode-1;}] in {1,...,\nNodes}{
+        \ifodd\iNode \drawBNode \drawENode % E overlaps B
+        \else        \drawENode \drawBNode % B overlaps E
+        \fi
+    }
+}
