@@ -1,0 +1,61 @@
+%
+% teil4.tex
+%
+% (c) 2023 Vincent Haufe, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+
+\section{Lösen des Registrierungsproblems mithilfe der $\mathcal{MT}$
+\label{mellin:section:teil4}}
+\rhead{Teil 4}
+Im ursprünglichen Problem, das uns über die letzten Abschnitte auf die 
+Mellin-Transformation geführt hat, ging es ja darum, den Skalierungsfaktor 
+$s$ zu finden, um den sich die beiden sonst identischen Funktionen 
+$f(x)$ und $g(x)$ unterscheiden, um diese durch das Kompensieren mit dem 
+Faktor $s^{-1}$ zur Deckung zu bringen.
+Dies hat uns auf eine Art multiplikative Version der Kreuzkorrelation 
+in Gleichung \eqref{mellin:ksigma} geführt, jedoch ist diese, wie schon 
+dort erwähnt wurde, eben nicht ganz vollständig. 
+
+Nun, da uns die Mellin-Transformation zur Verfügung steht, kennen wir 
+deren Faltungs- und Korrelationsintegral.
+Die Korrelation \eqref{mellin:kreuzkorrelation*} entspricht dabei bis 
+auf das zusäzliche Mass $x^{-1}$ dem Integral aus Gleichung 
+\eqref{mellin:ksigma}. 
+Dieser Faktor lässt die Extremalstellen der Korrelation jedoch unverändert 
+und findet somit den gesuchten Skalierungsfaktor $s$ unseres 
+Registrierungsproblems gleichermassen.
+Das nun korrekte Korrelationsintegral lässt sich über das Faltungstheorem 
+der Integraltransformationen als Rücktransformation des Produktes der 
+beiden Mellin-Transformierten der zu korrelierenden Funktionen beschreiben, 
+völlig analog zum Vorgehen aus Abschnitt \ref{mellin:section:teil1}, 
+das im ersten Beispiel auf die Lösung \eqref{mellin:x0ft} geführt hat, 
+mit der einzigen Ausnahme, dass \emph{spiegeln} im Kontext der Gruppe 
+$(\mathbb{R^+},\cdot)$ die multiplikative Inversion des Arguments bedeutet.
+
+\begin{align*}
+    (f \star g)(\sigma ) 
+    &= \int_\mathbb{R^+} 
+    f(x) \cdot g(\sigma ^{-1} \cdot x)\,\frac{dx}{x} \\ \\
+    &= \int_\mathbb{R^+} 
+    f(x) \cdot g((\sigma \cdot x^{-1})^{-1})\,\frac{dx}{x} 
+    = (f \ast \check{g})(\sigma)
+\end{align*}
+Somit lautet die Lösung des Registrierungsproblems mathematisch ausgedrückt
+\begin{equation}
+    s 
+    = \argmax\limits_{s \in \mathbb{R^+}}
+    {\mathcal{M}^{-1}(\hat{f}(u) \cdot \overline{\hat{g}(u)})}
+    \label{mellin:smt}
+\end{equation}
+Welche identisch ist zur Lösung für $x_0$ des ersten Registrierungsproblems, 
+nur dass anstatt Fourier hier die Mellin-Transformation zum Einsatz kommt.
+
+\subsection{Quantitative Bestimmung des Gewinns der Transformationsmethode
+\label{mellin:subsection:gewinn}}
+% Python Vgl Rechenzeiten
+% einfache Funktionen finden
+% Fast Mellin-Transform? Subst e^x in FFT?
+
+

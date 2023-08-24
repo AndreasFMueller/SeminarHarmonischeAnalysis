@@ -8,18 +8,18 @@
 %
 \section{Diskrete Kosinus-Transformation
 \label{jpeg:section:dct}}
-\rhead{dct}
-Die Fouriertransformation und auch die diskrete (DFT) Variante davon erzeugen ein komplexwertiges Spektrum, auch wenn das ursprüngliche Signal nur aus reellen Werten besteht.
-Bei der DFT reichen weder die Sinus- noch Kosinusfunktion alleine aus, um ein vollständiges Basisfunktionssystem zu bilden.
-Ein reellwertiges Signal bildet im Frequenzspektrum jeweils konjugiert komplexes Paar, ist also redundant.
+\rhead{DCT}
+Die Fouriertransformation und auch die diskrete Variante davon (DFT) erzeugen ein komplexwertiges Spektrum, auch wenn das ursprüngliche Signal nur aus reellen Werten besteht.
+Bei der DFT reichen weder die Sinus- noch Kosinusfunktion alleine aus, um ein vollständiges Basisfunktions\-system zu bilden.
+Ein reellwertiges Signal bildet im Frequenzspektrum ein jeweils konjugiert komplexes Paar, ist also redundant.
 Daraus folgt, dass nur die Hälfte der Werte berechnet werden müssen.
-Die diskrete Kosinus Transformation ermöglicht genau das, sie bildet ein Reihe aus Kosinus Basisfunktionen und ist beschränkt auf reellwertige Signale, genau was wir benötigen.
+Die diskrete Kosinus Transformation ermöglicht genau das, sie bildet eine Reihe aus Kosinus Basisfunktionen und ist beschränkt auf reellwertige Signale.
 
 Da stellt sich die Frage, wie es möglich ist, dass die diskrete Kosinus Transformation ohne die Sinus Komponenten auskommt die bei der DFT unentbehrlich sind.
 Das wird erreicht, indem das Intervall in der die Transformation durchgeführt wird, gegenüber der DFT gerade symmetrisch verdoppelt wird.
 Es existiert analog dazu die diskrete Sinus Transformation, die aus Sinus Basisfunktionen besteht.
 
-Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit folgender Formel  
+Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit folgender Formel benötigt
 \begin{equation}
     b_k
     =
@@ -30,7 +30,11 @@ Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (D
     \qquad k = 0,\dots,N-1
 \label{jpeg:equation:dct2}
 \end{equation}
-benötigt wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
+wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
+
+Bei der Formel \eqref{jpeg:equation:dct2} fällt gegenüber der Formel für die DFT auf, dass die Frequenz halbiert und die Funktion um \(\frac{1}{2}\) verschoben wurde.
+Man könnte die Funktion beliebig strecken und verschieben damit das Kriterium der Basisfunktion erfüllt ist.
+Hier wird die Halbierung und Verschiebung um \(\frac{1}{2}\) gewählt damit die DCT auch orthogonal ist.
 Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinustransformation (DCT-III oder inverse DCT):
 \begin{equation}
     a_n
@@ -43,18 +47,18 @@ Um von der transformierten Form in die ursprüngliche zu gelangen braucht man di
     \qquad k = 0,\dots,N-1.
     \label{jpeg:equation:dct3}
 \end{equation}
-Dabei lässt sich mit diesen Formeln nur die eindimensionale Transformation durchführen.
-Bei Bilden handelt es sich aber um zweidimensionale Signale.
+Mit diesen Formeln lässt sich nur die eindimensionale Transformation durchführen.
+Bei Bildern handelt es sich aber um zweidimensionale Signale.
 
 \subsection{Zweidimensionale Kosinus Transformation
 \label{jpeg:subsection:dctdim2}}
 Für die zweidimensionale Variante der DCT wird das Bild zunächst zeilenweise betrachtet. Jede dieser Zeilen sind wiederum eindimensionale Signale und transformierbar.
-Werden auf jeder der Zeilen die Transformation angewandt, entsteht ein neues Bild.
+Wird auf jeder dieser Zeilen die Transformation angewandt, entsteht ein neues Bild.
 Dieses wird nun in Spalten betrachtet und ebenfalls transformiert.
 Das resultierende Bild davon ist die vollständige Transformation.
 Analog dazu lässt sich die inverse Kosinus Transformation beschreiben.
 
-Die Gleichung \eqref{jpeg:equation:dct2} zweidimensional lässt sich
+Die Gleichung \eqref{jpeg:equation:dct2} für die zweidimensionale Transformation lässt sich
 \begin{equation}
     b_{k,l}
     =
@@ -68,7 +72,7 @@ Die Gleichung \eqref{jpeg:equation:dct2} zweidimensional lässt sich
     \right)
     \label{jpeg:equation:dct2dim2}
 \end{equation}
-und die inverse Transformation  
+beschreiben und für die inverse Transformation  
 \begin{align}
     a_{n,m}
     =
@@ -90,11 +94,10 @@ und die inverse Transformation
     \right)
     \cos\left(
     \frac{l\pi}{N}\left(m + \frac{1}{2} \right) 
-    \right) \notag
+    \right). \notag
     \label{jpeg:equation:dct3dim2}
 \end{align}
-beschreiben.
-\(a_{n,m}\) ist das Eingangssignal (Bild) und \(b_{k,l}\) das Transformierte, dabei steht \(n,m\) bzw. \(l,k\) für die Dimensionen
+\(a_{n,m}\) ist das Eingangssignal (Bild) und \(b_{k,l}\) das Transformierte, dabei steht \(n,m\) bzw. \(l,k\) für die Dimensionen \cite{jpeg:eikemueller}.
 
 \begin{figure}
     \centering
@@ -103,12 +106,12 @@ beschreiben.
         \label{jpeg:fig:dctkoeff}}
 \end{figure}
 
-Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimension jeweils Acht Koeffizienten.
+Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimen\-sion jeweils acht Koeffizienten.
 Jedes Feld entspricht einer Basisfunktion.
-Oben rechts ist der DC Anteil und in horizontaler Richtung sind die Frequenzanteile aufsteigend.
+Oben rechts ist der DC-Anteil und in horizontaler Richtung sind die Frequenzanteile aufsteigend.
 Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
-Aus jedem Pixelblock des Ursprungsbildes wird mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
-Die Koeffizienten geben an wie stark die entsprechende Basisfunktion gewichtet ist. 
+Aus jedem Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
+Die Koeffizienten geben an, wie stark die entsprechende Basisfunktion gewichtet ist. 
 
 
 
