@@ -23,7 +23,7 @@ In der Praxis gibt es eine Vielzahl von Methoden, die sich in ihrer Komplexität
 Schlussendlich handelt es sich immer um ein Optimierungsproblem, was für jede Anwendung spezifische Lösungen erfordert.
 Wichtig zu erwähnen ist, dass es sich bei allen Algorithmen dieser Art um einen nicht-linearen Prozess handelt,
 der verlustbehaftete Resultate liefert.
-Im Rahmen dieses Papers wird speziell der Phase Vocoder betrachtet, da er die Grundlage für die meisten Auto-Tune-Algorithmen bildet.
+Im Rahmen dieses Papers wird speziell der \emph{Phase Vocoder} betrachtet, da er die Grundlage für die meisten Auto-Tune-Algorithmen bildet.
 
 
 \subsection{Phase Vocoder
@@ -55,17 +55,17 @@ Dabei ist $X_n(\omega)$ das Frequenzspektrum des $n$-ten Fensters und $R$ der Sk
 \begin{equation}
     R
     =
-    \frac{f_{Ref}}{{f_{In}}} \;.
+    \frac{f_{\text{Ref}}}{{f_{\text{In}}}} \;.
 \end{equation}
 Wie im Blockschaltbild \ref{autotune:fig:blockschaltbild} erkennbar ist,
 stellt $f_{In}$ die gemessene Tonhöhe innerhalb des Fensters dar und $f_{Ref}$ die gewünschte Tonhöhe,
 des nächstliegenden Tons aus der Referenz-Tonleiter:
 \begin{equation}
-    f_{Ref}
+    f_{\text{Ref}}
     =
     \arg\min_n \left| f_n - f_{In} \right|
     \quad | \quad
-    f_n \in [f_{G2}, f_{G\#2}, f_{A2}, ..., f_{F\#4}, f_{G4}] \;.
+    f_n \in \{ f_{G2}, f_{G\#2}, f_{A2}, \ldots, f_{F\#4}, f_{G4} \} \; .
 \end{equation}
 Grafisch dargestellt ist diese Skallierung in Abbildung \ref{autotune:fig:spektrumManipulation}.
 \begin{figure}
@@ -81,11 +81,11 @@ dass die ursprünglichen Formanten des Audiosignals verloren gehen.
 %TODO: Add audio example of chipmunk effect
 
 Um den Klangcharakter der menschlichen Stimme beizubehalten,
-ist es notwendig das Leistungsdichte-Spektrum möglichst unverändert zu lassen.
-Im nächsten Abschnitt \ref{autotune:subsection:formantenErhaltung} wird erläutert, wie dies erreicht werden kann.
+ist es notwendig das Leistungsdichtespektrum möglichst unverändert zu lassen.
+Im nächsten Abschnitt wird erläutert, wie dies erreicht werden kann.
 
 
-\subsection{Formanten Erhaltung
+\subsection{Formantenerhaltung
 \label{autotune:subsection:formantenErhaltung}}
 Formanten sind spezifische Resonanzfrequenzen des menschlichen Vokaltrakts.
 Bei der menschlichen Sprachproduktion werden durch die Stimmbänder Schallwellen erzeugt,
@@ -94,14 +94,14 @@ Die Form und Länge des Vokaltrakts bestimmen die Position und Anzahl der Forman
 Insbesondere sind die ersten beiden Formanten, $F1$ und $F2$,
 entscheidend für die Charakterisierung und Unterscheidung von Vokalen.
 
-Die Präsenz der einzelnen Formanten zeigt sich im Leistungsdichte-Spektrum des Audiosignals.
-Anders ausgedrückt, representiert die Spektrum-Umhüllende den Klangcharakter, welchen es beim Pitch-Shifting zu erhalten gilt.
+Die Präsenz der einzelnen Formanten zeigt sich im Leistungsdichtespektrum des Audiosignals.
+Anders ausgedrückt, representiert die Spektrumumhüllende den Klangcharakter, welchen es beim Pitch-Shifting zu erhalten gilt.
 
 In Abbildung \ref{autotune:fig:pitchShiftingSpektrumModellierung} ist dargestellt, wie in der Phase Vocoder ergänzt werden kann,
-um die Spektrum-Umhüllende und somit die Formanten zu erhalten.
+um die Spektrumumhüllende und somit die Formanten zu erhalten.
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{papers/autotune/images/Spektrum-Modellierung.pdf}
+    \includegraphics[width=\textwidth]{papers/autotune/images/Spektrum-Modellierung.pdf}
     \caption{Phase Vocoder mit Spektrum-Modellierung}
     \label{autotune:fig:pitchShiftingSpektrumModellierung}
 \end{figure}
@@ -122,18 +122,18 @@ Das resultierende, formantenerhaltende Spektrum ist somit
     =
     X_{\text{flat}}(\omega \cdot R) \cdot \hat{E}_x(\omega) \;.
 \end{equation}
-In Abbildung \ref{autotune:fig:formantenErhaltung} ist der Unterschied zwischen der Spektrum Manipulation mit und ohne Formanten-Erhaltung dargestellt.
+In Abbildung \ref{autotune:fig:formantenErhaltung} ist der Unterschied zwischen der Spektrum Manipulation mit und ohne Formantenerhaltung dargestellt.
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{papers/autotune/images/Formanten-Erhaltung.pdf}
-    \caption{Spektrum Manipulation mit und ohne Formanten-Erhaltung}
+    \caption{Spektrum Manipulation mit und ohne Formantenerhaltung}
     \label{autotune:fig:formantenErhaltung}
 \end{figure}
 
 % TODO: Add audio example pitch shifting with and without formant preservation
 
 
-\subsection{Fenster Rekonstruktion
+\subsection{Fensterrekonstruktion
 \label{autotune:subsection:fensterRekonstruktion}}
 Die Phasenrekonstruktion ist ein wichtiger Bestandteil des Phase Vocoders.
 Ziel ist es die Phasensprünge zwischen den Fenstern zu minimieren.
@@ -147,7 +147,7 @@ Das grundlegende Konzept kann gut anhand eines grafischen Beispiels (Abbildung \
 \end{figure}
 
 Gegeben seien die Fenster als Funtionen $f_n(t)$ und $f_{n+1}(t, \varphi)$.
-Sie sind das Resultat der inversen Short-Time-Fouriertransformation $\textbf{ISTFT}$ des manipulierten Spektrums,
+Sie sind das Resultat der inversen Short-Time-Fouriertransformation (ISTFT) des manipulierten Spektrums,
 ausgedrückt als
 \begin{equation}
     \begin{aligned}
@@ -159,9 +159,9 @@ ausgedrückt als
         \sum_{\omega} X(n+1, \omega) e^{j(\omega t + \varphi)} w(t - (n+1)) \;.
     \end{aligned}
 \end{equation}
-Es gillt nun also die Phasenverschiebung $\varphi$ des nachfolgenden Fensters $f_{n+1}$ so zu wählen,
+Es gilt nun also die Phasenverschiebung $\varphi$ des nachfolgenden Fensters $f_{n+1}$ so zu wählen,
 dass die Differenz zwischen dem vorherigen Fenster $f_n$ zum Zeitpunkt $t_0$ (Überlappungszeitpunkt) minimal wird.
-Des weiteren gillt es zu beachten, dass zusätzlich auch die Vorzeichen der Ableitungen $\dot{f}_n$ und $\dot{f}_{n+1}$ übereinstimmen müssen,
+Des weiteren gilt es zu beachten, dass zusätzlich auch die Vorzeichen der Ableitungen $\dot{f}_n$ und $\dot{f}_{n+1}$ übereinstimmen müssen,
 um einen monotomen Übergang zwischen den Fenstern zu gewährleisten.
 Das Optimierungsproblem kann wie folgt formuliert werden:
 \begin{equation}
@@ -177,6 +177,8 @@ Das Optimierungsproblem kann wie folgt formuliert werden:
     \end{aligned}
 \end{equation}
 In der Praxis wird oft mit einem Überlappungsfaktor zwischen den Fenstern gearbeitet, der die Phasensprünge weiter reduziert (Stichwort Overlap-Add).
+Der Überlappungsfaktor bestimmt, wie viel eines Fensters mit dem vorherigen und nachfolgenden Fenster überlappt.
+Ein Überlappungsfaktor von 50\% bedeutet beispielsweise, dass die Fenster zur Hälfte überlappen.
 Bei guter Umsetzung dieses Verfahren kann die Qualität der rekonstruierten Audiosignale stark verbessert werden.
 Ansonsten können hörbare Artefakte entstehen, welche sich beispielsweise als \glqq metallischer Klang\grqq\ oder erhöhtes Rauschen äussern.
 
