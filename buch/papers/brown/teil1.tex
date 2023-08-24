@@ -1,58 +1,40 @@
 %
-% teil1.tex -- Beispiel-File für das Paper
+% teil1.tex -- Brownische Bewegung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2023 Lukas Reitemeier, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{brown:section:teil1}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+
+\section{Brownische Bewegung\label{brown:BrownBewegung}}
+\rhead{Brownische Bewegung}
+
+Als der Schottische Botaniker Robert Brown im Jahr 1827 in sein Mikroskop schaut, beobachtet er kleine Pollen-Partikel in einer Flüssigkeit. Er bemerkt, dass sich die Teilchen scheinbar zufällig bewegen, obwohl keine Kräfte auf die Teilchen einwirken. Eine Erklärung hatte Robert Brown zu diesem Zeitpunkt für das Verhalten noch nicht.
+
+
+Es dauerte fast ein Jahrhundert, bis Albert Einstein diese Beobachtung auf ein solides theoretisches Fundament stellte und so nutzbar machte. Er schloss darauf, dass die unregelmäßige Bewegung auf Kollisionen mit umgebenden Molekülen zurückzuführen ist, welche ständig in Bewegung sind. Albert Einstein entwickelte eine mathematische Theorie, mit welcher die beobachtete Bewegung durch stochastischen Zusammenstöße von Molekülen erklärt werden kann. Weiter konnte er auch einen Zusammenhang zwischen den Messungen der Bewegung, der Bolzmankonstante und der  Avogadrozahl herstellen.\footnote{Die Avogadrozahl ($N_\mathrm{A}$) ist die Anzahl Teilchen (Atome oder Moleküle) welche in einem Mol einer Substanz enthalten sind. Die Boltzmannkonstante ($k$) ist eine physikalische Konstante, die den Zusammenhang zwischen der thermischen Energie und der Temperatur eines Systems herstellt. Beide Konstanten sind miteinander verbunden durch die Gleichung $k = \frac{R}{N_\mathrm{A}}$, wobei $R$ die allgemeine Gaskonstante ist.}
+
+
+Dies hatte auch Auswirkungen auf das Verständnis von Materie, da dies einen direkten empirisch Beleg für die Existenz von Atomen und Moleküle lieferte. Die sogenannte Atomhypothese besagt, dass Materie aus diskreten unteilbaren Einheiten besteht, sprich einzelnen Atomen oder ganzen Molekülen. 
+Man muss dazu sagen, dass es schon zuvor Indizien für deren Existenz gab, doch es fehlte am entscheidenden experimentellen Beweis.
+Die \textit{Einstein-Smoluchowski-Gleichung} ist eine zentrale Gleichung seiner Arbeit, welche die mittlere quadratische Verschiebung (MSD: \textit{Mean square displacement}) beschreibt
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{brown:equation1}
+	\mathrm{MSD} = 2nDt
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+in Beziehung zur Diffusionskonstanten $ D $ , der Anzahl Raumdimensionen $ n $ und der Zeit $ t $.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Die Avogadrozahl $ \mathrm{A} $ kann indirekt über die \textit{Stokes-Einstein-Gleichung}, anhand von Messungen berechnet werden. Die Diffusionskonstante $ D $ kann dabei mittels des Radius des suspendierten Teilchens, der Boltzmann-Konstante  $ k $, der Temperatur $ T $ und der Viskosität $ \eta $ des umgebenden Mediums, beschrieben werden:
+\begin{equation}
+	D = \frac{kT}{6\pi\eta r}
+\end{equation}
+$ r $ beschreibt dabei den Radius des suspendierten Teilchens. Die Boltzmannkonstante $ k $ kann auch durch die allgemeine Gaskonstante $ R $ a und die Avogadrozahl $ \mathrm{A} $ ausgedrückt werden: $ k = R/\mathrm{A} $
 
-\subsection{De finibus bonorum et malorum
-\label{brown:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{brown:equation1}.
+So ergibt sich folgender Zusammenhang:
+\begin{equation}
+	\mathrm{A} = \frac{R T}{D (6 \pi \eta r)}
+\end{equation}
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{brown:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{brown:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+So ermöglichen die beiden Gleichungen einen experimentellen Ansatz zur Bestimmung der Avogadrozahl und ferner die quantitative Analyse der Brownischen Bewegung.
 
 
