@@ -1,5 +1,5 @@
 %
-% grundlagen.tex -- Paper zum Thema Optische Fouriertransformation <opt>
+% grundlagen.tex -- Paper zum Thema Optische Fourier-Transformation <opt>
 %
 % (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
 %
@@ -9,7 +9,7 @@
 \section{Von der Beugung zu Fourier\label{opt:section:grundlagen}}
 \rhead{Von der Beugung zu Fourier}
 
-Im folgenden wird der Schritt von der Beugung zur Fouriertransformation vollzogen.
+Im Folgenden wird der Schritt von der Beugung zur Fourier-Transformation vollzogen.
 Dazu wird mit der Wellentheorie die Grundlage gelegt für die nachfolgende Herleitung.
 Diese gliedert sich anschliessend in drei Abschnitte. 
 Zunächst wird das allgemeine Beugungsintegral hergeleitet, das allgemein gültig, aber nicht fundamental lösbar ist.
@@ -17,15 +17,15 @@ Anschliessend wird das Integral im Abschnitt \ref{opt:sec:fresnel} mittels der F
 Eine weitere Vereinfachung wird durch die Linearisierung in $y$ erreicht. 
 Diese wird im Abschnitt \ref{opt:sec:fraunhofer} mit der Fraunhofer-Approximation durchgeführt.
 
-Im Abschnitt \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang zwischen der elektrischen Feldstärke und der Intensität hergestellt, denn nur diese kann mit dem Auge oder einem Kamerachip beobachtet werden.
+Im Abschnitt \ref{opt:sec:intensity} wird als letzter Schritt der Zusammenhang zwischen der elektrischen Feldstärke und dessen Intensität hergestellt, denn nur diese kann mit dem Auge oder einem Kamerachip beobachtet werden.
 
-Das Kapitel wird mit einem Rechenbeispiel für die Beugung am Einzelspalt abgeschlossen. 
+Abgeschlossen wir die Herleitung mit einem Rechenbeispiel für die Beugung am Einzelspalt. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Wellentheorie}
 \label{opt:subsection:huygens}
-Das Prinzip der optischen Fouriertransformation basiert auf der Beugung von Wellen.
+Das Prinzip der optischen Fourier-Transformation basiert auf der Beugung von Wellen.
 Im Folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
 
 Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären. 
@@ -36,12 +36,12 @@ Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den
 Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
 
 Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
-Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kreisförmig wieder aus.
+Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kreisförmig aus.
 
 \begin{figure}
     \centering
     \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
-    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Summe unendlich vieler Elementarwellen aufgefasst werden.
+    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Überlagerung unendlich vieler Elementarwellen aufgefasst werden.
     Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
     \label{opt:fig:huygens}
 \end{figure}
@@ -103,11 +103,11 @@ wobei der konstante Anteil als $\vartheta$ zusammengefasst wurde.
     \centering
     \includegraphics[width=100mm]{papers/opt/images/derivation.pdf}
     \caption{Beugung am Spalt: Die ebene Welle kommt von links her an den Spalt. 
-    Von allen $dy$ geht eine Elementarwelle gemäss Kapitel \ref{opt:subsection:huygens} aus, welche sich am Auswertepunkt $P$ aufsummiert.}
+    Von allen $dy$ geht eine Elementarwelle gemäss Abschnitt \ref{opt:subsection:huygens} aus, welche sich am Auswertepunkt $P$ aufsummiert.}
     \label{opt:fig:geometricalShape}
 \end{figure}
 
-Angenommen eine planare elektromagnetische Welle, siehe Abbildung \ref{opt:fig:geometricalShape}, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
+Angenommen eine planare elektromagnetische Welle, wie in Abbildung \ref{opt:fig:geometricalShape} ersichtlich, treffe nun auf eine Blende mit einer unendlich langen und $b$ breiten Öffnung.
 Ganz allgemein lässt sich jede Welle als
 \begin{equation}
 \zeta(x, t)
@@ -116,7 +116,7 @@ Ganz allgemein lässt sich jede Welle als
 \label{opt:equation:wave}
 \end{equation}
 ausdrücken.
-Wie in Kapitel \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
+Wie in Abschnitt \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Unendlich viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
@@ -132,7 +132,7 @@ r
 l \sqrt{1 + \frac{(y_p-y)^2}{l^2}}
 \label{opt:equation:distance_r}
 \end{equation}
-beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich (wie bereits erwähnt) zur gesamten elektrischen Feldstärke am Auswertungspunkt.
+beträgt. All diese kleinen Einflüsse $dE$ der Linienquellen mit Breite $dy$ superponieren sich zur gesamten elektrischen Feldstärke am Auswertungspunkt.
 Ein solcher Einfluss lässt sich nun mittels der Gleichungen \eqref{opt:equation:electric_field} und \eqref{opt:equation:wave} als
 \begin{equation*}
 dE
@@ -268,9 +268,8 @@ E(y_p, t = 0)
 .
 \label{opt:equation:integral_fresnel}
 \end{align}
-Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral
-\footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
-bezeichnet und entspricht einer Nahfeld-Näherung.
+Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral\footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
+bezeichnet und entspricht einer Nahfeldnäherung.
 Anders als von der Bezeichnung zu erwarten wäre, darf diese Näherung nicht direkt hinter der Blende angewendet werden.
 Die Voraussetzung $y, y_p \ll l$ aus Gleichung \eqref{opt:equation:condition_fresnel} muss erfüllt sein.
 Ansonsten muss das allgemeine Beugungsintegral für die Berechnung verwendet werden.
@@ -306,14 +305,13 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
-Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation
-\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.}
+Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.}
 konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
 Das somit entstandene Integral entspricht bis auf einige Vorfaktoren gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 
 Gleichung \eqref{opt:equation:integral_fraunhofer} ist dementsprechend bereits das zentrale Ergebnis dieses Papers.
 In einem weiteren Schritt könnte das Resultat so erweitert werden, dass die Blendenfunktion auf eine Funktion mehrere Variablen $f(y,z)$ in $y$ und $z$-Richtung zu liegen kommt.
-Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter darauf eingegangen.
+Auf diesen zusätzlichen Schritt wird in diesem Paper aber nicht weiter eingegangen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -615,7 +613,7 @@ I(y_p)
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
 \intertext{aus \eqref{opt:equation:intensity_integral} verwendet. Durch Einsetzten der Grenzen vereinfacht sich diese zu}
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2.
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \Biggl(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\Biggr)^2.
 \intertext{Anschliessend kann die Stammfunktion an den Grenzen ausgewertet werden.}
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2

@@ -1,5 +1,5 @@
 #
-# Makefile fuer die Bilder des Kapitels Optische Fouriertransformation <opt>
+# Makefile fuer die Bilder des Kapitels Optische Fourier-Transformation <opt>
 #
 # (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
 #
