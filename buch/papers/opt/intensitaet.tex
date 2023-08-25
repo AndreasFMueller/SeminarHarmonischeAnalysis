@@ -9,19 +9,20 @@
 \section{Intensität\label{opt:sec:intensity}}
 \rhead{Intensität}
 
-Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann leider nicht direkt beobachtet werden.
+Die in \eqref{opt:equation:integral_fraunhofer} hergeleitete elektrische Feldstärke kann nicht direkt beobachtet werden.
 Ein Beobachter, sei es das menschliche Auge oder ein Kamerachip, kann lediglich die Intensität einer Lichtquelle wahrnehmen.
 Die Intensität im Allgemeinen ist ein Mass für die Energie pro Fläche.
 
-Aufgrund dessen wird im folgenden Kapitel ein möglicher Weg gezeigt, den Zusammenhang zwischen der elektrischen Feldstärke $E$ und der Intensität $I$ zu finden.
+In diesem Abschnitt wird ein möglicher Weg gezeigt, den Zusammenhang zwischen der elektrischen Feldstärke $E$ und der Intensität $I$ zu finden.
 Diese Herangehensweise gliedert sich in zwei Abschnitte.
-Zuerst wird im Abschnitt \ref{opt:subsection:poynting_vector} mittels des Poynting Vektors der Zusammenhang zwischen $E$ und $I$ hergeleitet.
+Zuerst wird im Abschnitt \ref{opt:subsection:poynting_vector} mittels des Poynting-Vektors der Zusammenhang zwischen $E$ und $I$ hergeleitet.
 Allerdings wird dieser Ausdruck für die Intensität $I$ noch zusätzlich von der magnetischen Feldstärke $H$ abhängig sein.
 Aufgrund dessen wird im darauf folgenden Abschnitt \ref{opt:subsection:wave_impedance} mit Hilfe der Wellenimpedanz gezeigt, wie diese Abhängigkeit zu beseitigen ist.
 
 Abgeschlossen wir dieser Abschnitt mit einem Rechenbeispiel zur Beugung am Einzelspalt.
 
-\subsection{Poynting Vektor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Poynting-Vektor}
 \label{opt:subsection:poynting_vector}
 
 \begin{figure}
@@ -33,7 +34,7 @@ Abgeschlossen wir dieser Abschnitt mit einem Rechenbeispiel zur Beugung am Einze
     \label{opt:fig:electromagnetic_wave_1}
 \end{figure}
 
-Der Poynting Vektor wird als
+Der Poynting-Vektor wird als
 \begin{equation}
 \vec{S} = \vec{E} \times \vec{H}
 \label{opt:equation:poynting}
@@ -73,7 +74,7 @@ E_0 H_0 \cdot \left(\cos{(2(\omega t-kz))}+j\sin{(2(\omega t-kz))}\right) \vec{z
 \end{align*}
 vereinfacht werden.
 
-Da das zweite Moment des Real- oder Imaginärteils des Poynting Vectors gerade der gesuchten Intensität $I$ entspricht, kann diese als 
+Da das zweite Moment des Real- oder Imaginärteils des Poynting-Vektors gerade der gesuchten Intensität $I$ entspricht, kann diese als 
 \begin{align*}
 I
 &=
@@ -135,6 +136,7 @@ I
 Dieser Ausdruck hängt jedoch noch von der magnetischen Feldstärke $H_0$ ab.
 Ziel des nächsten Abschnittes wird es sein, mit Hilfe der Wellenimpedanz das Resultat \eqref{opt:equation:intensity_simple} von $H_0$ unabhängig zu schreiben.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Wellenimpedanz}
 \label{opt:subsection:wave_impedance}
 Die dritte Maxwellsche Gleichung, das Induktionsgesetz, lässt sich in Integralform als
@@ -178,7 +180,7 @@ B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
     \label{opt:fig:electromagnetic_wave_2}
 \end{figure}
 
-Wie zuvor bei der Umlaufspannung, fallen hier nur Anteile der magnetischen Flussdichte in $y$-Richtung ins Gewicht.
+Wie zuvor bei der Umlaufspannung fallen hier nur Anteile der magnetischen Flussdichte in $y$-Richtung ins Gewicht.
 Der Term $\frac{\Delta z}{2}$ wird hier dazu addiert, damit der Auswertungsort von $B_y$ exakt in der Mitte der Fläche $A$ liegt.
 Die beiden erhaltenen Gleichungen \eqref{opt:equation:induced_voltage} und \eqref{opt:equation:magnetic_flux} können nun in Gleichung \eqref{opt:equation:maxwell_3} eingesetzt werden.
 Woraus sich
@@ -285,6 +287,7 @@ wobei der konstante Anteil als $\kappa$ zusammengefasst wurde.
 Somit ist der einfachst mögliche Zusammenhang zwischen der elektrischen Feldstärke $E$ und der Intensität $I$ gefunden.
 Die Intensität an einer bestimmten Stelle im Raum ist also lediglich abhängig von der an diesem Ort herrschenden elektrischen Feldstärke $E$ und der Medium spezifischen Konstante $\kappa$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Rechenbeispiel zur Beugung am Einzelspalt}
 \label{opt:sec:exampleSingleSlit}
 \opttodo{Muss wieder ein wenig angepasst werden, weil die intensity section sich geändert hat.}
@@ -299,26 +302,29 @@ f(y)
 \end{cases}
 .
 \end{equation*}
-Als Ausgangslage wird die Gleichung
+Als Ausgangslage wird die Gleichung \eqref{opt:equation:intensity} aus dem vorhergehenden Abschnitt verwendet.
+Wenn dabei die elektrische Feldstärke $\vec{E}$ durch die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgedrückt wird, kann die Gleichung als
 \begin{align*}
 I(y_p)
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
-\intertext{aus \eqref{opt:equation:intensity} verwendet. Durch Einsetzen der Grenzen vereinfacht sich diese zu}
+\kappa \cdot |E|^2
+=
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right|^2
+\intertext{geschrieben werden. Durch Einsetzen der Grenzen vereinfacht sich diese zu}
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \Biggl(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\Biggr)^2.
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \Biggl|\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\Biggr|^2.
 \intertext{Anschliessend kann die Stammfunktion an den Grenzen ausgewertet werden.}
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{y=-\frac{b}{2}}^{y=\frac{b}{2}}\right|^2
 \\
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|-\frac{l}{jky_p} \cdot \left(e^{-j\frac{bky_p}{2l}} - e^{-j\frac{-bky_p}{2l}}\right)\right|^2
 \\
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|-\frac{l}{jky_p} \cdot \left(e^{-j\frac{bky_p}{2l}} - e^{j\frac{bky_p}{2l}}\right)\right|^2
 \\
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left(e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right)\right|^2
 \end{align*}
 Der daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
 \begin{equation*}
