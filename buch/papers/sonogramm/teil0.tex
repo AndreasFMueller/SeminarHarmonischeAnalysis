@@ -23,8 +23,8 @@ Die simpelste Fensterfunktion ist das Rechteckfenster
         \end{cases}
 \end{equation}
 welches in diesem Kapitel verwendet wird.
-Andere Fensterfunktionen und deren Effekte werden im Kapitel \dots vorgestellt.
-Verwenden wir das Rechteckfenster für das Signal $x(t)$ resultiert 
+Andere Fensterfunktionen und deren Effekte werden im Abschnitt \ref{sonogramm:section:windows} vorgestellt.
+Verwenden wir das Rechteckfenster für das Signal $x(t)$, resultiert 
 \begin{equation}
     x(t) w_r(t) = 
     \begin{cases}
@@ -63,10 +63,10 @@ Das Rechteckfenster der Länge $L_w$ definieren wir mit
 Die Fensterfunktion ist nun auch diskret und statt
 der Fouriertransformation wir die diskrete Fouriertransformation (DFT)
 \begin{equation}
-    X(k, m) = \sum_{n = m}^{m + L - 1} x(n) w_r(n-m) e^{ -i \omega_k n}.
+    X(k, m) = \sum_{n = m}^{m + L - 1} x(n) w_r(n-m) e^{ -i \omega_k n}
 \end{equation}
-
-\subsection{Spektogramm}
+verwendet.
+\subsection{Spektrogramm}
 
 Das Spektrogramm, oder bei akustischen Signalen auch Sonogramm genannt, ist eine visuelle
 Darstellung der STFTs eines Signals. 
@@ -83,10 +83,10 @@ Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines Frequenzmoduliert
 Signals.
 Bei der Frequenzmodulierung \cite{sonogramm:NAT} ist die momentane Frequenz des Trägersignales 
 \begin{equation}
-    x_{FM}(t) = A \cos\left( \omega_c t + k_f \int_{-\infty}^{t} m(\tau) d\tau\right)
+    x_{\text{FM}}(t) = A \cos\left( \omega_c t + k_f \int_{-\infty}^{t} m(\tau) d\tau\right)
 \end{equation}
-abhängig von der Amplitude des Nachrichtensignales $m(t)$.
-Stellt man ein Frequenzmoduliertes Signal in einem Spektrogramm dar,
+abhängig von der Amplitude des Nachrichtensignals $m(t)$.
+Stellt man ein frequenzmoduliertes Signal in einem Spektrogramm dar,
 sieht man $m(t)$ auf der Höhe von $\omega_c$, wie in Abbildung \ref{sonogramm:fmsono} mit 
 \begin{align}
     m(t) = 1.5 \frac{\sin(23 \pi (t-0.5))}{23 \pi (t-0.5)}
