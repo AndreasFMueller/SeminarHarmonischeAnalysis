@@ -12,12 +12,14 @@
 Bei einer einstimmigen Aufnahme, beispielsweise der menschlichen Stimme oder eines Blasinstruments,
 wird nicht nur ein einzelner Ton erzeugt, sondern eine Reihe von Tönen, die als Obertöne oder Harmonische bezeichnet werden.
 Die Grundharmonische ist der erste und stärkste dieser Töne, während die höheren Harmonischen in der Regel schwächer sind und höhere Frequenzen haben.
-Es gilt nun diese grundharmonische Frequenz zu finden welche als dominate Tonhöhe wahrgenommen wird.
+Es gilt nun die grundharmonische Frequenz zu finden die als dominate Tonhöhe wahrgenommen wird.
 Es gibt mehrere Möglichkeiten dies umzusetzen.
 Im Rahmen dieses Papers werden zwei Methoden verglichen.
+Einerseits die Short-Time Fourier-Transformation (STFT) in Abschnitt \ref{autotune:subsection:shortTimeFourierTransformation},
+sowohl auch die etwas unbekanntere Cumulative Mean Normalized Difference Function (CMNDF) in Abschnitt \ref{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}.
 
-Grundsätzlich gillt, je genauer die Tonhöhe bestimmt werden kann, desto besser kann die Tonhöhe anschliessend korrigiert werden.
-Die spektrale Frequensauflösung ist ein direktes Mass für die Genauigkeit der Tonhöhenbestimmung.
+Grundsätzlich gilt, je genauer die Tonhöhe bestimmt werden kann, desto besser kann die Tonhöhe anschliessend korrigiert werden.
+Die spektrale Frequenzauflösung ist ein direktes Mass für die Genauigkeit der Tonhöhenbestimmung.
 So ist es möglich den maximalen Fehler der Frequenzabweichung zu bestimmen, der bei der Pitch-Detektion entstehen kann.
 
 \subsection{Short-Time Fourier-Transformation (STFT)
@@ -26,19 +28,20 @@ Die Short-Time Fourier-Transformation (STFT) ist eine Fourier-Transformation, di
 zeitlich begrenzten Ausschnitt eines Signals angewendet wird.
 Da es sich sich um einen diskreten Vorgang handelt, wird die STFT beschrieben als
 \begin{equation}
-    \mathbf{STFT}_x(m, w)
+    \mathbf{STFT}_x(m, f)
     =
-    \sum_{n=-\infty}^{\infty}x(n)\;w(n-m)\;e^{-j\omega n}.
+    \sum_{n=-\infty}^{\infty}x(n)\;w(n-m)\;e^{-j 2 \pi f n}.
 \end{equation}
 Dabei definiert $x(n)$ das Signal, $w(n)$ das Fenster und $m$ den Verschiebungsparameter.
 Üblicherweise wird ein Fenster der Länge $N$ verwendet, wobei $N$ eine Zweierpotenz ist.
 Je länger das Zeitfenster, desto höher ist die physikalische Frequenzauflösung. Jedoch reduziert sich die zeitliche Spektrumabtastung.
 Dieser Trade-Off kann gut anhand eines Beispiels gezeigt werden.
+Gegeben durch
 \[
     f_s = 44100\;\text{Samples/s} \quad\quad l_w = 23\;\text{ms} \quad\quad L = f_s \cdot l_w = 1014.3 \approx 1024\;\text{Samples}
 \]
 \[
-    \Delta f = \frac{f_s}{L}\approx 43.07\;\text{Hz}
+    \Delta f = \frac{f_s}{L}\approx 43.07\;\text{Hz}\;.
 \]
 Es fällt auf, dass mit einer Fensterlänge von 23\;ms die Frequenzauflösung bei nur 43.07\;Hz liegt.
 Da einzelne Töne jedoch nur wenige Hertz auseinander liegen, können diese nur ungenau voneinander unterschieden werden.
@@ -56,13 +59,13 @@ Wie in Abbildung \ref{autotune:fig:pitchDetektionSTFT} zu sehen ist, können som
 Diese spektrale Darstellungsweise wird auch als Sonogramm bezeichnet.
 Mehr dazu im Kapitel \ref{chapter:sonogramm}.
 
-Das konkrete bestimmen der Tonhöhe innerhalb eines Fensters kann auf verschiedene Arten umgesetzt werden.
+Das konkrete Bestimmen der Tonhöhe innerhalb eines Fensters kann auf verschiedene Arten umgesetzt werden.
 Eine Möglichkeit zur Bestimmung der Grundharmonischen ist das Finden des Maximums im Spektrum (Peak-Detektor).
 Mathematisch ausgedrückt als
 \begin{equation}
     f_{\text{pitch}}
     =
-    \arg\max_f \left| \; \mathbf{STFT}_x(m, w)[f] \; \right|^2.
+    \arg\max_f \left| \; \mathbf{STFT}_x(m, f) \; \right|^2.
 \end{equation}
 Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich einen maximalen Frequenzabtastungsfehler von
 \begin{equation}
@@ -84,7 +87,9 @@ Diese Methode basiert auf der Auto-Korrelation des Signals welche definiert ist 
     \sum_{i=t}^{t+W}f(x_i)\cdot f(x_i+\tau).
 \end{equation}
 Dabei ist $\tau$ die Verzögerung innerhalb des Fensters und $W$ die Fensterlänge.
-Daraus folgend kann die Quadrierte Differenz Funktion $\mathbf{DF}$ hergeleitet werden als
+Daraus folgend kann die Funktion der quadrierten Differenzen hergeleitet werden,
+welche ein Mass für den absoluten \glqq Überlagerungsfehler\grqq\ zum Zeitpunkt $t$ des Signals $f$ und einer um $\tau$ verzögerten Version von $f$.
+So wird die Difference Function DF definiert als
 \begin{equation}
     \begin{aligned}
         \mathbf{DF}(\tau,t)
@@ -93,15 +98,16 @@ Daraus folgend kann die Quadrierte Differenz Funktion $\mathbf{DF}$ hergeleitet 
         &= \mathbf{ACF}(0,t)+\mathbf{ACF}(0,t+\tau)-2\cdot \mathbf{ACF}(\tau,t).
     \end{aligned}
 \end{equation}
-Die $\mathbf{CMNDF}$ liefert den normalisierten absoluten \glqq Überlagerungsfehler\grqq\ zum Zeitpunkt $t$ des Signals $f$ und einer um $\tau$ verzögerten Version von $f$.
-Bei $\tau=0$ ist der Überlagerungsfehler 0, da das Signal mit sich selbst verglichen wird.
-Die $\mathbf{CMNDF}$ ist definiert als 
-
+Die CMNDF ist eine normalisierte Version der DF,
+wobei kürzere Verzögerungen stärker gewichtet werden als längere Verzögerungen.
+Dies wird erreicht, indem die DF durch die Summe aller quadrierten Differenzen bis zur Verzögerung $\tau$ geteilt wird.
+Bei $\tau=0$ ist die CMNDF als 1 definiert.
+Der generelle Ausdruck lautet
 \begin{equation}
     \mathbf{CMNDF}(\tau,t)
     =
     \left\{
-        \;\begin{array}{ll} 0 & \tau=0 \\
+        \;\begin{array}{ll} 1 & \tau=0 \\
         \tau \cdot \frac{\mathbf{DF}(\tau,t)}{\sum\nolimits_{j=1}^{\tau} \mathbf{DF}(j,t)} & \tau > 0 \end{array}
     \right\}.
 \end{equation}
@@ -120,11 +126,11 @@ Diese entsprechen den Vielfachen der Grundharmonischen und sind nicht von Intere
 In der Praxis erweist es sich zum Teil als schwierig, das richtige lokale Minimum zu finden.
 Oft wird deshalb ein Schwellwert definiert.
 An der Stelle wo die CMNDF diesen Schwellwert unterschreitet, wird das Minimum definiert.
-Dies ist im Beispiel eines realen Signals (Aufnahme Gesang) in Abbildung \ref{autotune:fig:cmndfRealSignal} ersichtlich.
+Dies ist im Beispiel eines realen Signals (Gesangsaufnahme) in Abbildung \ref{autotune:fig:cmndfRealSignal} ersichtlich.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{papers/autotune/images/Example-CMNDF.pdf}
-	\caption{CMNDF eines realen Signals (Aufnahme Gesang) mit mehreren lokalen Minima.}
+	\caption{CMNDF eines realen Signals (Gesangsaufnahme) mit mehreren lokalen Minima.}
     \label{autotune:fig:cmndfRealSignal}
 \end{figure}
 
@@ -162,7 +168,7 @@ Dies ist in Abbildung \ref{autotune:fig:pitchDetektionCMNDF} gut ersichtlich.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{papers/autotune/images/Pianoscale_Example_Detuned_CMNDF.png}
-	\caption{Pitch-Detektion mit CMNDF.}
+	\caption{Pitch-Detektion mit CMNDF. Farbton entspricht dem Betrag des lokalen Minimums (je heller desto kleiner).}
     \label{autotune:fig:pitchDetektionCMNDF}
 \end{figure}
 
