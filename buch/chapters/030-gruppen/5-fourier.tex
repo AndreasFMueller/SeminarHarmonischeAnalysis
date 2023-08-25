@@ -142,7 +142,22 @@ k\mapsto
 %
 \subsection{Unschärferelation
 \label{buch:gruppen:fourier:subsection:unschaerfe}}
-Die Unschärferelation 
+Musiker haben die Erfahrung gemacht, dass es schwierig ist, die
+Tonhöhe eines kurzen Tones festzustellen.
+Die Genauigkeit der Frequenzbestimmung wächst, wenn die Dauer des
+analysierten Signals länger wird.
+Da das Signal und sein zugehöriges Frequenzspektrum über die
+Fourier-Transformation miteinander verbunden sind, suggeriert dies,
+dass ein Signal, das in der Zeit wie ein kurzer Ton gut lokalisiert ist,
+im Frequenzbereich schlecht lokalisiert ist.
+Umgekehrt erreicht man gute Lokalisierung und damit genaue Tonhöhenbestimmung
+im Frequenzbereich, wenn das Signal zeitlich nicht klar bestimmt ist.
+Die in diesem Abschnitt entwickelte Unschärferelation fasst diesen intuiven
+mathematisch präzis.
+
+In Abschnitt~\ref{buch:diskret:section:unschaerfe} wird gezeigt, dass
+Unschärferelationen eine sehr allgemeine Eigenschaft der Transformationen
+sind, denen man in der harmonischen Analysis begegnet.
 
 %
 % Dirac-delta-Funktion
@@ -216,6 +231,14 @@ nicht lokalisiert, ganz im Gegenteil, $\mathscr{F}\delta$ hat für alle
 Wellenzahlen den gleichen Wert.
 
 Diese Eigenschaften kann man auch bei anderen Funktionen beobachten.
+Zur Illustration wird im folgenden Beispiel auf einem Intervall
+konstanten Funktion durchgerechnet.
+Diese wird in der Signalverarbeitung auch als {\em Rechteckfenster}
+\index{Rechteckfenster}
+bezeichnet.
+
+\begin{beispiel}
+\label{buch:gruppen:fourier:beispiel:rechteck}
 Die Funktion
 \[
 f_a(x)
@@ -285,8 +308,128 @@ ist der nicht normierte Kardinalsinus.
 Abbildung~\ref{buch:gruppen:fourier:fig:sinc} zeigt die Funktion 
 $f_a$ und die Fourier-Transformierte $\mathscr{F}f_a$ für verschiedene
 Werte von $a$.
+\end{beispiel}
 
 \input{chapters/030-gruppen/fig/sinc.tex}
+
+Die Abbildung~\ref{buch:gruppen:fourier:fig:sinc} zeigt auch, dass
+die Fourier-Transformierte entlang der $k$-Achse gestaucht wird,
+wenn die Funktion entlang der $x$-Achse gestreckt wird.
+Dieses Resultat wird im folgenden Satz noch etwas präziser
+formuliert.
+
+\begin{satz}
+\label{buch:gruppen:fourier:satz:FDa}
+Sei $f\in L^1(\mathbb{R})$ eine integrierbare Funktion mit der
+Fourier-Transformierten $\hat{f}=\mathscr{F}f$ und $D_af$ die um
+den Faktor $a$ gedehnte Funktion $(D_af)(x)=f(ax)$, dann ist
+die Fourier-Transformierte von $D_af$
+\[
+\widehat{D_af}(k)
+=
+\frac1a \hat{f}\biggl(\frac{k}{a}\biggr).
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir berechnen die Fourier-Transformation
+\begin{align*}
+\widehat{D_af}(k)
+&=
+\int_{-\infty}^\infty
+e^{ikx}D_af(x)
+\,dx
+\\
+&=
+\int_{-\infty}^\infty
+e^{ikx}f(ax)
+\,dx,
+\intertext{indem wir die Substitution $ax=u$ und $dx = (1/a)\,du$ 
+verwenden und damit}
+&=
+\frac{1}{a}
+\int_{-\infty}^\infty
+e^{i(k/a)u}f(u)
+\,du
+=
+\frac{1}{a}
+\hat{f}\biggl(\frac{k}{a}\biggr)
+\end{align*}
+erhalten.
+\end{proof}
+
+%
+% Fourier-Transformation und Gauss-Verteilung
+%
+\subsubsection{Fourier-Transformation und Gauss-Verteilung}
+Die Gauss-Verteilung spielt in der Wahrscheinlichkeitstheorie eine
+spezielle Rolle, die ihr vom zentralen Grenzwertsatz zugewiesen wird.
+Eine sehr grosse Summe vieler kleiner Einflüsse ist unabhängig von
+der Verteilung der einzelnen Einflüsse im Wesentlichen normalverteilt.
+Die Gauss-Verteilung hat aber auch in der Fourier-Theorie eine besondere
+Bedeutung, wie die folgenden zwei Sätze zeigen.
+
+\begin{satz}
+\label{buch:gruppen:fourier:satz:gaussfourier}
+Die Fourier-Transformierte der Gauss-Funktion $f(x)=e^{-ax^2}$ ist
+\[
+\hat{f}(k)
+=
+\sqrt{\frac{\pi}{a}}
+e^{-k^2/2a},
+\]
+also wieder eine Gauss-Funktion.
+\end{satz}
+
+\begin{proof}
+Wir berechnen die Fourier-Transformierte direkt aus
+\begin{align*}
+\hat{f}(k)
+&=
+\int_{-\infty}^\infty e^{-ikx} f(x)\,dx
+=
+\int_{-\infty}^\infty e^{-ax^2-ikx}\,dx.
+\intertext{Durch quadratisches Ergänzen im Exponenten erhält man}
+&=
+\int_{-\infty}^\infty
+e^{-ax^2-ikx+k^2/4a}
+e^{-k^2/4a}
+\,dx
+= 
+e^{-k^2/2a}
+\int_{-\infty}^\infty
+e^{-a(x-ik/2a)^2}
+\,dx.
+\intertext{Die Substitution $u=x-ik/2a$ mit $du=dx$ führt auf}
+&=
+e^{-k^2/4a}
+\int_{-\infty}^\infty
+e^{-au^2}
+\,du
+=
+\sqrt{\frac{\pi}{a}}
+e^{-k^2/4a}.
+\end{align*}
+Dieses formale Argument ist allerdings nicht ganz vollständig,
+denn die Substitution $u=x-ik/2a$ ist eine Translation
+in der komplexen Ebene.
+Man kann aber mit den Methoden der komplexen Analysis zeigen, dass
+sich das Integral durch die Verschiebung tatsächlich nicht ändert.
+\end{proof}
+
+Ein speziell interessanter Fall tritt auf, wenn $a=1/2a$ oder
+$a^2=\frac14$ oder $a=\frac12$.
+In diesem Fall ist die Fourier-Transformierte eine Vielfaches von
+$e^{-k^2/2}$.
+
+\begin{satz}[Gauss-Funktion als Eigenfunktion von $\mathscr{F}$]
+\label{buch:gruppen:fourier:satz:gausseigen}
+Die Funktion $f=e^{x^2/2}$ ist eine Eigenfunktion der Fouriertransformation
+zum Eigenwert $\sqrt{2\pi}$, also
+\[
+\mathscr{F}f = \sqrt{2\pi} f.
+\]
+\end{satz}
 
 %
 % Die Heisenberg-Pauli-Weyl-Ungleichung
@@ -389,12 +532,13 @@ dass $\langle x\rangle=0$ und $\langle k\rangle = 0$.
 Sind die Funktion $f(x)$, $xf(x)$ und $k(\mathscr{F}f)(k)$ alle in
 $L^2(\mathbb{R})$ und $\lim_{x\to\pm\infty} \sqrt{x}|f(x)|=0$, dann
 gilt
-\[
+\begin{equation}
 (\Delta x)^2
 (\Delta k)^2
 \ge 
 \frac14.
-\]
+\label{buch:gruppen:fourier:eqn:heisenberg-pauli-weyl}
+\end{equation}
 Gleichheit gilt genau für die Gauss-Funktionen $f(x)=Ce^{-ax^2}$, $a>0$.
 \end{satz}
 
@@ -562,9 +706,85 @@ Gleichheit tritt also genau auf für Gauss-Funktionen.
 % Unschärferelation inder Quantemechanik
 %
 \subsubsection{Unschärferelation in der Quantenmechanik}
+In der Quantenmechanik wird der Zustand eines Teilchens durch die 
+komplexwertige Wellenfunktion $\psi\colon\mathbb{R}^3\to\mathbb{C}$
+beschrieben.
+Die übliche Interpretation der Wellenfunktion ist, dass $|\psi(x)|^2$
+die Wahrscheinlichkeitsdichte dafür ist, das Teilchen im Punkt $x$ zu
+finden.
+Der Erwartungswert der Position der des Teilchens bei einer Messung
+ist daher
+\[
+\langle x\rangle
+=
+\int_{\mathbb{R}^3} x\, |\psi(x)|^2\,dx.
+\]
+Die erwartete Genauigkeit dieser Positionsbestimmung ist die Varianz
+der Wahrscheinlichkeitsdichte des Ortes, also genau die früher
+betrachtete Grösse $(\Delta x)^2$.
 
+Nach Louis de Broglie gibt es einen Zusammenhang zwischen dem Impuls $p$
+eines Teilchens und der Wellenlänge $\lambda$.
+Der zugehörige Zusammenhang zwischen Impuls und Wellenzahl ist
+$p = \hbar k$.
+Darin ist $\hbar = h/2\pi$ und $h$ ist das plancksche Wirkungsquantum.
+Um den Impuls eines Teilchens vorherzusagen, ist daher die
+Fourier-Transformierte zu bestimmen, damit kann dann der Erwartungswert
+\[
+\langle k \rangle 
+=
+\int_{\mathbb{R}^3} k\, |\mathscr{F}\psi(k)|^2\,dk
+\]
+der Wellenzahl berechnet werden.
+Somit ist $\mathscr{F}\psi$ die Wahrscheinlichkeitsdichte der
+Wellenzahl.
+Die Genauigkeit der Bestimmung der Wellenzahl ist durch die Varianz
+von $k$ limitiert, also die Grösse $(\Delta k)^2$.
 
+Die Ungleichung
+\eqref{buch:gruppen:fourier:eqn:heisenberg-pauli-weyl}
+bedeutet jetzt, dass die Genauigkeit der Positionsbestimmung und der
+Wellenzahlbestimmung nicht gleichzeitig beliebig klein sein kann.
+Wegen $p=\hbar k$ folgt auch $(\Delta p)^2 = \hbar^2 (\Delta k)^2$.
+Eingesetzt in 
+\eqref{buch:gruppen:fourier:eqn:heisenberg-pauli-weyl}
+folgt jetzt die berühmte Heisenbergsche Unschärferelation.
 
+\begin{satz}[Heisenberg]
+\label{buch:gruppen:fourier:satz:heisenberg}
+\index{Unschärferelation!Heisenberg}%
+\index{heisenbergsche Unschärferelation}%
+Ort $x$ und Impuls $p$ eines Teilchens können nicht gleichzeitig beliebig
+genau bestimmt werden, für die Varianz $(\Delta x)^2$ des Orts und
+$(\Delta p)^2$ des Impulses gilt die Ungleichung
+\begin{equation}
+\Delta x\cdot \Delta p
+=
+\Delta x \cdot \hbar \Delta k
+\ge 
+\frac{\hbar}2.
+\label{buch:gruppen:fourier:eqn:heisenberg}
+\end{equation}
+\end{satz}
+Ist der Ort sehr genau bekannt, also $\Delta x$ sehr klein, dann kann 
+andererseits der Impuls nicht besonders genau bekannt sein, und umgekehrt.
+Da allerdings $\hbar=1.054571817\cdot 10^{-34}\,\text{Js}$ sehr klein 
+ist, können die Absolutwerte von $\Delta x$ und $\Delta p$ trotz der 
+Ungleichung \eqref{buch:gruppen:fourier:eqn:heisenberg} klein sein.
+Nur für Teilchen, die so leicht sind wie Elementarteilchen und 
+in Gebieten von der Grösse von Atomen eingeschlossen sind, werden
+die Einschränkungen durch die Ungleichung
+\eqref{buch:gruppen:fourier:eqn:heisenberg} bemerkbar.
+Für ein Elektron mit der Masse $m_e=9.1093837\cdot 10^{-31}$ in einem Atom 
+vom Durchmesser $\Delta x=10^{-10}\,\text{m}$ ist die
+Geschwindigkeitsunsicherheit
+\[
+\Delta v 
+\ge 
+\frac{\hbar}{2} \frac{\Delta x}{m_e}
+\approx
+5.7884\cdot 10^{-15}\,\frac{\text{m}}{\text{s}}.
+\]
 
 
 
