@@ -6,8 +6,8 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Von der Beugung zu Fourier\label{opt:section:grundlagen}}
-\rhead{Von der Beugung zu Fourier}
+\section{Von der Beugung zur Fourier-Transformation\label{opt:section:grundlagen}}
+\rhead{Von der Beugung zur Fourier-Transformation}
 
 Im Folgenden wird der Schritt von der Beugung zur Fourier-Transformation vollzogen.
 Dazu wird mit der Wellentheorie die Grundlage gelegt für die nachfolgende Herleitung.
@@ -28,7 +28,7 @@ Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären.
 Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Wellenfront.
 Diese lässt sich als Superposition von unendlichen Elementarwellen (Teilabbildung a) betrachten.
 An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront (Teilabbildung b).
-Wenn jetzt ein Hindernis die Fortpflanzung der Welle stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront (Teilabbildung c).
+Wenn jetzt ein Hindernis die Fortpflanzung der Wellenfront stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront (Teilabbildung c).
 Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
 
 Dieses Phänomen lässt sich beispielsweise auch am Strand beobachten. 
@@ -37,8 +37,8 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \begin{figure}
     \centering
     \includegraphics[width=120mm]{papers/opt/images/huygens.pdf}
-    \caption{Gemäss dem Prinzip von Huygens kann eine Welle als Überlagerung unendlich vieler Elementarwellen aufgefasst werden.
-    Wenn diese Welle auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
+    \caption{Gemäss dem Prinzip von Huygens kann eine Wellenfront als Überlagerung unendlich vieler Elementarwellen aufgefasst werden.
+    Wenn diese Wellenfront auf ein Hindernis trifft, entsteht dahinter eine neue, gebogene Wellenfront.}
     \label{opt:fig:huygens}
 \end{figure}
 
@@ -49,7 +49,7 @@ Wenn eine Welle durch eine Öffnung hindurch kommt, breitet sie sich dahinter kr
 \begin{figure}
     \centering
     \includegraphics[width=57.34mm]{papers/opt/images/maxwell.pdf}
-    \caption{In grau entlang der $z$-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
+    \caption{Grau eingefärbt entlang der $z$-Achse ist die Linienquelle dargestellt, welche vom Zylinder mit dem Radius $r$ und der Länge $a$ umschlossen wird.
     Das elektrische Feld $\vec{E}$ breitet sich immer radial und rechtwinklig zur Lichtquelle aus.}
     \label{opt:fig:maxwell}
 \end{figure}
@@ -115,7 +115,7 @@ ausdrücken.
 Wie in Abschnitt \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
-Unendlich viele dieser Linienquellen seien nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
+Unendlich viele dieser Linienquellen sind nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
 Die Auswirkung dieser Quellen kann nun an jedem beliebigen Punkt hinter der Blende durch Superposition der einzelnen Quelleneinflüsse berechnet werden.
 
 Ein Schirm werde nun im Abstand $l$ hinter der Blende angebracht, an welchem die elektrische Feldstärke auf verschiedenen Höhen $y_p$ gemessen werden soll.
@@ -272,7 +272,7 @@ Ansonsten muss das allgemeine Beugungsintegral für die Berechnung verwendet wer
 
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
-Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann mittels der Fraunhofer-Approximation weiter vereinfacht werden.
+Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann mittels der Fraunhofer-Approximation\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.} weiter vereinfacht werden.
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Ist nun
@@ -301,7 +301,7 @@ E(y_p)
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}
-Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.}
+Mit Hilfe der Fresnel-Approximation und anschliessend der Fraunhofer-Approximation 
 konnte das allgemeingültige Beugungsintegral auf eine analytisch einfach lösbare Form gebracht werden.
 Das somit entstandene Integral entspricht bis auf einige Vorfaktoren gerade der Fourier-Transformation der Blendenfunktion $f(y)$.
 

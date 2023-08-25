@@ -1,5 +1,5 @@
 %
-% itensitaet.tex -- Paper zum Thema Optische Fourier-Transformation <opt>
+% intensitaet.tex -- Paper zum Thema Optische Fourier-Transformation <opt>
 %
 % (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
 %
@@ -19,7 +19,7 @@ Zuerst wird im Abschnitt \ref{opt:subsection:poynting_vector} mittels des Poynti
 Allerdings wird dieser Ausdruck für die Intensität $I$ noch zusätzlich von der magnetischen Feldstärke $H$ abhängig sein.
 Aufgrund dessen wird im darauf folgenden Abschnitt \ref{opt:subsection:wave_impedance} mit Hilfe der Wellenimpedanz gezeigt, wie diese Abhängigkeit zu beseitigen ist.
 
-Abgeschlossen wir dieses Kapitel mit einem Rechenbeispiel zur Beugung am Einzelspalt.
+Abgeschlossen wir dieser Abschnitt mit einem Rechenbeispiel zur Beugung am Einzelspalt.
 
 \subsection{Poynting Vektor}
 \label{opt:subsection:poynting_vector}
@@ -29,7 +29,7 @@ Abgeschlossen wir dieses Kapitel mit einem Rechenbeispiel zur Beugung am Einzels
     \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave_1.pdf}
     \caption{Die elektromagnetische Welle breitet sich in $z$-Richtung aus. 
     Wenn dabei die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung verläuft, muss die magnetische Feldstärke $\vec{H}$ 
-    in einem homogenen Medium entlang der $y$-Richtung verlaufen.}
+    in einem homogenen Medium orthogonal dazu entlang der $y$-Richtung verlaufen.}
     \label{opt:fig:electromagnetic_wave_1}
 \end{figure}
 
@@ -44,7 +44,7 @@ Dabei beschreibt $\vec{E}$ die elektrische und $\vec{H}$ die magnetische Feldst�
 
 Angenommen eine elektromagnetische Welle breitet sich in $z$-Richtung in einem homogenen Medium aus, was unter anderem bedeutet, dass $\vec{E}$ und $\vec{H}$ immer orthogonal zueinander stehen müssen.
 Verläuft nun die elektrische Feldstärke $\vec{E}$, wie in Abbildung \ref{opt:fig:electromagnetic_wave_1} gezeigt, entlang der $x$-Richtung, muss die magnetische Feldstärke $\vec{H}$ entlang der $y$-Richtung verlaufen.
-Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zu Gleichung \eqref{opt:equation:wave}, als
+Diese beiden Quantitäten können wiederum in komplexwertiger Notation, ähnlich zur Gleichung \eqref{opt:equation:wave}, als
 \begin{equation}
 \vec{E}(z,t)
 =
@@ -91,7 +91,7 @@ E(\Im^2(S))
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\frac{\cos(4(\omega t-kz)) + 1}{2} \,dt
 \end{align*}
 geschrieben werden.
-Soll nur über die Zeit gemittelt werden, ist die Position $z$ nicht von belang und kann deshalb auf $z=0$ gesetzt werden.
+Wenn nur über die Zeit gemittelt werden soll, ist die Position $z$ nicht relevant und kann daher auf $z = 0$ gesetzt werden.
 Beispielsweise kann exakt über eine Periode integriert werden, was in Integrationsgrenzen von $t_0=0$ und
 \begin{align*}
 4\omega t_1
@@ -172,7 +172,7 @@ B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
 \begin{figure}
     \centering
     \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave_2.pdf}
-    \caption{Grau eingefärbt ist die die Fläche $A$, welche in der $xz$-Ebene liegt.
+    \caption{Grau eingefärbt ist die Fläche $A$, welche in der $xz$-Ebene liegt.
     Um sie herum verläuft in schwarz die Kontur $C = \partial A$.
     Zu beachten ist die Umlaufrichtung dieser Kontur, welche bestimmt, wann das Skalarprodukt $\vec{E} \cdot d\vec{l}$ ein positives oder negatives Vorzeichen aufweist.}
     \label{opt:fig:electromagnetic_wave_2}
@@ -207,7 +207,7 @@ Wird $\Delta z$ nun immer weiter verkleinert, kann auf beiden Seiten der Gleichu
 -\frac{\partial B_y(z,t)}{\partial t}
 \end{align*}
 resultiert.
-Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field} unter Berücksichtigung von $B = \mu H$ und $\omega = kc$ ergibt sich schliesslich der Ausdruck
+Durch Einsetzen und Ableiten der Gleichungen \eqref{opt:equation:wave_electric_field} und \eqref{opt:equation:wave_magnetic_field} und unter Berücksichtigung von $B = \mu H$ und $\omega = kc$ ergibt sich schliesslich der Ausdruck
 \begin{align}
 -k \cdot E_0 \cdot e^{j(\omega t-k z)}
 &=
@@ -231,7 +231,7 @@ Z_0
 \end{align}
 
 Dieses Verhältnis $Z_0$ von $E_0$ zu $H_0$ wird auch als Wellenimpedanz bezeichnet und spielt in der Elektrodynamik eine essentielle Rolle.
-Ohne weiter darauf einzugehen kann der Zusammenhang
+Ohne weiter darauf einzugehen, kann der Zusammenhang
 \begin{equation}
 c
 =
@@ -285,10 +285,10 @@ wobei der konstante Anteil als $\kappa$ zusammengefasst wurde.
 Somit ist der einfachst mögliche Zusammenhang zwischen der elektrischen Feldstärke $E$ und der Intensität $I$ gefunden.
 Die Intensität an einer bestimmten Stelle im Raum ist also lediglich abhängig von der an diesem Ort herrschenden elektrischen Feldstärke $E$ und der Medium spezifischen Konstante $\kappa$.
 
-\subsection{Beispiel einzelner Spalt}
+\subsection{Rechenbeispiel zur Beugung am Einzelspalt}
 \label{opt:sec:exampleSingleSlit}
 \opttodo{Muss wieder ein wenig angepasst werden, weil die intensity section sich geändert hat.}
-Als einfachstes Beispiel wird die Beugung an ein einem einzelnen Spalt der Breite $b$ durchexerziert.
+Als einfachstes Beispiel wird die Beugung an einem einzelnen Spalt der Breite $b$ durchexerziert.
 In diesem Fall beträgt die Blendenfunktion
 \begin{equation*}
 f(y)
@@ -304,9 +304,9 @@ Als Ausgangslage wird die Gleichung
 I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy\right)^2
-\intertext{aus \eqref{opt:equation:intensity} verwendet. Durch Einsetzten der Grenzen vereinfacht sich diese zu}
+\intertext{aus \eqref{opt:equation:intensity} verwendet. Durch Einsetzen der Grenzen vereinfacht sich diese zu}
 &=
-\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\right)^2.
+\kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \Biggl(\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{-j\frac{ky_p}{l}y} \,dy\Biggr)^2.
 \intertext{Anschliessend kann die Stammfunktion an den Grenzen ausgewertet werden.}
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(-\frac{l}{jky_p} \cdot \left[e^{-j\frac{ky_p}{l}y} \right]_{-\frac{b}{2}}^{\frac{b}{2}}\right)^2
@@ -320,7 +320,7 @@ I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left(\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left[e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right]\right)^2
 \end{align*}
-Das daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
+Der daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
 \begin{equation*}
 \sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
 \end{equation*}
@@ -340,5 +340,5 @@ I(y_p)
 \end{align*}
 vereinfacht werden.
 
-Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer} ausgewertet für einen Einzelspalt ergibt schlussendlich eine quadrierte sinc-Funktion.
+Die Fraunhofer-Approximation aus \eqref{opt:equation:integral_fraunhofer}, ausgewertet für einen Einzelspalt, ergibt schlussendlich eine quadrierte sinc-Funktion.
 Das hier erhaltene Schlussresultat wird in Abschnitt \ref{opt:section:versuch} praktisch nachgewiesen.

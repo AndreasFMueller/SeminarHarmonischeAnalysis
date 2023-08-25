@@ -23,7 +23,7 @@ Dies war ausreichend, um die vorhandenen Blenden vollständig auszuleuchten.
 Anschliessend konnte eine erste Blende montiert werden.
 In Abbildung \ref{opt:fig:4fAufbau} ist dies als Originalbild beschrieben.
 Im Abstand $f=300\,\text{mm}$ wird jetzt die erste Linse montiert und nach weiteren zwei Brennweiten die zweite Linse.
-Genau in der Mitte der beiden Linsen ergibt sich die Fourierebene.
+Genau in der Mitte der beiden Linsen ergibt sich die Fourier-Ebene.
 Ganz am Ende des Aufbaus, eine weitere Brennweite hinter der zweiten Linse, ist das rücktransformierte Bild ersichtlich.
 
 Im weiteren Verlauf dieses Abschnittes werden die erwarteten Ergebnisse simuliert und anschliessend mit den Beobachtungen verglichen.
@@ -33,13 +33,13 @@ Der $4f$ Versuch kann auch simuliert werden.
 In unserem Fall geschah dies mit \emph{Python} und der \emph{numpy} Bibliothek.
 Zuerst wird ein Input-Bild erstellt, welches anschliessend bearbeitet wird.
 Als Input wurden ein Dreifachspalt sowie ein Gitter verwendet.
-Mittels zweidimensionaler diskreter Fourier-Transformation wird das Originalbild in den Frequenzbereich transformiert.
+Mittels zweidimensionaler diskreter Fast-Fourier-Transformation (FFT) wird das Originalbild in den Frequenzbereich transformiert.
 Anschliessend kann dies mit einem digitalen Filter gefiltert werden.
 Die Filter werden so ausgeführt, wie sie in Abbildung \ref{opt:fig:filterarten} aufgeführt sind.
 Das bedeutet, dass zum Beispiel ein Tiefpass einen runden Durchlassbereich um den Nullpunkt hat.
 Schlussendlich wird das gefilterte Frequenzspektrum mittels zweidimensionaler FFT wieder rücktransformiert.
 Abbildung \ref{opt:fig:three_slit_simulation} zeigt diesen Vorgang am Beispiel eines Dreifachspalts und 
-in Abbildung \ref{opt:fig:grid_simulation} wird das selbe mit einem Gitter simuliert.
+in Abbildung \ref{opt:fig:grid_simulation} wird dasselbe mit einem Gitter simuliert.
 
 Die verwendeten Python-Skripte der Simulation sind im Repository des Buches\footnote{\url{https://github.com/AndreasFMueller/SeminarHarmonischeAnalysis/tree/master/buch/papers/opt/code}}
 abgelegt.
@@ -54,16 +54,16 @@ Nach dieser Verifizierung wurde die zweite Linse ebenfalls montiert und die Abbi
 Beim Dreifachspalt konnte die Fourier-Transformation und Rücktransformation erfolgreich ausgeführt werden.
 Die Filterung mittels eines optischen Tiefpasses konnte jedoch nicht nachgebildet werden.
 Der genaue Grund dafür konnte nicht eruiert werden.
-Mögliche Ursachen wären eine zu grosse Blende, eine nicht optimale Ausrichtung der optischen Achse oder eine zu geringe Auflösung der Auswerteeinheit.
+Mögliche Ursachen sind eine zu grosse Blende, eine nicht optimale Ausrichtung der optischen Achse oder eine zu geringe Auflösung der Auswerteeinheit.
 
 \subsection{Vergleich der Simulation}
 In der Abbildung \ref{opt:fig:experiment} sind die Resultate aus dem Versuch mit dem Dreifachspalt ersichtlich.
 Wenn das erhaltene Spektrum mit demjenigen aus der Simulation in Abbildung \ref{opt:fig:three_slit_simulation} verglichen wird, ist eine Übereinstimmung ersichtlich.
 In beiden Fällen ist auf der $x$-Achse eine erhöhte Intensität zu beobachten mit einem grossen Anteil im Ursprung.
-Ebenfalls in beiden Fällen kann auf der $y$-Achse eine kleiner Intensität beobachtet werden.
-Dieser folgt davon, dass der Spalt eine beschränkte Dimension in der $y$-Richtung hat und somit auch dort die Welle gebeugt wird.
+Ebenfalls in beiden Fällen kann auch auf der $y$-Achse eine kleine Intensität beobachtet werden.
+Diese folgt davon, dass der Spalt eine beschränkte Dimension in der $y$-Richtung hat und somit auch dort die Welle gebeugt wird.
 Beim reellen Versuch können noch weitere Bereiche mit einer sichtbaren Intensität ausgemacht werden, welche in der Simulation nicht ersichtlich sind.
-Dies war jedoch zu erwarten, da die Rechnung im Gegensatz zum realen Versuchsaufbau viel genauer ist und sich nicht durch Störungen im Aufbau beeinflussen lässt.
+Dies war jedoch zu erwarten, da die Simulation im Gegensatz zum realen Versuchsaufbau viel genauer ist und sich nicht durch Störungen im Aufbau beeinflussen lässt.
 
 
 \begin{figure}
@@ -78,7 +78,7 @@ Dies war jedoch zu erwarten, da die Rechnung im Gegensatz zum realen Versuchsauf
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/opt/images/4fAufbau.pdf}
-    \caption{Der $4f$ Aufbau ermöglicht eine Fourier-Transformation des Originalbildes sowie eine Rücktransformation aus der Fourierebene.
+    \caption{Der $4f$ Aufbau ermöglicht eine Fourier-Transformation des Originalbildes sowie eine Rücktransformation aus der Fourier-Ebene.
     In dieser Abbildung wird die transformierte Funktion mit einem Tiefpass gefiltert.
     Weitere Details zu den Filtern folgen im Abschnitt \ref{opt:section:filter}.}
     \label{opt:fig:4fAufbau}
