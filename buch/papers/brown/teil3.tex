@@ -17,7 +17,7 @@ Formal kann eine stochastische DGL folgendermaßen notiert werden:
 	\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-In diesem Fall ist die Störung durch sogenanntes $ m $ dimensionales weisses Rauschen $ \xi(t) $ modelliert.
+In diesem Fall ist die Störung durch $ m $ dimensionales weisses Rauschen $ \xi(t) $ modelliert.
 $ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander.
 $ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand / jede Dimension des Systems.
 Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
@@ -54,14 +54,10 @@ Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichu
 \end{equation}
 
 
-%Man kann dem Wiener Prozess auch fraktale Eigenschaften zusprechen, da man den Ausschnitt des zufällig beeinflussten Prozesses beliebig gross oder klein wählen kann und die keinen Einfluss auf die Eigenschaften des beobachteten Verhalten hat.
-
-
-\subsection{Simulation mittels der Euler-Maruyama-Methode
-	\label{brown:Simulation}}
+\subsection{Simulation mittels der Euler-Maruyama-Methode\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Die brownsche Bewegung kann relativ einfach mittels der Euler-Maruyama-Methode simuliert werden. Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
+Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
 %Gegeben sei eine SDGL der folgenden Form:
 
@@ -94,24 +90,6 @@ Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kan
 
 %Abbildung hier?
 
-In der Abbildung \ref{1Dbrownian} wurde diese Simulations-Methode in einer Dimension angewandt. Man kann vielleicht schon erahnen, dass die zugrundeliegende Mathematik auf Börsenkurse anwendbar sein könnte. Führt man die Simulation für zwei Achsen durch und verbindet die einzelnen Simulationsschritte mit Linien, ergibt sich das Bild einer typischen brownschen Bewegung, wie dies in der Abbildung \ref{2Dbrownian} zu sehen ist.
-
-\begin{figure}
-	\centering
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/Aktienkurs-als-Brownische-Bewegung_3.png}
-		\caption{Aktienkurs als 1D brownsche Bewegung}
-		\label{1Dbrownian}
-	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/Brownische-Bewegung-Simuliert_3.png}
-		\caption{Brownschen Bewegung simultiert in 2D}
-		\label{2Dbrownian}
-	\end{minipage}
-\end{figure}
 
 \subsection{ITO\label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
