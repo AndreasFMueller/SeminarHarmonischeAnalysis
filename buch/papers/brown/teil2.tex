@@ -111,21 +111,21 @@ In den zwei Abbildungen ~\ref{weissesRauschenSignal} und ~\ref{überlagerteSchwi
 \end{figure}
 
 
-\subsection{Rauschen mittels Random Walk oder Wiener Prozess\label{brown:Rauschen:RandomWalkWiener}}
+\subsection{Rauschen mittels Random Walk oder Wiener-Prozess\label{brown:Rauschen:RandomWalkWiener}}
 
-Um Rauschen zu modellieren muss als Grundlage ein stochastischer Prozess definiert werden. Zwei weit verbreitete Konzepte sind dabei der \textit{random walk} und der Wienerprozess.
+Um Rauschen zu modellieren muss als Grundlage ein stochastischer Prozess definiert werden. Zwei weit verbreitete Konzepte sind dabei der \textit{random walk} und der Wiener-Prozess.
 
 \begin{definition}\textbf{Random Walk:}
 	\label{randomWalk}
 	Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt eine zufällige Schritt vor oder zurück. Oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden order als konstant definiert werden. Dieses Verfahren zeichnet sich durch eine einfache numerische Implementation aus, da es per Definition schon diskret ist.
 \end{definition}
 
-\begin{definition}\textbf{Wienerprozess:}
+\begin{definition}\textbf{Wiener-Prozess:}
 	\label{wienerprozess}
-	Der Wienerprozess ist ein kontinuierlicher stochastischer Prozess. Er kann als Grenzwert eines Random Walks erachtet werden, sofern die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert dem Ausgangswert entspricht.
+	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess. Er kann als Grenzwert eines Random Walks erachtet werden, sofern die Zeitschritte gegen null gehen und die Schrittlängen normalverteilt sind. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert dem Ausgangswert entspricht.
 \end{definition}
 
-Der Wienerprozess muss also folgende Eigenschaften erfüllen: 
+Der Wiener-Prozess muss also folgende Eigenschaften erfüllen: 
 
 %Man könnte also den Random Walk als eine diskrete Version eines Wiener-Prozesses bezeichnen oder umgekehrt, dass ein Wiener-Prozess eine kontinuierliche Version eines Random Walks ist. Sie unterscheiden sich jedoch bezüglich ihrer zeitlichen Diskretisierung und in den verwendeten Wahrscheinlichkeitsverteilungen.
 
@@ -136,7 +136,7 @@ Der Wienerprozess muss also folgende Eigenschaften erfüllen:
 	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen Verlauf abhängt.
 \end{enumerate}
 
-Weiter wird auf den Wienerprozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wienerprozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
+Weiter wird auf den Wiener-Prozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
 
 \subsection{Implikationen\label{brown:Rauschen:Implikationen}}

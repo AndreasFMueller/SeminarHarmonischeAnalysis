@@ -32,20 +32,20 @@ Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems.
 	, \quad
 	B = 
 	\begin{pmatrix}
-		B_{11} & \vdots & B_{1m} \\
+		B_{11} & \dots & B_{1m} \\
 		& \vdots & \\
-		B_{n1} & \vdots & B_{nm} 
+		B_{n1} & \dots & B_{nm} 
 	\end{pmatrix}
 \end{align*}
 
 
-Für die Modellierung von stochastischem Verhalten, ist der Wiener Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wienerprozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
+Für die Modellierung von stochastischem Verhalten, ist der Wiener-Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wiener-Prozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
 
 \begin{equation}
 	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
-Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wienerprozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
+Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wiener-Prozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
 
 Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte ``Ito-Form'' zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
 
@@ -90,7 +90,7 @@ Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt
 Diese Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, im Kontext der brownschen Bewegung kann man es "Drift" nennen, welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
 
 
-Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen (\textit{white noise}), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wienerprozess oder die brownsche Bewegung als Ganzes.
+Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen (\textit{white noise}), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener-Prozess oder die brownsche Bewegung als Ganzes.
 
 %Abbildung hier?
 
