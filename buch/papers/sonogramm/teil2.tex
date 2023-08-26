@@ -13,7 +13,7 @@ In diesem Abschnitt werden wir mit Hilfe des Sonogramms ein Musikstücks
 analysieren und versuchen die gespielten Noten zu rekonstruieren.
 
 Wir nehmen dafür einen fünf Sekunden langen Abschnitt vom Lied
-Dern Kala von Khruangbin.
+{\em Dern Kala} von {\em Khruangbin}.
 Um uns die Arbeit zu vereinfachen, verwenden wir ein Audiosignal, in
 dem nur die Gitarre zu hören ist.
 Abbildung \ref{sonogramm:dernTime} zeigt das Audiosignal in der Zeit.
@@ -24,7 +24,7 @@ genauer beschrieben.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/audioTimeDern.pdf}
-    \caption{Audio Spur für die Tonanalyse.
+    \caption{Audiospur für die Tonanalyse.
     \label{sonogramm:dernTime}
     }
 \end{figure}
@@ -39,7 +39,7 @@ Die benötigte Zeitauflösung können wir anhand der Geschwindigkeit des Lieds a
 Diese beträgt 83 Schläge pro Minute mit einem 4/4 Takt, also jeweils alle 0.69 Sekunden ein viertel Takt.
 Möchten wir Sechzehntelnoten erkennen, darf die STFT über maximal 0.17 Sekunden
 angewendet werden.
-Damit die sechzehntel Noten nicht nur in einem Segment zu sehen sind, teilen
+Damit die Sechzehntelnoten nicht nur in einem Segment zu sehen sind, teilen
 wir die 0.17 Sekunden nochmals durch zwei.
 Das liefert uns bei einer Abtastfrequenz von 44100 Hz eine ungefähre Segmentlänge von 
 3800 Samples. 
@@ -60,7 +60,7 @@ Tabelle \ref{sonogramm:tabDern} zeigt den Vergleich mit den tatsächlich gespiel
 Diese lassen sich in diesem Fall tatsächlich gut ermitteln.
 Sogar nur kurz gespielte Noten, wie das B4 im Abschnitt 10 
 wurden korrekt erkannt.
-Einzig die beiden Slides 
+Einzig die beiden Slides TODO
 Was wir vernachlässigt haben, ist der Rhythmus der gespielten Noten.
 Um diesen herauszufinden, bräuchten wir jeweils die exakten Zeitpunkte, wo die Töne
 beginnen und enden, was weitere Analysen erfordern würde.
@@ -68,7 +68,10 @@ beginnen und enden, was weitere Analysen erfordern würde.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/dernSono1.pdf}
-    \caption{Sonogram des Audiosignalabschnitts.
+    \caption{Sonogram des Audiosignalabschnitts. Die intensivsten Peaks der 
+    jeweiligen Segmente zeigen die gespielten Grundtöne. Die weiger
+    intensiven Peaks bei den n-fachen Frequenzen des Grundtones sind die Obertöne, welche durch die Physik der Saiten 
+    entstehen.
     \label{sonogramm:dernSono}
     }
 \end{figure}
@@ -104,7 +107,7 @@ beginnen und enden, was weitere Analysen erfordern würde.
      \hline
     \end{tabular}
 \end{center}
-\caption{\label{sonogramm:tabDern} Vergleich der gespielten und gefundenen Töne im analysierten Abschnitt von Dern Kala.}
+\caption{\label{sonogramm:tabDern} Vergleich der gespielten und gefundenen Töne im analysierten Abschnitt von {\em Dern Kala}.}
 \end{table}
 \subsection{Weiter Anwendungen}
 Das Sonogramm wird in vielen Bereichen der Audioanalyse eingesetzt.
