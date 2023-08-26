@@ -26,7 +26,7 @@ So ist es möglich den maximalen Fehler der Frequenzabweichung zu bestimmen, der
 \label{autotune:subsection:shortTimeFourierTransformation}}
 Die Short-Time Fourier-Transformation (STFT) ist eine Fourier-Transformation, die auf einem kleinen,
 zeitlich begrenzten Ausschnitt eines Signals angewendet wird.
-Da es sich sich um einen diskreten Vorgang handelt, wird die STFT beschrieben als
+Da es sich um einen diskreten Vorgang handelt, wird die STFT beschrieben als
 \begin{equation}
     \mathbf{STFT}_x(m, f)
     =
@@ -35,14 +35,16 @@ Da es sich sich um einen diskreten Vorgang handelt, wird die STFT beschrieben al
 Dabei definiert $x(n)$ das Signal, $w(n)$ das Fenster und $m$ den Verschiebungsparameter.
 Üblicherweise wird ein Fenster der Länge $N$ verwendet, wobei $N$ eine Zweierpotenz ist.
 Je länger das Zeitfenster, desto höher ist die physikalische Frequenzauflösung. Jedoch reduziert sich die zeitliche Spektrumabtastung.
-Dieser Trade-Off kann gut anhand eines Beispiels gezeigt werden.
-Gegeben durch
-\[
-    f_s = 44100\;\text{Samples/s} \quad\quad l_w = 23\;\text{ms} \quad\quad L = f_s \cdot l_w = 1014.3 \approx 1024\;\text{Samples}
-\]
-\[
-    \Delta f = \frac{f_s}{L}\approx 43.07\;\text{Hz}\;.
-\]
+Dieser Trade-Off kann gut anhand des Beispiels \ref{autotune:beispiel:tradeOffSTFT} gezeigt werden.
+\begin{beispiel} 
+    \[
+        f_s = 44100\;\text{Samples/s} \quad\quad l_w = 23\;\text{ms} \quad\quad L = f_s \cdot l_w = 1014.3 \approx 1024\;\text{Samples}
+    \]
+    \[
+        \Delta f = \frac{f_s}{L}\approx 43.07\;\text{Hz}
+    \]
+    \label{autotune:beispiel:tradeOffSTFT}
+\end{beispiel}
 Es fällt auf, dass mit einer Fensterlänge von 23\;ms die Frequenzauflösung bei nur 43.07\;Hz liegt.
 Da einzelne Töne jedoch nur wenige Hertz auseinander liegen, können diese nur ungenau voneinander unterschieden werden.
 Schnelle Melodien verhindern das Verlängern der Fensterzeit, da sonst mehrere Töne in ein Segment fallen und nicht mehr identifiziert werden können.
@@ -79,7 +81,7 @@ Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich einen maxi
 
 \subsection{Cumulative Mean Normalized Difference Function (CMNDF)
 \label{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}}
-Eine weitere Methode zur Tonhöhenbestimmung ist die Cumulative Mean Normalized Difference Function (CMNDF).
+Eine weitere Methode zur Tonhöhenbestimmung ist die Cumulative Mean Normalized Difference Function (CMNDF) \cite{autotune:f0EstimationForTheElectricGuitar}.
 Diese Methode basiert auf der Auto-Korrelation des Signals welche definiert ist als
 \begin{equation}
     \mathbf{ACF}(\tau, t)
@@ -106,10 +108,10 @@ Der generelle Ausdruck lautet
 \begin{equation}
     \mathbf{CMNDF}(\tau,t)
     =
-    \left\{
+    \begin{cases}
         \;\begin{array}{ll} 1 & \tau=0 \\
-        \tau \cdot \frac{\mathbf{DF}(\tau,t)}{\sum\nolimits_{j=1}^{\tau} \mathbf{DF}(j,t)} & \tau > 0 \end{array}
-    \right\}.
+        \tau \cdot \frac{\mathbf{DF}(\tau,t)}{\sum\nolimits_{j=1}^{\tau} \mathbf{DF}(j,t)} & \tau > 0\;. \end{array}
+        \end{cases}
 \end{equation}
 Gesucht wird nun das erste lokale Minimum der CMNDF innerhalb des analysierten Fensters.
 Dieses Minimum entspricht der längsten Periodendauer und ist somit die Periodendauer der Grundharmonischen.
@@ -173,7 +175,7 @@ Dies ist in Abbildung \ref{autotune:fig:pitchDetektionCMNDF} gut ersichtlich.
 \end{figure}
 
 Es zeigt sich, dass kommerzielle Software-Tools mit grosser Wahrscheinlichkeit die CMNDF-Methode verwenden.
-So stimmen die eigens mittels CMNDF berechneten Tonhöhen mit denjenigen der kommerziellen Software \textit{Steinberg Cubase 12 Pro VariAudio} überein,
+So stimmen die eigens mittels CMNDF berechneten Tonhöhen mit denjenigen der kommerziellen Software \emph{Steinberg Cubase 12 Pro VariAudio} überein,
 welche als Referenz verwendet wurde. Dies ist dargestellt in Abbildung \ref{autotune:fig:pitchDetektionCMNDFReference}.
 \begin{figure}
 	\centering
