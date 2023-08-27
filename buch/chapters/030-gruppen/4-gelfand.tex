@@ -138,6 +138,7 @@ $G\mapsto\mathbb{C}^*$ von der Gruppe $G$ in die multiplikative
 Gruppe von $\mathbb{C}$.
 
 \begin{beispiel}
+\label{buch:gruppen:gelfand:bsp:winkel}
 Sei $G= \mathbb{R}/2\pi\mathbb{Z}$ die Gruppe der Winkel mit der 
 Addition von Winkeln als Gruppenoperation.
 Um die Charaktere der Faltungsalgebra der $2\pi$-periodischen Funktionen
@@ -329,12 +330,169 @@ noch nicht.
 Wir werden in Abschnitt~\ref{buch:gruppen:section:darstellung}
 auf diese Frage zurückkommen.
 
-
-
 %
 % Die duale Gruppe
 %
 \subsection{Die duale Gruppe
 \label{buch:gruppen:gelfand:subsection:dual}}
+Sei $G$ eine Gruppe und $\chi_1\colon G\to\mathbb{C}^*$
+und $\chi_2\colon G\to\mathbb{C}^*$ zwei Homomorphismen.
+Das Produkt der beiden Homomorphismen ist eine Abbildung
+\[
+\chi\colon G\to\mathbb{C}^*
+:
+g\mapsto \chi(g)=\chi_1(g)\chi_2(g).
+\]
+Seien jetzt ausserdem $g$ und $h$ Gruppenelemente.
+Dann gilt
+\begin{equation}
+\chi(gh)
+=
+\chi_1(gh)\chi_2(gh)
+=
+\chi_1(g)\chi_1(h)\chi_2(g)\chi_2(h)
+=
+\chi_1(g)\chi_2(g)\chi_1(h)\chi_2(h)
+=
+\chi(g)\chi(h),
+\label{buch:gruppen:gelfand:eqn:prodhomo}
+\end{equation}
+insbesondere ist $\chi$ ebenfalls ein Homorphismus $G\to\mathbb{C}^*$.
+
+Die Funktion $\psi\colon g\mapsto \chi_1(g)^{-1}$ erfüllt
+\[
+\psi(gh)
+=
+\chi_1(gh)^{-1}
+=
+\chi_1(h)^{-1}
+\chi_1(g)^{-1}
+=
+\chi_1(g)^{-1}
+\chi_1(h)^{-1}
+=
+\psi(g)
+\psi(h)
+\]
+und ist damit ebenfalls ein Homomorphismus $G\to\mathbb{C}^*$, der auch
+mit $\chi_1^{-1}$ bezeichnet wird.
+Die konstante Funktion $g\mapsto 1$ ist trivialerweise ein Homomorphismus.
+Für einen Homomorphismus $\chi\colon G\to\mathbb{C}^*$ folgt aus den
+Definitionen
+\[
+\chi(g)\chi^{-1}(g) = 1,
+\]
+die Multiplikation der Homomorphismen macht aus $\mathbb{X}(G)$ eine
+Gruppe mit dem konstanten Homomorphismus als neutralem Element.
+
+\begin{definition}[Duale Gruppe]
+Ist $G$ eine Gruppe, dann ist $\hat{G}$ die Menge der Homomorphismen
+$G\to\mathbb{C}^*$, sie wird mit der Multiplikation von Homomorphismen
+zu einer Gruppe, die die {\em duale Gruppe} heisst.
+\index{duale Gruppe}%
+\index{Gruppe!dual}%
+\end{definition}
+
+Man beachte, dass die Konstruktion der dualen Gruppe nur funktioniert,
+weil die Multiplikation in $\mathbb{C}^*$ kommutativ ist.
+Für Homomorphismen mit Werten in einer nichtkommutationen Gruppe, zum
+Beispiel in $\operatorname{GL}_n(\mathbb{C})$, ist die Rechnung
+\eqref{buch:gruppen:gelfand:eqn:prodhomo} nicht mehr möglich, weil
+die Vertauschung der Faktoren im dritten Schritt im Allgemeinen
+nicht zulässig ist.
+
+\begin{beispiel}
+\label{buch:gruppen:gelfand:bsp:winkeldual}
+In Beispiel~\ref{buch:gruppen:gelfand:bsp:winkel} wurden die Homomorphismen
+$G\to\mathbb{C}^*$ für die Gruppe $G=\mathbb{R}/2\pi\mathbb{Z}$ der
+Winkel bestimmt und es wurde gefunden, dass die Homomorphismen die Form
+$x\mapsto e^{ikx}$ haben, wobei $k$ eine ganze Zahl ist.
+Die Menge der Homomorphismen $G\to\mathbb{C}^*$ ist also die Menge $\mathbb{Z}$.
+
+Das Produkt zweier solcher Homomorphismen $e^{ik_1x}$ und $e^{ik_2x}$ ist
+\[
+x\mapsto e^{ik_1x}e^{ik_2x} = e^{i(k_1+k_2)x}.
+\]
+Die Gruppenoperation in der dualen Gruppe $\hat{G}=\mathbb{Z}$ ist also
+genau die Addition der zugehörigen ganzen Zahlen.
+\end{beispiel}
+
+Das Beispiel~\ref{buch:gruppen:gelfand:bsp:winkeldual} hat gezeigt,
+dass die duale Gruppen von $\mathbb{R}/2\pi\mathbb{Z}$ die additive
+Gruppe $\mathbb{Z}$ ist.
+Im nächsten Beispiel wird die duale Gruppe von $\mathbb{Z}$ bestimmt.
+
+\begin{beispiel}
+\label{buch:gruppen:gelfand:bsp:dualZ}
+Da alle Elemente der Gruppe $\mathbb{Z}$ durch wiederholte Addition 
+und Subtraktion aus dem Element $1\in\mathbb{Z}$ erzeugt werden können,
+ist ein Homomorphismus $\chi\colon \mathbb{Z}\to\mathbb{Z}$ durch
+den Wert $\chi(1)$ bereits eindeutig festgelegt.
+
+Zusätzlich muss $\chi$ aber auch noch beschränkt sein, wenn man ihn
+als Basis für eine harmonische Analysis verwenden will.
+Dies ist nur möglich, wenn $|\chi(1)|=1$ ist, wenn also $\chi(1)$
+ein Punkt auf dem Einheitskreis in der komplexen Ebene ist.
+Als solcher ist $\chi(1)$ durch den Polarwinkel bestimmt, man kann
+$\chi(1)=e^{ix}$ schreiben mit $x\in\mathbb{R}/2\pi\mathbb{Z}$.
+Damit kann man jetzt $\chi(k)=\chi(1)^k = e^{ikx}$ schreiben.
+Die duale Gruppe von $\mathbb{Z}$ ist daher
+$\hat{\mathbb{Z}} = \mathbb{R}/2\pi \mathbb{Z}$.
+\end{beispiel}
+
+Das Beispiele
+\ref{buch:gruppen:gelfand:bsp:winkeldual}
+und
+\ref{buch:gruppen:gelfand:bsp:dualZ}
+zeigen, dass die duale Gruppe der dualen Gruppe wieder die ursprüngliche
+Gruppe sein kann.
+Dies kann natürlich nicht funktionieren, wenn die ursprüngliche Gruppe
+nicht kommutativ ist, da die duale Gruppe immer kommutativ sein muss.
+Man kann aber zeigen, dass die Behauptung für beliebige kommutative
+Gruppen gilt.
+Der Beweis verwendet, dass jede abelsche Gruppe als Produkt einfacherer
+abelscher Gruppen geschrieben werden kann.
+Zwei solche Beispiele haben wir in den Beispielen bereits kennengelernt.
+Das nächste Beispiel zeigt, dass zyklische Gruppen ebenfalls diese Eigenschaft
+haben, was für die diskrete Fourier-Threorie in
+Kapitel~\ref{buch:chapter:diskret} von Bedeutung sein wird.
+
+\begin{beispiel}
+Wir bestimmen die duale Gruppe der zyklischen Gruppe $G=C_n$ mit $n$
+Elementen, die additiv geschrieben wird.
+Da die Gruppe vom Element $1\in C_n$ erzeugt wird, ist
+ein Homomorphismus $\chi\colon C_n\to\mathbb{C}^*$ bereits durch den
+Wert $z=\chi(1)\in\mathbb{C}$ festgelegt.
+Wegen $1=\chi(0)=\chi(n)=z^n$ muss $|z|=1$ sein, kann also $z=e^{i\alpha}$
+geschrieben werden.
+Ausserdem muss $z^n=e^{in\alpha}=1$ sein, was nur möglich ist, wenn
+$n\alpha$ ein ganzzahliges Vielfaches von $2\pi$ ist.
+Es gibt also ein $k\in \mathbb{Z}$ derart, dass 
+\[
+n\alpha = 2\pi k
+\qquad
+\Rightarrow
+\alpha = \frac{2\pi k}{n}.
+\]
+Jede Zahl $k$ definiert den Homomorphismus $\chi(x) = e^{2\pi kx/n}$.
+Zwei Zahlen $k_1$ und $k_2$ definieren den gleichen Homomorphismus,
+wenn die zugehörigen Winkel sich um ein Vielfaches von $2\pi$ unterscheiden,
+wenn also
+\[
+\frac{2\pi k_1}{n} - \frac{2\pi k_2}{n}
+=
+2\pi\frac{k_1-k_2}{n}
+\in
+2\pi \mathbb{Z}
+\qquad\Rightarrow\qquad
+k_1-k_2
+\in
+n\mathbb{Z}.
+\]
+Die Menge der Homomorphismen ist daher $\mathbb{Z}/n\mathbb{Z}=C_n$,
+die duale Gruppe von $C_n$ ist also $\hat{C}_n=C_n$.
+Insbesondere ist auch die duale Gruppe der dualgen Gruppe von $C_n$ 
+wieder die Gruppe $C_n$.
+\end{beispiel}
 
 
