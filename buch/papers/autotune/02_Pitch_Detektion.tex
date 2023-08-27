@@ -12,11 +12,11 @@
 Bei einer einstimmigen Aufnahme, beispielsweise der menschlichen Stimme oder eines Blasinstruments,
 wird nicht nur ein einzelner Ton erzeugt, sondern eine Reihe von Tönen, die als Obertöne oder Harmonische bezeichnet werden.
 Die Grundharmonische ist der erste und stärkste dieser Töne, während die höheren Harmonischen in der Regel schwächer sind und höhere Frequenzen haben.
-Es gilt nun die grundharmonische Frequenz zu finden die als dominate Tonhöhe wahrgenommen wird.
+Es gilt nun die grundharmonische Frequenz zu finden die als dominante Tonhöhe wahrgenommen wird.
 Es gibt mehrere Möglichkeiten dies umzusetzen.
-Im Rahmen dieses Papers werden zwei Methoden verglichen.
+Im Rahmen dieser Arbeit werden zwei Methoden verglichen.
 Einerseits die Short-Time Fourier-Transformation (STFT) in Abschnitt \ref{autotune:subsection:shortTimeFourierTransformation},
-sowohl auch die etwas unbekanntere Cumulative Mean Normalized Difference Function (CMNDF) in Abschnitt \ref{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}.
+andererseits die etwas unbekanntere Cumulative Mean Normalized Difference Function (CMNDF) in Abschnitt \ref{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}.
 
 Grundsätzlich gilt, je genauer die Tonhöhe bestimmt werden kann, desto besser kann die Tonhöhe anschliessend korrigiert werden.
 Die spektrale Frequenzauflösung ist ein direktes Mass für die Genauigkeit der Tonhöhenbestimmung.
@@ -69,7 +69,7 @@ Mathematisch ausgedrückt als
     =
     \arg\max_f \left| \; \mathbf{STFT}_x(m, f) \; \right|^2.
 \end{equation}
-Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich einen maximalen Frequenzabtastungsfehler von
+Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich ein maximaler Frequenzabtastfehler von
 \begin{equation}
     f_{\text{error}}
     =
@@ -82,15 +82,15 @@ Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich einen maxi
 \subsection{Cumulative Mean Normalized Difference Function (CMNDF)
 \label{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}}
 Eine weitere Methode zur Tonhöhenbestimmung ist die Cumulative Mean Normalized Difference Function (CMNDF) \cite{autotune:f0EstimationForTheElectricGuitar}.
-Diese Methode basiert auf der Auto-Korrelation des Signals welche definiert ist als
+Diese Methode basiert auf der Auto-Korrelation des Signals, welche definiert ist als
 \begin{equation}
     \mathbf{ACF}(\tau, t)
     =
     \sum_{i=t}^{t+W}f(x_i)\cdot f(x_i+\tau).
 \end{equation}
-Dabei ist $\tau$ die Verzögerung innerhalb des Fensters und $W$ die Fensterlänge.
+Dabei sind $\tau$ die Verzögerung innerhalb des Fensters und $W$ die Fensterlänge.
 Daraus folgend kann die Funktion der quadrierten Differenzen hergeleitet werden,
-welche ein Mass für den absoluten \glqq Überlagerungsfehler\grqq\ zum Zeitpunkt $t$ des Signals $f$ und einer um $\tau$ verzögerten Version von $f$.
+welche ein Mass für den absoluten \glqq Überlagerungsfehler\grqq\ zum Zeitpunkt $t$ des Signals $f$ und einer um $\tau$ verzögerten Version von $f$ ist.
 So wird die Difference Function DF definiert als
 \begin{equation}
     \begin{aligned}
@@ -155,7 +155,7 @@ Anders ausgedrückt wird bei der CMNDF nicht direkt die Frequenz, sondern die Pe
 Die spektrale Frequenzauflösung ist also abhängig von der Samplefrequenz.
 Bei einer typischen Samplefrequenz von 44.1\;kHz kann die Periodenlänge mit einer Genauigkeit von 22.7\;$\mu$s bestimmt werden.
 Der maximale Frequenzabtastungsfehler ist somit abhängig von der Periodenlänge, also von der Tonhöhe.
-Je höher die Tonhöhe, desto grösser der Frequenzabtastungsfehler.
+Je höher die Tonhöhe, desto grösser der Frequenzabtastfehler.
 Mathematisch ausgedrückt als
 \begin{equation}
     f_{\text{error}}(f)
