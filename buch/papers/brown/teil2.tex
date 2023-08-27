@@ -113,13 +113,13 @@ In den zwei Abbildungen ~\ref{brown:weissesRauschenSignal} und ~\ref{brown:über
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/RauschenDurchUeberlagerteHarmonsicheSchwingungen.png}
-		\caption{Überlagerte harmonische Schwingungen}
+		\caption{Überlagerte harmonische Schwingungen als Rauschen}
 		\label{brown:überlagerteSchwingungen}
 	\end{minipage}
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/FFTweissesRauschen.png}
-		\caption{FFT eines weissen Rausch-Signals}
+		\caption{FFT von weissem Rauschen}
 		\label{brown:FFTweissesRauschen}
 	\end{minipage}
 	\hspace{0.05\linewidth}
@@ -156,11 +156,21 @@ Der Wiener-Prozess muss formal also folgende Eigenschaften erfüllen:
 	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen Verlauf abhängt.
 \end{enumerate}
 
-Weiter wird auf den Wiener-Prozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches %\cite{} TODO
- vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
+Weiter wird auf den Wiener-Prozess jedoch nicht eingegangen, da dieser ausführlich im Kapitel \glqq \textit{8.1 Modell für Rauschen: der Wiener-Prozess}\glqq{} des Buches \cite{buch:mathsem-dgl} vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
 % Weieisses Rauschen simuliert
-Nun da der Wienerprozess definiert ist, wollen wir versuchen Weisses Rauschen zu simulieren
+% Wie hervorheben?
+Nun Der Wiener-Prozess eignet sich, um weisses Rauschen zu modellieren, denn die Ableitung des Wiener-Prozesses ergibt weisses Rauschen.
+
+\begin{equation}
+	\xi(t) = \frac{dW(t)}{dt}
+\end{equation}
+
+Erklärt werden kann dies anhand der Definition. Da der Prozess kontinuierlich ist und dessen Änderungen rein zufällig und normalverteilt sind, ergibt sich ein gleichmässiges Frequenzspektrum wenn man die Änderungsraten betrachtet.
+
+Da der in der Abbildung \ref{brown:1Dbrownian} dargestellte Börsen-Verlauf nichts anderes als der Wienerprozess ist, sollte weisses Rauschen durch dessen Ableitung generiert werden können. Wird das Frequenzspektrum des Aktienkurses berechnet, stellt man fest, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies ist .... geschuldet. Will man nun die Ableitung berechnen kann man dies mittels einer Multiplikation mit Frequenzspektrum mit 
+Jetzt kommt das Problem der Differenzierbarkeit von Rauschen ins Spiel. Um den Verlauf differenzierbar zu machen, wird das Signal zunächst durch einen Bandpass-Filter begrenzt.
+Nun da we der Wienerprozess definiert ist, wollen wir versuchen Weisses Rauschen zu simulieren. Die SImulation in \ref{brown:1Dbrownian}...
 
 
 \subsection{Implikationen\label{brown:Rauschen:Implikationen}}
