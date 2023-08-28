@@ -60,7 +60,6 @@ Tabelle \ref{sonogramm:tabDern} zeigt den Vergleich mit den tatsächlich gespiel
 Diese lassen sich in diesem Fall tatsächlich gut ermitteln.
 Sogar nur kurz gespielte Noten, wie das B4 im Abschnitt 10 
 wurden korrekt erkannt.
-Einzig die beiden Slides TODO
 Was wir vernachlässigt haben, ist der Rhythmus der gespielten Noten.
 Um diesen herauszufinden, bräuchten wir jeweils die exakten Zeitpunkte, wo die Töne
 beginnen und enden, was weitere Analysen erfordern würde.
@@ -72,6 +71,9 @@ beginnen und enden, was weitere Analysen erfordern würde.
     jeweiligen Segmente zeigen die gespielten Grundtöne. Die weiger
     intensiven Peaks bei den n-fachen Frequenzen des Grundtones sind die Obertöne, welche durch die Physik der Saiten 
     entstehen.
+    Ausserdem sieht man beim beginn einiger Tönen, dass zu Beginn des Tones durch das Anspielen der Saite das Spektrum verschmiert wird
+    und die eigentliche Frequenz kaum oder gar nicht erkennbar ist.
+    Deshalb ist eine genügend kurze Segmentlänge nötig, damit ein Ton auf mehrere Segmente aufgeteilt wird.
     \label{sonogramm:dernSono}
     }
 \end{figure}
@@ -109,10 +111,10 @@ beginnen und enden, was weitere Analysen erfordern würde.
 \end{center}
 \caption{\label{sonogramm:tabDern} Vergleich der gespielten und gefundenen Töne im analysierten Abschnitt von {\em Dern Kala}.}
 \end{table}
-\subsection{Weiter Anwendungen}
+\subsection{Weitere Anwendungen}
 Das Sonogramm wird in vielen Bereichen der Audioanalyse eingesetzt.
 So basierten zum Beispiel frühere Spracherkennung und Sprachsynthese Methoden 
-aus Sonogramme.
+auf Sonogramme.
 Nicht nur gesprochene Wörter, sondern auch Tiere wie Vögel können mit Hilfe
 von Sonogrammen von ihrem Gesang bestimmt werden.
 Dabei wird das Sonogramm als Input eines neuronalen Netzwerks verwendet.

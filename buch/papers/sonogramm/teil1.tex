@@ -13,16 +13,10 @@ Wie bereits in der Einleitung des Kapitels angedeutet, sind die zusätzlichen
 zeitlichen Informationen nicht gratis. 
 Mit dem Aufteilen des ursprünglichen Signals in kurze Fenster bekommen wir eine
 verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
-% In der Theorie ist die bestmögliche Frequenzauflösung 
-% \begin{equation}
-%     \Delta f = \frac{1}{T}
-% \end{equation}
-% wobei $T$ die zeitliche Länge der Fensterfunktion ist.
 Zusätzlich werden durch das abrupte Abschneiden des Signals mit dem Rechteckfenster
 zusätzliche Frequenzen hinzugefügt. 
 Diese Effekte hängen mit der Unschärferelation zusammen, welche in Abschnitt
-\ref{buch:diskret:section:unschaerfe} genauer beschrieben ist.
-%Dieser Effekt ist auch als "Frequency Leakage" bekannt.
+\ref{buch:gruppen:fourier:subsection:unschaerfe} genauer beschrieben ist.
 In diesem Abschnitt werden wir diese Effekte genauer untersuchen.
 \subsection{Auswirkung der Fensterfunktion}
 Der Faltungssatz beschreibt 
@@ -182,7 +176,7 @@ Ist eine Funktion $n$-mal stetig differenzierbar gilt im Frequenzspektrum
 \begin{equation}
     x^{(n)}(t) \xrightarrow{\mathscr{F}} (i f)^n X(f).
 \end{equation}
-Da $(i f)^n X(f)$ Rücktransfomrierbar ist, gilt
+Da $(i f)^n X(f)$ Rücktransformierbar ist, gilt
 \begin{equation}
     |(i f)^n X(f)| < \infty \quad \forall -\infty \leq f \leq \infty,
 \end{equation}
