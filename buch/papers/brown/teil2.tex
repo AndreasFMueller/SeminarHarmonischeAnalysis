@@ -10,38 +10,35 @@
 \section{Rauschen\label{brown:Rauschen}}
 \rhead{Implikationen}
 
-Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden. So ist zum Beispiel die \textit{Fast Fourrier Transform} eine wichtige Methode, um periodische Signale von Rauschen unterscheiden zu können. Weiter können mittels harmonischer Analysis auch Filter entwickelt werden, welche ein Signal von Rauschen befreien. So kann Rauschen auch charakterisiert und quantifiziert werden. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen kann eine Aussage getroffen werden, wie ein System auf Rauschen --- also eine zufällige Störung --- reagieren könnte.
+Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden. So ist zum Beispiel die \textit{Fast Fourrier Transform} eine wichtige Methode, um periodische Signale von Rauschen zu unterscheiden. So kann bezüglich der Intensität der auftretenden Frequenzen und der Verteilung der Amplituden im Frequenzspektrum, also deren Leistungsdichte, charakterisiert werden. 
+So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Signal von Rauschen befreien. Für gewisse Anwendungen ist es auch möglich mit hochfrequenter überlagerten Schwingungen Rauschen zu simulieren. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen, kann eine Aussage getroffen werden, wie ein System auf Rauschen --- also eine zufällige konstante Störung --- reagieren würde. 
+%Problematisch dabei kann sein, dass je nach Definition und Anwendung \textit{echtes Rauschen} weder vorhersagbar sein sollte, noch Information beinhalten.
 
-
-All diese Beispiele basieren auf Methoden der harmonischen Analysis, um den Bogen zur Anfangsbemerkung dieses Kapitels zu schliessen: Durch Zufälle kann Rauschen entstehen, was meist ungewollt ist. Dank Methoden der harmonischen Analysis ist es möglich diese gegenteiligen Eigenschaften zu untersuchen und zu bewerten.
+%All diese Beispiele basieren auf Methoden der harmonischen Analysis, um den Bogen zur Anfangsbemerkung dieses Kapitels zu schliessen.
 
 
 \subsection{Was ist Rauschen?\label{brown:Rauschen:Arten}}
-Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichtiger Faktor, so kann es auch in verschiedenen Kontexten unterschiedlich definiert werden. In der Signal- und Kommunikationstechnik kann Rauschen als ungewollte Störung eines Signals beschrieben werden. Diese Störung kann auf einem deterministischen Zusammenhang beruhen oder rein zufälliger Natur sein. Ein perfektes ungestörtes Signal, wie in Abbildung \ref{idealSignal} gibt es nur in der Theorie. In der Realität sind alle Signale von Rauschen behaftet, wie der Abbildung \ref{realSignal} dargestellt.
 
 \begin{figure}
 	\centering
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{papers/brown/images/idealSignal.png}
+		\includegraphics[width=\textwidth]{papers/brown/images/idealSignal.png}
 		\caption{Ideales Signal}
 		\label{idealSignal}
 	\end{minipage}
-	\hspace{0.05\linewidth}
+	%\hspace{0.05\linewidth}
 	\begin{minipage}{0.45\textwidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{papers/brown/images/realSignal.png}
+		\includegraphics[width=\textwidth]{papers/brown/images/realSignal.png}
 		\caption{Reales Signal}
 		\label{realSignal}
 	\end{minipage}
 \end{figure}
 
-Diese Störungen können zum Beispiel bei elektronischen Messungen durch das Magnetfeld von Stromkabeln hervorgerufen werden, dies wäre eine deterministische Störungen (konstant 50 Hz Wechselstrom). Oder auch rein zufällig durch kosmische Teilchen, welche einen Empfänger oder Messgerät beeinflussen können.
+Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichtiger Faktor, so kann es auch in verschiedenen Kontexten unterschiedlich definiert werden. In der Signal- und Kommunikationstechnik ist Rauschen als ungewollte Störung eines Signals definiert. Ein perfektes ungestörtes Signal, wie in Abbildung \ref{idealSignal} gibt es nur in der Theorie. In der Realität sind alle Signale von Rauschen behaftet, wie der Abbildung \ref{realSignal} dargestellt.
 
-Rauschen kann bezüglich der Intensität der auftretenden Frequenzen und der Verteilung der Amplituden im Frequenzspektrum, also deren Leistungsdichte, charakterisiert werden.
-
-
-Mathematisch können unterschiedliche Arten von Rauschen beschrieben werden, einige der wichtigsten sind folgende: 
+Eine solche Störung kann auf einem deterministischen Zusammenhang beruhen oder rein zufälliger Natur sein. Zum Beispiel kann bei elektronischen Messungen durch das Magnetfeld von Stromkabeln eine Störung hervorgerufen werden, dies wäre eine deterministische Störungen (konstant 50 Hz Wechselstrom). Es gibt aber auch rein zufällige Störungen, wie zum Beispiel durch kosmische Teilchen, welche einen Empfänger oder Messgerät beeinflussen können. Wird ein Signal ununterbrochen von Störungen beeinflusst, kann von Rauschen gesprochen werden. Mathematisch können unterschiedliche Arten von Rauschen unterschieden werden, einige der wichtigsten sind folgende: 
 % https://www.elektroniktutor.de/elektrophysik/rauschen.html
 
 \begin{definition}{\bf Weisses Rauschen:}
@@ -69,7 +66,7 @@ Um bei einem hörbaren Beispiel zu bleiben: Rosa Rauschen klingt als Schall ausg
 \end{definition}
 
 
-"Braun" bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownische Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern. In der Elektronik wird der Abfall der Leistungsdichte mit 6 $ dB $ pro Oktave charakterisiert.
+"Braun" bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownsche Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern. In der Elektronik wird der Abfall der Leistungsdichte mit 6 $ dB $ pro Oktave charakterisiert.
 
 
 \begin{definition}{\bf Gaussisches Rauschen:}
@@ -91,49 +88,48 @@ Diese Art von Rauschen ist auf digitalen Bildern zu finden deshalb speziell für
 \end{definition}
 
 
-In der Bildverarbeitung ist diese Art von Rauschen als \textit{salt \& pepper Rauschen} bekannt, bei dem einzelne Pixel plötzlich extreme Werte annehmen. Dies wirkt visuell auf dem Bild wie verstreutes Salz oder Pfeffer - sprich extrem schwarze oder weisse Punkte.
+In der Bildverarbeitung ist diese Art von Rauschen als \textit{salt \& pepper} bekannt. Dabei nehmen einzelne Pixel plötzlich extreme Werte an, sprich extrem schwarz oder weiss. Diese Pixel wirken visuell auf dem Bild wie verstreutes Salz oder Pfeffer.
 
 
-Natürlich gibt es noch viele weitere Unterscheidungen, doch auf diese wird nicht eingegangen.
+Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch auf diese wird nicht eingegangen.
 
-
-% Absatz?
-Es gibt auch Signale, welche wie Rauschen wirken können, jedoch je nach angewandter Definition kein echtes Rauschen sind. So zum Beispiel hochfrequente überlagerte Schwingungen. Diese Überlagerungen sind in der Nachrichtentechnik häufig anzutreffen als auf modulierte Signale oder auch überlagerte Signale verschiedener Frequenzen um mehr Information über den selben Signalträger zu senden. 
-Für gewisse Anwendungen ist es auch möglich mittels hochfrequenter überlagerten Schwingungen Rauschen zu simulieren. Problematisch dabei kann sein, dass je nach Definition und ANwendung \textit{echtes Rauschen} weder vorhersagbar sein sollte, noch Information beinhalten. 
-
-
-In den zwei Abbildungen ~\ref{brown:weissesRauschenSignal} und ~\ref{brown:überlagerteSchwingungen} sind zwei Signale aufgetragen, eines stellt echtes stochastisches Rauschen dar, das andere besteht aus vielen hochfrequenten überlagerten Schwingungen. Dieses Beispiel soll verdeutlichen, dass es nicht reicht, nur den zeitlichen Verlauf eines Signals zu betrachten. So könnte man fälschlicherweise die Signale als ähnlich erachten --- eine krasse Täuschung, welche sich im Frequenzspektrum klar zeigt. 
-% Um das Signal zu verstehen, sind also die Methoden der harmonischen Analysis essenziell. 
 
 \begin{figure}
 	\centering
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschen.png}
 		\caption{Echtes weisses Rauschen}
 		\label{brown:weissesRauschenSignal}
 	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.45\textwidth}
+	%\hspace{0.05\linewidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/RauschenDurchUeberlagerteHarmonsicheSchwingungen.png}
 		\caption{Überlagerte harmonische Schwingungen als Rauschen}
 		\label{brown:überlagerteSchwingungen}
 	\end{minipage}
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/FFTweissesRauschen.png}
 		\caption{FFT von weissem Rauschen}
 		\label{brown:FFTweissesRauschen}
 	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.45\textwidth}
+	%\hspace{0.05\linewidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/FFT-ueberlagerteSchwingungen.png}
 		\caption{FFT von überlagerten harmonischen Schwingungen}
 		\label{brown:FFTüberlagerteSchwingungen}
 	\end{minipage}
 \end{figure}
+
+
+Viele Signale wirken visuell, wie Rauschen, obwohl sie kaum von einer zufälligen Störungen behaftet sind, sofern nur der zeitliche Verlauf betrachtet wird. So zum Beispiel hochfrequente überlagerte Schwingungen. Diese Überlagerungen sind in der Nachrichtentechnik häufig anzutreffen, als aufmodulierte Signale oder auch überlagerte Signale verschiedener Frequenzen. Aus technischen Gründen kann dies Sinn machen, zum Beispiel um mehr Information über den selben Signalträger zu senden oder das Signale einfacher und robuster zu übertragen.
+
+
+In den zwei Abbildungen ~\ref{brown:weissesRauschenSignal} und ~\ref{brown:überlagerteSchwingungen} sind zwei Signale aufgetragen, eines stellt echtes stochastisches Rauschen dar, das andere besteht aus vielen hochfrequenten überlagerten Schwingungen. Dieses Beispiel soll verdeutlichen, dass es nicht reicht, nur den zeitlichen Verlauf eines Signals zu betrachten. So könnte man fälschlicherweise die Signale als ähnlich erachten --- eine krasse Täuschung, welche sich im Frequenzspektrum klar zeigt. 
+
 
 
 \subsection{Rauschen mittels Wiener-Prozess\label{brown:Rauschen:RandomWalkWiener}}
@@ -150,7 +146,7 @@ Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess defini
 	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, der mit dem Wert 0 startet und unabhängige normalverteilte Änderungen aufweisst. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert stets dem Ausgangswert entspricht. Der Wiener-Prozess kann auch als Grenzwert eines Random Walks erachtet werden, sofern die Zeitschritte und Schrittgrössen gegen null gehen und der Prozess bei 0 startet. 
 \end{definition}
 
-Beide Prozesse erfüllen die sogenannte \textit{Markov-Eigenschaft}, was bedeutet, dass ihre zukünftige Entwicklung nur von ihrer aktuellen Position und nicht von ihrer vergangenen Geschichte abhängt.
+Beide Prozesse erfüllen die sogenannte \textit{Markov-Eigenschaft}, was bedeutet dass ihre zukünftige Entwicklung nur von ihrer aktuellen Position und nicht von ihrer vergangenen Geschichte abhängt.
 
 Der Wiener-Prozess muss formal also folgende Eigenschaften erfüllen: 
 
@@ -160,33 +156,32 @@ Der Wiener-Prozess muss formal also folgende Eigenschaften erfüllen:
 	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten. Dies wird auch die Markow-Eigenschaft genannt, wenn der Übergang in einen neuen Zustand nicht vom vorherigen Verlauf abhängt.
 \end{enumerate}
 
-Genauer wird auf den Wiener-Prozess nicht eingegangen, da dieser ausführlich im Kapitel \textit{8.1 Modell für Rauschen: der Wiener-Prozess} des Buches \cite{buch:brown:mathsem-differenzialgleichungen} vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
+Genauer wird auf den Wiener-Prozess nicht eingegangen, da dieser ausführlich im Kapitel \textit{8.1 Modell für Rauschen: der Wiener-Prozess} des Buches \cite{brown:Differenzialgleichungen} vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
 
-Nun, da we der Wienerprozess definiert ist, wollen wir versuchen weisses Rauschen zu simulieren. Dafür eignet sich der Wiener-Prozess besonders, denn die Differenzierung des Wiener-Prozesses ergibt direkt weisses Rauschen.
+Nun, da der Wiener-Prozess definiert ist, soll versucht werden weisses Rauschen zu simulieren. Dafür eignet sich der Wiener-Prozess perfekt, denn die Differenzierung des Wiener-Prozesses
 
 \begin{equation}
 	\xi(t) = \frac{dW(t)}{dt}
 \end{equation}
 
-Erklärt werden kann dies anhand der Definition. Da die Änderungen rein zufällig und normalverteilt sind, ergibt sich ein gleichmässiges Frequenzspektrum der Änderungsraten.
+ergibt direkt weisses Rauschen. Erklärt werden kann dies anhand der Definition. Die Änderungen sind rein zufällig und normalverteilt, so ergibt sich ein gleichmässiges Frequenzspektrum der Änderungsraten.
 
 %Da der in der Abbildung \ref{brown:1Dbrownian} dargestellte Börsen-Verlauf nichts anderes als der Wiener-Prozess mit Drift-Komponente ist, sollte weisses Rauschen durch dessen Differenzierung generiert werden können. In der Abbilung \ref{...} wurde das Frequenzspektrum des simulierten Börsenkurses berechnet. 
 
-Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum Simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente simuliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten.
+Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente miteinbezogen wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Nun kann die brownsche Bewegung in im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man wieder ein Signal in der Zeitdomäne, welches ausschliesslich aus weissem Rauschen besteht, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
-Nun kann die brownsche Bewegung im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man dann ein Signal in der Zeitdomäne, welches ausschliesslich aus weissem Rauschen besteht, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
-
+%ToDo: Alles in eine Grafik und übereinander gross darstellen
 \begin{figure}
 	\centering
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/brownscheBewegungUndFFT.png}
 		\caption{Wiener-Prozess und Frequenzspektrum}
 		\label{brown:WienerProzessFFT}
 	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.45\textwidth}
+	%\hspace{0.05\linewidth}
+	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschenDurchBrownUndFFT.png}
 		\caption{differenzierter Wiener-Prozess und Frequenzspektrum}
@@ -197,16 +192,12 @@ Nun kann die brownsche Bewegung im Frequenzbereich mittels einer Multiplikation 
 
 \subsection{Implikationen\label{brown:Rauschen:Implikationen}}
 
-Ein grosses Problem im Zusammenhang mit Rauschen, ist die Differenzierbarkeit. Dies ist häufig beim Umgang mit Mess-Signalen Fall. Die eigentliche Messung ist gestört, was das bestimmen einer lokalen Steigung und somit die Äderungsrate der Messgrösse verfälschen kann. Auch empfangene Datensignale sind oft verrauscht, was das Dekodieren der darin enthaltenen Information erschwert oder sogar Fehler produziert.
+Ein grosses Problem im Zusammenhang mit Rauschen, ist die Differenzierbarkeit. Dies ist häufig beim Umgang mit Mess-Signalen der Fall, was das bestimmen einer lokalen Steigung erschwert und die Äderungsrate verfälschen kann. Davon sind auch empfangene Datensignale betroffen, was zu falsch dekodierten Informationen führen kann. Die einfachste Methode und häufig auch ein erster Schritt, ist die Anwendung eines Tiefpass- oder Bandpass-Filters. Dieser entfernt jedoch nicht nur das Rauschen, sondern auch ein Teil der im Signal enthaltenen Information.
 
-Die einfachste Methode und häufig auch ein erster Schritt in der Signalverarbeitung ist die Anwendung eines Tiefpass- oder Bandpass-Filters. Dieser entfernt jedoch nicht nur das Rauschen, sondern auch ein Teil der im Signal enthaltenen Information.
-
-Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass man das Rauschen als Teil des Systems sieht oder rein als externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System Rauschen abbilden können.
+Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass man das Rauschen als Teil des Systems sieht oder rein als externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System selbst Rauschen abbilden können.
 % Absatz?
 
-Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. 
-
-In vielen Bereichen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es gibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür ist folgendes System:
+Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. In vielen Bereichen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es gibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür ist folgendes System:
 
 \begin{align}
 	\frac{dx}{dt} &= -y \\
