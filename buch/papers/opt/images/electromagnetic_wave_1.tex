@@ -1,0 +1,26 @@
+%
+% electromagnetic_wave.tex -- Bild zum Thema Optische Fourier-Transformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+% Inspiration: https://wiki.physik.uzh.ch/cms/latex:tikz:electromagnetic_wave
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{tikz,tikz-3dplot}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\input{opt_common.tex}
+\input{electromagnetic_wave_common.tex}
+
+\begin{document}
+\begin{tikzpicture}[>=latex, thick, scale=\skala, x=(-15:1.0), y=(90:1.0), z=(-150:1.0)]
+    \electromagneticWave
+\end{tikzpicture}
+\end{document}

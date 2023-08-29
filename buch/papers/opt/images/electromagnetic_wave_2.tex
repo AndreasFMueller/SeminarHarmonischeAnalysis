@@ -1,0 +1,49 @@
+%
+% electromagnetic_wave_2.tex -- Bild zum Thema Optische Fourier-Transformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+% Inspiration: https://wiki.physik.uzh.ch/cms/latex:tikz:electromagnetic_wave
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{tikz,tikz-3dplot}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\input{opt_common.tex}
+\input{electromagnetic_wave_common.tex}
+
+\begin{document}
+\begin{tikzpicture}[>=latex, thick, scale=\skala, x=(-15:1.0), y=(90:1.0), z=(-150:1.0)]
+    % rectangle
+    \def\xRectangle{4}
+    \def\xRectangleWidth{0.6}
+    \def\yRectangle{1.7}
+
+    \fill[gray!30] (\xRectangle,\yRectangle,0) -- ++(\xRectangleWidth,0,0) -- ++(0,-2*\yRectangle,0) -- ++(-\xRectangleWidth,0,0);
+    \draw[] (\xRectangle,\yRectangle,0) -- ++(\xRectangleWidth,0,0) node[below right]{$C=\partial A$}-- ++(0,-2*\yRectangle,0) -- ++(-\xRectangleWidth,0,0) -- (\xRectangle,\yRectangle,0);
+
+    \draw[->] (\xRectangle,\yRectangle/2,0) -- ++(0,-0.1,0);
+    \draw[->] (\xRectangle,-\yRectangle/2,0) -- ++(0,-0.1,0);
+    \draw[->] (\xRectangle+\xRectangleWidth,\yRectangle/2,0) -- ++(0,0.1,0);
+    \draw[->] (\xRectangle+\xRectangleWidth,-\yRectangle/2,0) -- ++(0,0.1,0);
+    \draw[->] (\xRectangle+\xRectangleWidth/2,\yRectangle,0) -- ++(-0.1,0,0);
+    \draw[->] (\xRectangle+\xRectangleWidth/2,-\yRectangle,0) -- ++(0.1,0,0);
+
+    \draw[-, thin, dashed] (\xRectangle,\yRectangle,0) -- (-0.9,\yRectangle,0);
+    \draw[-, thin, dashed] (\xRectangle,-\yRectangle,0) -- (-0.9,-\yRectangle,0);
+    \draw[-, thin, dashed] (\xRectangle,\yRectangle,0) -- ++(0,0.5,0);
+    \draw[-, thin, dashed] (\xRectangle+\xRectangleWidth,\yRectangle,0) -- ++(0,0.5,0);
+
+    \draw[<->] (-0.8,\yRectangle,0) -- ++(0,-2*\yRectangle,0) node[anchor=south east, midway]{$\Delta x$};
+    \draw[<->] (\xRectangle,\yRectangle+0.4,0) -- ++(\xRectangleWidth,0,0) node[anchor=south, midway]{$\Delta z$};
+
+    \electromagneticWave
+\end{tikzpicture}
+\end{document}
