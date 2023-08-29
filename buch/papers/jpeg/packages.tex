@@ -7,5 +7,11 @@
 % if your paper needs special packages, add package commands as in the
 % following example
 %\usepackage{packagename}
-
-
+\newcommand{\kreis}[1]{\unitlength1ex
+    \begin{picture}(2.5,2.5)
+        \put(0.75,0.75){\circle{2.5}}\put(0.75,0.75){\makebox(0,0){#1}}
+    \end{picture}}
+\definecolor{YellowOrange}{RGB}{255, 159, 43}
+\definecolor{RoyalBlue}{RGB}{0, 122, 255}
+\definecolor{ForestGreen}{RGB}{18, 159, 87}
+\usepackage{float}
