@@ -1,0 +1,107 @@
+%
+% sinc.tex -- Sinc graph
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\axes{
+	\draw[->] (-3.1,0) -- (3.3,0) coordinate[label={$x$}];
+	\draw[->] (0,-0.4) -- (0,2.0) coordinate[label={right:$f_a$}];
+}
+
+\def\kaxes{
+	\draw[->] (-3.1,0) -- (3.3,0) coordinate[label={$k$}];
+	\draw[->] (0,-2.0) -- (0,2.2) coordinate[label={right:$\hat{f}_a$}];
+}
+
+\def\rechteck#1{
+	\pgfmathparse{3.1415/(2*#1)}
+	\xdef\a{\pgfmathresult}
+	\fill[color=blue!20,opacity=0.5] (-\a,0) rectangle (\a,{1/sqrt(2*\a)});
+	\draw[color=blue,line width=1.2pt] (-3.0,0) -- (-\a,0);
+	\draw[color=blue,line width=0.2pt] (-\a,0) -- (-\a,{1/sqrt(2*\a)});
+	\draw[color=blue,line width=1.2pt]
+		(-\a,{1/sqrt(2*\a)}) -- (\a,{1/sqrt(2*\a)});
+	\draw[color=blue,line width=0.2pt] (\a,{1/(sqrt(2*\a))}) -- (\a,0);
+	\draw[color=blue,line width=1.2pt] (\a,0) -- (3.0,0);
+	\node at (-\a,0) [below left] {$-a\mathstrut$};
+	\node at (\a,0) [below right] {$a\mathstrut$};
+	\node at (-\a,{1/sqrt(2*\a)}) [left] {$\frac1{\sqrt{2a}}$};
+}
+
+\def\sinc#1{
+	\pgfmathparse{0.45*sqrt(2*#1)}
+	\xdef\b{\pgfmathresult}
+	\pgfmathparse{3.1415/(2*#1)}
+	\xdef\c{\pgfmathresult}
+	\begin{scope}
+		\clip (-3,-2) rectangle (3,2);
+		\fill[color=red!20,opacity=0.5]
+			plot[domain=\c:3,samples=100]
+				({\x},{\b/(#1*\x)})
+			-- plot[domain=3:\c,samples=100]
+				({\x},{-\b/(#1*\x)})
+			-- cycle;
+		\fill[color=red!20,opacity=0.5]
+			plot[domain=\c:3,samples=100]
+				({-\x},{-\b/(#1*\x)})
+			-- plot[domain=3:\c,samples=100]
+				({-\x},{\b/(#1*\x)})
+			-- cycle;
+		\fill[color=red!20,opacity=0.5]
+			(0,\b)
+			-- plot[domain=0.01:\c,samples=20]
+				({\x},{\b*sin(#1*\x*180/3.1415)/(#1*\x)})
+			-- plot[domain=\c:0.01,samples=20]
+				({\x},{-\b*sin(#1*\x*180/3.1415)/(#1*\x)})
+			-- (0,-\b)
+			-- plot[domain=0.01:\c,samples=20]
+				({-\x},{-\b*sin(#1*\x*180/3.1415)/(#1*\x)})
+			-- plot[domain=\c:0.01,samples=20]
+				({-\x},{\b*sin(#1*\x*180/3.1415)/(#1*\x)})
+			-- cycle;
+		\draw[color=red,line width=0.2pt] (-\c,-4) -- (-\c,4);
+		\draw[color=red,line width=0.2pt] (\c,-4) -- (\c,4);
+		\draw[color=red,line width=1.2pt] (0,\b)
+			-- plot[domain=0.01:3,samples=100]
+				({\x},{\b*sin(#1*\x*180/3.1415)/(#1*\x)});
+		\draw[color=red,line width=1.2pt] (0,\b)
+			-- plot[domain=0.01:3,samples=100]
+				({-\x},{\b*sin(#1*\x*180/3.1415)/(#1*\x)});
+		\draw[<->,color=red,line width=0.5pt] (-\c,-1.5) -- (\c,-1.5);
+	\end{scope}
+}
+
+\begin{scope}
+\axes
+\rechteck{8}
+
+\begin{scope}[yshift=-3cm]
+\kaxes
+\sinc{1}
+\end{scope}
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\axes
+\rechteck{1}
+
+\begin{scope}[yshift=-3cm]
+\kaxes
+\sinc{8}
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,47 @@
+%
+% exzentrizitaet.tex -- Exzentrizitaet
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\def\a{3}
+\def\ellipse#1{
+	\pgfmathparse{(#1)*\a}
+	\xdef\e{\pgfmathresult}
+	\pgfmathparse{\a*sqrt(1-(#1)*(#1))}
+	\xdef\b{\pgfmathresult}
+	\draw (-\e,0) circle[x radius=\a, y radius=\b];
+}
+
+\begin{scope}
+
+\fill[color=red] (0,0) circle[radius=0.2];
+
+\ellipse{0}
+\ellipse{0.2}
+\ellipse{0.4}
+\ellipse{0.6}
+\ellipse{0.8}
+\ellipse{0.9}
+
+\node at (0,\a) [above] {$e=0$};
+\node at (-0.9,{0.97*\a}) [above left] {$e=0.2$};
+\node at (-2.3,{0.83*\a}) [above left] {$e=0.4$};
+\node at (-3.5,{0.63*\a}) [above left] {$e=0.6$};
+\node at (-4.5,{0.39*\a}) [above left] {$e=0.8$};
+\node at (-5.6,0) [left] {$e=0.9$};
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
