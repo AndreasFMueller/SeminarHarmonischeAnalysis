@@ -1,20 +1,20 @@
-\section{Künstliches neuronales Netzwerk\label{chapter:ml:ann}}
+\section{Künstliches neuronales Netzwerk\label{ml:ann}}
 \rhead{Künstliches neuronales Netzwerk}
 
-\subsubsection{Von linearem Modell zu allgemein nicht-linearem Modell}
+\subsubsection{Von linearem Modell zu allgemein nichtlinearem Modell}
 
-In Kapitel \ref{chapter:ml:regression} haben wird stets ein lineares Modell betrachtet.
+Im Abschnitt \ref{ml:regression} haben wird stets ein lineares Modell betrachtet.
 Dem Namen ist zu entnehmen, dass es nur lineare Beziehungen abbilden kann. 
-Wollen wir Abhängigkeiten $k$-ter Ordnung oder \emph{irgendwelche} nichtlinearen
+Wollen wir Abhängigkeiten höherer Ordnung oder \emph{irgendwelche} nichtlinearen
 Abhängigkeiten abbilden, müssen wir dieses Modell erweitern.
 
-Die erste Idee zur Vergrösserung der Komplexität wäre vielleicht das lineare Modell aus
-Gl. \refeq{ml:regression:modell} viele Male hintereinander zu schalten beziehungsweise zu
-verschachteln. Leider \emph{bleibt} aber eine lineare Funktion $n$-mal verschachtelt
+Die erste Idee wäre vielleicht das lineare Modell aus
+\eqref{ml:regression:modell} viele Male hintereinander zu schalten beziehungsweise zu
+verschachteln. Leider \emph{bleibt} aber eine lineare Funktion $k$-mal verschachtelt
 linear.
 
 \begin{proof}
-    Es wird die Gleichung \refeq{ml:regression:modell} als Funktion
+    Es wird \eqref{ml:regression:modell} als Funktion
     \begin{equation}
         f_i(\vec x) = \vec y
         = \begin{pmatrix}
@@ -36,39 +36,28 @@ linear.
     lineare Abbildung ist eine spezielle affine Abbildung). Der Begriff Linearität wird
     hier vielmehr im Bezug auf lineare Funktionen verwendet.
 
-    Es wird $f_i(\vec x)$ $n$-mal verschachtelt und anschliessend ausmultipliziert:
+    Können wir zeigen, dass die lineare Funktion $f_i$ einmal verschachtelt wieder eine
+    lineare Funktion ergibt, ist das auch für beliebig viele Verschachtelungen der Fall.
+    
+    Es wird $f_i$ einmal verschachtelt und ausmultipliziert:
     \begin{equation}
     \begin{aligned}
-        \vec y_n &= f_n( f_{n-1} (\cdots f_1(\vec x))) =
-        (f_n \circ f_{n-1} \circ \cdots \circ f_1)(\vec x) \\
-        &= {\bm \thetaup}_n ( {\bm \thetaup}_{n-1} ( \cdots {\bm \thetaup}_2({\bm \thetaup_1} \vec x
-            + \vec b_1) + \vec b_2  ) + \vec b_{n-1} ) + \vec b_n\\
-        &= {\bm \thetaup}_n ( {\bm \thetaup}_{n-1}( \cdots ({\bm \thetaup}_2{\bm \thetaup}_1 \vec x
-            + {\bm \thetaup}_2 \vec b_1 + \vec b_2) ) + \vec b_{n-1} ) + \vec b_n \\
-        &= ({\bm \thetaup}_n \cdots {\bm \thetaup}_1) \vec x + ({\bm \thetaup}_n \cdots
-            {\bm \thetaup}_2) \vec b_1 + ({\bm \thetaup}_n \cdots {\bm \thetaup}_3) \vec b_2 + \ldots
-            + {\bm \thetaup}_n \vec b_{n-1}  + \vec b_n \\
-        &= \underbrace{ \left( \prod_{1}^{i=n} {\bm \thetaup}_{i} \right) }_{\tilde {\boldsymbol\thetaup}} \vec x
-            + \underbrace{ \sum_{i=1}^{n-1} \left( \prod^{j=n}_{i+1} {\bm \thetaup}_j \right) \vec b_i + \vec b_n
-            }_{\tilde {\vec b}}.
+        \vec y_2 &= f_2(f_1(\vec x)) = (f_2 \circ f_1)(\vec x)
+            = {\bm \thetaup}_2 ({\bm \thetaup}_1 \vec x + \vec b_1) + \vec b_2\\
+        &= \underbrace{{\bm \thetaup}_2 {\bm \thetaup}_1}_{\tilde {\boldsymbol\thetaup}_1} \vec x
+            + \underbrace{{\bm \thetaup}_2 \vec b_1 + \vec b_2}_{\tilde{\vec b}_1}
+            = \tilde {\boldsymbol\thetaup}_1 \vec x + \tilde{\vec b}_1
     \end{aligned}
+    \label{ml:ann:lin-comp-proof}
     \end{equation}
-
-    Zu sehen ist, dass die $n$-mal verschachtelte Funktion $f_i$ also wieder als einfache
-    lineare Funktion
-    \begin{equation*}
-        \vec y_n = {\tilde {\boldsymbol\thetaup}} \vec x + \tilde {\vec b}
-    \end{equation*}
-    geschrieben werden kann, wobei die
-    neuen Koeffizienten ${\tilde {\boldsymbol\thetaup}}$ und konstanten Anteile $\tilde {\vec b}$ einer
-    einfachen Umrechnung unterliegen.
+    Wie \eqref{ml:ann:lin-comp-proof} zeigt ist also möglich $f_2 \circ f_1$ wieder als lineare Funktion zu schreiben.
 \end{proof}
 
 \subsection{Aktivierungsfunktion}
 
 Um Nichtlinearitäten einzubauen wird eine sogenannte \emph{activation function} auf
-\refeq{ml:ann:linear-unit} angewendet. Die Koeffizienten-Matrix ${\bm \thetaup}$ soll
-immer noch mit \hyperref[chapter:ml:regression:gd]{Gradient-Descent} gelernt werden, also muss
+\eqref{ml:ann:linear-unit} angewendet. Die Koeffizienten-Matrix ${\bm \thetaup}$ soll
+immer noch mit \hyperref[ml:regression:gd]{Gradient-Descent} gelernt werden, also muss
 die gewählte Aktivierungsfunktion ableitbar bezüglich aller Inputs sein.
 
 Es gibt viele mögliche Aktivierungsfunktionen. Eine der ersten die gebraucht wurde ist die \emph{Sigmoid}-Funktion
@@ -93,15 +82,19 @@ $\sigma(y)$ wird nun auf $f_i$ \emph{elementweise} angewendet, also
 Es existieren viele weitere praktische Aktivierungsfunktionen mit guten und schlechten Eigenschaften für
 eine Problemstellung, auf diese soll hier nicht weiter eingegangen werden.
 
-\subsection{Multilayer künstliches neuronales Netzwerk}
+\subsection{Multilayer ANN}
 
-Für das vollständige nichtlineare Modell wird wieder diesmal $g_i$ $n$-mal verschachtelt:
+Für das vollständige nichtlineare Modell wird $g_i$ $k$-mal verschachtelt:
 \begin{equation}
     M({\bm \thetaup}_1, \cdots, {\bm \thetaup}_n, \vec b_1, \cdots, \vec b_n) = \vec y
         = (g_1 \circ g_2 \circ \cdots \circ g_n)(\vec x) = g_n(g_{n-1}(\cdots g_1(\vec x))).
     \label{ml:ann:multilayer}
 \end{equation}
-So ein Modell $M$ wird \emph{fully connected feedforward künstliches neuronales Netzwerk} genannt.
+So ein Modell $M$ wird \emph{fully connected feedforward artificial neural network}\footnote{
+    Bei dieser Netzwerk-Struktur sind alle Neuronen einer Schicht mit \emph{allen} der
+    nächsten Schicht vollverbunden. Die feedforward Struktur impliziert fast immer auch
+    die volle Verbundenheit und wird deshalb im weiteren Text weggelassen.
+} (FFANN) genannt.
 
 Was genau bei der nummerischen Berechnung passiert ist viel einfacher
 in Form eines gerichteten Graphen in Abb. \ref{fig:ml:ann:simple} zu erkennen.
@@ -109,7 +102,7 @@ in Form eines gerichteten Graphen in Abb. \ref{fig:ml:ann:simple} zu erkennen.
 \begin{figure}
     \centering
     \includegraphics[scale=0.8]{papers/ml/images/ann_simple.pdf}
-    \caption{Fully-connected feedforward ANN in Form eines gerichteten Graphen.}
+    \caption{3-schichtiges FFANN in Form eines gerichteten Graphen.}
     \label{fig:ml:ann:simple}
 \end{figure}
 
@@ -132,33 +125,32 @@ Die Struktur des Netzwerks, also die Anzahl Eingänge, Hidden-Layer, Neuronen
 pro Layer und Ausgänge, aber auch die spezifischen Aktivierungsfunktionen können
 grundsätzlich frei gewählt werden. Sie werden \emph{hyperparameter} genannt.
 
-\subsection{Backpropagation \label{section:ml:ann:backpropagation}}
+\subsection{Backpropagation \label{ml:ann:backpropagation}}
 
-Wir wollen den \hyperref[chapter:ml:regression:gd]{Gradient-Descent-Algorithmus} auch auf
-unser nichtlineares Modell $M$ aus Gl. \refeq{ml:ann:multilayer} anwenden. Damit ist es aber nicht
+Wir wollen den \hyperref[ml:regression:gd]{Gradient-Descent-Algorithmus} auch auf
+unser nichtlineares Modell $M$ aus \eqref{ml:ann:multilayer} anwenden. Damit ist es aber nicht
 mehr so einfach wie mit dem linearen Modell von vorher. 
 $M$ besteht aus mehreren Layern, jeder mit einer Koeffizientenmatrix $\bm \thetaup$ und einem
 Bias-Vektor $\vec b$. All diese Werte sollen iterativ mit Gradient-Descent gelernt werden,
 sodass alle Outputs des gesamten Netzwerks möglichst nahe an den geforderten sind.
 
 Um diese Problemstellung zu untersuchen beschränken wir uns zuerst auf den Fall eines
-Netzwerks mit \emph{einem} Eingang, $n$ Hidden-Layer mit \emph{einer} Neurone und
-\emph{einem} Ausgang. Mit dieser Forderung wird die Matrizen-Gleichung
-\refeq{ml:ann:multilayer} zu einer skalaren Gleichung
+Netzwerks mit \emph{einem} Eingang, $n$ Hidden-Layer mit \emph{einem} Neuron und
+\emph{einem} Ausgang. Mit dieser Forderung wird die Matrizengleichung
+\eqref{ml:ann:multilayer} zu einer skalaren Gleichung
 \begin{equation}
     M(x, \theta_1, \cdots, \theta_n, b_1, \cdots, b_n)
     = \sigma(\theta_n \cdot \sigma( \theta_{n-1}
         \cdot \sigma ( \cdots \sigma( \theta_1 x + b_1 ) ) + b_{n-1} ) + b_n).
     \label{ml:ann:multilayer-1D}
 \end{equation}
-
-Abbildung \ref{fig:ml:ann:simple-1D} zeigt Gleichung \ref{ml:ann:multilayer-1D} wieder als
+Abbildung \ref{fig:ml:ann:simple-1D} zeigt \eqref{ml:ann:multilayer-1D} wieder als
 gerichteten Graphen.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.8]{papers/ml/images/ann_simple_1D.pdf}
-    \caption{Eindimensionales feedforward ANN.}
+    \caption{Eindimensionales FFANN.}
     \label{fig:ml:ann:simple-1D}
 \end{figure}
 
@@ -167,14 +159,14 @@ Kanten zwischen den Neuronen, $b_i$ sind die konstanten Anteile (englisch \emph{
 und $\sigma$ ist die Aktivierungsfunktion der Neuronen. Jedes $l_i$ soll den Output eines
 Layers darstellen.
 
-Zur weiteren Verdeutlichung wird Gl. \refeq{ml:ann:multilayer-1D} als Gleichungssystem
+Zur weiteren Verdeutlichung wird \eqref{ml:ann:multilayer-1D} als Gleichungssystem
 geschrieben:
 \begin{equation}
     \begin{aligned}
-        l_1 = &\sigma(\theta_1 x + b_1) = \sigma(\xi_1)\\
-        l_2 = &\sigma(\theta_2 l_1 + b_2) = \sigma(\xi_2)\\
-        &\vdots\\
-        y=l_n = &\sigma(\theta_n l_{n-1} + b_n) = \sigma(\xi_n)\\
+        l_1 &= \sigma(\theta_1 x + b_1) = \sigma(\xi_1)\\
+        l_2 &= \sigma(\theta_2 l_1 + b_2) = \sigma(\xi_2)\\
+        &\hspace{1.5cm}\vdots\\
+        y=l_n &= \sigma(\theta_n l_{n-1} + b_n) = \sigma(\xi_n)\\
     \end{aligned}
     \qquad\text{mit}\qquad
     \xi_i = \theta_i l_{i-1} + b_i
@@ -183,7 +175,7 @@ geschrieben:
 
 Wie schon bei Gradient-Descent im linearen Fall soll wieder die Cost-Function $J(\theta,b)
 = (y - M(x, \theta, b))^2$ minimiert werden. Wir verwenden hier die selbe Cost-Function
-wie in Kapitel \ref{chapter:ml:regression}, in der Praxis kann aber irgendeine günstige
+wie in Abschnitt \ref{ml:regression}, in der Praxis kann aber irgendeine günstige
 \emph{ableitbare} Funktion verwendet werden.
 
 Es wird wieder der Gradient von $J$ gebildet, wobei die entgegengesetzte Richtung immer
@@ -206,12 +198,12 @@ lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
     \frac{\partial M}{\partial \theta_n} &= \frac{\partial l_n}{\partial \theta_n} =
     \sigma'(\theta_n l_{n-1} + b_n) l_{n-1} = \sigma'(\xi_n)l_{n-1} \\
     \frac{\partial M}{\partial \theta_{n-1}} &= \frac{\partial l_{n}}{\partial \theta_{n-1}}
-    \stackrel{!}{=} \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
+    = \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
     l_{n-1}}{\partial \theta_{n-1}} = 
     \sigma'(\xi_n) \theta_n \cdot \sigma'(\xi_{n-1}) l_{n-2}
     \\
     \frac{\partial M}{\partial \theta_{n-2}} &= \frac{\partial l_{n}}{\partial \theta_{n-2}}
-    \stackrel{!}{=} \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
+    = \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
     l_{n-1}}{\partial l_{n-2}}\cdot \frac{\partial l_{n-2}}{\partial \theta_{n-2}} =
     \; \sigma'(\xi_n)\theta_n \cdot \sigma'(\xi_{n-1})\theta_{n-1}\cdot \sigma'(\xi_{n-2})l_{n-3}
     \\
@@ -219,7 +211,7 @@ lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
     \frac{\partial M}{\partial b_n} &= \frac{\partial l_n}{\partial b_n} =
     \sigma'(\xi_n) \\
     \frac{\partial M}{\partial b_{n-1}} &= \frac{\partial l_{n}}{\partial b_{n-1}}
-    \stackrel{!}{=} \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
+    = \frac{\partial l_n}{\partial l_{n-1}} \cdot \frac{\partial
     l_{n-1}}{\partial b_{n-1}} = 
     \sigma'(\xi_n) \theta_n \cdot \sigma'(\xi_{n-1}) \\
     \vdots\quad&
@@ -232,7 +224,7 @@ ausgewertet werden, dieser Schritt wird \emph{forward propagation} (deutsch Vorw
 genannt. Gleichzeitig können alle Zwischenresultate gespeichert werden, um sie für den
 Korrekturschritt direkt einzusetzen.
 
-Die Parameter werden analog zu Gl. \ref{ml:regression:gd:update} bei jeder Iteration mit
+Die Parameter werden analog zu \eqref{ml:regression:gd:update} bei jeder Iteration mit
 \begin{equation}
     \theta_i \leftarrow \theta_i - \alpha \frac{\partial J}{\partial \theta_i}
     \qquad\text{und}\qquad
@@ -240,34 +232,47 @@ Die Parameter werden analog zu Gl. \ref{ml:regression:gd:update} bei jeder Itera
 \end{equation}
 angepasst.
 
-Aus den Berechnungen der partiellen Ableitungen sieht man, dass jede solche
-Berechnung viele gleiche Terme beinhaltet. Wir wollen versuchen, die Terme so
-zusammenzufassen, dass keine doppelten Rechnungen gemacht werden müssen.
+Bei den partiellen Ableitungen sieht man, das jede Schicht $i$ immer von allen
+nächsten Schichten $i+1, i+2, \cdots$ mit identischer Form abhängt. Gibt es also eine Formel
+die nur den Zusammenhang zwischen zwei Neuronen beschreibt? Klar, die gibt's.
 
-Zu diesem Ziel wird eine neue Grösse 
+Wir führen dazu die neue Grösse 
 \begin{equation}
     \delta_i = \frac{\partial J}{\partial \xi_i}
 \end{equation}
-eingeführt, sie wird auch \emph{local gradient} (deutsch lokaler Gradient) genannt. Dabei
-gilt
+ein, sie wird auch \emph{local gradient} (deutsch lokaler Gradient) genannt. Damit können
+die partiellen Ableitungen und Aktualisierungsgleichungen schon einmal vereinfacht geschrieben werden:
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = \delta_i \cdot l_{i-1}
+    \;\Rightarrow\; \Delta \theta_i = - \alpha \delta_i l_{i-1}
     \qquad\text{und}\qquad
-    \frac{\partial J}{\partial b_i} = \delta_i.
+    \frac{\partial J}{\partial b_i} = \delta_i
+    \; \Rightarrow\; \Delta b_i = - \alpha \delta_i.
 \end{equation}
 
-Der lokale Gradient kann auch rekursiv berechnet werden mit
+Der lokale Gradient kann schliesslich mit
+\begin{equation}
+    \delta_{i-1} = \frac{\partial J}{\partial \xi_i} \cdot \frac{\partial \xi_i}{\partial \xi_{i-1}}
+    = \delta_i \cdot \frac{\partial \xi_i}{\partial \xi_{i-1}}
+    = \delta_i \cdot \sigma'(\xi_{i-1}) \theta_i
+    \label{ml:ann:bp:rekursiv}.
+\end{equation}
+rekursiv berechnet werden. In \eqref{ml:ann:bp:rekursiv} ist noch besser zu erkennen, dass das Übertragungsverhalten
+des Fehlers $\delta_{i-1}/\delta_i$
+zwischen zwei Neuronen von zwei benachbarten Schichten $i$ und $i+1$ nur von der Kante
+$(i)\rightarrow(i+1)$ dazwischen (also dem
+Gewicht), der Ableitung der Aktivierungsfunktion des Neuron in Schicht $i$ und dem lokalen
+Gradienten der Schicht $i+1$ abhängt.
+$\delta_n$ der letzten Schicht berechnet sich noch mit der normalen Formel
 \begin{equation}
     \delta_n = \frac{\partial J}{\partial \xi_n}
-    \qquad\text{und}\qquad
-    \delta_{i-1} = \sigma'(\xi_{i-1}) \cdot \delta_i \theta_i.
-    \label{ml:ann:bp:rekursiv}
+    = \frac{\partial J}{\partial M} \cdot \frac{\partial M}{\partial \xi_n}
+    = 2(\underbrace{M(x)}_{l_n} - y) \cdot \sigma'(\xi_n).
 \end{equation}
 
-Es muss also nur der lokale Gradient des letzten Layers ermittelt werden, danach kann mit
-Gleichung \ref{ml:ann:bp:rekursiv} die Anpassungsinformation des Fehlers rückwärts
-propagiert werden bis alle Koeffizienten und Konstanten angepasst wurden. Diese gesamte
-Rückwärtspropagierung des Fehlergradienten wird \emph{backpropagation} genannt.
+Die rekursive Berechnung des Fehlergradienten und somit der Anpassungsinformation für alle
+Gewichte und Konstanten ist, wie wir gesehen haben, extrem simpel und performant.
+Dieser Anpassungsprozess als Rückpropagierung des Fehlers wird \emph{backpropagation} genannt.
 
 \subsubsection{Erweiterung auf allgemeine feedforward Netzwerke}
 
@@ -279,21 +284,21 @@ Hidden-Layer und verschiedenen Aktivierungsfunktionen zu machen.
 Durch Summierung der Kosten aller Ausgänge kann erst einmal die Cost-Function sehr einfach
 auf mehrere Outputs erweitert werden:
 \[
-    \tilde J(\theta, b) = \sum_{k\in \textsf{Outputs}} J(M_k(x), y).
+    \tilde J(\theta, b) = \sum_{k\in \text{Outputs}} J(M_k(x), y).
 \]
 Danach können die Backpropagation-Gleichungen analog aufgestellt werden:
 \begin{equation}
 \begin{aligned}
-    \delta_{\textsf{node}_i}^{(\textsf{last layer})} &=
-        \frac{\partial \tilde J}{\partial \xi_{\textsf{node}_i}^{(\textsf{last layer})}} \\
-    \delta_{\textsf{node}_k}^{(\textsf{prev layer})} &=
-        \sigma' \left( \xi_{\textsf{node}_k}^{(\textsf{prev layer})} \right) 
-        \sum_{j\in \substack{\textsf{nodes of}\\\textsf{current layer}}}
+    \delta_{\text{node}_i}^{(\text{last layer})} &=
+        \frac{\partial \tilde J}{\partial \xi_{\text{node}_i}^{(\text{last layer})}} \\
+    \delta_{\text{node}_k}^{(\text{previous layer})} &=
+        \sigma'_{\text{node}_k} \left( \xi_{\text{node}_k}^{(\text{previous layer})} \right) 
+        \sum_{j\in \substack{\text{nodes of}\\\text{current layer}}}
         \theta_{k\rightarrow j} \cdot \delta_j\\
-    \theta_{\textsf{node}_k\rightarrow\textsf{node}_j} &\leftarrow
-        \theta_{\textsf{node}_k\rightarrow\textsf{node}_j} -
-        \alpha \cdot \delta_{\textsf{node}_j} \cdot \sigma(\xi_{\textsf{node}_k}) \\
-    b_{\textsf{node}_j} &\leftarrow b_{\textsf{node}_j} - \alpha \cdot \delta_{\textsf{node}_j}
+    \theta_{\text{node}_k\rightarrow\text{node}_j} &\leftarrow
+        \theta_{\text{node}_k\rightarrow\text{node}_j} -
+        \alpha \cdot \delta_{\text{node}_j} \cdot \sigma_{\text{node}_k}(\xi_{\text{node}_k}) \\
+    b_{\text{node}_j} &\leftarrow b_{\text{node}_j} - \alpha \cdot \delta_{\text{node}_j}
 \end{aligned}.
 \label{ml:ann:bp:update}
 \end{equation}
@@ -302,4 +307,4 @@ Danach können die Backpropagation-Gleichungen analog aufgestellt werden:
 Unser Ziel eines universellen Approximators ist somit erreicht. In der Praxis sind die
 Algorithmen für Gradient-Descent, Backpropagation und verbesserte Ableger davon in
 Bibliotheken implementiert. Einige bekannte Bibliotheken für die Programmiersprache Python
-sind \texttt{Keras}, \texttt{TensorFlow} oder \texttt{PyTorch}.
+sind \texttt{Keras}, \texttt{TensorFlow} und \texttt{PyTorch}.
