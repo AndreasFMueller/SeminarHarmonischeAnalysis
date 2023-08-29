@@ -42,7 +42,7 @@ Verschieben wir $w_r(t)$ in der Zeit können wir mit
 \end{equation}
 ein beliebiges Zeitfenster von $x(t)$ extrahieren.
 
-So lässt ich nun die Fouriertransformation von einem T langen Abschnitt
+So lässt ich nun die Fouriertransformation von einem $T$ langen Abschnitt
 von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
     \mathscr{F}(x)(\omega, \tau) = \int_{\tau}^{\tau+T} x(t) w_r(t - \tau) e^{-i \omega t} dt
@@ -61,7 +61,7 @@ Das Rechteckfenster der Länge $L_w$ definieren wir mit
     \end{cases}
 \end{equation}
 Die Fensterfunktion ist nun auch diskret und statt
-der Fouriertransformation wir die diskrete Fouriertransformation (DFT)
+der Fouriertransformation wird die diskrete Fouriertransformation (DFT)
 \begin{equation}
     X(k, m) = \sum_{n = m}^{m + L - 1} x(n) w_r(n-m) e^{ -i \omega_k n}
 \end{equation}
@@ -79,7 +79,7 @@ Bild zu decodieren, und somit das Spektrogramm invertierbar zu machen.
 So kann man zum Beispiel ein Bild im HSV Farbraum erzeugen, wobei
 der H-Kanal die Phase und der V-Kanal die Amplitude darstellt.
 
-Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines Frequenzmodulierten 
+Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines frequenzmodulierten 
 Signals.
 Bei der Frequenzmodulierung \cite{sonogramm:NAT} ist die momentane Frequenz des Trägersignales 
 \begin{equation}

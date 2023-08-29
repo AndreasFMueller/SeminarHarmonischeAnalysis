@@ -13,16 +13,10 @@ Wie bereits in der Einleitung des Kapitels angedeutet, sind die zusätzlichen
 zeitlichen Informationen nicht gratis. 
 Mit dem Aufteilen des ursprünglichen Signals in kurze Fenster bekommen wir eine
 verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
-% In der Theorie ist die bestmögliche Frequenzauflösung 
-% \begin{equation}
-%     \Delta f = \frac{1}{T}
-% \end{equation}
-% wobei $T$ die zeitliche Länge der Fensterfunktion ist.
 Zusätzlich werden durch das abrupte Abschneiden des Signals mit dem Rechteckfenster
 zusätzliche Frequenzen hinzugefügt. 
 Diese Effekte hängen mit der Unschärferelation zusammen, welche in Abschnitt
-\ref{buch:diskret:section:unschaerfe} genauer beschrieben ist.
-%Dieser Effekt ist auch als "Frequency Leakage" bekannt.
+\ref{buch:gruppen:fourier:subsection:unschaerfe} genauer beschrieben ist.
 In diesem Abschnitt werden wir diese Effekte genauer untersuchen.
 \subsection{Auswirkung der Fensterfunktion}
 Der Faltungssatz beschreibt 
@@ -97,11 +91,11 @@ mit $T_w = 1$ s, was eine Frequenzauflösung von maximal 1 Hz ergibt.
 Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau, oder sogar überhaupt nicht
 bestimmt werden.
 Wieso das so ist, lässt sich in der Zeit zeigen.
-Werden zwei Sinuse mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
-was im fall von \eqref{sonogramm:eq:twoHarmPhi}
+Werden zwei Sinus mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
+was im Fall von \eqref{sonogramm:eq:twoHarmPhi}
 \begin{equation}
-    s(t) = \sin(2\pi 3.45 t ) + \sin (2\pi 4.45 t) = 2 \sin(2 \pi \frac{3.45 + 4.45}{2}t)
-    \cos(2 \pi  \frac{3.45 - 4.45}{2} t),
+    s(t) = \sin(2\pi 3.45 t ) + \sin (2\pi 4.45 t) = 2 \sin\left(2 \pi \frac{3.45 + 4.45}{2}t\right)
+    \cos\left(2 \pi  \frac{3.45 - 4.45}{2} t\right),
 \label{sonogramm:eq:twoHarm}
 \end{equation}
 ergibt.
@@ -112,10 +106,10 @@ Im Fall von $\varphi = \pi$ ist das gefensterte Segment genau zwischen zwei Null
 vom Kosinus.
 Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit einem 
 Sinusfenster multipliziert wurde. 
-Ein Sinusfenster der Länge T ist ein 2T-periodischer Sinus, welcher nach T abgeschnitten wird.
+Ein Sinusfenster der Länge T ist ein 2T-periodischer Sinus, welcher nach $T$ abgeschnitten wird.
 Die Informationen über die eigentlichen Frequenzen müssen also in den Phasensprüngen bei den 
 Nulldurchgänen des Kosinus sein
-Geht $\varphi$ von $\pi$ gegen 0 kommt der Phasensprung ins Segment und, die eigentlichen Frequenzen
+Geht $\varphi$ von $\pi$ gegen 0 kommt der Phasensprung ins Segment und die eigentlichen Frequenzen
 können immer besser unterschieden werden.
 
 Man sollte daher mit der theoretischen Frequenzauflösung nicht ans Limit gehen, wenn man
@@ -162,7 +156,7 @@ zuverlässige Resultate erzielen möchte.
 \section{Fensterfunktionen}
 \label{sonogramm:section:windows}
 Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
-Dieses eignet sich zwar gut um die theoretischen Grundlagen zu zeigen,
+Dieses eignet sich zwar gut, um die theoretischen Grundlagen zu zeigen,
 es ist aber nicht immer das beste.
 
 Wie im vorherigen Abschnitt aufgezeigt, sind die Frequenzauflösung und 
@@ -177,53 +171,45 @@ Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteckfenster einen
 Peak bei $f = 0$ hat, aber mit $f \rightarrow \infty$ schneller
 gegen 0 geht.
 Ein Mass wie schnell das Frequenzspektrum einer Funktion gegen 0 geht, liefert
-die n-mal steigkeit der Funktion.
-Ist eine Funktion n-mal stetetig kann man sie n-mal Ableiten, was im Frequenzspektrum
+die $n$-mal steige Differenzierbarkeit der Funktion.
+Ist eine Funktion $n$-mal stetig differenzierbar gilt im Frequenzspektrum
 \begin{equation}
-    x^{(n)}(t) \xrightarrow{\mathscr{F}} (i f)^n X(f)
+    x^{(n)}(t) \xrightarrow{\mathscr{F}} (i f)^n X(f).
 \end{equation}
-ergibt.
-Da $(i f)^n X(f)$ Rücktransfomrierbar ist, gilt
+Da $(i f)^n X(f)$ Rücktransformierbar ist, gilt
 \begin{equation}
     |(i f)^n X(f)| < \infty \quad \forall -\infty \leq f \leq \infty,
 \end{equation}
 was zur Folge hat, dass $X(f)$ bei grösser werdenden $f$ mit mindestens $1/f^n$ gegen 
 0 gehen muss.
 
-\subsection{Gaussfenster}
-Eine bekannte $\infty$-mal stetige Funktion ist die gausssche Glockenkurve
+\subsection{Gauss-Fenster}
+Eine bekannte $\infty$-mal stetig differenzierbare Funktion ist die gausssche Glockenkurve
 \begin{equation}
     f(t) = e^{-\frac{t^2}{\alpha}},
 \end{equation}
 wobei $\alpha$ ein frei wählbarer Parameter ist, welcher die Breite der Glocke 
 bestimmt.
-Damit wir sehen, wie sich ein Gaussfenster auf das Signal auswirkt, brauchen wir
+Damit wir sehen, wie sich ein Gauss-Fenster auf das Signal auswirkt, brauchen wir
 die Fourier-Transformation einer gaussschen Glocke.
-Diese berechnet sich mit 
-\begin{align}
-    W_g(f) &= \int_{-\infty}^{\infty} e^{-\frac{t^2}{\alpha}} e^{- 2 \pi i f t}\, dt\\
-    &= \int_{-\infty}^{\infty} e^{-\frac{t^2}{\alpha}} \cos(2 \pi f t)\, dx -
-    i \int_{-\infty}^{\infty} e^{-\frac{t^2}{\alpha}} \sin(2 \pi f t)\, dx .
-\end{align}
-Das zweite Integral ist 0, da wir eine ungerade Funktion von $-\infty$ bis $\infty$ integrieren.
-Die Lösung des ersten Integrals lässt sich mit der Integral Tabelle in \cite{sonogramm:bronstein} finden und ist mit
+Diese wird in Satz \ref{buch:gruppen:fourier:satz:gaussfourier} berechnet und ist mit
 \begin{equation}
-    W_g(f) = \int_{-\infty}^{\infty} e^{-\frac{t^2}{\alpha}} \cos(2 \pi f t)\, dt =
+    W_g(f) =
     \frac{\sqrt[2]{\alpha \pi}}{2} e^{-\alpha \pi^2 f^2}
 \end{equation}
 wieder eine gausssche Glocke, bei welcher der Parameter $\alpha$ invertiert vorkommt.
 Das bedeutet, dass eine in der Zeit schmale gausssche Glocke ein breites Frequenzspektrum hat und umgekehrt eine
 breite gausssche Glocke in der Zeit ein schmales Frequenzspektrum hat.
-Das Deckt sich mit unseren Beobachtung bezüglich dem Zusammenhang der 
+Das deckt sich mit unseren Beobachtung bezüglich dem Zusammenhang der 
 Frequenzauflösung und der Länge eines Fensters.
 
-In Abbildung \ref{sonogramm:gausstime} sind zwei Gaussfenster mit unterschiedlichen 
+In Abbildung \ref{sonogramm:gausstime} sind zwei Gauss-Fenster mit unterschiedlichen 
 $\alpha$ abgebildet.
 Da das Fenster einer STFT eine endliche Länge hat, müssen wir die gaussschen Glocken 
 mit einem Rechteckfenster zuschneiden. 
 Somit wird es wieder Leckfrequenzen geben, die aber je nach $\alpha$ viel kleiner sind
 als beim Rechteckfenster, wie in Abbildung \ref{sonogramm:gaussfreq} zu sehen ist.
-Ausserdem sehen wir, dass die Hauptpeaks der Gaussfenster breiter sind als der 
+Ausserdem sehen wir, dass die Hauptpeaks der Gauss-Fenster breiter sind als der 
 Hauptpeak des Rechteckfensters.
 Allgemein gilt das Rechteckfenster als optimal bezüglich der Frequenzauflösung.
 Wir bezahlen also die Minimierung der Leckfrequenzen mit einer kleineren Frequenzauflösung. 
@@ -241,7 +227,7 @@ Anwendung optimieren.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_freq.pdf}
-    \caption{Frequenzspektrum der Gaussfenster von Abbildung \ref{sonogramm:gausstime}
+    \caption{Frequenzspektrum der Gauss-Fenster von Abbildung \ref{sonogramm:gausstime}
     mit einer Abtastfrequenz von 20 Hz. Zum Vergleich ist in schwarz das Spektrum eines Rechteckfenster 
     von der selben Länge.
     von $1/T$.
@@ -250,7 +236,7 @@ Anwendung optimieren.
 \end{figure}
 
 Nehmen wir das Signal \eqref{sonogramm:eq:sigLeck} und wenden statt dem Rechteckfenster
-ein Gaussfenster an, resultiert das Frequenzspektrum in Abbildung \ref{sonogramm:twoHarmGauss}.
+ein Gauss-Fenster an, resultiert das Frequenzspektrum in Abbildung \ref{sonogramm:twoHarmGauss}.
 Der Kosinus lässt sich somit beim kürzeren Signal genauer bestimmen.
 $\alpha$ musste dabei sorgfältig gewählt werden, da bei einem zu kleinen $\alpha$ die 
 Frequenzauflösung zu klein gewesen wäre, und bei einem zu grossen $\alpha$ die Leckfrequenzen
@@ -260,14 +246,14 @@ noch immer dominiert hätten.
     \centering
     \includegraphics{papers/sonogramm/images/twoHarmGauss.pdf}
     \caption{Frequenzspektrum des Signals \eqref{sonogramm:eq:sigLeck} mit
-    einem Gaussfenster. Das Spektrum ist bei den Frequenzen, welche nicht im Signal vorkommen
+    einem Gauss-Fenster. Das Spektrum ist bei den Frequenzen, welche nicht im Signal vorkommen
     nun beinahe bei 0.
     \label{sonogramm:twoHarmGauss}
     }
 \end{figure}
 
 \subsection{Andere Fensterfunktionen}
-Das Gaussfenster ist eine von vielen Fensterfunktionen. 
+Das Gauss-Fenster ist eine von vielen Fensterfunktionen. 
 So gibt es zum Beispiel eine ganze Gruppe von Fensterfunktionen, die mit
 \begin{equation}
     w(n) = \sum_{k=0}^{K} (-1)^k a_k \cos\left(\frac{2 \pi k n}{N}\right), \quad 0 \leq n < N
