@@ -136,7 +136,7 @@ In den zwei Abbildungen ~\ref{brown:weissesRauschenSignal} und ~\ref{brown:über
 \end{figure}
 
 
-\subsection{Rauschen mittels Random Walk oder Wiener-Prozess\label{brown:Rauschen:RandomWalkWiener}}
+\subsection{Rauschen mittels Wiener-Prozess\label{brown:Rauschen:RandomWalkWiener}}
 
 Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess definiert werden. Zwei weit verbreitete Konzepte dabei sind der \textit{random walk} und der \textit{Wiener-Prozess}.
 
@@ -162,10 +162,8 @@ Der Wiener-Prozess muss formal also folgende Eigenschaften erfüllen:
 
 Genauer wird auf den Wiener-Prozess nicht eingegangen, da dieser ausführlich im Kapitel \textit{8.1 Modell für Rauschen: der Wiener-Prozess} des Buches \cite{buch:mathsem-dgl} vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
 
-% Weieisses Rauschen simuliert
-% Wie hervorheben?
 
-Nun, da we der Wienerprozess definiert ist, wollen wir versuchen weisses Rauschen zu simulieren. Dafür eignet sich der Wiener-Prozess besonders, denn die Differenzierung des Wiener-Prozesses entspricht weissem Rauschen.
+Nun, da we der Wienerprozess definiert ist, wollen wir versuchen weisses Rauschen zu simulieren. Dafür eignet sich der Wiener-Prozess besonders, denn die Differenzierung des Wiener-Prozesses ergibt direkt weisses Rauschen.
 
 \begin{equation}
 	\xi(t) = \frac{dW(t)}{dt}
@@ -175,12 +173,9 @@ Erklärt werden kann dies anhand der Definition. Da die Änderungen rein zufäll
 
 %Da der in der Abbildung \ref{brown:1Dbrownian} dargestellte Börsen-Verlauf nichts anderes als der Wiener-Prozess mit Drift-Komponente ist, sollte weisses Rauschen durch dessen Differenzierung generiert werden können. In der Abbilung \ref{...} wurde das Frequenzspektrum des simulierten Börsenkurses berechnet. 
 
-Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung und dessen Frequenzspektrum zu sehen. Der Unterschied zum Simulierten Börsenkurs ist lediglich, dass keine absichtliche Drift-Komponente simuliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten.
+Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum Simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente simuliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten.
 
-Nun kann die brownsche Bewegung im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Durch eine inverse Fourriertransformation erhält man weisses Rauschen und dessen konstante Leistungsdichtespektrum, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
-
-
-%Jetzt kommt das Problem der Differenzierbarkeit von Rauschen ins Spiel. Um den Verlauf differenzierbar zu machen, wird das Signal zunächst durch einen Bandpass-Filter begrenzt.
+Nun kann die brownsche Bewegung im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man dann ein Signal in der Zeitdomäne, welches ausschliesslich aus weissem Rauschen besteht, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
 \begin{figure}
 	\centering

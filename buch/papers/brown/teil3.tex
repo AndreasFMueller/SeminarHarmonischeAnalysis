@@ -47,7 +47,7 @@ Für die Modellierung von stochastischem Verhalten, ist der Wiener-Prozess $ W(t
 
 Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wiener-Prozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
 
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte ``Ito-Form'' zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
+Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte ``Itō-Form'' zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
 
 \begin{equation}
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
@@ -91,19 +91,19 @@ Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kan
 %Abbildung hier?
 
 
-\subsection{ITO-\label{brown:ito}}
+\subsection{Die Itō-Formel\label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
 
 Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit stochastische Differenzialgleichungen beruht. 
 
-Nach ihm ist auch die \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form ist Ausgangslage viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine Differenzierbarkeit suggeriert wird.
+Nach ihm ist auch die \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit suggeriert wird.
 
 
 %Absatz
-Ein wichtiges Werkzeug, um mit stochastischen DIfferenzialgleichungen umzugenhen ist das Äquivalent zur Kettenregel, dem sogenannten \textit{Lemma von Ito}. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
+Eines der wichtigesten Werkzeuge, um mit stochastischen Differenzialgleichungen umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} gennant. Dies stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
 
 
-Hier ein Beispiel einer stochastischen Differentialgleichung (SDGL) für einen Prozess X(t) in \textit{Ito-Form}:
+Hier ein Beispiel einer stochastischen Differentialgleichung (SDGL) für einen Prozess X(t) in \textit{Itō-Form}:
 \begin{equation}
 	dX = a(X,t) dt + b(X,t) dW
 \end{equation}
@@ -111,24 +111,17 @@ Hier ein Beispiel einer stochastischen Differentialgleichung (SDGL) für einen P
 
 Angenommen, wir haben eine Funktion f(X,t), wobei X die Lösung der obigen SDGL ist, dann kann die Änderung von $ f $ in Bezug auf $ X $ und $ t $ wie folgt geschrieben werden:
 
-Die Funktion f(X,t) und das \textit{Ito-Lemma}:
+Die Funktion f(X,t) und die Itō-Formel sind folgendermassen gegeben:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} dX + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (dX)^2	
 \end{equation}
 
-Dieses Lemma erlaubt es uns, Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten, was bei der Lösung von SDGs hilfreich ist.
-
+Die Itō-Formel erlaubt es uns, solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten.
 
 Das Einsetzen der SDG in das Ito-Lemma ergibt:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
 \end{equation}
 
-Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der sogenannte \textit{Diffusions-Term} ist, welcher den stochastischen Teil der Bewegung darstellt.
+Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der sogenannte \textit{Diffusions-Term} ist, welcher den stochastischen Teil der Gleichung darstellt.
 
-
-% siMULATION bÖRSENKURS?
-
-
-%Gemäss Itō ist das Integral einer gewöhnlichen SDGL folgendermassen definiert:
-%Weglassen?
