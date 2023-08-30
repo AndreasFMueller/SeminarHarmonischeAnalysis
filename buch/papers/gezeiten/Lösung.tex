@@ -1,0 +1,74 @@
+%
+% Lösung.tex -- Beispiel-File für Lösung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Lösung
+	\label{gezeiten:section:Lösung}}
+\rhead{Teil 3}
+Die Lösung des Problems besteht aus zwei Teilen, der erste Teil besteht darin die Kurve des gemessenen Wasserstandes in Sinuswellen aufzuteilen, analog der Fourieranalyse.
+Im zweiten Teil müssen lediglich die zehn Sinuswellen miteinander addiert werden, um die Gezeiten vorherzusagen.
+Die im Prozess erste Maschine entwickelte Lord Kelvin erst einige Jahre später als die Maschine, welche für den zweiten Schritt benötigt wird.
+
+\subsection{Gezeitenkurve in Sinuswellen aufteilen
+	\label{gezeiten:subsection:malorum}}
+Wie bereits beschrieben musste Lord Kelvin eine Maschine erfinden, welche eine Gezeitenkurve in ihre Komponentfrequenzen zerlegt.
+Diese Maschine entwickelte Lord Kelvin jedoch nicht alleine, sondern er zog sich die Hilfe seines älteren Bruders James Thompson bei.
+Zusammen entwickelten sie die den mechanischen Integrator.
+Die Funktionsweise wird nachfolgend beschrieben, um die funktionweise besser zu verstehen, finden sie eine Skizze zum mechanischen Integrator.
+Für diese Maschine benötigt er eine Scheibe, eine Welle, eine Kugel, ein Ausgabepapier für den Integral und natürlich die bestehende Wasserstandskurve.
+Die Kugel wird dafür in der horizontalen Achse auf die Scheibe gelegt.
+Je nach Position der Kugel, bewegt sich die kurve, langsam, schnell oder sogar rückwärts.
+Die Bewegung der Kugel, wird über die Welle weitergegeben an das Ausgabepapier.
+Bewegt sich die Kugel auf der Scheibe schnell, ist die Funktion des Integrals in diesem Moment steiler.
+Bewegt sich die Kugel auf der Scheibe langsam, sprich befindet sich diese nahe am Zentrum der Scheibe, entsteht ein flaches Integral.
+Wenn sich die Kugel exakt im Zentrum befindet, entsteht auf dem Ausgabepapier ein Wendepunkt.
+Um die Position der Kugel zu bestimmen, wird mit einem Stift die Wasserstandskurve nachgefahren, wobei der Stift mit der Kugel verbunden ist.
+Die vorhandene Kurve ist dabei orthogonal zum ganzen Rest der Maschine.
+Das Papier mit der vorhanden Kurve, bewegt sich also von unten nach oben.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{"papers/gezeiten/Skizze Integralmaschine"}
+	\caption{Skizze mechanischer Integrator}
+	\label{fig:skizze-integralmaschine}
+\end{figure}
+
+Für diesen Prozess, der Fourieranalyse, muss jedoch die  Wasserstandskurve als erstes mit der Sinuswelle mit der entsprechenden Frequenz mulitpliziert werden.
+Um die Multiplikation in den Prozess zu integrieren, wird die Scheibe mit der Frequenz hin- und her-gedreht.
+Somit ist die Ausgabekurve das Integral, der Mulitplikation von der Sinuswelle mit der entsprechenden Funktion und der Wasserstandskuve, und somit schon das gewünschte Resultat.
+Um den Koeffizienten zu erhalten, muss lediglich das entstandene Integral durch die Gesamtzeit geteilt werden.
+
+\subsection{Sinuswellen addieren}
+
+Um nun die erhaltenen Sinuswellen miteinander zu addieren, zog Lord Kelvin wiederum Hilfe bei.
+Er wusste von einem Gerät mit dem Namen Scotch-Yoke.
+Dieser Scotch Yoke konnte eine Sinusbewegung erzeugen, sprich aus einer Kreisbewegung wird eine Kurve.
+Seine Herausforderung war es jedoch, mindestens zehn Sinuskurven miteinander zu addieren.
+Den Input für die Lösung bekam er einem Freund Mr. Tower, welcher er zufälligerweise im Zug traf und im das Problem schilderte.
+Towers schlug im vor, eine Kette, welche um mehrer Rollen läuft, zu verwenden wie Wheatstone in seinem alphabetischen Telegrapheninstrument.
+Er skizzierte so auf der Zugfahrt noch seine Gezeitenvorhersage Maschine.
+Und zwar befestigte er an jedem Scotch-Yoke ein Rad.
+Dort wo Whatstone eine Kette verwendete, verwendete Lord Kelvin einen Draht, welcher am Anfang befestigt ist.
+Und danch durch alle Rädchen der Scotch-Yokes hindurchläuft.
+Am Ende des Drahts befestigte er ein Gewicht und einen Stift.
+So konnte er alle Beträge der Sinuswellen mit den unterschiedlichen Frequenzen auf einmal addieren, und erhielt so die Kurve für die Vorhersage der Gezeiten.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{"papers/gezeiten/Skizze Integralmaschine"}
+	\caption{}
+	\label{fig:skizze-maschine}
+\end{figure}
+
+Wenn man nun alle relativen Beträge der unterschiedlichen Frequeznkörper kennt, kann mit dieser Maschine ziemlich einfach die Gezeitenvorhersage gemacht werden.
+Dies war ein grosser Sprung der Technik.
+Wenn nun Lord Kelvin oder auch jemand anders, vier Stunden den Hebel der Maschine betätigte, wurde die Gezeitenvorhersage für ein ganzes Jahr mechanisch gerechnet.
+Nun konnte mit einer Scotch-Yoke-Riemenmaschine, viel einfach die Gezeitenvohersage gemacht werden.
+
+Diese Präzisionsmaschinen wurden bis in die 1960er Jahre verwendet, und fanden auch im zweiten Weltkrieg grossen Anklang.
+Später wurden die Maschinen mit Frequenzkomponenten erweitert.
+
