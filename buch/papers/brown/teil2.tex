@@ -169,7 +169,7 @@ ergibt direkt weisses Rauschen. Erklärt werden kann dies anhand der Definition.
 
 %Da der in der Abbildung \ref{brown:1Dbrownian} dargestellte Börsen-Verlauf nichts anderes als der Wiener-Prozess mit Drift-Komponente ist, sollte weisses Rauschen durch dessen Differenzierung generiert werden können. In der Abbilung \ref{...} wurde das Frequenzspektrum des simulierten Börsenkurses berechnet. 
 
-Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente miteinbezogen wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Nun kann die brownsche Bewegung in im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man wieder ein Signal in der Zeitdomäne, welches ausschliesslich aus weissem Rauschen besteht, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
+Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente miteinbezogen wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Nun kann die brownsche Bewegung in im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man wieder ein Signal in der Zeitdomäne. Dieses besteht ausschliesslich aus weissem Rauschen, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
 %ToDo: Alles in eine Grafik und übereinander gross darstellen
 \begin{figure}
@@ -192,12 +192,12 @@ Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Pr
 
 \subsection{Implikationen\label{brown:Rauschen:Implikationen}}
 
-Ein grosses Problem im Zusammenhang mit Rauschen, ist die Differenzierbarkeit. Dies ist häufig beim Umgang mit Mess-Signalen der Fall, was das bestimmen einer lokalen Steigung erschwert und die Äderungsrate verfälschen kann. Davon sind auch empfangene Datensignale betroffen, was zu falsch dekodierten Informationen führen kann. Die einfachste Methode und häufig auch ein erster Schritt, ist die Anwendung eines Tiefpass- oder Bandpass-Filters. Dieser entfernt jedoch nicht nur das Rauschen, sondern auch ein Teil der im Signal enthaltenen Information.
+Ein grosses Problem im Zusammenhang mit Rauschen, ist die Differenzierbarkeit. Dies ist häufig beim Umgang mit Mess-Signalen der Fall, was das bestimmen einer lokalen Steigung erschwert und die Äderungsrate verfälscht. Davon sind auch empfangene Datensignale betroffen, was zu falsch dekodierten Informationen führen kann. Die einfachste Methode und häufig ein erster Schritt in der Signalverarbeitung, ist die Anwendung eines Tiefpass- oder Bandpass-Filters. Dieser entfernt jedoch nicht nur das Rauschen, sondern auch ein Teil der im Signal enthaltenen Information.
 
-Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass man das Rauschen als Teil des Systems sieht oder rein als externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System selbst Rauschen abbilden können.
+Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass man das Rauschen als Teil des Systems identifiziert oder rein als externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System selbst Rauschen abbilden können.
 % Absatz?
 
-Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. In vielen Bereichen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es gibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür ist folgendes System:
+Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. In vielen Bereichen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es gibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür das System,
 
 \begin{align}
 	\frac{dx}{dt} &= -y \\
@@ -205,7 +205,7 @@ Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, k
 	\label{brown:divergentEquation}
 \end{align}
 
-In der Abbildung~\ref{brown:divergentAndConvergentSystem} sind zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet, welches durch die Gleichung~\ref{brown:divergentEquation} gegeben ist. In rot ist der Verlauf im Intervall  $ t = [0, 3] $ mit dem Startwert $ (-1.7, -1.4) $ gegeben und in grün mit dem Startwert $ (-1.8, -1.4) $.
+für welches in der Abbildung~\ref{brown:divergentAndConvergentSystem} zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet sind. In rot ist der Verlauf im Intervall  $ t = [0, 3] $ mit dem Startwert $ (-1.7, -1.4) $ aufgetragen und in grün mit dem Startwert $ (-1.8, -1.4) $.
 
 \begin{figure}
 	\centering
@@ -214,7 +214,7 @@ In der Abbildung~\ref{brown:divergentAndConvergentSystem} sind zwei unterschiedl
 	\label{brown:divergentAndConvergentSystem}
 \end{figure}
 
-Dieses System veranschaulicht schön, wie sich eine kleine Störung der Startbedingung auf den Verlauf der Lösung auswirken kann. In diesem speziellen Fall konvergieren die Lösung zu einem späteren Zeitpunkt $ t $ wieder. Bedenkt man nun aber, dass eine solche Störung durch Rauschen herbeigeführt werden könnte, scheint es unsinnig, eine einzige fixe Lösung für ein solches System anzugeben --- zumindest nicht ohne auf die Aussagekraft der Lösung unter Rauscheinfluss hinzuweisen oder den Lösungsraum genauer zu spezifizieren.
+Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den Verlauf der Lösung auswirken kann. In diesem speziellen Fall konvergieren die Lösung zu einem späteren Zeitpunkt $ t $ wieder. Bedenkt man nun aber, dass eine solche Störung durch Rauschen herbeigeführt werden könnte, scheint es unsinnig, eine einzige fixe Lösung für ein solches System anzugeben --- zumindest nicht ohne auf die Aussagekraft der Lösung unter Rauscheinfluss hinzuweisen oder den Lösungsraum genauer zu spezifizieren.
 
 Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen und komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein, zufällige Störungen des Systems nicht zu berücksichtigen. Andere Systeme beinhalten selbst eine zufällige Komponente, welche nicht vernachlässigt werden soll.
 

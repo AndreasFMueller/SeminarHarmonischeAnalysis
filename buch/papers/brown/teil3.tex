@@ -17,10 +17,7 @@ Formal kann eine stochastische DGL folgendermaßen notiert werden:
 	\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-In diesem Fall ist die Störung durch $ m $ dimensionales weisses Rauschen $ \xi(t) $ modelliert.
-$ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich das Rauschen auf jede Dimension auswirkt und die Dreieckberreiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander.
-$ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand / jede Dimension des Systems.
-Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
+In diesem Fall ist die Störung durch $ m $-dimensionales weisses Rauschen $ \xi(t) $ modelliert. $ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich jede Dimension des Rausches auf die entsprechenden inneren Zustände auswirkt. Die Dreieckbereiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander. $ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand des Systems. Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
 
 \begin{align*}
 	b = 
@@ -39,25 +36,28 @@ Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems.
 \end{align*}
 
 
-Für die Modellierung von stochastischem Verhalten, ist der Wiener-Prozess $ W(t) $ ein zentrales Konzept, zumal \textit{White noise} $ \xi(t) $ als die Ableitung vom Wiener-Prozess $ \frac{dW(t)}{dt} $ modelliert werden kann. Somit kann die SDGL aus \ref{brown:SDGL:whiteNoise} folgendermaßen geschrieben werden:
+Da weisses Rauschen $ \xi(t) $ formal als die Ableitung vom Wiener-Prozess $ \frac{dW(t)}{dt} $ modelliert werden kann, ergibt sich folgende Form:
 
 \begin{equation}
 	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
-Nun sollte man mit $ dt $  multiplizieren, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wiener-Prozesses geschuldet. Gemäß der Definition ändert sich die Zufallsvariable in jedem Schritt entsprechend dem Erwartungswert und der Varianz, ohne dabei von vorhergehenden Werten abzuhängen.
-
-Bei SDGLs wird das $ dt $ im Nenner oft mit $ dt $ multipliziert, um die Gleichung in die sogenannte ``Itō-Form'' zu bringen, welche vielfach auch ein erster Schritt im weiteren Umgang ist.
+Nun sollte noch mit $ dt $  multipliziert werden, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Diese Form nennt sich auch ``Itō-Form'' und ist vielfach ein erster Schritt im weiteren Umgang mit SDGLs.
 
 \begin{equation}
 	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
 \end{equation}
 
+Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wiener-Prozesses geschuldet. Wie in \ref{brown:Rauschen:RandomWalkWiener} dargelegt, entspricht die Differenzierung im Frequenzbereich einer Multiplikation mit der Frequenz $ jwt $. Differenziert man nun einen sonst schon konstantes gleichmäßig verteiltes Frequenzspektrum, vergrößert man nur die Amplituden, was sich im Zeitbereich durch ein zunehmend unstetigeres Signal äussert.
+
+
 
 \subsection{Simulation mittels der Euler-Maruyama-Methode\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
+Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. 
+
+Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
 %Gegeben sei eine SDGL der folgenden Form:
 
@@ -83,45 +83,36 @@ Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt
 	X_{n+1} = X_n + f(X_n,t_n) \Delta t + g(X_n,t_n) \Delta W_n
 \end{equation}
 
-Diese Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, im Kontext der brownschen Bewegung kann man es "Drift" nennen, welcher nicht nur von zufälligen Einflüssen bestimmt ist. Man muss jedoch erwähnen, dass er Erwartungswert zu jedem Zeitpunkt dem Startwert entspricht, also der zu erwartende Dritt 0 ist. 
+Die Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, auch Drift genannt. Ohne diesen Anteil, würde der Erwartungswert zu jedem Zeitpunkt dem Startwert entsprechen. Dies ist auch der Teil, welcher Information enthält und durch harmonische Analysis und anderen Methoden, untersucht werden kann. Das Rauschen, welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann lediglich bezüglich Intensität charakterisiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener-Prozess.
 
-
-Dies ist auch der Teil, der durch eine harmonische Analyse untersucht werden kann. Das Rauschen (\textit{white noise}), welches hier mit $ g(X_n,t_n) $ beschrieben ist, enthält keine Information und kann somit nicht analysiert werden. $ \Delta W $ beschreibt die Geschwindigkeit, mit welcher der stochastische Prozess ablaufen soll und $ W_n $  beschreibt den Wiener-Prozess oder die brownsche Bewegung als Ganzes.
-
-%Abbildung hier?
 
 
 \subsection{Die Itō-Formel\label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
 
 Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit stochastische Differenzialgleichungen beruht. 
-
-Nach ihm ist auch die \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit suggeriert wird.
-
-
-%Absatz
-Eines der wichtigesten Werkzeuge, um mit stochastischen Differenzialgleichungen umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} gennant. Dies stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
+Nach ihm ist auch die schon verwendete \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit impliziert wird.
+Eines der wichtigsten Werkzeuge, um mit stochastischen Differenzialgleichungen umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Dies stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
 
 
-Hier ein Beispiel einer stochastischen Differentialgleichung (SDGL) für einen Prozess X(t) in \textit{Itō-Form}:
+Hier ein Beispiel einer SDGL für einen Prozess X(t) in \textit{Itō-Form}:
+
 \begin{equation}
 	dX = a(X,t) dt + b(X,t) dW
 \end{equation}
 
+Angenommen, man h eine Funktion f(X,t), wobei X die Lösung der obigen SDGL darstellt, dann kann die Änderung von $ f $ in Bezug auf $ X $ und $ t $ wie folgt geschrieben werden:
+%Die Funktion f(X,t) und die Itō-Formel sind folgendermassen gegeben:
 
-Angenommen, wir haben eine Funktion f(X,t), wobei X die Lösung der obigen SDGL ist, dann kann die Änderung von $ f $ in Bezug auf $ X $ und $ t $ wie folgt geschrieben werden:
-
-Die Funktion f(X,t) und die Itō-Formel sind folgendermassen gegeben:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} dX + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (dX)^2	
 \end{equation}
 
-Die Itō-Formel erlaubt es uns, solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten.
+Die Itō-Formel erlaubt es uns, solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten. Das Einsetzen der SDG in das Ito-Lemma ergibt:
 
-Das Einsetzen der SDG in das Ito-Lemma ergibt:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
 \end{equation}
 
-Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil der Bewegung darstellt, während $ b(X,t) $ der sogenannte \textit{Diffusions-Term} ist, welcher den stochastischen Teil der Gleichung darstellt.
+Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und $ b(X,t) $ den \textit{Diffusions-Term}, also den stochastischen Teil der SDGL.
 
