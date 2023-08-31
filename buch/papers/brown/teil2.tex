@@ -98,29 +98,16 @@ Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch a
 	\centering
 	\begin{minipage}{0.48\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschen.png}
+		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschen-FFT.png}
 		\caption{Echtes weisses Rauschen}
 		\label{brown:weissesRauschenSignal}
 	\end{minipage}
 	%\hspace{0.05\linewidth}
 	\begin{minipage}{0.48\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/RauschenDurchUeberlagerteHarmonsicheSchwingungen.png}
-		\caption{Überlagerte harmonische Schwingungen als Rauschen}
+		\includegraphics[width=\linewidth]{papers/brown/images/harmonischeOszillatoren-FFT.png}
+		\caption{Überlagerte harmonische Oszillatoren}
 		\label{brown:überlagerteSchwingungen}
-	\end{minipage}
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/FFTweissesRauschen.png}
-		\caption{FFT von weissem Rauschen}
-		\label{brown:FFTweissesRauschen}
-	\end{minipage}
-	%\hspace{0.05\linewidth}
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/FFT-ueberlagerteSchwingungen.png}
-		\caption{FFT von überlagerten harmonischen Schwingungen}
-		\label{brown:FFTüberlagerteSchwingungen}
 	\end{minipage}
 \end{figure}
 
@@ -172,21 +159,27 @@ ergibt direkt weisses Rauschen. Erklärt werden kann dies anhand der Definition.
 Im der Abbildung \ref{brown:WienerProzessFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente miteinbezogen wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Nun kann die brownsche Bewegung in im Frequenzbereich mittels einer Multiplikation mit der Frequenz $ jwt $ differenziert werden. Es ergibt sich ein konstante Leistungsdichtespektrum. Durch eine inverse Fourriertransformation erhält man wieder ein Signal in der Zeitdomäne. Dieses besteht ausschliesslich aus weissem Rauschen, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
 %ToDo: Alles in eine Grafik und übereinander gross darstellen
+%\begin{figure}
+%	\centering
+%		\centering
+%		\includegraphics[width=\linewidth]{papers/brown/images/brownscheBewegungUndFFT.png}
+%		\caption{Wiener-Prozess und Frequenzspektrum}
+%		\label{brown:WienerProzessFFT}
+%	\end{minipage}
+%	%\hspace{0.05\linewidth}
+%	\begin{minipage}{0.48\textwidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschenDurchBrownUndFFT.png}
+%		\caption{differenzierter Wiener-Prozess und Frequenzspektrum}
+%		\label{brown:diffWienerFFT}
+%	\end{minipage}
+%\end{figure}
+
 \begin{figure}
 	\centering
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/brownscheBewegungUndFFT.png}
-		\caption{Wiener-Prozess und Frequenzspektrum}
-		\label{brown:WienerProzessFFT}
-	\end{minipage}
-	%\hspace{0.05\linewidth}
-	\begin{minipage}{0.48\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{papers/brown/images/weissesRauschenDurchBrownUndFFT.png}
-		\caption{differenzierter Wiener-Prozess und Frequenzspektrum}
-		\label{brown:diffWienerFFT}
-	\end{minipage}
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/weissesRauscheDurchBrown-timeDomain.png}
+	\caption{Weisses Rauschen durch Differenzierung des Wiener.Prozess}
+	\label{brown:diffWienerFFT}
 \end{figure}
 
 
@@ -209,7 +202,7 @@ für welches in der Abbildung~\ref{brown:divergentAndConvergentSystem} zwei unte
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{papers/brown/images/Vektorfeld-mit-zwei-Pfaden.png}
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/divergentDGL.png}
 	\caption{Zwei Pfade mit fast gleichem Startpunkt}
 	\label{brown:divergentAndConvergentSystem}
 \end{figure}
