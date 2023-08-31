@@ -27,7 +27,7 @@ Abgeschlossen wir dieser Abschnitt mit einem Rechenbeispiel zur Beugung am Einze
 
 \begin{figure}
     \centering
-    \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave_1.pdf}
+    \includegraphics[width=80.63mm]{papers/opt/images/electromagnetic_wave_1.pdf}
     \caption{Die elektromagnetische Welle breitet sich in $z$-Richtung aus. 
     Wenn dabei die elektrische Feldstärke $\vec{E}$ entlang der $x$-Richtung verläuft, muss die magnetische Feldstärke $\vec{H}$ 
     in einem homogenen Medium orthogonal dazu entlang der $y$-Richtung verlaufen.}
@@ -79,12 +79,12 @@ Da das zweite Moment des Real- oder Imaginärteils des Poynting-Vektors gerade d
 \begin{align*}
 I
 &=
-E(\Re^2(S))
+E(\Re(S)^2)
 =
-E(\Im^2(S))
+E(\Im(S)^2)
 \\
 &=
-\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re^2(S) \,dt
+\frac{1}{t_1- t_0} \int_{t_0}^{t_1} \Re(S)^2 \,dt
 \\
 &=
 \frac{1}{t_1 - t_0} \cdot E_0 H_0 \cdot \int_{t_0}^{t_1}\cos\left({2(\omega t-kz)}\right)^2 \,dt
@@ -174,7 +174,7 @@ B_y\left(z+\frac{\Delta z}{2},t\right) \cdot \Delta x \,\Delta z
 
 \begin{figure}
     \centering
-    \includegraphics[width=100mm]{papers/opt/images/electromagnetic_wave_2.pdf}
+    \includegraphics[width=80.63mm]{papers/opt/images/electromagnetic_wave_2.pdf}
     \caption{Grau eingefärbt ist die Fläche $A$, welche in der $xz$-Ebene liegt.
     Um sie herum verläuft in schwarz die Kontur $C = \partial A$.
     Zu beachten ist die Umlaufrichtung dieser Kontur, welche bestimmt, wann das Skalarprodukt $\vec{E} \cdot d\vec{l}$ ein positives oder negatives Vorzeichen aufweist.}
@@ -241,7 +241,7 @@ c
 \frac{1}{\sqrt{\varepsilon\mu}}
 \label{opt:equation:speed_of_light}
 \end{equation}
-durch abermaliges Anwenden der Maxwellschen Gleichungen erhalten werden.
+durch abermaliges Anwenden der maxwellschen Gleichungen erhalten werden.
 Wird nun Gleichung \eqref{opt:equation:speed_of_light} in \eqref{opt:equation:impedance} eingesetzt, kann durch Umformen der Ausdruck
 \begin{equation}
 \frac{E_0}{H_0}
@@ -326,7 +326,7 @@ I(y_p)
 &=
 \kappa \cdot \frac{\vartheta^2\zeta_0^2}{l^2}\cdot \left|\frac{2bl}{bky_p} \cdot \frac{1}{2j} \cdot \left(e^{j\frac{bky_p}{2l}} - e^{-j\frac{bky_p}{2l}}\right)\right|^2
 \end{align*}
-Der daraus entstandene Ausdruck kann mit Hilfe der Eulerschen Identität des Sinus
+Der daraus entstandene Ausdruck kann mit Hilfe der eulerschen Identität des Sinus
 \begin{equation*}
 \sin(x) = \frac{e^{jx} - e^{-jx}}{2j}
 \end{equation*}
