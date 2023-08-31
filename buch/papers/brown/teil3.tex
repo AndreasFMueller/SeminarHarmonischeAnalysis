@@ -10,7 +10,7 @@
 \section{Stochastische Differenzialgleichungen\label{brown:SDGL}}
 \rhead{Stochastische DGL}
 
-Formal kann eine stochastische DGL folgendermaßen notiert werden: 
+Formal kann eine SDGL folgendermassen notiert werden: 
 
 \begin{equation}
 	\label{brown:SDGL:whiteNoise}
@@ -52,12 +52,11 @@ Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter d
 
 
 
-\subsection{Simulation mittels der Euler-Maruyama-Methode\label{brown:Simulation}}
+\subsection{Euler-Maruyama-Methode\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Diese nummerische Methode wird oft zur Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. 
+Die Eueler-Meruyama-Methode wird oft zur nummerischen Simulation von stochastischen Differentialgleichungen (SDGLs) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet. So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. 
 
-Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet.
 
 %Gegeben sei eine SDGL der folgenden Form:
 
@@ -90,9 +89,9 @@ Die Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, auch
 \subsection{Die Itō-Formel\label{brown:ito}}
 \rhead{Ito} %Kurz-Titel der Section
 
-Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit stochastische Differenzialgleichungen beruht. 
+Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit SDGLs beruht. 
 Nach ihm ist auch die schon verwendete \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit impliziert wird.
-Eines der wichtigsten Werkzeuge, um mit stochastischen Differenzialgleichungen umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Dies stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
+Eines der wichtigsten Werkzeuge, um mit SDGLs umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Dies stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
 
 
 Hier ein Beispiel einer SDGL für einen Prozess X(t) in \textit{Itō-Form}:
@@ -116,3 +115,7 @@ Die Itō-Formel erlaubt es uns, solche Differentialgleichungen für Funktionen v
 
 Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und $ b(X,t) $ den \textit{Diffusions-Term}, also den stochastischen Teil der SDGL.
 
+\subsection{Fazit\label{brown:fazit}}
+
+Um den Bogen zum Anfang wieder zu schliessen, der Zufall und insbesondere Rauschen, weist keinerlei Periodizität oder harmonische Eigenschaften auf. Genau desshalb lässt es sich gut mittels der harmonischen Analysis untersuchen und charakterisieren. Dies ermöglicht in diversen technischen Bereichen den Umgang mit zufällige Störungen, das eliminieren von Rauschen. 
+Mittels stochastischen Differenzialgleichungen können solche zufällige Störungen beim modellieren von Systemen beachtet werden, wodurch ein wahrheitsgetreueres Abbild der Realität entsteht. Denn der der Zufall beeinflusst in einem gewissen Masse praktisch jedes System --- hoffentlich lieferte dieses Kapitel einen hilfreichen interessanten Überblick im Umgang damit.
