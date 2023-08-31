@@ -55,7 +55,7 @@ Der beschriebene Farbraumwechsel lässt sich mittels
     \label{jpeg:equation:farb}
 \end{equation}
 berechnen.
-Durch begrenzte Rechengenauigkeit und Rundungsfehler entstehen hier erste Informations\-verluste.
+Durch begrenzte Rechengenauigkeit und Rundungsfehler entstehen hier erste Infor\-ma\-tionsverluste.
 
 \subsection{Tiefpassfilter und Unterabtastung
 \label{jpeg:subsection:tiefpass}}
@@ -116,7 +116,7 @@ Auf diese einzelnen Blöcke wird nun die DCT angewendet.
 Bei allen verlustbehafteten Komprimierungsverfahren geschieht die eigentliche Datenreduktion erst bei der Quantisierung.
 Dazu werden die Koeffizienten aus der DCT mit einer Quantisierungs\-tabelle elementweise dividiert und auf den nächsten ganzzahligen Wert gerundet.
 Die Quantisierungs\-tabelle ist für die Qualität und Menge der reduzierten Daten verantwortlich.
-Die Quantisierung erfolgt mittels: 
+Die Quantisierung erfolgt \mbox{mittels:} 
 \begin{equation}
     F^Q(x,y)
     =
@@ -133,7 +133,7 @@ Beispiel: Personen mit Rot/Grün Blindheit erkennen kaum Unterschiede zwischen R
 Es könnten daher entweder nur die Rot- oder nur die Grün-Anteile gespeichert werden.
 
 Das Auge ist empfindlicher auf hohe Farbunterschiede von benachbarten Pixel, das sind die tiefen Frequenzen der DCT Koeffizienten.
-Daher werden diese weniger reduziert als die hohen Frequenzen, man sollte dafür eine optimale Tabelle verwenden.
+Daher werden diese weniger reduziert als die hohen \mbox{Frequenzen}, man sollte dafür eine optimale Tabelle verwenden.
 
 Da der JPEG-Standard dies nicht vorgibt, muss die verwendete Tabelle im Header des Files mit abgelegt werden.
 Tabelle \ref{jpeg:tab:quant} zeigt je eine gängige Quantisierungstabelle für die Luminanz und für die Chrominanzen.
@@ -205,7 +205,7 @@ Die Tabellen sind aus Untersuchungen des Sehverhaltens entwickelt worden, um Feh
 
 \subsection{Umsortierung und Differenzkodierung
 \label{jpeg:subsection:umsortierung}}
-Die 64 Koeffizienten des Pixelblocks Tabelle \ref{jpeg:tab:quantblock} werden nach der Quantisierung im Zig-Zag Muster abgetastet wie Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
+Die 64 Koeffizienten des Pixelblocks Tabelle \ref{jpeg:tab:quantblock} werden nach der Quantisierung im Zig-Zag \mbox{Muster} abgetastet wie Abb. \ref{jpeg:fig:zigzag} zeigt, es resultiert
 \begin{equation}
     69, 5, -2, -1, -1, -1, 1, 0, 0, -1, 0, 0, -1, 0, 0,\dots, 0.
     \label{jpeg:equation:abgetastet}
@@ -237,10 +237,10 @@ Wenn an dem Beispiel in Tabelle \ref{jpeg:tab:quantblock} die differenzielle Kod
 \subsection{Entropiekodierung
 \label{jpeg:subsection:entropiekodierung}}
 Die Entropiekodierung der JPEG Kompression basiert auf dem Prinzip von David A. Huffman (Huffman-Coding).
-Bei der Entropiekodierung wird eine Zeichenfolge (z.B. aus einem Text) in eine Bitfolge umgewandelt.
+Bei der Entropiekodierung wird eine Zeichenfolge (z.B. aus einem Text) in \mbox{eine} Bitfolge umgewandelt.
 Das geschieht mit Hilfe von Huffman-Trees.
-Im Huffman-Tree wird die Häufigkeit der zu verschlüsselnden Werte berücksichtigt.
-Werte die am meisten vorkommen erhalten dadurch kürzere Bitfolgen.
+Im Huffman-Tree wird die Häufig\-keit der zu verschlüsselnden Werte berücksichtigt.
+Werte die am meisten vorkommen \mbox{erhalten} dadurch kürzere Bitfolgen.
 Die Huffman Kodierung zweigt beim Huffman-Tree von jedem Knoten nach links mit 0 und nach rechts mit 1 ab.
 Um z.B. den Wert 4 zu erhalten, braucht man die Bitfolge 101.
 Um den verschlüsselten Wert wieder zu dekodieren, muss man bei jedem Knoten entsprechend abzweigen, bis man im Huffman-Tree ein Ende erreicht. Beispiel: 1110 entspricht 6, in Abb. \ref{jpeg:fig:huffman} orange gekennzeichnet.
