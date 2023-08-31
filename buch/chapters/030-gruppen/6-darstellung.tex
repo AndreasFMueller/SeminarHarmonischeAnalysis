@@ -33,6 +33,50 @@ wiederzufinden.
 % Definition
 %
 \subsection{Definition}
+Viele der klassischen Gruppen lernt man in der linearen Algebra
+kennen und sind bereits Mengen von Matrizen definiert.
+Die Verknüpfung der Gruppenelemente ist die Matrixmultiplikation,
+das neutrale Element ist die Einheitsmatrix $I$.
+Da sie auch invertierbar sein müssen, liegen sie in der 
+allgemeinen linearen Gruppe.
+Eine solche Gruppe ist daher eine Teilmenge von $\operatorname{GL}_n(\Bbbk)$
+für einen geeignten Körper $\Bbbk$.
+
+Die Permutationsgruppe $S_n$ von $n$ Elementen operiert durch 
+Vertauschungen.
+Zu jeder Permutation $\sigma\in S_n$ lässt sich die Matrix $P_\sigma$
+mit den Matrixelementen
+\[
+(P_\sigma)_{ik}
+=
+\begin{cases}
+1&\qquad\text{für $i=\sigma(k)$}\\
+0&\qquad\text{sonst}.
+\end{cases}
+\]
+konstruieren.
+Man kann sofort nachrechnen, dass $P_{\sigma\pi} = P_\sigma P_\pi$,
+dass $P_{e}=I$ und $P_{\sigma^{-1}}=P_\sigma^{-1}$.
+Die Menge der Matrizen
+$P_n=\{P_\sigma\mid\sigma\in S_n\}\subset\operatorname{GL}_n{\mathbb{R}}$
+ist eine Gruppe von Matrizen.
+
+Man kann die Relation, dass $S_n$ in Form der Permutationsmatrizen $P_n$
+in $\operatorname{GL}_n(\mathbb{R})$ enthalten ist, auch als Homomorphismus
+\[
+\varrho
+\colon 
+S_n
+\to
+\operatorname{GL}(\mathbb{R})
+:
+\sigma
+\mapsto
+P_\sigma
+\]
+verstehen.
+Noch etwas allgemeiner definieren wir eine Darstellung einer Gruppe
+wie folgt.
 
 \begin{definition}
 Sei $G$ eine Gruppe und $V$ ein $\Bbbk$-Vektorraum.
@@ -45,10 +89,285 @@ Abbildungen $\varrho(x)$ als Matrizen in $M_{n\times n}(\Bbbk)$
 geschrieben werden.
 \end{definition}
 
+\subsubsection{Die reguläre Darstellung}
+Sei $G$ eine endliche Gruppe und $h\in G$.
+Die Verknüpfung mit $g$ definiert eine Permutation der Gruppenelemente
+durch
+\[
+\pi_h \colon G \to G : g \mapsto hg.
+\]
+Zum Gruppenelement $h$ gehört daher die Permutationsmatrix
+$P_{\pi_h}\in\operatorname{GL}_n(\mathbb{R})$.
+Zu jeder endlichen Gruppe gehört daher die Darstellung durch die
+Matrizen $P_{\pi_h}$.
+Sie heisst die {\em reguläre Darstellung}.
+
+Indem man die Elemente der Gruppe als $e=g_0,g_1,g_2,\dots,g_{|G|-1}$
+nummeriert, kann man auch Vektoren definieren, auf denen die
+Gruppe durch die Matrizen $P_{\pi_h}$ operiert.
+Sei $v_{g_i}$ der Spaltenvektor, der in der $i$-ten Zeile eine Eins
+hat und lauter Nullen in allen anderen Zeilen.
+Dann ist $\pi_{h}v_{g_i} P_{\pi_h}v_{g_i}$, die Vektoren
+$v_{g_0},\dots,g_{|G|-1}$ sind die Standardbasis eines $|G|$-dimensionalen
+Vektorraumes, auf dem die Gruppe $G$ durch Permutationsmatrizen wirkt.
+
+Die Vektoren $v_h$ kann man auch als die Funktionen
+\[
+v_h
+\colon
+G\to\mathbb{R}
+:
+g\mapsto
+\begin{cases}
+1&\qquad\text{falls $g=h$}\\
+0&\qquad\text{sonst}
+\end{cases}
+\]
+betrachten.
+Die Menge der Funktionen $G\to\Bbbk$ bezeichnen wir mit $\Bbbk[G]$.
+Die Gruppe $G$ operiert auf den Funktion durch die Translation.
+Funktion $v_{kh}$ ist genau dann $1$, wenn $g=kh$ ist, also wenn $k^{-1}g=h$
+ist.
+Das selbe gilt die Funktion $g\mapsto v_h(k^{-1}h)$, daher definieren wir
+die Translation für beliebige Funktionen $f\colon G\mapsto \mathbb{R}$
+durch
+\[
+T_kf\colon G\to\mathbb{R}:g\mapsto f(k^{-1}g).
+\]
+Diese Definition deckt sich natürlich mit der
+Definition~\ref{buch:gruppen:gruppe:def:translation}.
+Die Translation ist also eine Darstellung der Gruppe $G$ auf dem
+Vektorraum der Funktionen auf der Gruppe.
+
+Für eine topologische Gruppe $G$ ist die Translation $T_g$ eine 
+stetige lineare Abbildung auf dem Vektorraum der stetigen Funktionen
+$C(G,\mathbb{R})$, ausserdem ist die Abbildung $g\mapsto T_g$ eine
+stetige Abbildung von $G$ in den Vektorraum der linearen Operatoren
+auf $C(G,\mathbb{R})$.
+Für eine Lie-Gruppe ist $g\mapsto T_g$ sogar eine differenzierbare
+Abbildung.
+Auch diese Darstellungen von $G$ auf entsprechenden Funktionenräumen
+heissen die {\em reguläre Darstellung} von $G$.
+
+%
+% Die Standarddarstellung einer Matrizengruppe
+%
+\subsubsection{Die Standarddarstellung einer Matrizengruppe}
+Die reguläre Darstellung ist also eine Art ``universelle Darstellung'',
+die man immer konstruieren kann, sie ist allerdings auch etwas kompliziert,
+da die Dimension des Vektorraums $V$, auf dem die Gruppenelemente in der
+Darstellung wirken, so gross ist wie die Kardinalität der Gruppe.
+Von besonderem Nutzen sind Darstellungen, die eine kleine Dimension haben.
+Die Elemente einer Gruppe $G\subset\operatorname{GL}_n(\mathbb{R})$
+von $n\times n$-Matrizen operiert auf offensichtliche Weise auf einem
+$n$-dimensionalen Vektorraum $\mathbb{R}^n$.
+Die Untergruppen von $\operatorname{GL}_n(\mathbb{R})$, betrachtet
+als abstrakte Gruppen, haben also immer eine $n$-dimensionale Darstellung,
+die durch die Einbettung $G\to \operatorname{GL}_n(\mathbb{R})$ entsteht.
+Sie heisst die {\em Standarddarstellung}.
+
+%
+% Die triviale Darstellung
+%
+\subsubsection{Die triviale Darstellung}
+Für eine beliebige Gruppe $G$ ist die konstante Abbildung
+\[
+\varrho
+\colon
+G\to \operatorname{GL}_n(\mathbb{R})
+:
+g\mapsto I
+\]
+ein Homomorphismus und damit eine $n$-dimensionale Darstellung von $G$.
+Sie heisst die {\em triviale $n$-dimensionale Darstellung}.
+
+%
+% Reguläre Darstellung und Faltung
+%
+\subsubsection{Reguläre Darstellung und Faltung}
+Eine Gruppe $G$ operiert auf den Funktionen auf $G$ durch die 
+lineare Operation der Translation $T_g$ für $g\in G$.
+Sei $G$ eine endliche Gruppe und $f\colon G\mapsto \mathbb{R}$ eine
+Funktion auf $G$.
+Da die Translation $T_g$ eine lineare Abbildung ist, können wir die 
+sie mit den Koeffizienten $T_g$ linear kombinieren.
+Damit lässt sich die eine Operation der Funktion $f$ auf den Funktionen
+$h\colon G\to\mathbb{R}$ durch
+\begin{equation}
+T_fh
+=
+\sum_{g\in G} f(g)\cdot T_gh
+\colon
+G\to\mathbb{R}
+:
+x\mapsto
+\biggl( \sum_{g\in G} f(g)\cdot T_gh\biggr) (x)
+=
+\sum_{g\in G} f(g)h(g^{-1}x)
+=
+(f*h)(x)
+\end{equation}
+definieren.
+Die Faltung ist also nichts anderes als die Ausdehnung der regulären
+Darstellung von einzelnen Gruppenelementen auf den Vektorraum
+der Funktionen auf $G$.
+
+Für eine topologische Gruppe $G$ und eine integrierbare Funktion
+$f\colon G\to\mathbb{R}$
+lässt sich die Konstruktion ebenfalls durchführen.
+Statt einer Summe über die Gruppenelemente muss man allerdings das
+Haar-Integral mit den Funktionswerten $f(g)$ als Gewichten verwenden.
+Die Funktion $f$ operiert somit auf einer Funktion $h\colon G\to\mathbb{R}$
+durch 
+\[
+T_fh\colon
+x\mapsto
+\biggl(\int_G f(g) T_gh\,dg\biggr)(x)
+=
+\int_G f(g) h(g^{-1}x)\,dg
+=
+(f*g)(x).
+\]
+Dies zeigt, dass das Studium der reguläre Darstellung nichts anderes
+ist als die Untersuchung der Gruppenoperation auf der Gruppe mit Hilfe
+der Algebrastruktur, die durch die Faltung erzeugt wird.
+
 %
 % Vergleich von Darstellungen
 %
 \subsection{Vergleich von Darstellungen}
+Die Einfachheit der regulären Darstellung hängt davon ab, dass man die
+Basis sehr speziell wählen kann.
+Eine beliebige Darstellung auf den ersten Blick sehr viel weniger gut
+durchschaubar, weil eine beliebig gewählte Basis zu Matrizen führt,
+die die Natur Gruppe verschleiern können.
+Umgekehrt kann auch die reguläre Darstellung verbergen, dass dahinter
+eigentlich einfachere Darstellungen stecken, die man besser erkennen
+könnte, wenn man eine zweckmässigere Basis verwenden würde.
+Das folgende Beispiel illustriert dies.
+
+\begin{beispiel}
+Wir betrachten die reguläre Darstellung der zyklischen Gruppe mit
+drei Elementen $C_3=\{0,1,2\}$.
+Die Gruppenelemente $1,2\in C_1$ werden in der regulären Darstellung
+durch die Matrizen
+\[
+1\mapsto
+P_1=
+\begin{pmatrix}
+0&0&1\\
+1&0&0\\
+0&1&0
+\end{pmatrix}
+\qquad\text{und}\qquad
+2\mapsto
+P_2
+=
+\begin{pmatrix}
+0&1&0\\
+0&0&1\\
+1&0&0
+\end{pmatrix}
+=
+P_1^2
+\]
+dargestellt.
+
+Wir verwenden jetzt im Vektorraum $\mathbb{R}^3$, auf dem diese Matrizen
+wirken, eine alternative Basis wie folgt:
+\[
+b_1
+=
+\frac{1}{\!\sqrt{3}}
+\begin{pmatrix}1\\1\\1\end{pmatrix}
+,
+\qquad
+b_2
+=
+\frac{1}{\!\sqrt{2}}
+\begin{pmatrix*}[r]1 \\ -1 \\ 0\end{pmatrix*}
+\qquad\text{und}\qquad
+b_3
+=
+\frac{1}{\!\sqrt{6}}
+\begin{pmatrix*}[r] 1\\1\\-2\end{pmatrix*}.
+\]
+Die Basis ist orthonormiert.
+Die Wirkung der Matrix $P_1$ auf diesen Basisvektoren ist
+\begin{align*}
+P_1b_1
+&=
+b_1\\
+P_1b_2
+&=
+\frac{1}{\!\sqrt{2}}
+\begin{pmatrix*}[r]
+0\\1\\-1
+\end{pmatrix*}
+=
+(P_1b_2\cdot b_2) b_2
++
+(P_1b_2\cdot b_3) b_3
+=
+-\frac{1}{2}
+b_2
++
+\frac{\sqrt{3}}{2}
+b_3
+\\
+P_1b_3
+&=
+\frac{1}{\!\sqrt{6}}
+\begin{pmatrix*}[r]
+-2\\ 1\\1
+\end{pmatrix*}
+=
+(P_1b_3\cdot b_2) b_2
++
+(P_1b_3\cdot b_3) b_3
+=
+-\frac{\!\sqrt{3}}{2}
+b_2
+-
+\frac{1}{2}
+b_3
+\end{align*}
+Die Koeffizienten in der Darstellung der Bildvektoren in der
+orthonormierten Basis $\{b_1,b_2,b_3\}$ auf der rechten Seite
+können mit Hilfe des Skalarproduktes ermittel werden.
+In der Basis $b_i$ bekommt die Matrix $P_1$ also die Matrix
+\begin{equation}
+\tilde{P}_1
+=
+\begin{pmatrix}
+1&0&0\\
+0&-\frac12 & \frac{\!\sqrt{3}}2\\
+0&-\frac{\!\sqrt{3}}2&-\frac12
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&0&0\\
+0&\cos(-120^\circ)& -\sin(-120^\circ) \\
+0&\sin(-120^\circ)& \cos(-120^\circ)
+\end{pmatrix}.
+\label{buch:gruppen:darstellung:bsp:c3:blockform}
+\end{equation}
+In der neuen Basis zerfällt die Matrix in zwei Blöcke.
+Der linke obere Block ist die eindimensionale triviale Darstellung.
+der $2\times 2$-Block in der rechten unteren Ecke ist eine Drehmatrix mit
+dem Drehwinkel $120^\circ$.
+
+Geometrisch bedeutet die Blockform
+\eqref{buch:gruppen:darstellung:bsp:c3:blockform}, dass man den
+dreidimensionalen Raum in eine Gerade mit Richtung $b_1$ und
+eine dazu senkrechte Ebene mit Basis $\{b_2,b_3\}$ aufteilen
+kann.
+Auf der geraden operiert die Gruppe $C_3$ trivial, der zweidimensionale
+Unterraum ist eine zweidimensionale Darstellung der Gruppe $C_3$.
+Es ist also gelungen, die reguläre Darstellung von $C_3$ zu zerlegen
+in zwei einfachere Darstellungen.
+\end{beispiel}
+
 
 %
 % Irreduzible Darstellungen und das Lemma von Schur
