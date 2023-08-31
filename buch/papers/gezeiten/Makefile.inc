@@ -6,9 +6,5 @@
 dependencies-gezeiten =						\
 	papers/gezeiten/packages.tex					\
 	papers/gezeiten/main.tex					\
-	papers/gezeiten/references.bib				\
-	papers/gezeiten/teil0.tex					\
-	papers/gezeiten/teil1.tex					\
-	papers/gezeiten/teil2.tex					\
-	papers/gezeiten/teil3.tex
+	papers/gezeiten/references.bib	
 
