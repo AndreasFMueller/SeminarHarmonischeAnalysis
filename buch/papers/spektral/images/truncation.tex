@@ -1,0 +1,38 @@
+%
+% truncation.tex -- triangular truncation
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\h{0.8}
+
+\fill[color=gray!40,rounded corners=0.4cm] (0,{-0.707*\h})
+	-- ({-3.5*\h-0.707*\h},{3.5*\h})
+	-- ({3.5*\h+0.707*\h},{3.5*\h})
+	-- cycle;
+
+\draw[->] ({-4.5*\h},0) -- ({4.5*\h},0) coordinate[label={$n$}];
+\draw[->] (0,{-0.5*\h}) -- (0,{5.5*\h}) coordinate[label={right:$m$}];
+
+\draw[color=red,dashed] ({-4.5*\h},{3*\h}) -- ({4.5*\h},{3*\h});
+\node[color=red] at ({-4.5*\h},{3*\h}) [left] {$N=3$};
+
+\foreach \n in {0,...,4}{
+	\foreach \m in {-\n,...,\n}{
+		\fill ({\m*\h},{\n*\h}) circle[radius=0.06];
+	}
+}
+
+\end{tikzpicture}
+\end{document}
+
