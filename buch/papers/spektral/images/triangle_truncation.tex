@@ -9,7 +9,11 @@
 \usepackage{txfonts}
 \usepackage{pgfplots}
 \usepackage{csvsimple}
+\usepackage{relsize}
+
 \usetikzlibrary{arrows,intersections,math}
+\tikzset{fontscale/.style = {font=\relsize{#1}}}
+
 \begin{document}
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]

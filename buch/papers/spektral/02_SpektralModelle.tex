@@ -46,27 +46,26 @@ darstellen können.
 \subsection{Wellengleichung
 \label{spektral:subsection:wellengleichung}}
 Jetzt sind wir bereit die Wellengleichung mit der spektrale Methode zu lösen.
-
 Für die Vereinfachung nehmen wir an, dass in der Gleichung \eqref{spektral:equation7} $\alpha=1$ ist und der Kugelradius auch $r=1$ ist.
-Dann wird der Laplace-Operator für die Kugelflächenfunktion so aussehen:
+Dann wird die Wellechgleichung so aussehen:
 \begin{equation}
 \frac{1}{\sin\theta}\frac{\partial}{\partial{\theta}}\left(\sin\theta\frac{\partial{U}}{\partial{\theta}}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2{U}}{\partial{\phi^2}} = \frac{\partial^2{U}}{\partial{t^2}}.
 \label{spektral:equation11}
 \end{equation}
-Wenn wir die Gleichung \eqref{spektral:equation10} für die Gelichung \eqref{spektral:equation7} anwenden, dann bekommen wir
+Wenn wir die Gleichung \eqref{spektral:equation10} für die Gleichung \eqref{spektral:equation7} anwenden, dann bekommen wir
 \begin{equation}
 \Delta{U} = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)\Delta{Y_n^m(\phi, \theta)}.
 \label{spektral:equation12}
 \end{equation}
 Wir müssen jetzt die $\Delta{Y_n^m(\phi, \theta)}$ finden.
 Das können wir aus den Laplace-Operator in sphärischen Koordinaten ausrechnen. Wir wissen, dass der Laplace-Operator selbstadjungiert ist, seine Eigenfunktionen orthogonal sind und der Eigenwert $-l(l+1)$ ist (siehe Satz~\ref{buch:orthofkt:pde:satz:kugel}).
-Diese Information erlaubt uns das harmisches Analysis durchzuführen.
+Diese Information erlaubt uns die harmonisches Analysis durchzuführen.
 Gemäß dem Satz~\ref{buch:orthofkt:pde:satz:kugel} bekommen wir
 \begin{equation}
 \Delta{Y_n^m(\phi, \theta)} = -l(l+1)Y_n^m(\phi, \theta).
 \label{spektral:equation16}
 \end{equation}
-Laplace-Operator der Kugelflächenfunktion ist proportional der Funktion selbst. Das ist sehr wichtige Eigenschaft, die wir gleich anwenden werden.
+Laplace-Operator der Kugelflächenfunktion ist proportional der Funktion selbst \cite[Seite 663]{spektral:DynamicOfTheAtmosphere}. Das ist sehr wichtige Eigenschaft, die wir gleich anwenden werden.
 Aus der Gleichung \eqref{spektral:equation12} bekommen wir:
 \begin{equation}
 \Delta{U} = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)l(l+1)Y_n^m(\phi, \theta)
@@ -97,4 +96,4 @@ u(\phi, \theta, t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(0)e^{i
 \subsection{Ergebnis
 \label{spektral:subsection:ergebnis}}
 
-Als Ergebnis bekommen wir die Gleichung, die im Vergleich zu Differenzialgleichung \eqref{spektral:equation8}, viel einfacher zu lösen ist. Das Vorteil wurde bereits im Kapitel \ref{spektral:subsection:vorteile} erwähnt. Jetzt haben wir das bestätigt.
+Als Ergebnis bekommen wir die Gleichung, die im Vergleich zu Differenzialgleichung \eqref{spektral:equation8} viel einfacher zu lösen ist. Der Vorteil wurde bereits im Kapitel \ref{spektral:subsection:vorteile} erwähnt. Jetzt haben wir das bestätigt.
