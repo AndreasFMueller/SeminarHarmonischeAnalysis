@@ -235,7 +235,8 @@ der Algebrastruktur, die durch die Faltung erzeugt wird.
 %
 % Rechnen mit Darstellungen
 %
-\subsection{Rechnen mit Darstellungen}
+\subsection{Rechnen mit Darstellungen
+\label{buch:gruppen:darstellungen:subsection:rechnen-mit-darstellungen}}
 Mit Darstellungen kann man rechnen im folgenden Sinn.
 Seien
 $\varrho_1\colon G\to\operatorname{GL}_{n_1}(\mathbb{R})$
@@ -245,7 +246,7 @@ Darstellungen der Gruppe $G$.
 Dann kann man eine neue, $n_1+n_2$-dimensionale Darstellung konstruieren,
 indem man aus den Matrizen $\varrho_1(g)$ und $\varrho_2(g)$ die
 Blockmatrix
-\[
+\begin{equation}
 \varrho(g)
 =
 (\varrho_1\oplus \varrho_2)(g)
@@ -263,7 +264,8 @@ Blockmatrix
 \node at (0.5,0.15) [above] {\tiny $n_2$};
 \node at (-0.15,-0.5) [left] {\tiny $n_2$};
 \end{tikzpicture}}\right).
-\]
+\label{buch:gruppen:darstellungen:eqn:dirsummatrix}
+\end{equation}
 Diese Darstellung heisst die {\em direkte Summe} der Darstellungen
 $\varrho_1$ und $\varrho_2$.
 Für eine natürlich Zahl $k$ soll die
@@ -555,12 +557,580 @@ abgebildet wird, kann $f-\lambda I$ nicht ein Isomorphismus sein, somit
 ist $f-\lambda I=0$ und damit $f=\lambda I$.
 \end{proof}
 
+Die erste Aussage des Lemmas von Schur und sein Beweis zeigen, dass
+irreduzible Darstellungen auch nicht teilweise aufeinander abgebildet
+werden können.
+Wenn eine Abbildung nicht die Nullabbildung ist, dann muss die
+ganz Darstellung $V$ ohne Verlust auf die ganze Darstellung $W$
+abgebildet werden.
+Dies ist nur eine andere Formulierung für die Idee der Irreduzibilität.
 
+Die zweite Aussage des Lemmas von Schur besagt im Wesentlichen, dass
+es bis auf Faktor $\lambda$ nur eine Möglichkeit gibt, eine irreduzible
+Darstellung mit sich selbst zu vergleichen.
+
+%
+% Charakter einer Darstellung
+%
+\subsection{Charakter einer Darstellung}
+Die reguläre Darstellung lässt die Gruppe auf Funktionen auf der
+Gruppe operieren.
+Der Begriff der irreduziblen Darstellung und das Lemma von Schur
+lässt vermuten, dass nur sehr spezielle Funktionen für irreduzible
+Darstellungen in Frage kommen.
+Es ist daher eine Verbindung zwischen irreduziblen Darstellungen
+und Funktionen auf der Gruppe herzustellen.
+Diese Funktionen müssen unabhängig sein von der gewählten Basis.
+
+\begin{definition}
+Ist $\varrho_V\colon G\to\operatorname{GL}(V)$ eine Darstellung der
+Gruppe $G$ im Vektorraum $V$, dann heisst die Funktion
+\[
+\chi_\varrho
+\colon
+G
+\to
+\mathbb{C}
+:
+g
+\mapsto
+\tr \varrho_V(g)
+\]
+der {\em Charakter} der Darstellung $\varrho$.
+\end{definition}
+
+Der Charakter einer Darstellung hängt nicht von der Wahl der Basis ab.
+Zwei verschiedene Basen im Darstellungsraum $V$ führen auf verschiedene
+Matrizen $\varrho_1(g),\varrho_2(g)\in\operatorname{GL}_n(\mathbb{C})$,
+die aber durch eine Transformationsmatrix $T$ über die Formel
+$\varrho_1(g)=T\varrho_2(g)T^{-1}$ miteinander verbunden sind.
+Die Spur dieser Matrizen ist
+\[
+\tr \varrho_1(g)
+=
+\tr(T\varrho_2(g)T^{-1})
+=
+\tr(\varrho_2(g)T^{-1}T)
+=
+\tr \varrho_2(g),
+\]
+die Spuren sind also gleich.
+
+Nicht jede Funktion kann ein Charakter sein, wie der folgende Satz
+zeigt.
+
+\begin{satz}
+Sei $\varrho$ eine $n$-dimensionale Darstellung von $G$ dann gilt
+\begin{enumerate}
+\item $\chi_\varrho(e) = n$
+\item $\chi_\varrho(hgh^{-1}) = \chi_\varrho(g)$
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Da $\varrho(e)=I_n$ die $n$-dimensionale Einheitsmatrix ist, ist
+$\chi_\varrho(e) = \tr \varrho(e) = \tr I_n = n$, was 1.~beweist.
+Aussage~3.~folgt aus
+$\chi_\varrho(hgh^{-1})
+=
+\tr (\varrho(h)\varrho(g)\varrho(h)^{-1})
+=
+\tr \varrho(g)
+=
+\chi_\varrho(g)
+$.
+\end{proof}
+
+\begin{satz}
+Sei $\varrho$ eine $n$-dimensionale Darstellung einer endlichen Gruppe,
+dann gilt
+$\chi_\varrho(g^{-1}) = \overline{\chi_\varrho(g)}$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir verwenden eine Basis, in der die Matrix $\varrho(g)$ Jord-Normalform hat.
+Die Jordan-Normalform ist eine obere Dreiecksmatrix mit den Eigenwerten
+$\lambda_i$ auf der Diagonalen.
+Da spätestens die $n$-te Potenz von $g$ das neutrale Element ist und damit
+die $n$-te Potenz der Matrix $\varrho(g)$ die Einheitsmatrix ist, müssen
+alle Eigenwerte Betrag $1$ haben.
+Die inverse Matrix $\varrho(g)^{-1}$ ist ebenfalls eine Dreiecksmatrix
+mit den reziproken Eigenwerten $\lambda_i^{-1}$ auf der Diagonalen.
+Da die $\lambda_i$ Betrag $1$ haben, ist $\lambda_i^{-1}=\overline{\lambda}_i$
+und damit
+\[
+\chi_\varrho(g^{-1})
+=
+\tr \varrho(g^{-1})
+=
+\sum_{i=1}^n \lambda_i^{-1}
+=
+\sum_{i=1}^n \overline{\lambda}_i
+=
+\overline{\sum_{i=1}^n \lambda_i}
+=
+\overline{\tr \varrho(g)}
+=
+\overline{\chi_\varrho(g)}.
+\]
+\end{proof}
+
+Der Beweis hängt davon ab, dass die Eigenwerte Betrag $1$ haben, eine
+Eigenschaft, die für eine endliche Gruppe leicht zu erschliessen war.
+Wir werden später sehen, dass man in vielen Fällen auch zeigen kann,
+dass die Matrizen $\varrho(g)$ alle orthogonal oder unitär sind, was
+ebenfalls zur Folge hat, dass die Eigenwerte Betrag $1$ haben.
+Schliesslich kann auch die Einschränkung auf beschränkte Funktionen
+ebenfalls Eigenwerte mit Betrag verschieden von $1$ ausschliessen.
+
+%
+%  Charaktere und Rechenoperationen mit Darstellungen
+%
+\subsubsection{Charaktere und Rechenoperationen mit Darstellungen}
+In Abschnitt~\label{buch:gruppen:darstellungen:subsection:rechnen-mit-darstellungen}
+wurden Rechenoperationen mit Darstellungen definiert.
+Die direkte Summe $\varrho_1\oplus\varrho_2$ einer $n_1$-dimensionalen
+Darstellung $\varrho_1$ und einer $n_2$-dimensionalen Darstellung
+$\varrho_2$ ist eine $n_1+n_2$-dimensionale Darstellung.
+Die Spur der Matrix~\eqref{buch:gruppen:darstellungen:eqn:dirsummatrix}
+ist die Summe der Spuren der Teilmatrizen und daher
+\[
+\chi_{\varrho_1\oplus\varrho_2}
+=
+\chi_{\varrho_1}
++
+\chi_{\varrho_2}.
+\]
+
+Wenn sich eine Darstellung in eine Summe von irreduziblen Darstellungen
+zerlegen lässt, dann ist der Charakter der Darstellung die Summe der
+Charaktere der irreduziblen Darstellungen.
+Dies klingt wie eine Art harmonischer Analysis für Darstellungen: der
+Charakter einer beliebigen Darstellung lässt sich zerlegen in eine
+Linearkombination von Charakteren irreduzibler Darstellungen.
+
+Um aus den Charakteren tatsächlich eine harmonische Analysis zu konstruieren,
+müssen die Charaktere der irreduziblen Darstellungen bezüglich eines
+geeigneten Skalarprodukts als Orthogonal erkannt werden.
+Damit würde es möglich, beliebige Darstellungen einfach dadurch in
+irreduzible Darstellungen zu zerlegen, dass man Skalarprodukte des
+Charakters mit den Charakteren der irreduziblen Darstellungen bildet.
 
 %
 % Mittelung und mittelbare Gruppen
 %
 \subsection{Mittelung und mittelbare Gruppen}
+Harmonische Analysis vergleicht Funktionen mit Hilfe eines Skalarproduktes.
+Für lokalkompakte topologische Gruppen, zu denen auch die endlichen Gruppen
+zählen, haben wir das Haar-Mass, mit dem sich ein translationsinvariantes
+Skalarprodukt definieren lässt.
+Das Haar-Mass kann aber auch verwendet werden, um Mittelwerte zu bilden
+und neue Darstellungen zu konstruieren.
+
+Sei $f$ eine Funktion auf der Gruppe $G$ mit Werten in einem Vektorraum.
+Die Gruppe operiert auf den Funktionen mit der Translation.
+Eine Gruppe $G$ heisst {\em mittelbar}, wenn diese Operation gemittelt
+werden kann, wenn es also zu $f$ einen Mittelwert $Mf$ gibt, der 
+translationsinvariant ist.
+Falls $f$ bereits eine translationsinvariante Funktion ist, dann 
+ist $Mf=f$.
+Für eine endliche Gruppe kann man als Mittelwert einer Funktion
+$f\colon G\to V$ das arithmetische Mittel
+\[
+Mf
+=
+\frac{1}{|G|}
+\sum_{g\in G} T_gf
+\]
+verwenden.
+Für eine lokal kompakte topologische Gruppe kann man die Mittelung
+mit Hilfe des haarschen Masses als
+\[
+Mf
+=
+\int_G T_gf\,dg
+\]
+definieren, wobei dafür noch ein paar analytische Feinheiten der
+Konvergenz geklärt werden müssten.
+Um diesen Schwierigkeiten aus dem Weg zu gehen, werden wir im folgenden
+die Aussagen nur für endliche Gruppen beweisen, auch wenn sie für
+lokalkompakte topologische Gruppen ebenfalls gültig sind.
+
+Als erstes Beispiel für diese Idee zeigen wir, wie sich Darstellungen 
+zerlegen lassen.
+
+\begin{definition}
+\label{buch:gruppen:darstellungen:def:projektion}
+Eine {\em Projektion} in einem Vektorraum $V$ ist eine lineare Abbildung
+$P\colon V\to V$ mit der Eigenschaft $P^2=P$.
+\end{definition}
+
+\begin{satz}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$  eine endlichdimensionale
+Darstellung der Gruppe $G$ und $W$ ein invarianter Unterraum von $V$,
+also ein Unterraum, für den $\varrho(g)W\subset W$ für alle $g\in G$ gilt.
+Dann gibt es einen invarianten Unterraum $W'$ mit $V=W\oplus W'$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $W_0$ irgend ein komplementärer Unterraum mit $V=W\oplus W_0$, er muss
+nicht invariant sein.
+Zu dieser Zerlegung gibt es eine Projektionsabbildung $P\colon V\to V$ mit
+$\operatorname{ker}P=W_0$ und $\operatorname{im}P=W$ ist.
+Auch die Abbildung $P$ muss nicht mit der Darstellung vertauschen.
+Der Mittelwert 
+\[
+P'
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) P \varrho(g)^{-1}
+\]
+ist wieder eine lineare Abbildung.
+Das Bild eines Vektors $v$ unter $P\varrho(g)^{-1}$ liegt in $W$ und wird
+von $\varrho(g)$ wieder in $W$ abgebildet.
+Da $W$ ein Unterraum von $V$ ist, ist somit $P'v\in W$.
+
+Für Vektoren $w\in W$ hat $P$ die Eigenschaft $Pw=w$.
+Darau berechnet man
+\[
+P'w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) P\varrho(g)^2{-1}w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) \varrho(g)^2{-1}w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+w
+=
+w.
+\]
+Somit ist $P'$ eine Projektion $P^{\prime 2}=P'$ auf $W$.
+
+Die Projektion $P'$ vertauscht aber zusätzlich mit der Darstellung, wie
+wir jetzt nachrechnen wollen.
+Es ist zu zeigen, dass $P'\varrho(h) = \varrho(h)P'$ für alle
+Gruppenelemente $h\in G$.
+Da die Multiplikation $g\mapsto hg$ eine Permutation der Gruppenelemente
+ist, gilt auch
+\begin{align*}
+\varrho(h)P'\varrho(h)^{-1}
+&=
+\varrho(h)
+\biggl(\frac{1}{|G|}\sum_{g\in G} \varrho(g)P\varrho(g)^{-1}\biggr)
+\varrho(h)^{-1}
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho(hg)P\varrho(hg)^{-1}
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho(g)P\varrho(g)^{-1}
+=
+P'.
+\end{align*}
+Durch Multiplikation mit $\varrho(h)$ von rechts ergibt sich die Behauptung.
+
+Somit ist $P'$ eine Projektion von $V$ auf $W$, die mit der Darstellung
+vertauscht.
+Der Kern von $P'$ ist $W'=\ker P'$ ist ebenfalls invariant, denn
+\[
+v\in\ker P'
+\quad\Rightarrow\quad
+P'
+\varrho(g)v
+=
+\varrho(g)P'v
+=
+\varrho(g)0
+=
+0
+\quad\rightarrow\quad
+\varrho(g)v
+\in \ker P'.
+\]
+Es folgt, dass $V=W\oplus W'$ eine komplementäre Zerlegung von $V$ in
+invariante Unterräume ist.
+\end{proof}
+
+Das Argument kann analog auch für eine lokalkompakte topologische Gruppe
+durchgeführt werden.
+Die Eigenschaft der Mittelbarkeit zeigt also, dass zu einer Unterdarstellung
+immer auch eine komplementäre Darstellung existiert.
+Da die reguläre Darstellung immer die triviale Darstellung auf dem
+eindimensionalen Unterraum der konstanten Funktionen als invarianten
+Unterraum enthält, muss es einen komplementären invarianten Unterraum $W'$
+geben derart, dass $\mathbb{C}[G]=\mathbb{C}\oplus W'$ ist.
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:abbmittel}
+Seien $\varrho_i\colon G\to \operatorname{GL}(V_i)$ zwei irreduzible
+Darstellungen von $G$ und $f\colon V_1\to V_2$ eine lineare Abbildung.
+Setze
+\[
+f'
+=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho_2(g)^{-1}\circ f \circ \varrho_1(g).
+\]
+Dann ist $f'$ eine lineare Abbildung, die mit den Darstellungen vertauscht
+und für die gilt:
+\begin{enumerate}
+\item Wenn die beiden Darstellungen nicht isomorph sind, dann ist $f'=0$.
+\item Wenn $V_1=V_2$ und $\varrho_1=\varrho_2$, dann ist $f'=\frac1n\tr f$
+mit $n=\dim V_1$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir rechnen zunächst nach, dass $f'$ mit den Darstellungen vertauscht.
+Dazu berechnen wir
+\begin{align*}
+\varrho_2(h)^{-1}f'\varrho_1(h)
+&=
+\varrho_2(h)^{-1}
+\biggl(
+\frac{1}{|G|}
+\sum_{g\in G} \varrho_2(g)^{-1}f\varrho_1(g)
+\biggr)
+\varrho_1(h)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho_2(gh)^{-1} f \varrho_1(gh)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho_2(g)^{-1} f \varrho_1(g)
+=
+f',
+\end{align*}
+wobei im zweitletzten Schritt verwendet wurde, dass die Multiplikation
+$g\mapsto gh$ eine Permutation in der Gruppe ist, die den Mittelwert
+nicht ändert.
+Durch Multiplikation von links mit $\varrho_2(h)$ folgt jetzt
+$
+f'\varrho_1(h) = \varrho_1(h)f'
+$.
+
+Auf die lineare Abbildung $f'$ können wir jetzt das Lemma von Schur
+anwenden.
+Es besagt, dass $f'$ entweder ein Isomorphismus ist oder eine
+Nullabbildung, daraus folgt bereits 1.
+
+Für die Spur von $f'$ gilt
+\[
+\tr f'
+=
+\frac{1}{|G|}
+\sum_{g\in G} \tr\bigl(\varrho_1(g)^{-1} f\varrho_1(g)\bigr)
+=
+\frac{1}{|G|}
+\sum_{g\in G} \tr f
+=
+f.
+\]
+Andererseits sagt das Lemma von Schur, dass $f'=\lambda I_n$ sein muss.
+Die Spur davon ist $\tr f = \tr f' = \lambda \tr I_n = n\lambda$ oder
+\[
+\lambda = \frac1n \tr f
+\qquad\Rightarrow\qquad
+f' = \frac{1}{n} \tr f\cdot I_n
+\qedhere
+\]
+\end{proof}
+
+%
+% Algebraische Relationen für die Matrixelemente
+%
+\subsection{Algebraische Relationen für die Matrixelemente}
+Das Lemma von Schur hat noch mehr zu bieten.
+Man kann damit nämlich sogar über die einzelnen Matrixelemente
+einer Darstellung eine Aussage machen.
+Ist $\varrho\colon G\to \operatorname{GL}_n(\mathbb{R})$ eine 
+$n$-dimensionale Darstellung der Gruppe $G$, dann ist $\varrho(g)$
+eine $n\times n$-Matrix bestehend aus den Matrixelementen
+$(\varrho(g))_{ik}$ für $i,k=1,\dots,n$.
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:matrixnichtiso}
+Wenn die Darstellungen $\varrho_i$ nicht isomorph sind, dann gilt
+\[
+\frac{1}{|G|}
+\sum_{g} \bigl(\varrho_1(g)^{-1}\bigr)_{i\!j} \bigl(\varrho_2(g)\bigr)_{kl}
+=
+0
+\]
+für alle $i,j,k,l$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir schreiben die Resultate von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+in Matrixform.
+Die Abbildung $f$ hat die Matrixelemente $(f)_{i\!j}$.
+Die Bedingung, dass $f'=0$ ist, bedeutet, dass alle
+Matrixelemente $(f')_{il}=0$ sind.
+Ausgeschrieben
+\begin{align*}
+(f')_{il}
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho_2(g)^{-1}\bigr)_{is} (f)_{st} \bigl(\varrho_1(g)\bigr)_{tl}
+\end{align*}
+Nach 
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+ist dies immer $=0$, ganz unabhängig davon, was für Werte man für
+die Matrix $f$ einsetzt.
+Wählt man 
+\begin{equation}
+(f)_{st}
+=
+\begin{cases}
+1&\qquad\text{$s=j$ und $t=k$}\\
+0&\qquad\text{sonst},
+\end{cases}
+\qquad\text{oder}\qquad
+(f)_{st}
+=
+\delta_{s\!j}\delta_{tk}
+\label{buch:gruppen:darstellungen:eqn:fst}
+\end{equation}
+dann folgt
+\[
+0
+=
+\frac{1}{|G|}
+\sum_{g\in G} 
+\bigl(\varrho_2(g)^{-1}\bigr)_{is}
+\delta_{s\!j}
+\delta_{tk}
+\bigl(\varrho_1(g)\bigr)_{kl}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho_2(g)^{-1}\bigr)_{i\!j}
+\bigl(\varrho_1(g)\bigr)_{kl}.
+\]
+Damit ist die Aussage bewiesen.
+\end{proof}
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:matrixiso}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine $n$-dimensionale
+irreduzible Darstellung von $G$.
+Dann gilt
+\[
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g^{-1})\bigr)_{i\!j} 
+\bigl(\varrho(g))_{kl}
+=
+\frac1n
+\delta_{il}\delta_{jk}
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Mit der gleichen Notation wie im Beweis von
+Satz~\ref{buch:gruppen:darstellungen:satz:matrixnichtiso}
+schreiben wir das Resultat 2.~von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+in Matrixform.
+Es ist $f'=\frac1n \tr f$ und somit
+\begin{equation}
+(f')_{il}
+=
+\frac1n\tr(f)\delta_{il}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho(g^{-1})\bigr)_{is}
+f_{st}
+\bigl(\varrho(g)\bigr)_{tl}.
+\label{buch:gruppen:darstellungen:eqn:ff}
+\end{equation}
+Auch hier kann wieder $f$ beliebig gewählt werden.
+Mit der Wahl
+\eqref{buch:gruppen:darstellungen:eqn:fst}
+$\tr f=\delta_{jk}$
+wird
+
+\eqref{buch:gruppen:darstellungen:eqn:ff} zu
+\[
+\frac1n \delta_{jk} \delta_{il}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho(g^{-1})\bigr)_{is}
+\delta_{s\!j}
+\delta_{tk}
+\bigl(\varrho(g)\bigr)_{tl}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g^{-1})\bigr)_{i\!j}
+\bigl(\varrho(g)\bigr)_{kl},
+\]
+wie behauptet.
+\end{proof}
+
+Beide Sätze besagen, dass ein ähnliches Konstrukt wie das Skalarprodukt
+angewendet auf zwei verschiedene Matrixelemente immer entweder $0$
+ergibt oder den Wert $1/n$.
+Das Konstrukt, von dem hier die Rede ist, ist die Bildung
+\[
+(u,v)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+u(g^{-1}) v(g).
+\]
+Dies ist jedoch nicht das Skalarprodukt von Funktionen auf der
+Gruppe.
+Dazu müsste $u(g^{-1})=\overline{u(g)}$ sein, was im Allgemeinen
+nicht zutrifft.
+Wenn wir aber später zeigen können, dass es im Vektorraum ein Skalarprodukt
+gibt derart, dass die Matrizen der Darstellung unitär sind, dann ist
+$\bigl(\varrho(g^{1})\bigr)_{ik} = \overline{\varrho(g)_{ki}}$ und
+$(u,v)$ stimmt mit dem Skalarprodukt der Matrixelemente überein.
+
+
+%
+% Orthogonalität der Charaktere
+%
+\subsection{Orthogonalität der Charaktere}
+Am Ende des vorangegangenen Abschnitts haben wir angedeutet, dass
+die algebraischen Relationen zwischen den Matrixelementen einer
+Darstellung fast wie Orthogonalitätsrelationen aussehen, dass die
+Summer aber nicht das Skalarprodukt von Funktionen auf der Gruppe ist.
+Charaktere von irreduziblen Darstellungen sind aber speziell und damit
+ist es möglich, für Charaktere die folgenden Orthogonalitätsrelationen
+zu beweisen.
+
+\begin{satz}
+Ist $\chi$ der Charakter einer $n$-dimensionalen irreduziblen Darstellung,
+dann ist $\langle \chi,\chi\rangle = 1$.
+Sind $\chi_1$ und $\chi_2$ Charaktere von nichtisomorphen
+irreduziblen $n_1$- bzw.~$n_2$-dimensionalen Darstellungen, dann 
+ist $\langle \chi_1,\chi_2\rangle = 0$.
+\end{satz}
+
+\begin{proof}[Beweis]
+
+\end{proof}
 
 %
 % Orthogonale und unitäre Darstellungen
@@ -573,11 +1143,7 @@ ist $f-\lambda I=0$ und damit $f=\lambda I$.
 \subsection{Orthogonalität der Matrixelemente}
 
 %
-% Charakter einer Darstellung
+% Zerlegung der regulären Darstellung
 %
-\subsection{Charakter einer Darstellung}
+\subsection{Zerlegung der regulären Darstellung}
 
-%
-% Zerlegung einer Darstellung in irreduzible Darstellungen
-%
-\subsubsection{Zerlegung einer Darstellung in irreduzible Darstellungen}
