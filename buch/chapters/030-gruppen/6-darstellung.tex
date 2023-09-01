@@ -642,6 +642,7 @@ $.
 \end{proof}
 
 \begin{satz}
+\label{buch:gruppen:darstellung:satz:charg-1}
 Sei $\varrho$ eine $n$-dimensionale Darstellung einer endlichen Gruppe,
 dann gilt
 $\chi_\varrho(g^{-1}) = \overline{\chi_\varrho(g)}$.
@@ -963,12 +964,13 @@ $(\varrho(g))_{ik}$ für $i,k=1,\dots,n$.
 \begin{satz}
 \label{buch:gruppen:darstellungen:satz:matrixnichtiso}
 Wenn die Darstellungen $\varrho_i$ nicht isomorph sind, dann gilt
-\[
+\begin{equation}
 \frac{1}{|G|}
 \sum_{g} \bigl(\varrho_1(g)^{-1}\bigr)_{i\!j} \bigl(\varrho_2(g)\bigr)_{kl}
 =
 0
-\]
+\label{buch:gruppen:darstellungen:eqn:matrixnichtiso}
+\end{equation}
 für alle $i,j,k,l$.
 \end{satz}
 
@@ -1030,7 +1032,7 @@ Damit ist die Aussage bewiesen.
 Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine $n$-dimensionale
 irreduzible Darstellung von $G$.
 Dann gilt
-\[
+\begin{equation}
 \frac{1}{|G|}
 \sum_{g\in G}
 \bigl(\varrho(g^{-1})\bigr)_{i\!j} 
@@ -1038,7 +1040,8 @@ Dann gilt
 =
 \frac1n
 \delta_{il}\delta_{jk}
-\]
+\label{buch:gruppen:darstellungen:eqn:matrixiso}
+\end{equation}
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -1129,7 +1132,67 @@ ist $\langle \chi_1,\chi_2\rangle = 0$.
 \end{satz}
 
 \begin{proof}[Beweis]
+Für den Charakter wissen wir aus
+Satz~\ref{buch:gruppen:darstellung:satz:charg-1}, dass
+$\chi(g^{-1}) = \overline{\chi(g)}$.
+Dies bedeutet, dass wir in der Formeln
+\eqref{buch:gruppen:darstellungen:eqn:matrixnichtiso}
+und
+\eqref{buch:gruppen:darstellungen:eqn:matrixiso}
+die Inverse durch die komplexe Konjugation ersetzen können,
+sofern wir die Formenl nur brauchen, um die Spur zu berechnen.
 
+Das Skalarprodukt ist
+\begin{align*}
+\langle \chi_1,\chi_2\rangle
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\overline{\chi_1(g)}
+\chi_2(g)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\chi_1(g^{-1})
+\chi_2(g)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\tr \varrho_1(g^{-1})
+\cdot
+\tr \varrho_2(g)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\biggl(
+\sum_{i}
+\bigl(\varrho_1(g^{-1})\bigr)_{ii}
+\biggl)
+\cdot
+\biggl(
+\sum_{k}
+\bigl(\varrho_2(g)\bigr)_{kk}
+\biggl)
+\\
+&=
+\sum_{i,k}
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho_1(g^{-1})\bigr)_{ii}
+\bigl(\varrho_2(g)\bigr)_{kk}.
+\intertext{Für nicht isomorphe Darstellungen verschwinden alle Summen
+über die Gruppe und somit ist in diesem Fall $\langle \chi_1,\chi_2\rangle=0$.
+Falls $\varrho_1=\varrho_2$ ist, also im Fall $\chi_1=\chi_2$ kann 
+Formel~\ref{buch:gruppen:darstellungen:eqn:matrixiso}
+mit $j=i$ und $l=k$ verwendet werden:}
+&=
+\sum_{i,k}
+\frac1n\delta_{ik}\delta_{ik}
+=
+1.
+\end{align*}
+Damit ist die Orthonormierung der Charaktere bewiesen.
 \end{proof}
 
 %
