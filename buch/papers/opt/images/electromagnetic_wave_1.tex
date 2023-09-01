@@ -1,0 +1,29 @@
+%
+% electromagnetic_wave.tex -- Bild zum Thema Optische Fourier-Transformation <opt>
+%
+% (c) 2023 Marco Niederberger, Yanick Schoch; OST Ostschweizer Fachhochschule
+%
+
+% Inspiration: https://wiki.physik.uzh.ch/cms/latex:tikz:electromagnetic_wave
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{tikz,tikz-3dplot}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usepackage{xcolor}
+
+\pgfplotsset{compat=1.16}
+\def\skala{1}
+
+\input{opt_common.tex}
+\input{electromagnetic_wave_common.tex}
+
+\begin{document}
+\tdplotsetmaincoords{70}{130}
+
+\begin{tikzpicture}[>=latex, thick, scale=\skala, tdplot_main_coords]
+    % Die Breite des generierte PDFs berechnet sich aus b = cos(130 - 90) * (5*pi/2*1.01*1.1 + 1.8) = 80.63mm
+    \electromagneticWave
+\end{tikzpicture}
+\end{document}

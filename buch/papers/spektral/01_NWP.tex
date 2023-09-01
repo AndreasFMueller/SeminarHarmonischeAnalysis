@@ -9,6 +9,9 @@
 \section{Numerische Wettervorhersage
 \label{spektral:section:nwp}}
 \rhead{Numerische Wettervorhersage}
+Die numerische Wettervorhersage ist ein entscheidendes Instrument in der modernen Meteorologie. Durch die Anwendung von mathematischen Gleichungen, physikalischen Gesetzen und Computermodellen ermöglicht sie die Vorhersage von zukünftigen Wetterbedingungen. Hierbei werden umfangreiche Daten wie Temperatur, Luftdruck, Feuchtigkeit und Windgeschwindigkeit von verschiedenen Messstationen weltweit gesammelt und in hochentwickelte Computermodelle eingespeist.
+
+In diesem Abschnitt werden wir die Gittermodelle und die spektrale Modelle anschauen. Im Abschnitt \ref{spektral:subsection:spektralemodelle} werden wir die spektrale Modelle an die Wellengleichung anwenden, um die Vorteile solchen modellen zu zeigen.
 
 \subsection{Finite-Difference-Gittermodelle
 \label{spektral:subsection:gittermodelle}}
@@ -40,18 +43,16 @@ Zentraledifferenz
 \end{equation}
 
 Üblicherweise werden Diskretisierungsgitter gewählt, die mit den Koordinatengittern übereinstimmen.
-In einem zweidimensionalen kartesischen Koordinatensystem stellen die Gitterzellen die Rechtecke dar.
+In einem zweidimensionalen kartesischen Koordinatensystem die Gitterzellen sind die Rechtecke.
 \pagebreak
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=120pt]{papers/spektral/images/forwarddiff.png}
-	\caption{Vorwartsdifferenz}
+	\includegraphics[height=180pt]{papers/spektral/images/forwarddiff.png}
+	\caption{Vorwärtsdifferenz}
     \label{spektral:fig:gittermodelle}
 \end{figure}
 
-Auf der Abbildung \ref{spektral:fig:gittermodelle} sieht man, dass für eine 1d-Funktion werden viele Punkte für die Vorheraussage benötigt. In der 3-Dimensionen es sind die Millionen von Datenpunkten und, damit man eine gute Wetterprognose mit der Methode machen kann, werden höhe Rechnungsleistungen benötigt.
-
-Ein Optimierung ist, die Prognosenfunktion auf eine andere Art zu aproximieren.
+Auf der Abbildung \ref{spektral:fig:gittermodelle} sieht man, dass für eine Funktion mit einer Variable werden viele Punkte für die Vorhersage benötigt. Für die Funktion der 3 Variablen werden die Millionen von Datenpunkten und, damit man eine gute Wetterprognose mit der Methode machen kann, werden höhe Rechnungsleistungen benötigt.
 
 \subsection{Was sind die spektrale Modelle?
 \label{spektral:subsection:spektralemodelle}}
@@ -86,7 +87,7 @@ Dies trägt zur Erzielung physikalisch konsistenterer Simulationen bei.
 \item
 \textbf{Effiziente Modellierung periodischer Phänomene:} Spektrale Modelle sind gut geeignet zur Modellierung periodischer Phänomene, da sie periodische Signale genau erfassen können, ohne hohe räumliche Auflösung überall zu erfordern.
 \item
-\textbf{Reduzierter Diffusionseffekt (Rauschen resistent):} Im Vergleich zu einigen gitterbasierten Methoden, die zur Stabilisierung numerischer Instabilitäten künstliche Diffusion einführen müssen, weisen spektrale Modelle oft einen geringeren Diffusionseffekt auf, was zu genaueren und detaillierteren Simulationen führen kann.
+\textbf{Reduzierter Diffusionseffekt (Rauschresistent):} Im Vergleich zu einigen gitterbasierten Methoden, die zur Stabilisierung numerischer Instabilitäten künstliche Diffusion einführen müssen, weisen spektrale Modelle oft einen geringeren Diffusionseffekt auf, was zu genaueren und detaillierteren Simulationen führen kann.
 \item
 \textbf{Adaptivität und Flexibilität:} Spektrale Modelle können auf verschiedene Geometrien und Randbedingungen angewendet werden und sind nicht auf regelmäßige Gitterstrukturen beschränkt.
 Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
@@ -97,7 +98,7 @@ Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
 \subsection{Kugelkoordinaten
 \label{spektral:subsection:kugelkoordinaten}}
 
-Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden. Siehe Abbildung \ref{spektral:fig:sphericalcoords}
+Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden (siehe Abbildung \ref{spektral:fig:sphericalcoords}).
 
 \begin{figure}[h]
 	\centering

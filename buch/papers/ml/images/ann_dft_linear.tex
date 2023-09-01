@@ -1,0 +1,63 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{ifthen}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.5}
+\newboolean{draft}
+\setboolean{draft}{false}
+% Input layer neurons'number
+\newcommand{\inputnum}{4} 
+% Hidden layer neurons'number
+\newcommand{\hiddennum}{4}  
+% Output layer neurons'number
+\newcommand{\outputnum}{4} 
+
+\tikzset{%
+  every neuron/.style={
+    circle,
+    draw,
+    minimum size=7 mm
+  },
+  neuron missing/.style={
+    draw=none, 
+    scale=3,
+    text height=0.333cm,
+    yshift=0.5 mm,
+    execute at begin node=\color{black}$\vdots$
+  },
+}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\foreach \m/\l [count=\y] in {1,2,3, missing,4}
+  \node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y*0.75) {};
+
+\foreach \m [count=\y] in {1,2,3,missing,4}
+  \node [every neuron/.try, neuron \m/.try ] (output-\m) at (2,2.5-\y*0.75) {};
+
+\foreach \l [count=\i] in {1,2,n,N}{
+   \draw [<-] (input-\i) -- ++(-0.5,0);
+   \node [] at (input-\i) {\small$x_\l$};
+}
+
+\foreach \l [count=\i] in {1,2,k,N}{
+  \draw [->] (output-\i) -- ++(0.5,0);
+  \node [] at (output-\i) {$a_\l$};
+}
+
+\foreach \i in {1,...,4}
+  \foreach \j in {1,...,4}
+    \draw [->] (input-\i) -- (output-\j) node (conn-io-\i\j) {};
+\node [align=center,above,xshift=-1.5 cm] at (conn-io-11) {$\frac{2}{N}\cos(\omega_k n)$};
+\end{tikzpicture}
+\end{document}

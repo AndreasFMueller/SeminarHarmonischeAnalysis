@@ -6,8 +6,7 @@
 
 pdflatex = pdflatex
 
-all: images
-images: images/ann_simple.pdf images/ann_simple_1D.pdf
+images: images/ann_simple.pdf images/ann_simple_1D.pdf images/ann_dft_linear.pdf
 
 %.pdf: %.tex
 	$(pdflatex) $?
