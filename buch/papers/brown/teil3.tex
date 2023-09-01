@@ -14,17 +14,17 @@ Formal kann eine SDGL folgendermassen notiert werden:
 
 \begin{equation}
 	\label{brown:SDGL:whiteNoise}
-	\dot{X}(t) = b(X(t)) + B(X(t))\xi(t) \quad (t>0)
+	\dot{X}(t) = a(X(t)) + b(X(t))\xi(t) \quad (t>0)
 \end{equation}
 
-In diesem Fall ist die Störung durch $ m $-dimensionales weisses Rauschen $ \xi(t) $ modelliert. $ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich jede Dimension des Rausches auf die entsprechenden inneren Zustände auswirkt. Die Dreieckbereiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander. $ b $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand des Systems. Alles in allem beschreiben $ b $ und $ B $ die Dynamik des Systems. 
+In diesem Fall ist die Störung durch $ m $-dimensionales weisses Rauschen $ \xi(t) $ modelliert. $ B $ ist die sogenannte Dispersionsmatrix mit der Dimension $ n $ x $ m $. Sie beschreibt, wie sich die Störung auf die unterschiedlichen inneren Zustände des Systems auswirkt. Dabei beschreibt die Diagonale der Matrix wie stark sich jede Dimension des Rausches auf die entsprechenden inneren Zustände auswirkt. Die Dreieckbereiche der Matrix beschreiben die Beeinflussung der Dimensionen untereinander. $ a $ ist der Drift-Vektor und beschreibt die erwartete Veränderung für jeden inneren Zustand des Systems. Alles in allem beschreiben $ a $ und $ B $ die Dynamik des Systems. 
 
 \begin{align*}
-	b = 
+	a = 
 	\begin{pmatrix}
-		b_{1} \\
+		a_{1} \\
 		\vdots \\
-		b_{m}\\ 
+		a_{m}\\ 
 	\end{pmatrix}
 	, \quad
 	B = 
@@ -39,13 +39,13 @@ In diesem Fall ist die Störung durch $ m $-dimensionales weisses Rauschen $ \xi
 Da weisses Rauschen $ \xi(t) $ formal als die Ableitung vom Wiener-Prozess $ \frac{dW(t)}{dt} $ modelliert werden kann, ergibt sich folgende Form:
 
 \begin{equation}
-	\frac{dX(t)}{dt} = b(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
+	\frac{dX(t)}{dt} = a(X(t)) + B(X(t)) \frac{dW(t)}{dt} \quad (t>0)
 \end{equation}
 
 Nun sollte noch mit $ dt $  multipliziert werden, da die Gleichung sonst impliziert, dass man weisses Rauschen weiter differenzieren kann. Diese Form nennt sich auch ``Itō-Form'' und ist vielfach ein erster Schritt im weiteren Umgang mit SDGLs.
 
 \begin{equation}
-	dX(t) = b(X(t)) dt + B(X(t)) dW(t)
+	dX(t) = a(X(t)) dt + B(X(t)) dW(t) \quad (t>0)
 \end{equation}
 
 Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter differenzierbar. Dies ist den Eigenschaften des Wiener-Prozesses geschuldet. Wie in \ref{brown:Rauschen:RandomWalkWiener} dargelegt, entspricht die Differenzierung im Frequenzbereich einer Multiplikation mit der Frequenz $ jwt $. Differenziert man nun einen sonst schon konstantes gleichmäßig verteiltes Frequenzspektrum, vergrößert man nur die Amplituden, was sich im Zeitbereich durch ein zunehmend unstetigeres Signal äussert.
@@ -97,7 +97,7 @@ Eines der wichtigsten Werkzeuge, um mit SDGLs umzugehen, ist die sogenannte \tex
 Hier ein Beispiel einer SDGL für einen Prozess X(t) in \textit{Itō-Form}:
 
 \begin{equation}
-	dX = a(X,t) dt + b(X,t) dW
+	dX = a(X,t) dt + B(X,t) dW
 \end{equation}
 
 Angenommen, man h eine Funktion f(X,t), wobei X die Lösung der obigen SDGL darstellt, dann kann die Änderung von $ f $ in Bezug auf $ X $ und $ t $ wie folgt geschrieben werden:
@@ -110,10 +110,10 @@ Angenommen, man h eine Funktion f(X,t), wobei X die Lösung der obigen SDGL dars
 Die Itō-Formel erlaubt es uns, solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten. Das Einsetzen der SDG in das Ito-Lemma ergibt:
 
 \begin{equation}
-	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + b dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (b^2 dt)
+	df = \frac{\partial f}{\partial t} dt + \frac{\partial f}{\partial X} (a dt + B dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 dt)
 \end{equation}
 
-Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und $ b(X,t) $ den \textit{Diffusions-Term}, also den stochastischen Teil der SDGL.
+Die Funktion $ a(X,t) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und $ B(X,t) $ den \textit{Diffusions-Term}, also den stochastischen Teil der SDGL.
 
 \subsection{Fazit\label{brown:fazit}}
 
