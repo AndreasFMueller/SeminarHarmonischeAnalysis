@@ -41,7 +41,7 @@ mit $f_s$ als Abtastfrequenz \cite{sonogramm:digsig}.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/rect_freq.pdf}
-    \caption{Frequenzspektrum eines ein Sekunden langes Rechteckfensters mit Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
+    \caption{Frequenzspektrum eines ein Sekunden langen Rechteckfensters mit einer Abtastfrequenz von 20 Hz. Die Nulldurchgänge sind jeweils bei ganzzahligen Vielfachen
     von $1/T$.
     \label{sonogramm:rectfreq}
     }
@@ -91,7 +91,7 @@ mit $T_w = 1$ s, was eine Frequenzauflösung von maximal 1 Hz ergibt.
 Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau, oder sogar überhaupt nicht
 bestimmt werden.
 Wieso das so ist, lässt sich in der Zeit zeigen.
-Werden zwei Sinus mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
+Werden zwei Sinusse mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
 was im Fall von \eqref{sonogramm:eq:twoHarmPhi}
 \begin{equation}
     s(t) = \sin(2\pi 3.45 t ) + \sin (2\pi 4.45 t) = 2 \sin\left(2 \pi \frac{3.45 + 4.45}{2}t\right)
@@ -108,7 +108,7 @@ Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit 
 Sinusfenster multipliziert wurde. 
 Ein Sinusfenster der Länge T ist ein 2T-periodischer Sinus, welcher nach $T$ abgeschnitten wird.
 Die Informationen über die eigentlichen Frequenzen müssen also in den Phasensprüngen bei den 
-Nulldurchgänen des Kosinus sein
+Nulldurchgängen des Kosinus sein.
 Geht $\varphi$ von $\pi$ gegen 0 kommt der Phasensprung ins Segment und die eigentlichen Frequenzen
 können immer besser unterschieden werden.
 
@@ -118,7 +118,7 @@ zuverlässige Resultate erzielen möchte.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/RectWinHarmEx.pdf}
-    \caption{Frequenzspektrum Sinus mit Frequenz 3.45 Hz, welcher mit einem T langen 
+    \caption{Frequenzspektrum eines Sinus mit Frequenz 3.45 Hz, welcher mit einem T langen 
     Rechteckfenster zugeschnitten wurde.
     \label{sonogramm:leakageDemo}
     }
@@ -137,8 +137,8 @@ zuverlässige Resultate erzielen möchte.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/twoharmphasedifff.pdf}
-    \caption{Frequenzspektren von \eqref{sonogramm:eq:twoHarmPhi} in abhängigkeit von $\varphi$.
-    Je nach Phasenunterschied der beiden Sinuse, lassen sich die Frequenzen nicht mehr unterscheiden.
+    \caption{Frequenzspektren von \eqref{sonogramm:eq:twoHarmPhi} in Abhängigkeit von $\varphi$.
+    Je nach Phasenunterschied der beiden Sinusse lassen sich die Frequenzen nicht mehr unterscheiden.
     \label{sonogramm:freqdiffdemo}
     }
 \end{figure}
@@ -171,16 +171,16 @@ Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteckfenster einen
 Peak bei $f = 0$ hat, aber mit $f \rightarrow \infty$ schneller
 gegen 0 geht.
 Ein Mass wie schnell das Frequenzspektrum einer Funktion gegen 0 geht, liefert
-die $n$-mal steige Differenzierbarkeit der Funktion.
+die $n$-mal stetige Differenzierbarkeit der Funktion.
 Ist eine Funktion $n$-mal stetig differenzierbar gilt im Frequenzspektrum
 \begin{equation}
     x^{(n)}(t) \xrightarrow{\mathscr{F}} (i f)^n X(f).
 \end{equation}
-Da $(i f)^n X(f)$ Rücktransformierbar ist, gilt
+Da $(i f)^n X(f)$ rücktransformierbar ist, gilt
 \begin{equation}
     |(i f)^n X(f)| < \infty \quad \forall -\infty \leq f \leq \infty,
 \end{equation}
-was zur Folge hat, dass $X(f)$ bei grösser werdenden $f$ mit mindestens $1/f^n$ gegen 
+was zur Folge hat, dass $X(f)$ bei grösser werdendem $f$ mit mindestens $1/f^n$ gegen 
 0 gehen muss.
 
 \subsection{Gauss-Fenster}
@@ -219,7 +219,7 @@ Anwendung optimieren.
 \begin{figure}
     \centering
     \includegraphics{papers/sonogramm/images/gauss_time.pdf}
-    \caption{Gauss Fenster mit $L_w = 20$ mit unterschiedlichen $\alpha$.
+    \caption{Gauss-Fenster mit $L_w = 20$ mit unterschiedlichen $\alpha$.
     \label{sonogramm:gausstime}
     }
 \end{figure}
@@ -230,7 +230,6 @@ Anwendung optimieren.
     \caption{Frequenzspektrum der Gauss-Fenster von Abbildung \ref{sonogramm:gausstime}
     mit einer Abtastfrequenz von 20 Hz. Zum Vergleich ist in schwarz das Spektrum eines Rechteckfenster 
     von der selben Länge.
-    von $1/T$.
     \label{sonogramm:gaussfreq}
     }
 \end{figure}
