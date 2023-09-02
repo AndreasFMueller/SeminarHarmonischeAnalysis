@@ -31,9 +31,8 @@ der Integraltransformationen als Rücktransformation des Produktes der
 beiden Mellin-Transformierten der zu korrelierenden Funktionen beschreiben, 
 völlig analog zum Vorgehen aus Abschnitt \ref{mellin:section:teil1}, 
 das im ersten Beispiel auf die Lösung \eqref{mellin:x0ft} geführt hat, 
-mit der einzigen Ausnahme, dass \emph{spiegeln} im Kontext der Gruppe 
+mit der einzigen Ausnahme, dass {\em spiegeln} im Kontext der Gruppe 
 $(\mathbb{R^+},\cdot)$ die multiplikative Inversion des Arguments bedeutet.
-
 \begin{align*}
     (f \star g)(\sigma ) 
     &= \int_\mathbb{R^+} 
@@ -45,8 +44,8 @@ $(\mathbb{R^+},\cdot)$ die multiplikative Inversion des Arguments bedeutet.
 Somit lautet die Lösung des Registrierungsproblems mathematisch ausgedrückt
 \begin{equation}
     s 
-    = \argmax\limits_{s \in \mathbb{R^+}}
-    {\mathcal{M}^{-1}(\hat{f}(u) \cdot \overline{\hat{g}(u)})}
+    = \argmax\limits_{\sigma \in \mathbb{R^+}}
+    \mathcal{M}^{-1}(\hat{f}(u) \cdot \overline{\hat{g}(u)})(\sigma)
     \label{mellin:smt}
 \end{equation}
 Welche identisch ist zur Lösung für $x_0$ des ersten Registrierungsproblems, 
@@ -54,8 +53,73 @@ nur dass anstatt Fourier hier die Mellin-Transformation zum Einsatz kommt.
 
 \subsection{Quantitative Bestimmung des Gewinns der Transformationsmethode
 \label{mellin:subsection:gewinn}}
-% Python Vgl Rechenzeiten
-% einfache Funktionen finden
-% Fast Mellin-Transform? Subst e^x in FFT?
+Das erste Registrierungsproblem mit den zueinander verschobenen Funktionen 
+lässt sich sehr einfach in Python mit dem Modul {\em numpy} lösen. 
+Dabei werden die beiden Funktionen zuerst diskretisiert indem die Funktionswerte 
+für gleichmässig verteilte, diskrete $x$-Werte in ein Array gepackt werden.
+Will man diese beiden Datenarrays nun für verschiedene Verschiebungswerte 
+korrelieren, stellt {\em numpy} dafür die Funktion convolve(f,g) zur 
+Verfügung. 
+Durch Spiegeln der zweiten Funktion, was für das Array eine Umkehrung der 
+Indizierung bedeutet, berechnet die Funktion convolve() also die 
+gewünschte Kreuzkorrelation in Form eines weiteren Arrays aus, dessen 
+Maximum gesucht ist und sehr einfach über beispielsweise Sortieralgorithmen 
+gefunden werden kann. 
+Die Funktion convolve() ist dabei im Hintergrund gemäss der diskreten 
+Faltungsformel
+\[
+    (a \ast v)_n = \sum_{m = -\infty}^{\infty} a_m v_{n-m}
+\]
+in hoch optimiertem C-Code implementiert.
+Für die in diesem Kapitel behandelte Transformationsmethode zur Berechnung der 
+Korrelation sind natürlich ebenfalls Funktionen verfügbar. 
+Das Modul {\em scipy.signal} bietet die Funktion fftconvolve(f,g), die die 
+übergebenen Datenarrays zuerst über den FFT-Algorithmus 
+transformiert, sie anschliessend elementweise zusammenmultipliziert und dieses 
+resultierende Array mit dem inversen FFT-Algorithmus wieder zurücktransformiert.
+
+Mithilfe der Funktionen perf\_counter() des Moduls {\em time}, lassen sich beide 
+Wege quantitativ anhand der für die Berechnung benötigte Rechenzeit miteinander 
+vergleichen.
+Die Resultate sind dabei stark von den Arraygrösse und somit vom Grad der Auflösung 
+der Diskretisierung abhängig.
+Die Abbildung\ref{fig:mellin:zeiten} vergleicht die resultierenden Rechenzeiten 
+der beiden Methoden für vier verschiedene Auflösungen.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/mellin/images/zeiten.pdf}
+    \caption{Vgl. der Rechenzeiten verschiedener Auflösungen (linear/logarithmisch)}
+    \label{fig:mellin:zeiten}
+\end{figure}
+Wie man den Resultaten entnehmen kann, steigt die Rechenzeit der direkten Korrelation
+ab einer Auflösung von etwa 1000 Funktionswerten im gegebenen Intervall 
+$x\in \left[-5,5\right]$ explosionsartig an, während die Rechenzeit der Korrelation 
+über die FFT nur etwa linear mit der Auflösung steigt.
+Hier zeigt sich also der in Abschnitt\ref{mellin:section:teil1} erwähnte enorme 
+Rechenaufwand der direkten Korrelationsmethode.
+Für hohe Auflösungen die eine Anwendung meistens erfordert ist die Transformationsmethode 
+also unerlässlich.
+
+Um auch das zweite Registrierungsproblem rechnerisch lösen zu können, brauchen wir also 
+eine diskrete Implementierung der Mellin Transformation.
+% https://www.researchgate.net/publication/224736063_Discrete_Mellin_transform_for_signal_analysis
+Die Relationsgleichungen aus dem vorangehenden Abschnitt erlauben es uns aber, dafür 
+erneut die FFT zu verwenden.
+Das grosse Problem dabei ist aber, dass die Modifikationen, die die Fourier-Transformation
+in die Mellin-Transformation überführen, im Argument der Funktion durchgeführt werden 
+müssen.
+Bei den Datenarrays sind aber nur die Funktionswerte gegeben, und nicht die Funktion 
+selbst, was es schwierig macht die neuen Funktionswerte zu bestimmen.
+Eine Lösung dafür wäre eine Interpolation durch die gegebenen Punkte um eine 
+Funktionsvorschrift zu bestimmen, mit der die nötigen Verknüpfungen gemacht werden 
+können um die FFT in eine MFT überzuführen.
+
+% Ein anderer Lösungswerg führt über mathematische Software wie {\em Mathematica}.
+% Dieser funktioniert wenn, wie in unserem 
+
+
+
+% Fast Mellin-Transform? Subst e^x in FFT? ---> nicht möglich wenn nur Datenpunkte bekannt (y-Werte)
+% das Überführen der FFT in eine MFT funktioniert nur wenn die Funktionen bekannt sind (Interpolation?)
 
 
