@@ -10,9 +10,9 @@
 \label{mellin:section:teil1}}
 \rhead{Motivation}
 
-Folgendes Kapitel orientiert sich zu Beginn stark am Kapitel 2 von 
+Folgendes Kapitel orientiert sich zu Beginn stark am Kapitel 2 von
 \cite{mellin:mendezmueller-book}.
-\smallskip
+\medskip
 
 Es sei folgendes Registrierungsproblem gegeben: Wir haben zwei Funktionen 
 $f(x)$ und $g(x)$, welche bis auf eine Verschiebung identisch sind 
@@ -41,24 +41,23 @@ Prinzip bleibt hierbei dasselbe.
 
 Die Aufgabe besteht nun darin, bei gegebenen Funktionen $f(x)$ und $g(x)$ 
 die unbekannte Verschiebung $x_0$ zu ermitteln. 
-Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt 
-\footnote{Siehe auch Kapitel \ref{buch:chapter:skalarprodukte}}, 
+Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt,
+% \footnote{Siehe auch Kapitel \ref{buch:chapter:skalarprodukte}}
 welches ein quantitatives Mass für die Ähnlichkeit zweier Funktionen 
-liefert \footnote{Anmerkung: Die beiden Funktionen müssen so geschaffen 
-sein, dass das Skalarprodukt konvergiert}.
+liefert, sofern es konvergiert.
 \begin{equation}
     \langle f,g \rangle 
-    = \int \overline{f(x)} \cdot g(x) \,\mathrm{d}x
+    = \int \overline{f(x)} \cdot g(x) \,dx
     \label{mellin:skalaprodukt}
 \end{equation}
-Der Wert den das Skalarprodukt liefert ist genau dann am grössten, wenn die 
+Der Wert, den das Skalarprodukt liefert, ist genau dann am grössten, wenn die 
 beiden Funktionen identisch sind.
 Wir lassen also eine Verschiebung der zweiten Funktion zu und ermitteln, 
 für welche Verschiebung das Skalarprodukt maximal wird.
 Dies führt auf die Kreuzkorrelation
 \begin{equation}
     (f \star g)(\tau) 
-    = \int_\mathbb{R} f(x) \cdot g(x-\tau)\,\mathrm{d}x,
+    = \int_\mathbb{R} f(x) \cdot g(x-\tau)\,dx,
     \label{mellin:kreuzkorrelation+}
 \end{equation}
 die selber eine Funktion der Verschiebung $\tau$ ist. 
@@ -86,26 +85,28 @@ analytisch berechnen lässt (in Anwendungen generell nicht der Fall) eine
 ziemlich rudimentäre Methode, die mit sehr grossem Rechenaufwand verbunden 
 ist, da für jeden Wert der Verschiebung $\tau$ ein Integral berechnet 
 werden soll.
-Die effizientere Lösung bietet die Fouriertheorie.
+Die effizientere Lösung bietet die Fourier-Theorie.
 
 Durch Spiegeln von $g(x) \rightarrow \check{g}(x)$ verwandelt sich die 
-Korrelation in eine \emph{Faltung}.
-Das Faltungstheorem der Fouriertheorie lässt uns aus der Faltung im 
+Korrelation in eine {\em Faltung}.
+Das Faltungstheorem der Fourier-Theorie lässt uns aus der Faltung im 
 Ortsraum eine Multiplikation im Frequenzraum machen.
-Die Fouriertransformierte der gespiegelten Funktion 
+Die Fourier-Transformierte der gespiegelten Funktion 
 $\check{g}(x) = {g}(-x)$ ist dabei die konjugiert-komplexe 
-Fouriertransformierte von $g(x)$:
+Fourier-Transformierte von $g(x)$:
 $\overline{\mathcal{F}\{g \}} = \overline{\hat{g}(\omega)}$.
 Der Faltungssatz auf die Korrelation angewendet lautet also
 \begin{equation}
-    \mathcal{F}\{(f \star g)\} 
-    = \mathcal{F}\{f \} \cdot \overline{\mathcal{F}\{g \}}
+    \mathcal{F}(f \star g)
+    = \mathcal{F}(f) \cdot \overline{\mathcal{F}(g)}
+    ,
 \end{equation}
 und somit findet sich die Lösung nach \eqref{mellin:x0}
 \begin{equation}
     x_0 = 
-    \argmax\limits_{x \in \mathbb{R}}
-    {\mathcal{F}^{-1}(\hat{f}(\omega) \cdot \overline{\hat{g}(\omega)})}
+    \argmax\limits_{\tau \in \mathbb{R}}
+    \mathcal{F}^{-1}(\hat{f}(\omega) \cdot \overline{\hat{g}(\omega)})(\tau)
+    .
     \label{mellin:x0ft}
 \end{equation}
 Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen 
@@ -118,10 +119,10 @@ Transformationspaare.
 \subsection{Registrierungsproblem für skalierte Funktionen
 \label{mellin:subsection:regskal}}
 Wie im ersten Beispiel gezeigt lässt sich jenes Registrierungsproblem 
-mithilfe der Fouriertransformation elegant lösen.
+mithilfe der Fourier-Transformation elegant lösen.
 Dies hat deshalb funktioniert, weil das gestellte Problem eine 
 Verschiebung beinhaltete, also eine Addition im Argument, die der 
-Gruppenoperation der Fouriertransformation entspricht und somit 
+Gruppenoperation der Fourier-Transformation entspricht und somit 
 automatisch auf die ``normale'' Faltung der additiven reellen 
 Gruppe $(\mathbb{R},+)$ geführt hat. 
 Als nächstes wollen wir eine Variante dieses Registrierungsproblems 
@@ -130,13 +131,13 @@ anderen Faltungsformel führt.
 
 Wieder haben wir zwei Funktion $f(x)$ und $g(x)$, die zur Deckung gebracht 
 werden sollen. Dieses mal unterscheiden sie sich nur 
-über einen positiven \emph{Skalierungsfaktor} $s \in \mathbb{R^+}$ im 
-Argument gemäss Abbildung \ref{fig:mellin:f2}.
+über einen positiven Skalierungsfaktor $s \in \mathbb{R^+}$ im 
+Argument (siehe Abb. \ref{fig:mellin:f2}).
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=0.70]
     \draw[->] (-0.1,0) -- (9.5,0) coordinate[label={$x$}];
-    \draw[->] (0,-0.1) -- (0,5) coordinate[label={left:$y$}];
+    \draw[->] (5,-0.1) -- (5,5) coordinate[label={left:$y$}];
     \node at (5.4,4.4) [right, color=purple] {$\displaystyle g(x) = f(sx)$};
     \node at (2.5,2.4) [right, color=blue] {$\displaystyle f(x)$};
     \draw[color=purple,line width=1.4pt]
@@ -155,7 +156,7 @@ $\sigma$, der ursprüngliche Skalierungsunterschied der Funktionen genau
 aufgehoben wird und das Skalarprodukt
 \begin{equation}
     k(\sigma) 
-    = \int_\mathbb{R^+} f(x) \cdot g(\sigma^{-1} \cdot x)\,\mathrm{d}x
+    = \int_\mathbb{R^+} f(x) \cdot g(\sigma^{-1} \cdot x)\,dx
     \label{mellin:ksigma}
 \end{equation}
 maximal wird.
@@ -166,4 +167,4 @@ eingengangen werden soll.
 Wieder könnte man das Integral für verschiedene Werte von $\sigma$ 
 numerisch auswerten und so den richtigen Faktor zu finden. 
 Da dies aber die gleichen Probleme wie vorher beinhaltet, drängt sich die 
-Frage auf, lässt sich die Lösung auch hier über Fourieranalyse finden?
+Frage auf, ob sich die Lösung auch hier über Fourieranalyse finden lässt.
