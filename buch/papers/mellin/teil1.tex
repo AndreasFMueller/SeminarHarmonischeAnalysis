@@ -12,8 +12,7 @@
 
 Folgendes Kapitel orientiert sich zu Beginn stark am Kapitel 2 von
 \cite{mellin:mendezmueller-book}.
-Darin 
-\smallskip
+\medskip
 
 Es sei folgendes Registrierungsproblem gegeben: Wir haben zwei Funktionen 
 $f(x)$ und $g(x)$, welche bis auf eine Verschiebung identisch sind 
@@ -100,12 +99,14 @@ Der Faltungssatz auf die Korrelation angewendet lautet also
 \begin{equation}
     \mathcal{F}(f \star g)
     = \mathcal{F}(f) \cdot \overline{\mathcal{F}(g)}
+    ,
 \end{equation}
 und somit findet sich die Lösung nach \eqref{mellin:x0}
 \begin{equation}
     x_0 = 
     \argmax\limits_{\tau \in \mathbb{R}}
     \mathcal{F}^{-1}(\hat{f}(\omega) \cdot \overline{\hat{g}(\omega)})(\tau)
+    .
     \label{mellin:x0ft}
 \end{equation}
 Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen 
@@ -130,7 +131,7 @@ anderen Faltungsformel führt.
 
 Wieder haben wir zwei Funktion $f(x)$ und $g(x)$, die zur Deckung gebracht 
 werden sollen. Dieses mal unterscheiden sie sich nur 
-über einen positiven {\em Skalierungsfaktor} $s \in \mathbb{R^+}$ im 
+über einen positiven Skalierungsfaktor $s \in \mathbb{R^+}$ im 
 Argument (siehe Abb. \ref{fig:mellin:f2}).
 \begin{figure}
     \centering

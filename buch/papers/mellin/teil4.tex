@@ -21,7 +21,7 @@ dort erwähnt wurde, eben nicht ganz vollständig.
 Nun, da uns die Mellin-Transformation zur Verfügung steht, kennen wir 
 deren Faltungs- und Korrelationsintegral.
 Die Korrelation \eqref{mellin:kreuzkorrelation*} entspricht dabei bis 
-auf das zusäzliche Mass $x^{-1}$ dem Integral aus Gleichung 
+auf das zusätzliche Mass $x^{-1}$ dem Integral aus Gleichung 
 \eqref{mellin:ksigma}. 
 Dieser Faktor lässt die Extremalstellen der Korrelation jedoch unverändert 
 und findet somit den gesuchten Skalierungsfaktor $s$ unseres 
@@ -46,6 +46,7 @@ Somit lautet die Lösung des Registrierungsproblems mathematisch ausgedrückt
     s 
     = \argmax\limits_{\sigma \in \mathbb{R^+}}
     \mathcal{M}^{-1}(\hat{f}(u) \cdot \overline{\hat{g}(u)})(\sigma)
+    .
     \label{mellin:smt}
 \end{equation}
 Welche identisch ist zur Lösung für $x_0$ des ersten Registrierungsproblems, 
@@ -58,14 +59,14 @@ lässt sich sehr einfach in Python mit dem Modul {\em numpy} lösen.
 Dabei werden die beiden Funktionen zuerst diskretisiert indem die Funktionswerte 
 für gleichmässig verteilte, diskrete $x$-Werte in ein Array gepackt werden.
 Will man diese beiden Datenarrays nun für verschiedene Verschiebungswerte 
-korrelieren, stellt {\em numpy} dafür die Funktion convolve(f,g) zur 
+korrelieren, stellt {\em numpy} dafür die Funktion {\em convolve(f,g)} zur 
 Verfügung. 
 Durch Spiegeln der zweiten Funktion, was für das Array eine Umkehrung der 
-Indizierung bedeutet, berechnet die Funktion convolve() also die 
+Indizierung bedeutet, berechnet die Funktion {\em convolve()} also die 
 gewünschte Kreuzkorrelation in Form eines weiteren Arrays aus, dessen 
-Maximum gesucht ist und sehr einfach über beispielsweise Sortieralgorithmen 
+Maximum gesucht ist und sehr einfach über Sortieralgorithmen 
 gefunden werden kann. 
-Die Funktion convolve() ist dabei im Hintergrund gemäss der diskreten 
+Die Funktion {\em convolve()} ist dabei im Hintergrund gemäss der diskreten 
 Faltungsformel
 \[
     (a \ast v)_n = \sum_{m = -\infty}^{\infty} a_m v_{n-m}
@@ -73,17 +74,17 @@ Faltungsformel
 in hoch optimiertem C-Code implementiert.
 Für die in diesem Kapitel behandelte Transformationsmethode zur Berechnung der 
 Korrelation sind natürlich ebenfalls Funktionen verfügbar. 
-Das Modul {\em scipy.signal} bietet die Funktion fftconvolve(f,g), die die 
+Das Modul {\em scipy.signal} bietet die Funktion {\em fftconvolve(f,g)}, die die 
 übergebenen Datenarrays zuerst über den FFT-Algorithmus 
 transformiert, sie anschliessend elementweise zusammenmultipliziert und dieses 
 resultierende Array mit dem inversen FFT-Algorithmus wieder zurücktransformiert.
 
-Mithilfe der Funktionen perf\_counter() des Moduls {\em time}, lassen sich beide 
+Mithilfe der Funktionen {\em perf\_counter()} des Moduls {\em time}, lassen sich beide 
 Wege quantitativ anhand der für die Berechnung benötigte Rechenzeit miteinander 
 vergleichen.
 Die Resultate sind dabei stark von den Arraygrösse und somit vom Grad der Auflösung 
 der Diskretisierung abhängig.
-Die Abbildung\ref{fig:mellin:zeiten} vergleicht die resultierenden Rechenzeiten 
+Die Abbildung \ref{fig:mellin:zeiten} vergleicht die resultierenden Rechenzeiten 
 der beiden Methoden für vier verschiedene Auflösungen.
 \begin{figure}
     \centering
@@ -95,13 +96,13 @@ Wie man den Resultaten entnehmen kann, steigt die Rechenzeit der direkten Korrel
 ab einer Auflösung von etwa 1000 Funktionswerten im gegebenen Intervall 
 $x\in \left[-5,5\right]$ explosionsartig an, während die Rechenzeit der Korrelation 
 über die FFT nur etwa linear mit der Auflösung steigt.
-Hier zeigt sich also der in Abschnitt\ref{mellin:section:teil1} erwähnte enorme 
+Hier zeigt sich also der in Abschnitt \ref{mellin:section:teil1} erwähnte enorme 
 Rechenaufwand der direkten Korrelationsmethode.
-Für hohe Auflösungen die eine Anwendung meistens erfordert ist die Transformationsmethode 
-also unerlässlich.
+Für hohe Auflösungen, die eine Anwendung meistens erfordert, ist die 
+Transformationsmethode also unerlässlich.
 
 Um auch das zweite Registrierungsproblem rechnerisch lösen zu können, brauchen wir also 
-eine diskrete Implementierung der Mellin Transformation.
+eine diskrete Implementierung der Mellin-Transformation.
 % https://www.researchgate.net/publication/224736063_Discrete_Mellin_transform_for_signal_analysis
 Die Relationsgleichungen aus dem vorangehenden Abschnitt erlauben es uns aber, dafür 
 erneut die FFT zu verwenden.

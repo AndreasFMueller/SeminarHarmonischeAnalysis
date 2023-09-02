@@ -10,14 +10,14 @@
 \label{mellin:section:teil2}}
 \rhead{Mellin-Transformation}
 Wie schon bemerkt, sind wir bei diesem Problem mit der multiplikativen 
-Gruppe der positiven reellen Zahlen $(\mathbb{R^+},\cdot)$ konfrontiert
-\footnote{Eine ausführliche Beschreibung dessen, was in diesem Abschnitt 
+Gruppe der positiven reellen Zahlen $(\mathbb{R^+},\cdot)$ konfrontiert\footnote
+{Eine ausführliche Beschreibung dessen, was in diesem Abschnitt 
 folgt, findet sich im Kapitel \ref{buch:chapter:gruppen} diese Buches}.
 \begin{definition}
     Eine Gruppe setzt sich aus einer {\em Menge} und einer 
     {\em Verknüpfung} zusammen. 
     Elemente aus der Menge können über die Verknüpfung miteinander 
-    verrechnet werden, müssen aber stets wieder Elemente der Menge bilden.
+    verrechnet werden, müssen aber stets wieder Elemente innerhalb der Menge bilden.
 \end{definition}
 Diese Information ist der Startpunkt auf der Suche nach einer 
 Integraltransformation die unser Problem lösen kann.
@@ -26,9 +26,8 @@ beschreibt die notwendigen Bausteine einer solchen.
 Zum einen sind {\em Analysefunktionen} zu bestimmen, welche die 
 Gruppenoperation in die Multiplikation überführt und gewisse 
 Orthogonalitätsbedingungen erfüllen. 
-Des Weiteren muss das {\em Skalarprodukt} auf die multiplikative Gruppe 
-angepasst werden, mit dem die Integraltransformation durchgeführt werden 
-soll.
+Des Weiteren muss das {\em Skalarprodukt}, mit dem die Integraltransformation 
+durchgeführt werden soll, auf die gewünschte Gruppe angepasst werden.
 Aus Gruppe, Analysefunktionen und Skalarprodukt folgt dann
 für kommutative (Lie-)Gruppen die entsprechende Transformation.
 
@@ -73,7 +72,7 @@ für die Gruppenoperation der dualen Gruppe im Bildraum der Transformation.
 Mit dem Konzept der dualen Gruppe werden wir uns am Ende des Abschnitts 
 nochmals genauer befassen, fürs Erste konzentrieren wir uns auf die 
 multiplikative Gruppe in $\mathbb{R^+}$, welche relevant für unsere 
-skalierten Funktionen ist, also im Ortsraum.
+skalierten Funktionen im Ortsraum ist.
 \medskip
 
 Bei der Fourier-Transformation, dessen Gruppenoperation die Additon ist, 
@@ -89,7 +88,6 @@ Exponentialfunktionen, denn
 \begin{equation}
     e^{x + y} 
     = e^x \cdot e^y
-    ,
     \label{mellin:exp}
 \end{equation}
 und somit der Typ der bekannten Analysefunktion der Fourier-Transformation.
@@ -102,11 +100,10 @@ Analysefunktionen die Gleichung
 \end{equation}
 erfüllen müssen.
 Erfüllt wird die Gleichung durch jede Potenzfunktion $h(x) = x^{z}$ für 
-beliebige $z \in \mathbb{C}$ 
+beliebige $z \in \mathbb{C}$.
 \begin{equation}
     h(x \cdot y) 
     = (x \cdot y)^{z} = x^{z} \cdot y^{z}
-    ,
 \end{equation}
 % denn Potenzen lassen sich bekanntlich beliebig zusammenfassen so wie
 % \begin{equation}
@@ -121,7 +118,7 @@ Bei den Analysefunktionen der Fourier-Transformation wird deshalb ein rein
 imaginärer Exponent verwendet, nämlich $j\omega t$, was gemäss der Eulerschen 
 Definition einer komplexen Schwingung mit konstantem Betrag $= 1$ entspricht.
 Damit das Integral der Mellin-Transformation konvergiert, muss jedoch dafür 
-das verwendete Skalarprodukt selbst modifiziert werden.
+noch das verwendete Skalarprodukt selbst modifiziert werden.
 % Die komplexe Exponentialfunktion $e^{j\omega_l t}$ ist orthogonal zu $e^{j\omega_k t}$, sofern $\omega_l \neq \omega_k$, da diese 
 % immer ein Skalarprodukt gleich Null haben wie sich leicht zeigen lässt
 % \begin{proof}
@@ -165,12 +162,12 @@ Erfolg der Gelfand-Theorie zwingend nötig ist, denn es gilt:
 Invariant bezüglich der Gruppenoperation bedeutet, dass sich das Integral 
 über den gesamten Definitionsbereich der Gruppe nicht ändert, wenn das 
 Argument der zu integrierenden Funktion ``verschoben'' wird. 
-Das gewöhnliche Integral der Fourier-Transformation erfüllt diese 
-Eigenschaft 
+Das gewöhnliche Integral der Fourier-Transformation 
 \begin{equation}
     \int_\mathbb{R} f(x)\,{d}x 
     = \int_\mathbb{R} f(x + x_0)\,{d}x
 \end{equation}
+erfüllt diese Eigenschaft 
 da hier ja von $-\infty$ bis $+\infty$ integriert wird und somit eine nur 
 endlich verschobene Funktion stets vollständig abmisst.
 Verschoben meint in diesem Sinne aber Verschiebung mit der Gruppenoperation, 
@@ -208,8 +205,9 @@ kann.
         = \int_\mathbb{R^+} f(u) \cdot \frac{s}{u} \frac{1}{s}\,{d}u
         = \int_\mathbb{R^+} f(u)\,\frac{{d}u}{u}
         = \int_\mathbb{R^+} f(x)\,\frac{{d}x}{x}
+        ,
     \]
-    Was beweist, dass sich der Faktor $s$ durch das zusätzliche Mass 
+    was beweist, dass sich der Faktor $s$ durch das zusätzliche Mass 
     $x^{-1}$ herauskürzt.
 \end{proof}
 Eine Intuition für diesen Umstand liefert auch ein Beispiel.
@@ -239,7 +237,7 @@ leicht bestätigen:
     = \frac{1}{2}
 \]
 Wird hingegen das Integral mit dem zusätzlichem Mass $x^{-1}$ verwendet 
-ergibt sich
+ergibt sich:
 \[
     \int_\mathbb{R^+} f(x)\,\frac{{d}x}{x} 
     = \int_0^1 x^2\,dx
@@ -283,11 +281,11 @@ transformierenden Funktion $f(x)$ gebildet.
     \langle h,f \rangle 
     = \int\limits_{0}^{\infty} x^{z} f(x) \,\frac{{d}x}{x}
 \end{equation}
-eine kleine Umformung führt zu einer kompakten Formel der 
-{\em Mellin-Transformation}
+Eine kleine Umformung führt zu einer kompakten Formel der 
+{\em Mellin-Transformation}.
 \begin{equation}
     \mathcal{M}(f)(z) 
-    = \int\limits_{0}^{\infty} x^{z-1} f(x) \,{d}x 
+    = \int\limits_{0}^{\infty} x^{z-1} f(x) \,{d}x,
     \qquad\text{für $z \in \mathbb{C}$}
     \label{mellin:mellin}
 \end{equation}
@@ -296,7 +294,7 @@ Wenn man aber die komplexe Zahl $z = \delta + ju$ auf ihren Imaginärteil
 beschränkt $\operatorname{Re}(z) = \delta = 0$ erhält man die Formel
 \begin{equation}
     \mathcal{M}(f)(u) 
-    = \int\limits_{0}^{\infty} x^{ju-1} f(x) \,{d}x 
+    = \int\limits_{0}^{\infty} x^{ju-1} f(x) \,{d}x,
     \qquad\text{für $u \in \mathbb{R}$}
     ,
     \label{mellin:mellinu}
@@ -331,11 +329,11 @@ konstruiert und findet in den Gleichungen \eqref{mellin:mellin} \&
 \eqref{mellin:mellinu} ihre definitive Form.
 % \footnote{obschon je nach Literatur und Geschmack auch noch Konstanten $\frac{1}{\sqrt{2\pi j}}$, $\frac{1}{2\pi j}$ vorkommen können.}
 Jedoch haben wir damit eigentlich erst die Hälfte des Bildes, schliesslich 
-wollen wir aus dem Bildraum der Transformation, nennen wir ihn 
-{\em Mellin-Raum}, wieder in den Ortsraum zurücktransformieren. 
+wollen wir aus dem Bildraum der Transformation wieder in den Ortsraum 
+zurücktransformieren. 
 Bei Fourier ging dies mit dem fast gleichen Integral wie das der 
 Hintransformation, mit Ausnahme der Skalierungskonstante $\frac{1}{2\pi}$
-und dem Kehren des Vorzeichens vor der Integrationsvariable.
+und dem Kehren des Vorzeichens vor der Integrationsvariablen.
 \begin{align*}
     \hat{f}(\omega) &= \int\limits_{-\infty}^{\infty} 
     e^{-j\omega{}t} f(t) \,{d}t \\
@@ -391,9 +389,9 @@ komplexe Exponentialfunktion, oder eben komplexe Schwingungen, die mit
 einem Koeffizienten $\hat{f}(u)$ multipliziert werden, der aus der 
 Hintransformation gewonnen wurde.
 Der kleine Unterschied ist dabei nur, dass die Variable $x$ der Funktion 
-als Basis eben jener Exponentialfunktionen vorkommt, und nicht im Exponent, 
+nicht mehr im Exponent sondern in der Basis eben jener Exponentialfunktionen vorkommt, 
 was der Tatsache beipflichtet, dass die Gewinnung der Koeffizientenfunktion 
-$\hat{f}(u)$, über Potenzfunktionen erfolgt ist.
+$\hat{f}(u)$ über Potenzfunktionen erfolgt ist.
 
 Da wir nun verstehen, dass die duale Gruppe der Mellin-Transformation nach 
 Definition \eqref{mellin:mellinu} die Gruppe $(\mathbb{R},+)$ ist, können 
@@ -406,9 +404,10 @@ normale Skalarprodukt aus \eqref{mellin:skalaprodukt}.
 Das Zusammensetzen dieser Bausteine sowie das Hinzumultiplizieren einer 
 Skalierungskonstante liefert die {\em Inversionsformel der Mellin-Transformation}
 \begin{equation}
-    f(x) = 
-    \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} 
+    f(x)
+    = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} 
     x^{-ju} \hat{f}(u) \,{d}u
+    .
     \label{mellin:mellininvu}
 \end{equation}
 
@@ -420,11 +419,10 @@ Gruppe nun die gesamten komplexen Zahlen $\mathbb{C}$.
 Weil dadurch die Variable des Mellin-Raums komplex ist, ist diese 
 gewissermassen zweidimensional hinsichtlich des Real- und Imaginärteils. 
 Weil durch die zusätzliche Dämpfung oder Verstärkung der komplexen 
-Exponentialfunktionen, deren Betrag nicht länger $1$ ist, existiert die 
+Exponentialfunktionen deren Betrag nicht länger $1$ ist, existiert die 
 Transformation nur für bestimmte Werte von $\delta$, für welche das 
 Transformationsintegral noch konvergiert.
-Da bezüglich der Konvergenz des Transformationsintegrals nur bestimmte 
-Werte von $\delta$ zulässig sind, bedeutet das, dass die 
+Diese begrenzte Menge an zulässigen $\delta$-Werten bedeutet, dass die 
 Mellin-Transformation für komplexe $z$ in einem Streifen der komplexen 
 Zahlenebene existiert, auch {\em Streifen der Analyzität}
 \footnote{aus dem Englischen: strip of analyticity oder SOA} genannt.
@@ -461,18 +459,24 @@ $\delta \in \text{SOA}$ fixiert werden.
 Integriert wird daraufhin über die Parallele der imaginäre Achse an der 
 Stelle von $\delta$, wie dargestellt in Abbildung \ref{fig:mellin:z}.
 Die Inversionsformel hier lautet also
-
 \begin{equation}
-    f(x) = 
-    \frac{1}{2\pi j} 
+    f(x) 
+    = \frac{1}{2\pi j} 
     \int\limits_{\delta -j\infty}^{\delta +j\infty} 
     x^{-z} \hat{f}(z) \,{d}z
+    .
     \label{mellin:mellininv}
 \end{equation}
 Somit vervollständigt sich das Bild der Mellin-Transformation und fügt 
 sich ein in bereits bekannte Integraltransformationen, wie Fourierreihen, 
 die Fourier- und Laplacetransformationen sowie deren diskrete Varianten, 
-die DFT und $z$-Transformation.
+die DFT und $z$-Transformation. Die bedeutende Neuheit ist hier allerdings, 
+dass all diese bekannten Integraltransformationen jeweils Variationen der 
+{\em Menge} der Gruppe der Funktionen im Ortsraum waren.
+Die Mellin-Transformation hingegen verändert die {\em Gruppenoperation}, 
+und eröffnet damit das Tor zu einer grösseren Welt der 
+Integraltransformationen.
+
 
 
 
