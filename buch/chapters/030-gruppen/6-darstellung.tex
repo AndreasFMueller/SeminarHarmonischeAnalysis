@@ -1199,6 +1199,226 @@ Damit ist die Orthonormierung der Charaktere bewiesen.
 % Orthogonale und unitäre Darstellungen
 %
 \subsection{Orthogonale und unitäre Darstellungen}
+Im Beweis der Orthogonalität der Charktere war ein wesentlicher
+Schritt die Erkenntnis, dass $\chi(g^{-1})=\overline{\chi(g)}$.
+So eine Aussage fehlt uns bis jetzt und verunmöglicht damit, aus
+den Sätzen
+nicht nur Orthogonalitätsaussagen über die Spur, sondern über 
+beliebige Paare von Matrixelementen zu gewinnen.
+Eine solche Aussage ist auch nicht zu erwarten, denn die Gruppe
+$G=\mathbb{R}$ hat die Darstellungen
+\begin{equation}
+\begin{array}{rclclclcll}
+\varrho_k
+&\colon&
+\mathbb{R} &\to& \operatorname{GL}_2(\mathbb{R})
+&:&
+t &\mapsto& \begin{pmatrix} \cos kt&-\sin kt\\\sin kt&\cos kt\end{pmatrix}
+&\qquad k\in\mathbb{R}
+\\
+\psi
+&\colon&
+\mathbb{R} &\to& \operatorname{GL}_2(\mathbb{R})
+&:&
+t &\mapsto& \begin{pmatrix} t&0\\0&t^{-1}\end{pmatrix}.
+&
+\end{array}
+\end{equation}
+Die Matrizen $\varrho_k$ sind als Drehmatrizen alle orthogonal, die
+Matrixelemente sind beschränkt und aus der klassischen Fourier-Theorie
+sind Orthogonalitätsrelationen dafür bekannt.
+Die Matrixelemente der Darstellung $\psi$ dagegen sind unbeschränkt und
+man kann sich keine sinnvollen Orthogonalitätsrelationen vorstellen.
+
+Die Orthogonalitätsrelationen der Matrixelemente von $\varrho_k$ 
+im obigen Beispiel scheinen damit zusammenzuhängen, dass die Matrizen
+$\varrho_k$ orthogonal sind.
+
+\begin{definition}
+Eine Darstellgung $\varrho\colon G\to\operatorname{GL}(V)$ einer
+Gruppe in einem reellen Vektorraum $V$ mit einem Skalarprodukt
+$\langle\;\,,\;\rangle$ heisst {\em orthogonal}, wenn
+$\langle\varrho(g)u\varrho(g)v\rangle=\langle u,v\rangle$
+für alle $u,v\in V$.
+Eine Darstellgung $\varrho\colon G\to\operatorname{GL}(V)$ einer
+Gruppe in einem komplexen Vektorraum $V$ mit einem komplexen
+Skalarprodukt $\langle\;\,,\;\rangle$ heisst {\em unitär}, wenn
+$\langle\varrho(g)u\varrho(g)v\rangle=\langle u,v\rangle$
+für alle $u,v\in V$.
+\end{definition}
+
+\begin{beispiel}
+Die Menge der reellwertigen Funktionen $\mathbb{R}[G]$ auf einer endlichen
+Gruppe ist ein Vektorraum mit dem reellen Skalarprodukt
+\[
+\langle u,v\rangle
+=
+\frac{1}{|G|}
+\sum_{g\in G} u(g)v(g),
+\]
+auf der die Gruppe durch die Translation $\varrho(h)=T_h$ wirkt.
+Da die Multiplikation $g\mapsto hg$ nur eine Permutation der Gruppenelement
+ist, bleibt das Skalarprodukt unter der Translation erhalten.
+Somit ist die reguläre Darstellung orthogonal.
+
+Die Menge der komplexwertigen Funktionen $\mathbb{C}[G]$ mit dem
+komplexen Skalarprodukt 
+\[
+\langle u,v\rangle
+=
+\frac{1}{|G|}
+\sum_{g\in G} \overline{u(g)} v(g)
+\]
+ist eine unitäre Darstellung von $G$ unter der Translation.
+\end{beispiel}
+
+\begin{satz}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine reelle Darstellung
+der endlichen Gruppe $G$ im $n$-dimensionalen Vektorraum $V$, dann gibt
+es ein reelles Skalarprodukt $\langle \;\,,\;\rangle$ so, dass
+$\varrho$ eine orthogonale Darstellung ist.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $(\;,\;)$ ein beliebiges reelles Skalarprodukt auf dem Vektorraum $V$,
+es muss nicht invariant sein, es muss also nicht
+\[
+(\varrho(g)u,\varrho(g)v)
+=
+(u,v)
+\]
+gelten.
+Das gemittelte Skalarprodukt
+\[
+\langle u,v\rangle
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+(\varrho(g)u,\varrho(g)v)
+\]
+hat die Eigenschaft
+\[
+\langle \varrho(g)u,\varrho(g)v\rangle
+=
+\langle u,v\rangle,
+\]
+hat aber auch alle Eigenschaften eines reellen Skalarproduktes:
+\begin{enumerate}
+\item $\langle\;\,,\;\rangle$ ist symmetrisch:
+\[
+\langle u,v\rangle
+=
+\frac{1}{|G|} \sum_{g\in G} (\varrho(g)u,\varrho(g)v)
+=
+\frac{1}{|G|} \sum_{g\in G} (\varrho(g)v,\varrho(g)u)
+=
+\langle v,u\rangle
+\]
+für alle $u,v\in V$.
+\item $\langle\;\,,\;\rangle$ ist bilinear:
+\begin{align*}
+\langle u_1+u_2,v\rangle
+&=
+\frac{1}{|G|} \sum_{g\in G} (u_1+u_2,v)
+=
+\frac{1}{|G|} \sum_{g\in G} (u_1,v)
++
+\frac{1}{|G|} \sum_{g\in G} (_2,v)
+=
+\langle u_1,v\rangle + \langle u_2,v\rangle
+\\
+\langle \lambda u,v\rangle
+&=
+\frac{1}{|G|} \sum_{g\in G} (\lambda u,v)
+=
+\lambda
+\frac{1}{|G|} \sum_{g\in G} (u,v)
+=
+\lambda \langle u,v\rangle.
+\end{align*}
+\item $\langle \;\,;\;\rangle$ ist positiv definit: für $v\in V\setminus\{0\}$
+\[
+\langle v,v\rangle
+=
+\frac{1}{|G|} \sum_{g\in G}
+\underbrace{(\varrho(g)v,\varrho(g)v)}_{\displaystyle > 0}
+>
+0.
+\]
+\end{enumerate}
+Somit ist $\langle\;\,,\;\rangle$ ist ein invariantes Skalarprodukt und
+die linearen Abbildung $\varrho(g)$ sind bezüglich dieses Skalarproduktes
+Orthogonal.
+$\varrho(g)$ wird in einer bezüglich $\langle\;\,,\;\rangle$
+orthonormierten Basis von $V$ durch eine orthogonale Matrix dargestellt.
+\end{proof}
+
+Da also zu einer Darstellung immer ein Skalarprodukt gewählt werden
+kann, so dass die Darstellung orthogonal wird, kann man auch eine
+orthonormierte Basis wählen und so erreichen, dass die Matrizen
+$\varrho(g)$ in dieser Basis orthogonale Matrizen sind.
+Eine orthogonale Matrix $O$ hat die Eigenschaft $O^{-1} = O^t$,
+für die Matrixelemente $(\varrho(g))_{ik}$ gilt daher
+\begin{equation}
+\varrho(g^{-1})
+=
+\varrho(g)^{-1}
+\qquad\Rightarrow\qquad
+\varrho(g^{-1})_{ik}
+=
+\varrho(g)_{ki}.
+\label{buch:gruppen:darstellungen:eqn:invorth}
+\end{equation}
+Ausserdem gelten für eine irreduzible Darstellung $\varrho$
+weiterhin die Relationen
+\eqref{buch:gruppen:darstellungen:eqn:matrixnichtiso}
+und
+\eqref{buch:gruppen:darstellungen:eqn:matrixiso}.
+Setzt man \eqref{buch:gruppen:darstellungen:eqn:invorth} ein, erhält man
+\begin{align*}
+\frac{1}{n}
+\delta_{il}\delta_{jk}
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g^{-1})\bigr)_{ij}
+\bigl(\varrho(g)\bigr)_{kl}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g)\bigr)_{ji}
+\bigl(\varrho(g)\bigr)_{kl}
+=
+\langle (\varrho)_{ji},\varrho_{kl}\rangle.
+\end{align*}
+Die Matrixelemente einer orthogonalen, irreduziblen Darstellung
+sind also orthogonal.
+
+\begin{satz}
+Ist $\varrho\colon G\to\operatorname{GL}(V)$ eine irreduzible,
+$n$-dimensionale Darstellung im reellen Vektorraum $V$, dann gibt
+es eine Basis von $V$ derart, dass $\varrho(g)$ durch orthogonale
+Matrizen beschrieben werden.
+Die Matrixelemente $\bigl(\varrho(g)\bigr)_{ik}$ sind orthogonale
+Funktionen auf $G$.
+\end{satz}
+
+Mit der gleichen Methode kann ein entsprechendes Resultat für komplexe
+Darstellungen der Gruppe $G$ gewonnen werden.
+
+\begin{satz}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine Darstellung der endlichen
+Gruppe $G$ in einem komplexen endlichdimensionalen Vektorraum, dann gibt
+es ein komplexes Skalarprodukt auf $V$ so, dass $\varrho$ eine unitäre
+Darstellung ist.
+\end{satz}
+
+\begin{satz}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine unitäre Darstellung
+der endlichen Gruppe $G$ im komplexen Vektorraum $V$.
+Die Matrixelemente $(\varrho(g))_{ik}$ in einer orthonormierten Basis
+von $V$ sind orthogonale Funktionen auf $G$.
+\end{satz}
 
 %
 % Orthogonalität der Matrixelemente
