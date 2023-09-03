@@ -11,7 +11,7 @@
 \rhead{Teil 5}
 Dieser letzte Abschnitt soll einen kurzen Einblick in einen 
 weiteren Anwendungszweck der Mellin-Transformation geben und 
-beruht auf\cite{mellin:mellin-transform-method}.
+beruht auf \cite{mellin:mellin-transform-method}.
 Darin findet sich eine umfangreiche Behandlung der 
 Mellin-Transformation-Methode, sowie weitere Beispiele 
 von Problemen in der Antennentechnik, für welche die Methode 
@@ -29,6 +29,7 @@ werden würden.
 Ebenfalls bleiben bei einer analytischen Auswertung die physikalischen 
 Zusammenhänge der Parameter erhalten, was zu einem besseren Verständnis 
 derselben führen kann.
+
 
 \subsection{Mellin-Transformation-Methode
 \label{mellin:subsection:mtmethod}}
@@ -51,54 +52,58 @@ $f(x)=e^{-x}$.
     \Gamma(z) = 
     \int_{0}^{\infty} x^{z-1}e^{-x} \,dx,
     \qquad \operatorname{Re}(z) > 0
+    .
 \end{equation}
 Sie ist aber nicht nur im Kontext der Mellin-Transformation relevant, 
-sondern auch in vielen anderen Bereichen der komplexen Analysis.
-Dieses Thema soll hier allerdings nicht weiter aufgegriffen werden, 
+sondern auch in vielen anderen Bereichen der komplexen Analysis. 
+Dieses Thema soll hier allerdings nicht weiter aufgegriffen werden
 und stattdessen mehr das Konzept der Methode aufgezeigt werden.
+Für den interessierten Leser soll aber auf das letztjährige Seminarbuch 
+``Spezielle Funktionen'' \cite{mellin:seminarbuch2022} verwiesen werden.
+In diesem wird die $\Gamma$-Funktion sowie weitere für die Methode 
+relevanten Funktionen ausgiebig behandelt.
+\medskip
 
-Der Kern der Methode ist hier wieder das Faltungstheorem.
+Der Kern der Methode ist hier wieder das Faltungstheorem
 \[
     (f \ast g)(x) 
     = \mathcal{M}^{-1}(\hat{f}(z) \cdot \hat{g}(z))(x)
+    .
 \]
-% \begin{align*}
-%     (f \ast g)(x) &= \mathcal{M}^{-1}(\hat{f}(z) \cdot \hat{g}(z))(x) \\
-%     f(x) \cdot g(x) &= \mathcal{M}^{-1}((\hat{f} \ast \hat{g})(z))(x)
-% \end{align*}
 Das Ziel ist es nun, das zu analysierende Integral in 
 eine Form zu bringen, die einer multiplikativen Faltung entspricht.
 Über das Faltungstheorem kann das Integral anschliessend ausgedrückt 
 werden, als Rücktransformation des Produktes der Mellin-Transformierten, 
 was eben konkret zu einem Integral über das Produkt von  
-$\Gamma$-Funktionen führt, welche mittels Reihenentwicklung analytisch 
+$\Gamma$-Funktionen führt, welche analytisch doch 
 relativ gut weiter zu verarbeiten sind.
 
 \subsubsection{Beispiel der Mellin-Transformations-Methode}
-Folgender Ausschnitt einer Anwendung aus\cite{mellin:mellin-transform-method} 
+Folgender Ausschnitt einer Anwendung aus \cite{mellin:mellin-transform-method} 
 soll die Methode demonstrieren.
 
 In der Anwendung geht es um die Berechnung einer 
 kreisförmigen Rahmenantenne\footnote{engl. circular, thin-wire loop antenna}.
 Ein Ausdruck für das elektrische Feld $E_\phi $ wird über das Vektorpotential 
-der Schleife aufgestellt.
-Aufgrund der geometrischen Gegebenheiten enthält dieser die Bessel-Funktion $J_1$.
+der Schleife aufgestellt:
 \[
     E_\phi 
     = -\zeta_0 H_\theta  
     = \frac{I_0ka\zeta_0e^{-jkr}}{2r} J_1(ka \sin\theta)
 \]
-Die abgestrahlte Leistung folgt über das Hüllflachenintegral über eine Sphäre.
+Aufgrund der geometrischen Gegebenheiten enthält dieser die Bessel-Funktion $J_1$
+Die abgestrahlte Leistung folgt über das Oberflächenintegral über eine Sphäre.
 Um aber nicht nur die abgestrahlte Leistung, sondern auch die Direktivität und 
 den Strahlungswiderstand $R_r$ im Zuge des {\em cavity model} zu bestimmen, 
-wird eine verallgemeinerte Version des Integrals aufgestellt
+wird die verallgemeinerte Version 
 \[
     f(x, \mu, \nu, \tau)
     = \int_{0}^{\pi/2} J_\mu(x \sin\theta) J_\nu(x \sin\theta) 
     \sin^\tau \theta \,d\theta, \qquad x > 0 
     ,
 \]
-wobei im Falle der kreisförmigen Rahmenantenne $\mu = \nu = \tau = 1$ ist.
+des Integrals aufgestellt wobei im Falle der kreisförmigen Rahmenantenne 
+$\mu = \nu = \tau = 1$ ist.
 Die Funktion $f(x, \mu, \nu, \tau)$ lässt sich aber mithilfe der Theorie 
 der Mellin-Transformation weiter analysieren.
 Es wird die Substitution
@@ -146,7 +151,8 @@ Das Resultat dieser Rechnung führt auf die Zerlegung
     .
 \end{align*}
 Diese mag zwar zuerst einschüchternd und komplizierter wirken, lässt 
-sich aber mithilfe der komplexen Analysis gut weiterverarbeiten.
+sich aber mithilfe der komplexen Analysis 
+(Stichwort: hypergeometrische Funktionen) gut weiterverarbeiten.
 
 Für die Rahmenantenne ergibt sich daraufhin eine neue analytische 
 Approximation für den Strahlungsiderstand 
@@ -165,14 +171,3 @@ Tatsächlich ist die Mellin-Transformation-Methode bereits Teil der
 modernen symbolischen Integrationsroutinen von {\em Mathematica}.
 Ein Verständnis der Methodik dieser Integrationsroutinen kann aber
 allenfalls von Nutzen sein.
-% Eine umfangreiche Behandlung der in diesem Abschnitt nur kurz 
-% vorgestellten Mellin-Transformation-Methode, sowie weitere 
-% Beispiele von Problemen in der Antennentechnik für welche die 
-% Methode Anwendung findet, findet sich im 
-% gleichnamigen Buch\cite{mellin:mellin-transform-method}.
-
-
-% Einstieg, Anwendung führt in KomA (oder symbolic integration routines, software), weitere Analyse in Gelfandtheorie (the Beyond)
-%     Gamma-Funktion
-%     Mellin-Barnes
-% kleine Horizonterweiterung
