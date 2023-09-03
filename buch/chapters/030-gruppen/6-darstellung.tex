@@ -1662,17 +1662,73 @@ Die Matrixelemente bilden daher einen $n^2$-dimensionalen invarianten
 Unterraum der regulären Darstellung, dies sind genau die $n$
 Kopien der zugehörigen irreduziblen Darstellung.
 
-Die reguläre Darstellung lässt sich daher in die Blockform
+Die reguläre Darstellung lässt sich daher in eine Blockform bringen,
+die für jede Darstellung $\varrho_i$ einen $n_i^2\times n_i^2$-Block
+der Form
 \[
 T_g
 =
-\left(\raisebox{-3cm}{\begin{tikzpicture}[>=latex,thick]
+\left(\raisebox{-2.95cm}{\begin{tikzpicture}[>=latex,thick]
 \fill[color=gray!10] (-3,-3) rectangle (3,3);
 \fill[color=gray!20] (-2,2) rectangle (-1,1);
-\fill[color=gray!20] (0,0) rectangle (1,-1);
+\draw[color=gray!40] (-2,2) rectangle (-1,1);
+\fill[color=gray!20] (0.5,-0.5) rectangle (1.5,-1.5);
+\draw[color=gray!40] (0.5,-0.5) rectangle (1.5,-1.5);
+\draw[color=gray!40] (-2,2) rectangle (1.5,-1.5);
+\draw[color=gray!40] (-2,2) -- (-1.5,2);
+\draw[color=gray!40] (0.5,-0.5) -- (1,-0.5);
+\draw[color=gray!40] (0.5,-0.5) -- (0.5,-1);
+\foreach \x in {2.75,2.5,2.25,0.75,0.5,0.25,0,-0.25,-1.75,-2,-2.25,-2.5,-2.75}{
+	\fill[color=gray] (-\x,\x) circle[radius=0.03];
+}
+\node at (-1.5,1.5) {$r^{(i)}_{kl}$};
+\node at (-1.5,1) [below] {\small $n_i\mathstrut$};
+\node at (-1,1.5) [right] {\small $n_i\mathstrut$};
+\node at (1,-1) {$r^{(i)}_{kl}$};
+\node at (0.5,-1) [left] {\small $n_i\mathstrut$};
+\node at (1,-0.5) [above] {\small $n_i\mathstrut$};
+\draw[<->] (-2,2.15) -- (1.5,2.15);
+\node at (-0.25,2.15) [above] {$n_i^2\mathstrut$};
+\draw[<->] (-2.15,2) -- (-2.15,-1.5);
+\node at (-2.15,0.25) [left] {$n_i^2\mathstrut$};
 \end{tikzpicture}}
 \right)
 \]
+enthält.
+Jeder Block besteht aus $n_i$ identischen $n_i\times n_i$ Unterblöcken.
+Die Matrixelemente $r^{(i)}_{kl}(g)$ dieser Unterblöcke bilden eine
+orthonormierte Basis des Unterraumes der zu $\varrho_i$ isomorphen
+Darstellungen in der regulären Darstellung.
+
+\begin{beispiel}
+Die zyklische Gruppe $C_n=\{0,\dots,n-1\}$ der Reste modulo $n$ hat $n$
+Elemente.
+Da sie abelsch ist, sind die irreduziblen Darstellungen eindimensional.
+Da die Gruppe von $1$ erzeugt wird, ist die Darstellung $\varrho$ durch
+das Element $\varrho(1)$ vollständig festgelegt.
+Wegen $\varrho(n)=\varrho(0)=1$ muss $\varrho(n)=\varrho(1)^n =1$ sein,
+d.~h.~$\varrho(1)=e^{2\pi ik/n}$ mit $k\in \{0,\dots,n-1\}$.
+\end{beispiel}
+
+%
+% Zerlegung der regulären Darstellung einer kompakten Lie-Gruppe
+%
+\subsubsection{Zerlegung der regulären Darstellung einer kompakten Lie-Gruppe}
+Die Zerlegung der regulären Darstellung funktioniert auch für eine
+Lie-Gruppe, was aber etwas aufwendiger zu beweisen ist.
+Insbesondere ist es nicht sinnvoll, vom Charakter der regulären Darstellung
+zu sprechen, da die reguläre Darstellung eine unendlichdimensionale 
+Darstellung ist.
+Es gilt aber weiterhin, dass endlichdimensionale irreduzible
+Darstellungen genau dann isomorph sind, wenn ihr Skalarprodukt $1$ ist.
+Auch die Matrixelemente einer $n$-dimensionalen irreduziblen Darstellungen
+sind $n^2$ orthonormierte Funktionen, die eine Basis der $n$ in der
+regulären Darstellung von $G$ vorkommenden Kopien der irreduziblen
+Darstellung sind.
+
+\begin{beispiel}
+\end{beispiel}
+
 
 
 
