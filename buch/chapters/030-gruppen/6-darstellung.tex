@@ -1708,6 +1708,18 @@ Da die Gruppe von $1$ erzeugt wird, ist die Darstellung $\varrho$ durch
 das Element $\varrho(1)$ vollständig festgelegt.
 Wegen $\varrho(n)=\varrho(0)=1$ muss $\varrho(n)=\varrho(1)^n =1$ sein,
 d.~h.~$\varrho(1)=e^{2\pi ik/n}$ mit $k\in \{0,\dots,n-1\}$.
+Die zugehörigen Funktionen auf $C_n$ sind  die Funktionen
+$x\mapsto e^{2\pi ikx}$.
+Aus der allgemeinen Theorie der Darstellungen folgt jetzt, dass diese
+Funktionen bezüglich des Skalarproduktes
+\[
+\langle f,g\rangle
+=
+\frac{1}{n} \sum_{x=0}^{n-1} \overline{f(x)} g(x)
+\]
+orthonormiert sind.
+Damit haben wir die Basisfunktionen der diskreten harmonischen
+Analysis für die Gruppe $C_n$ aus der Darstellungstheorie wiedergewonnen.
 \end{beispiel}
 
 %
@@ -1727,6 +1739,21 @@ regulären Darstellung von $G$ vorkommenden Kopien der irreduziblen
 Darstellung sind.
 
 \begin{beispiel}
+Die Gruppe $\mathbb{R}/2\pi\mathbb{Z}$ der Winkel ist abelsch.
+Die Matrixelemente sind Funktionen, die unter der Translation invariant
+sind, dies sind die Funktionen $x\mapsto e^{ikx}$ mit $k\in \mathbb{Z}$.
+Als Skalarprodukt ist
+\[
+\langle f,g\rangle
+=
+\frac{1}{2\pi}
+\int_0^{2\pi} \overline{f(x)}g(x)\,dx
+\]
+zu verwenden.
+Die allgemeine Theorie zeigt dann, dass die Funktionen $e^{ikx}$ eine
+orthonormierte Basis der integrierbaren Funktionen auf der $G$ ist.
+Damit haben wir die Theorie der Fourier-Reihen aus der Darstellungstheorie
+gewonnen.
 \end{beispiel}
 
 
