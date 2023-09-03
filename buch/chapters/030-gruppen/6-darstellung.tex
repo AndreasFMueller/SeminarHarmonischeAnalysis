@@ -583,6 +583,7 @@ und Funktionen auf der Gruppe herzustellen.
 Diese Funktionen müssen unabhängig sein von der gewählten Basis.
 
 \begin{definition}
+\label{buch:gruppen:darstellungen:def:charakter}
 Ist $\varrho_V\colon G\to\operatorname{GL}(V)$ eine Darstellung der
 Gruppe $G$ im Vektorraum $V$, dann heisst die Funktion
 \[
@@ -620,6 +621,7 @@ Nicht jede Funktion kann ein Charakter sein, wie der folgende Satz
 zeigt.
 
 \begin{satz}
+\label{buch:gruppen:darstellungen:satz:chareigenschaften}
 Sei $\varrho$ eine $n$-dimensionale Darstellung von $G$ dann gilt
 \begin{enumerate}
 \item $\chi_\varrho(e) = n$
@@ -640,6 +642,11 @@ $\chi_\varrho(hgh^{-1})
 \chi_\varrho(g)
 $.
 \end{proof}
+
+Der Charakter einer Darstellung ist nur für eindimensionale Darstellungen
+ein Homomorphismus, es ist also im Allgemeinen nicht möglich $\chi(g^{-1})$
+aus $\chi(g)$ zu berechnen.
+Für endliche Gruppen ist das aber wie folgt möglich.
 
 \begin{satz}
 \label{buch:gruppen:darstellung:satz:charg-1}
@@ -767,6 +774,7 @@ $P\colon V\to V$ mit der Eigenschaft $P^2=P$.
 \end{definition}
 
 \begin{satz}
+\label{buch:gruppen:darstellungen:satz:projektion}
 Sei $\varrho\colon G\to\operatorname{GL}(V)$  eine endlichdimensionale
 Darstellung der Gruppe $G$ und $W$ ein invarianter Unterraum von $V$,
 also ein Unterraum, für den $\varrho(g)W\subset W$ für alle $g\in G$ gilt.
@@ -1393,6 +1401,7 @@ Setzt man \eqref{buch:gruppen:darstellungen:eqn:invorth} ein, erhält man
 \end{align*}
 Die Matrixelemente einer orthogonalen, irreduziblen Darstellung
 sind also orthogonal.
+Wir fassen das Resultat im folgenden Satz zusammen.
 
 \begin{satz}
 Ist $\varrho\colon G\to\operatorname{GL}(V)$ eine irreduzible,
@@ -1421,12 +1430,249 @@ von $V$ sind orthogonale Funktionen auf $G$.
 \end{satz}
 
 %
-% Orthogonalität der Matrixelemente
+% Darstellungen kompakter Lie-Gruppen
 %
-\subsection{Orthogonalität der Matrixelemente}
+\subsection{Darstellungen kompakter Lie-Gruppen}
+Die Resultate des letzten Abschnitts wurden jeweils nur für endliche Gruppen
+beweisen.
+In diesem Abschnitte sollen ein paar Hinweise zusammengetragen werden,
+die illustrieren, wie die Resultate auch für die wichtige Klasse
+der kompakten Lie-Gruppen, zu denen zum Beispiel die Drehgruppen
+$\operatorname{SO}(n)$ und die unitären Gruppen $\operatorname{U}(n)$
+gehören, erweitert werden können.
+Dafür ist entscheidend, dass kompakte Lie-Gruppen ein rechts- und
+linksinvariantes Haar-Mass haben.
+Da die Gruppe kompakt ist, darf man sogar annehmen, dass das
+Volumen
+\[
+\operatorname{vol}(G)
+=
+\int_G 1\, dg
+\]
+der Gruppe den Wert $1$ hat.
+Für eine beliebige Funktion $f\colon G\to \mathbb{R}$ ist
+\[
+Mf
+=
+\int_G f(g)\,dg
+\]
+der Mittelwert der Funktion, die die für endliche Gruppen verwendete
+normierte Summe $1/|G| \sum_{g\in G}f(g)$ als Mittelung ersetzen kann.
+
+%
+% Unitäre Darstellungen
+%
+\subsubsection{Unitäre Darstellungen}
+Wie für eine endliche Gruppe kann man auch für eine endlichdimensionale
+komplexe Darstellung $\varrho$ einer kompakten Lie-Gruppe auf einem
+Vektorraum $V$ aus einem beliebigen Skalarprodukt $(\;,\;)$ auf $V$
+ein invariantes Skalarprodukt mit der Mittelung
+\begin{equation}
+\langle u,v\rangle
+=
+\int_G (\varrho(g)u,\varrho(g)v)\,dg
+\label{buch:gruppen:darstellungen:eqn:invskalarprodukt}
+\end{equation}
+konstruieren.
+Die Konvergenz des Integrals ist für eine kompakte Lie-Gruppe immer 
+gegeben.
+
+
+%
+% Eigenwerte
+%
+\subsubsection{Eigenwerte}
+In Satz~\ref{buch:gruppen:darstellung:satz:charg-1} wurde gezeigt,
+dass für den Charakter einer Darstellung einer endlichen Gruppe
+$\chi(g^{-1})=\overline{\chi(g)}$ gilt.
+Der Beweis hat gebraucht, dass die Eigenwerte komplexe Zahlen vom
+Betrag eins sein mussten.
+
+Das invariante Skalarprodukt
+\eqref{buch:gruppen:darstellungen:eqn:invskalarprodukt}
+zeigt, dass eine Darstellung einer kompakten Lie-Gruppe in einer
+geeigneten Basis immer durch unitäre Matrizen möglich ist.
+Die Wahl einer Basis hat aber keinen Einfluss auf die Eigenwerte.
+Da unitäre Matrizen als Eigenwerte nur komplexe Zahlen vom Betrag $1$
+haben können, folgt wie für endliche Gruppen, dass
+$\chi(g^{-1})=\overline{\chi(g)}$ ist.
+
+%
+% Projektion
+%
+\subsubsection{Projektion}
+In Satz~\ref{buch:gruppen:darstellungen:satz:projektion} wurde gezeigt,
+dass zu einem invarianten Unterraum $W\subset V$ einer endlichdimensionalen
+Darstellung $\varrho\colon G\to \operatorname{GL}(V)$ immer ein komplementärer
+invarianter Unterraum $W'$ gefunden werden kann.
+Der Beweis basierte auf der Idee, dass die Projektion $P\colon V\to W$,
+die nicht unbedingt mit der Darstellung vertauschen muss, durch Mittelung
+zu einer Projektion gemacht werden kann, die mit der Darstellung vertauscht.
+Dies ist auch auf einer kompakten Lie-Gruppe möglich, man verwendet
+\[
+P'
+=
+\int_G \varrho(g)P\varrho(g)^{-1}\,dg,
+\]
+die Konvergenz des Integrals ist wieder durch die Kompaktheit der Gruppe
+garantiert.
+Damit folgt wieder, dass sich zu einem invarianten Unterraum $W\subset V$
+eine direkte Zerlegung $V=W\oplus W'$ von Darstellungen finden lässt.
+
+%
+% Abbildungen zwischen Darstellungen
+%
+\subsubsection{Abbildungen zwischen Darstellungen}
+In Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel} wurde aus einer
+linearen Abbildung $f\colon V_1\to V_2$ zwischen den Vekträumen zweier
+Darstellungen $\varrho_i\colon G\to\operatorname{GL}(V_i)$ eine
+gemittelte Abbildung 
+\[
+f
+=
+\int_G \varrho_w(g) \circ f \circ \varrho_1(g)\,dg
+\]
+konstruiert, die mit den Darstellungen vertauscht.
+Die Schlussfolgerungen mit dem Lemma von Schur sind damit genau gleich
+anwendbar zeigen, dass die Aussage von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel} auch für kompakte
+Lie-Gruppen gilt.
+
+%
+% Orthogonalitätseigenschaften
+%
+\subsubsection{Orthogonalitätseigenschaften}
+Die Matrixform des Satzes~\ref{buch:gruppen:darstellungen:satz:abbmittel} 
+hat auf Formeln der Sätze 
+\ref{buch:gruppen:darstellungen:satz:matrixnichtiso}
+und
+\ref{buch:gruppen:darstellungen:satz:matrixiso}
+ergeben, diese gelten jetzt auch für kompakte Lie-Gruppen.
+Damit sind alle Voraussetzungen gegeben um zu schliessen, dass auch
+die Orthogonalitätseigenschaften für die Charaktere von irreduziblen
+Darstellungen und der Matrix-Elemente gelten.
 
 %
 % Zerlegung der regulären Darstellung
 %
 \subsection{Zerlegung der regulären Darstellung}
+In der regulären Darstellung einer endlichen Gruppe operiert die
+Gruppe durch Translation auf den Funktionen auf $G$.
+Der Charakter einer irreduzible Darstellung sowie die Matrixelemente
+sind ebenfalls Funktionen auf $G$.
+Es stellt sich daher die Frage, ob die Charaktere oder die Matrixelemente
+irreduzibler Darstellung dazu verwendet werden können, beliebige Funktionen
+auf der Gruppe im Sinne der harmonischen Analysis mit dem Skalarprodukt
+für Funktionen auf der Gruppe zu konstruieren.
+
+\subsubsection{Der Charakter der regulären Darstellung}
+Der Charakter der regulären Darstellung kann direkt berechnet werden,
+wie der folgende Satz zeigt.
+
+\begin{satz}
+\label{buch:gruppen:darstellung:satz:regchar}
+Sei $r_G$ der Charakter der reguläre Darstellung der Gruppe $G$ auf
+$\mathbb{R}[G]$, dann gilt
+\begin{equation}
+r_G(g)
+=
+\begin{cases}
+|G|&\qquad\text{falls $g=e$}\\
+0  &\qquad\text{sonst.}
+\end{cases}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Für die Berechnung des Charakters kann eine beliebige Basis verwendet
+werden.
+Für die früher verwendeten Basisvektoren $v_h$ mit $h\in G$ gilt
+\[
+T_gv_h = v_{gh}.
+\]
+Da $gh=h$ nur für $g=e$ gilt, sind die Diagonalelemente der Matrix $T_g$
+für $g\ne e$ alle $=0$.
+Für $g=e$ ist $T_g=T_e$ in der Basis $v_h$ die Einheitsmatrix $I_{|G|}$
+und damit die Spur $\tr T_e = |G|$.
+Damit ist die Aussage bewiesen.
+\end{proof}
+
+Seien jetzt $\varrho_1,\dots,\varrho_h$ die irreduziblen Darstellungen
+von $G$ mit Dimension $n_1,\dots,n_h$ und Charakter $\chi_i$.
+Die Charaktere sind orthonormierte Funktionen, daher kann die Zerlegung
+der regulären Darstellung in irreduzible Summanden mit Hilfe des
+Skalarproduktes durchgeführt werden.
+Da wir den Charakter der regulären Darstellung in Satz
+\ref{buch:gruppen:darstellung:satz:regchar}
+vollständig berechnen konnten, lässt sich jetzt auch berechnen,
+dass die irreduzible Darstellung $\varrho_i$ in der reglären Darstellung
+\[
+\langle r_G,\chi_i\rangle
+=
+\frac{1}{|G|}
+\sum_{g\in G} \overline{r_G(g)}\chi_i(g)
+=
+\frac{1}{|G|} r_G(e) \chi_i(e)
+=
+\frac{1}{|G|} |G| n_i
+=
+n_i.
+\]
+Die Darstellung $\varrho_i$ kommt also $n_i$ mal in der regulären Darstellung
+vor.
+
+\begin{satz}
+Die reguläre Darstellung enthält jede irreduzible $n$-dimensionale
+Darstellung $n$ mal.
+\end{satz}
+
+Es folgt aber noch mehr. 
+Der Charakter der regulären Darstellung kann als Linearkombination
+\[
+r_G(g)
+=
+\sum_{i=1}^h \langle \chi_i,r_G\rangle \chi_i(g)
+=
+\sum_{i=1}^h n_i \chi_i(g)
+\]
+geschrieben werden.
+Aus dieser Formel folgt sofort der folgende Satz.
+
+\begin{satz}
+Die Dimensionen $n_i$ der irreduziblen Darstellungen von $n$ erfüllen
+\[
+\sum_{i=1}^n n_i^2 = |G|
+\]
+Die Werte $\chi_i(g)$ der Charaktere der irreduziblen Darstellungen erfüllen
+für $g\ne e$ die Relation
+\[
+\sum_{i=1}^n n_i\chi_i(g) = 0.
+\]
+\end{satz}
+
+%
+% Zerlegung der regulären Darstellung
+%
+\subsubsection{Zerlegung der regulären Darstellung}
+Die reguläre Darstellung enthält jede irreduzible Darstellung genau
+so oft, wie die Dimension angibt.
+In einer geeigneten Basis ist eine solche Darstellung unitär.
+Die $n^2$ Matrixelemente sind orthogonal als Funktionen auf der Gruppe.
+Die Matrixelemente bilden daher einen $n^2$-dimensionalen invarianten 
+Unterraum der regulären Darstellung, dies sind genau die $n$
+Kopien der zugehörigen irreduziblen Darstellung.
+
+Die reguläre Darstellung lässt sich daher in die Blockform
+\[
+T_g
+=
+\left(\raisebox{-3cm}{\begin{tikzpicture}[>=latex,thick]
+\fill[color=gray!10] (-3,-3) rectangle (3,3);
+\fill[color=gray!20] (-2,2) rectangle (-1,1);
+\fill[color=gray!20] (0,0) rectangle (1,-1);
+\end{tikzpicture}}
+\right)
+\]
+
+
 
