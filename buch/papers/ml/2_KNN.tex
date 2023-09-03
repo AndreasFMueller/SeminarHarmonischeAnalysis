@@ -8,7 +8,7 @@ Dem Namen ist zu entnehmen, dass es nur lineare Beziehungen abbilden kann.
 Wollen wir Abhängigkeiten höherer Ordnung oder \emph{irgendwelche} nichtlinearen
 Abhängigkeiten abbilden, müssen wir dieses Modell erweitern.
 
-Die erste Idee wäre vielleicht das lineare Modell aus
+Die erste Idee wäre vielleicht, das lineare Modell aus
 \eqref{ml:regression:modell} viele Male hintereinander zu schalten beziehungsweise zu
 verschachteln. Leider \emph{bleibt} aber eine lineare Funktion $k$-mal verschachtelt
 linear.
@@ -38,7 +38,6 @@ linear.
 
     Können wir zeigen, dass die lineare Funktion $f_i$ einmal verschachtelt wieder eine
     lineare Funktion ergibt, ist das auch für beliebig viele Verschachtelungen der Fall.
-    
     Es wird $f_i$ einmal verschachtelt und ausmultipliziert:
     \begin{equation}
     \begin{aligned}
@@ -46,11 +45,11 @@ linear.
             = {\bm \thetaup}_2 ({\bm \thetaup}_1 \vec x + \vec b_1) + \vec b_2\\
         &= \underbrace{{\bm \thetaup}_2 {\bm \thetaup}_1}_{\tilde {\boldsymbol\thetaup}_1} \vec x
             + \underbrace{{\bm \thetaup}_2 \vec b_1 + \vec b_2}_{\tilde{\vec b}_1}
-            = \tilde {\boldsymbol\thetaup}_1 \vec x + \tilde{\vec b}_1
+            = \tilde {\boldsymbol\thetaup}_1 \vec x + \tilde{\vec b}_1.
     \end{aligned}
     \label{ml:ann:lin-comp-proof}
     \end{equation}
-    Wie \eqref{ml:ann:lin-comp-proof} zeigt ist also möglich $f_2 \circ f_1$ wieder als lineare Funktion zu schreiben.
+    Wie \eqref{ml:ann:lin-comp-proof} zeigt ist also möglich, $f_2 \circ f_1$ wieder als lineare Funktion zu schreiben.
 \end{proof}
 
 \subsection{Aktivierungsfunktion}
@@ -59,15 +58,13 @@ Um Nichtlinearitäten einzubauen wird eine sogenannte \emph{activation function}
 \eqref{ml:ann:linear-unit} angewendet. Die Koeffizienten-Matrix ${\bm \thetaup}$ soll
 immer noch mit \hyperref[ml:regression:gd]{Gradient-Descent} gelernt werden, also muss
 die gewählte Aktivierungsfunktion ableitbar bezüglich aller Inputs sein.
-
-Es gibt viele mögliche Aktivierungsfunktionen. Eine der ersten die gebraucht wurde ist die \emph{Sigmoid}-Funktion
+Eine der ersten die gebraucht wurde ist die \emph{Sigmoid}-Funktion
 \begin{equation}
     \sigma(y) = \frac{1}{1+e^{-y}} \quad
     \text{mit der einfachen Ableitung}\quad
     \sigma'(y) = \sigma(y)(1- \sigma(y)).
     \label{ml:ann:activation:sigmoid}
 \end{equation}
-
 $\sigma(y)$ wird nun auf $f_i$ \emph{elementweise} angewendet, also
 \begin{equation}
     g_i(\vec x) = \sigma(f_i(\vec x)) = \sigma({\bm \thetaup}_i \vec x + \vec b_i)
@@ -90,12 +87,12 @@ Für das vollständige nichtlineare Modell wird $g_i$ $k$-mal verschachtelt:
         = (g_1 \circ g_2 \circ \cdots \circ g_n)(\vec x) = g_n(g_{n-1}(\cdots g_1(\vec x))).
     \label{ml:ann:multilayer}
 \end{equation}
-So ein Modell $M$ wird \emph{fully connected feedforward artificial neural network}\footnote{
+So ein Modell $M$ wird \emph{fully connected \underline{f}eed\underline{f}orward
+\underline{a}rtificial \underline{n}eural \underline{n}etwork}\footnote{
     Bei dieser Netzwerk-Struktur sind alle Neuronen einer Schicht mit \emph{allen} der
     nächsten Schicht vollverbunden. Die feedforward Struktur impliziert fast immer auch
     die volle Verbundenheit und wird deshalb im weiteren Text weggelassen.
 } (FFANN) genannt.
-
 Was genau bei der numerischen Berechnung passiert ist viel einfacher
 in Form eines gerichteten Graphen in Abb. \ref{fig:ml:ann:simple} zu erkennen.
 
@@ -111,17 +108,15 @@ Netzwerk-Struktur alle Neuronen einer vorherigen Schicht mit allen der nächsten
 Die Kanten zwischen den Neuronen stellen die Gewichte in der $\bm \thetaup$-Matrix
 dar. Die Schichten zwischen der Eingangs- und Ausgangsschicht werden \emph{hidden layer}
 genannt, da all diese Layer nicht von aussen gesehen oder angesprochen werden können.
-
 Auf der linken Seite des Diagramms sind die Eingänge. Sie werden mit dem entsprechenden
 Gewicht $\theta^{(i)}_k$ der Kante gewichtet. Anschliessend werden die gewichteten Werte
 aller eingehenden Kanten plus einer Konstante $b^{(i)}_k$ summiert und darauf die
 Aktivierungsfunktion der Neurone angewendet. Das Resultat ist der Eingangswert
 für die nächste Schicht.
-
 Diese Berechnung propagiert so von links nach rechts durch das Netzwerk bis am Ende die
 Werte bei der Ausgangsschicht anliegen.
 
-Die Struktur des Netzwerks, also die Anzahl Eingänge, Hidden-Layer, Neuronen
+Die Struktur des Netzwerks, also die Anzahl Eingänge, hidden layer, Neuronen
 pro Layer und Ausgänge, aber auch die spezifischen Aktivierungsfunktionen können
 grundsätzlich frei gewählt werden. Sie werden \emph{hyperparameter} genannt.
 
@@ -135,7 +130,7 @@ Bias-Vektor $\vec b$. All diese Werte sollen iterativ mit Gradient-Descent geler
 sodass alle Outputs des gesamten Netzwerks möglichst nahe an den geforderten sind.
 
 Um diese Problemstellung zu untersuchen beschränken wir uns zuerst auf den Fall eines
-Netzwerks mit \emph{einem} Eingang, $n$ Hidden-Layer mit \emph{einem} Neuron und
+Netzwerks mit \emph{einem} Eingang, $n$ hidden layer mit \emph{einem} Neuron und
 \emph{einem} Ausgang. Mit dieser Forderung wird die Matrizengleichung
 \eqref{ml:ann:multilayer} zu einer skalaren Gleichung
 \begin{equation}
@@ -144,39 +139,39 @@ Netzwerks mit \emph{einem} Eingang, $n$ Hidden-Layer mit \emph{einem} Neuron und
         \cdot \sigma ( \cdots \sigma( \theta_1 x + b_1 ) ) + b_{n-1} ) + b_n).
     \label{ml:ann:multilayer-1D}
 \end{equation}
+
 Abbildung \ref{fig:ml:ann:simple-1D} zeigt \eqref{ml:ann:multilayer-1D} wieder als
 gerichteten Graphen.
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.8]{papers/ml/images/ann_simple_1D.pdf}
     \caption{Eindimensionales FFANN.}
     \label{fig:ml:ann:simple-1D}
 \end{figure}
-
 $\theta_i$ sind die Gewichte (englisch \emph{weights}) der Verbindungen beziehungsweise
 Kanten zwischen den Neuronen, $b_i$ sind die konstanten Anteile (englisch \emph{biases})
 und $\sigma$ ist die Aktivierungsfunktion der Neuronen. Jedes $l_i$ soll den Output eines
 Layers darstellen.
 
 Zur weiteren Verdeutlichung wird \eqref{ml:ann:multilayer-1D} als Gleichungssystem
-geschrieben:
 \begin{equation}
+    \left.
     \begin{aligned}
         l_1 &= \sigma(\theta_1 x + b_1) = \sigma(\xi_1)\\
         l_2 &= \sigma(\theta_2 l_1 + b_2) = \sigma(\xi_2)\\
         &\hspace{1.5cm}\vdots\\
         y=l_n &= \sigma(\theta_n l_{n-1} + b_n) = \sigma(\xi_n)\\
     \end{aligned}
+    \right\}
     \qquad\text{mit}\qquad
     \xi_i = \theta_i l_{i-1} + b_i
-    .
 \end{equation}
+geschrieben.
 
 Wie schon bei Gradient-Descent im linearen Fall soll wieder die Cost-Function $J(\theta,b)
-= (y - M(x, \theta, b))^2$ minimiert werden. Wir verwenden hier die selbe Cost-Function
-wie in Abschnitt \ref{ml:regression}, in der Praxis kann aber irgendeine günstige
-\emph{ableitbare} Funktion verwendet werden.
+= (y - M(x, \theta, b))^2$ minimiert werden. Wir verwenden hier dieselbe Cost-Function
+wie in Abschnitt \ref{ml:regression}, in der Praxis kann aber irgendeine passende und vorallem
+ableitbare Funktion verwendet werden.
 
 Es wird wieder der Gradient von $J$ gebildet, wobei die entgegengesetzte Richtung immer
 noch zu einem lokalen Minimum führt. Der Gradient beinhaltet die partiellen Ableitungen
@@ -187,13 +182,12 @@ bezüglich aller Parameter
     \qquad\text{und}\qquad
     \frac{\partial J}{\partial b_i} = 2(M(x) - y) \cdot \frac{\partial M}{\partial b_i}.
 \end{equation}
-
 Mit der Kettenregel
 \begin{equation}
     \frac{d}{dt}f(g(t)) = \frac{df(g(t))}{d g(t)} \cdot \frac{d g(t)}{dt} = \frac{df(\tau)}{d \tau} \cdot \frac{d g(t)}{dt}
 \end{equation}
 lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
-\[
+\begin{equation}
 \begin{aligned}
     \frac{\partial M}{\partial \theta_n} &= \frac{\partial l_n}{\partial \theta_n} =
     \sigma'(\theta_n l_{n-1} + b_n) l_{n-1} = \sigma'(\xi_n)l_{n-1} \\
@@ -216,14 +210,13 @@ lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
     \sigma'(\xi_n) \theta_n \cdot \sigma'(\xi_{n-1}) \\
     \vdots\quad&
 \end{aligned}
-\]
+\end{equation}
 
 Wichtig zu erkennen ist, dass alle Werte $l_i$ sowie auch $\xi_i=\theta_i l_{i-1}+b_i$ nur
 einmal berechnet werden müssen. Das Netzwerk muss sowieso für den finalen Wert $y$ einmal
-ausgewertet werden, dieser Schritt wird \emph{forward propagation} (deutsch Vorwärtspropagierung)
+ausgewertet werden, dieser Schritt wird \emph{forward propagation} (Vorwärtspropagierung)
 genannt. Gleichzeitig können alle Zwischenresultate gespeichert werden, um sie für den
 Korrekturschritt direkt einzusetzen.
-
 Die Parameter werden analog zu \eqref{ml:regression:gd:update} bei jeder Iteration mit
 \begin{equation}
     \theta_i \leftarrow \theta_i - \alpha \frac{\partial J}{\partial \theta_i}
@@ -232,15 +225,14 @@ Die Parameter werden analog zu \eqref{ml:regression:gd:update} bei jeder Iterati
 \end{equation}
 angepasst.
 
-Bei den partiellen Ableitungen sieht man, das jede Schicht $i$ immer von allen
-nächsten Schichten $i+1, i+2, \cdots$ mit identischer Form abhängt. Gibt es also eine Formel
-die nur den Zusammenhang zwischen zwei Neuronen beschreibt? Klar, die gibt's.
-
-Wir führen dazu die neue Grösse 
+Bei den partiellen Ableitungen sieht man, dass jede Schicht $i$ immer von allen
+nächsten Schichten $i+1, i+2, \cdots$ mit identischer Form abhängt.
+Wir wollen eine Formel herleiten, die genau den Zusammenhang von zwei
+benachbarten Neuronen beschreibt. Dazu führen wir die neue Grösse 
 \begin{equation}
     \delta_i = \frac{\partial J}{\partial \xi_i}
 \end{equation}
-ein, sie wird auch \emph{local gradient} (deutsch lokaler Gradient) genannt. Damit können
+ein. Sie wird auch \emph{local gradient} (lokaler Gradient) genannt. Damit können
 die partiellen Ableitungen und Aktualisierungsgleichungen schon einmal vereinfacht geschrieben werden:
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = \delta_i \cdot l_{i-1}
@@ -249,21 +241,22 @@ die partiellen Ableitungen und Aktualisierungsgleichungen schon einmal vereinfac
     \frac{\partial J}{\partial b_i} = \delta_i
     \; \Rightarrow\; \Delta b_i = - \alpha \delta_i.
 \end{equation}
-
 Der lokale Gradient kann schliesslich mit
 \begin{equation}
     \delta_{i-1} = \frac{\partial J}{\partial \xi_i} \cdot \frac{\partial \xi_i}{\partial \xi_{i-1}}
     = \delta_i \cdot \frac{\partial \xi_i}{\partial \xi_{i-1}}
     = \delta_i \cdot \sigma'(\xi_{i-1}) \theta_i
-    \label{ml:ann:bp:rekursiv}.
+    \label{ml:ann:bp:rekursiv},
 \end{equation}
-rekursiv berechnet werden. In \eqref{ml:ann:bp:rekursiv} ist noch besser zu erkennen, dass das Übertragungsverhalten
+wie gewünscht, rekursiv berechnet werden.
+
+In \eqref{ml:ann:bp:rekursiv} ist noch besser zu erkennen, dass das Übertragungsverhalten
 des Fehlers $\delta_{i-1}/\delta_i$
 zwischen zwei Neuronen von zwei benachbarten Schichten $i$ und $i+1$ nur von der Kante
-$(i)\rightarrow(i+1)$ dazwischen (also dem
-Gewicht), der Ableitung der Aktivierungsfunktion des Neuron in Schicht $i$ und dem lokalen
+$(i)\rightarrow(i+1)$ dazwischen also dem
+Gewicht, der Ableitung der Aktivierungsfunktion des Neuron in Schicht $i$ und dem lokalen
 Gradienten der Schicht $i+1$ abhängt.
-$\delta_n$ der letzten Schicht berechnet sich noch mit der normalen Formel
+$\delta_n$ der letzten Schicht berechnet sich immer noch mit der partiellen Ableitung
 \begin{equation}
     \delta_n = \frac{\partial J}{\partial \xi_n}
     = \frac{\partial J}{\partial M} \cdot \frac{\partial M}{\partial \xi_n}
@@ -276,10 +269,10 @@ Dieser Anpassungsprozess als Rückpropagierung des Fehlers wird \emph{backpropag
 
 \subsubsection{Erweiterung auf allgemeine feedforward Netzwerke}
 
-Wir haben in der Herleitung vom Backpropagation-Algorithmus ein stark vereinfachtes
-Netzwerk betrachtet. Mit den gleichen Überlegungen ist es aber auch möglich
+Wir haben in der Herleitung des Backpropagation-Algorithmus ein stark vereinfachtes
+Netzwerk betrachtet. Mit den gleichen Überlegungen ist es aber auch möglich,
 Backpropagation für ein Netzwerk mit mehreren Ein- und Ausgängen, mehreren Neuronen pro
-Hidden-Layer und verschiedenen Aktivierungsfunktionen zu machen.
+hidden layer und verschiedenen Aktivierungsfunktionen zu machen.
 
 Durch Summierung der Kosten aller Ausgänge kann erst einmal die Cost-Function sehr einfach
 auf mehrere Outputs erweitert werden:
