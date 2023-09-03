@@ -12,7 +12,7 @@
 
 Folgendes Kapitel orientiert sich zu Beginn stark am Kapitel 2 von
 \cite{mellin:mendezmueller-book}.
-\medskip
+\smallskip
 
 Es sei folgendes Registrierungsproblem gegeben: Wir haben zwei Funktionen 
 $f(x)$ und $g(x)$, welche bis auf eine Verschiebung identisch sind 
@@ -23,7 +23,7 @@ verschobene Bilder sein, die zur Deckung gebracht werden sollen, das
 Prinzip bleibt hierbei dasselbe.
 \begin{figure}
     \centering
-    \begin{tikzpicture}[scale=0.70]
+    \begin{tikzpicture}[scale=0.70,>=latex]
     \draw[->] (-0.1,0) -- (9.5,0) coordinate[label={$x$}];
     \draw[->] (0,-0.1) -- (0,5) coordinate[label={left:$y$}];
     \node at (5.4,4.4) [right, color=purple] {$\displaystyle g(x) = f(x + x_0)$};
@@ -41,15 +41,15 @@ Prinzip bleibt hierbei dasselbe.
 
 Die Aufgabe besteht nun darin, bei gegebenen Funktionen $f(x)$ und $g(x)$ 
 die unbekannte Verschiebung $x_0$ zu ermitteln. 
-Ein mathematisch naheliegender Ansatz ist das Standard-Skalarprodukt,
-% \footnote{Siehe auch Kapitel \ref{buch:chapter:skalarprodukte}}
-welches ein quantitatives Mass für die Ähnlichkeit zweier Funktionen 
-liefert, sofern es konvergiert.
+Ein mathematisch naheliegender Ansatz ist das Standardskalarprodukt
 \begin{equation}
     \langle f,g \rangle 
     = \int \overline{f(x)} \cdot g(x) \,dx
+    ,
     \label{mellin:skalaprodukt}
 \end{equation}
+welches ein quantitatives Mass für die Ähnlichkeit zweier Funktionen 
+liefert, sofern es konvergiert.
 Der Wert, den das Skalarprodukt liefert, ist genau dann am grössten, wenn die 
 beiden Funktionen identisch sind.
 Wir lassen also eine Verschiebung der zweiten Funktion zu und ermitteln, 
@@ -62,16 +62,7 @@ Dies führt auf die Kreuzkorrelation
 \end{equation}
 die selber eine Funktion der Verschiebung $\tau$ ist. 
 Wenn $\tau =  x_0$ liegen die ursprünglichen Funktionen exakt übereinander 
-da
-% \begin{proof}
-%     \begin{equation}
-%         g(x)
-%         = f(x + x_0)
-%         g(x - \tau)
-%         = f(x + x_0 - \tau) = f(x)
-%     \end{equation}
-% \end{proof}
-$g(x) = f(x + x_0)$ und $g(x - \tau) = f(x + x_0 - \tau) = f(x)$ für 
+da $g(x) = f(x + x_0)$ und $g(x - \tau) = f(x + x_0 - \tau) = f(x)$ für 
 $\tau =  x_0$ und die Kreuzkorrelation ist maximal. 
 Mathematisch ausgedrückt findet sich $x_0$ mit
 \begin{equation}
@@ -84,7 +75,7 @@ Die Kreuzkorrelation führt zum Erfolg, ist aber, sofern sie sich nicht
 analytisch berechnen lässt (in Anwendungen generell nicht der Fall) eine 
 ziemlich rudimentäre Methode, die mit sehr grossem Rechenaufwand verbunden 
 ist, da für jeden Wert der Verschiebung $\tau$ ein Integral berechnet 
-werden soll.
+werden muss.
 Die effizientere Lösung bietet die Fourier-Theorie.
 
 Durch Spiegeln von $g(x) \rightarrow \check{g}(x)$ verwandelt sich die 
@@ -110,16 +101,16 @@ und somit findet sich die Lösung nach \eqref{mellin:x0}
     \label{mellin:x0ft}
 \end{equation}
 Diese Methode funktioniert deshalb, da die Hin- und Rücktransformationen 
-zahlreicher bekannten Funktionen gut untersucht sind. 
-Viele Standardfunktionen sind tabelliert und mathematische Software bieten 
+zahlreicher bekannter Funktionen gut untersucht sind. 
+Viele Standardfunktionen sind tabelliert und mathematische Software bietet 
 ausgefeilte Methoden zur schnellen und effizienten Berechnung der 
 Transformationspaare. 
 
 
 \subsection{Registrierungsproblem für skalierte Funktionen
 \label{mellin:subsection:regskal}}
-Wie im ersten Beispiel gezeigt lässt sich jenes Registrierungsproblem 
-mithilfe der Fourier-Transformation elegant lösen.
+Wie im ersten Beispiel gezeigt, lässt sich jenes Registrierungsproblem 
+mithilfe der Fourier-Trans\-for\-ma\-tion elegant lösen.
 Dies hat deshalb funktioniert, weil das gestellte Problem eine 
 Verschiebung beinhaltete, also eine Addition im Argument, die der 
 Gruppenoperation der Fourier-Transformation entspricht und somit 
@@ -135,7 +126,7 @@ werden sollen. Dieses mal unterscheiden sie sich nur
 Argument (siehe Abb. \ref{fig:mellin:f2}).
 \begin{figure}
     \centering
-    \begin{tikzpicture}[scale=0.70]
+    \begin{tikzpicture}[scale=0.70,>=latex]
     \draw[->] (-0.1,0) -- (9.5,0) coordinate[label={$x$}];
     \draw[->] (5,-0.1) -- (5,5) coordinate[label={left:$y$}];
     \node at (5.4,4.4) [right, color=purple] {$\displaystyle g(x) = f(sx)$};
@@ -167,4 +158,4 @@ eingengangen werden soll.
 Wieder könnte man das Integral für verschiedene Werte von $\sigma$ 
 numerisch auswerten und so den richtigen Faktor zu finden. 
 Da dies aber die gleichen Probleme wie vorher beinhaltet, drängt sich die 
-Frage auf, ob sich die Lösung auch hier über Fourieranalyse finden lässt.
+Frage auf, ob sich die Lösung auch hier über Fourier-Analyse finden lässt.
