@@ -16,7 +16,7 @@ Seit 1979 sind die Wetterprognosen, dank der spektralen Modelle, viel besser gew
 Heute haben wir fast unendliche Rechenleistung zur Verfügung (z.B. Cloud-Computing), aber wir müssen trotzdem unsere Reihe \eqref{spektral:equation21} an eine fixe Anzahl der Wellen $(N)$ begrenzen.
 In der echten Welt wird die Gleichung \eqref{spektral:equation21} so aussehen:
 \begin{equation}
-u(\phi, \theta, t) = \sum_{m=-0}^{N}\sum_{n=-m}^{m}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
+u(\phi, \theta, t) = \sum_{m=0}^{N}\sum_{n=-m}^{m}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
 \label{spektral:equation22}
 \end{equation}
 $N$ wird Modelauflösung genannt \cite[Seite 223]{spektral:NumericalWeatherPrediction} und \eqref{spektral:equation21} als \textit{Dreieickabschneidung} (triangular truncation) genannt.

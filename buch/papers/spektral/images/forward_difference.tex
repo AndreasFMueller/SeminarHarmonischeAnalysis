@@ -3,18 +3,12 @@
 \usepackage{times}
 \usepackage{amsmath}
 \usepackage{txfonts}
-\usepackage{relsize}
 
 \usepackage{tikz}
 \usetikzlibrary{intersections,positioning}
-\tikzset{fontscale/.style = {font=\relsize{#1}}}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.12}
-
-\usepackage{relsize}
-
-\tikzset{fontscale/.style = {font=\relsize{#1}}}
 
 \begin{document}
 
@@ -47,24 +41,24 @@ axis y line = left]
 %%%% Dashed lines and labels
 \begin{scope}[dashed]
 
-    \node[below=1.25cm of 1] [fontscale=3] (a) {$t_n$};
-    \node (b) at (a -| 2) [fontscale=3] {$t_{n+1}$};
+    \node[below=1.25cm of 1] (a) {\large $t_n$};
+    \node (b) at (a -| 2) {\large $t_{n+1}$};
 
     \draw (1) -- (a);
     \draw (2) -- (b);
 
-    \node[left=1.2cm of 1] [fontscale=3] (c) {$u_n$};
-    \node (d) at (c |- 2) [fontscale=3] {$u_{n+1}$};
+    \node[left=1.2cm of 1] (c) {\large $u_n$};
+    \node (d) at (c |- 2) {\large $u_{n+1}$};
 
     \draw (1) -- (c);
     \draw (2) -- (d);
 
 \end{scope}
 
-\draw[<->] (a) --node[midway,fill=white,fontscale=3]{$\Delta t$} (b);
-\draw[<->] (c) --node[midway,fill=white,fontscale=3]{$\Delta u$} (d);
+\draw[<->] (a) --node[midway,fill=white]{\large $\Delta t$} (b);
+\draw[<->] (c) --node[midway,fill=white]{\large $\Delta u$} (d);
 
-\node at (4.5,4.5) [fontscale=3] {$\dfrac{du}{dt}\approx\dfrac{\Delta u}{\Delta t}=\dfrac{u_{n+1}-u_n}{t_{n+1}-t_n}$};
+\node at (4.5,4.5) {\large $\dfrac{du}{dt}\approx\dfrac{\Delta u}{\Delta t}=\dfrac{u_{n+1}-u_n}{t_{n+1}-t_n}$};
 
 \end{axis}
 \end{tikzpicture}

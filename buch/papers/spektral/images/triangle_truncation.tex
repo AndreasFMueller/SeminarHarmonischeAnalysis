@@ -4,15 +4,13 @@
 % (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 %
 \documentclass[tikz]{standalone}
-\usepackage{amsmath}
 \usepackage{times}
+\usepackage{amsmath}
 \usepackage{txfonts}
 \usepackage{pgfplots}
 \usepackage{csvsimple}
-\usepackage{relsize}
 
 \usetikzlibrary{arrows,intersections,math}
-\tikzset{fontscale/.style = {font=\relsize{#1}}}
 
 \begin{document}
 \def\skala{1}
@@ -25,11 +23,11 @@
 	-- ({3.5*\h+0.707*\h},{3.5*\h})
 	-- cycle;
 
-\draw[->] ({-4.5*\h},0) -- ({4.5*\h},0) coordinate[label={$n$}];
-\draw[->] (0,{-0.5*\h}) -- (0,{5.5*\h}) coordinate[label={right:$m$}];
+\draw[->] ({-4.5*\h},0) -- ({4.5*\h},0) coordinate[label={\large $n$}];
+\draw[->] (0,{-0.5*\h}) -- (0,{5.5*\h}) coordinate[label={right:\large $m$}];
 
 \draw[color=red,dashed] ({-4.5*\h},{3*\h}) -- ({4.5*\h},{3*\h});
-\node[color=red] at ({-4.5*\h},{3*\h}) [left] {$N=3$};
+\node[color=red] at ({-4.5*\h},{3*\h}) [left] {\large $N=3$};
 
 \foreach \n in {0,...,4}{
 	\foreach \m in {-\n,...,\n}{

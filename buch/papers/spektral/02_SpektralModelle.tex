@@ -31,14 +31,15 @@ Damit wir das spektrale Modell für die Gleichung \eqref{spektral:equation7} ent
 Dafür muss die Eigenwertgleichung des Laplace-Operators \eqref{spektral:equation8}
 
 \begin{equation}
- \Delta{V} = -\lambda{V(x)}.
+ \Delta{V} = -\lambda{V(x)}
 \label{spektral:equation9}
 \end{equation}
+gelöst werden.
 Die vollständige Lösung ist in \cite[Seite 62]{spektral:NichtkommutativeBildvearbeitung} gezeigt.
 Für uns ist wichtig, dass wir die Basisfunktionen finden und durch diese Funktionen --- Kugelflächenfunktionen (siehe \cite{spektral:MathsemSpezfunk} und \cite{spektral:NichtkommutativeBildvearbeitung}) --- unsere gesuchte Funktion aus der Gleichung \eqref{spektral:equation7} als
 
 \begin{equation}
-u(\phi,\theta,t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)Y_n^m(\phi, \theta)
+u(\phi,\theta,t) = \sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}a_n^m(t)Y_n^m(\phi, \theta)
 \label{spektral:equation10}
 \end{equation}
 darstellen können.
@@ -47,14 +48,14 @@ darstellen können.
 \label{spektral:subsection:wellengleichung}}
 Jetzt sind wir bereit die Wellengleichung mit der spektrale Methode zu lösen.
 Für die Vereinfachung nehmen wir an, dass in der Gleichung \eqref{spektral:equation7} $\alpha=1$ ist und der Kugelradius auch $r=1$ ist.
-Dann wird die Wellechgleichung so aussehen:
+Dann wird die Wellengleichung so aussehen:
 \begin{equation}
 \frac{1}{\sin\theta}\frac{\partial}{\partial{\theta}}\left(\sin\theta\frac{\partial{U}}{\partial{\theta}}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2{U}}{\partial{\phi^2}} = \frac{\partial^2{U}}{\partial{t^2}}.
 \label{spektral:equation11}
 \end{equation}
 Wenn wir die Gleichung \eqref{spektral:equation10} für die Gleichung \eqref{spektral:equation7} anwenden, dann bekommen wir
 \begin{equation}
-\Delta{U} = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)\Delta{Y_n^m(\phi, \theta)}.
+\Delta{U} = \sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}a_n^m(t)\Delta{Y_n^m(\phi, \theta)}.
 \label{spektral:equation12}
 \end{equation}
 Wir müssen jetzt die $\Delta{Y_n^m(\phi, \theta)}$ finden.
@@ -68,32 +69,33 @@ Gemäß dem Satz~\ref{buch:orthofkt:pde:satz:kugel} bekommen wir
 Laplace-Operator der Kugelflächenfunktion ist proportional der Funktion selbst \cite[Seite 663]{spektral:DynamicOfTheAtmosphere}. Das ist sehr wichtige Eigenschaft, die wir gleich anwenden werden.
 Aus der Gleichung \eqref{spektral:equation12} bekommen wir:
 \begin{equation}
-\Delta{U} = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)l(l+1)Y_n^m(\phi, \theta)
+\Delta{U} = -\sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}a_n^m(t)l(l+1)Y_n^m(\phi, \theta)
 \label{spektral:equation17}
 \end{equation}
 und wenn wir die Gleichung \eqref{spektral:equation10} auf die linke Seite der Gleichung \eqref{spektral:equation7} anwenden, bekommen wir
 \begin{equation}
-\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}\ddot{a}_n^m(t)Y_n^m(\phi, \theta) = -\sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(t)l(l+1)Y_n^m(\phi, \theta).
+\sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}\ddot{a}_n^m(t)Y_n^m(\phi, \theta) = -\sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}a_n^m(t)l(l+1)Y_n^m(\phi, \theta).
 \label{spektral:equation18}
 \end{equation}
-Wir sehen, dass auf den beiden Seiten der Gleichung die Kugelflächenfunktion $Y_n^m(\phi, \theta)$ vorkommt und die Gleichung \eqref{spektral:equation18} kann umgeschrieben werden
+Wir stellen fest, dass auf den beiden Seiten der Gleichung die Kugelflächenfunktion $Y_n^m(\phi, \theta)$ vorkommt, und die Gleichung \eqref{spektral:equation18} kann in 
 \begin{equation}
-\ddot{a}_n^m(t) = -l(l+1)a_n^m(t).
+\ddot{a}_n^m(t) = -l(l+1)a_n^m(t)
 \label{spektral:equation19}
 \end{equation}
-D.h. wir bekommen das System der Differenzialgleichungen zweiten Grades.
-Die Lösung dieser Differenzialgleichung ist
+umgeschrieben werden.
+Dadurch bekommen wir ein System der Differenzialgleichungen zweiter Ordnung, das folgende Lösungen hat:
 \begin{equation}
-a_n^m(t) = a_n^m(0)e^{i\sqrt{l(l+1)}t}
+a_n^m(t) = a_n^m(0)e^{i\sqrt{l(l+1)}t}.
 \label{spektral:equation20}
 \end{equation}
-und die gesuchte Funktion
+Somit die gesuchte Funktion ist
 \begin{equation}
-u(\phi, \theta, t) = \sum_{m=-\infty}^{\infty}\sum_{n=-|m|}^{\infty}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
+u(\phi, \theta, t) = \sum_{m=0}^{\infty}\sum_{n=-m}^{\infty}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
 \label{spektral:equation21}
 \end{equation}
 
 \subsection{Ergebnis
 \label{spektral:subsection:ergebnis}}
 
-Als Ergebnis bekommen wir die Gleichung, die im Vergleich zu Differenzialgleichung \eqref{spektral:equation8} viel einfacher zu lösen ist. Der Vorteil wurde bereits im Kapitel \ref{spektral:subsection:vorteile} erwähnt. Jetzt haben wir das bestätigt.
+Als Ergebnis bekommen wir die Gleichung, die im Vergleich zu Differenzialgleichung \eqref{spektral:equation8} wesentlich einfacher zu lösen ist.
+Dieser Vorteil wurde bereits im Abschnitt \ref{spektral:subsection:vorteile} erwähnt und wurde nun bestätigt.
