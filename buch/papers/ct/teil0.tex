@@ -13,7 +13,7 @@ Im vorliegenden Abschnitt wird das Verhalten eines Strahls erklärt. Um die Anal
 
 \subsection{Annahmen über Röntgenstrahlen
 	\label{ct:subsection:annahmen}}
-In erster Linie betrachten wir einen Röntgenstrahl als eine Zusammensetzung von Photonen und nehmen an, dass er monochromatische Eigenschaften aufweist. Diese monochromatische Eigenschaft bedeutet, dass alle Photonen dieselbe Energie $E$ besitzen und mit einer konstanten Frequenz propagieren. $N(x)$ steht für die Anzahl der Photonen pro Sekunde, die einen bestimmten Punkt $x$ durchqueren. Somit kann die Intensität des Strahls an einem Punkt $x$ mit
+In erster Linie betrachten wir einen Röntgenstrahl als eine Zusammensetzung von Photonen und nehmen an, dass er monochromatische Eigenschaften aufweist. Das bedeutet, dass alle Photonen dieselbe Energie $E$ besitzen und mit einer konstanten Frequenz propagieren. $N(x)$ steht für die Anzahl der Photonen pro Sekunde, die einen bestimmten Punkt $x$ durchqueren. Somit kann die Intensität des Strahls an einem Punkt $x$ mit
 \begin{equation}
 	I(x) = E\cdot N(x)
 \end{equation}
@@ -58,7 +58,7 @@ Diese Differentialgleichung ist separierbar und kann auch geschrieben werden als
 \begin{equation}
 	\dfrac{dI}{I} = -A(x)\,dx.
 \end{equation}
-Wenn der Strahl am Ort $x_0$ mit einer anfänglichen Intensität von $I_0 = I(x_0)$ beginnt und nach dem Durchgang durch das Medium am Ort $x_1$ mit einer endgültigen Intensität von $I_1 = I(x_1)$ detektiert wird, ergibt sich 
+Wenn der Strahl am Ort $x_0$ mit einer anfänglichen Intensität von $I_0 = I(x_0)$ beginnt und nach dem Durchdringen des Mediums am Ort $x_1$ mit einer endgültigen Intensität von $I_1 = I(x_1)$ detektiert wird, ergibt sich 
 \begin{align}\label{diffeq}
 	\int_{x_0}^{x_1} \dfrac{dI}{I} &= -\int_{x_0}^{x_1} A(x)\,dx,\\
 	\intertext{und daraus folgt, dass}
@@ -69,9 +69,7 @@ Wenn der Strahl am Ort $x_0$ mit einer anfänglichen Intensität von $I_0 = I(x_
 	\int_{x_0}^{x_1} A(x)dx &= \ln \biggl(\dfrac{I(x_0)}{I(x_1)}\biggr).
 \end{align}
 
-Im Vergleich zu anderen Differentialgleichungen, bei denen die Koeffizientenfunktion bekannt ist und durch deren Integration die Funktion $I$ gefunden wird, sind bei dieser Differentialgleichung die Anfangs- und Endwerte von $I$ bekannt. Hingegen ist die Koeffizientenfunktion $A$, die eine entscheidende Eigenschaft des abgetasteten Mediums darstellt, unbekannt. Folglich ist die Fähigkeit, die genauen Werte von $A$ abzuleiten, begrenzt. Stattdessen kann aus der gemessenen Röntgenintensität das Integral von $A$ entlang des Weges der Röntgenstrahlung bestimmt werden.
-
-Daraus lässt sich die fundamentale Frage stellen, ob die Möglichkeit besteht, die Koeffizientenfunktion $A$ aus Durchschnittswerten von $A$ entlang Geraden, welche durch eine Region passieren, zu rekonstruieren?
+Im Vergleich zu anderen Differentialgleichungen, bei denen die Koeffizientenfunktion bekannt ist und durch deren Integration die Funktion $I$ gefunden wird, sind bei dieser Differentialgleichung die Anfangs- und Endwerte von $I$ bekannt. Hingegen ist die Koeffizientenfunktion $A$, die eine entscheidende Eigenschaft des abgetasteten Mediums darstellt, unbekannt. Folglich ist die Fähigkeit, die genauen Werte von $A$ abzuleiten, begrenzt. Stattdessen kann aus der gemessenen Röntgenintensität das Integral von $A$ entlang des Weges der Röntgenstrahlung bestimmt werden. Daraus lässt sich die fundamentale Frage stellen, ob die Möglichkeit besteht, die Koeffizientenfunktion $A$ aus Durchschnittswerten von $A$ entlang Geraden, welche durch eine Region passieren, zu rekonstruieren?
 
 \subsection{Geraden in der Ebene
 	\label{ct:subsection:geraden}}

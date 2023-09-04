@@ -9,7 +9,7 @@
 \section{Die zwei grossen Theoreme
 	\label{ct:section:theoreme}}
 \rhead{Die zwei grossen Theoreme}
-Die in diesem Kapitel untersuchten Konzepte drehen sich um das Zusammenspiel von drei Transformationen: die Radon-Transformation, die Fourier-Transformation und die Rückprojektionstransformation.
+Die in diesem Kapitel untersuchten Konzepte drehen sich um das Zusammenspiel von drei Transformationen: der Radon-Transformation, der Fourier-Transformation und der Rückprojektionstransformation.
 
 \subsection{Das Zentralschnitt-Theorem
 	\label{ct:subsection:zentralschnitt}}
@@ -24,7 +24,7 @@ Für jede geeignete Funktion $f$ in der Ebene und alle reellen Zahlen $S$ und $\
 	\end{equation}
 \end{satz}
 
-Im nachfolgenden wird der Beweis des Zentralschnitt-Satzes durchgeführt.
+Im Nachfolgenden wird der Beweis des Zentralschnitt-Satzes durchgeführt.
 \begin{proof}[Beweis]
 	Gegeben ist die Funktion $f$, die in der Ebene definiert ist. Die reellen Zahlen $S$ und $\theta$ sind gegeben und somit ergibt sich durch die zweidimensionale Fourier-Transformation, dass
 	\begin{align}\label{iftnft}
@@ -56,7 +56,7 @@ Durch die Radon-Transformation entsteht ein Glättungseffekt, welcher in  der Ab
 	\label{ct:img:central-slice}
 \end{figure}
 Eine einfache Visualisierung des Zentralschnitt-Theorems wird nun folgen. Bei der Fourier-Transformation der Datenpunkte, die durch das Röntgengerät aus der Radon-Transformation erhalten worden sind, werden im Wesentlichen eine Gerade im Frequenzbereich von $f(x, y)$ auftragen. Dies kann in der Abbildung \ref{ct:img:central-slice} gesehen werden. 
-Die Änderung von $\theta$, die durch Drehen des CT-Geräts zur Aufnahme von Röntgenbildern aus verschiedenen Winkeln erreicht wird, führt zur Vervollständigung weiterer Geraden im Frequenzraum. Die schrittweise Anhäufung einer ausreichenden Anzahl von Punkten ermöglicht die Extrapolation des gesamten Frequenzraums und erleichtert die Erstellung eines Bildes für $f(x, y)$ \cite{ct:condensate}.
+Die Änderung von $\theta$, die durch das Drehen des CT-Geräts zur Aufnahme von Röntgenbildern aus verschiedenen Winkeln erreicht wird, führt zur Vervollständigung weiterer Geraden im Frequenzraum. Die schrittweise Anhäufung einer ausreichenden Anzahl von Punkten ermöglicht die Extrapolation des gesamten Frequenzraums und erleichtert die Erstellung eines Bildes für $f(x, y)$ \cite{ct:condensate}.
 
 
 \subsection{Die gefilterte Rückprojektion
@@ -91,7 +91,7 @@ Als nächstes folgt der Beweis für die gefilterte Rückprojektion.
 
 Würde in der Formel der Faktor $|S|$ fehlen, würden sich die Fourier-Transformation und ihre Umkehrung gegenseitig aufheben, so dass nur die Rückprojektion der Radon-Transformation von $f$ übrig bliebe. Wenn man die eindimensionale Fourier-Transformierten für verschiedene Winkel aufaddiert, dann werden bei tiefen Frequenzen viele Werte zusammengezählt, bei hohen Frequenzen nur wenige. Dieser Effekt wird ausgeglichen durch Multiplikation mit dem Betrag der Frequenz entlang der Frequenzachse $\omega$. Das entscheidende Element in der Formel besteht also darin, die Fourier-Transformierte von $\mathscr{R}f(S, \theta)$ mit der Absolutwertfunktion $|S|$ zu multiplizieren, bevor die inverse Fourier-Transformation durchgeführt wird. Im Kontext der Signalverarbeitung wird die Fourier-Transformation von $\mathscr{R}f$ als gefiltert durch Multiplikation mit $|S|$ beschrieben. Genau aus diesem Grund wird die Formel auch als \glqq gefilterte Rückprojektionsformel\grqq{} bezeichnet.
 
-Die Formel für die gefilterte Rückprojektion dient als Basis der Bildrekonstruktion. Sie beruht jedoch auf der Annahme, dass die Werte von $\mathscr{R}f(S, \theta)$ für alle möglichen Geraden $l_{S, \theta}$ bekannt sind. In der Praxis ist dies nicht möglich, da nur eine endliche Anzahl von Röntgenproben genommen wird und ein Bild aus den gesammelten Daten approximiert werden muss. Folglich gibt es für jede endliche Menge von Röntgenstrahlen, die einen Scan bilden, von Null abweichende Dämpfungskoeffizientenfunktionen, die als Artefakte bezeichnet werden und deren Radon-Transformationen für alle Zeilen des Scans zu Null werden.
+Die Formel für die gefilterte Rückprojektion dient als Basis der Bildrekonstruktion. Sie beruht jedoch auf der Annahme, dass die Werte von $\mathscr{R}f(S, \theta)$ für alle möglichen Geraden $l_{S, \theta}$ bekannt sind. In der Praxis ist dies nicht möglich, da nur eine endliche Anzahl von Röntgenproben genommen wird und ein Bild aus den gesammelten Daten approximiert werden muss. Folglich gibt es für jede endliche Menge von Röntgenstrahlen, die einen Scan bilden, von null abweichende Dämpfungskoeffizientenfunktionen, die als Artefakte bezeichnet werden und deren Radon-Transformationen für alle Zeilen des Scans zu Null werden.
 
 
 
