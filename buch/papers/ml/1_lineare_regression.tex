@@ -11,30 +11,29 @@
 \rhead{Lineare Regression}
 
 \emph{Regression} ist ein statistisches Analyseverfahren mit dem Ziel, Beziehungen zwischen
-Daten zu modellieren. Hat man zum Beispiel den Aktienkurs einer Firma von den letzten zwanzig
+Daten zu modellieren. Hat man zum Beispiel den Aktienkurs einer Firma der letzten zwanzig
 Tagen, kann man mit Regression den Preis am nächsten Tag statistisch vorhersagen.
 So ein Modell hat also das Ziel, die Vorhersage so gut wie möglich aus den gegebenen Daten zu approximieren.
-
 Die einfachste Form der Regression ist die \emph{lineare Regression}, bei der alle Abhängigkeiten linear
 sind.
 
 \subsubsection{Ein lineares Modell}
 \begin{itemize}
     \item $y$ soll die abhängige Variable des vorherzusagenden Wertes sein.
-    \item $x_1, \dots, x_i$ sind unabhängigen Variablen die einen Beitrag zur Vorhersage
+    \item $x_1, \cdots, x_i$ sind unabhängigen Variablen die einen Beitrag zur Vorhersage
     $y$ leisten können, genannt \emph{Features}.
-    \item $\theta_0, \theta_1, \dots, \theta_i$ sind die Koeffizienten der Features $x_i$,
+    \item $\theta_0, \theta_1, \cdots, \theta_i$ sind die Koeffizienten der Features $x_i$,
     sie bestimmen wie wichtig das entsprechenden Feature ist.
 \end{itemize}
 
 Gegeben sind eine sehr grosse Anzahl $m$ Datenpunkte wobei ein Datenpunkt $j$ immer aus
-den Feature-Werten $\{ x_0, x_1, \dots, x_n \}_j$ und des vorherzusagenden Wertes $y_j$ besteht.
+den Feature-Werten $\{ x_0, x_1, \cdots, x_n \}_j$ und des vorherzusagenden Wertes $y_j$ besteht.
 Am besten ist $m \gg n$. Daten die $y$-Werte enthalten, werden auch \emph{labeled data} genannt,
 im Gegensatz zu \emph{unlabeled data} wo nur die Feature-Werte bekannt sind.
 
 Man kann nun das lineare Modell mit der Gleichung
 \begin{equation}
-y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \dots + \theta_n x_n
+y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_n x_n
 \label{ml:regression:modell}
 \end{equation}
 aufstellen. Führt man die Variable $x_0 := 1$ ein, kann die Gleichung
@@ -56,7 +55,7 @@ J(\vec x, \vec \theta) = (y - y_p)^2.
 \end{equation}
 
 $J(\vec \theta)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglichst nahe an den
-tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren um dieses
+tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren, um dieses
 Minimierungsproblem zu lösen.
 
 \subsection{Minimierung mit Matrix-Inversion}
@@ -70,9 +69,9 @@ $m$ Datenpunkten in Matrix-Form als
 \begin{equation}
     \begin{pmatrix}
         x_{00}& \cdots& x_{0i}& \cdots& x_{0n}\\
-        \vdots& \vdots& \vdots& \vdots& \vdots\\
+        \vdots& \ddots& \vdots& \ddots& \vdots\\
         x_{j0}& \cdots& x_{ji}& \cdots& x_{jn}\\
-        \vdots& \vdots& \vdots& \vdots& \vdots\\
+        \vdots& \ddots& \vdots& \ddots& \vdots\\
         x_{m0}& \cdots& x_{mi}& \cdots& x_{mn}
     \end{pmatrix}
     \cdot
@@ -109,7 +108,7 @@ Um das Minimum zu finden wird der Gradient von $J(\vec \theta)$
     &= 2 \mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y
     \label{ml:regression:lstsq:grad}
 \end{align}
-auf den Null-Vektor $\vec 0$ gesetzt
+mit dem Null-Vektor $\vec 0$ gleich gesetzt
 und schliesslich nach $\vec \theta$ aufgelöst:
 \begin{align}
     &2\mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y \overset{!}= \vec 0 \quad\Leftrightarrow\quad
@@ -117,16 +116,14 @@ und schliesslich nach $\vec \theta$ aufgelöst:
     &\implies \vec \theta = \left( \mathbf{X}^\mathrm{T} \mathbf{X} \right)^{-1} \mathbf{X} \, \vec y.
     \label{ml:regression:lstsq:formel}
 \end{align}
-
-\eqref{ml:regression:lstsq:formel} gibt die Formel an um aus dem überbestimmten
+\eqref{ml:regression:lstsq:formel} gibt eine Formel, um aus dem überbestimmten
 Gleichungssystem von \eqref{ml:regression:lstsq:modell} direkt mittels Matrix-Inversion
 die Koeffizienten $\vec \theta$ exakt zu berechnen.
 
 \bigskip
-Aber nicht alle solche Matrizen sind invertierbar, sind Zeilen oder Spalten linear
+Aber nicht alle solchen Matrizen sind invertierbar, sind Zeilen oder Spalten linear
 abhängig oder gibt es mehr Features als Datenpunkte, kann $\mathbf{X}^\mathrm{T}\mathbf{X}$
 nicht invertiert werden.
-
 Dazu kommt dass die Matrizen-Inversion (gleich wie das Matrizen-Produkt) mit dem besten
 Algorithmus, etwa $\mathcal{O}(n^{\log_2 7})$, sehr aufwendig ist.\footnote{Mehr dazu ist
 in \cite{ml:computational-complexity-math-op} und
@@ -139,7 +136,6 @@ simplen Cost-Function aus \eqref{ml:regression:cost:sqerr}. Später wollen wir
 aber auch eine Lösung eines höchst nichtlinearen Modells mit vielleicht sehr viel
 komplexerer Cost-Function berechnen können. Mit diesem Ansatz existiert aber nur
 sehr selten eine Lösung in geschlossener Form (als Formel).
-
 Mit einem geschickten Algorithmus, der die Koeffizienten $\theta_i$ numerisch
 approximiert können die oben genannten Problemen weitgehend umgangen werden. Wir möchten
 diesen als nächstes anschauen.
@@ -149,28 +145,27 @@ diesen als nächstes anschauen.
 Betrachtet man die Cost-Function $J(\vec \theta)$ aus \eqref{ml:regression:cost:sqerr}
 ergibt sich deren partielle Ableitung nach $\theta_i$ als
 \begin{equation}
-    \frac{\partial J}{\partial \theta_i} = 2 (\underbrace{\operatorname{h}(\theta_0, \cdots, \theta_n, x_0, \cdots, x_n)}_{y_p} - y) \cdot x_i
+    \frac{\partial J}{\partial \theta_i} = 2 (\underbrace{h(\theta_0, \cdots, \theta_n, x_0, \cdots, x_n)}_{y_p} - y) \cdot x_i
     = 2 (h(\vec \theta, \vec x) - y) \cdot x_i.
 \end{equation}
 Es ist wieder der Gradient, ähnlich zu \eqref{ml:regression:lstsq:grad},
 \begin{align}
     \operatorname{grad} J(\vec \theta)
-    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \begin{pmatrix} x_0\\ \vdots \\ x_n \end{pmatrix}
-    = 2 (\operatorname{h}(\vec\theta, \vec x) - y) \cdot \vec x.
+    = 2 (h(\vec\theta, \vec x) - y) \cdot \begin{pmatrix} x_0\\ \vdots \\ x_n \end{pmatrix}
+    = 2 (h(\vec\theta, \vec x) - y) \cdot \vec x.
 \end{align}
 
-Eine zentrale Eigenschaften vom Gradienten ist, dass er relativ zum Auswertungspunkt immer
+Eine zentrale Eigenschaften des Gradienten ist, dass er relativ zum Auswertungspunkt immer
 in die Richtung des steilsten Anstiegs zeigt. Läuft man also immer entgegengesetzt des
 Gradienten und passt die $\theta_i$ entsprechend an, gelangt man nach einer gewissen
 Anzahl Iterationen zu einem lokalen Minimum. Dieses Verfahren wird \emph{gradient descent}
 oder deutsch \emph{Gradientenverfahren} genannt.
-
 Konkret kann die Idee als
 \begin{align}
     \vec \theta_{k+1} &= \vec \theta_{\sf k}
         - \alpha \cdot \frac{1}{2m}\sum_{j=1}^{m} \operatorname{grad} J(\vec \theta_k, \vec x_j) \nonumber\\
     &= \vec \theta_k
-        - \alpha \frac{1}{m} \sum_{j=1}^{m} (\operatorname{h}(\vec \theta_k, \vec x_j) - y_j)\cdot \vec x_j
+        - \alpha \frac{1}{m} \sum_{j=1}^{m} (h(\vec \theta_k, \vec x_j) - y_j)\cdot \vec x_j
     \label{ml:regression:gd:update}
 \end{align}
 geschrieben werden. Der Gradient wird als Durchschnitt über alle
@@ -178,36 +173,41 @@ Datenpunkte berechnet. Mit dem zusätzlichen Parameter $\alpha > 0$ kann die Ges
 Lösungsfindung eingestellt werden, er wird \emph{learning rate} genannt.
 
 Als Startwert $\vec\theta_0$ kann beim linearen Modell irgendein Wert verwendet werden, meistens wird dieser jedoch
-auf den Nullvektor $\vec 0$ gesetzt.
+auf den Nullvektor $\vec 0$ gesetzt. Im Gegensatz dazu kann bei nichtlinearen Modellen der Lernvorgang
+durch eine geeignete Initialisierung ernorm beschleunigt werden.
 
 $J(\vec \theta)$ ist eine quadratische Funktion von $\theta$ mit einem einzigen lokalen
 Minimum, %TODO: vielleicht Herleitung
 dieses Minimum ist also auch gerade das globale Minimum. Man kann sich mit einem linearen
-Modell sicher sein, je näher der Fehler $J$ bei $0$ ist, desto näher sind die berechneten
+Modell sicher sein: Je näher der Fehler $J$ bei $0$ ist, desto näher sind die berechneten
 $\theta_i$ bei den tatsächlichen $\theta_i$.
 
 Ob oder wie schnell die Berechnung zur Lösung konvergiert ist aber von $\alpha$ abhängig.
 Ein grosses $\alpha$ gibt eine schnelle Konvergenz aber auch ein grosses Potential zum
 Überschiessen oder sogar zur Divergenz, bei einem kleinen $\alpha$ dauert die Lösungssuche
-aber umso länger. Bei Modellen mit grossen Anzahl $n$ Features und für nichtlineare
-Modelle gibt es leider keine gute oder überhaupt keine Methode um den besten Wert von
+aber umso länger.
+Für das lineare Modell \eqref{ml:regression:modell} können $\alpha$ und die Anzahl Schritte
+zur exakten Lösung zum Beispiel mit dem \emph{Verfahren der konjugierten Gradienten}
+einfach bestimmt werden.
+Bei nichtlineare Modellen gibt es leider keine Methode um den besten Wert von
 $\alpha$ zu finden. Er muss empirisch ermittelt werden, wobei am besten Werte im Bereich
 $0.001$ bis $1$ auszuprobieren sind. \cite[S. 51]{ml:introduction-to-ml}
+
 
 \subsubsection{Stochastischer Gradient-Descent}
 
 Der bis jetzt beschriebene Gradient-Descent-Algorithmus berechnet einen Schritt immer über
 \emph{alle} Daten, was viel Rechenleistung benötigt und schlecht parallelisiert werden
 kann.
-
 Nimmt man für jeden Berechnungsschritt eine zufällig ausgewählte, kleinere Stickprobe von
 $b \ll m$ Datenpunkten, kann die Performance stark verbessert werden. $b$ wird
 \emph{batch size} genannt. Die Aktualisierungsgleichung \eqref{ml:regression:gd:update} wird
 
 \begin{equation}
   \Delta \vec\theta_{k+1} = - \alpha \frac{1}{2b} \sum_{j=1}^{b} \operatorname{grad} J(\vec
-  \theta_k, \vec x_j).
+  \theta_k, \vec x_Z)
 \end{equation}
+mit der diskreten Zufallsvariable $Z \in \{1, 2,\cdots, m\}$.
 
 In Fällen mit mehreren lokalen Minima kann stochastischer gegenüber dem totalen Gradient-Descent manchmal
 verhindern, in diese lokalen Minima zu fallen. Je kleiner die Learning-Rate $\alpha$ gewählt
@@ -220,8 +220,15 @@ Bei der Normalisierung werden alle Feature-Werte auf einen ähnlichen Bereich sk
 \begin{equation}
     \hat x_{ij} = \frac{2x_{ij} - (\max x_i + \min x_i)}{\max x_i - \min x_i}
 \end{equation}
-für ein Feature $i$ mit Daten $j$ skaliert die Feature-Werte auf den Bereich zwischen $-1$
-und $1$. Es sind auch andere Methoden möglich.
+für ein Feature $i$ mit Datenpunkt $j$ skaliert die Feature-Werte auf den Bereich zwischen $-1$
+und $1$. Es sind auch andere Methoden möglich. Dies ist vorallem dann nützlich, wenn die
+einzelnen Features sehr unterschieliche Wertebereiche haben.
+Die Funktionsweise wird im folgenden illustriert.
 
-Sind alle Werte in der gleichen Grössenordnung, konvergiert der
-Gradient-Descent-Algorithmus viel schneller.
+Wir haben ein Feature $a$ mit kleinem Wertebereich, zum Beispiel $a \in [0, 1]$, und ein
+Feature $b \in [0, 10^6]$ mit grossem. Anfänglich hat $b$ einen viel grösseren
+Effekt auf den absoluten Fehler $y - h(\vec \theta, \vec x)$ als $a$. Es muss nun
+der Koeffizient von $b$ zuerst in dessen Grössenordnung gebracht werden, damit Feature $a$
+überhaupt relevant wird. Wenn alle Feature-Werte in einem ähnlichen Bereich sind,
+dann sind auch schon bei der ersten Iteration von Gradient-Descent alle Features relevant. Die
+Kovergenz wird beschleunigt.

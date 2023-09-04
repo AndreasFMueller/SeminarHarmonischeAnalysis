@@ -23,7 +23,6 @@ berechnet werden, oder in vektorschreibweise
     \qquad \text{mit}\qquad \omega_k = \frac{2\pi k}{N}.
     \label{ml:dft-with-ann:dft:vector}
 \end{equation}
-
 Die einzelnen $x_n$ werden mit einem komplexen Koeffizienten gewichtet und anschliessend
 summiert. In der Vektorschreibweise wird dieser Effekt mit dem Skalarprodukt erzielt. Man
 erkennt, dass dies ein linearer Zusammenhang ist.
@@ -47,6 +46,7 @@ unterteilt:
         \sin(\omega_k (N-1))
     \end{pmatrix}
     = \vec x \cdot \vec \theta_{k,b}.
+\label{ml:dft-with-ann:dft:sin-and-cos-parts}
 \end{equation}
 Beide Teile sind bis auf die Koeffizienten genau gleich. Sie können  in der Form des mehrdimensionalen linearen
 Modells \eqref{ml:ann:linear-unit} als
@@ -57,6 +57,7 @@ Modells \eqref{ml:ann:linear-unit} als
     = {\bm \thetaup}_{a} \vec x
     \quad\text{und}\quad
     \vec b = {\bm \thetaup}_{b} \vec x
+\label{ml:dft-with-ann:dft:sin-and-cos-parts:modell}
 \end{equation}
 geschrieben werden. Die konstanten Anteile entfallen.
 
@@ -66,7 +67,7 @@ also linear und nicht einmal affin (alle Bias-Werte sind Null). Ein analoges Net
 auch für die Sinus-Anteile erstellt werden. Alternativ können die Sinus-Koeffizienten aus
 den Kosinus-Koeffizienten mit dem Zusammenhang
 \begin{equation}
-    \frac{N}{2} \arccos(\theta_{kn,a}) = \frac{N}{-2} \arcsin(\theta_{kn,b}) \quad \iff \quad
+    \frac{N}{2} \arccos(\theta_{kn,a}) = \frac{N}{-2} \arcsin(\theta_{kn,b}) \quad \Leftrightarrow \quad
     \theta_{kn,b} = -\sin(\arccos(\theta_{kn,a}))
 \end{equation}
 berechnet werden.
@@ -81,22 +82,39 @@ berechnet werden.
 Man kann erkennen, das so ein Netz unseren Fall der linearen Regression
 (\ref{ml:regression}) exakt wiederspiegelt. Die Koeffizienten $\vec \theta_{k,a}$ und
 $\vec \theta_{k,b}$ können also mit herkömmlichem Gradient-Descent gelernt werden, und das
-sogar in endlich vielen Schritten, exakt.
+sogar in endlich vielen Schritten, exakt. Um diese Aussage mit einem numerischen
+Experiment nachzuprüfen, wurde das lineare Netz aus Abb. \ref{fig:ml:dft-with-ann:linear}
+wobei $N=1000$ mit \texttt{Keras} trainiert.
+Abb. \ref{fig:ml:dft-with-ann:leanred-vs-dft} zeigt einen Vergleich der gelernten
+Koeffizienten mit den Koeffizienten ${\bm \thetaup}_{a}$ und ${\bm \thetaup}_{b}$ der DFT.
 
 Leider haben wir mit dieser Methodik überhaupt nichts gewonnen. Die Koeffizienten müssen
 zwar nur \emph{einmal} gelernt werden bei gleichbleibendem $N$, um aber die
 fouriertransformierten Werte $c_k$ zu berechnen, müssen immer noch zwei volle
 Matrix-Vektor multiplikationen durchgeführt werden. Hier ist die schnelle
 Fouriertransformation bei weitem überlegen.
-
 Die Frage, ob es möglich ist mit einem künstlichen neuronalen Netzwerk die Fouriertransformation zu
 berechnen können wir totzdem bejahen. Denn so ein lineares Netzwerk \emph{ist} ein FFANN,
 auch wenn ein Spezialfall.
 
-Möchte man, dass ein Modell die Fouriertransformation selber lernt, wenn es
-sie benötigt, ist das mit einem nichtlinearen FFANN schlecht realisierbar und sehr
-aufwändig. Ein besserer Ansatz bietet \cite{ml:pmlr-v97-dao19a}, wobei durch ein geschickt
-aufgebautes lineares Netzwerk mit schwachbesetzten Schichten, Faktorisierungen von einer
-vielzahl der linearen Transformationen gelernt werden können. \cite{ml:pmlr-v97-dao19a}
-zeigt also, dass ein ANN mit geschicktem Aufbau in der Lage ist ein fast beliebigen
-schnellen linearen Transformations-Algorithmus (zum Beispiel die FFT) aus Daten zu rekonstruieren.
+In einem weiteren numerischen Experiment wurde zuletzt versucht, mit einem dreischichtigen FFANN,
+der $\tanh$-Aktivierungsfunktion und normalisierten Daten die DFT zu approximieren.
+Auch nach einigem Testen von verschiedenen hyperparameter konnte kein befriedigendes
+Ergebnis erbracht werden. Nur simple Eingangsdaten (zum Beispiel einfache
+Schwingungen) konnten in guter Näherung transformiert werden.
+
+Ein besserer Ansatz bietet \cite{ml:pmlr-v97-dao19a}, wobei durch ein speziell aufgebautes
+lineares Netzwerk mit schwachbesetzten Schichten, Faktorisierungen\footnote{In
+\ref{buch:diskret:subsetion:faktorisierung} ist eine Faktorisierung der
+Fouriertransformation und die daraus resultierende Reduktion der Anzahl Koeffizienten
+beschrieben.} von einer vielzahl der linearen Transformationen gelernt werden können.
+\cite{ml:pmlr-v97-dao19a} zeigt also, dass ein vielschichtiges ANN mit geschicktem Aufbau in der Lage ist
+einen fast beliebigen schnellen linearen Transformations-Algorithmus (zum Beispiel die FFT)
+aus Daten zu rekonstruieren.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/ml/images/learned_coeff_vs_dft.png}
+    \caption{Gelernte Koeffizienten-Matrix (oben) verglichen mit der DFT (unten).}
+    \label{fig:ml:dft-with-ann:leanred-vs-dft}
+\end{figure}
