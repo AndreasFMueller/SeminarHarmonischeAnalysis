@@ -1,0 +1,62 @@
+%
+% 7-abelschegruppen.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Abelsche Gruppen
+\label{buch:gruppen:section:abelschegruppen}}
+\kopfrechts{Abelsche Gruppen}
+Sei $G$ jetzt eine abelsche Gruppe und $\varrho\colon G\to\operatorname{GL}(V)$
+eine irreduzible Darstellung von $G$.
+Die $\varrho(g)$ ist eine lineare Abbildung $V\to V$ mit der Eigenschaft
+\[
+\varrho(g)\circ\varrho(h) = \varrho(h)\circ\varrho(g)
+\]
+für alle Gruppenelemente $h\in G$.
+Nach Satz folgt, dass $\varrho(g)=\lambda I$ ist, dass also alle Vektoren
+von $V$ Eigenvektoren zum Eigenwert $\lambda$ sind.
+Um irreduzible Darstellungen in $V$ zu finden, kann man also nach
+Eigenvektoren suchen.
+
+Wenden wir diese Idee auf die reguläre Darstellung von $G$ an.
+In diesem Fall ist $\varrho(g)$ die Translation $T_g$ von Funktionen.
+Die Schlussfolgerung des vorangegangenen Absatzes ist dann, dass die
+irreduziblen Darstellungen von $G$ gefunden werden können, indem man
+translationsinvariante Funktionen auf $G$ sucht.
+Tatsächlich sind die in früher durchgerechneten Beispielen gefundenen
+Basisfunktionen der irreduziblen Darstellungen jeweils translationsinvariant
+gewesen.
+
+Für eine abelsche Lie-Gruppe lässt sich die Idee noch etwas weiter
+entwickeln.
+Zu jedem Tangentialvektor $X$ im neutralen Element lässt sich eine
+Kurve von Gruppenelementen $g(t)=\exp tX$ konstruieren.
+Ist $\varrho\colon G\to\operatorname{GL}(V)$ eine irreduzible Darstellung
+von $G$, dann ist $\varrho(g(t))=\lambda(g(t)) I$ für jeden Wert von $t$.
+Dann ist aber auch die Ableitung ein Vielfaches der identischen Abbildung
+und alle Vektoren von $V$ sind Eigenvektoren der Ableitung.
+Angewendet auf die reguläre Darstellung folgt, dass die Basisfunktionen
+der irreduziblen Darstellungen Eigenfunktionen des Ableitungsoperators
+in Richtung $X$ sind.
+
+\begin{beispiel}
+Sei $G=\mathbb{R}/2\pi\mathbb{Z}$ die kompakte Lie-Gruppe der Winkel.
+Um irreduzible Darstellungen in der regulären Darstellung finden, such
+wir nach Funktionen, die invariant sind unter der Ableitung.
+Gesucht sind also $2\pi$-periodische Funktionen
+$f\colon\mathbb{R}\to\mathbb{C}$, die die Differentialgleichung
+\[
+f'(t) =\lambda f(t)
+\]
+erfüllt.
+Die Lösungen können aber unmittelbar angegeben werden, sie sind
+\[
+f(t) = Ce^{\lambda t}.
+\]
+Die einzigen solchen Funktionen, die auch $2\pi$-periodisch sind, 
+gehören zu $\lambda = ik$ mit $k\in \mathbb{Z}$.
+Damit haben wir wieder die Basisfunktionen der klassischen Fourier-Theorie
+gefunden.
+\end{beispiel}
+
+

@@ -9,7 +9,7 @@
 \section{JPEG-2000 
 \label{jpeg:section:jpeg2000}}
 \rhead{JPEG-2000}
-JPEG-2000 ist die Weiterentwicklung und Qualitative Verbesserung des JPEG-Standards.
+JPEG-2000 ist die Weiterentwicklung und qualitative Verbesserung des JPEG-Standards.
 Der JPEG-Standard konnte sich schnell verbreiten, weil er lizenzfrei zur Verfügung steht und eine entsprechend effiziente Software bereitgestellt wurde.
 Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet hat die JPEG Kompression seine Grenzen.
 JPEG konnte schon verlustlos und verlustbehaftet Bilder komprimieren, nutzt dafür aber verschiedene Algorithmen.
@@ -38,7 +38,7 @@ Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
     \item In der Medizinaltechnik, Speicherung von Röntgenbildern, CT- und MRI-Scans.
     Festgelegt durch den Digital Imaging and Communications in Medicine (DICOM) Standard.
     Dort kann man z.B. nur den Teil des Bildes übertragen, der von Interesse ist um Übertragungszeiten zu verringern.
-    \item Die Digital Cinema Initiative (DCI) nutzt das Motion-JPEG, ein Teil von JPEG-2000, um Kinofilme digital zu Speichern und den Kinos zur Verfügung zu stellen.
+    \item Die Digital Cinema Initiative (DCI) nutzt das Motion-JPEG, ein Teil von JPEG-2000, um Kinofilme digital zu speichern und den Kinos zur Verfügung zu stellen.
     \item Speicherung von Passbildern auf den deutschen Reisepässen.
     \item Das schweizer Bundesarchiv legt Bilder in TIFF und JPEG-2000 ab.
     \item Live HDTV wird mit JPEG-2000 komprimierten Bildern übertragen.
@@ -59,7 +59,7 @@ Darauf folgt die Entropiekodierung, welche die komprimierten Daten liefert.
 \subsection{Verbesserungen gegenüber JPEG
 \label{jpeg:subsection:verbesserungen}}
 JPEG-2000 bietet einige Vorteile gegenüber dem älteren JPEG-Standard.
-Die Farbtiefe wurde erhöht, es stehen nun bis zu 38 Bits pro Farbkanal zur Verfügung für z.B. HDR Bilder.
+Die Farbtiefe wurde \mbox{erhöht}, es stehen nun bis zu 38 Bits pro Farbkanal zur Verfügung für z.B. HDR Bilder.
 Es können grössere Bilder komprimiert werden als bei JPEG.
 Es wurde zusätzlich Raum für die Metadaten geschaffen und einen Alphakanal für die Transparenz.
  
@@ -67,11 +67,11 @@ Um die Blockartefakte zu vermeiden wird das Bild in gössere Teilbilder untertei
 Da die DCT nicht zurechtkommt mit grösseren Blöcken als \(8\times8\), wurde auf die Wavelet-Transformation (WT) gewechselt.
 Die WT ist in Zweierpotenzen leicht zu skalieren und lässt sich somit auf beliebig grosse Zweierpotenz-Blöcke anwenden.
 
-\subsubsection{Nachteile von JPEG-2000
-\label{jpeg:subsubsection:nachteil}}
+\subsection{Nachteile von JPEG-2000
+\label{jpeg:subsection:nachteil}}
 Wie in Abschnitt \ref{jpeg:subsection:anwendungsgebiete} schon beschrieben, ist auch der JPEG-2000-Standard nicht perfekt.
 JPEG-2000 Bilder mit hoher Kompression, tendieren zu Unschärfe und Schatten bei starken Kontrasten. 
-JPEG-2000-Standard ist sehr rechenintensiv und hat einen hohen Arbeitsspeicherbedarf. 
-Die Wavelettransformation lässt sich bisher noch nicht in Hardware umsetzen, kann also nicht auf einem Microchip implementiert werden.
+Der JPEG-2000-Standard ist sehr rechenintensiv und hat einen hohen Arbeitsspeicherbedarf. 
+Die Wavelet-Transformation lässt sich bisher noch nicht in Hardware umsetzen, kann also nicht auf einem Microchip implementiert werden.
 Der neue Standard hat keine so weite Verbreitung wie JPEG und ist mit dem älteren Standard inkompatibel.
 Das JPEG-2000 Komitee garantiert keine mögliche Lizenzansprüche Dritter.

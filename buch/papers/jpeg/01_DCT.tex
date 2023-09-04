@@ -10,16 +10,16 @@
 \label{jpeg:section:dct}}
 \rhead{DCT}
 Die Fouriertransformation und auch die diskrete Variante davon (DFT) erzeugen ein komplexwertiges Spektrum, auch wenn das ursprüngliche Signal nur aus reellen Werten besteht.
-Bei der DFT reichen weder die Sinus- noch Kosinusfunktion alleine aus, um ein vollständiges Basisfunktions\-system zu bilden.
-Reellwertige Signale bildet im Frequenzspektrum jeweils konjugiert komplexe Paare, sind also redundant.
+Bei der DFT reichen weder die Sinus- noch die Kosinusfunktion alleine aus, um ein vollständiges Basis\-funktions\-system zu bilden.
+Reellwertige Signale bilden im Frequenzspektrum jeweils konjugiert komplexe Paare, sind also redundant.
 Daraus folgt, dass nur die Hälfte der Werte berechnet werden muss.
-Die diskrete Kosinus-Transformation ermöglicht genau das, sie bildet eine Reihe aus Kosinus-Basisfunktionen und ist beschränkt auf reellwertige Signale.
+Die diskrete Kosinus-Transformation ermöglicht genau das, sie bildet eine Reihe aus Kosinus-""Basisfunktionen und ist beschränkt auf reellwertige Signale.
 
 Da stellt sich die Frage, wie es möglich ist, dass die diskrete Kosinus-Transformation ohne die Sinus-Komponenten auskommt, die bei der DFT unentbehrlich sind.
 Das wird erreicht, indem das Intervall, auf dem die Transformation durchgeführt wird, mittels gerader Fortsetzung verdoppelt wird.
 Es existiert analog dazu die diskrete Sinus-Transformation, die aus Sinus-Basisfunktionen besteht.
 
-Für die Berechnung der Koeffizienten wird die Diskrete Kosinustransformation (DCT-II oder DCT) mit der Formel
+Für die Berechnung der Koeffizienten wird die Diskrete Kosinus-Transformation (DCT-II oder DCT) mit der Formel
 \begin{equation}
     b_k
     =
@@ -35,7 +35,7 @@ benötigt, wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
 Bei der Formel \eqref{jpeg:equation:dct2} fällt gegenüber der DFT auf, dass die Frequenz halbiert und die Funktion um \(\frac{1}{2}\) verschoben wurde.
 Man könnte die Funktion beliebig strecken und verschieben, damit das Kriterium der Basisfunktion erfüllt ist.
 Hier wird die Halbierung und Verschiebung um \(\frac{1}{2}\) gewählt damit die DCT auch orthogonal ist.
-Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinustransformation (DCT-III oder inverse DCT):
+Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinus-Transformation (DCT-III oder inverse DCT):
 \begin{equation}
     a_n
     =
@@ -51,13 +51,13 @@ Um von der transformierten Form in die ursprüngliche zu gelangen braucht man di
 Mit diesen Formeln lässt sich nur die eindimensionale Transformation durchführen.
 Bei Bildern handelt es sich aber um zweidimensionale Signale.
 
-\subsection{Zweidimensionale Kosinus Transformation
+\subsection{Zweidimensionale Kosinus-Transformation
 \label{jpeg:subsection:dctdim2}}
-Für die zweidimensionale Variante der DCT wird das Bild zunächst zeilenweise betrachtet. Jede dieser Zeilen sind wiederum eindimensionale Signale und transformierbar.
+Für die zweidimensionale Variante der DCT wird das Bild zunächst zeilenweise betrachtet. Jede dieser Zeilen ist wiederum ein eindimensionales Signal und transformierbar.
 Wird auf jeder dieser Zeilen die Transformation angewandt, entsteht ein neues Bild.
 Dieses wird nun in Spalten betrachtet und ebenfalls transformiert.
 Das resultierende Bild davon ist die vollständige Transformation.
-Analog dazu lässt sich die inverse Kosinus Transformation beschreiben.
+Analog dazu lässt sich die inverse Kosinus-Transformation beschreiben.
 
 Die Gleichung \eqref{jpeg:equation:dct2} für die zweidimensionale Transformation lässt sich
 \begin{equation}
@@ -98,7 +98,7 @@ schreiben und für die inverse Transformation
     \right). \notag
     \label{jpeg:equation:dct3dim2}
 \end{align}
-\(a_{n,m}\) ist das Eingangssignal (Bild) und \(b_{k,l}\) das Transformierte, dabei steht \(n,m\) bzw. \(k,l\) für die horizontale und vertikale Koordinate eines Pixels \cite{jpeg:eikemueller}.
+\(a_{n,m}\) ist das Eingangssignal (Bild) und \(b_{k,l}\) das transformierte, dabei steht \(n,m\) bzw. \(k,l\) für die horizontale und vertikale Koordinate eines Pixels \cite{jpeg:eikemueller}.
 
 \begin{figure}
     \centering
@@ -112,7 +112,7 @@ Jedes Feld entspricht einer Basisfunktion.
 Oben links steht die konstante Basisfunktion, das Skalarprodukt aus dieser Funktion und einem \(8 \times 8\) Block ergibt den Koeffizienten \(a_{0,0}\), der DC-Anteil dieses Pixelblocks.
 In horizontaler Richtung sind die Frequenzanteile aufsteigend.
 Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
-Aus jedem Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
+Aus \mbox{jedem} Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
 Die Koeffizienten geben an, wie stark die entsprechende Basisfunktion gewichtet ist. 
 
 

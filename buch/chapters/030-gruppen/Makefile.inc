@@ -11,7 +11,6 @@ CHAPTERFILES += 							\
 	chapters/030-gruppen/4-gelfand.tex				\
 	chapters/030-gruppen/5-fourier.tex				\
 	chapters/030-gruppen/6-darstellung.tex				\
-	chapters/030-gruppen/7-matrixelemente.tex			\
-	chapters/030-gruppen/8-charaktere.tex				\
+	chapters/030-gruppen/7-abelschegruppen.tex			\
 	chapters/030-gruppen/uebungsaufgaben/301.tex			\
 	chapters/030-gruppen/chapter.tex
