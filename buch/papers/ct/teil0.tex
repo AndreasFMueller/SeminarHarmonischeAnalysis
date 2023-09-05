@@ -38,9 +38,9 @@ Jede Substanz hat die Eigenschaft, beim Durchgang von Röntgenstrahlen pro Milli
 
 In der Praxis verwenden Radiologen eine modifizierte Version des Dämpfungskoeffizienten, die sogenannte Hounsfield-Einheit. Dieser von Godfrey Hounsfield eingeführte Zahlenwert ermöglicht einen direkten Vergleich zwischen dem Abschwächungskoeffizienten eines Mediums und dem von Wasser. Die Hounsfield-Einheit eines Mediums ist
 \begin{equation}
-	H_{\text{Medium}} := \dfrac{A_{\text{Medium}}-A_{\text{Wasser}}}{A_{\text{Wasser}}},
+	H_{\text{Medium}} := \dfrac{A_{\text{Medium}}-A_{\text{Wasser}}}{A_{\text{Wasser}} - A_{\text{Luft}}} * 1000,
 \end{equation}
-wobei $A$ der wahre Dämpfungskoeffizient ist. In der Tabelle \ref{ct:hounsfieldunits} werden verschiedene Hounsfield Einheiten für organische und anorganische Substanzen aufgelistet.
+wobei $A$ der wahre Dämpfungskoeffizient ist \cite{doccheck_hounsfield-skala_nodate}. In der Tabelle \ref{ct:hounsfieldunits} werden verschiedene Hounsfield Einheiten für organische und anorganische Substanzen aufgelistet.
 
 Ein Röntgenstrahl durchquert ein Medium zwischen zwei Punkten $x$ und $x + \Delta x$. $A(x)$ sei der Dämpfungskoeffizient dieses Mediums an diesem Ort. In diesem Fall ist der Anteil der Photonen, die innerhalb des Intervalls $[x, x + \Delta x]$ absorbiert werden, durch $p(x) = A(x)\Delta x$ gegeben. Die Anzahl der vom Medium in diesem Intervall absorbierten Photonen pro Sekunde lässt sich folglich ausdrücken als $p(x) \cdot N(x) = A(x) \cdot N(x) \cdot \Delta x$. Werden beide Seiten mit der Energie $E$ jedes Photons multipliziert, so kann festgestellt werden, dass dies dem Intensitätsverlust des Röntgenstrahls in dem genannten Intervall entspricht. Dieser Intensitätsverlust kann als 
 \begin{equation}
