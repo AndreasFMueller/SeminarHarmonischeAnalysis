@@ -487,4 +487,91 @@ wobei $a$ eine Funktion $\mathbb{R}^2\to\mathbb{C}$ ist.
 Die Funktion $a$ heisst das {\em Symbol} des Operators.
 \end{definition}
 
+Die Klasse der Pseudodifferentialoperatoren ist gross genug, dass sie
+viele Operatoren enthalten kann.
+Die folgenden Beispiele zeigen, dass Differntialoperatoren,
+Faltungsoperatoren und Multiplikationsoperatoren alle von dieser
+Form sind.
+
+\begin{beispiel}
+Der Laplace-Operator ist der Pseudodifferentialoperator mit dem
+dem Symbol
+\(
+a(x,k)=
+-k^2
+\).
+Im Falle eines reinen Differentialoperators ist also das Symbol eine 
+Funktion, die nicht von $x$ und nur von $k$ abhängt.
+\end{beispiel}
+
+\begin{beispiel}
+Der Faltungsoperator mit der Funktion $g$ wird nach Fourier-Transformation
+zu einem Multiplikationsoperator mit der Fourier-Transformierten $\hat{g}$:
+\begin{align*}
+(g * f)(x)
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty e^{ikx} \hat{g}(k) \hat{f}(k) \,dk
+=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{ikx}
+\hat{g}(k) 
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{-iky}
+f(x)
+\,dy
+\,dk
+\\
+&=
+\int_{-\infty}^\infty
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+e^{ik(x-y)}
+\hat{g}(k)
+\,dk
+\,dy
+=
+\int_{-\infty}^\infty
+g(x-y)
+\,dy,
+\end{align*}
+das Symbol des Faltungsoperators ist somit $a(x,k)=\hat{g}(k)$.
+\end{beispiel}
+
+\begin{beispiel}
+Die identische Abbildung kann als der Pseudodifferentialoperator
+\[
+f(x)
+=
+\int_{-\infty}^\infty 
+\frac{1}{2\pi}
+\int_{-\infty}^\infty 
+e^{ik(x-y)}
+\,dx
+f(y)
+\,dy
+\]
+mit dem Symbol $a(x,k)=1$ geschrieben werden.
+Der Multiplikationsoperator $M_g$ mit der Funktion $g$ ergibt an
+der Stelle $x$
+\[
+(M_gf)(x)
+=
+g(x) f(x)
+=
+\int_{-\infty}^\infty
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+g(x) e^{ik(x-y)}
+\,dk
+\,dy.
+\]
+Daraus liest man ab, dass der Multiplikationsoperator $M_g$ ein
+Pseudodifferentialoperator mit dem Symbol $a(x,k)=g(x)$ ist.
+\end{beispiel}
+
+
+
 
