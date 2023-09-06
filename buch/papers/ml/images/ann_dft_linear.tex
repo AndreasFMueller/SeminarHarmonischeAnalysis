@@ -15,12 +15,6 @@
 \def\skala{1.5}
 \newboolean{draft}
 \setboolean{draft}{false}
-% Input layer neurons'number
-\newcommand{\inputnum}{4} 
-% Hidden layer neurons'number
-\newcommand{\hiddennum}{4}  
-% Output layer neurons'number
-\newcommand{\outputnum}{4} 
 
 \tikzset{%
   every neuron/.style={
@@ -32,7 +26,7 @@
     draw=none, 
     scale=3,
     text height=0.333cm,
-    yshift=0.5 mm,
+    yshift=0.14 mm,
     execute at begin node=\color{black}$\vdots$
   },
 }
@@ -45,14 +39,14 @@
 \foreach \m [count=\y] in {1,2,3,missing,4}
   \node [every neuron/.try, neuron \m/.try ] (output-\m) at (2,2.5-\y*0.75) {};
 
-\foreach \l [count=\i] in {1,2,n,N}{
+\foreach \l [count=\i] in {0,1,n,{N-1}}{
    \draw [<-] (input-\i) -- ++(-0.5,0);
-   \node [] at (input-\i) {\small$x_\l$};
+   \node [] at (input-\i) {\small$x_{\l}$};
 }
 
-\foreach \l [count=\i] in {1,2,k,N}{
+\foreach \l [count=\i] in {0,1,k,{N-1}}{
   \draw [->] (output-\i) -- ++(0.5,0);
-  \node [] at (output-\i) {$a_\l$};
+  \node [] at (output-\i) {$a_{\l}$};
 }
 
 \foreach \i in {1,...,4}
