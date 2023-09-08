@@ -46,7 +46,7 @@ Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter d
 \subsection{Euler-Maruyama-Methode\label{brown:Simulation}}
 \rhead{Simulation} %Kurz-Titel der Section
 
-Die Eueler-Meruyama-Methode wird oft zur nummerischen Simulation von stochastischen Differentialgleichungen (SDGL) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet. \cite{Bayram2018} So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. Um die SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
+Die Eueler-Meruyama-Methode wird oft zur nummerischen Simulation von stochastischen Differentialgleichungen (SDGL) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen und den stochastischen Anteil separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter auf Grund ihrer Einfachheit weit verbreitet. \cite{Bayram2018} So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. Um eine SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
 
 %Gegeben sei eine SDGL der folgenden Form:
 
@@ -59,11 +59,11 @@ Die Eueler-Meruyama-Methode wird oft zur nummerischen Simulation von stochastisc
 \begin{enumerate}
 	\item Man wählt eine Schrittweite $ \Delta t > 0 $ und teilt das Zeitintervall $ [0, T] $ in $ N $ gleich große Teilintervalle der Länge $ \Delta t $.
 	% : $ t_0 = 0, t_1 = \Delta t, \dots, t_i = i\Delta t, \dots, t_N = T $.
-	\item Für jeden Zeitschritt $ i $ von $ 0 $ bis $ N-1 $ werden die Werte der Funktion $ X(t) $ an den diskreten Zeitpunkten $ t_i $ berechnet,
+	\item Für jeden Zeitschritt $ i $ von $ 0 $ bis $ N-1 $ werden die Werte der Funktion $ X(t) $ an den diskreten Zeitpunkten $ t_i $ berechnet
 	\begin{equation}
 		X(t_{i+1}) = X(t_i) + a(X(t_i)) \ \Delta t + b(X(t_i)) \ \sqrt{\Delta t} \cdot Z_i,
 	\end{equation}
-	wobei $ Z_i $ unabhängige standardnormalverteilte Zufallsvariablen sind.
+	wobei die $ Z_i $ unabhängige standardnormalverteilte Zufallsvariablen sind.
 	\item Diese Berechnungen führt man iterativ für alle Zeitschritte durch
 \end{enumerate}
 
@@ -79,7 +79,7 @@ Die Funktion $ f(X_n,t_n) $ beschreibt den deterministischen Teil der SDGL, auch
 \rhead{Ito} %Kurz-Titel der Section
 
 Itō Kiyoshi war ein japanischer Mathematiker, der seine Kariere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments auf dem der Umgang mit SDGLs beruht. Nach ihm ist auch die schon verwendete \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differenzialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit impliziert wird.
-Eines der wichtigsten Werkzeuge, um mit SDGLs umzugehen, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Diese stellt das Äquivalent zur Kettenregel bzw. der Substitutionsregel dar. Hier ein Beispiel einer SDGL für einen Prozess $ X(t) $ in \textit{Itō-Form}:
+Eines der wichtigsten Werkzeuge im Umgang mit SDGLs, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Sie stellt das Äquivalent zur klassischen Kettenregel bzw. der Substitutionsregel dar. Hier ein Beispiel einer SDGL für einen Prozess $ X(t) $ in \textit{Itō-Form}:
 
 %Dieses wird auch im Abschnitt XXXX für das Black-Scholes-Merton Modell verwendet. Auch nach ihm benannt ist die "ito-Form", in welcher die Gleichungen notiert sind XXX.%
 
@@ -91,12 +91,12 @@ Angenommen, man hat eine Funktion $ f(X,t) $, dann kann die Änderung von $ f $ 
 \begin{equation}
 	df = \frac{\partial f}{\partial t} \ dt + \ \frac{\partial f}{\partial X} \ dX + \frac{1}{2} \frac{\partial^2 f} {\partial X^2} \ (dX)^2	
 \end{equation}
-Die Itō-Formel erlaubt es uns solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten. Das Einsetzen der SDGL in die Ito-Formel ergibt:
+Die Itō-Formel erlaubt es uns solche Differentialgleichungen für Funktionen von stochastischen Prozessen abzuleiten. Das Einsetzen der SDGL in die Itō-Formel ergibt:
 \begin{equation}
 	df = \frac{\partial f}{\partial t} \ dt + \frac{\partial f}{\partial X} (a \ dt + B \ dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 \ dt)
 \end{equation}
-Die Itō-Formel kann als eine stochastische Version der Taylor-Entwicklung angesehen werden. $ \frac{\partial f}{\partial t} \ dt $ beschreibt, wie sich die Funktion $ f $ allein durch den Verlauf der Zeit ändert, unabhängig von anderen Faktoren. $ \frac{\partial f}{\partial X} (a \ dt) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und der Term $  \frac{\partial f}{\partial X} (B \ dW) $ stellt den stochastischen \textit{Diffusions-Term} dar. Zusammen beschrieben die Terme den Einfluss der ersten Ableitung und der Term $ \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 \ dt) $ den Einfluss zweiter Ordnung. Dass aus $ (dX)^2 $ eingesetzt $ (B^2 \ dt) $ wird ist folgendermassen zu erklären:
-Eigentlich würde eingesetzt sich $ (dX)^2 = a^2 \ dt^2 + 2a B \ dt \ dW + B^2 dW^2 $ ergeben. Da $ dt^2 $ und $ dt dW $ im stochastischen Kontext vernachlässigbar klein sind (d.h. sie tendieren viel schneller gegen Null als $ dt $), ist der einzige relevante Beitrag zu $ (dX)^2 $ der Term $ B^2 dW^2B $. Und auf Grund der Eigenschaft des WIener-Prozesses, dass $ dW^2 = dt $ ergibt, wird der dieser Ausdruck zu $ B^2 dt $.
+Die Itō-Formel kann als eine stochastische Version der Taylor-Entwicklung angesehen werden. $ \frac{\partial f}{\partial t} \ dt $ beschreibt, wie sich die Funktion $ f $ allein durch den Verlauf der Zeit ändert, unabhängig von anderen Faktoren. $ \frac{\partial f}{\partial X} (a \ dt) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und der Term $  \frac{\partial f}{\partial X} (B \ dW) $ stellt den stochastischen \textit{Diffusions-Term} dar. Zusammen beschrieben die zwei Terme den Einfluss der ersten Ableitung und der Term $ \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 \ dt) $ den Einfluss zweiter Ordnung. Dass aus $ (dX)^2 $ eingesetzt $ (B^2 \ dt) $ wird, ist folgendermassen zu erklären:
+Eigentlich würde eingesetzt sich $ (dX)^2 = a^2 dt^2 + 2a B \ dt \ dW + B^2 dW^2 $ ergeben. Da $ dt^2 $ und $ dtdW $ im stochastischen Kontext vernachlässigbar klein sind (tendieren viel schneller gegen Null als $ dt $), ist der einzig relevante Beitrag zu $ (dX)^2 $ der Term $ B^2 dW^2 $. Und auf Grund der Eigenschaft des Wiener-Prozesses, dass $ dW^2 = dt $ ergibt, wird der dieser Ausdruck zu $ B^2 \ dt $.
 
 %  $ dt $ als letzter der Gleichung ergibt sich aus der Eigenschaft des Wiener-Prozess, dass die Änderung $ dW $ im Quadrat $ (dW)^2 = dt $ entspricht. 
 
@@ -104,5 +104,4 @@ Eigentlich würde eingesetzt sich $ (dX)^2 = a^2 \ dt^2 + 2a B \ dt \ dW + B^2 d
 
 \subsection{Fazit\label{brown:fazit}}
 
-Um den Bogen zum Anfang wieder zu schliessen, der Zufall und insbesondere Rauschen, weist keinerlei Periodizität oder harmonische Eigenschaften auf. Genau desshalb lässt es sich gut mittels der harmonischen Analysis untersuchen und charakterisieren. Dies ermöglicht in diversen technischen Bereichen den Umgang mit zufällige Störungen, das eliminieren von Rauschen. 
-Mittels stochastischen Differenzialgleichungen können solche zufällige Störungen beim modellieren von Systemen beachtet werden, wodurch ein wahrheitsgetreueres Abbild der Realität entsteht. Denn der der Zufall beeinflusst in einem gewissen Masse praktisch jedes System --- hoffentlich lieferte dieses Kapitel einen hilfreichen interessanten Überblick im Umgang damit.
+Um den Bogen zum Anfang wieder zu schliessen; der Zufall und insbesondere Rauschen weisen keinerlei Periodizität oder harmonische Eigenschaften auf. Genau desshalb lässt sich zufälliges Rauschen gut mittels der harmonischen Analysis untersuchen und charakterisieren. Dies ermöglicht in diversen technischen Bereichen den Umgang mit zufälligen Störungen, das Eliminieren von Rauschen und es lassen sich durch SDGLs solche zufällige Störungen modellieren. Dies führt zu einem wahrheitsgetreueren Abbild der Realität. Denn der Zufall beeinflusst in einem gewissen Masse praktisch jedes System --- hoffentlich lieferte dieses Kapitel einen hilfreichen und interessanten Überblick im Umgang damit.
