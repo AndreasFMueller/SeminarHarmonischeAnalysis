@@ -13,19 +13,18 @@
 Im Oktober 1973 wurde das Europäische Zentrum für mittelfristige Wettervorhersage (EZMW) gegründet \cite{spektral:ezmw} und hat die erste Vorhersagen am 1. August 1979 publiziert.
 Seit 1979 sind die Wetterprognosen, dank der spektralen Modelle, viel besser geworden.
 
-Heute haben wir fast unendliche Rechenleistung zur Verfügung (z.B. Cloud-Computing), aber wir müssen trotzdem unsere Reihe \eqref{spektral:equation21} an eine fixe Anzahl der Wellen (N) begrenzen.
+Heute haben wir fast unendliche Rechenleistung zur Verfügung (z.B. Cloud-Computing), aber wir müssen trotzdem unsere Reihe \eqref{spektral:equation21} an eine fixe Anzahl der Wellen $(N)$ begrenzen.
 In der echten Welt wird die Gleichung \eqref{spektral:equation21} so aussehen:
 \begin{equation}
-u(\phi, \theta, t) = \sum_{m=-0}^{N}\sum_{n=-m}^{m}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
+u(\phi, \theta, t) = \sum_{m=0}^{N}\sum_{n=-m}^{m}a_n^m(0)e^{i\sqrt{l(l+1)}t}Y_n^m(\phi, \theta).
 \label{spektral:equation22}
 \end{equation}
-N wird Modelauflösung genannt \cite[Seite 223]{spektral:NumericalWeatherPrediction} und \eqref{spektral:equation21} als \textit{Dreieickabschneidung} (triangular truncation) genannt.
-Z.B: wenn das Model N = 512 hat, dann wird das Model T512 bezeichnet. 
-Im Frühjahr 2006 wurden die Modelle aktualisiert. Das determinischtes Model heißt jetzt T799 (vorher T511) \cite[Seite 222]{spektral:NumericalWeatherPrediction}.
-
+$N$ wird Modelauflösung genannt \cite[Seite 223]{spektral:NumericalWeatherPrediction} und \eqref{spektral:equation21} als \textit{Dreieickabschneidung} (triangular truncation) genannt.
+Z.B: wenn das Model $N = 512$ hat, dann wird das Model T512 bezeichnet. 
+Im Frühjahr 2006 wurden die Modelle aktualisiert. Das determinischte Model heißt jetzt T799 (vorher T511) \cite[Seite 222]{spektral:NumericalWeatherPrediction}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=180pt]{papers/spektral/images/triangle_truncation.png}
+	\includegraphics[height=140pt]{papers/spektral/images/triangle_truncation.pdf}
 	\caption{Dreieickabschneidung}
     \label{spektral:fig:triangletrunc}
 \end{figure}

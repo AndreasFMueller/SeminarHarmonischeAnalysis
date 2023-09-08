@@ -10,8 +10,6 @@
 	\label{wavelets:section:teil4}}
 \rhead{Teil 4}
 
-\subsection{Einleitung
-	\label{wavelets:subsection:CWTvsFFTEinleitung}}
 In diesem Kapitel geht es darum sich mit den Möglichkeiten der CWT auseinander zu setzen. Im speziellen liegt das Interesse im Vergleich von der CWT zur FFT und wo sich Vor- und Nachteile der jeweiligen Transformation befinden. Dabei wird wieder mit kurz auftretenden Sinus-Sequenzen getestet.
 Danach wird um das Ganze realistischer zu gestalten, dem Grundsignal noch ein weisses Rauschen beigemischt.
 
@@ -23,10 +21,10 @@ Was dem gegenüber steht ist die Verschmierung der Frequenz durch die CWT. Die F
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.2\textwidth]{papers/wavelets/images/18-1_CWTvsFFTSignal.png}
+	\includegraphics[width=0.3\textwidth]{papers/wavelets/images/18-1_CWTvsFFTSignal.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-2_FFTnoiseFree.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-3_CWTnoiseFree.png}
-	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem Rauschfreien Signal.}
+	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem rauschfreien Signal.}
 	\label{wavelet:fig:FFTnoiseFree}
 \end{figure}
 
@@ -37,7 +35,7 @@ Die FFT scheint durch das Rauschen weniger stark beeinflusst zu werden, die beid
 Die CWT ist nach wie vor viel genauer in der zeitlichen Detektion, jedoch gehen zwei wichtige Eigenschaften im verrauschten Signal verloren:
 \begin{itemize}
 	\item Die Abbildung der scharfen Übergänge in den, dem Signal gegenüber höher liegenden Frequenzen im Amplitudengang.
-	\item Die Möglichkeit zur Lokalisierung des Signales im Phasengang (vor allem zeitlich).
+	\item Die Möglichkeit zur zeitlichen Lokalisierung des Signales im Phasengang.
 \end{itemize}
 Das es zu diesem Ergebnis kommt, ist nicht wider erwarten, weil mit der Zufälligkeit des Rauschens zusätzliche abrupte Änderungen in und um die eigentlichen Signale gepackt werden. und solange das Signal sich nicht extrem deutlich durch seine Amplitude vom Rauschen abheben kann, diese Zufälligkeit starken Einfluss auf den Amplituden- sowie Phasengang nimmt.
 Die Amplitudenhöhen der Signale werden aber nach wie vor hervorragend abgebildet. Die Verschmierung der Frequenz bleibt unverändert.
@@ -45,9 +43,9 @@ Die Amplitudenhöhen der Signale werden aber nach wie vor hervorragend abgebilde
 	
 \begin{figure}
 	\centering
-	\includegraphics[width=0.2\textwidth]{papers/wavelets/images/18-4_CWTvsFFTSignalNoisy.png}
+	\includegraphics[width=0.3\textwidth]{papers/wavelets/images/18-4_CWTvsFFTSignalNoisy.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-5_FFTnoisy.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-6_CWTnoisy.png}
-	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem Rauschbelasteten (weisses Rauschen) Signal.}
+	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem rauschbelasteten (weisses Rauschen) Signal.}
 	\label{wavelet:fig:FFTnoisy}
 \end{figure}

@@ -5,8 +5,6 @@
 #
 
 CHAPTERFILES += 							\
-	chapters/040-operatoren/1-definition.tex			\
-	chapters/040-operatoren/2-laplace.tex				\
-	chapters/040-operatoren/3-casimir.tex				\
-	chapters/040-operatoren/4-vollstaendig.tex			\
+	chapters/040-operatoren/1-pseudodifferential.tex		\
+	chapters/040-operatoren/2-casimir.tex				\
 	chapters/040-operatoren/chapter.tex

@@ -10,15 +10,21 @@
 	\label{wavelets:section:teil6}}
 \rhead{Teil 6}
 
-Das persönliche Ziel ein lauffähiges CWT-Programm zu schreiben und damit einen Vergleich zwischen FFT und CWT machen zu können wurde erreicht. Ein grosser Teil der Arbeit wurde in die Rechenzeitminimierung investiert. Der Grund lag darin, dass bereits bei Abtastraten im Bereich von $2^10$ sehr hohe Rechenzeiten zustande kamen.
+Das Ziel ein lauffähiges CWT-Programm zu schreiben und damit einen Vergleich zwischen FFT und CWT machen zu können wurde erreicht. Ein grosser Teil der Arbeit wurde in die Rechenzeitminimierung investiert. Der Grund lag darin, dass bereits bei Abtastraten im Bereich von $2^{10}$ sehr hohe Rechenzeiten entstanden.
 
 Ein Nachteil daraus, es konnten keine weiterführenden Untersuchungen an verschiedenen Signaltypen mehr gemacht werden. Als positiver Nebeneffekt, wurde das Verständnis für das (Morlet) Wavelet verbessert und auch ein effektives Gefühl für den mathematischen Mehraufwand durch die zusätzliche freie Variable erzeugt. Zudem war es fast schon sinnbildlich, dass der Einsatz des direkten Skalarproduktes des Wavelet- und Signal-Arrays eine deutliche Beschleunigung des Programms mit sich brachte. 
-Rekapitulierend konnten einige spannende Effekte aufgezeigt werden:
+
+%\begin{itemize}
+%	\item Die CWT hat bei gleicher Frequenzauflösung eine höhere Verschmierung in der Frequenzausgabe.
+%	\item Die Lokalisation von sprunghaften Änderungen im Zeitsignal, können mit der CWT ohne Umwege direkt detektiert werden. Im Gegensatz dazu muss bei der FFT deutlich mehr Spielerei betrieben werden, um nur annähernd so gute Resultate zu erhalten.
+%	\item Zwar ist die Frequenzausgabe wie erwähnt bei der CWT verschmiert, jedoch ist durch die direkte Einbindung des Gewichtungsfensters in das Wavelet eine präzise Amplitudenausgabe möglich, selbst in einem Rausch belasteten Signal.
+%	\item Wenn Signale zu stark Rausch belastet sind, schlägt sich das Wavelet teilweise mit seinen eigenen Waffen, weil die CWT stark auf abrupte Änderungen reagiert.
+%	\item Die CWT eignet sich wegen der mehrfach erwähnten Verschmierung auf der Frequenzausgabe nicht wirklich für die Rücktransformation (ICWT) vom Bild in den Zeitbereich.
+%\end{itemize}
+
+Abschliessend kann folgendes statuiert werden:
 
 \begin{itemize}
-	\item Die CWT hat bei gleicher Frequenzauflösung eine höhere Verschmierung in der Frequenzausgabe.
-	\item Die Lokalisation von sprunghaften Änderungen im Zeitsignal, können mit der CWT ohne Umwege direkt detektiert werden. Im Gegensatz dazu muss bei der FFT deutlich mehr Spielerei betrieben werden, um nur annähernd so gute Resultate zu erhalten.
-	\item Zwar ist die Frequenzausgabe wie erwähnt bei der CWT verschmiert, jedoch ist durch die direkte Einbindung des Gewichtungsfensters in das Wavelet eine präzise Amplitudenausgabe möglich, selbst in einem Rausch belasteten Signal.
-	\item Wenn Signale zu stark Rausch belastet sind, schlägt sich das Wavelet teilweise mit seinen eigenen Waffen, weil die CWT stark auf abrupte Änderungen reagiert.
-	\item Die CWT eignet sich wegen der mehrfach erwähnten Verschmierung auf der Frequenzausgabe nicht wirklich für die Rücktransformation (ICWT) vom Bild in den Zeitbereich.
+		\item Die CWT ist ein Analyse-Tool und die Umkehrung ist kaum relevant.
+		\item Die DWT ist ein Signalverabeitungstool, die Umkehrung ist von zentraler Bedeutung.
 \end{itemize}

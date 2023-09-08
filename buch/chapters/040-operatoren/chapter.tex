@@ -7,19 +7,30 @@
 \chapter{Operatoren
 \label{buch:chapter:operatoren}}
 \kopflinks{Operatoren}
+Differentialoperatoren haben sich als wichtige Quelle von orthogonalen
+Funktionensystem herausgestellt.
+Der Laplace-Operator tritt in vielen Anwendungen immer wieder auf
+und seine Eigenfunktionen bilden oft die Grundlage von Lösungsansätzen.
+Die Kugelfunktionen sind zum Beispiel Eigenfunktionen des Laplace-Operators
+auf der Kugeloberfläche und werden auch ind er Praxis für die Lösung der
+Strömungsdifferentialgleichungen im Rahmen der numerischen Wetterprognose 
+genutzt werden, wie Kapitel~\ref{chapter:spektral} zeigt.
+Die Verbindung zwischen Differentialoperatoren und anderen linearen
+Operatoren auf Funktionen ist jedoch noch enger und involviert wieder
+die harmonische Analysis.
 
-\input{chapters/040-operatoren/1-definition.tex}
-\input{chapters/040-operatoren/2-laplace.tex}
-\input{chapters/040-operatoren/3-casimir.tex}
-\input{chapters/040-operatoren/4-vollstaendig.tex}
+In diesem Kapitel wird gezeigt, wie man die Fourier-Theorie verwenden
+kann, um eine grössere Klasse von Operatoren zu definieren, die sowohl
+die Differentialoperatoren wie auch gewisse Umkehroperatoren umfasst.
+Die besondere Rolle des Laplace-Operators wird verständlich, wenn man
+seine Herkunft von der Theorie der Lie-Gruppen in Betracht zieht.
+Zu kompakten Lie-Gruppen lässt sich immer ein invarianter
+Differentialoperator zweiter Ordnung konstruieren, der sogenannte
+Casimir-Operator, der in den konkreten Fällen von $\mathbb{R}^n$
+und der Kugeloberfläche zum bekannten Laplace-Operator wird.
+Seine Konstruktion wird in Abschnitt \ref{buch:operatoren:section:casimir}
+skizziert.
 
-%\section*{Übungsaufgaben}
-%\rhead{Übungsaufgaben}
-%\aufgabetoplevel{chapters/010-potenzen/uebungsaufgaben}
-%\begin{uebungsaufgaben}
-%\uebungsaufgabe{101}
-%\uebungsaufgabe{102}
-%\uebungsaufgabe{103}
-%\uebungsaufgabe{104}
-%\end{uebungsaufgaben}
+\input{chapters/040-operatoren/1-pseudodifferential.tex}
+\input{chapters/040-operatoren/2-casimir.tex}
 

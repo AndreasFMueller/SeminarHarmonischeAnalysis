@@ -1,0 +1,383 @@
+%
+% 2-casimir.tex
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Casimir-Operator
+\label{buch:operatoren:section:casimir}}
+\kopfrechts{Casimir-Operator}
+Warum spielt der Laplace-Operator so eine wichtige Rolle in den
+Anwendungen?
+Und gibt es für andere Definitionsgebiete einen Operator, der eine
+ähnliche Rolle spielt?
+
+%
+% Invariante Differentialoperatoren
+%
+\subsection{Invariante Differentialoperatoren}
+In diesem Abschnitt betrachten wir Differentialoperatoren auf
+glatten Funktionen $f\in C^\infty(\mathbb{R}^n)$ auf $\mathbb{R}^n$.
+Ein Differentialoperator $P$ der Ordnung $m$ kann geschrieben werden als
+eine Summe
+\[
+Pf
+=
+\sum_{|\mathbf{l}|\le m}
+a_{\bm{l}}(x)
+D^{\bm{l}}
+f.
+\]
+Der Operator kann natürlich auch als Pseudodifferentialoperator geschrieben
+werden, er bekommt dann die Form
+\begin{align*}
+(Pf)(x)
+&=
+\int_{\mathbb{R}^n}
+\frac{1}{(2\pi)^n}
+\int_{\mathbb{R}^n}
+e^{ik\cdot (x-y)}
+\sum_{|\bm{l}|\le m}
+a_{\bm{l}}(x)(ik)^{\bm{l}}
+\,dk
+\,dy
+\end{align*}
+mit dem Symbol
+\[
+a(x,k)
+=
+\sum_{|\bm{l}|\le m} a_{\bm{l}}(x) i^{|\bm{l}|} k^{\bm{l}}.
+\]
+Das Symbol eines Differentialoperators ist also ein Polynom in den
+den Variablen $k_1,\dots,k_n$.
+
+Der Raum $\mathbb{R}^n$ ist invariant unter sogenannten Bewegungen, also
+beliebigen Verschiebungen und Drehungen.
+Wir untersuchen jetzt, ob ein Differentialoperator wie $P$ unter solchen
+Operationen ebenfalls invariant sein kann.
+Damit ist folgendes gemeint.
+Ist $\varphi\colon\mathbb{R}^n\to\mathbb{R}^n$ eine dieser Transformationen,
+dann erzeugt die Zusammensetzung mit $\varphi$ eine lineare Abbildung
+\[
+T_\varphi
+\colon
+C^{\infty}(\mathbb{R}^n) \to C^\infty(\mathbb{R}^n)
+:
+f \mapsto f\circ \varphi.
+\]
+Die Umkehrabbildung ist $T_\varphi^{-1}=T_{\varphi^{-1}}$.
+Der Operator $P$ heisst invariant, wenn 
+\[
+T_\varphi^{-1} P T_\varphi = P
+\]
+gilt.
+
+%
+% Die Transformation $T_\varphi$ und das Symbol
+%
+\subsubsection{Die Transformation $T_\varphi$ und das Symbol}
+Bei einer Translation des Raumes $\mathbb{R}^n$ ändert die Differenz
+$x-y$ in der Exponentialfunktion der Definition eines
+Pseudodifferentialoperators nicht, es kommt also nur auf das Verhalten
+des Symbols $a(x,k)$ in Abhängigkeit von $x$ an.
+Der Differentialoperator $P$ ist invariant unter Translationen,
+wenn das Symbol $a(x,k)$ nicht von $x$ abhängt.
+
+Eine Drehung des Raumes um einen Punkt $x$ kann durch eine Translation
+des Punktes $x$ in den Punkt $0$ als Drehung um den Nullpunkt
+mit einer Drehmatrix $R$ geschrieben werden.
+Das Symbol muss dazu durch $\tilde{a}(y,k) = a(y+x,k)$ ersetzt werden.
+Es genügt also, Drehungen mit einer orthogonalen Matrix $R$ um den
+Nullpunkt zu betrachten.
+
+Wir suchen also Kriterien dafür, dass der Differentialoperator $P$ unter
+einer Drehung um den Nullpunkt invariant bleibt.
+Da $P$ ein Differentialoperator ist, ist sein Träger im Nullpunkt
+konzentriert, die Werte $a(x,k)$ des Symbols für $x\ne 0$ spielen also
+keine Rolle, nur die Abhängigkeit $k\mapsto a(0,k)$ ist relevant.
+
+Die Fourier-Transformierte einer Funktion $f\in C^{\infty}(\mathbb{R}^n)$
+ändert sich unter der Drehung um den Nullpunkt gemäss
+\[
+\widehat(T_Rf)(k)
+=
+\frac{1}{(\!\sqrt{2\pi})^n}
+\int_{\mathbb{R}^n}
+e^{-ik\cdot Rx}
+f(Rx)\,dx
+=
+\frac{1}{(\!\sqrt{2\pi})^n}
+\int_{\mathbb{R}^n}
+e^{-i(R^tk)\cdot x}
+f(Rx)\,dx
+=
+\hat{f}(R^tk)
+=
+(T_{R^t}f)(k).
+\]
+Die Drehung mit der Matrix im Ortsraum läuft also auf eine entgegengesetzte
+Drehung im Frequenzraum hinaus.
+Für den Pseudodifferentialperator $P$ bedeutet dies, dass $P$ genau dann
+invariant ist, wenn das Symbol $a(x,k)$ sich nicht ändert, wenn man $k$ durch
+$R^tk$ ersetzt.
+Die rotationsinvarianten Differentialoperatoren sind also genau jene, 
+für die $k\mapsto a(x,k)$ rotationsinvariant ist.
+
+%
+% Differentialoperatoren erster Ordnung
+%
+\subsubsection{Differentialoperatoren erster Ordnung}
+Die Abbildung $k\mapsto a(x,k)$ ist ein Polynom in den Variablen
+$k_1,\dots,k_n$.
+Bei einem Differentialoperator erster Ordnung ist das Symbol daher
+eine lineare Funktion
+\begin{equation}
+a(x,k)
+=
+a_0(x,k)
++
+a_1(x)k_1
++
+\dots
++
+a_n(x)k_n.
+\label{buch:operatoren:casimir:eqn:oplin}
+\end{equation}
+Die Permutationen der Variablen $k_1,\dots,k_n$ sind orthogonale Abbildungen.
+Im Operator \eqref{buch:operatoren:casimir:eqn:oplin} ändert dabei nur
+die Reihenfolge der Koeffizienten der linearen Terme, er kann also nur dann
+invariant sein, wenn alle $a_1(x),\dots,a_n(x)$ gleich sind.
+Die Spiegelung $x_i\mapsto -x_i$ ist aber auch eine orthogonale Abbildung,
+der Operator \eqref{buch:operatoren:casimir:eqn:oplin} kann nur invariant
+sein, wenn sich bei einem Vorzeichenwechsel von $k_i$ nichts ändert,
+d.~h.~wenn alle Koeffizienten $a_1(x)=\dots = a_n(x)=0$ verschwinden.
+Es gibt also keinen invarianten Differentialoperator erster Ordnung.
+
+%
+% Invariante Differentialoperatoren höhrer Ordnung
+%
+\subsubsection{Invariante Differentialoperatoren höherer Ordnung}
+Die Überlegungen des vorangegangenen Abschnittes zeigen auch,
+dass das Symbol eines invarianten Differentialoperators nur gerade
+Potenzen der Variablen $k_1,\dots,k_n$ enthalten kann, und
+dass alle Koeffizienten $a_{\bm{l}}(x)$, die durch Permutation der
+Indizes im Multiindex $\bm{l}$ auseinander hervorgehen, gleich
+sein müssen.
+
+Die genannten Bedingungen sind allerdings noch nicht ausreichend.
+Für $n=2$ ist das Polynom $k_1^2k_2^2$ vierten Grades zwar Invariant
+unter der Vertauschung der Indizes $1$ und $2$, aber für eine
+beliebige Drehung um den Winkel $\alpha$ werden $k_1$ und $k_2$
+zu
+$k_1' = k_1\cos\alpha -k_2\sin\alpha$
+bzw.~
+$k_2' = k_1\sin\alpha +k_2\cos\alpha$.
+Eingesetzt in das Polynom entsteht
+\begin{align*}
+k_1^{\prime 2}
+k_2^{\prime 2}
+&=
+(k_1\cos\alpha -k_2\sin\alpha)^2
+(k_1\sin\alpha +k_2\cos\alpha)^2
+\\
+&=
+(k_1^2\cos^2\alpha -2k_1k_2\cos\alpha\sin\alpha +k_2^2\sin^2\alpha)
+(k_1^2\sin^2\alpha +2k_1k_2\cos\alpha\sin\alpha +k_2^2\cos^2\alpha)
+\\
+&=
+(k_1^4-4k_1^2k_2^2+k_2^4)\cos^2\alpha\sin^2\alpha
++
+k_1^2k_2^2(\cos^4\alpha+\sin^4\alpha)
+\\
+&\qquad
++
+2k_1^3k_2\cos^3\alpha\sin\alpha
+-
+2k_1^3k_2\cos\alpha\sin^3\alpha
+-
+2k_1k_2^3\cos^3\alpha\sin\alpha
++
+2k_1k_2^3\cos\alpha\sin^3\alpha
+\\
+&=
+(k_1^4-2k_1^2k_2^2+k_2^4)\cos^2\alpha\sin^2\alpha
++
+k_1^2k_2^2(\cos^4\alpha-2\cos^2\alpha\sin^2\alpha+\sin^4\alpha)
+\\
+&\qquad
++
+2k_1k_2\cos\alpha\sin\alpha(
+k_1^2\cos^2\alpha
+-
+k_1^2\sin^2\alpha
+-
+k_2^2\cos^2\alpha
++
+k_2^2\sin^2\alpha
+)
+\\
+&=
+(k_1^2-k_2^2)^2
+\cos^2\alpha\sin^2\alpha
++
+k_1^2k_2^2
+(\cos^2\alpha-\sin^2\alpha)^2
+\\
+&\qquad
++
+2k_1k_2
+\cos\alpha\sin\alpha
+(k_1^2-k_2^2)\cos2\alpha
+\\
+&=
+(k_1^2-k_2^2)^2
+\frac14\sin^22\alpha
++
+k_1^2k_2^2
+\cos^22\alpha
+\\
+&\qquad
++
+k_1k_2
+\cos2\alpha
+(k_1^2-k_2^2)
+\sin2\alpha
+\\
+&=
+\bigl(k_1k_2\cos2\alpha + {\textstyle\frac12}(k_1^2-k_2^2)\sin2\alpha\bigr)^2.
+\end{align*}
+Für $\alpha=0$ stimmen die beiden Seiten überein.
+Invarianz bedeutet, dass dieser Ausdruck für alle Paare $(k_1,k_2)$
+nicht von $\alpha$ abhängt, das ist aber für $k_1\ne0$ und $k_2=0$ nicht,
+der Fall, denn in diesem Fall wird die Gleichung zu
+\[
+0
+=
+-
+\frac12 k_2^2\sin2\alpha,
+\]
+was nur für $\alpha=\pi s$, $s\in\mathbb{Z}$ erfüllt ist.
+
+%
+% Der Laplace-Operator
+%
+\subsubsection{Der Laplace-Operator}
+Nach den Erkenntnissen des vorangegangenen Abschnitts ist der einzige
+unter Drehungen invariante Differentialoperator zweiter Ordnung der 
+Operator mit dem Symbol
+\[
+a(x,k) 
+=
+a(x)(k_1^2+\dots+k_n^2).
+\]
+Zurückübersetzt in einen gewöhnlichen Differentialoperator entspricht
+dies dem Operator
+\[
+-a(x)
+\biggl(
+\frac{\partial^2}{\partial x_1^2}
++
+\dots
++
+\frac{\partial^2}{\partial x_n^2}
+\biggr)
+,
+\]
+also einem Vielfachen des Laplace-Operators
+\[
+\Delta
+=
+\frac{\partial^2}{\partial x_1^2}
++
+\dots
++
+\frac{\partial^2}{\partial x_n^2}.
+\]
+Das verbreitete Auftreten des Laplace-Operators in Anwendungen ist
+also ein Ausdruck der Isotropie des Raumes: in einem Punkt ändern sich
+die Naturgesetze bei einer Drehung des Raumes um den Punkt nicht.
+
+%
+% Invariante Differentialoperatoren höherer Ordnung
+%
+\subsubsection{Invariante Differentialoperatoren höhrer Ordnung}
+Für das Symbol $k_1^2k_2^2$ wurde bereits gezeigt, dass es nicht das Symbol
+eines invarianten Differentialoperators vierter Ordnung sein kann.
+Ein Differentialoperator vierter Ordnung auf $C^\infty(\mathbb{R}^2)$
+muss also aus weiteren Monomen vierten Grades zusammensetzen.
+Die Koeffizienten der Terme $k_1^4$ und $k_2^4$ müssen dabei gleich
+sein, das Symbol muss also die Form
+\[
+a(x,k)
+=
+ak_1^4 + 2bk_1^2k_2^2 + ak_2^4
+\]
+haben.
+Dies lässt sich aber immer schreiben als
+\[
+a(x,k)
+=
+a(k_1^2+k_2^2) + (b-a)k_1^2k_2^2.
+\]
+Der erste Term ist als Quadrat der Länge invariant unter Drehungen,
+vom zweiten Term wissen wir bereits, dass er nicht invariant ist.
+Somit ist das einzige möglich invariante Symbol vierten Grades
+der Falle $b=a$ und damit  $a(x,k) = (k_1^2+k_2^2)^2$.
+Der zugehörige Differentialoperator ist dann 
+\[
+\Delta \Delta
+=
+\biggl(
+\frac{\partial^2}{\partial x_1^2}
++
+\frac{\partial^2}{\partial x_2^2}
+\biggr)^2.
+\]
+
+Für einen Differentialoperator vierter Ordnung auf $\mathbb{R}^n$ kann
+man den Unterraum der Funktionen betrachten, die nur von zwei der
+Variablen abhängen.
+Auf dem Unterraum der nur von $x_k$ und $x_l$ abhängigen Funktionen
+besteht der Operator nur aus den Ableitungen
+nach e
+\[
+\biggl(
+\frac{\partial^2}{\partial x_k^2}
++
+\frac{\partial^2}{\partial x_l^2}
+\biggr)^2.
+\]
+Daraus leitet man ab, dass der einzige unter Drehungen invariante
+Differentialoperator vierter Ordnung ein Vielfaches von
+\[
+\Delta\Delta 
+=
+\biggl(
+\frac{\partial^2}{\partial x_1^2}
++
+\dots
++
+\frac{\partial^2}{\partial x_n^2}
+\biggr)^2
+\]
+ist.
+Dieser Operator heisst auch der {\em biharmonische Operator}, er
+kommt zum Beispiel in der Plattengleichung vor.
+
+%
+% Differentialoperatoren auf einer Lie-Gruppe
+%
+\subsection{Invariante Differentialoperatoren auf einer Lie-Gruppe}
+Der Laplace-Operator hat sich als der Operator herausgestellt, der
+der Isotropie des Raumes in jedem Punkt Rechnung trägt.
+Der Operator ist insbesondere um die Drehungen um jeden Punkt
+invariant.
+Die Invarianzeigenschaft ist natürlich eine Eigenschaft der 
+Zur Verfügung stehenden Gruppe, die im vorliegenden Fall die
+orthogonale Gruppe $\operatorname{O}(n)$ ist.
+
+
+
+
+
+
+

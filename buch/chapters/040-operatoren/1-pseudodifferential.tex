@@ -1,0 +1,577 @@
+%
+% 1-definition.tex
+%
+% (c) 2023 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Pseudodifferentialoperatoren
+\label{buch:opertoren:section:pseudodifferentialoperatoren}}
+\kopfrechts{Definition}
+In früheren Untersuchungen wurden verschiedene Operatoren
+auf dem Vektorraum der glatten Funktion $C^\infty(\mathbb{R})$ 
+untersucht.
+Die Multiplikation mit einer Funktion und die Ableitungen sind 
+lineare Operatoren, aber auch die Faltung mit einer anderen Funktion.
+Alle diese Operationen werden durch völlig verschiedene Formeln
+gegeben, was schwierig macht, eine gemeinsame Theorie zu formulieren.
+Pseudodifferentialoperatoren bilden eine Klasse von Operatoren, die
+gross genug ist, dass sie alle diese Beispiel umfasst, aber trotzdem
+immer noch genügend interessante Eigenschaften hat, dass man damit
+rechnen kann.
+
+%
+% Motivation: Matrizen
+%
+\subsection{Motivation: Matrizen
+\label{buch:operatoren:pseudodifferential:subsection:motivation}}
+Lineare Operatoren auf einem endlichdimensionalen Vektorraum können
+durch Wahl einer Basis immer in der Form einer Matrix geschrieben
+werden.
+Sei $A$ eine lineare Abbildung $U\to V$ zwischen Vektorräumen
+$U$ und $V$ mit Basisvektoren $u_k$ bzw.~$v_i$.
+Ein Vektor $u\in U$ kann also Linearkombination der $u_k$ geschrieben
+werden, und der Bildvektor $Av$ kann als Linearekombination der $v_i$
+geschrieben werden.
+Wir nennen die zugehörigen Koeffizieten $x_k$ bzw.~$y_i$ und erhalten
+\[
+u = \sum_{k=1}^n x_ku_k
+\qquad\text{und}\qquad
+v = \sum_{j=1}^m y_jv_j.
+\]
+Der Zusammenhang zwischen den Koeffizienten ist
+\[
+y_j = \sum_{k=1}^n a_{jk}x_k,\qquad j=1,\dots,m.
+\]
+Der Operator $A$ ist also in der Basis beschrieben durch die Matrixelemente
+$a_{jk}$.
+
+Der Funktionenraum der glatten Funktionen ist unendlichdimensional, die
+Idee, mit einer Basis eine Matrix zu konstruieren, ist also nicht
+durchführbar.
+Die Fourier-Theorie zeigt aber einen möglichen Weg auf, wie man etwas
+Analoges konstruieren könnte.
+Für Funktionen auf $\mathbb{R}/2\pi\mathbb{Z}$ oder für $2\pi$-periodische
+Funktionen $f$ sind die Funktionen $e_k(x)=e^{ikx}$ mit $k\in\mathbb{Z}$ 
+eine Hilbertbasis.
+Die Fourier-Koeffizienten
+\[
+\hat{f}_k
+=
+c_k
+=
+\langle e_k,f\rangle
+=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\pi}^{\pi} e^{-ikx}f(x)\,dx
+\]
+entsprechen den Koordinaten.
+Man könnte daher als verallgemeinerten linearen Operator Koeffizienten
+$a_{jk}$ wählen, damit die Fourier-Koeffizienten wie mit einer Matrix
+transformieren und anschliessend die Funktion durch Rücktransformation
+zurückgewinnen.
+Die Wirkung dieses Operators ist also gegeben durch
+\begin{equation}
+Af(y)
+=
+\sum_{j\in\mathbb{Z}}
+e^{ijy}
+\sum_{k\in\mathbb{Z}} a_{jk}
+c_k
+=
+\frac{1}{2\pi}
+\sum_{j\in\mathbb{Z}}
+e^{ijy}
+\sum_{k\in\mathbb{Z}} a_{jk}
+\int_{-\pi}^\pi e^{-ikx} f(x)\,dx.
+\label{buch:operatoren:pseudodifferential:eqn:matrixop}
+\end{equation}
+Mit dieser Art von Operator lassen sich alle obengannten Operationen
+durchführen.
+
+\subsubsection{Ableitung}
+Die Fourier-Transformierte der Ableitung $f'(x)$
+\begin{align*}
+\langle e_k,f'\rangle
+=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\pi}^\pi e^{-ikx}f'(x)\,dx
+=
+\frac{1}{\!\sqrt{2\pi}}
+\biggl[
+e^{-ikx}
+f(x)
+\biggr]_{-\pi}^\pi
++ik
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\pi}^\pi e^{-ikx} f(x)\,dx
+=
+ikc_k.
+\end{align*}
+Der Ableitungsoperator kann also mit Koeffizienten
+\[
+a_{jk}
+=
+\begin{cases}
+-ik&\qquad\text{falls $j=k$}\\
+0  &\qquad\text{sonst}
+\end{cases}
+\]
+in der Form~\eqref{buch:operatoren:pseudodifferential:eqn:matrixop}
+geschrieben werden.
+
+\subsubsection{Faltungsoperator}
+Für die Faltung mit einer Funktion $g(x)$ gilt der Faltungssatz
+\[
+\widehat{g*f}_k
+=
+\hat{g}_k\cdot \hat{f}_k
+\]
+der Fourier-Transformation.
+Setzt man
+\[
+A_{jk}
+=
+\begin{cases}
+\hat{g}_k&\qquad\text{falls $j=k$}\\
+0        &\qquad\text{sonst,}
+\end{cases}
+\]
+kann man auch den Faltungsoperator $f\mapsto g*f$ in der 
+Form~\eqref{buch:operatoren:pseudodifferential:eqn:matrixop}
+schreiben.
+
+\subsubsection{Multiplikation}
+Der Multiplikationsoperator
+\[
+M_g\colon
+C^{\infty}(\mathbb{R}/2\pi\mathbb{Z})
+\to
+C^{\infty}(\mathbb{R}/2\pi\mathbb{Z})
+:
+f\mapsto M_gf : x \mapsto g(x)f(x)
+\]
+wird durch die Fourier-Transformation in eine Faltung mit den
+Fourier-Koeffizienten von $g$ umgewandelt:
+\[
+\widehat{M_gf}_j
+=
+\sum_{l\in\mathbb{Z}}
+\hat{g}_{j-k}
+\hat{f}_k.
+\]
+Setzt man
+\[
+A_{jk}
+=
+\hat{g}_{j-k},
+\]
+bekommt auch der Multiplikationsoperator mit der Funktion $g$ die 
+Form~\eqref{buch:operatoren:pseudodifferential:eqn:matrixop}.
+
+Die Beispiele zeigen, dass die Fourier-Transformation ermöglich,
+alle drei eingangs erwähnten Arten von Operatoren auf eine einheitliche
+Art zu beschreiben.
+
+%
+% Integraloperatoren
+%
+\subsection{Integraloperatoren}
+Die Idee der Transformation periodischer Funktionen auf
+Fourier-Koeffizienten mit anschliessender Abbildung der
+Koeffizienten mit einer unendlich ausgedehnten Matrix funktioniert
+nicht mehr für glatte Funktionen $f(x)$ auf $\mathbb{R}$.
+Die Fourier-Transformierte $\hat{f}(k)$ einer solchen Funktion ist wieder
+eine Funktion auf $\mathbb{R}$.
+Als Indexmenge für eine Summation kommt $\mathbb{R}$ nicht in Frage.
+Man kann aber die Summation durch eine Integration ersetzen.
+
+\begin{definition}
+Seien $X$ und $Y$ Teilmengen von $\mathbb{R}$
+und $K\colon X\times Y\to\mathbb{R}$ eine stetige Funktion.
+Dann definiert $K$ einen linearen Operator
+\[
+K
+\colon
+C(Y) \to C(X)
+:
+f \mapsto K\cdot f: x\mapsto \int_Y K(x,y) f(y)\,dy,
+\]
+er heisst der {\em Integraloperator mit Kernfunktion $K(x,y)$}.
+\end{definition}
+
+\begin{beispiel}
+Sei $g$ eine stetige Funktion mit kompaktem Träger auf $\mathbb{R}$.
+Dann ist der Faltungsoperator
+\[
+g*
+\colon 
+C_0(\mathbb{R})
+\to
+C_0(\mathbb{R})
+:
+f
+\mapsto g*f
+\]
+für stetige Funktionen mit kompaktem Träger der Integraloperator
+\[
+(g*f)(x)
+=
+\int_{\mathbb R} g(x-y) f(y)\,dy
+\]
+mit der Kernfunktion $K(x,y) = g(x-y)$.
+\end{beispiel}
+
+Solche Integraloperatoren sind sehr praktisch bei der Lösung von
+partiellen Differentialgleichungen.
+In einem gewissen Sinne lassen sich Ableitungsoperatoren mit
+Integraloperatoren invertieren, wie das folgende Beispiel illustriert.
+
+\begin{beispiel}
+Sei $f(x)$ eine stetige Funktion auf dem Intervall $[0,1]$.
+Gesucht ist eine Funktion $u(x)$, die Lösung der Differentialgleichung 
+\begin{equation}
+\frac{d^2}{dx^2}u(x) = f(x)
+\label{buch:operatoren:pseudodifferential:eqn:dgl1}
+\end{equation}
+ist mit Randbedingungen $u(0)=u(1)=0$.
+Wir zeigen, dass der Integraloperator mit der Kernfunktion
+\[
+G(x,y)
+=
+\begin{cases}
+y(x-1)&\qquad\text{für $x > y$}\\
+x(y-1)&\qquad\text{für $x\le y$}
+\end{cases}
+\]
+ein linearer Operator $C([0,1]) \to C^2([0,1])$ ist, der eine Lösung
+$u=G\cdot f$ der Differentialgleichung mit homogenen Randbedingungen 
+liefert.
+
+Der Operator $G$ liefert die Funktion
+\begin{align*}
+u(x)
+&=
+\int_0^1 G(x,y)f(y)\,dy
+=
+\int_0^x y(x-1)f(y)\,dy
++
+\int_x^1 x(y-1)f(y)\,dy.
+\intertext{Wir berechnen die Ableitung nach $x$:}
+u'(x)
+&=
+y(x-1)f(y)\bigg|_{x=y} +  \int_0^x y f(y)\,dy
+-
+x(y-1)f(y)\bigg|_{x=y} + \int_x^1 (y-1)f(y)\,dy
+\\
+&=
+x(x-1)f(x) + \int_0^x yf(y)\,dy
+-x(x-1)f(x) + \int_x^1 (y-1)f(y)\,dy
+\\
+&= \int_0^x yf(y)\,dy + \int_x^1 (y-1)f(y)\,dy.
+\intertext{Die zweite Ableitung ist}
+u''(x)
+&=
+xf(x) - (x-1)f(x)
+=
+f(x).
+\end{align*}
+Somit ist gezeigt, dass der Operator $G$ eine Inverse der zweiten
+Ableitung ist.
+Die Funktion $G(x,y)$ heisst auch die Greensche Funktion der
+Differentialgleichung~\eqref{buch:operatoren:pseudodifferential:eqn:dgl1}.
+\end{beispiel}
+
+
+%
+% Differentialoperatoren
+%
+\subsection{Differentialoperatoren}
+Der Integraloperator mit Kernfunktion $K(x,y)$ erzeugt aus einer Funktion
+$f(y)$ die Funktion $K\cdot f$.
+Wir betrachten den Punkt $x_0\in X$.
+Der Funktionswert
+\[
+(K\cdot f)(x_0)
+=
+\int_Y K(x_0,y)f(y)\,dy
+\]
+hängt von allen Werten der Funktion $f(y)$ für $y\in Y$ ab, für die
+$K(x_0,y)\ne 0$.
+Für jeden inneren Punkt $y_0\in \operatorname{supp} K \cap \{x_0\}\times Y$
+gibt es eine Funktion $h\colon Y\to\mathbb{R}$ mit Träger in 
+$\operatorname{supp} K \cap \{x_0\}\times Y$ derart, dass
+$(K\cdot h)(x_0)\ne 0$ und damit $K\cdot(f+h)\ne K\cdot f$.
+
+Ein Differentialoperator ist dagegen perfekt lokalisiert im
+folgenden Sinn.
+Sei $f$ eine differenzierbare Funktion Funktion auf $\mathbb{R}$
+und $x_0\in \mathbb{R}$.
+Für einen Punkt $x\ne x_0$ sei $g$ eine Funktion, die sich nur 
+im Intervall $(x-\varepsilon,x+\varepsilon)$ mit $\varepsilon=\frac12|x-x_0|$
+von der Funktion $f$ unterscheidet.
+Dann sind alle Ableitungen von $f$ und $g$ im Punkt $x_0$ gleich:
+\[
+f^{(n)}(x) = g^{(n)}(x) \quad \forall\; n\in\mathbb{N}.
+\]
+Die Funktion $f$ kann also beliebig nahe beim Punkt $x_0$ verändert
+werden, ohne dass dies die Ableitungen im Punkt $x_0$ ändert.
+Man sagt auch, die Ableitung ist eine Distribution mit Träger im
+Punkt $x_0$.
+
+Dieses Beispiel zeigt, dass es unrealistisch ist zu erwarten, dass
+die Ableitung als Integraloperator ausgedrückt werden kann.
+In Abschnitt~\ref{buch:operatoren:pseudodifferential:subsection:motivation}
+wurden Ableitungsoperatoren durch Fourier-Transformation als 
+Summen ausgedrückt.
+Die Indexmenge für die Summe war die duale Gruppe der
+Definitionsbereichsgruppe $\mathbb{R}/2\pi\mathbb{Z}$.
+Für Funktionen auf $\mathbb{R}$ ist die duale Gruppe $\mathbb{R}$, so
+die analoge Vorgehensweise dass statt auf eine Summe auf ein
+Integral führt.
+Wir versuchen daher, einen Differentialoperator im Frequenzbereich als
+Integraloperator zu schreiben.
+
+Sei also $f$ eine differenzierbare Funktion auf $\mathbb{R}$ mit kompaktem
+Träger und 
+\[
+\hat{f}(k)
+=
+\frac{1}{\!\sqrt{2\pi}} \int_{\mathbb{R}} e^{-ikx} f(x)\,dx
+\]
+die Fourier-Transformierte.
+Die Ableitung von $f$ hat die Fourier-Transformierte
+\begin{align*}
+\widehat{f'}(k)
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{\mathbb{R}} e^{-ikx} f'(x)\,dx
+\\
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\biggl[
+e^{-ikx}f(x)
+\biggr]_{-\infty}^\infty
++
+ik
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty e^{-ikx}f(x)\,dx
+\\
+&=
+ik \hat{f}(k).
+\end{align*}
+Durch Fourier-Inversion lässt sich daraus die Ableitung bestimmen:
+\begin{align}
+f'(y)
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{iky} 
+ik \hat{f}(k)
+\,dk
+\notag
+\\
+&=
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+e^{iky} ik
+\int_{-\infty}^\infty e^{-ikx} f(x) \,dx
+\,dk.
+\intertext{Die formale Vertauschung der Integrationen liefert die Form}
+&=
+\int_{-\infty}^\infty
+\underbrace{
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+ik e^{ik(y-x)}
+\,dk
+}_{\displaystyle =K(y,x)}
+f(x)
+\,dx.
+\label{buch:operatoren:pseudodifferential:eqn:ablkern}
+\end{align}
+Wenigstens formal ist das innere Integral eine ``Kernfunktion'', mit der
+der Ableitungsoperator als Integraloperator geschrieben werden kann.
+
+Das Problem mit der ``Kernfunktion''
+\eqref{buch:operatoren:pseudodifferential:eqn:ablkern}
+ist jedoch, dass es gar keine Funktion ist.
+Zum Beispiel führt die Formel für $x=y$ auf
+\[
+K(x,x)
+=
+\frac{1}{2\pi}
+\int_{-\infty}^\infty 
+ik\,dk,
+\]
+was nicht konvergiert.
+Das Problem ist nicht spezifisch für die Ableitung, auch die identische
+Abbildung, die die Funktion $f(x)$ via
+\begin{align}
+f(y)
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{iky}
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{-ikx}
+f(x)
+\,dx
+\,dk
+=
+\int_{-\infty}^\infty
+\underbrace{
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+e^{ik(y-x)}
+\,dk
+}_{\displaystyle = K(y,x)}
+f(x)
+\,dx
+\label{buch:operatoren:pseudodifferential:eqn:delta}
+\end{align}
+mit der gleichen formalen Vertauschung der Integrationen reproduzieren
+soll.
+Auch in diesem Fall ist das innere Integral nicht konvergent.
+Andererseits ist bekannt, dass die ``Dirac-\textdelta-Funktion'' 
+mit der Eigenschaft
+\[
+f(y) = \int_{-\infty}^\infty \delta(y-x) f(x)\,dx
+\]
+die Funktion $f$ reproduzieren kann, man muss daher dem inneren
+Integral in \eqref{buch:operatoren:pseudodifferential:eqn:delta} den
+Wert
+\[
+\frac{1}{2\pi}
+\int_{-\infty}^\infty e^{ik(y-x)} \,dk
+=
+\delta (y-x)
+\]
+zuweisen.
+Für
+\eqref{buch:operatoren:pseudodifferential:eqn:ablkern}
+muss man
+\[
+\frac{1}{2\pi}
+\int_{-\infty}^\infty ike^{ik(y-x)} \,dk
+=
+\delta'(y-x)
+\]
+setzen.
+
+Offenbar funktioniert diese Idee nicht, wenn man sich auf den 
+klassischen Begriff der Funktion beschränkt.
+Mindestens für die Dirac-\textdelta-Funktion und ihre Ableitung
+scheint es aber plausibel zu sein, dass es einen erweiterten
+Funktionsbegriff geben könnte, mit dem diesen ``Funktionen'' $K(y,x)$
+ein wohldefinierter Sinn gegeben werden kann.
+Dies ist der Begriff der Distribution, auf den hier aber nicht
+im Detail eingegangen werden soll.
+Die Fourier-Transformation kann auf Distributionen ausgedehnt und
+damit kann eine konsistene Theorie von Operatoren der folgenden Form
+
+\begin{definition}
+Ein {\em Pseudodifferentialoperator} für Funktionen $f$ auf $\mathbb{R}$ ist
+ein Operator der Form
+\[
+(K\cdot f)(x)
+=
+\int_{-\infty}^\infty
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+e^{ik(x-y)}
+a(x,k)
+\,dk
+f(y)\,dy
+\]
+wobei $a$ eine Funktion $\mathbb{R}^2\to\mathbb{C}$ ist.
+Die Funktion $a$ heisst das {\em Symbol} des Operators.
+\end{definition}
+
+Die Klasse der Pseudodifferentialoperatoren ist gross genug, dass sie
+viele Operatoren enthalten kann.
+Die folgenden Beispiele zeigen, dass Differntialoperatoren,
+Faltungsoperatoren und Multiplikationsoperatoren alle von dieser
+Form sind.
+
+\begin{beispiel}
+Der Laplace-Operator ist der Pseudodifferentialoperator mit dem
+dem Symbol
+\(
+a(x,k)=
+-k^2
+\).
+Im Falle eines reinen Differentialoperators ist also das Symbol eine 
+Funktion, die nicht von $x$ und nur von $k$ abhängt.
+\end{beispiel}
+
+\begin{beispiel}
+Der Faltungsoperator mit der Funktion $g$ wird nach Fourier-Transformation
+zu einem Multiplikationsoperator mit der Fourier-Transformierten $\hat{g}$:
+\begin{align*}
+(g * f)(x)
+&=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty e^{ikx} \hat{g}(k) \hat{f}(k) \,dk
+=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{ikx}
+\hat{g}(k) 
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty
+e^{-iky}
+f(x)
+\,dy
+\,dk
+\\
+&=
+\int_{-\infty}^\infty
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+e^{ik(x-y)}
+\hat{g}(k)
+\,dk
+\,dy
+=
+\int_{-\infty}^\infty
+g(x-y)
+\,dy,
+\end{align*}
+das Symbol des Faltungsoperators ist somit $a(x,k)=\hat{g}(k)$.
+\end{beispiel}
+
+\begin{beispiel}
+Die identische Abbildung kann als der Pseudodifferentialoperator
+\[
+f(x)
+=
+\int_{-\infty}^\infty 
+\frac{1}{2\pi}
+\int_{-\infty}^\infty 
+e^{ik(x-y)}
+\,dx
+f(y)
+\,dy
+\]
+mit dem Symbol $a(x,k)=1$ geschrieben werden.
+Der Multiplikationsoperator $M_g$ mit der Funktion $g$ ergibt an
+der Stelle $x$
+\[
+(M_gf)(x)
+=
+g(x) f(x)
+=
+\int_{-\infty}^\infty
+\frac{1}{2\pi}
+\int_{-\infty}^\infty
+g(x) e^{ik(x-y)}
+\,dk
+\,dy.
+\]
+Daraus liest man ab, dass der Multiplikationsoperator $M_g$ ein
+Pseudodifferentialoperator mit dem Symbol $a(x,k)=g(x)$ ist.
+\end{beispiel}
+
+
+
+
