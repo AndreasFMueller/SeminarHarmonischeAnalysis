@@ -87,7 +87,7 @@ $m$ Datenpunkten in Matrix-Form als
 \end{equation}
 und die Cost-Function $J$ in Matrix-Form als
 \begin{align}
-    J(\vec \theta) &= \sum_{j=0}^m \left(y_j - (\theta_0 x_{j0} + \theta_1 x_{j1} + \cdots + \theta_n x_{jn}) \right)^2
+    J(\vec \theta) &= \sum_{j=1}^m \left(y_j - (\theta_0 x_{j0} + \theta_1 x_{j1} + \cdots + \theta_n x_{jn}) \right)^2
     = \sum_{j=0}^{m} \left( y_j - \vec \theta \cdot \vec x_j \right)^2 \nonumber\\
     &= \left(\vec y - \mathbf{X} \vec \theta\right) \cdot \left(\vec y - \mathbf{X} \vec \theta\right)
     = \left(\vec y - \mathbf{X} \vec \theta\right)^\mathrm{T} \left(\vec y - \mathbf{X} \vec \theta\right)
@@ -189,7 +189,7 @@ aber umso länger.
 Für das lineare Modell \eqref{ml:regression:modell} können $\alpha$ und die Anzahl Schritte
 zur exakten Lösung zum Beispiel mit dem \emph{Verfahren der konjugierten Gradienten}
 einfach bestimmt werden.
-Bei nichtlineare Modellen gibt es leider keine Methode um den besten Wert von
+Bei nichtlinearen Modellen gibt es leider keine Methode um den besten Wert von
 $\alpha$ zu finden. Er muss empirisch ermittelt werden, wobei am besten Werte im Bereich
 $0.001$ bis $1$ auszuprobieren sind. \cite[S. 51]{ml:introduction-to-ml}
 

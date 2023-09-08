@@ -90,15 +90,15 @@ Für das vollständige nichtlineare Modell wird $g_i$ $k$-mal verschachtelt:
 So ein Modell $M$ wird \emph{fully connected \underline{f}eed\underline{f}orward
 \underline{a}rtificial \underline{n}eural \underline{n}etwork}\footnote{
     Bei dieser Netzwerk-Struktur sind alle Neuronen einer Schicht mit \emph{allen} der
-    nächsten Schicht vollverbunden. Die feedforward Struktur impliziert fast immer auch
-    die volle Verbundenheit und wird deshalb im weiteren Text weggelassen.
+    nächsten Schicht vollverbunden. Volle Verbundenheit wird fast immer von der
+    feedforward Struktur impliziert und wird deshalb im weiteren Text weggelassen.
 } (FFANN) genannt.
 Was genau bei der numerischen Berechnung passiert ist viel einfacher
 in Form eines gerichteten Graphen in Abb. \ref{fig:ml:ann:simple} zu erkennen.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.8]{papers/ml/images/ann_simple.pdf}
+    \includegraphics[scale=1]{papers/ml/images/ann_simple.pdf}
     \caption{3-schichtiges FFANN in Form eines gerichteten Graphen.}
     \label{fig:ml:ann:simple}
 \end{figure}
@@ -144,7 +144,7 @@ Abbildung \ref{fig:ml:ann:simple-1D} zeigt \eqref{ml:ann:multilayer-1D} wieder a
 gerichteten Graphen.
 \begin{figure}
     \centering
-    \includegraphics[scale=0.8]{papers/ml/images/ann_simple_1D.pdf}
+    \includegraphics[scale=1]{papers/ml/images/ann_simple_1D.pdf}
     \caption{Eindimensionales FFANN.}
     \label{fig:ml:ann:simple-1D}
 \end{figure}
@@ -276,9 +276,9 @@ hidden layer und verschiedenen Aktivierungsfunktionen zu machen.
 
 Durch Summierung der Kosten aller Ausgänge kann erst einmal die Cost-Function sehr einfach
 auf mehrere Outputs erweitert werden:
-\[
+\begin{equation}
     \tilde J(\theta, b) = \sum_{k\in \text{Outputs}} J(M_k(x), y).
-\]
+\end{equation}
 Danach können die Backpropagation-Gleichungen analog aufgestellt werden:
 \begin{equation}
 \begin{aligned}
@@ -291,8 +291,8 @@ Danach können die Backpropagation-Gleichungen analog aufgestellt werden:
     \theta_{\text{node}_k\rightarrow\text{node}_j} &\leftarrow
         \theta_{\text{node}_k\rightarrow\text{node}_j} -
         \alpha \cdot \delta_{\text{node}_j} \cdot \sigma_{\text{node}_k}(\xi_{\text{node}_k}) \\
-    b_{\text{node}_j} &\leftarrow b_{\text{node}_j} - \alpha \cdot \delta_{\text{node}_j}
-\end{aligned}.
+    b_{\text{node}_j} &\leftarrow b_{\text{node}_j} - \alpha \cdot \delta_{\text{node}_j}.
+\end{aligned}
 \label{ml:ann:bp:update}
 \end{equation}
 

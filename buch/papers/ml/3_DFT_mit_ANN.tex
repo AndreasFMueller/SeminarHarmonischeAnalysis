@@ -1,12 +1,12 @@
-\section{Diskrete Fouriertransformation mit ANN\label{ml:dft-with-ann}}
+\section{Diskrete Fourier-Transformation mit ANN\label{ml:dft-with-ann}}
 \rhead{DFT mit ANN}
 
-Die \emph{diskrete Fouriertransformation} (DFT) einer Zahlenreihe $x_n \in \{ x_0, x_1, \cdots, x_{N-1}\}$
+Die \emph{diskrete Fourier-Transformation} (DFT) einer Zahlenreihe $x_n \in \{ x_0, x_1, \cdots, x_{N-1}\}$
 mit $N$ Elementen kann mit
 \begin{equation}
     c_k = \frac{1}{N} \sum_{n=0}^{N-1} x_n e^{\normalsize -jk\frac{2\pi}{N}n}
 \end{equation}
-berechnet werden, oder in vektorschreibweise
+berechnet werden, oder in Vektorschreibweise
     \begin{equation}
     c_k = \begin{pmatrix}
         x_0\\
@@ -74,7 +74,7 @@ berechnet werden.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.8]{papers/ml/images/ann_dft_linear.pdf}
+    \includegraphics[scale=1]{papers/ml/images/ann_dft_linear.pdf}
     \caption{Lineares Netzwerk für die DFT.}
     \label{fig:ml:dft-with-ann:linear}
 \end{figure}
@@ -92,8 +92,8 @@ Leider haben wir mit dieser Methodik überhaupt nichts gewonnen. Die Koeffizient
 zwar nur \emph{einmal} gelernt werden bei gleichbleibendem $N$, um aber die
 fouriertransformierten Werte $c_k$ zu berechnen, müssen immer noch zwei volle
 Matrix-Vektor multiplikationen durchgeführt werden. Hier ist die schnelle
-Fouriertransformation bei weitem überlegen.
-Die Frage, ob es möglich ist mit einem künstlichen neuronalen Netzwerk die Fouriertransformation zu
+Fourier-Transformation bei weitem überlegen.
+Die Frage, ob es möglich ist mit einem künstlichen neuronalen Netzwerk die Fourier-Transformation zu
 berechnen können wir totzdem bejahen. Denn so ein lineares Netzwerk \emph{ist} ein FFANN,
 auch wenn ein Spezialfall.
 
@@ -106,7 +106,7 @@ Schwingungen) konnten in guter Näherung transformiert werden.
 Ein besserer Ansatz bietet \cite{ml:pmlr-v97-dao19a}, wobei durch ein speziell aufgebautes
 lineares Netzwerk mit schwachbesetzten Schichten, Faktorisierungen\footnote{In
 \ref{buch:diskret:subsetion:faktorisierung} ist eine Faktorisierung der
-Fouriertransformation und die daraus resultierende Reduktion der Anzahl Koeffizienten
+Fourier-Transformation und die daraus resultierende Reduktion der Anzahl Koeffizienten
 beschrieben.} von einer vielzahl der linearen Transformationen gelernt werden können.
 \cite{ml:pmlr-v97-dao19a} zeigt also, dass ein vielschichtiges ANN mit geschicktem Aufbau in der Lage ist
 einen fast beliebigen schnellen linearen Transformations-Algorithmus (zum Beispiel die FFT)
@@ -115,6 +115,8 @@ aus Daten zu rekonstruieren.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/ml/images/learned_coeff_vs_dft.png}
-    \caption{Gelernte Koeffizienten-Matrix (oben) verglichen mit der DFT (unten).}
+    \caption{Gelernte Koeffizienten-Matrix (oben) verglichen mit der DFT (unten).
+    Beim trainieren des ANNs wurden normalisierte Daten verwendet, wodurch sich die
+    Unterschiede erklären lassen.}
     \label{fig:ml:dft-with-ann:leanred-vs-dft}
 \end{figure}
