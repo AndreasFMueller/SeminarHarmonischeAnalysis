@@ -814,7 +814,7 @@ und nichtentartete Bilinearform auf der $n$-dimennsionalen Lie-Algebra
 $LG$ von $G$, und $X_i$ eine bezüglich $\Phi$
 orthogonale Basis von $LG$ mit der Eigenschaft
 \[
-\Phi(X_i,X_i) = \varepsilon_i \in \{\pm\}\qquad\forall i,
+\Phi(X_i,X_i) = \varepsilon_i \in \{\pm 1\}\qquad\forall i,
 \]
 dann ist der Operator
 \[
@@ -824,6 +824,113 @@ C
 \]
 ein Differentialoperator, der mit allen anderen Operatoren vertauscht.
 \end{satz}
+
+\begin{proof}[Beweis]
+Die quadratische Form ist invariant, wenn $\Phi([X,Y],Z)=\Phi(X,[Y,Z])$
+gilt.
+Wir schreiben die Lie-Klammer zwischen den Basisvektoren als
+\[
+[X_i,X_j] = \sum_{k=1}^n c_{i\!jk} X_k.
+\]
+Damit berechnen wir
+\begin{align*}
+\Phi([X_i,X_j],X_k)
+&=
+\Phi\biggl(
+\sum_{j=1}^n c_{i\!jl}X_l, X_k
+\biggr)
+=
+c_{i\!jk}
+\Phi(X_k,X_k)
+=
+\varepsilon_k c_{i\!jk}
+\\
+\Phi(X_i,[X_j,X_k])
+&=
+\Phi\biggl(X_i,
+\sum_{l=1}^n c_{jkl}X_l
+\biggr)
+=
+c_{jkl}\Phi(X_i,X_i)
+=
+\varepsilon_i c_{jki}.
+\end{align*}
+Es folgt aus der Invarianzbedingung, dass
+\begin{equation}
+\varepsilon_k c_{i\!jk}
+=
+\varepsilon_i c_{jki}
+\quad\Rightarrow\quad
+\varepsilon_i c_{i\!jk}
+=
+\varepsilon_k c_{jki}
+=
+-\varepsilon_k c_{k\!ji}.
+\label{buch:operatoren:casimir:eqn:invc}
+\end{equation}
+Damit kann man jetzt die Vertauschung eines Operators mit dem
+Casimir-Operator berechnen:
+\begin{align}
+CX_j-X_jC
+&=
+\sum_{i=1}^n \varepsilon_i ( X_i^2X_j - X_jX_i^2)
+\notag
+\\
+&=
+\sum_{i=1}^n \varepsilon_i ( X_i^2X_j - X_iX_jX_i + X_iX_jX_i - X_jX_i^2)
+\notag
+\\
+&=
+\sum_{i=1}^n \varepsilon_i (X_i[X_i,X_j] + [X_i,X_j]X_i)
+\notag
+\\
+&=
+\sum_{i,k=1}^n \varepsilon_i ( c_{ilk} X_i X_k + c_{ilk} X_k X_i).
+\notag
+\intertext{Vertauschung der Summationsindizes $i$ und $k$ in der zweiten
+Summe ergibt}
+&=
+\sum_{i,k=1}^n \varepsilon_i c_{i\!jk} X_i X_k
++
+\sum_{i,k=1}^n \varepsilon_k c_{k\!ji} X_i X_k)
+\notag
+\\
+&=
+\sum_{i,k=1}^n (\varepsilon_i c_{i\!jk}
++
+\varepsilon_k c_{k\!ji}) X_i X_k
+\label{buch:operatoren:casimir:eqn:summe}
+\intertext{Setzt man \eqref{buch:operatoren:casimir:eqn:invc}
+in \eqref{buch:operatoren:casimir:eqn:summe} ein, erhält man}
+&=
+\sum_{i,k=1}^n
+(
+\varepsilon_i c_{i\!jk}
++
+\varepsilon_i c_{jki}
+)
+X_i X_k
+=
+\sum_{i,k=1}^n
+(
+\varepsilon_i c_{i\!jk}
+-
+\varepsilon_i c_{i\!jk}
+)
+X_i X_k
+=
+0.
+\end{align}
+Somit vertauscht $C$ mit jedem Vektor $X_j$.
+
+Die Definition des Casimir-Operators hängt von der Wahl der Basis
+$X_i$ ab.
+Sei $E$ die Diagonalmatrix
+$E=\operatorname{diag}(\varepsilon_1,\dots,\varepsilon_n)$.
+Koordinatenwechsel zu einer alternativen Basis $\tilde{X}_i$ mit den gleichen
+Skalarprodukten erfolgt mit einer Matrix $B$, die $BEB^{t}=E$ erfüllen muss.
+Mit dieser Matrix ändert aber auch der Casimir-Operator nicht.
+\end{proof}
 
 Der Satz beschreibt eine Konstruktion für einen Differentialoperator,
 der mit allen anderen Operatoren vertauscht.
