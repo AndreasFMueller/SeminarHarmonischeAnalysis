@@ -5,6 +5,7 @@
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
+% --------------------------------------------------------------------
 
 \section{Weitere Anwendungen des Faltungstheorems auf $\mathbb{R^+}$
 \label{mellin:section:teil5}}
@@ -26,9 +27,9 @@ Das bietet in gewissen Fällen eine bessere Ausgangslage für weitere
 numerische oder analytische Berechnungen mit mathematischer Software 
 wie {\em Mathematica}, als wenn diese sofort numerisch ausgewertet 
 werden würden.
-Ebenfalls bleiben bei einer analytischen Auswertung die physikalischen 
-Zusammenhänge der Parameter erhalten, was zu einem besseren Verständnis 
-derselben führen kann.
+Ebenfalls bleiben bei einer analytischen Auswertung die 
+physikalischen Zusammenhänge der Parameter erhalten, was zu einem 
+besseren Verständnis derselben führen kann.
 
 
 \subsection{Mellin-Transformation-Methode
@@ -37,8 +38,8 @@ Die Mellin-Transformation-Methode ist ein analytisches Werkzeug
 zur Umformung eindimensionaler, endlicher Integrale.
 Ihre Anwendung benötigt Kenntnisse der komplexen Analysis, da 
 die Mellin-Transformierte wichtiger Funktionen meist in Form von 
-$\Gamma$-Funktionen erscheint, wie sich der Tabelle \ref{fig:mellin:tabelle} 
-entnehmen lässt.
+$\Gamma$-Funktionen erscheint, wie sich der Tabelle 
+\ref{fig:mellin:tabelle} entnehmen lässt.
 \begin{figure}
     \includegraphics[width=\textwidth]{papers/mellin/images/mellin_tabelle.png}
     \caption{Einige Transformationspaare der Mellin-Transformation 
@@ -46,8 +47,8 @@ entnehmen lässt.
     \label{fig:mellin:tabelle}
 \end{figure}
 % legal?
-Die $\Gamma$-Funktion ist dabei die Mellin-Transformierte der Funktion 
-$f(x)=e^{-x}$.
+Die $\Gamma$-Funktion ist dabei die Mellin-Transformierte der 
+Funktion $f(x)=e^{-x}$.
 \begin{equation}
     \Gamma(z) = 
     \int_{0}^{\infty} x^{z-1}e^{-x} \,dx,
@@ -58,8 +59,9 @@ Sie ist aber nicht nur im Kontext der Mellin-Transformation relevant,
 sondern auch in vielen anderen Bereichen der komplexen Analysis. 
 Dieses Thema soll hier allerdings nicht weiter aufgegriffen werden
 und stattdessen mehr das Konzept der Methode aufgezeigt werden.
-Für den interessierten Leser soll aber auf das letztjährige Seminarbuch 
-``Spezielle Funktionen'' \cite{mellin:seminarbuch2022} verwiesen werden.
+Für den interessierten Leser soll aber auf das letztjährige 
+Seminarbuch ``Spezielle Funktionen'' \cite{mellin:seminarbuch2022} 
+verwiesen werden.
 In diesem wird die $\Gamma$-Funktion sowie weitere für die Methode 
 relevanten Funktionen ausgiebig behandelt.
 \medskip
@@ -73,39 +75,41 @@ Der Kern der Methode ist hier wieder das Faltungstheorem
 Das Ziel ist es nun, das zu analysierende Integral in 
 eine Form zu bringen, die einer multiplikativen Faltung entspricht.
 Über das Faltungstheorem kann das Integral anschliessend ausgedrückt 
-werden, als Rücktransformation des Produktes der Mellin-Transformierten, 
-was eben konkret zu einem Integral über das Produkt von  
-$\Gamma$-Funktionen führt, welche analytisch doch 
+werden, als Rücktransformation des Produktes der 
+Mellin-Transformierten, was eben konkret zu einem Integral über das 
+Produkt von $\Gamma$-Funktionen führt, welche analytisch doch 
 relativ gut weiter zu verarbeiten sind.
 
 \subsubsection{Beispiel der Mellin-Transformations-Methode}
-Folgender Ausschnitt einer Anwendung aus \cite{mellin:mellin-transform-method} 
-soll die Methode demonstrieren.
+Folgender Ausschnitt einer Anwendung aus 
+\cite{mellin:mellin-transform-method} soll die Methode demonstrieren.
 
-In der Anwendung geht es um die Berechnung einer 
-kreisförmigen Rahmenantenne\footnote{engl. circular, thin-wire loop antenna}.
-Ein Ausdruck für das elektrische Feld $E_\phi $ wird über das Vektorpotential 
-der Schleife aufgestellt:
+In der Anwendung geht es um die Berechnung einer kreisförmigen 
+Rahmenantenne\footnote{engl. circular, thin-wire loop antenna}.
+Ein Ausdruck für das elektrische Feld $E_\phi $ wird über das 
+Vektorpotential der Schleife aufgestellt:
 \[
     E_\phi 
     = -\zeta_0 H_\theta  
     = \frac{I_0ka\zeta_0e^{-jkr}}{2r} J_1(ka \sin\theta)
 \]
-Aufgrund der geometrischen Gegebenheiten enthält dieser die Bessel-Funktion $J_1$
-Die abgestrahlte Leistung folgt über das Oberflächenintegral über eine Sphäre.
-Um aber nicht nur die abgestrahlte Leistung, sondern auch die Direktivität und 
-den Strahlungswiderstand $R_r$ im Zuge des {\em cavity model} zu bestimmen, 
-wird die verallgemeinerte Version 
+Aufgrund der geometrischen Gegebenheiten enthält dieser die 
+Bessel-Funktion $J_1$.
+Die abgestrahlte Leistung folgt über das Oberflächenintegral 
+über eine Sphäre.
+Um aber nicht nur die abgestrahlte Leistung, sondern auch die 
+Direktivität und den Strahlungswiderstand $R_r$ im Zuge des 
+{\em cavity model} zu bestimmen, wird die verallgemeinerte Version 
 \[
     f(x, \mu, \nu, \tau)
     = \int_{0}^{\pi/2} J_\mu(x \sin\theta) J_\nu(x \sin\theta) 
     \sin^\tau \theta \,d\theta, \qquad x > 0 
     ,
 \]
-des Integrals aufgestellt wobei im Falle der kreisförmigen Rahmenantenne 
-$\mu = \nu = \tau = 1$ ist.
-Die Funktion $f(x, \mu, \nu, \tau)$ lässt sich aber mithilfe der Theorie 
-der Mellin-Transformation weiter analysieren.
+des Integrals aufgestellt wobei im Falle der kreisförmigen 
+Rahmenantenne $\mu = \nu = \tau = 1$ ist.
+Die Funktion $f(x, \mu, \nu, \tau)$ lässt sich aber mithilfe der 
+Theorie der Mellin-Transformation weiter analysieren.
 Es wird die Substitution
 \[
     \sin\theta = y
@@ -124,7 +128,8 @@ Um die Konvergenz des Integrals sicherzustellen, wird angenommen, dass
     \operatorname{Re}(\nu) > 0,
     \operatorname{Re}(\tau) > 0.
 \]
-Die Substitution hat das Integral nun in eine sehr interessante Form gebracht.
+Die Substitution hat das Integral nun in eine sehr 
+interessante Form gebracht.
 Definiert man die Funktionen 
 \begin{align*}
     g(x) &= J_\mu(x)J_\nu(x), \\
@@ -162,9 +167,9 @@ Approximation für den Strahlungsiderstand
     \cos\left(2\frac{C}{\lambda}+\frac{\pi}{4}\right)\right] \Omega
     ,
 \]
-die sehr nahe an die numerische Berechnungen der Funktion $f(x, \mu, \nu, \tau)$ 
-herankommt, nun aber zusätzlich die physikalischen Zusammenhänge der 
-Parameter offenbart.
+die sehr nahe an die numerische Berechnungen der Funktion 
+$f(x, \mu, \nu, \tau)$ herankommt, nun aber zusätzlich die 
+physikalischen Zusammenhänge der Parameter offenbart.
 \medskip
 
 Tatsächlich ist die Mellin-Transformation-Methode bereits Teil der  
