@@ -375,9 +375,518 @@ Die Invarianzeigenschaft ist natürlich eine Eigenschaft der
 Zur Verfügung stehenden Gruppe, die im vorliegenden Fall die
 orthogonale Gruppe $\operatorname{O}(n)$ ist.
 
+%
+% Differentialoperatoren auf einer Lie-Gruppe
+%
+\subsubsection{Differentialoperatoren auf einer Lie-Gruppe}
+Eine Lie-Gruppe ist auch eine Mannigfaltigkeit, d.~h.~sie sieht lokal
+wie ein $\mathbb{R}^n$ aus.
+Durch Wahl eines Koordinatensystems kann man auch partielle
+Ableitungen von Funktionen auf der Gruppe nach diesen Koordinaten
+definieren.
+Diese sind jedoch einigermassen willkürlich und tragen der
+Gruppenstruktur nicht Rechnung.
 
+Ein besserer Ansatz ist, Kurven auf der Gruppe zu verwenden, die
+die Gruppenstruktur bereits berücksichtigen.
+Kurven sind Abbildungen von $\mathbb{R}$ in die Gruppe $G$.
+Da $\mathbb{R}$ die einfachste Lie-Gruppe ist, könnte man solche
+Kurven als Homomorphismen
+\[
+\gamma
+\colon
+\mathbb{R} \to  G
+\]
+definieren.
+Sie erfüllen dann die Homomorphismuseigenschaft
+\[
+\gamma(t_1+t_2) = \gamma(t_1)\gamma(t_2).
+\]
+Mit Hilfe von Darstellungen können wir uns eine Lie-Gruppe immer als
+eine Gruppe von Matrizen vorstellen.
+Eine Kurve $\gamma\colon \mathbb{R}\to G$ ist daher auch eine Kurve in
+der offenen Menge $\operatorname{GL}_n(\mathbb{R})$, in der es klar ist,
+wie differenziert werden kann:
+Die Matrixelemente werden nach dem Parameter $t$ abgeleitet.
 
+Aus der Homomorphismusbedingung
+\begin{equation}
+\gamma(s+t)=\gamma(s)\gamma(t)
+\label{buch:operatoren:casimir:eqn:homomorph}
+\end{equation}
+erhält man durch Ableiten nach $t$ und der Substitution $t=0$ die 
+Differentialgleichung
+\[
+\dot{\gamma}(s) = \gamma(s) \dot{\gamma}(0),
+\]
+die als Lösung die Exponentialfunktion
+\[
+\gamma(t) = \gamma(0) \exp(\dot{\gamma}(0)\cdot t)
+\]
+hat.
+Für $t=0$ ist $\gamma(t)=C\in G$ eine Matrix in der Gruppe.
+Alle möglichen Kurven entstehen also durch die Exponentialfunktion.
 
+Leitet man
+\eqref{buch:operatoren:casimir:eqn:homomorph}
+nach $s$ ab, erhält man als Lösungskurven
+\(
+t\mapsto \gamma(t) = \exp(\dot{\gamma}(0)) \gamma(0).
+\)
+Die beiden Kurven stimmen nur dann überein, wenn die beiden Matrizen
+$\gamma(0)$ und $\dot{\gamma}(0)$ übereinstimmen.
 
+Die Ableitung einer Funktion $f\colon G\to\mathbb{R}$ in Richtung von
+$X=\dot{\gamma(0)}$ im Punkt $e\in G$ ist jetzt definiert als
+\[
+Xf(e)
+=
+\frac{d}{dt} f(\exp(tX)) \bigg|_{t=0}.
+\]
+Die Matrix $X=\dot{\gamma}(0)$ kann als Tangentialvektor der Gruppe
+im Punkt $e\in G$ betrachtet werden.
+Ein Tangentialvektor im Punkt $e\in G$ entspricht daher einem
+Ableitungsoperator im gleichen Punkt.
 
+Ein Differentialoperator entsteht durch Definition eines Tangentialvektors
+in jedem Punkt der Gruppe.
+Für eine Matrizengruppe bedeutet dies, eine Abbildung $G\to M_n(\mathbb{R})$ 
+vorzugeben.
+Die Ableitung im Punkt $X\colon g\in G$ wird dann bestimmt durch die
+Ableitung einer Funktion entlang der Kurve $t\mapsto g\exp(tX(g))$.
+Diese wird auch
+\[
+Xf(g)
+=
+\frac{d}{dt}f(g\exp(tX(g)))\bigg|_{t=0}
+\]
+geschrieben.
+Der Differentialoperator $X$ ist also ein Vektorfeld von Tangentialvektoren.
+Durch wiederholte Anwendung können Operatoren höherer Ordnung konstruiert
+werden.
+
+%
+% Invariante Operatoren
+%
+\subsubsection{Invariante Differentialoperatoren}
+Wir haben früher untersucht, wie ein Mass auf der Gruppe unter Translation
+invariant sein kann und als Antwort das haarsche Mass gefunden.
+Ein Mass ist invariant, wenn das Integral einer Funktion auf $G$ nicht
+ändert, wenn die Funktion mit $T_g$ translatiert wird.
+Ein Differentialoperator wirkt auf die Funktion $f$ im Punkt $g^{-1}\in G$
+durch Ableitung entlang der Kurve $t\mapsto g^{-1}\exp(tX(g^{-1}))$.
+Auf die verschobene Funktion wirkt er im Punkt $e$ durch Ableitung
+der Funktion $T_gf$ entlang der Kurve $t\mapsto \exp(tX(e))$.
+Der Differentialoperator ist unter $T_g$ {\em invariant}, wenn die beiden
+Ableitungen übereinstimmen.
+Diese sind
+\[
+\frac{d}{dt} f(g^{-1}\exp(tX(g^{-1}))) \bigg|_{t=0}
+=
+\frac{d}{dt} T_gf(\exp(tX(e)))\bigg|_{t=0}
+=
+\frac{d}{dt} f(g^{-1}\exp(tX(e)))\bigg|_{t=0}.
+\]
+Diese können nur dann für alle $g\in G$ gleich sein, wenn
+$X(g^{-1}) = X(e)$ gilt.
+Die unter $T_g$ invarianten Differentialoperatoren entsprechen also
+bijektiv den Tangentialvektoren im neutralen Element.
+
+\begin{definition}
+Die linksinvarianten Vektorfelder auf einer Lie-Gruppe $G$ bilden 
+den $n$-dimensionalen Vektorraum $LG$.
+\end{definition}
+
+Ein rechtsinvarianter Differentialoperator kann analog mit Hilfe
+der Rechtstranslation $R_g$ definiert werden, die $(R_gf)(h) = f(hg)$
+erfüllt.
+Die Ableitung einer Funktion $f$ im Punkt $g\in G$ in Richtung $X(g)$
+wird durch die Kurve $t\mapsto g\exp(tX(g))$ gefunden.
+Die mit $R_g$ verschobene Funktion $R_gf$ wird von $X$ im Punkt $e$
+durch Ableitung entlang der Kurven $t\mapsto \exp(tX(e))$.
+Der Operator $X$ heisst {\em rechtsinvariant}, wenn 
+\[
+\frac{d}{dt} f(g\exp(tX(g))\bigg|_{t=0}
+=
+\frac{d}{dt} (R_gf)(\exp(tX(e)))\bigg|_{t=0}
+=
+\frac{d}{dt} f(\exp(tX(0)g))\bigg|_{t=0}
+\]
+für alle $g\in G$ gilt.
+Dies ist nur möglich, wenn die beiden Kurven
+$g\exp(tX(g))$
+und 
+$\exp(tX(e))g$
+für $t=0$ den gleichen Tangentialvektor haben, wenn also
+\[
+\frac{d}{dt}g\exp(tX(g))\bigg|_{t=0}
+=
+\frac{d}{dt}\exp(tX(e))g\bigg|_{t=0}
+\quad\Leftrightarrow\quad
+gX(g) = X(e)g
+\quad\Leftrightarrow\quad
+gX(g)g^{-1} = X(e)
+\]
+gilt.
+
+Der Unterschied zwischen Rechts- und Linkstranslation wird also gemessen
+durch die Grösse $gX(g)g^{-1}-X(e)$.
+Ein Vektorfeld ist genau dann invariant, wenn diese Grösse verschwindet.
+Für ein bereits linksinvariantes Vektorfeld $X$ wird die Grösse zu
+$gXg^{-1}-X$.
+
+In einer Umgebung des neutralen Elementes kann man jedes Gruppenelement
+$g$ als Punkt einer Kurve $g=\exp Y$ für ein geeignetes linksinvariantes
+Vektorfoeld $Y$ schreiben.
+Die Bedingung $gXg^{-1}=X$ wird erfüllt, wenn sie für jedes $g(t)=\exp tY$
+mit $t<1$ erfüllt wird, wenn also
+\begin{equation}
+g(t)Xg(t)^{-1}=X
+\label{buch:operatoren:casimir:eqn:invarianz}
+\end{equation}
+ist.
+Die Inverse von $g(t)$ kann dabei einfacher als $g^{-1}(t)=\exp(-tY)$
+geschreiben werden.
+
+Die Ableitung der Invarianzbedingung
+\eqref{buch:operatoren:casimir:eqn:invarianz}
+ist $0$ für alle $t$.
+Die Ableitung der linken Seite nach $t$ an der Stelle $t=0$ ist
+\[
+\frac{d}{dt} g(t)Xg^{-1}(0)\bigg|_{t=0}
+=
+\dot{g}(0)Xg^{-1}(0)
++
+g(0) X \frac{dg^{-1}}{dt}(0)
+=
+\frac{d}{dt}e^{tY}\bigg|_{t=0}
+X
++
+X
+\frac{d}{dt}e^{-tY}\bigg|_{t=0}
+=
+YX-XY.
+\]
+
+\begin{definition}
+Die Abbildung
+\[
+\operatorname{ad}(Y)\colon LG \to LG:X\mapsto [Y,X] = YX-XY
+\]
+heisst die {\em adjungierte Abbildung}.
+\end{definition}
+
+Die adjungierte Abbildung ist für alle Elemente $Y\in LG$ definiert,
+es gibt also auch eine Abbildung
+\[
+[\;\,,\;]
+\colon
+LG\times LG
+:
+(Y,X)
+\mapsto
+[Y,X] = YX-XY,
+\]
+die offensichtlich bilinear und antisymmetrisch ist.
+Sie macht den Vektorraum $LG$ zu einer sogenannten Lie-Algebra
+
+\begin{definition}
+Ein Vektorraum $V$ mit einem bilinearen und antisymmetrischen
+Produkt
+\[
+[\;\,,\;]
+\colon
+V\to V
+:
+(Y,X) \to [Y,X]
+\]
+heisst eine {\em Lie-Algebra}, wenn die sogenannte
+{\em Jacobi-Identität}
+\[
+[X,[Y,Z]]
++
+[Y,[Z,X]]
++
+[Z,[X,Y]]
+=
+0
+\]
+für alle Vektoren $X,Y,Z\in V$
+erfüllt ist.
+Das Produkt $[X,Y]$ in der Lie-Algebra heisst auch die
+{\em Lie-Klammer} von $X$ und $Y$.
+\end{definition}
+
+Für abelsche Gruppen sind Rechts- und Linkstranslation identisch,
+die adjungiert Abbildung wird daher für alle Tangentialvektoren $=0$.
+Die Lie-Klammer misst also, wie ``nichtkommutativ'' die Gruppe ist.
+
+\begin{beispiel}
+Die Gruppe $\operatorname{SO}(2)$ der $2\times 2$-Drehmatrizen
+besteht aus Matrizen der Form
+\[
+\gamma(t)
+=
+\begin{pmatrix}
+\cos t &          -  \sin t \\
+\sin t & \phantom{-} \cos t
+\end{pmatrix}.
+\]
+Der Tangentialvektor dieser Kurve bei $t=0$ ist
+\[
+\dot{\gamma}(0)
+=
+\begin{pmatrix}
+-\sin t & -\cos t \\
+ \cos t & -\sin t
+\end{pmatrix}
+\bigg|_{t=0}
+=
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+=J.
+\]
+Alle Drehmatrizen entstehen als Werte der Exponentialfunktion
+\[
+\gamma(t)
+=
+\exp(tJ)
+=
+I \cos t + J \sin t.
+\]
+Die Lie-Algebra von $\operatorname{SO}(2)$ ist also eindimensional.
+\end{beispiel}
+
+\begin{beispiel}
+Die $3\times 3$-Drehmatrizen bilden die Gruppe $\operatorname{SO}(3)$.
+Sie enthält die speziellen Drehmatrizen in den Koordinatenebenen
+\begin{align*}
+D_{x,t}
+&=
+\begin{pmatrix}
+1 & 0      & \phantom{-}0      \\
+0 & \cos t &          - \sin t \\
+0 & \sin t & \phantom{-}\cos t
+\end{pmatrix}
+\\
+D_{y,t}
+&=
+\begin{pmatrix}
+\phantom{-}\cos t & 0 & \sin t \\
+\phantom{-}0      & 1 & 0      \\
+         - \sin t & 0 & \cos t
+\end{pmatrix}
+\\
+D_{z,t}
+&=
+\begin{pmatrix}
+\cos t &          - \sin t & 0\\
+\sin t & \phantom{-}\cos t & 0\\
+0      & \phantom{-}0      & 1
+\end{pmatrix}.
+\end{align*}
+Aus diesen Matrizen lassen sich beliebige Drehungen des Raumes
+zusammensetzen, wie man zum Beispiel mit Hilfe der Darstellung durch
+Eulerwinkel zeigen kann.
+Die Ableitungen davon an der Stelle $t=0$ sind die Matrizen
+\[
+J_1
+=
+\dot{D}_{x,0}
+=
+\begin{pmatrix*}[r]
+0&0& 0\\
+0&0&-1\\
+0&1& 0
+\end{pmatrix*}
+,\quad
+J_2
+=
+\dot{D}_{y,0}
+=
+\begin{pmatrix*}[r]
+ 0&0&1\\
+ 0&0&0\\
+-1&0&0
+\end{pmatrix*}
+,\quad
+J_3
+=
+\dot{D}_{z,0}
+=
+\begin{pmatrix*}[r]
+0&-1&0\\
+1& 0&0\\
+0& 0&0
+\end{pmatrix*}.
+\]
+\end{beispiel}
+
+\begin{beispiel}
+Das Vektorprodukt auf $\mathbb{R}$ ist bilinear und antisymmetrisch.
+Aus der Definition des Vektorproduktes kann man für die Standardbasisvektoren
+unmittelbar die Relationen
+\[
+e_1\times e_2
+=
+e_3,
+\qquad
+e_2\times e_3
+=
+e_1
+\qquad\text{und}\qquad
+e_3\times e_1
+=
+e_2
+\]
+ableiten.
+Diese stimmen mit den Kommutatorrelationen der Matrizen $J_k$ der
+Lie-Algebra $L\operatorname{SO}(e)$ von $\operatorname{SO}(e)$ überein.
+Die lineare Abbildung
+\[
+\mathbb{R}^3 \to L\operatorname{SO}(3):
+\begin{cases}
+e_1 \mapsto J_1&\\
+e_2 \mapsto J_2&\\
+e_3 \mapsto J_3&
+\end{cases}
+\]
+ist bijektiv und
+führt das Vektorprodukt in die Lie-Klammer über.
+Daraus kann man schliessen, dass das Vektorprodukt ebenfalls für beliebige
+Vektoren $\vec{a}$, $\vec{b}$ und $\vec{c}$ die Jacobi-Identität
+\[
+\vec{a}\times (\vec{b}\times\vec{c})
++
+\vec{b}\times (\vec{c}\times\vec{a})
++
+\vec{c}\times (\vec{a}\times\vec{b})
+=
+0
+\]
+erfüllt.
+Der Vektorraum $\mathbb{R}^3$ mit dem Vektorprodukt ist also eine
+zu $L\operatorname{SO}(3)$ isomorphe Lie-Algebra.
+\end{beispiel}
+
+%
+% invariante quadratische Formen
+%
+\subsubsection{Invariante quadratische Formen}
+Auf einer nichtkommutativen Lie-Algebra $L$ kann man nicht sind die einzigen
+Differentialoperatoren die invarianten Vektorfelder $X$, die mit allen
+anderen Vektoren der Lie-Algebra vertauschen, für die also gilt
+$[Y,X]=0$ für alle $Y\in L$.
+
+\begin{definition}
+Sei $L$ eine Lie-Algebra, dann heisst die Menge
+\[
+Z(L)
+=
+\{z\in L\mid [z,x]=0\forall x\in L\}
+\]
+das {\em Zentrum} von $L$.
+\end{definition}
+
+In einer kommutativen Lie-Algebra ist das Zentrum $Z(G)=L$ die ganze
+Lie-Algebra, alle Operatoren sind invariant.
+Für die Lie-Algebra $L\operatorname{SO}(3)$ wurde gezeigt, dass sie
+isomorph ist zur Algebra der dreidimensionalen Vektoren mit dem
+Vektorprodukt.
+Zu jedem Vektor $\vec{a}\ne 0$ gibt es einen dazu orthogonalen Vektor
+$\vec{b}$, das Vektorprodukt $\vec{a}\times\vec{b}$ ist ein Vektor
+orthogonal auf beiden Vektoren und ist daher $\ne 0$.
+Somit besteht das Zentrum der Lie-Algebra von $\operatorname{SO}(3)$ nur
+aus dem Nullvektor.
+Insbesondere gibt es keine invarianten Differentialoperatoren erster
+Ordnung auf $\operatorname{SO}(3)$.
+
+%
+% Casimir-Operator
+%
+\subsubsection{Casimir-Operator}
+
+\begin{satz}
+Ist $\Phi\colon LG\times LG\to mathbb{R}$ eine symmetrische, invariante
+und nichtentartete Bilinearform auf der $n$-dimennsionalen Lie-Algebra
+$LG$ von $G$, und $X_i$ eine bezüglich $\Phi$
+orthogonale Basis von $LG$ mit der Eigenschaft
+\[
+\Phi(X_i,X_i) = \varepsilon_i \in \{\pm\}\qquad\forall i,
+\]
+dann ist der Operator
+\[
+C
+=
+\sum_{i=1}^n \varepsilon_i X_i^2
+\]
+ein Differentialoperator, der mit allen anderen Operatoren vertauscht.
+\end{satz}
+
+Der Satz beschreibt eine Konstruktion für einen Differentialoperator,
+der mit allen anderen Operatoren vertauscht.
+Für die kommutative Lie-Gruppe $G=\mathbb{R}^n$ besagt sie, dass man
+dazu zunächst eine nichtentartete, symmetrische Bilinearform suchen muss.
+In $\mathbb{R}^n$ erfüllt das Standardskalarprodukt diese Bedingung.
+Da alle Lie-Klammern verschwinden, ist es automatisch auch invariant.
+Dann muss man eine orthonormierte Basis suchen, die Standardbasis
+ist dafür geeignet, sie erfüllen $e_i\cdot e_i=\varepsilon_i=1$.
+Die zugehörigen Ableitungsoperatoren sind
+\[
+e_1 \mapsto X_1 = \frac{\partial}{\partial x_1},
+\qquad
+e_2 \mapsto X_2 = \frac{\partial}{\partial x_2},
+\qquad
+e_3 \mapsto X_3 = \frac{\partial}{\partial x_3}.
+\]
+Dann ist der Casimir-Operator
+\[
+C=
+\sum_{i=1}^3 \varepsilon_i X_i^2
+=
+\sum_{i=1}^3 \frac{\partial^2}{\partial x_i^2}
+=
+\Delta.
+\]
+Der zum Standardskalarprodukt gehörige Casimir-Operator ist also
+der Laplace-Operator.
+
+Man kann aber auch auf $\mathbb{R}^4$ den Operator konstruieren, der
+zu dem entarteten Minkovski-Skalarprodukt
+\[
+\Phi(x,y)
+=
+x_0y_0
+-
+x_1y_1
+-
+x_2y_2
+-
+x_3y_3
+\]
+gehört, die in der speziellen Relativitätstheorie von zentraler Bedeutung
+ist.
+Der daraus abgeleitete Casimir-Operator ist
+\[
+\frac{\partial^2}{\partial x_0^2}
+-
+\frac{\partial^2}{\partial x_1^2}
+-
+\frac{\partial^2}{\partial x_2^2}
+-
+\frac{\partial^2}{\partial x_3^2}
+=
+-\square
+\]
+der d'Alembert-Operator, der die Wellenausbreitung beschreibt.
+
+Eine lineare Abbildung, die die invariante Bilinear-Form $\Phi$ unverändert
+lässt, vertauscht auch mit dem Casimir-Operator.
+Da Drehungen das Standardskalarprodukt invariant lassen, vertauscht
+der Laplace-Operator mit den Drehungen.
+Ebenso lassen die Lorentz-Transformationen das Minkowski-Skalarprodukt
+invariant.
+Lorentz-Transformationen vertauschen daher auch mit dem d'Alembert-Operator.
 
