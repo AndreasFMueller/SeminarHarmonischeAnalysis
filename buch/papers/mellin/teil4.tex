@@ -83,6 +83,10 @@ resultierende Array mit dem inversen FFT-Algorithmus wieder zurücktransformiert
 Mithilfe der Funktionen {\em perf\_counter()} des Moduls {\em time}, lassen sich beide 
 Wege quantitativ anhand der für die Berechnung benötigte Rechenzeit miteinander 
 vergleichen.
+Es gilt allerdings anzumerken, dass die Resultate möglicherweise aufgrund der Natur 
+von Python in ihrer Präzision und Wiederholbarkeit eingeschränkt und damit mit 
+Vorbehalt zu geniessen sind.
+
 Die Resultate sind dabei stark von den Arraygrösse und somit vom Grad der Auflösung 
 der Diskretisierung abhängig.
 Die Abbildung \ref{fig:mellin:zeiten} vergleicht die resultierenden Rechenzeiten 
@@ -104,25 +108,65 @@ Transformationsmethode also unerlässlich.
 
 Um auch das zweite Registrierungsproblem rechnerisch lösen zu können, brauchen wir also 
 eine diskrete Implementierung der Mellin-Transformation.
+Diese könnte man wieder über die Gelfand-Theorie herleiten, als Transformation auf der 
+Gruppe $(\mathbb{N}/n\mathbb{N},\cdot)$.
 % https://www.researchgate.net/publication/224736063_Discrete_Mellin_transform_for_signal_analysis
-Die Relationsgleichungen aus dem vorangehenden Abschnitt erlauben es uns aber, mithilfe 
-der isomorphen Exponentialfunktion erneut die FFT zu verwenden, und somit nicht explizit 
-eine diskrete Mellin-Transformation aufzustellen, was mit der Gelfandtheorie natürlich ginge.
-Das grosse Problem dabei ist aber, dass die Modifikationen, die die Fourier-Transformation
+Die Relationsgleichungen aus dem vorangehenden Abschnitt erlauben es uns aber, wegen der 
+isomorphen Eigenschaft der Exponentialfunktion, erneut die FFT zu verwenden, und somit nicht explizit 
+eine diskrete Mellin-Transformation aufzustellen.
+Das grosse Problem dabei ist aber, dass die Modifikationen, die die Fourier-Trans\-for\-ma\-tion
 in die Mellin-Transformation überführen, im Argument der Funktion durchgeführt werden 
 müssen.
 Bei den Datenarrays sind aber nur die Funktionswerte gegeben, und nicht die Funktion 
-selbst, was es schwierig macht die neuen Funktionswerte zu bestimmen.
-Eine Lösung dafür wäre eine Interpolation durch die gegebenen Punkte um eine 
-Funktionsvorschrift zu bestimmen, mit der die nötigen Verknüpfungen gemacht werden 
-können um die FFT in eine FMT überzuführen.
+selbst, was es unmöglich macht die neuen Funktionswerte direkt aus den gegeben
+Funktionswerten zu bestimmen.
+Indirekt kann man das Problem lösen, indem man die Funktionswerte geeignet interpoliert, 
+und die Verknüpfungen, die aus der Fourier-Transformation die Mellin-Transformation 
+machen, auf das für die Interpolation verwendete Modell anwendet.
 
-% Ein anderer Lösungswerg führt über mathematische Software wie {\em Mathematica}.
-% Dieser funktioniert wenn, wie in unserem 
+Die Aufgabe besteht also darin, aus gegebenen, Datenpunkten $P_k(x,f_k(x))$ für 
+$k \in \mathbb{N}$ die entsprechenden Datenpunkte der Funktion $P_k(x,f_k(e^x))$ zu erhalten.
+Dies kann elegant mithilfe eine Spline Interpolation erreicht werden, welche die gegebenen 
+Datenpunkte über einzelne Polynome 3. Grades verbindet.
+Einerseits könnte man nun über diese Spline Interpolation $f_{spl}(x)$ der Funktion $f(x)$ nun die 
+benötigte Verknüpfung $f_{spl}(x) \circ exp$ erreichen und an geeigneten Stellen die Funktionswerte 
+$f_{spl_k}(e^x)$ berechnen.
+Wenn man allerdings anstelle der Datenpunkte $P_k(x,f_k(x))$ zwischen den Datenpunkten 
+$P_k(ln(x),f_k(x))$ interpoliert, kann man damit die Funktion $f_k(e^x)$ auch direkt interpolieren, 
+und anschliessen an für die FFT relevante Stellen auslesen.
+Damit wäre die erste Verknüpfung gemäss\ref{mellin:relationsgleichungen} erreicht, und die Daten 
+können dem FFT Algorithmus übergeben werden. 
+Nach der Multiplikation der beiden Funktionen im Frequenzraum und aschliessender Rücktransformation 
+über die inverse FFT, lassen sich die resultierenden Daten nach demselben Konzept noch einmal 
+verarbeiten um die gesuchte Korrelationsfunktion und dessen Maximum zu erhalten.
 
+Bei der konkreten Ausführung des gesamten Prozesses müssen allerdings noch einige grundlegende Fragen 
+geklärt werden, wie:
+\begin{enumerate}
+    \item Welche Stellen der Interpolation von $f_k(e^x)$ müssen ausgewählt werden, um den Prinzipien der Integraltransformationen treu zu bleiben?
+    \item Wie hängt das Rückgabearray der FFT mit der neuen Ortsvariable $\sigma$ zusammen und wie muss diese dimensioniert werden?
+    \item Welche Stellen der Interpolation von $f_k(ln(x))$ sind relevant für die Korrelationsfunktion?
+\end{enumerate}
+
+Diese spannenden Fragen gehen damit in den Bereich der Numerik über und dessen Beantwortung würde den 
+Rahmen dieses Kapitels über die Mellin-Transformation leider sprengen, weswegen es mit diesem offen
+Ausblick belassen werden soll.
+
+
+
+
+
+% Interpolation von f(e^t) über Splines -> auslesen an für FFT relevante Stellen 
+% -> Interpolation von f(ln(t)) über Splines -> auslesen an für Korrelation relevante Stellen ODER 
+%    direkt Maximum bestimmen wenn Form uninteressant, da Verknüpfung mit ln() die Extremalstellen nicht verändert
 
 
 % Fast Mellin-Transform? Subst e^x in FFT? ---> nicht möglich wenn nur Datenpunkte bekannt (y-Werte)
 % das Überführen der FFT in eine MFT funktioniert nur wenn die Funktionen bekannt sind (Interpolation?)
+
+
+% relevante Stellen der Spline Interpolation für FFT?
+% Rückgabearray der FFT? Wie hängt dies mit $\sigma$ zusammen?
+% relevante Stellen der Spline Interpolation für Korrelation?
 
 
