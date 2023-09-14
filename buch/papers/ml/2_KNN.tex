@@ -53,12 +53,14 @@ linear.
 \end{proof}
 
 \subsection{Aktivierungsfunktion}
-
+\index{Aktivierungsfunktion}%
+\index{activation function}%
 Um Nichtlinearitäten einzubauen wird eine sogenannte \emph{activation function} auf
 \eqref{ml:ann:linear-unit} angewendet. Die Koeffizienten-Matrix ${\bm \thetaup}$ soll
 immer noch mit \hyperref[ml:regression:gd]{Gradient-Descent} gelernt werden, also muss
 die gewählte Aktivierungsfunktion ableitbar bezüglich aller Inputs sein.
 Eine der ersten die gebraucht wurde ist die \emph{Sigmoid}-Funktion
+\index{Sigmoid}%
 \begin{equation}
     \sigma(y) = \frac{1}{1+e^{-y}} \quad
     \text{mit der einfachen Ableitung}\quad
@@ -94,7 +96,7 @@ So ein Modell $M$ wird \emph{fully connected \underline{f}eed\underline{f}orward
     feedforward Struktur impliziert und wird deshalb im weiteren Text weggelassen.
 } (FFANN) genannt.
 Was genau bei der numerischen Berechnung passiert ist viel einfacher
-in Form eines gerichteten Graphen in Abb. \ref{fig:ml:ann:simple} zu erkennen.
+in Form eines gerichteten Graphen in Abbildung \ref{fig:ml:ann:simple} zu erkennen.
 
 \begin{figure}
     \centering
@@ -107,6 +109,7 @@ Das Modell wird mit geschichteten Neuronen dargestellt, dabei sind bei dieser
 Netzwerk-Struktur alle Neuronen einer vorherigen Schicht mit allen der nächsten verbunden.
 Die Kanten zwischen den Neuronen stellen die Gewichte in der $\bm \thetaup$-Matrix
 dar. Die Schichten zwischen der Eingangs- und Ausgangsschicht werden \emph{hidden layer}
+\index{hidden layer}%
 genannt, da all diese Layer nicht von aussen gesehen oder angesprochen werden können.
 Auf der linken Seite des Diagramms sind die Eingänge. Sie werden mit dem entsprechenden
 Gewicht $\theta^{(i)}_k$ der Kante gewichtet. Anschliessend werden die gewichteten Werte
@@ -119,9 +122,10 @@ Werte bei der Ausgangsschicht anliegen.
 Die Struktur des Netzwerks, also die Anzahl Eingänge, hidden layer, Neuronen
 pro Layer und Ausgänge, aber auch die spezifischen Aktivierungsfunktionen können
 grundsätzlich frei gewählt werden. Sie werden \emph{hyperparameter} genannt.
+\index{hyperparameter}%
 
 \subsection{Backpropagation \label{ml:ann:backpropagation}}
-
+\index{Backpropagation}%
 Wir wollen den \hyperref[ml:regression:gd]{Gradient-Descent-Algorithmus} auch auf
 unser nichtlineares Modell $M$ aus \eqref{ml:ann:multilayer} anwenden. Damit ist es aber nicht
 mehr so einfach wie mit dem linearen Modell von vorher. 
@@ -174,19 +178,22 @@ wie in Abschnitt \ref{ml:regression}, in der Praxis kann aber irgendeine passend
 ableitbare Funktion verwendet werden.
 
 Es wird wieder der Gradient von $J$ gebildet, wobei die entgegengesetzte Richtung immer
-noch zu einem lokalen Minimum führt. Der Gradient beinhaltet die partiellen Ableitungen
-bezüglich aller Parameter
-
+noch zu einem lokalen Minimum führt.
+Der Gradient beinhaltet die partiellen Ableitungen
+bezüglich aller Parameter:
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = 2(M(x) - y) \cdot \frac{\partial M}{\partial \theta_i}
     \qquad\text{und}\qquad
     \frac{\partial J}{\partial b_i} = 2(M(x) - y) \cdot \frac{\partial M}{\partial b_i}.
+\label{ml:eqn:dJdtheta-dMdtheta}
 \end{equation}
 Mit der Kettenregel
 \begin{equation}
     \frac{d}{dt}f(g(t)) = \frac{df(g(t))}{d g(t)} \cdot \frac{d g(t)}{dt} = \frac{df(\tau)}{d \tau} \cdot \frac{d g(t)}{dt}
 \end{equation}
 lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
+Die Gleichungen~\eqref{ml:eqn:dJdtheta-dMdtheta} können nach den 
+Ableitungen von $M$ aufgelöst werden und ergeben
 \begin{equation}
 \begin{aligned}
     \frac{\partial M}{\partial \theta_n} &= \frac{\partial l_n}{\partial \theta_n} =
@@ -211,7 +218,6 @@ lassen sich die partiellen Ableitungen von $M$ einfach berechnen.
     \vdots\quad&
 \end{aligned}
 \end{equation}
-
 Wichtig zu erkennen ist, dass alle Werte $l_i$ sowie auch $\xi_i=\theta_i l_{i-1}+b_i$ nur
 einmal berechnet werden müssen. Das Netzwerk muss sowieso für den finalen Wert $y$ einmal
 ausgewertet werden, dieser Schritt wird \emph{forward propagation} (Vorwärtspropagierung)
@@ -233,6 +239,7 @@ benachbarten Neuronen beschreibt. Dazu führen wir die neue Grösse
     \delta_i = \frac{\partial J}{\partial \xi_i}
 \end{equation}
 ein. Sie wird auch \emph{local gradient} (lokaler Gradient) genannt. Damit können
+\index{local gradient}%
 die partiellen Ableitungen und Aktualisierungsgleichungen schon einmal vereinfacht geschrieben werden:
 \begin{equation}
     \frac{\partial J}{\partial \theta_i} = \delta_i \cdot l_{i-1}
@@ -266,6 +273,7 @@ $\delta_n$ der letzten Schicht berechnet sich immer noch mit der partiellen Able
 Die rekursive Berechnung des Fehlergradienten und somit der Anpassungsinformation für alle
 Gewichte und Konstanten ist, wie wir gesehen haben, extrem simpel und performant.
 Dieser Anpassungsprozess als Rückpropagierung des Fehlers wird \emph{backpropagation} genannt.
+\index{backpropagation}%
 
 \subsubsection{Erweiterung auf allgemeine feedforward Netzwerke}
 

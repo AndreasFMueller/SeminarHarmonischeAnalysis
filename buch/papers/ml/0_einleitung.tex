@@ -12,10 +12,14 @@
 Wir wollen untersuchen ob ein künstliches neuronales Netzwerk in der Lage ist, die Zerlegung beliebiger
 Daten in Fourier-Koeffizienten zu lernen. Dazu wollen wir die algorithmische
 Komplexität untersuchen und mit der schnellen Fourier-Transformation vergleichen.
+\index{Komplexität, algorithmisch}%
 
-\paragraph{Was ist ein künstliches neuronales Netzwerk?} \emph{Künstliche neuronale
+\paragraph{Was ist ein künstliches neuronales Netzwerk?}
+\emph{Künstliche neuronale
 Netzwerke}\footnote{Kürzer auch nur als neuronales Netz bezeichnet mit der deutschen
 Abkürzung KNN.} (englisch \emph{artificial neural networks}, ANN\footnote{In diesem Paper
+\index{neuronales Netzwerk}%
+\index{künstliches neuronales Netzwerk}%
 wird nur die englische Abkürzung verwendet.}) werden vor allem im Gebiet der künstlichen
 Intelligenz und \emph{data science} eingesetzt. Ihre Struktur und Funktionsweise ist den
 biologischen neuronalen Netzwerken zum Beispiel im Gehirn nachempfunden. Prinzipiell sind
@@ -27,14 +31,21 @@ vorhandenen Daten und weiterem).
 Diese Eigenschaft ist vor allem bei künstlicher Intelligenz sehr wichtig,
 da nur schon die Definition von ``Intelligenz'' noch immer ein offenes Problem in der
 Philosophie ist. Andere, traditionelle Methoden wie zum Beispiel \emph{expert systems} können
+\index{export system}%
 nur begrenzt und mit viel Aufwand Intelligenz nachbilden.
 
 ANNs werde aber auch vor allem dort eingesetzt, wo es keine oder nur sehr wenig erforschte
 Theorie und Lösungsmethoden für eine Problemstellung gibt, oder auch Schwierigkeit und
 Komplexität des Problems dessen Lösung verunmöglichen. Einige Beispiele sind
 Bilderkennung, Klassifizierung, Spracherkennung oder maschinelle Übersetzung.
+\index{Bilderkennung}%
+\index{Klassifizierung}%
+\index{Spracherkennung}%
+\index{Übersetzung, maschinell}%
 
 \medskip
 In den nächsten zwei Abschnitten wollen wir diesen universellen Approximator konstruieren.
+\index{Approximator}%
+\index{universeller Approximator}%
 Wir fangen mit einem linearen Modell an, welches uns schliesslich zum allgemein
 nichtlinearen \emph{fully connected feedforward} ANN bringt.

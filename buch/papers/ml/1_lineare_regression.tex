@@ -11,11 +11,13 @@
 \rhead{Lineare Regression}
 
 \emph{Regression} ist ein statistisches Analyseverfahren mit dem Ziel, Beziehungen zwischen
+\index{Regression}%
 Daten zu modellieren. Hat man zum Beispiel den Aktienkurs einer Firma der letzten zwanzig
 Tagen, kann man mit Regression den Preis am nächsten Tag statistisch vorhersagen.
 So ein Modell hat also das Ziel, die Vorhersage so gut wie möglich aus den gegebenen Daten zu approximieren.
 Die einfachste Form der Regression ist die \emph{lineare Regression}, bei der alle Abhängigkeiten linear
 sind.
+\index{lineare Regression}%
 
 \subsubsection{Ein lineares Modell}
 \begin{itemize}
@@ -29,7 +31,9 @@ sind.
 Gegeben sind eine sehr grosse Anzahl $m$ Datenpunkte wobei ein Datenpunkt $j$ immer aus
 den Feature-Werten $\{ x_0, x_1, \cdots, x_n \}_j$ und des vorherzusagenden Wertes $y_j$ besteht.
 Am besten ist $m \gg n$. Daten die $y$-Werte enthalten, werden auch \emph{labeled data} genannt,
+\index{labeled data}%
 im Gegensatz zu \emph{unlabeled data} wo nur die Feature-Werte bekannt sind.
+\index{unlabeled data}%
 
 Man kann nun das lineare Modell mit der Gleichung
 \begin{equation}
@@ -43,12 +47,16 @@ y = \sum_{i = 0}^{n} \theta_i x_i = \vec \theta \cdot \vec x =: h(\vec\theta, \v
 \label{ml:regression:hypothesis}
 \end{equation}
 geschrieben werden. Diese Beziehung wird auch \emph{hypothesis function} genannt und mit
+\index{hypothesis function}%
 $h$ bezeichnet.
 
 Unser Ziel ist jetzt die Koeffizienten $\theta_i$ aus den Daten zu lernen. Hierfür
 benötigen wir ein Kriterium, das uns die Distanz der Vorhersage $y_p = h(\vec x)$ zum tatsächlichen
 Wert $y$ des Datenpunkts angibt. Es wird \emph{cost function} oder
-\emph{loss function} genannt. Eine praktische Cost-Function ist der quadratische Fehler
+\index{cost function}%
+\emph{loss function} genannt.
+Eine praktische Cost-Function ist der quadratische Fehler
+\index{loss function}%
 \begin{equation}
 J(\vec x, \vec \theta) = (y - y_p)^2.
 \label{ml:regression:cost:sqerr}
@@ -58,10 +66,10 @@ $J(\vec \theta)$ soll also minimiert werden, damit die Vorhersage $y_p$ möglich
 tatsächlichen Wert $y$ kommt. Zwei allgemeine Methoden existieren, um dieses
 Minimierungsproblem zu lösen.
 
-\subsection{Minimierung mit Matrix-Inversion}
+\subsection{Minimierung mit Matrixinversion}
 
 Dieses Verfahren ist auch bekannt als ``Least-Squares für überbestimmte
-Gleichungssysteme''. Es verwendet die Matrix-Inversion um mit \emph{einem} Schritt an die
+Gleichungssysteme''. Es verwendet die Matrixinversion um mit \emph{einem} Schritt an die
 Lösung zu kommen.
 
 Zuerst wird das lineare Modell aus \eqref{ml:regression:hypothesis} mit allen
@@ -95,7 +103,7 @@ und die Cost-Function $J$ in Matrix-Form als
 \end{align}
 formuliert. In \eqref{ml:regression:lstsq:cost} wurde die Summation über die
 einzelnen quadratischen Fehler $(y_j - y_{j,p})^2$ zuerst als Skalarprodukt und
-anschliessend als Matrizen-Produkt (Zeilen-Vektor mal Spalten-Vektor) geschrieben.
+anschliessend als Matrizenprodukt (Zeilenvektor mal Spaltenvektor) geschrieben.
 
 Um das Minimum zu finden wird der Gradient von $J(\vec \theta)$ 
 \begin{align}
@@ -108,7 +116,7 @@ Um das Minimum zu finden wird der Gradient von $J(\vec \theta)$
     &= 2 \mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y
     \label{ml:regression:lstsq:grad}
 \end{align}
-mit dem Null-Vektor $\vec 0$ gleich gesetzt
+mit dem Nullvektor $\vec 0$ gleich gesetzt
 und schliesslich nach $\vec \theta$ aufgelöst:
 \begin{align}
     &2\mathbf{X}^\mathrm{T} \mathbf{X}\, \vec \theta - 2 \mathbf{X}\, \vec y \overset{!}= \vec 0 \quad\Leftrightarrow\quad
@@ -117,14 +125,14 @@ und schliesslich nach $\vec \theta$ aufgelöst:
     \label{ml:regression:lstsq:formel}
 \end{align}
 \eqref{ml:regression:lstsq:formel} gibt eine Formel, um aus dem überbestimmten
-Gleichungssystem von \eqref{ml:regression:lstsq:modell} direkt mittels Matrix-Inversion
+Gleichungssystem von \eqref{ml:regression:lstsq:modell} direkt mittels Matrixinversion
 die Koeffizienten $\vec \theta$ exakt zu berechnen.
 
 \bigskip
 Aber nicht alle solchen Matrizen sind invertierbar, sind Zeilen oder Spalten linear
 abhängig oder gibt es mehr Features als Datenpunkte, kann $\mathbf{X}^\mathrm{T}\mathbf{X}$
 nicht invertiert werden.
-Dazu kommt dass die Matrizen-Inversion (gleich wie das Matrizen-Produkt) mit dem besten
+Dazu kommt dass die Matrizen-Inversion (gleich wie das Matrizenprodukt) mit dem besten
 Algorithmus, etwa $\mathcal{O}(n^{\log_2 7})$, sehr aufwendig ist.\footnote{Mehr dazu ist
 in \cite{ml:computational-complexity-math-op} und
 \cite{ml:computational-complexity-matrix-mult} zu finden.} Die Inversion  einer (oder
@@ -159,7 +167,9 @@ Eine zentrale Eigenschaften des Gradienten ist, dass er relativ zum Auswertungsp
 in die Richtung des steilsten Anstiegs zeigt. Läuft man also immer entgegengesetzt des
 Gradienten und passt die $\theta_i$ entsprechend an, gelangt man nach einer gewissen
 Anzahl Iterationen zu einem lokalen Minimum. Dieses Verfahren wird \emph{gradient descent}
+\index{gradient descent}%
 oder deutsch \emph{Gradientenverfahren} genannt.
+\index{Gradientverfahren}%
 Konkret kann die Idee als
 \begin{align}
     \vec \theta_{k+1} &= \vec \theta_{\sf k}
@@ -171,6 +181,7 @@ Konkret kann die Idee als
 geschrieben werden. Der Gradient wird als Durchschnitt über alle
 Datenpunkte berechnet. Mit dem zusätzlichen Parameter $\alpha > 0$ kann die Geschwindigkeit der
 Lösungsfindung eingestellt werden, er wird \emph{learning rate} genannt.
+\index{learing rate}%
 
 Als Startwert $\vec\theta_0$ kann beim linearen Modell irgendein Wert verwendet werden, meistens wird dieser jedoch
 auf den Nullvektor $\vec 0$ gesetzt. Im Gegensatz dazu kann bei nichtlinearen Modellen der Lernvorgang
@@ -188,6 +199,7 @@ Ein grosses $\alpha$ gibt eine schnelle Konvergenz aber auch ein grosses Potenti
 aber umso länger.
 Für das lineare Modell \eqref{ml:regression:modell} können $\alpha$ und die Anzahl Schritte
 zur exakten Lösung zum Beispiel mit dem \emph{Verfahren der konjugierten Gradienten}
+\index{konjugierte Gradienten}%
 einfach bestimmt werden.
 Bei nichtlinearen Modellen gibt es leider keine Methode um den besten Wert von
 $\alpha$ zu finden. Er muss empirisch ermittelt werden, wobei am besten Werte im Bereich
