@@ -21,11 +21,13 @@ Verlustloses Komprimieren gelingt, indem man einen Kodieralgorithmus auf die Dat
 
 Es gibt inzwischen einige Methoden um Bilder zu komprimieren.
 In diesem Kapitel soll es um die beiden Algorithmen von der Joint Photographic Experts Group (JPEG) gehen.
+\index{Joint Photographic Experts Group}%
+\index{JPEG}%
 
 
 Bilder werden zuerst mit einer Vorverarbeitung auf die Transformation vorbereitet.
 Das sind Farb\-raum\-trans\-formationen und Einteilung in kleinere Bereiche, dieser Schritt heisst Tiling.
-Anschlies\-send wird die Basistransformation durchgeführt und die Koeffizienten mit einer Tabelle quantisiert und ganzzahlig gerundet.
+An\-schlies\-send wird die Basistransformation durchgeführt und die Koeffizienten mit einer Tabelle quantisiert und ganzzahlig gerundet.
 Die aus der Quantisierung entstandenen Werte werden entropiekodiert, meistens wird das Prinzip von Huffman verwendet.
 Die verwendete Methode wird im File abgelegt.
 Zudem werden die Tabellen der unterschiedlichen Quantisierungen und Kodierungen mit abgespeichert (s. Abb. \ref{jpeg:fig:kompressionsschema}).
@@ -34,5 +36,8 @@ Für die Dekompression werden diese Schritte rückwärts angewandt, wobei die ve
 Grundlegend werden die Bilder mit Hilfe verschiedener Methoden in Basisfunktionen aufgeteilt, zu denen jeweils die Koeffizienten berechnet werden.
 Damit ist es möglich, die Koeffizienten in einem späteren Schritt zu manipulieren und Daten einzusparen. 
 Bei JPEG ist das die discrete cosine transform (DCT) und bei JPEG-2000 die discrete wavelet transform (DWT).
+\index{JPEG-2000}%
+\index{discrete wavelet transform}%
+\index{dwt}%
 
-Das Kapitel basiert auf Inhalte des Papers \textit{Bilddatenkompression mit JPEG und JPEG2000} \cite{jpeg:laurahochstrat}
+Das Kapitel basiert auf dem Inhalt des Papers \textit{Bilddatenkompression mit JPEG und JPEG2000} \cite{jpeg:laurahochstrat}.

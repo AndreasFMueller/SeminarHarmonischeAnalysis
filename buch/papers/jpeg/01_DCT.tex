@@ -19,7 +19,9 @@ Da stellt sich die Frage, wie es möglich ist, dass die diskrete Kosinus-Transfo
 Das wird erreicht, indem das Intervall, auf dem die Transformation durchgeführt wird, mittels gerader Fortsetzung verdoppelt wird.
 Es existiert analog dazu die diskrete Sinus-Transformation, die aus Sinus-Basisfunktionen besteht.
 
-Für die Berechnung der Koeffizienten wird die Diskrete Kosinus-Transformation (DCT-II oder DCT) mit der Formel
+Für die Berechnung der Koeffizienten wird die diskrete Kosinus-Transformation (DCT-II oder DCT) mit der Formel
+\index{DCT}%
+\index{discrete cosine transform}%
 \begin{equation}
     b_k
     =
@@ -30,12 +32,14 @@ Für die Berechnung der Koeffizienten wird die Diskrete Kosinus-Transformation (
     \qquad k = 0,\dots,N-1
 \label{jpeg:equation:dct2}
 \end{equation}
-benötigt, wobei \(b_k\) das Transformierte und \(a_n\) das Eingangssignal ist.
+benötigt, wobei \(b_k\) das transformierte und \(a_n\) das Eingangssignal ist.
 
 Bei der Formel \eqref{jpeg:equation:dct2} fällt gegenüber der DFT auf, dass die Frequenz halbiert und die Funktion um \(\frac{1}{2}\) verschoben wurde.
 Man könnte die Funktion beliebig strecken und verschieben, damit das Kriterium der Basisfunktion erfüllt ist.
 Hier wird die Halbierung und Verschiebung um \(\frac{1}{2}\) gewählt damit die DCT auch orthogonal ist.
 Um von der transformierten Form in die ursprüngliche zu gelangen braucht man die inverse Kosinus-Transformation (DCT-III oder inverse DCT):
+\index{inverse DCT}%
+\index{DCT, inverse}%
 \begin{equation}
     a_n
     =
@@ -110,9 +114,10 @@ schreiben und für die inverse Transformation
 Abbildung \ref{jpeg:fig:dctkoeff} zeigt die Basisfunktionen einer zweidimensionale DCT mit in jeder Dimen\-sion jeweils acht Frequenzen.
 Jedes Feld entspricht einer Basisfunktion.
 Oben links steht die konstante Basisfunktion, das Skalarprodukt aus dieser Funktion und einem \(8 \times 8\) Block ergibt den Koeffizienten \(a_{0,0}\), der DC-Anteil dieses Pixelblocks.
+\index{DC-Anteil}%
 In horizontaler Richtung sind die Frequenzanteile aufsteigend.
 Gleiches gilt für die vertikale Richtung und die Linearkombination aus beiden.
-Aus \mbox{jedem} Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
+Aus jedem Pixelblock des Ursprungsbildes werden mit der Gleichung \eqref{jpeg:equation:dct2dim2} die Koeffizienten bestimmt.
 Die Koeffizienten geben an, wie stark die entsprechende Basisfunktion gewichtet ist. 
 
 

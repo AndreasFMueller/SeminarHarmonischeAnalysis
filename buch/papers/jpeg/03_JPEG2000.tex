@@ -10,8 +10,9 @@
 \label{jpeg:section:jpeg2000}}
 \rhead{JPEG-2000}
 JPEG-2000 ist die Weiterentwicklung und qualitative Verbesserung des JPEG-Standards.
+\index{JPEG-2000}%
 Der JPEG-Standard konnte sich schnell verbreiten, weil er lizenzfrei zur Verfügung steht und eine entsprechend effiziente Software bereitgestellt wurde.
-Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet hat die JPEG Kompression seine Grenzen.
+Wie Abschnitt \ref{jpeg:subsection:probleme} andeutet, hat die JPEG Kompression ihre Grenzen.
 JPEG konnte schon verlustlos und verlustbehaftet Bilder komprimieren, nutzt dafür aber verschiedene Algorithmen.
 Im Abschnitt \ref{jpeg:section:kompjpeg} ist nur der verlustbehaftete beschrieben.
 
@@ -22,11 +23,11 @@ Das bedeutet, Bilder werden mit zunehmender Qualität aufgebaut, man sieht zuers
 Ausserdem sollte es möglich sein, um eine schnellere Übertragung zu erreichen, nur einen Ausschnitt aus dem Bild fein aufzulösen.
 Zusätzliche neue Funktionen:
 \begin{itemize}
-    \item Region of interest(ROI): ermöglicht es Anwendern Bildbereiche verschiedenen stark zu komprimieren.
+    \item Region of interest (ROI): ermöglicht es Anwendern, Bildbereiche verschiedenen stark zu komprimieren.
     \item Der Aufbau des Datenstroms ermöglicht das leichtere Erkennen von Übertragungsfehlern.
     \item Bilder dekodieren, ohne das gesamte Bild zwischenspeichern zu müssen (sequentieller Bildaufbau).
 \end{itemize}
-Der JPEG-2000-Standard ist in 13 Unterstandards aufgegliedert, in diverse Ergänzungen und Erweiterungen für unterschiedliche Anwendungsgebiete. 
+Der JPEG-2000-Standard ist in dreizehn Unterstandards aufgegliedert, in diverse Ergänzungen und Erweiterungen für unterschiedliche Anwendungsgebiete. 
 
 
 \subsection{Anwendungsgebiete
@@ -37,12 +38,19 @@ Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
 \begin{itemize}
     \item In der Medizinaltechnik, Speicherung von Röntgenbildern, CT- und MRI-Scans.
     Festgelegt durch den Digital Imaging and Communications in Medicine (DICOM) Standard.
-    Dort kann man z.B. nur den Teil des Bildes übertragen, der von Interesse ist um Übertragungszeiten zu verringern.
+\index{Digital Imaging and Communications in Medicine}%
+\index{DICOM}%
+    Dort kann man z.B. nur den Teil des Bildes übertragen, der von Interesse ist, um Übertragungszeiten zu verringern.
     \item Die Digital Cinema Initiative (DCI) nutzt das Motion-JPEG, ein Teil von JPEG-2000, um Kinofilme digital zu speichern und den Kinos zur Verfügung zu stellen.
+\index{DCI}%
+\index{Digital Cinema Initiative}%
     \item Speicherung von Passbildern auf den deutschen Reisepässen.
     \item Das schweizer Bundesarchiv legt Bilder in TIFF und JPEG-2000 ab.
+\index{TIFF}%
     \item Live HDTV wird mit JPEG-2000 komprimierten Bildern übertragen.
+\index{HDTV}%
     \item Die Bilder der Marsrover werden in einem JPEG-2000 verwandten Format übermittelt.
+\index{Marsrover}%
     \item Satelliten-Technik für zivile und militärische Zwecke.   
 \end{itemize}
 
@@ -51,27 +59,35 @@ Dafür findet JPEG-2000 Anwendung im professionellen Bereich:
 \label{jpeg:subsection:prinzip}}
 Die JPEG-2000 Komprimierung funktioniert ähnlich wie der ältere Standard JPEG.
 Bilder werden zunächst einer Vorverarbeitung unterzogen, das ist das Aufteilen in Bildbereiche von höherem Interesse (ROIs).
-Die Farbraum Umrechnung ist nicht zwingend, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
+Die Farbraumumrechnung ist nicht zwingend, da JPEG-2000 auf verschiedene Farbmodelle (RGB, CMYK, YCbCr und weitere) anwendbar ist.
+\index{CMYK}%
+\index{YCbCr}%
+\index{RGB}%
 Die vorbereiteten Bilder werden nun mit der 2D-Wavelet-Transformation umgewandelt.
 JPEG-2000 verwendet die Cohen-Daubechies-Feauveau-Wavelets (CDF), 5/3 bei verlustfreier und 9/7 bei verlustbehafteter Kompression.
+\index{CDF-Wavelet}%
+\index{Cohen-Daubechies-Feauveau-Wavelets}%
 Darauf folgt die Entropiekodierung, welche die komprimierten Daten liefert. 
 
 \subsection{Verbesserungen gegenüber JPEG
 \label{jpeg:subsection:verbesserungen}}
 JPEG-2000 bietet einige Vorteile gegenüber dem älteren JPEG-Standard.
-Die Farbtiefe wurde \mbox{erhöht}, es stehen nun bis zu 38 Bits pro Farbkanal zur Verfügung für z.B. HDR Bilder.
+Die Farbtiefe wurde erhöht, es stehen nun bis zu 38 Bits pro Farbkanal zur Verfügung für z.~B.~HDR Bilder.
+\index{HDR}%
 Es können grössere Bilder komprimiert werden als bei JPEG.
 Es wurde zusätzlich Raum für die Metadaten geschaffen und einen Alphakanal für die Transparenz.
+\index{Alphakanal}%
+\index{Transparenz}%
  
-Um die Blockartefakte zu vermeiden wird das Bild in gössere Teilbilder unterteilt und nicht in kleine \(8\times8\) Pixelblöcke.
-Da die DCT nicht zurechtkommt mit grösseren Blöcken als \(8\times8\), wurde auf die Wavelet-Transformation (WT) gewechselt.
+Um die Blockartefakte zu vermeiden, wird das Bild in gössere Teilbilder unterteilt und nicht in kleine \(8\times8\) Pixelblöcke.
+Da die DCT nicht zurechtkommt mit grösseren Blöcken als \(8\times8\), wurde auf die Wavelet-Transformation (WT, siehe auch Kapitel~\ref{chapter:wavelets}) gewechselt.
 Die WT ist in Zweierpotenzen leicht zu skalieren und lässt sich somit auf beliebig grosse Zweierpotenz-Blöcke anwenden.
 
 \subsection{Nachteile von JPEG-2000
 \label{jpeg:subsection:nachteil}}
 Wie in Abschnitt \ref{jpeg:subsection:anwendungsgebiete} schon beschrieben, ist auch der JPEG-2000-Standard nicht perfekt.
-JPEG-2000 Bilder mit hoher Kompression, tendieren zu Unschärfe und Schatten bei starken Kontrasten. 
+JPEG-2000 Bilder mit hoher Kompression tendieren zu Unschärfe und Schatten bei starken Kontrasten. 
 Der JPEG-2000-Standard ist sehr rechenintensiv und hat einen hohen Arbeitsspeicherbedarf. 
-Die Wavelet-Transformation lässt sich bisher noch nicht in Hardware umsetzen, kann also nicht auf einem Microchip implementiert werden.
+%Die Wavelet-Transformation lässt sich bisher noch nicht in Hardware umsetzen, kann also nicht auf einem Microchip implementiert werden.
 Der neue Standard hat keine so weite Verbreitung wie JPEG und ist mit dem älteren Standard inkompatibel.
 Das JPEG-2000 Komitee garantiert keine mögliche Lizenzansprüche Dritter.
