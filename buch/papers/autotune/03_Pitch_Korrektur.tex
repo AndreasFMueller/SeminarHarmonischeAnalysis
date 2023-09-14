@@ -10,6 +10,7 @@
 \section{Pitch-Korrektur
 \label{autotune:section:pitchKorrektur}}
 \rhead{Pitch-Korrektur}
+\index{Pitch-Korrektur}%
 Das Ändern der Tonhöhe eines Audiosignals ist keine triviale Aufgabe.
 Grundsätzlich ist der Zeit- und Frequenzbereich eines Signals über die Fourier-Transformation miteinander verbunden und kann nicht unabhängig voneinander manipuliert werden.
 Dies zeigt der Ausdruck 
@@ -19,11 +20,14 @@ Dies zeigt der Ausdruck
 Falls beispielsweise die Tonhöhe eines Audiosignals erhöht werden soll, muss das Audiosignal \glqq schneller\grqq\ abgespielt werden, ähnlich wie bei einer Schallplatte.
 Diese Zeitstreckung gilt es jedoch zu vermeiden, da sonst die Dauer der Noten und damit die gesamte Länge der Aufnahme verändert werden.
 Algorithmen die die Tonhöhe unabhängig von der Dauer des Audiosignals verändern können, fallen unter den Begriff \emph{Dynamic Time Warping} (DTW).
+\index{Dynamic Time Warping}%
+\index{DTW}%
 In der Praxis gibt es eine Vielzahl von Methoden, die sich in ihrer Komplexität und Qualität unterscheiden.
 Schlussendlich handelt es sich immer um ein Optimierungsproblem, was für jede Anwendung spezifische Lösungen erfordert.
 Wichtig zu erwähnen ist, dass es sich bei allen Algorithmen dieser Art um einen nicht-linearen Prozess handelt,
 der verlustbehaftete Resultate liefert.
 Im Rahmen dieser Arbeit wird speziell der \emph{Phase Vocoder} betrachtet, da er die Grundlage für die meisten Auto-Tune-Algorithmen bildet.
+\index{Phase Vocoder}%
 
 
 \subsection{Phase Vocoder
@@ -32,6 +36,8 @@ Im Rahmen dieser Arbeit wird speziell der \emph{Phase Vocoder} betrachtet, da er
 Der Phase Vocoder ist ein Algorithmus der es ermöglicht die Tonhöhe eines Audiosignals zu ändern,
 ohne andere Attribute wie die Dauer oder den Klang des Signals negativ zu beeinflussen.
 Im Wesentlichen arbeitet der Phase Vocoder indem er ein Audiosignal in eine Reihe von überlappenden Fenstern (Frames) zerlegt und anschliessend mithilfe der Fourier-Transformation in den Frequenzbereich umwandelt.
+\index{Fenster}%
+\index{Frame}%
 Die Tonhöhenänderung erfolgt dann durch das Skalieren der Frequenzen in der Fourier-Domäne \cite{autotune:operationOfThePhaseVocoder}.
 Nachdem das Signal im Frequenzbereich manipuliert wurde,
 wird es mithilfe der inversen Fourier-Transformation zurück in den Zeitbereich gewandelt.
@@ -74,6 +80,7 @@ Grafisch dargestellt ist diese Skalierung in Abbildung \ref{autotune:fig:spektru
 \end{figure}
 Obwohl dieser Ansatz grundsätzlich funktioniert, klingt die resultierende Tonhöhenänderung unnatürlich.
 Der entstehende Effekt wird auch als \emph{Chipmunk-Effekt} bezeichnet und ist darauf zurückzuführen,
+\index{Chipmunk-Effekt}%
 dass die ursprünglichen Formanten des Audiosignals verloren gehen (Hörbeispiel \cite{autotune:audioExampleChipmunkEffect}).
 
 Um den Klangcharakter der menschlichen Stimme beizubehalten,
@@ -84,6 +91,8 @@ Im nächsten Abschnitt wird erläutert, wie dies erreicht werden kann.
 \subsection{Formantenerhaltung
 \label{autotune:subsection:formantenErhaltung}}
 Formanten sind spezifische Resonanzfrequenzen des menschlichen Vokaltrakts.
+\index{Formant}%
+\index{Resonanzfrequenz}%
 Bei der menschlichen Sprachproduktion werden durch die Stimmbänder Schallwellen erzeugt,
 die durch den Vokaltrakt (bestehend aus Mund, Nase und Rachen) weiter moduliert werden.
 Form und Länge des Vokaltrakts bestimmen die Position und Anzahl der Formanten in einem Spektrum. 
@@ -127,8 +136,9 @@ In Abbildung \ref{autotune:fig:formantenErhaltung} ist der Unterschied zwischen 
 \end{figure}
 Dies ist gut vergleichbar im Hörbeispiel mit \cite{autotune:audioExamplePitchShiftingWithFormantPreservation} und ohne Formantenerhaltung \cite{autotune:audioExamplePitchShiftingWithoutFormantPreservation}.
 
-\subsection{Fensterrekonstruktion
+\subsection{Phasenrekonstruktion
 \label{autotune:subsection:fensterRekonstruktion}}
+\index{Phasenrekonstruktion}%
 Die Phasenrekonstruktion ist ein wichtiger Bestandteil des Phase Vocoders.
 Ziel ist es, die Phasensprünge zwischen den Fenstern zu minimieren.
 In der Praxis kann dies jedoch nur näherungsweise erfolgen.
