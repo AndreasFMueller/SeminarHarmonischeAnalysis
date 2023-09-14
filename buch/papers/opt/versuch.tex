@@ -13,7 +13,11 @@
 Der durchgeführte Versuch entspricht im Aufbau demjenigen aus Abbildung \ref{opt:fig:4fAufbau}.
 Für die Fourier-Transformation wurden eine Linse mit 300 mm Brennweite genutzt, damit war der Effekt am besten sichtbar.
 Der vorhandene Helium-Neon-Laser erzeugt einen Laserstrahl mit einem Durchmesser von $0.8$ mm.
+\index{Helium-Neon-Laser}%
+\index{Laser}%
 Um die gerade Wellenfront in ausreichendem Durchmesser zu erhalten, wurde der Strahl mittels eines umgekehrten keplerschen Teleskops aufgeweitet.
+\index{keplersches Teleskop}%
+\index{Teleskop, keplersch}%
 Der schematische Aufbau ist in Abbildung \ref{opt:fig:laserAufweiten} ersichtlich.
 Dafür wird direkt hinter der Laserblende eine konkave Linse mit einer Brennweite $f_b = 50\,\text{mm}$ montiert 
 und in einem Abstand von $f_b + f_o = 200\,\text{mm}$ eine weitere mit einer Brennweite von $f_o = 150\,\text{mm}$.
@@ -30,7 +34,10 @@ Im weiteren Verlauf dieses Abschnittes werden die erwarteten Ergebnisse simulier
 
 \subsection{Simulation der erwarteten Ergebnissen}
 Der $4f$ Versuch kann auch simuliert werden.
+\index{4f Versuch@$4f$ Versuch}%
 In unserem Fall geschah dies mit \emph{Python} und der \emph{numpy} Bibliothek.
+\index{numpy}%
+\index{Python}%
 Zuerst wird ein Input-Bild erstellt, welches anschliessend bearbeitet wird.
 Als Input wurden ein Dreifachspalt sowie ein Gitter verwendet.
 Mittels zweidimensionaler diskreter Fast-Fourier-Transformation (FFT) wird das Originalbild in den Frequenzbereich transformiert.
@@ -71,6 +78,7 @@ Dies war jedoch zu erwarten, da die Simulation im Gegensatz zum realen Versuchsa
     \includegraphics[width=60mm]{papers/opt/images/laserAufweiten.pdf}
     \caption{Die Vergrösserung des Laserlichts erfolgt mit einem Kepler-Teleskop.
         Dazu werden zwei Linsen mit unterschiedlichen Brennweiten verwendet.
+\index{keplersches Teleskop}%
         Der Abstand dazwischen ist die Summe der beiden Brennweiten.}
     \label{opt:fig:laserAufweiten}
 \end{figure}
@@ -79,7 +87,9 @@ Dies war jedoch zu erwarten, da die Simulation im Gegensatz zum realen Versuchsa
     \centering
     \includegraphics[width=\textwidth]{papers/opt/images/4fAufbau.pdf}
     \caption{Der $4f$ Aufbau ermöglicht eine Fourier-Transformation des Originalbildes sowie eine Rücktransformation aus der Fourier-Ebene.
+\index{Fourier-Ebene}%
     In dieser Abbildung wird die transformierte Funktion mit einem Tiefpass gefiltert.
+\index{Tiefpass}%
     Weitere Details zu den Filtern folgen im Abschnitt \ref{opt:section:filter}.}
     \label{opt:fig:4fAufbau}
 \end{figure}
