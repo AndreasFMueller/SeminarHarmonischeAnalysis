@@ -8,12 +8,12 @@
 %
 \section{Vorwort\label{wavelets:section:teil0}}
 \rhead{Teil 0}
-Das Ziel dieser Arbeit war kein klares Ziel zu haben und zu schauen, wo hin es einen trägt. Natürlich war es notwendig sich einen Rahmen zu stecken, d.h. eine grobe Wunschvorstellung festzulegen. Aber tatsächlich war der Weg in dieser Arbeit das Ziel.
+Das Ziel dieser Arbeit war kein klares Ziel zu haben und zu schauen, wo hin es einen trägt. Natürlich war es notwendig sich einen Rahmen zu stecken, d.~h.~ eine grobe Wunschvorstellung festzulegen. Aber tatsächlich war der Weg in dieser Arbeit das Ziel.
 Die Wunschvorstellung war ein tieferes Verständnis über die Wavelettransformation zu erhalten. Hier muss angemerkt sein, dass es grundsätzlich zwei Oberbegriffe im Zusammenhang mit Wavelets gibt.
-Den es kann einerseits eine diskrete und zum anderen eine kontinuierliche Wavelettransformation gemacht werden.
+Es kann einerseits eine diskrete und andererseits eine kontinuierliche Wavelettransformation gemacht werden.
 
 \begin{itemize}
-	\item   Die diskrete Wavelet Transformation (DWT) arbeitet auf Basis einer Filterbank, dient also dazu Signale direkt zu Filtern (Bsp. rauschbelastete Signale zu Entrauschen).
+	\item   Die diskrete Wavelet Transformation (DWT) arbeitet auf Basis einer Filterbank, dient also dazu Signale direkt zu Filtern z.B. rauschbelastete Signale zu Entrauschen.
 	Die Funktionsweise kann man einfach als eine wiederholte Aufsplittung in einen Tief- und Hochpass gefilterten Signalteil beschreiben. Wobei der Tiefpass jeweils den Durchschnitt über die Filterbreite und der Hochpass die Änderung über die gefilterte Signalbreite ausgibt (man spricht oft auch von der Detaillierung). Für eine Entrauschung wird also eine Filterbank aufgebaut die gerade eine so hohe Detaillierung besitzt, dass die Rauschanteile eliminiert werden (Abbildung \ref{wavelet:fig:1_Four-Level-Wavelet-Decomposition}).
 
  	\item Die kontinuierliche Wavelettransformation (CWT) ist die Transformation des Zeitsignals in den Frequenzbereich. Der Ablauf ist relativ analog zur diskreten Fouriertransformation (DFT), wo die Unterschiede liegen und was die Vor- sowie die Nachteile der CWT gegenüber der schnellen Fouriertransformation (FFT) sind, ist eines der Ziele dieser Arbeit. 
@@ -22,7 +22,7 @@ Den es kann einerseits eine diskrete und zum anderen eine kontinuierliche Wavele
 \begin{figure}
 	\centering
 	\includegraphics[width=0.75\textwidth]{papers/wavelets/images/1_Four-Level-Wavelet-Decomposition.png}
-	\caption{Funktionsweise der diskreten Wavelettransformation (DWT) }
+	\caption{\cite{Haider.2015} Funktionsweise der diskreten Wavelettransformation (DWT).}
 	\label{wavelet:fig:1_Four-Level-Wavelet-Decomposition}
 \end{figure}
 
