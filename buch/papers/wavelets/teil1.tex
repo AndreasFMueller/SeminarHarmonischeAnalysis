@@ -12,7 +12,7 @@
 
 \subsection{Diskrete Fouriertransformation (DFT)
 \label{wavelets:subsection:DFT}}
-Um die CWT richtig nachvollziehen zu können, lohnt es sich, sich vorab mit dem Modell der diskreten Fourier Transformation (DFT) \cite{Hayes.1996} 
+Um die CWT richtig nachvollziehen zu können, lohnt es sich, sich vorab mit dem Modell der diskreten Fourier Transformation (DFT) \cite{wavelets:Hayes.1996} 
 
 \begin{equation}
 	X(k)=\frac{1}{N}\sum_{n=0}^{N-1}x(n)\cdot e^{-j\frac{2\pi}{N}\cdot k\cdot n}
@@ -35,14 +35,14 @@ Es wird also ein Signal an jeder Stelle $x(n)$ mit der komplexen Exponentialfunk
 	\centering
 	\includegraphics[width=0.49\textwidth]{papers/wavelets/images/2_DFT1.png}
 	\includegraphics[width=0.49\textwidth]{papers/wavelets/images/2_DFT2.png}
-	\caption{\cite{AndreasMuller.2019} Darstellung zur Funktionsweise der DFT. In der linken Hälfte mit einer hohen Deckung zwischen Signal (blau) und der gesuchten Sinusfrequenz $k$ (rot). In der rechten Hälfte ein zufallsverteiltes Signal mit schlechter Überdeckung. Die Deckung wird nebenan in einem $+$ und $-$ Verrechnungsplot, der aus vier Quadranten besteht, ausgegeben.}
+	\caption{\cite{wavelets:AndreasMuller.2019} Darstellung zur Funktionsweise der DFT. In der linken Hälfte mit einer hohen Deckung zwischen Signal (blau) und der gesuchten Sinusfrequenz $k$ (rot). In der rechten Hälfte ein zufallsverteiltes Signal mit schlechter Überdeckung. Die Deckung wird nebenan in einem $+$ und $-$ Verrechnungsplot, der aus vier Quadranten besteht, ausgegeben.}
 	\label{wavelet:fig:2_DFT1&2}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.75\textwidth]{papers/wavelets/images/3_AmplitudengangExtraktionDFT.png}
-	\caption{\cite{QingkaiKong} Erzeugung des Amplitudenganges bei der DFT. Extraktion der vorhandenen Sinusanteile (blau) aus dem Zeitsignal (rot).}
+	\caption{\cite{wavelets:QingkaiKong} Erzeugung des Amplitudenganges bei der DFT. Extraktion der vorhandenen Sinusanteile (blau) aus dem Zeitsignal (rot).}
 	\label{wavelet:fig:AmplitudengangExtraktionDFT}
 \end{figure}
 
@@ -73,7 +73,7 @@ Die 3D-Abbildung\ref{wavelet:fig:FRF_iso} zeigt einen FRF und die Projektionen i
 
 \subsection{Kontinuierliche Wavelettransformation (CWT) anhand des Morlet Wavelet
 	\label{wavelets:subsection:CWT}}
-Die stetige Wavelettransformation (CWT) eines Signals $f(t)$ ist \cite{H.Burkhardt.2020}
+Die stetige Wavelettransformation (CWT) eines Signals $f(t)$ ist \cite{wavelets:H.Burkhardt.2020}
 
 \begin{equation}
 	W_{a,b}=\langle f \; , \; \psi_{a,b} \rangle = \frac{1}{\sqrt{a}}\int_{-\infty}^{\infty} f(t)\cdot\psi\left(\frac{t-b}{a}\right) dt,
@@ -115,7 +115,7 @@ Die Unschärfeproblematik in (Abbildungen \ref{wavelet:fig:FFTAufloesung} und \r
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\textwidth]{papers/wavelets/images/6-1_FFTAufloesung.png}
-	\caption{\cite{J.Mayer.2002} Schematische Darstellung der Unschärfeproblematik, entweder wird die Zeit oder die Frequenzgenauigkeit verfeinert (dargestellt anhand er beiden Achsrichtungen).}
+	\caption{\cite{wavelets:J.Mayer.2002} Schematische Darstellung der Unschärfeproblematik, entweder wird die Zeit oder die Frequenzgenauigkeit verfeinert (dargestellt anhand er beiden Achsrichtungen).}
 	\label{wavelet:fig:FFTAufloesung}
 \end{figure}
 
@@ -131,7 +131,7 @@ Das Wavelet hingegen besitzt die Eigenschaft, dass sowohl zeitlich als auch auf 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\textwidth]{papers/wavelets/images/6-3_CWTAufloesungRadix2.png}
-	\caption{\cite{J.Mayer.2002} Schematische Darstellung der Auflösungsmöglichkeit bei der Wavelettransformation. Zeit und Frequenz können nach freiem belieben aufgelöst werden (separate Parameter), im der Darstellung verdeutlicht an einer Radix 2 Filterbank. Die Idee dahinter, das bei tiefen Frequenzen bedingt durch die Wellenlänge eine schlechtere Zeitauflösung genügt und erst bei kurzen Wellenlängen (hoher Frquenz) eine höhere zeitliche Auflösung benötigt wird.}
+	\caption{\cite{wavelets:J.Mayer.2002} Schematische Darstellung der Auflösungsmöglichkeit bei der Wavelettransformation. Zeit und Frequenz können nach freiem belieben aufgelöst werden (separate Parameter), im der Darstellung verdeutlicht an einer Radix 2 Filterbank. Die Idee dahinter, das bei tiefen Frequenzen bedingt durch die Wellenlänge eine schlechtere Zeitauflösung genügt und erst bei kurzen Wellenlängen (hoher Frquenz) eine höhere zeitliche Auflösung benötigt wird.}
 	\label{wavelet:fig:CWTAufloesungRadix2}
 \end{figure}
 
@@ -140,7 +140,7 @@ Das Mutter-Wavelet $\psi\left(\frac{t-b}{a}\right)$ kann ganz verschiedene Funkt
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{papers/wavelets/images/6-4_MutterwavletTypen.png}
-	\caption{\cite{Baleanu.2015} Beispiele von verschiedenen Mutterwavelettypen.}
+	\caption{\cite{wavelets:Baleanu.2015} Beispiele von verschiedenen Mutterwavelettypen.}
 	\label{wavelet:fig:MutterwavletTypen}
 \end{figure}
 
