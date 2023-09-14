@@ -8,13 +8,15 @@
 %
 \section{Short Time Fourier Transform STFT\label{sonogramm:section:teil0}}
 \rhead{Teil 0}
-Mit der Short-Time Fourier Transform kann man einen Teil der fehlenden zeitlichen Informationen zurückholen.
-Die Idee ist die Fouriertransformation nicht auf das ganze Signal anzuwenden, sondern dieses zuerst in kleinere
+Mit der Short-Time Fourier Transform (STFT) kann man einen Teil der fehlenden zeitlichen Informationen zurückholen.
+Die Idee ist die Fourier-Transformation nicht auf das ganze Signal anzuwenden, sondern dieses zuerst in kleinere
 Abschnitte zu unterteilen, und diese dann zu transformieren.
 
-Um das Signal zu unterteilen werden sogenannte Fensterfunktionen $w(t)$ verwendet, mit welchen das Signal
+Um das Signal zu unterteilen, werden sogenannte Fensterfunktionen $w(t)$ verwendet, mit welchen das Signal
+\index{Fensterfunktion}%
 $x(t)$ multipliziert wird.
 Die simpelste Fensterfunktion ist das Rechteckfenster
+\index{Rechteckfenster}%
 \begin{equation}
     w_r(t) = 
         \begin{cases}
@@ -32,7 +34,7 @@ Verwenden wir das Rechteckfenster für das Signal $x(t)$, resultiert
     0, & \text{sonst.}
     \end{cases}
 \end{equation}
-Verschieben wir $w_r(t)$ in der Zeit können wir mit 
+Verschieben wir $w_r(t)$ in der Zeit, können wir mit 
 \begin{equation}
     x(t) w_r(t-\tau) = 
     \begin{cases}
@@ -42,7 +44,7 @@ Verschieben wir $w_r(t)$ in der Zeit können wir mit
 \end{equation}
 ein beliebiges Zeitfenster von $x(t)$ extrahieren.
 
-So lässt ich nun die Fouriertransformation von einem $T$ langen Abschnitt
+So lässt ich nun die Fourier-Transformation von einem $T$ langen Abschnitt
 von $x$ zum Zeitpunkt $\tau$ mit
 \begin{equation}
     \mathscr{F}(x)(\omega, \tau) = \int_{\tau}^{\tau+T} x(t) w_r(t - \tau) e^{-i \omega t} dt
@@ -61,7 +63,7 @@ Das Rechteckfenster der Länge $L_w$ definieren wir mit
     \end{cases}
 \end{equation}
 Die Fensterfunktion ist nun auch diskret und statt
-der Fouriertransformation wird die diskrete Fouriertransformation (DFT)
+der Fourier-Transformation wird die diskrete Fourier-Transformation (DFT)
 \begin{equation}
     X(k, m) = \sum_{n = m}^{m + L - 1} x(n) w_r(n-m) e^{ -i \omega_k n}
 \end{equation}
@@ -69,6 +71,8 @@ verwendet.
 \subsection{Spektrogramm}
 
 Das Spektrogramm, oder bei akustischen Signalen auch Sonogramm genannt, ist eine visuelle
+\index{Spektrogramm}%
+\index{Sonogramm}%
 Darstellung der STFTs eines Signals. 
 Dabei werden die Magnituden der einzelnen STFTs chronologisch
 als Spalten eines Bildes dargestellt.
@@ -77,6 +81,7 @@ des Signales aus dem Spektrogramm verunmöglicht.
 Es gibt auch die Möglichkeit, die Phaseninformationen in einem anderen Kanal im 
 Bild zu decodieren, und somit das Spektrogramm invertierbar zu machen.
 So kann man zum Beispiel ein Bild im HSV Farbraum erzeugen, wobei
+\index{HSV Farbraum}%
 der H-Kanal die Phase und der V-Kanal die Amplitude darstellt.
 
 Ein schönes Beispiel ergibt sich bei einem Spektrogramm eines frequenzmodulierten 
@@ -96,6 +101,7 @@ und $\omega_c =2000\cdot 2\pi$ rad/s dargestellt ist.
     \centering
     \includegraphics{papers/sonogramm/images/fm_sono_windows.pdf}
     \caption{Spektrogramm eines mit einem Sinus cardinalis frequenzmodulierten Sinus.
+\index{sinus cardinalis}%
     \label{sonogramm:fmsono}
     }
 \end{figure}
