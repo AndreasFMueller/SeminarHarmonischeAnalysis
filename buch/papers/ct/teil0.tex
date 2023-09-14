@@ -14,6 +14,7 @@ Im vorliegenden Abschnitt wird das Verhalten eines Strahls erklärt. Um die Anal
 \subsection{Annahmen über Röntgenstrahlen
 	\label{ct:subsection:annahmen}}
 In erster Linie betrachten wir einen Röntgenstrahl als eine Zusammensetzung von Photonen und nehmen an, dass er monochromatische Eigenschaften aufweist. Das bedeutet, dass alle Photonen dieselbe Energie $E$ besitzen und mit einer konstanten Frequenz propagieren. $N(x)$ steht für die Anzahl der Photonen pro Sekunde, die einen bestimmten Punkt $x$ durchqueren. Somit kann die Intensität des Strahls an einem Punkt $x$ mit
+\index{monochromatisch}%
 \begin{equation}
 	I(x) = E\cdot N(x)
 \end{equation}
@@ -37,8 +38,10 @@ Jede Substanz hat die Eigenschaft, beim Durchgang von Röntgenstrahlen pro Milli
 \end{table}
 
 In der Praxis verwenden Radiologen eine modifizierte Version des Dämpfungskoeffizienten, die sogenannte Hounsfield-Einheit. Dieser von Godfrey Hounsfield eingeführte Zahlenwert ermöglicht einen direkten Vergleich zwischen dem Abschwächungskoeffizienten eines Mediums und dem von Wasser. Die Hounsfield-Einheit eines Mediums ist
+\index{Hounsfield}%
+\index{Godfrey Hounsfield}%
 \begin{equation}
-	H_{\text{Medium}} := \dfrac{A_{\text{Medium}}-A_{\text{Wasser}}}{A_{\text{Wasser}} - A_{\text{Luft}}} * 1000,
+	H_{\text{Medium}} := \dfrac{A_{\text{Medium}}-A_{\text{Wasser}}}{A_{\text{Wasser}} - A_{\text{Luft}}} \cdot 1000,
 \end{equation}
 wobei $A$ der wahre Dämpfungskoeffizient ist \cite{doccheck_hounsfield-skala_nodate}. In der Tabelle \ref{ct:hounsfieldunits} werden verschiedene Hounsfield Einheiten für organische und anorganische Substanzen aufgelistet.
 
@@ -49,12 +52,14 @@ Ein Röntgenstrahl durchquert ein Medium zwischen zwei Punkten $x$ und $x + \Del
 ausgedrückt werden.
 
 Beers Gesetz ist die daraus folgende Differentialgleichung, die resultiert, wenn $\Delta x \rightarrow 0$, wobei 
+\index{Beers Gesetz}%
 \begin{equation}
 	\dfrac{dI}{dx} = -A(x)\cdot I(x).
 \end{equation}
 Das beersche Gesetz beschreibt die Änderung der Intensität pro Millimeter eines nicht brechenden, monochromatischen, null-breiten Röntgenstrahls, der ein Medium durchquert, welche direkt proportional sowohl zur Intensität des Strahls als auch zum Dämpfungskoeffizienten des Mediums ist.
 
 Diese Differentialgleichung ist separierbar und kann auch geschrieben werden als
+\index{separierbar}%
 \begin{equation}
 	\dfrac{dI}{I} = -A(x)\,dx.
 \end{equation}
@@ -74,8 +79,9 @@ Im Vergleich zu anderen Differentialgleichungen, bei denen die Koeffizientenfunk
 \subsection{Geraden in der Ebene
 	\label{ct:subsection:geraden}}
 Zur Vereinfachung der Analyse wird die Anzahl Geraden begrenzt. Deshalb wird hier nur ein Querschnitt einer Probe, die in der $x$-$y$-Ebene liegt, betrachtet. Bei der Durchquerung der Ebene folgen die Röntgenstrahlen jeweils einer Geraden in der Ebene. Zum Beispiel kann jede nicht vertikale Gerade durch die Gleichung $y = mx + b$ dargestellt werden. So können diese Geraden parametrisiert werden, indem alle möglichen Paare von $(m, b)$ berücksichtigt werden. Geraden, die vertikal verlaufen, können hingegen mit dieser Methode nicht parametrisiert werden, da ihre Steigung unendlich gross ist. Anstatt diese Parametrisierung in $(m, b)$ zu verwenden, wird eine \emph{punktnormale} Herangehensweise verwendet, die jede Gerade durch einen Punkt in der Ebene und durch einen Vektor, der senkrecht zur Gerade in dieser Ebene steht, definiert.
+\index{punktnormal}%
 
-Ein Vektor $\vec{n}$, der senkrecht zu einer gegebenen Gerade $l$ steht, wird betrachtet. Zu diesem Vektor $\vec{n}$ existiert ein Winkel zwischen $0 \le \theta < 2\pi$, so dass eine Gerade, die vom Ursprung ausgeht, parallel zu $\vec{n}$ ist. Dieser Winkel $\theta$ wird vom Ursprung ausgehend gegen den Uhrzeigersinn von der positiven $x$-Achse gemessen. Diese vom Ursprung ausgehende Gerade steht unter dem Winkel $\theta$ auch senkrecht auf der Gerade $l$ und schneidet die Gerade $l$ folglich in einem Punkt mit Koordinaten in der $x$-$y$-Ebene, die durch $t\cos(\theta), t\sin(\theta)$ für eine reelle Zahl $t$ dargestellt werden. Auf diese Weise kann die Gerade vollständig durch die Werte von $t$ und $\theta$ beschrieben werden und wird entsprechend mit $l_{t,\theta}$ bezeichnet.
+Ein Vektor $\vec{n}$, der senkrecht zu einer gegebenen Gerade $l$ steht, wird betrachtet. Zu diesem Vektor $\vec{n}$ existiert ein Winkel zwischen $0 \le \theta < 2\pi$, so dass eine Gerade, die in diesem Winkel vom Ursprung ausgeht, parallel zu $\vec{n}$ ist. Dieser Winkel $\theta$ wird vom Ursprung ausgehend gegen den Uhrzeigersinn von der positiven $x$-Achse gemessen. Diese vom Ursprung ausgehende Gerade steht unter dem Winkel $\theta$ auch senkrecht auf der Gerade $l$ und schneidet die Gerade $l$ folglich in einem Punkt mit Koordinaten in der $x$-$y$-Ebene, die durch $(t\cos(\theta), t\sin(\theta))$ für eine reelle Zahl $t$ dargestellt werden. Auf diese Weise kann die Gerade vollständig durch die Werte von $t$ und $\theta$ beschrieben werden und wird entsprechend mit $l_{t,\theta}$ bezeichnet.
 
 Es sind zwei Beziehungen erkennbar, nämlich dass,
 \begin{equation}
