@@ -10,28 +10,29 @@
 	\label{wavelets:section:teil4}}
 \rhead{Teil 4}
 
-In diesem Kapitel geht es darum sich mit den Möglichkeiten der CWT auseinander zu setzen. Im speziellen liegt das Interesse im Vergleich von der CWT zur FFT und wo sich Vor- und Nachteile der jeweiligen Transformation befinden. Dabei wird wieder mit kurz auftretenden Sinus-Sequenzen getestet.
+In diesem Abschnitt geht es darum, sich mit den Möglichkeiten der CWT auseinander zu setzen. Im speziellen liegt das Interesse im Vergleich von der CWT zur FFT und wo sich Vor- und Nachteile der jeweiligen Transformation befinden. Dabei wird wieder mit kurz auftretenden Sinus-Sequenzen getestet.
 Danach wird um das Ganze realistischer zu gestalten, dem Grundsignal noch ein weisses Rauschen beigemischt.
 
 \subsection{Rauschfreies Signal
 	\label{wavelets:subsection:CWTvsFFTRauschfrei}}
-Es ist klar zu erkennen, wie FFT zeitlich den start und Endpunkt nicht exakt lokalisieren kann. Dem gegenüber ist die CWT in der Lage die Zeitpunkte eindeutig zu bestimmen. An der Stelle kommt die Phase als äusserst interessantes Werkzeug zum Zug. Die Wavelettransformation reagiert sehr sensible auf Änderungen im Signal und diese schlagartigen Wechsel lassen sich sehr deutlich identifizieren.
-Damit die beiden Transformationen miteinander verglichen werden können müssen ihr grundsätzlichen Einstellungen gleich sein. Die FFT sowie CWT besitzen im vorliegenden Fall eine Auflösung von 1Hz und eine Überlappung von 50\% bezüglich der zeitlichen Verschiebung. Das ist insofern wichtig, weil beispielsweise eine FFT mit einer schlechteren Frequenzauflösung natürlich im Zeitbereich dementsprechend wieder besser performen würde.
-Was dem gegenüber steht ist die Verschmierung der Frequenz durch die CWT. Die FFT schneidet bei der Genauigkeit der Frequenzbestimmung besser ab, d.h. bei der FFT besitzt im Rauschfreienfall nur die gesuchte Frequenz eine nennenswerte Amplitude. Dafür erhält man bei der CWT durch die Voraussetzung der endlichen Energie und die damit im Wavelet für jede Frequenz $k$ entsprechend korrekt verpackte Gewichtung, eine sehr präzise Reproduzierung der Amplitudenhöhe bei der Transformation in den Frequenzbereich. Die FFT schafft das nur wenn mit einem Rechteck-Fenster und genügend Periodizität des Signals. Mit Periodizität ist die Zeitdauer gemeint wie lange das Signal (Sinus bei Frequenz $k$Hz) konstant vorkommt. Bei der FFT ist das Fenster immer gleich breit, entsprechend der gewählten Auflösung (bei einem Herz muss die Periodizität des Signals also 1 Sekunde betragen damit der korrekte Amplitudenwert ausgegeben werden kann)(Abbildung \ref{wavelet:fig:FFTnoiseFree}).
+Es ist klar zu erkennen, wie FFT zeitlich den Start und Endpunkt nicht exakt lokalisieren kann. Demgegenüber ist die CWT in der Lage, die Zeitpunkte eindeutig zu bestimmen. An der Stelle kommt die Phase als äusserst interessantes Werkzeug zum Zug. Die Wavelettransformation reagiert sehr sensibel auf Änderungen im Signal und diese schlagartigen Wechsel lassen sich sehr deutlich identifizieren.
+Damit die beiden Transformationen miteinander verglichen werden können müssen ihr grundsätzlichen Parameter gleich sein. Die FFT sowie CWT besitzen im vorliegenden Fall eine Auflösung von 1Hz und eine Überlappung von 50\% bezüglich der zeitlichen Verschiebung. Das ist insofern wichtig, weil beispielsweise eine FFT mit einer schlechteren Frequenzauflösung natürlich im Zeitbereich dementsprechend wieder besser performen würde.
+Demgegenüber steht die Verschmierung der Frequenz durch die CWT. Die FFT schneidet bei der Genauigkeit der Frequenzbestimmung besser ab, d.~h.~ bei der FFT besitzt im Rauschfreien Fall nur die gesuchte Frequenz eine nennenswerte Amplitude. Dafür erhält man bei der CWT durch die Voraussetzung der endlichen Energie und die damit im Wavelet für jede Frequenz $k$ entsprechend korrekt verpackte Gewichtung, eine sehr präzise Reproduzierung der Amplitudenhöhe bei der Transformation in den Frequenzbereich. Die FFT schafft das nur wenn mit einem Rechteck-Fenster und genügend Periodizität des Signals. Mit Periodizität ist die Zeitdauer gemeint, wie lange das Signal (Sinus bei Frequenz $k\,$Hz) konstant vorkommt. Bei der FFT ist das Fenster immer gleich breit, entsprechend der gewählten Auflösung.
+die Periodizität des Signals muss bei 1 Herz also genau 1 Sekunde betragen damit der korrekte Amplitudenwert ausgegeben werden kann.(Abbildung \ref{wavelet:fig:FFTnoiseFree}).
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.3\textwidth]{papers/wavelets/images/18-1_CWTvsFFTSignal.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-2_FFTnoiseFree.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-3_CWTnoiseFree.png}
-	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem rauschfreien Signal.}
+	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem rauschfreien Signal. Zu oberst ist das Zeitsignal gegeben, darunter ist der Amplituden- sowie Phasengang der FFT und darunter die Transformationen der CWT abgebildet.}
 	\label{wavelet:fig:FFTnoiseFree}
 \end{figure}
 
 	
 \subsection{Rauschbelastetes Signal
 	\label{wavelets:subsection:CWTvsFFTRauschbelastet}}
-Die FFT scheint durch das Rauschen weniger stark beeinflusst zu werden, die beiden Sinussignale werden in der Frequenz sauber detektiert, die Amplitude bleibt relativ unverändert, d.h. die Problematik mit der Kurzzeitigkeit der Signale verhindert ein genaues Reproduzieren der Amplituden der Zeitsignale und nicht das Rauschen.
+Die FFT scheint durch das Rauschen weniger stark beeinflusst zu werden, die beiden Sinussignale werden in der Frequenz sauber detektiert, die Amplitude bleibt relativ unverändert, d.~h.~ die Problematik mit der Kurzzeitigkeit der Signale verhindert ein genaues Reproduzieren der Amplituden der Zeitsignale und nicht das Rauschen.
 Die CWT ist nach wie vor viel genauer in der zeitlichen Detektion, jedoch gehen zwei wichtige Eigenschaften im verrauschten Signal verloren:
 \begin{itemize}
 	\item Die Abbildung der scharfen Übergänge in den, dem Signal gegenüber höher liegenden Frequenzen im Amplitudengang.
@@ -46,6 +47,6 @@ Die Amplitudenhöhen der Signale werden aber nach wie vor hervorragend abgebilde
 	\includegraphics[width=0.3\textwidth]{papers/wavelets/images/18-4_CWTvsFFTSignalNoisy.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-5_FFTnoisy.png}
 	\includegraphics[width=\textwidth]{papers/wavelets/images/18-6_CWTnoisy.png}
-	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem rauschbelasteten (weisses Rauschen) Signal.}
+	\caption{Amplituden- und Phasengang von FFT sowie CWT bei einem durch weisses rauschen belasteten Signal.}
 	\label{wavelet:fig:FFTnoisy}
 \end{figure}
