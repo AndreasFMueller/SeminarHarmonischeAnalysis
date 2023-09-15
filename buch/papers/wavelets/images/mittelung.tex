@@ -1,0 +1,65 @@
+%
+% mittelung.tex -- Mittelung (Abb 19.15)
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{2.5}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[yshift=1.3cm]
+\draw[color=darkgreen,line width=1.4pt] plot[domain=-1:1,samples=300] ({\x},{0.20*cos(1080*\x)});
+\node[color=darkgreen] at (1,0) [right] {$S_1=\cos(\omega t)$};
+\end{scope}
+
+\fill[color=blue!10]
+	plot[domain=-1:1,samples=50] ({\x},{(\x*\x-1)*(\x*\x-1)})
+	--
+	plot[domain=-1:1,samples=50] ({-\x},{-(\x*\x-1)*(\x*\x-1)})
+	--
+	cycle;
+\foreach \a in {-2,-1,...,2}{
+	\pgfmathparse{\a/3}
+	\xdef\x{\pgfmathresult}
+	\draw[color=darkgreen,dashed]
+		({\x},{(\x*\x-1)*(\x*\x-1)*cos(1080*\x)})
+		--
+		({\x},{1.3+0.25});
+}
+\draw[->] (-2.5,0) -- (1.4,0) coordinate[label={$t$}];;
+\draw[->] (-2.5,-1.1) -- (-2.5,1.2) coordinate[label={right:$x(t)$}];
+\begin{scope}[xshift=-2.5cm]
+\clip (-0.1,-1.1) rectangle (1.1,1.1);
+\draw[color=red,line width=1.4pt] plot[domain=-1:1,samples=300]
+	({\x},{(\x*\x-1)*(\x*\x-1)*cos(1080*\x)});
+\end{scope}
+\draw[->,color=red,line width=1.6pt] (-2.0,0.5) -- (-1.4,0.5);
+\draw[color=red,line width=1.4pt] plot[domain=-1:1,samples=300]
+	({\x},{(\x*\x-1)*(\x*\x-1)*cos(1080*\x)});
+\draw[color=blue,line width=1.4pt] plot[domain=-1:1,samples=50] ({\x},{(\x*\x-1)*(\x*\x-1)});
+\def\x{0.5}
+\draw[color=blue,line width=0.3pt] ({\x},{(\x*\x-1)*(\x*\x-1)}) -- (1,0.7);
+\node[color=blue] at (1,0.7) [right] {Gewichtungsfenster};
+\draw[color=blue,line width=0.3pt] (0,1) -- (1,1);
+\node[color=blue] at (1,1) [right] {1};
+\fill[color=blue] (-1,0) circle[radius=0.03];
+\fill[color=white] (-1,0) circle[radius=0.016];
+\fill[color=blue] (1,0) circle[radius=0.03];
+\fill[color=white] (1,0) circle[radius=0.016];
+\foreach \x in {-19,-18,...,19}{
+	\fill[color=red] ({\x/20},0) circle[radius=0.02];
+}
+\node[color=red] at (1,-0.5) [right] {$N$ samples};
+\draw[->,color=red,line width=0.3pt] (1,-0.45) -- (0.66,-0.05);
+
+\end{tikzpicture}
+\end{document}
+
