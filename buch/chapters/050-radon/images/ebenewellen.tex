@@ -1,0 +1,68 @@
+%
+% ebenewellen.tex -- Ebene Wellen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\kx{0.6}
+\def\ky{0.8}
+\def\l{3.0}
+\def\w{0.025}
+\def\streifen#1#2{
+	\pgfmathparse{100*sin((#2)*120)*sin((#2)*120)}
+	\xdef\c{\pgfmathresult}
+	\fill[color=#1!\c]
+		({\kx*(#2)},{\ky*(#2)})
+		-- ++({8*\ky},{-8*\kx})
+		-- ++({\w*\kx},{\w*\ky})
+		-- ++({-16*\ky},{16*\kx})
+		-- ++({-\w*\kx},{-\w*\ky})
+		-- cycle;
+}
+
+\begin{scope}
+	\clip (-6.4,-4.0) rectangle (6.4,4.0);
+	\foreach \d in {-9,-6,...,9}{
+		\foreach \h in {0,0.02,...,1.5}{
+			\streifen{darkgreen}{(\h)+(\d)}
+		}
+		\foreach \h in {1.5,1.52,...,3.0}{
+			\streifen{blue}{(\h)+(\d)}
+		}
+	}
+	\draw[color=red]
+		($({\l*\kx},{\l*\ky})+({-8*\ky},{8*\kx})$)
+		--
+		++({16*\ky},{-16*\kx});
+\end{scope}
+
+\node[color=red] at ({\l*\kx},{\l*\ky})
+	[above,rotate={-atan(\kx/\ky)}]
+	{$k\cdot x + l\cdot y = \operatorname{const}$};
+
+\node[color=red] at ({0.5*\l*\kx},{0.5*\l*\ky})
+	[above left] {$\begin{pmatrix}k\\l\end{pmatrix}$};
+
+\node[color=white] at ($({-0.70*\kx},{-0.70*\ky})+({-3*\ky},{3*\kx})$)
+	[rotate={-atan(\kx/\ky)}]
+	{$\varphi_{kl}(x,y)=e^{i(kx+ly)}$};
+
+\draw[->] (-6.5,0) -- (6.8,0) coordinate[label={$x$}];
+\draw[->] (0,-4.1) -- (0,4.3) coordinate[label={right:$y$}];
+
+\draw[->,color=red,line width=2.0pt] (0,0) -- ({\l*\kx},{\l*\ky});
+
+\end{tikzpicture}
+\end{document}
+

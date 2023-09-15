@@ -1,0 +1,274 @@
+%
+% 2-rueckprojektion.tex
+%
+% (c) 2022 Prof Dr Andraes Müller, OST Ostschweizer Fachhochschule
+%
+\section{Rückprojektion
+\label{buch:radon:section:rueckprojektion}}
+\kopfrechts{Rückprojektion}
+Sei $u\colon \mathbb{R}^n\to\mathbb{C}$ eine Funktion und
+$\mathscr{R}u\colon \mathbb{R}\times S^{n-1}\to\mathbb{C}$
+die Radon-Transformierte.
+Ändert man die Funktion $u$ in einer kleinen Umgebung eines Punkts $y$,
+dann ändert die Radon-Transformiert nur für diejenigen Hyperbenen,
+die in der Nähe von $y$ vorbeigehen.
+Daraus kann man schliessen, dass genau die Werte
+$\mathscr{R}(\omega\cdot y,\omega)$ Information über den Wert der
+Funktion $u$ im Punkt $y$ enthalten.
+Sie enthalten aber auch noch Information über alle anderen Punkte.
+
+\begin{definition}
+Die {\em Rückprojektion} $\mathscr{R}^*f$ einer Funktion
+$f\colon \mathbb{R}\times S^{n-1}\to\mathbb{C}$ ist die Funktion
+\[
+(\mathscr{R}^*f)(y)
+=
+\int_{S_+^{n-1}} f(\omega\cdot y,\omega)\,d\omega.
+\]
+$\mathscr{R}^*$ heisst auch die {\em duale Transformation}.
+\end{definition}
+
+Die Rückprojektion ist also der Mittelwert der Werte von $f$ über
+alle Richtungen, aber in der Entfernung von $y$ vom Nullpunkt.
+Wenn $f$ die Radon-Transformierte $f=\mathscr{R}u$ einer Funktion $u$
+ist, dann ist die Rückprojektion $(\mathscr{R}^*\mathscr{R}u)(y)$
+der Mittelwert aller Werte von $\mathscr{R}u$, die durch Integration
+entlang einer Hyperbene durch $y$ entstanden sind.
+In der Rückprojektion sind also alle Werte von $u$ gemittelt, aber
+der Wert im Punkt $y$ hat besonders grosses Gewicht.
+Die duale Transformation ist also eine erste Approximation für $u$.
+In den weiteren Entwicklungen hoffen wir, daraus eine exakte Rekonstruktion
+von $u$ zu konstruieren.
+
+%
+% Rückprojektion und Ableitungen
+%
+\subsection{Rückprojektion und Ableitungen}
+In diesem Abschnitt ist $v\colon \mathbb{R}\times S^{n-1}\to\mathbb{C}$
+eine differenzierbare Funktion mit kompaktem Träger, so dass alle
+im Folgenden betrachteten Integrale und Ableitungen existierten.
+Aus der Definition
+\begin{align*}
+\mathscr{R}^*v(x)
+&=
+\int_{S_+^{n-1}} v(\omega\cdot x,\omega)\,d\omega
+\intertext{kann man jetzt auch die Ableitung nach $x_i$ berechnen und
+bekommt}
+\frac{\partial}{\partial x_i}\mathscr{R}^*v(x)
+&=
+\int_{S_+^{n-1}}
+\frac{\partial}{\partial x_i} v(\omega\cdot x,\omega)\,d\omega
+\\
+&=
+\int_{S_+^{n-1}}
+\omega_i
+\frac{\partial v}{\partial s}(\omega\cdot x,\omega)
+\,d\omega
+\end{align*}
+Für den Laplace-Operator findet man dann
+\begin{align}
+\Delta\mathscr{R}^*v
+&=
+\int_{S_+^{n-1}}
+\underbrace{
+\biggl(\sum_{i=1}^n \omega_i^2\biggr)
+}_{\displaystyle=1}
+\frac{\partial^2 v}{\partial s^2}(\omega\cdot x,\omega)
+\,d\omega
+\notag
+\\
+&=
+\mathscr{R}^*
+\frac{\partial^2}{\partial s^2} v
+\qquad\Rightarrow\qquad
+\Delta\mathscr{R}^* = \mathscr{R}^*\frac{\partial^2}{\partial s^2}
+\label{buch:radon:rueckprojektion:eqn:laplacedual}
+\end{align}
+In Satz
+\ref{buch:radon:ableitungen:satz:laplace}
+wurde gezeigt, wie der Laplace-Operator mit der Radon-Transformation
+vertauscht.
+Damit kann jetzt aus der
+Formel~\ref{buch:radon:rueckprojektion:eqn:laplacedual}
+die Identität
+\begin{equation}
+\Delta\mathscr{R}^*\mathscr{R}u
+=
+\mathscr{R}^*\frac{\partial^2}{\partial s^2}\mathscr{R}u
+=
+\mathscr{R}^*\mathscr{R}\Delta u
+\end{equation}
+gewinnen.
+
+%
+% Rückprojektion und die Umkehrformel
+%
+\subsection{Rückprojektion und die Umkehrformel}
+In Abschnitt~\ref{XXX}
+haben wir gefunden, dass die Fourier-Transformierte der Funktion $u$
+in die Radon-Transformation und eine eindimensionale Fourier-Transformation
+zerlegt werden kann.
+Dies wird durch die Formel
+\[
+\mathscr{F}u(k)
+=
+\frac{1}{(2\pi)^{n/2}}
+\int_{\mathbb{R}} 
+e^{-i|k|s}
+\mathscr{R}u(s,k^0)\,ds
+\]
+Die Fourier-Umkehrformel ermöglicht, die Funktion aus $\mathscr{F}u$ 
+wieder zu berechnen, sie ist
+\begin{align*}
+u(x)
+&=
+\frac{1}{(2\pi)^{n/2}}
+\int_{\mathbb{R}^n} e^{ik\cdot x}
+\mathscr{F}u(k)\,dk.
+\intertext{Das Integral über $\mathbb{R}$ kann wieder in den
+``Radon-Koordinaten''
+$(r,\omega)$ berechnet werden mit $r=|k|$ und $\omega = k^0$.
+}
+&=
+\frac{1}{(2\pi)^{n/2}}
+\int_0^\infty
+\int_{S^{n-1}} e^{i(r\omega)\cdot x}
+\mathscr{F}u(r\omega)
+\,d\omega
+r^{n-1}
+\,dr.
+\intertext{Der Faktor $r^{n-1}$ kommt von der Koordinatentransformation.
+Das Integral über die Kugeloberfläche $S^{n-1}$ kann in zwei Integrale
+über die Halbkugeln
+$S_+^{n-1}=\{x\in S^{n-1}\mid x_1\ge 0\}$
+und
+$S_-^{n-1}=\{-\omega\mid \omega\in S_+^{n-1}\}$
+zerlegt werden, die durch die Spiegelung
+$S^{n-1}\to S^{n-1}:\omega\mapsto-\omega$ ineinander übergeführt werden.
+So erhält man}
+&=
+\frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
+e^{i(r\omega)\cdot x} \mathscr{F}u(r\omega)\,d\omega r^{n-1}\,dr
+\\
+&\quad+
+\frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
+e^{i(-r\omega)\cdot x} \mathscr{F}u(-r\omega)\,d(-\omega) r^{n-1}\,dr
+\intertext{Wir möchten das zweite $r$-Integral in ein Integral über
+$(-\infty,0)$ verwandeln.
+Dazu müssen wir $-r$ an allen Stellen haben.
+Wir können gleichzeitig noch das Minuszeichen in $d(-\omega)$ entfernen,
+denn die Spiegelung $\omega\mapsto -\omega$ hat die Determinante
+$(-1)^{n-1}$. 
+Damit wird
+}
+u(x)
+&=
+\frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
+e^{i(r\omega)\cdot x} \mathscr{F}u(r\omega)\,d\omega r^{n-1}\,dr
+\\
+&\quad+
+\frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
+e^{i(-r\omega)\cdot x} \mathscr{F}u(-r\omega)\,(-1)^{n-1}d\omega
+(-r)^{n-1}(-1)^{n-1}\,d(-r)
+\\
+&=
+\frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
+e^{i(r\omega)\cdot x} \mathscr{F}u(r\omega)\,d\omega r^{n-1}\,dr
+\\
+&\quad+
+(-1)^{n-1}
+\frac{1}{(2\pi)^{n/2}} \int_{-\infty}^0 \int_{S_+^{n-1}}
+e^{ir\omega\cdot x} \mathscr{F}u(r\omega)
+d\omega
+|r|^{n-1}\,dr
+\intertext{Jetzt kann man die beiden Integrale in einziges
+$r$-Integral über $\mathbb{R}$ zusammenfassen 
+}
+u(x)
+&=
+\frac{1}{(2\pi)^{n/2}}
+\int_{\mathbb{R}} int_{S_+^{n-1}}
+e^{ir\omega\cdot x}
+\mathscr{F}u(r\omega)
+\,d\omega
+|r|^{n-1}\,dr
+\intertext{Durch Vertauschung der Integrationsreihenfolge
+entsteht als inneres Integral die Fourier-Inversionsformel
+für eine eindimensionale Fourier-Transformierte:}
+u(x)
+&=
+\frac{1}{(2\pi)^{n/2}}
+\int_{S_+^{n-1}}
+\int_{\mathbb{R}}
+e^{ir\omega\cdot x}
+\mathscr{F}(r\omega)
+|r|^{n-1}\,dr
+\,
+d\omega
+\end{align*}
+Das äussere Integral ist die Rückprojektion $\mathscr{R}^*$.
+Wir wissen bereits, dass die Fourier-Transformation $\mathscr{F}$
+zerlegt werden kann in die Radon-Transformation und die
+eindimensionale Fourier-Transformation, die wir früher mit
+$\mathscr{F}_r$ bezeichnet haben.
+Damit ergibt sich der folgende Satz:
+
+\begin{satz}[Gefilterte Rückprojektion]
+Für eine integrierbare Funktion $u\colon\mathbb{R}^n\to\mathbb{C}$ mit kompaktem Träger gilt
+\[
+u
+=
+\frac{1}{(2\pi)^{n-1}}
+\mathscr{R}^*
+\mathscr{F}_r^{-1}
+|r|^{n-1}
+\mathscr{F}_r
+\mathscr{R}u,
+\]
+Wobei der Term $|r|^{n-1}$ der Multiplikationsoperator mit der
+Funktion $r\mapsto |r|^{n-1}$ ist.
+\end{satz}
+
+Dieser Satz zeigt eine neue Möglichkeit, die Radon-Transformation
+zu invertieren.
+Dazu muss die $s$-Abhängigkeit der Radon-Transformierten
+$\mathscr{R}u(r,\omega)$ 
+Zunächst mit $\mathscr{F}_r$ in den Frequenzbereich transformiert werden.
+Im Frequenzbereich wird mit $|r|^{n-1}$ multipliziert, dadurch
+werden die hohen Frequenzen verstärkt.
+Schliesslich wird mit $\mathscr{F}_r^{-1}$ in den $s$-Bereich
+zurücktransformiert.
+Die nachfolgende duale Transformation mit $\mathscr{R}^*$ entsteht
+das ursprüngliche Bild.
+Die mittleren drei Schritte $\mathscr{F}_r^{-1}|r|^{n-1}\mathscr{F}_r$
+entsprechen einer frequenzabhängigen Filterung.
+Der Satz besagt also, dass die Radon-Transformierte zunächst
+gefiltert werden muss um anschliessend mit der Rückprojektion
+$\mathscr{R}^*$ die ursprüngliche Funktion zurückgibt.
+Die Zusammensetzung heisst aus diesem Grund die {\em gefilterte
+Rückprojektion}.
+
+Der Satz macht auch verständlich, warum die Rekunstruktion nicht
+unbedingt stabil ist. 
+Der Faktor $|r|^{n-1}$ verstärkt Rauschen umso mehr, je höher
+die Frequenz ist.
+Da weisses Rauschen über das ganze Spektrum gleiche Leistungsdichte
+hat (zur Thematik Rauschen und harmonische Analysis siehe auch 
+Kapitel~\ref{chapter:brown}),
+wird das Resultat vom Rauschen dominiert.
+Rauschen ist aber in praktischen Anwendungen unvermeidlich, es
+entsteht durch Messfehler aber auch auch durch die unausweichliche
+Diskretisation.
+
+Die gefilterte Rückprojektion zeigt aber auch einen Ausweg und 
+damit eine praktisch realisierbare Möglichkeit, die Radon-Transformation
+zu invertieren.
+Dazu wird der Filter $r\mapsto |r|^{n-1}$ für grosse $r$ abgeschnitten,
+die Funktion wird also durch eine Funktion ersetzt, die sehr
+hohe Frequenzen nicht weiter verstärkt.
+Damit verliert man zwar Bildschärfe, bekommt aber das Rauschen unter
+Kontrolle.
+
+In Kapitel~\ref{chapter:ct} werden Abbildungen der gefilterten
+Rückprojektion gezeigt.
+
