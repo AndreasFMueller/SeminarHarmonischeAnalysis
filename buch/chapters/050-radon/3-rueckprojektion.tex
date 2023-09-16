@@ -272,3 +272,235 @@ Kontrolle.
 In Kapitel~\ref{chapter:ct} werden Abbildungen der gefilterten
 Rückprojektion gezeigt.
 
+%
+% Gefilterte Rückprojektion
+%
+\subsection{Gefilterte Rückprojektion und Hilbert-Transformation}
+Das Stabilitätsproblem bei der Invertierung der Radon-Transformation
+kann noch etwas deutlicher gemacht werden, in dem man die gefilterte
+Rücktransformation durch die Hilbert-Transformation ausdrückt.
+Dieses wird mit einem normalerweise divergenten Integral definiert,
+das als der sogenannte Hauptwert interpretiert werden muss.
+
+\begin{definition}
+Ist $f\colon[a,b]\setminus\{c\}\to\mathbb{R}$ eine stetige Funktion,
+dann heisst
+\[
+\operatorname{PV}
+\int_a^b f(x)\,dx
+=
+\lim_{\varepsilon\to 0+}
+\biggl(
+\int_a^{b-\varepsilon} f(x)\,dx
++
+\int_{b+\varepsilon}^c f(x)\,dx
+\biggr)
+\]
+der {\em Hauptwert} oder {\em principal value} des Integrals.
+\end{definition}
+
+Der Hauptwert gibt gewissen uneigentlichen Integralen einen Sinn, 
+die mit der konventionellen Definition keinen vernünftigen Wert haben.
+
+\begin{beispiel}
+Die Funktion $f\colon x\mapsto 1/x$ ist an der Stelle $x=0$ nicht definiert und
+das Integral über das Interval $[-1,1]$ divergiert, wie die folgende Rechnung
+zeigt.
+Das Integral muss an der Stelle $x=0$ aufgeteilt werden:
+\begin{equation}
+\int_{-1}^1 f(x)\,dx
+=
+\lim_{\varepsilon\to 0-}
+\int_{-1}^{\varepsilon} \frac{dx}{x}
++
+\lim_{\epsilon\to 0+}
+\int_{\epsilon}^{1} \frac{dx}{x}.
+\label{buch:radon:rueckprojektion:bsp:1x:eqn1}
+\end{equation}
+Das erste Integral kann mit der Substituion $t=-s$ und $dt=-ds$ vereinfacht
+werden zu
+\begin{align*}
+\int_{-1}^{\varepsilon} \frac{dx}{x}
+&=
+\int_{1}^{-\varepsilon} \frac{ds}{s}
+=
+-
+\int_{-\varepsilon}^1 \frac{ds}{s}
+=
+-
+\biggl[
+\log s
+\biggr]_{-\varepsilon}^1
+=
+-
+(
+\log 1 - \log(-\varepsilon)
+)
+=
+\log(-\varepsilon).
+\end{align*}
+Eingesetzt in 
+\eqref{buch:radon:rueckprojektion:bsp:1x:eqn1}
+erhält man
+\[
+\int_{-1}^1 f(x)\,dx
+=
+\lim_{\varepsilon\to 0-}
+\log(-\varepsilon)
++
+\lim_{\epsilon\to 0+}
+(-\log(\epsilon))
+=
+\underbrace{
+\lim_{\varepsilon\to 0+}
+\log\varepsilon
+}_{\displaystyle\to \infty}
+-
+\underbrace{
+\lim_{\epsilon\to 0+}
+\log(\epsilon)
+}_{\displaystyle\to \infty}
+=
+\infty - \infty.
+\]
+Da nach der konventionellen Definition eines uneigentlichen
+Integrals die beiden Grenzwerte unabhängig voneinander genommen werden,
+kann dem Integral kein sinnvoller Wert zugewiesen werden.
+Dies ändert sich jedoch mit dem Hauptwert, wo die beiden Grenzen
+$\varepsilon=\epsilon$ gekoppelt werden.
+Dann ergibt sich
+\[
+\operatorname{PV}
+\int_{-1}^1 \frac{dx}{x}
+=
+\lim_{\varepsilon\to 0+}
+\biggl(
+\int_{-1}^{-\varepsilon}\frac{dx}{x}
++
+\int_{\varepsilon}^{1} \frac{dx}{x}
+\biggr)
+=
+\lim_{\varepsilon\to 0+}
+\biggl(
+\log\varepsilon - \log\varepsilon
+\biggr)
+=
+0.
+\]
+Der Hauptwert des Integrals ist also wohldefiniert.
+\end{beispiel}
+
+\begin{definition}
+Ist $f\colon \mathbb{R}\to\mathbb{C}$ eine stetige und integrierbare
+Funktion, dann ist die {\em Hilbert-Transformierte} definiert
+\[
+(\mathscr{H}f)(t)
+=
+\frac{1}{\pi} \operatorname{PV} \int_{-\infty}^\infty \frac{f(t)}{t-x}\,dx,
+\]
+wobe der {\em Hauptwert} des Integral gleichbedeutend ist mit
+\[
+(\mathscr{H}f)(t)
+=
+\lim_{\varepsilon\to 0+}
+\biggl(
+\int_{-\infty}^{t-\varepsilon}+\int_{t+\varepsilon}^\infty
+\frac{f(x)}{t-x}\,dx
+\biggr).
+\]
+\end{definition}
+
+Die Definition der Hilbert-Transformation sieht aus wie eine 
+Faltung mit der Funktion $x\mapsto 1/x$, da diese aber nicht
+integrierbar ist, ist die konventionelle Definition der Faltung
+nicht anwendbar.
+
+\begin{satz}
+Die Hilbert-Transformierte $\mathscr{H}f$ einer stetigen Funktion $f$
+hat die Fourier-Transformierte
+\[
+\mathscr{F}\mathscr{H} f
+=
+-i\sign(k) \mathscr{F}f,
+\]
+wobei $\operatorname{sign}(r)$ die Multiplikation mit der Vorzeichenfunktion
+\[
+\sign(k)
+=
+\begin{cases}
+\phantom{+}1&\qquad x > 0\\
+\phantom{+}0&\qquad x = 0\\
+         - 1&\qquad x < 0
+\end{cases}
+\]
+ist.
+\end{satz}
+
+Die Hilbert-Transformation ist im Frequenzbereich die Multiplikation
+mit $-i\sign(k)$, während die Ableitung im Frequenzbereich zur Multiplikation
+mit $-ik$ wird.
+Der Filter der gefilterten Rückprojektion benötigt im Frequenzbereich 
+den Faktor $|k|^{n-1}$, 
+Diesen kann man wegen $|k|=\sign(k)\cdot k$ aus dem Vorzeichen und der
+dem Wert zusammensetzen, d.~h.~.
+Für den einfachsten Fall $n=2$ muss man die Filterung mit
+\[
+|r|
+=
+\sign(r)
+\cdot r 
+=
+(-i\sign(r))
+\cdot
+(-ir)
+\]
+durchführen.
+Die gefilterte Rückprojektionsformel ist
+\begin{align*}
+u
+&=
+\frac{1}{2\pi}
+\mathscr{R}^*
+\mathscr{F}_r^{-1}
+|r|
+\mathscr{F}_r
+\mathscr{R}u
+\\
+&=
+\frac{1}{2\pi}
+\mathscr{R}^*
+\mathscr{F}_r^{-1}
+(-i\sign(r))
+\cdot
+(-ir)
+\mathscr{F}_r
+\mathscr{R}u
+\\
+&=
+\frac{1}{2\pi}
+\mathscr{R}^*
+\mathscr{F}_r^{-1}
+(-i\sign(r))
+\mathscr{F}_r
+\mathscr{F}_r^{-1}
+(-ir)
+\mathscr{F}_r
+\mathscr{R}u
+\\
+&=
+\frac{1}{2\pi}
+\mathscr{R}^*
+\mathscr{H}
+\frac{\partial}{\partial s}
+\mathscr{R}u.
+\end{align*}
+Auch diese Form der gefilterten Rücktransformation illustriert, dass
+die Bestimmung der Funktion aus der Radon-Transformation nicht sonderlich
+stabil sein kann.
+Ist die Radon-Transformierte $\mathscr{R}u$ mit weissem Rauschen verrauscht,
+wie das in der Praxis wegen Mess- und Quantisierungsfehlern immer der Fall
+ist, dann verstärkt der Operator $\partial/\partial s$ dieses Rauschen
+zusätzlich in einem Mass, dass die Rücktransformation sogar die
+Hilbert-Transformation, spätestens aber die Fourier-Rücktransformation
+nicht mehr definiert ist.
+
