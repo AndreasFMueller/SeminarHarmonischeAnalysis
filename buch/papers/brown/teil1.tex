@@ -11,25 +11,23 @@
 \rhead{Brownsche Bewegung}
 
 
-\centering
-\begin{minipage}{0.45\textwidth}
+\begin{figure}
 	\centering
-	\begin{figure}[H]
-	\includegraphics[width=\linewidth]{papers/brown/images/boersenKurs-simuliert.png}
-	\caption{Simulierter Börsenkurs als Brownsche Bewegung mit Drift}
-	\label{brown:1Dbrownian}
-	\end{figure}
-\end{minipage}
-\hspace{0.05\linewidth}
-\begin{minipage}{0.45\textwidth}
-	\centering
-	\begin{figure}[H]
-	%\hspace{0.15\linewidth}
-	\includegraphics[width=\linewidth]{papers/brown/images/brownscheBewegung-simuliert.png}
-	\caption{Simulierte Brownsche Bewegung}
-	\label{brown:2Dbrownian}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{papers/brown/images/boersenKurs-simuliert.png}
+		\caption{Simulierter Börsenkurs als Brownsche Bewegung.}
+		\label{brown:1Dbrownian}
+	\end{minipage}
+	\hspace{0.05\linewidth}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		%\hspace{0.15\linewidth}
+		\includegraphics[width=\linewidth]{papers/brown/images/brownscheBewegung-simuliert.png}
+		\caption{Simulierte Brownsche Bewegung in X- und Y-Richtung.}
+		\label{brown:2Dbrownian}
+	\end{minipage}
 \end{figure}
-\end{minipage}
 
 
 Als der schottische Botaniker Robert Brown im Jahr 1827 in sein Mikroskop schaute, beobachtete er kleine Pollenpartikel in einer Flüssigkeit. Er bemerkt, dass sich die Teilchen scheinbar zufällig bewegen, obwohl keine Kräfte auf die Teilchen einwirken. Eine Erklärung hatte Robert Brown zu diesem Zeitpunkt für das Verhalten nicht. Es dauerte fast ein Jahrhundert, bis Albert Einstein diese Beobachtung auf ein solides theoretisches Fundament stellte und so nutzbar machte. Er schloss darauf, dass die unregelmäßige Bewegung auf Kollisionen mit umgebenden Molekülen zurückzuführen ist, welche ständig in Bewegung sind. Albert Einstein entwickelte eine mathematische Theorie, mit welcher die beobachtete Bewegung durch stochastische Zusammenstöße von Molekülen erklärt werden kann. Weiter konnte er einen Zusammenhang zwischen den Messungen der Bewegung, der Bolzmann-Konstante und der  Avogadro-Zahl herstellen\footnote{Die Avogadro-Zahl $ A $ ist die Anzahl Teilchen (Atome oder Moleküle) welche in einem Mol einer Substanz enthalten sind. Die Boltzmann-Konstante $ k $ ist eine physikalische Konstante, die den Zusammenhang zwischen der thermischen Energie und der Temperatur eines Systems herstellt. Beide Konstanten sind miteinander verbunden durch die Gleichung $ k = \frac{R}{A} $, wobei $ R $ die allgemeine Gaskonstante ist.}. Dies hatte Auswirkungen auf das Verständnis von Materie, da dies einen direkten empirischen Beleg für die Existenz von Atomen und Moleküle lieferte --- die Atomhypothese wurde nicht nur bestätigt, sie wurde durch die brownsche Bewegung auch beobachtbar. Diese besagt, dass Materie aus diskreten unteilbaren Einheiten besteht, sprich einzelnen Atomen oder ganzen Molekülen. Man muss dazu sagen, dass es schon zuvor Indizien für deren Existenz gab, doch es fehlte am entscheidenden experimentellen Beweis.
@@ -39,16 +37,16 @@ Die \textit{Einstein-Smoluchowski-Gleichung} ist eine zentrale Gleichung der Arb
 \begin{equation}
 	\mathrm{MSD} = 2nDt
 \end{equation}
-in Beziehung zur Diffusionskonstanten $ D $, der Anzahl Raumdimensionen $ n $ und der Zeit $ t $. Die Avogadro-Zahl $ A $ kann indirekt über die \textit{Stokes-Einstein-Gleichung}, anhand von Messungen berechnet werden. Die Diffusionskonstante
+in Beziehung zur Diffusionskonstanten $ D $, der Anzahl Raumdimensionen $ n $ und der Zeit $ t $. Die Avogadro-Zahl $ A $ kann indirekt über die \textit{Stokes-Einstein-Gleichung} anhand von Messungen berechnet werden. Die Diffusionskonstante
 \begin{equation}
 	D = \frac{kT}{6\pi\eta r}
 \end{equation}
-kann mittels des Radius der suspendierten Teilchen, der Boltzmann-Konstante  $ k $, der Temperatur $ T $ und der Viskosität $ \eta $ des umgebenden Mediums berechnet werden. $ r $ beschreibt dabei den Radius des suspendierten Teilchens. Die Boltzmann-Konstante  $ k = R/A $ kann auch durch die allgemeine Gaskonstante $ R $ und die Avogadro-Zahl $ A $ ausgedrückt werden, wodurch sich der Zusammenhang
+kann mittels des Radius $ r $ der suspendierten Teilchen, der Boltzmann-Konstante  $ k $, der Temperatur $ T $ und der Viskosität $ \eta $ des umgebenden Mediums berechnet werden. Die Boltzmann-Konstante  $ k = R/A $ kann auch durch die allgemeine Gaskonstante $ R $ und die Avogadro-Zahl $ A $ ausgedrückt werden, wodurch sich der Zusammenhang
 \begin{equation}
 	A = \frac{R T}{D (6 \pi \eta r)}
 \end{equation}
 für die Avogadro-Zahl ergibt. So ermöglichen die beiden Gleichungen einen experimentellen Ansatz zur Bestimmung der Avogadro-Zahl.
 
 %am richtigen Platz?
-Die Brownsche Bewegung kann relativ einfach mittels der Euler-Maruyama-Methode \ref{brown:Simulation} numerisch simuliert werden. Zugrunde liegt dabei der Wiener-Prozess \ref{brown:Rauschen:RandomWalkWiener}. Dieser liefert die zufälligen Veränderungen in $ X $- und $ Y $-Richtung. Werden die einzelnen Zeitschritte mit Linien verbunden, ergibt sich das Bild einer typischen brownschen Bewegung, wie dies in der Abbildung \ref{brown:2Dbrownian} zu sehen ist. Führt man eine solche Simulation in einer Dimension durch und implementiert eine durchschnittlich erwartete Änderungsrate, so ergibt sich ein Verlauf der stark an einen Börsenkurs erinnert, wie dies in der Abbildung \ref{brown:1Dbrownian} zu sehen ist. Es lässt sich erahnen, dass die zugrundeliegende Mathematik auch in der Finanzindustrie zur Anwendung kommt und von grossem Nutzen ist.
+Die Brownsche Bewegung kann relativ einfach mittels der Euler-Maruyama-Methode, siehe Abschnitt \ref{brown:Simulation}, numerisch simuliert werden. Zugrunde liegt dabei der Wiener-Prozess, wie in Abschnitt \ref{brown:Rauschen:RandomWalkWiener} beschrieben. Dieser liefert die zufälligen Veränderungen in $ X $- und $ Y $-Richtung. Werden die einzelnen Zeitschritte mit Linien verbunden, ergibt sich das Bild einer typischen brownschen Bewegung, wie dies in der Abbildung \ref{brown:2Dbrownian} zu sehen ist. Führt man eine solche Simulation in einer Dimension durch und implementiert eine durchschnittlich erwartete Änderungsrate, so ergibt sich ein Verlauf der stark an einen Börsenkurs erinnert, wie dies in der Abbildung \ref{brown:1Dbrownian} zu sehen ist. Es lässt sich erahnen, dass die zugrundeliegende Mathematik auch in der Finanzindustrie zur Anwendung kommt und von grossem Nutzen ist.
 

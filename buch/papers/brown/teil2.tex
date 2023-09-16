@@ -11,7 +11,7 @@
 \rhead{Implikationen}
 
 Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden. So ist zum Beispiel die \textit{Fast Fourier Transform (FFT)} eine wichtige Methode, um periodische Signale von Rauschen zu unterscheiden. So kann bezüglich der Intensität der auftretenden Frequenzen und der Verteilung der Amplituden im Frequenzspektrum, also deren Leistungsdichte, charakterisiert werden. 
-So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Signal von Rauschen befreien. Für gewisse Anwendungen ist es auch möglich, mit hochfrequent überlagerten Schwingungen, Rauschen zu simulieren. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen, kann eine Aussage getroffen werden, wie ein System auf Rauschen --- also eine zufällige konstante Störung --- reagieren würde. 
+So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Signal von Rauschen befreien. Für gewisse Anwendungen ist es auch möglich, mit hochfrequent überlagerten Schwingungen, Rauschen zu simulieren. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen, kann eine Aussage gemacht werden, wie ein System auf Rauschen --- also eine zufällige konstante Störung --- reagieren würde. 
 
 \begin{figure}
 	\centering
@@ -45,7 +45,7 @@ Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichti
 Ein Signal mit zufälligen Änderungen, welches eine konstante spektrale Leistungsdichte über alle Frequenzen hinweg aufweisst (alle Frequenzkomponenten sind mit gleicher Intensität vertreten).
 \end{definition}
 
-Das Rauschen wird als ``weiss'' bezeichnet, analog zu weissem Licht, bei dem alle Farben des sichtbaren Spektrums überlagert sind. Es ist aber anzumerken, dass weisses Licht keine konstante Leistungsdichte im Spektrum aufweisst. In der Zeitdomäne ist das weisse Rauschen ein unkorreliertes Signal. Ein Beispiel dafür ist das Rauschen von Radios, wenn die Frequenz nicht korrekt eingestellt ist. Dies wird ausgelöst durch Störeinflüsse, wie zum Beispiel: Elektrische Interferenzen, kosmische Einflüsse oder auch Blitzentladungen.
+Das Rauschen wird als ``weiss'' bezeichnet, analog zu weissem Licht, bei dem alle Farben des sichtbaren Spektrums überlagert sind. Es ist aber anzumerken, dass weisses Licht keine konstante Leistungsdichte im Spektrum aufweist. In der Zeitdomäne ist das weisse Rauschen ein unkorreliertes Signal. Ein Beispiel dafür ist das Rauschen von Radios, wenn die Frequenz nicht korrekt eingestellt ist. Dies wird ausgelöst durch Störeinflüsse, wie zum Beispiel: Elektrische Interferenzen, kosmische Einflüsse oder auch Blitzentladungen.
 
 
 \begin{definition}
@@ -63,11 +63,11 @@ Das Rauschen wird als ``weiss'' bezeichnet, analog zu weissem Licht, bei dem all
 \textit{Braun} bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownsche Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern.
 
 \begin{definition}
-	{\em Gaussisches Rauschen:}
+	{\em Gausssches Rauschen:}
 	Ein Signal mit zufälligen Änderungen, dessen Amplituden im Frequenzspektrum eine Normalverteilung (Gaussverteilung) um eine zentrale Frequenz aufweisen. Demzufolge kann Gaussisches Rauschen über zwei Parameter charakterisiert werden: den Mittelwert und die Varianz.
 \end{definition}
 
-Gaussisches Rauschen ist ein häufiges Artefakt in digitalen Bildern und daher von besonderer Bedeutung in der digitalen Bildverarbeitung. Die charakteristische ``Körnigkeit'' des Rauschens in einem Bild kann über eine zentrale Frequenz charakterisiert werden.
+Gausssches Rauschen ist ein häufiges Artefakt in digitalen Bildern und daher von besonderer Bedeutung in der digitalen Bildverarbeitung. Die charakteristische ``Körnigkeit'' des Rauschens in einem Bild kann über eine zentrale Frequenz charakterisiert werden.
 
 \begin{definition}
 	{\em Impulsrauschen:}
@@ -75,7 +75,7 @@ Gaussisches Rauschen ist ein häufiges Artefakt in digitalen Bildern und daher v
 \end{definition}
 
 Im Frequenzspektrum äussern sich die Impulse über einen breiten Bereich, ähnlich zur Fourier-Transformation eines Dirac-Impulses. Ein idealer Dirac-Impuls im Zeitbereich stellt im Frequenzbereich einen konstanten Wert über alle Frequenzen dar.
-In der digitalen Bildverarbeitung ist diese Art von Rauschen als \textit{salt} \& \textit{pepper} bekannt. Dabei nehmen einzelne Pixel sporadisch extreme Werte an, entweder extrem dunkel (pepper) oder extrem hell (salt). Diese Pixel sind auf dem Bild leicht erkennbar und wirken ähnlich wie verstreute Salz- oder Pfefferkörner.
+In der digitalen Bildverarbeitung ist diese Art von Rauschen als \textit{salt} and \textit{pepper} bekannt. Dabei nehmen einzelne Pixel sporadisch extreme Werte an, entweder extrem dunkel (pepper) oder extrem hell (salt). Diese Pixel sind auf dem Bild leicht erkennbar und wirken ähnlich wie verstreute Salz- oder Pfefferkörner.
 
 
 Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch auf diese wird nicht eingegangen.
@@ -101,19 +101,19 @@ Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch a
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{papers/brown/images/weissesRauschen-FFT.png}
-	\caption{Echtes weisses Rauschen}
+	\caption{Echtes weisses Rauschen.}
 	\label{brown:weissesRauschenSignal}
 \end{figure}
 
 \begin{figure}	
 	\centering
 	\includegraphics[width=0.8\textwidth]{papers/brown/images/harmonischeOszillatoren-FFT.png}
-	\caption{Überlagerte harmonische Oszillatoren}
+	\caption{Überlagerte harmonische Oszillatoren.}
 	\label{brown:überlagerteSchwingungen}
 \end{figure}
 
 
-Es gibt auch Signale die visuell wie Rauschen wirken, obwohl diese kaum von einer zufälligen Störungen behaftet sind. So zum Beispiel hochfrequente überlagerte Schwingungen oder auch aufmodulierte Signale. In der Nachrichtentechnik wird dies aus technischen Gründen gemacht, um zum Beispiel mehr Information über den selben Signalträger zu senden oder das Signale robuster zu übertragen. In den Abbildungen~\ref{brown:weissesRauschenSignal} und~\ref{brown:überlagerteSchwingungen} sind zwei Signale aufgetragen, eines stellt echtes stochastisches Rauschen dar, das andere besteht aus vielen hochfrequenten überlagerten Schwingungen. Dieses Beispiel soll verdeutlichen, dass es nicht reicht, nur den zeitlichen Verlauf eines Signals zu betrachten. So könnte man fälschlicherweise die Signale als ähnlich erachten --- eine krasse Täuschung, welche sich im Frequenzspektrum klar zeigt. 
+Es gibt auch Signale die visuell wie Rauschen wirken, obwohl diese kaum von einer zufälligen Störungen behaftet sind. So zum Beispiel hochfrequente überlagerte Schwingungen oder auch aufmodulierte Signale. In der Nachrichtentechnik wird dies aus technischen Gründen gemacht, um zum Beispiel mehr Information über den selben Signalträger zu senden oder das Signal robuster zu übertragen. In den Abbildungen~\ref{brown:weissesRauschenSignal} und~\ref{brown:überlagerteSchwingungen} sind zwei Signale aufgetragen, eines stellt echtes stochastisches Rauschen dar, das andere besteht aus vielen hochfrequenten überlagerten Schwingungen. Dieses Beispiel soll verdeutlichen, dass es nicht reicht, nur den zeitlichen Verlauf eines Signals zu betrachten. So könnte man fälschlicherweise die Signale als ähnlich erachten --- eine krasse Täuschung, welche sich im Frequenzspektrum klar zeigt. 
 
 
 
@@ -123,25 +123,23 @@ Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess defini
 
 \begin{definition}\textbf{Random Walk:}
 	\label{randomWalk}
-	Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt einen zufälligen Schritt vor oder zurück. Oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden, wobei meist eine konstante Schrittlänge angenommen wird. Dieses Verfahren zeichnet sich durch eine einfache numerische Implementation aus, da es per Definition schon diskret ist.
+	Bei einem Random Walk beginnt man an einem Ausgangspunkt (normalerweise 0) und macht bei jedem Zeitschritt einen zufälligen Schritt vor oder zurück. Oft dient dazu die Binominalverteilung, wobei auch asymmetrische Verteilungen verwendet werden können. Die Schrittlänge und Richtung kann ebenfalls durch eine unabhängige Wahrscheinlichkeitsverteilung bestimmt werden, wobei meist eine konstante Schrittlänge angenommen wird.
 \end{definition}
 
 \begin{definition}\textbf{Wiener-Prozess:}
 	\label{wienerprozess}
-	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, der mit dem Wert 0 startet und unabhängige normalverteilte Änderungen aufweisst. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert stets dem Ausgangswert entspricht. Der Wiener-Prozess kann auch als Grenzwert eines Random Walks erachtet werden, sofern die Zeitschritte und Schrittgrössen gegen null gehen und der Prozess bei 0 startet.
+	Der Wiener-Prozess ist ein kontinuierlicher stochastischer Prozess, der mit dem Wert 0 startet und unabhängige normalverteilte Änderungen aufweist.
+	
+	Der Wiener-Prozess muss formal folgende Eigenschaften erfüllen: 
+	
+	\begin{enumerate}
+		\item Der Startwert von $ t = 0 $ ist $ W(0) = 0 $.
+		\item $ W(t_{1}) - W(t_{2}) $ ist eine normalverteilte Zufallsvariable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $. Es ergibt sich folgender Zusammenhang: $ dW^2 = dt $.
+		\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten (Markov-Eigenschaft) und nirgends differenzierbar.
+	\end{enumerate}
 \end{definition}
 
-Beide Prozesse erfüllen die sogenannte \textit{Markov-Eigenschaft}, was bedeutet dass ihre zukünftige Entwicklung nur von ihrer aktuellen Position und nicht von ihrer vergangenen Geschichte abhängt.
-
-Der Wiener-Prozess und die Brownsche Bewegung werden oft als Synonyme verwendet. Beides sind kontinuierliche stochastische Prozesse, wobei der Wiener-Prozess explizit nirgends differenzierbar ist und eher in der Mathematik zur Anwendung kommt.
-
-Der Wiener-Prozess muss formal also folgende Eigenschaften erfüllen: 
-
-\begin{enumerate}
-	\item Der Startwert von $ t = 0 $ ist $ W(0) = 0 $.
-	\item $ W(t_{1}) - W(t_{2}) $ ist eine normalverteilte Zufallsvariable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $. Es ergibt sich folgender Zusammenhang: $ dW^2 = dt $.
-	\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten (Markov-Eigenschaft) und nirgends differenzierbar.
-\end{enumerate}
+Beide Prozesse erfüllen die sogenannte \textit{Markov-Eigenschaft}, was bedeutet dass ihre zukünftige Entwicklung nur von ihrer aktuellen Position und nicht von ihrer vergangenen Geschichte abhängt. Speziell dabei ist, dass unabhängig von der verstrichenen Zeit der Erwartungswert stets dem Ausgangswert entspricht. Der Wiener-Prozess kann auch als Grenzwert eines Random Walks erachtet werden, sofern die Zeitschritte und Schrittgrössen gegen null gehen und der Prozess bei 0 startet. Der Wiener-Prozess und die Brownsche Bewegung werden oft als Synonyme verwendet. Beides sind kontinuierliche stochastische Prozesse, wobei der Wiener-Prozess explizit nirgends differenzierbar ist und eher in der Mathematik zur Anwendung kommt. Der Random-Walk zeichnet sich durch eine einfache numerische Implementation aus, da er per Definition schon diskret ist.
 
 
 Genauer wird auf den Wiener-Prozess nicht eingegangen, da dieser ausführlich im Kapitel \textit{8.1 Modell für Rauschen: der Wiener-Prozess} des Buches \cite{brown:Differenzialgleichungen} vom Mathematischen Seminar über Differenzialgleichungen beschrieben wird.
@@ -155,7 +153,7 @@ ergibt weisses Rauschen. Dies ist auch der Grund, weshalb der Wiener-Prozess als
 
 %Da der in der Abbildung \ref{brown:1Dbrownian} dargestellte Börsen-Verlauf nichts anderes als der Wiener-Prozess mit Drift-Komponente ist, sollte weisses Rauschen durch dessen Differenzierung generiert werden können. In der Abbilung \ref{...} wurde das Frequenzspektrum des simulierten Börsenkurses berechnet. 
 
-In der Abbildung \ref{brown:diffWienerFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine absichtliche Drift-Komponente modelliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Durch differenzieren der Brownschen Bewegung ergibt sich ein konstantes Frequenzspektrum. In der Zeitdomäne stellt das Signal ausschliesslich weisses Rauschen dar, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
+In der Abbildung \ref{brown:diffWienerFFT} ist die Simulation eines Wiener-Prozesses, also einer brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine Drift-Komponente modelliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Durch differenzieren der Brownschen Bewegung ergibt sich ein konstantes Frequenzspektrum. In der Zeitdomäne stellt das Signal ausschliesslich weisses Rauschen dar, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
 %ToDo: Alles in eine Grafik und übereinander gross darstellen
 %\begin{figure}
@@ -177,14 +175,14 @@ In der Abbildung \ref{brown:diffWienerFFT} ist die Simulation eines Wiener-Proze
 \begin{figure}
 	\centering
 	\includegraphics[width=0.95\textwidth]{papers/brown/images/weissesRauscheDurchBrown-timeDomain.png}
-	\caption{Weisses Rauschen durch Differenzierung des Wiener-Prozess}
+	\caption{Weisses Rauschen durch Differenzierung des Wiener-Prozess.}
 	\label{brown:diffWienerFFT}
 \end{figure}
 
 
 \subsection{Implikationen\label{brown:Rauschen:Implikationen}}
 
-Beim Umgang mit Messdaten und empfangene Signalen ist die Problematik von Störungen und dessen Einfluss auf die berechneten Änderungsraten allgegenwärtig. Dies  kann zu falsch dekodierter Information und ungenauen Messergebnissen führen. Die einfachste Methode und häufig ein erster Schritt ist die Anwendung eines Tiefpass- oder Bandpassfilters. Dieser entfernt jedoch nicht nur störende Frequenzen, sondern auch ein Teil der im Signal enthaltenen Information. Die Anwendung eines gleitenden Mittelwertes lässt Störungen sich auf das Ganze Signal auswirken. Die ist speziell problematisch bei kurzzeitigen intensiven Störungen, wie dies bei Impulsrauschen der Fall ist. In solchen Fällen ist ein Medianfilter zu bevorzugen.
+Beim Umgang mit Messdaten und empfangenen Signalen ist die Problematik von Störungen und deren Einfluss auf die berechneten Änderungsraten allgegenwärtig. Dies  kann zu falsch dekodierter Information und ungenauen Messergebnissen führen. Die einfachste Methode und häufig ein erster Schritt ist die Anwendung eines Tiefpass- oder Bandpassfilters. Dieser entfernt jedoch nicht nur störende Frequenzen, sondern auch ein Teil der im Signal enthaltenen Information. Die Anwendung eines gleitenden Mittelwertes lässt Störungen sich auf das Ganze Signal auswirken. Die ist speziell problematisch bei kurzzeitigen intensiven Störungen, wie dies bei Impulsrauschen der Fall ist. In solchen Fällen ist ein Medianfilter zu bevorzugen.
 
 Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass das Rauschen als Teil des Systems identifiziert wird oder als rein externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System selbst Rauschen abbilden können.
 % Absatz?
@@ -193,7 +191,7 @@ Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, k
 \begin{align}
 	\frac{dx}{dt} &= -y \\
 	\frac{dy}{dt} &= x^2 + y
-	\label{brown:divergentEquation},
+	\label{brown:divergentEquation} \ ,
 \end{align}
 für welches in der Abbildung~\ref{brown:divergentAndConvergentSystem} zwei unterschiedliche Trajektorien im Vektorfeld eingezeichnet sind. In rot ist der Verlauf im Intervall  $ t = [0, 3] $ mit dem Startwert $ (-1.7, -1.4) $ aufgetragen und in grün mit dem Startwert $ (-1.8, -1.4) $.
 
