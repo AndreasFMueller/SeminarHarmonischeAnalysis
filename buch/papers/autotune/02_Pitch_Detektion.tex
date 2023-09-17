@@ -12,15 +12,21 @@
 Bei einer einstimmigen Aufnahme, beispielsweise der menschlichen Stimme oder eines Blasinstruments,
 wird nicht nur ein einzelner Ton erzeugt, sondern eine Reihe von Tönen, die als Obertöne oder Harmonische bezeichnet werden.
 Die Grundharmonische ist der erste und stärkste dieser Töne, während die höheren Harmonischen in der Regel schwächer sind und höhere Frequenzen haben.
+\index{Grundharmonische}%
 Es gilt nun die grundharmonische Frequenz zu finden die als dominante Tonhöhe wahrgenommen wird.
 Es gibt mehrere Möglichkeiten dies umzusetzen.
 Im Rahmen dieser Arbeit werden zwei Methoden verglichen.
 Einerseits die Short-Time Fourier-Transformation (STFT) in Abschnitt \ref{autotune:subsection:shortTimeFourierTransformation},
+\index{Short-Time Fourier Transform}%
+\index{STFT}%
 andererseits die etwas unbekanntere Cumulative Mean Normalized Difference Function (CMNDF) in Abschnitt \ref{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}.
+\index{Cumulative Mean Normalized Difference Function}%
+\index{CMNDF}%
 
 Grundsätzlich gilt, je genauer die Tonhöhe bestimmt werden kann, desto besser kann die Tonhöhe anschliessend korrigiert werden.
 Die spektrale Frequenzauflösung ist ein direktes Mass für die Genauigkeit der Tonhöhenbestimmung.
 So ist es möglich den maximalen Fehler der Frequenzabweichung zu bestimmen, der bei der Pitch-Detektion entstehen kann.
+\index{Pitch-Detektion}%
 
 \subsection{Short-Time Fourier-Transformation (STFT)
 \label{autotune:subsection:shortTimeFourierTransformation}}
@@ -59,7 +65,8 @@ Wie in Abbildung \ref{autotune:fig:pitchDetektionSTFT} zu sehen ist, können som
 \end{figure}
 
 Diese spektrale Darstellungsweise wird auch als Sonogramm bezeichnet.
-Mehr dazu im Kapitel \ref{chapter:sonogramm}.
+\index{Sonogramm}%
+Mehr dazu im Kapitel~\ref{chapter:sonogramm}.
 
 Das konkrete Bestimmen der Tonhöhe innerhalb eines Fensters kann auf verschiedene Arten umgesetzt werden.
 Eine Möglichkeit zur Bestimmung der Grundharmonischen ist das Finden des Maximums im Spektrum (Peak-Detektor).
@@ -82,7 +89,10 @@ Mit den konkreten Werten aus dem zuvor genannten Beispiel ergibt sich ein maxima
 \subsection{Cumulative Mean Normalized Difference Function (CMNDF)
 \label{autotune:subsection:cumultativeMeanNormalizedDifferenceFunction}}
 Eine weitere Methode zur Tonhöhenbestimmung ist die Cumulative Mean Normalized Difference Function (CMNDF) \cite{autotune:f0EstimationForTheElectricGuitar}.
-Diese Methode basiert auf der Auto-Korrelation des Signals, welche definiert ist als
+\index{CMNDF}%
+\index{Cumulative Mean Normalized Difference Function}%
+Diese Methode basiert auf der Autokorrelation des Signals, welche definiert ist als
+\index{Autokorrelation}%
 \begin{equation}
     \mathbf{ACF}(\tau, t)
     =

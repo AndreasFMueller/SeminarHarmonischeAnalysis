@@ -28,10 +28,14 @@ Die kontinuierliche Variable $\theta$ wird in der diskreten Umgebung der Rückpr
 \begin{equation}\label{ct:discreteBP}
 		\mathscr{B}_Dh(x, y) = \biggl(\dfrac{1}{N}\biggr)\sum_{k=0}^{N-1} h(x\cos(k\pi/N)+y\sin(k\pi/N), k\pi/N)
 \end{equation}
-beschrieben, wobei $k\pi/N$ mit $\theta_i$ zur Übersichtlichkeit ersetzt werden kann und somit resultiert
+beschrieben, wobei $k\pi/N$
+zur besseren Übersichtlichkeit
+durch $\theta_i$
+ersetzt werden kann und somit
 \begin{equation}\label{ct:discreteBP_w_theta}
-	\mathscr{B}_Dh(x, y) = \biggl(\dfrac{1}{N}\biggr)\sum_{k=0}^{N-1} h(x\cos(\theta_i)+y\sin(\theta_i), \theta_i).
+	\mathscr{B}_Dh(x, y) = \biggl(\dfrac{1}{N}\biggr)\sum_{k=0}^{N-1} h(x\cos(\theta_i)+y\sin(\theta_i), \theta_i)
 \end{equation}
+resultiert.
 Das Bild, welches durch den Scanner erhalten wird, wird in Abbildung \ref{ct:fig:radon} rechts gezeigt.
 Auf das Bild des Scanners wird zunächst die Rückprojektion angewendet. Dies führt dazu, dass das Bild eine \glqq verschmierte\grqq{} Version des Beispielbildes wird, was in der Abbildung \ref{ct:fig:bp} gezeigt wird.
 
@@ -42,9 +46,11 @@ Auf das Bild des Scanners wird zunächst die Rückprojektion angewendet. Dies f�
 	\caption{Die Rückprojektion und die gefilterte Rückprojektion des Beispielbildes.}
 \end{figure}
 
-Damit ein ungeglättetes Bild resultiert, wird die gefilterte Rückprojektion angewendet. Dabei wird als erstes das Bild des Scanners, ersichtlich in Abbildung \ref{ct:fig:radon}, Fourier-transformiert. Danach wird die Filterung mit $|S|$ durchgeführt und die inverse Fourier-Transformation davon gebildet. Schliesslich wird noch die Rückprojektion durchgeführt, was zur gefilterten Rückprojektion führt. 
+Damit ein ungeglättetes Bild resultiert, wird die gefilterte Rückprojektion angewendet. Dabei wird als Erstes das Bild des Scanners, ersichtlich in Abbildung \ref{ct:fig:radon}, Fourier-transformiert. Danach wird die Filterung mit $|S|$ durchgeführt und die inverse Fourier-Transformation davon gebildet. Schliesslich wird noch die Rückprojektion durchgeführt, was zur gefilterten Rückprojektion führt. 
 
 Im Bild sind noch gewisse Artefakte ersichtlich, die sich durch Geraden im Bild zeigen. Diese Artefakte kommen daher, dass die Winkelauflösung begrenzt ist. In der Abbildung \ref{ct:fig:res} werden noch zwei Rekonstruktionen gezeigt, die einerseits eine tiefere Winkelauflösung und andererseits eine noch höhere Auflösung darstellen.
+\index{Artefakt}%
+\index{Winkelauflösung}%
 
 \begin{figure}
 	\centering

@@ -9,6 +9,8 @@
 \section{Die Rückprojektion
 	\label{ct:section:ruekprojektion}}
 Die zentrale Frage bei der Bildrekonstruktion lautet, ob es möglich ist, ein Bild einer Dämpfungskoeffizientenfunktion $A$ auf der Grundlage der Radon-Transformierten dieser Funktion zu erstellen. Die Antwort lautet \glqq Ja\grqq, wenn wir Zugang zu allen Werten der Radon-Transformation haben. Die Radon-Transformation wird in Kapitel \ref{buch:chapter:radon} beschrieben. In der Praxis messen CT-Scanner jedoch nur eine endliche Anzahl von Werten der Radon-Transformation. Daher lautet die Antwort auf diese Frage \glqq In etwa, ja\grqq. Nachfolgend wird die Rückprojektion (engl. \emph{Backprojection}) eingeführt.  
+\index{Ruckprojektion@Rückprojektion}%
+\index{Backprojection}%
 
 \subsection{Definition und Eigenschaften
 	\label{ct:subsection:defnprop}}
@@ -21,13 +23,15 @@ Die Zusammensetzung der Materie am Punkt $(x_0, y_0)$ innerhalb einer Probe wirk
 berechnet wird. Dieses Integral dient als Grundlage für eine Transformation, die als Rückprojektion oder Rückprojektionstransformation bekannt ist.
 
 \begin{definition}
+\index{Ruckprojektion@Rückprojektion}%
 	Die Rückprojektion einer Funktion $h = h(t, \theta)$ im Punkt $(x, y)$ ist definiert durch
 	\begin{equation}\label{ct:backproj}
 		\mathscr{B}h(x, y) := \dfrac{1}{\pi}\int_{0}^{\pi} h(x_0\cos(\theta) + y_0\sin(\theta), \theta) \,d\theta.
 	\end{equation}
 \end{definition}
 Beachtet werden sollte, dass die Eingaben für $\mathscr{B}h$ kartesische Koordinaten sind, während die Eingaben für $h$ Polarkoordinaten sind.
-Aus der Gleichung \eqref{ct:backproj} kann für den Bereich der medizinischen Bildgebung das Integral der Rückprojektion von der Radon-transformierten Dämpfungskoeffizientenfunktion repräsentiert werden, als
+Aus der Gleichung \eqref{ct:backproj} kann für den Bereich der medizinischen Bildgebung das Integral der Rückprojektion von der Radon-transformierten Dämpfungskoeffizientenfunktion repräsentiert werden als
+\index{Dämpfungskoeffizientenfunktion}%
 \begin{equation}\label{ct:medBackproj}
 	\mathscr{B}\mathscr{R}f(x, y) := \dfrac{1}{\pi}\int_{0}^{\pi} \mathscr{R}f(x_0\cos(\theta) + y_0\sin(\theta), \theta) \,d\theta.
 \end{equation}

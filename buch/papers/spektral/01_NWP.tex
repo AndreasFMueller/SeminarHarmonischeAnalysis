@@ -11,7 +11,11 @@
 \rhead{Numerische Wettervorhersage}
 Die numerische Wettervorhersage ist ein entscheidendes Instrument in der modernen Meteorologie. Durch die Anwendung von mathematischen Gleichungen, physikalischen Gesetzen und Computermodellen ermöglicht sie die Vorhersage von zukünftigen Wetterbedingungen. Hierbei werden umfangreiche Daten wie Temperatur, Luftdruck, Feuchtigkeit und Windgeschwindigkeit von verschiedenen Messstationen weltweit gesammelt und in hochentwickelte Computermodelle eingespeist.
 
-In diesem Abschnitt werden wir die Gittermodelle und die spektrale Modelle anschauen. Im Abschnitt \ref{spektral:subsection:spektralemodelle} werden wir die spektrale Modelle an die Wellengleichung anwenden, um die Vorteile solchen modellen zu zeigen.
+In diesem Abschnitt werden wir die Gittermodelle und die spektrale
+Modelle anschauen.
+Im Abschnitt \ref{spektral:subsection:spektralemodelle}
+werden wir die spektrale Modelle an die Wellengleichung anwenden,
+um die Vorteile solcher Modelle zu zeigen.
 
 \subsection{Finite-Difference-Gittermodelle
 \label{spektral:subsection:gittermodelle}}
@@ -19,7 +23,9 @@ In den meisten Fällen ist die Lösung von partiellen Differentialgleichungen nu
 Die Idee dieser Methoden besteht darin, die Differentialgleichungen zu diskretisieren.
 Die Ableitungen werden durch finite Differenzen dargestellt.
 Dadurch können die Differentialgleichungen in algebraische Gleichungssysteme umgewandelt werden.
-D.h. es werden die Werte der Variablen nicht für die gesamte unendliche Menge von Punkten im Bereich untersucht, sondern nur für eine endliche Teilmenge.
+D.~h.~es werden die Werte der Variablen nicht für die gesamte
+unendliche Menge von Punkten im Bereich untersucht, sondern nur für
+eine endliche Teilmenge.
 
 Die Methode der endlichen Differenzen beinhaltet die Diskretisierung von Funktionen auf einem Gitter.
 In diesem Fall sind die Werte der Funktion die Knoten des Gitters und Ableitungen werden durch endliche Differenzen ersetzt.
@@ -43,9 +49,9 @@ Zentraledifferenz
 \end{equation}
 
 Üblicherweise werden Diskretisierungsgitter gewählt, die mit den Koordinatengittern übereinstimmen.
-In einem zweidimensionalen kartesischen Koordinatensystem die Gitterzellen sind die Rechtecke.
+In einem zweidimensionalen kartesischen Koordinatensystem sind die Gitterzellen Rechtecke.
 \pagebreak
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[height=200pt]{papers/spektral/images/forward_difference.pdf}
 	\caption{Vorwärtsdifferenz}
@@ -59,7 +65,7 @@ Auf der Abbildung \ref{spektral:fig:gittermodelle} sieht man, dass für eine Fun
 In den 1980er Jahren des 20. Jahrhunderts wurden neben den gitterbasierten (Finite-Difference) Lösungsmethoden, die traditionell in Vorhersagemodellen verwendet wurden, auch Methoden angewendet, bei denen die räumliche Abhängigkeit der prognostizierten meteorologischen Werten als Reihen von Funktionssystemen dargestellt wird, die bestimmte Eigenschaften aufweisen.
 
 In diesem Fall wird die prognostizierte Gleichung oder das System von partiellen Differentialgleichungen auf Systeme von Differentialgleichungen für die zeitabhängigen Koeffizienten der Zerlegung reduziert.
-Die gesuchte Werte bei diesem Ansatz sind diese Koeffizienten und nicht die Werte der prognostizierten Funktionen an den Gitterpunkten. 
+Die gesuchten Werte bei diesem Ansatz sind diese Koeffizienten und nicht die Werte der prognostizierten Funktionen an den Gitterpunkten. 
 Eine Variante dieser Methode im Bereich der numerischen Wettervorhersage wird als spektrale Methode bezeichnet und Vorhersagemodelle, bei denen die Gleichungen mit der spektralen Methode gelöst werden, werden als spektrale Modelle bezeichnet.
 
 Spektrale Modelle sind eine Art numerischer Modelle, die in verschiedenen wissenschaftlichen Bereichen, einschließlich der Meteorologie, verwendet werden.
@@ -98,9 +104,12 @@ Dies ermöglicht eine höhere Anpassungsfähigkeit an komplexe Geländeformen.
 \subsection{Kugelkoordinaten
 \label{spektral:subsection:kugelkoordinaten}}
 
-Bevor wir die spektrale Modelle nähe anschauen, müssen wir die von den kartesischen Koordinaten zu den Kugelkkordinaten wecheln, weil wir uns auf einer Kugel befinden (siehe Abbildung \ref{spektral:fig:sphericalcoords}).
+Bevor wir die spektralen Modelle nähe anschauen, müssen wir die von
+den kartesischen Koordinaten zu den Kugelkkordinaten wechseln, weil
+wir uns auf einer Kugel befinden (siehe Abbildung
+\ref{spektral:fig:sphericalcoords}).
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=200pt]{papers/spektral/images/spherical_coordinates.pdf}
 	\caption{Sphärische Koordinaten}
@@ -115,7 +124,7 @@ x &= r\cdot\sin(\theta)\cdot\cos(\phi)
  y &= r\cdot\sin(\theta)\cdot\sin(\phi)
 \label{spektral:equation5}
 \\
- z &= r\cdot\cos(\theta).
+ z &= r\cdot\cos(\theta),
 \label{spektral:equation6}
 \end{align}
 wobei $r > 0$ sein muss, sonst können $\theta$ und $\phi$ nicht definiert werden.

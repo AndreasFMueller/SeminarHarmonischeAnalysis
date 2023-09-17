@@ -7,7 +7,7 @@
 \label{buch:radon:section:ableitungen}}
 Die Fourier-Transformation verwandelt Ableitungen in eine Multiplikation.
 Die Radon-Transformation führt einen Teil der Fourier-Transformation
-durch, es ist also zu erwarten, dass ide Radon-Transformierte ebenfalls
+durch, es ist also zu erwarten, dass die Radon-Transformierte ebenfalls
 sehr spezielle Ableitungseigenschaften hat.
 Es wird sich zeigen, dass die Radon-Transformierte $\mathscr{R}u(s,\omega)$
 einer Lösung der Wellengleichung ihrerseits Lösung einer
@@ -19,23 +19,291 @@ dies ist ein mathematischer Ausdruck für das Huygenssche Prinzip.
 %
 \subsection{Partielle Ableitungen
 \label{buch:radon:ableitungen:subsection:partiell}}
+Sei $u\colon \mathbb{R}^n\to\mathbb{C}$ eine Funktion mit kompaktem
+Träger und sei $\omega = e_1 = (1,0,\dots,0)$ der erste Standarbasisvektor
+Da die zugehörige Hyperebene konstante erste Koordinaten aht, ist
+die Radon-Transformierte von $u$ gegeben durch
+\[
+\mathscr{R}u(s,\omega)
+\int_{\mathbb{R}^{n-1}}
+u(s,x_2,\dots,x_n)\,dx_2\dots\,dx_n.
+\]
+Die Radon-Transformierte der Ableitung nach $x_1$ ist dann
+\begin{align*}
+\biggl(\mathscr{R}\frac{\partial u}{\partial x_1}\biggr)(s,\omega)
+&=
+\int_{\mathbb{R}^{n-1}}
+\frac{\partial u}{\partial s}(s,x_2,\dots,x_n)
+\,dx_2\dots\,dx_n
+\\
+&=
+\frac{\partial}{\partial s}
+\int_{\mathbb{R}^{n-1}}
+u(s,x_2,\dots,x_n)
+\,dx_2\dots\,dx_n
+=
+\frac{\partial}{\partial s}\mathscr{R}u(s,\omega).
+\intertext{Durch Iteration findet man auch die Radon-Transformierte
+der $m$-ten Ableitung}
+\biggl(
+\mathscr{R}\frac{\partial^mu}{\partial x_1^m}
+\biggr)(s,\omega)
+&=
+\frac{\partial^m}{\partial s^m}
+\mathscr{R}u(s,\omega).
+\intertext{Die Radon-Transformierten einer Ableitung nach einer
+anderen Koordinate $x_k$ mit $k>1$
+ist dagegen}
+\biggl(
+\mathscr{R}
+\frac{\partial u}{\partial x_k}
+\biggr)(s,\omega)
+&=
+\int_{\mathbb{R}^{n-1}}
+\frac{\partial u}{\partial x_k}(s,x_2,\dots,x_k)
+\,dx_2\dots\,dx_n
+\\
+&=
+\int_{\mathbb{R}^{n-2}}
+\biggl(
+\int_{\mathbb{R}}
+\frac{\partial u}{\partial x_k}(s,x_2,\dots,x_n)
+\,dx_k
+\biggr)
+\,dx_2\dots\widehat{dx_k}\dots dx_n
+\\
+&=
+\int_{\mathbb{R}^{n-2}}
+\underbrace{
+u(s,x_2,\dots,\infty,\dots,x_n)
+-
+u(s,x_2,\dots,-\infty,\dots,x_n)
+}_{\displaystyle=0}
+\,dx_2\dots\widehat{dx_k}\dots dx_n
+\\
+&=0.
+\end{align*}
+Im zweitletzten Schritt wurde verwendet, dass $u$ kompakten Träger
+hat, also ausserhalb einer beschränkten Menge verschwindet.
 
 %
 % Richtungsableitung
 %
 \subsection{Richtungsableitung
 \label{buch:radon:ableitungen:subsection:richtungsableitung}}
+Sei jetzt $\omega\in S^{n-1}$ ein beliebiger Einheitsvektor.
+Es gibt immer eine Drehmatrix $R$, mit der man den ersten
+Standardbasisvektor auf die Richtung $\omega$ drehen kann.
+Die Ableitung der zusammengesetzten Funktion $u\circ R$ nach
+der ersten Koordinate ist die Richtungsableitung der Funktion
+$u$ in Richtung $\omega$.
+Radon-Transformierte der Richtungsableitung der Funktion $u$ in
+Richtung $\omega$ ist Ableitung nach dem Parameter $s$ der
+Radontransformierten $\mathscr{R}u(s,\omega)$
+Umkgekehrt verschwindet die Radon-Transformierte der Richtungsableitung
+von $u$ in eine Richtung senkrecht auf $\omega$ im Punkt $\omega$.
+Damit haben wir folgenden Satz gefunden:
+
+\begin{satz}
+Sei $u\colon\mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion
+mit kompaktem Träger:
+Sei weiter $b\perp \omega$ ein zu $\omega$ orthogonaler Einheitsvektor.
+Dann sind die Radon-Transformierten der Richtungsableitungen
+\begin{align*}
+(\mathscr{R}D_\omega u)(s,\omega)
+&=
+\frac{\partial}{\partial s}\mathscr{R}u(s,\omega)
+\\
+(\mathscr{R}D_b u)(s,\omega)
+&=
+0
+\end{align*}
+\end{satz}
+
+Da man die Richtungsableitung in Richtung des Vektors $v$ mit den
+Komponenten $v_i$ auch als
+\[
+D_v 
+=
+\sum_{i=1}^n v_i \frac{\partial}{\partial x_i}
+\]
+schreiben kann, finden wir die Komponentenformeln
+\begin{align}
+\biggl(
+\mathscr{R}
+\sum_{i=1}^n
+\omega_i\frac{\partial u}{\partial x_i}
+\biggr)(s,\omega)
+&=
+\sum_{i=1}^n
+\omega_i
+\biggl(\mathscr{R}\frac{\partial u}{\partial x_i}\biggr)
+(s,\omega)
+=
+\frac{\partial}{\partial s}\mathscr{R}u(s,\omega)
+\notag
+\\
+\sum_{i=1}^n
+b_i
+\biggl(
+\mathscr{R}\frac{\partial u}{\partial x_i}
+\biggr)(s,\omega)
+&=0
+\label{buch:radon:ableitungen:eqn:babl}
+\end{align}
+Die Bedingungen \eqref{buch:radon:ableitungen:eqn:babl}
+bedeutet, dass der Vektor $v$ mit den Komponenten
+\[
+v_i
+=
+\biggl(\mathscr{R}\frac{\partial u}{\partial x_i}\biggr)(s,\omega)
+\]
+orthogonal ist zu allen Vektoren $b\perp \omega$, er hat daher
+die Richtung $\omega$.
+Da $|\omega|=1$ ist, ist die Länge $|v|=v\cdot \omega$ die Projektion
+von $v$ auf die Richtung $\omega$ oder
+\[
+|v|
+=
+v\cdot\omega
+=
+\sum_{i=1}^n \omega_i
+\biggl(
+\mathscr{R}\frac{\partial u}{\partial x_i}
+\biggr)(s,\omega)
+=
+\frac{\partial}{\partial s}\mathscr{R}u(s,\omega).
+\]
+Die einzelnen Komponenten sind daher
+\[
+v_i
+=
+|v|\omega_i
+=
+\omega_i
+\frac{\partial}{\partial s}\mathscr{R}(s,\omega).
+\]
+
+\begin{satz}
+Ist $u\colon\mathbb{R}^n\to\mathbb{C}$ eine ingegrierbare Funktion
+mit kompaktem Träger dann ist die Transformation der Ableitungen
+von $u$
+\[
+\biggl(
+\mathscr{R}
+\frac{
+\partial^{|\bm{\alpha}|}
+}{
+\partial x_1^{\alpha_1}\cdots\partial x_n^{\alpha_n}
+}
+u
+\biggr)(s,\omega)
+=
+(\mathscr{R}
+D^{\bm{\alpha}} u
+)(s,\omega)
+=
+\omega_1^{\alpha_1} \cdots \omega_n^{\alpha_n}
+\frac{
+\partial^{|\bm{\alpha}|}
+}{
+\partial s^{|\bm{\alpha}|}
+}
+\mathscr{R}u(s,\omega)
+\]
+\end{satz}
 
 %
 % Laplace-Operator
 %
 \subsection{Laplace-Operator
 \label{buch:radon:ableitungen:subsection:laplace}}
+Die Radon-Transformation $\mathscr{R}u$ zerlegt die Information
+in der Funktion $u$ in Information, die von der Richung $\omega$
+abhängt und solche, die vom Radius $s$ abhängt.
+Ableitungen hängen dann nur noch von $s$ ab, was sich auch
+auf den Laplace-Operator auswirkt.
+
+\begin{satz}
+\label{buch:radon:ableitungen:satz:laplace}
+Für eine zweimal stetig differenzierbare Funktion
+$u\colon\mathbb{R}^n\to\mathbb{C}$ mit kompaktem Träger gilt
+\[
+(\mathscr{R}\Delta u)(s,\omega)
+=
+\frac{\partial^2}{\partial s^2} \mathscr{R}u(s,\omega).
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Der Laplace-Operator ist
+\[
+\Delta
+=
+\sum_{i=1}^n
+\frac{\partial^2}{\partial x_i^2}.
+\]
+Zusammen mit der Ableitungsformel ist
+\begin{align*}
+(\mathscr{R}\Delta u)(s,\omega)
+&=
+\sum_{i=1}^n
+\biggl(\mathscr{R}\frac{\partial^2}{\partial x_i^2}u\biggr)(s,\omega)
+\\
+&=
+\sum_{i=1}^n \omega_i^2 \frac{\partial^2}{\partial s^2}\mathscr{R}u(s,\omega)
+\\
+&=
+|\omega|^2 \frac{\partial^2}{\partial s^2} \mathscr{R}u(s,\omega)
+=
+\frac{\partial^2}{\partial s^2} \mathscr{R}u(s,\omega).
+\qedhere
+\end{align*}
+\end{proof}
+
+Die Radon-Transformation transformiert den Laplace-Operator
+auf einen zweiten Ableitungsoperator nach nur einer einzigen
+Variable.
 
 %
 % Wellengleichung
 %
 \subsection{Wellengleichung
 \label{buch:radon:ableitungen:subsection:wellengleichung}}
+Der Satz~\ref{buch:radon:ableitungen:satz:laplace} über die
+Radon-Transformierte des Laplace-Operators ermöglich, auch die
+Lösung der Wellengleichung mit Hilfe der Radon-Transformation zu
+vereinfachen.
+
+Die Wellengleichung ist die Gleichung
+\[
+\frac{\partial^2}{\partial t^2}u = \Delta u
+\]
+auf dem Gebiet $\Omega=\mathbb{R}^n$.
+Nach Anwendung der Radon-Transformation wird aus den beiden Seiten
+\begin{align*}
+\biggl(\mathscr{R}\frac{\partial^2}{\partial t^2}u\biggr)(s,\omega)
+&=
+\frac{\partial^2}{\partial t^2}(\mathscr{R}u)(s,\omega)
+\\
+(\mathscr{R}\Delta u)(s,\omega)
+&=
+\frac{\partial^2}{\partial s^2}(\mathscr{R}u)(s,\omega)
+\end{align*}
+Schreibt man $U(t,s\omega)=\mathscr{R}u(s,\omega)$, dann folgt
+\[
+\frac{\partial^2 U}{\partial t^2}
+=
+\frac{\partial^2 U}{\partial s^2},
+\]
+also eine eindimensionale Wellengleichung.
+Durch Mittelung über Hyperebenen orthogonal zu $\omega$ macht
+die Radon-Transformation aus der $n$-dimensionalen Wellengleichung
+eine eindimensionale Wellengleichung für die Ausbreitung des
+Mittelwertes $U(t,s,\omega)$ in Richtung $\omega$.
+Dieses Prinzip wird manchmal auch als das Huygens-Prinzip 
+bezeichnet, da es verwandt ist mit der anschaulichen Vorstellung
+von Huygens, wie sich Wellenfronten aus Elementarwellen zusammensetzen.
+Letztere wird in Kapitel~\ref{chapter:opt} genauer studiert.
 
 

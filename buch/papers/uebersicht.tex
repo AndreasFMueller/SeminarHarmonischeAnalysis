@@ -12,3 +12,113 @@ Die im ersten Teil dargelegten mathematischen Methoden und
 grundlegenden Modelle werden dabei verfeinert, verallgemeinert
 und auch numerisch überprüft.
 
+Harmonische Analysis kann verwendet werden, um Tonsignale zu analysieren
+und zu modifizieren.
+{\em Alain Keller} erklärt im Paper Sonogramm
+(Kapitel~\ref{chapter:sonogramm}), wie man damit eine
+visuelle Darstellung eines Musikstücks bekommen kann.
+{\em Florian Baumgartner} erweitert diese Ideen dann auf eine
+Methode zur Korrektur einzelner Töne.
+Solche Systeme sind unter dem Namen Auto-Tune (Kapitel~\ref{chapter:autotune})
+bekannt und spielen
+in der modernen Musikproduktion eine wichtige Rolle.
+
+Harmonische Analysis kann auch verwendet werden, um verschiedene
+Arten von Signalen zu unterscheiden.
+Zum Beispiel kann man sich die Frage stellen, was überhaupt
+``Rauschen'' ist und wie man es mit Hilfe der Frequenzanalyse
+charakterisieren kann.
+{\em Lukas Reitemeier} beschreibt in seinem Paper
+über die Brownsche Bewegung (Kapitel~\ref{chapter:brown})
+ein Modell für Rauschen zeigt auch das Frequenzspektrum.
+
+Die Fourier-Transformation kann auch auf Bilder angewendet werden,
+was natürlich mit sehr viel grösserem Rechenaufwand als für eine
+eindimensionales Signal möglich ist.
+{\em Marco Niederberger} und {\em Yanick Schoch} zeigen in ihrem Paper
+(Kapitel~\ref{chapter:opt}), 
+wie das Beugungsphänomen auf eine optische Realisierung der
+Fourier-Transformation führt.
+Damit wird es möglich, die Fourier-Transformation ohne Rechnung in
+besonders kurzer Zeit rein optisch durchzuführen, was die Autoren
+in einem Versuch ebenfalls vorführen.
+
+Die Fourier-Transformation kann auch gebraucht werden, um Bilder
+zu komprimieren.
+Wie das im Falle des JPEG-Formates funktioniert erklärt
+{\em Jakob Gierer} in Kapitel~\ref{chapter:jpeg}.
+Er deutet auch an, wie JPEG-2000 die gleichen Ideen, allerdings mit
+Wavelets statt harmonischen Schwingungen, für fortgeschrittene 
+Komprimierung mit weniger Artefakten verwendet.
+Mehr Information zur Wavelet-Transformation und insbesondere
+zur Realisierung derselben mit dem Computer stellt {\em Stefan Richle}
+in Kapitel~\ref{chapter:wavelets} dar.
+
+Ein Computer-Tomograph kann Querschnitt-Bilder eines Körpers
+herstellen.
+Diese Fähigkeit macht ihn zu einem der bedeutendsten Bildgebenden
+Verfahren in der Medizin.
+{\em Nathan Hoffman} erklärt in seiner Arbeit (Kapitel~\ref{chapter:ct}),
+wie ein Bild aus der
+Radon-Transformation wiederhergestellt werden kann und zeigt auch
+an Simulationen wie das praktisch funktioniert, wenngleich natürlich
+je nach Auflösung der Messung mehr oder weniger störende Artefakte bleiben.
+
+Die Gelfand-Theorie zeigt, das die wohlbekannte harmonische
+Analysis mit harmonischen Schwingungen nur ein Fall von vielen
+möglichen solchen harmonischen Analysetheorien ist.
+{\em Vincent Haufe} beschreibt in Kapitel~\ref{chapter:mellin},
+wie man aus einer Aufgabe
+zur Bestimmung der zeitlichen Skalierung eines Signals eine
+neue Integraltransformation, die Mellin-Transformation, ableiten 
+kann.
+Seine Darstellung weist auch auf Anwendungen in der Antennentheorie
+hin.
+
+Eine der ersten pratischen Anwendungen der harmonischen Analysis in
+fast industriellem Massstab war die Analyse der Gezeiten durch
+William Thomson.
+Mit der Unterstützung seines Bruders konstruierte er eine Maschine zur
+Bestimmung der Fourier-Koeffizienten aus langjährigen Aufzeichnungen
+von Tidenständen.
+Mit einer weiteren Maschine konnte er daraus Vorhersagen künftiger
+Tidenstände für die Schiffahrt oder für die Planung von Küstenbauwerken
+ableiten.
+{\em David Bättig} erzählt die Geschichte dieser frühen aber besonders
+wichtigen Anwendung in Kapiteln~\ref{chapter:gezeiten}.
+
+Gezeiten sind nicht das einzige Phänomen auf der Erde, bei dem die
+Verwendung der harmonischen Analysis einen Vorteil bei der Lösungsfindung
+bringen kann.
+{\em Dmitry Grigoriev} erklärt in Kapitel~\ref{chapter:spektral},
+wie die spektralen Methoden funktionieren, die seit den achtziger Jahren
+in der numerischen Wetterprognose verwendet werden und zu einer
+merklichen Verbesserung der Prognosegenauigkeit geführt haben.
+
+Über längere Zeiträume haben astronomische Phänomene einen periodischen
+Einfluss auf die Parameter der Erdbahn.
+Diese schlagen sich nieder in periodischen Veränderungen im Klima.
+{\em Jan Langenegger} analysiert berechnete Bahndaten über mehrere
+Millionen Jahre mit einfachsten Mitteln und findet die Periodiztäten,
+die Milankovi\'c vor über 100 Jahren bereits entdeckt hat.
+Er untersucht in Kapitel~\ref{chapter:milankovic} auch, welchen Einfluss
+auf die aktuelle Klimadiskussion diese Zyklen haben können.
+
+Machine Learning und AI sind zur Zeit vor allem wegen ChatGPT und anderen
+spektakulären Anwendungen in aller Munde.
+Die dahinterstehende Technologie der künstlichen neuronalen Netzwerke
+verspricht, für jedes beliebige Problem einen ``Approximator'' zu finden,
+der darauf trainiert werden kann, jedes beliebige Problem zu lösen.
+Es liegt daher nahe zu fragen, wie gut diese Technologie die
+Fourier-Transformation lernen kann.
+{\em Dominik Geschwind} beantwortet diese Frage in seiner Arbeit
+(Kapitel~\ref{chapter:ml}).
+Er untersucht auch die Frage nach der Genauigkeit und Performance mit der
+AI die Fourier-Transformation berechnen kann, mit ernüchternden Resultaten.
+
+
+
+
+
+
+

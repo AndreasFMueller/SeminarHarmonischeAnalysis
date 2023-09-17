@@ -16,6 +16,7 @@ verbesserte zeitliche Auflösung, wir verlieren jedoch an Frequenzauflösung.
 Zusätzlich werden durch das abrupte Abschneiden des Signals mit dem Rechteckfenster
 zusätzliche Frequenzen hinzugefügt. 
 Diese Effekte hängen mit der Unschärferelation zusammen, welche in Abschnitt
+\index{Unschärferelation}%
 \ref{buch:gruppen:fourier:subsection:unschaerfe} genauer beschrieben ist.
 In diesem Abschnitt werden wir diese Effekte genauer untersuchen.
 \subsection{Auswirkung der Fensterfunktion}
@@ -25,8 +26,8 @@ Der Faltungssatz beschreibt
     f(t) g(t)&\xrightarrow{\mathscr{F}}F(f) * G(f).
 \end{align}
 Das bedeutet, dass die Verwendung von Fensterfunktionen das Frequenzspektrum
-des Signals mit dem Frequenzspektrum der Fensterfunktion gefaltet wird.
-Die Fouriertransformation eines diskreten Rechteckfensters ist 
+des Signals mit dem Frequenzspektrum der Fensterfunktion faltet.
+Die Fourier-Transformation eines diskreten Rechteckfensters ist 
 \begin{equation}
     W_r(f) = \frac{\sin(2 \pi f  L_w / (2 f_s))}{\sin(2 \pi f / (2 f_s))} e^{-i 2 \pi f (L_w-1)/(2f_s)}
 \end{equation}
@@ -49,9 +50,10 @@ mit $f_s$ als Abtastfrequenz \cite{sonogramm:digsig}.
 In Abbildung \ref{sonogramm:rectfreq} sind zwei solche Frequenzspektren mit unterschiedlichen $L_w$ abgebildet.
 Ideal wäre ein einzelner Peak bei 0, dafür müsste jedoch das Fenster eine Länge von $\infty$ haben.
 
-\subsubsection{Leck-Effekt}
+\subsubsection{Leckeffekt}
+\index{Leckeffekt}
 Durch die Sprünge bei $n = 0$ und $n = L-1$ im Zeitbereich kommen zusätzliche Frequenzen dazu, der sogenannte
-Leck-Effekt.
+Leckeffekt.
 Diese unerwünschten Frequenzen werden durch die Faltung im Frequenzbereich zu den eigentlichen Frequenzen 
 geschoben.
 Abbildung \ref{sonogramm:leakageDemo} zeigt ein solches Spektrum eines Eintonsignals.
@@ -72,6 +74,7 @@ da die Leck-Frequenzen vom Sinus zu dominant sind.
 
 \subsubsection{Frequenzauflösung}
 Die Breite des Hauptpeaks limitiert die Frequenzauflösung.
+\index{Frequenzauflösung}%
 Bei einem Rechteckfenster ist dieser $2f_s/L_w$ Hz breit.
 Sind zwei Frequenzen genügend nahe bei einander, überlappen sich die Hauptpeaks, und können
 nicht mehr unterschieden werden. 
@@ -92,6 +95,7 @@ Je nach Phase des zweiten Sinus, können die Frequenzen unterschiedlich genau, o
 bestimmt werden.
 Wieso das so ist, lässt sich in der Zeit zeigen.
 Werden zwei Sinusse mit einem kleinen $\Delta f$ addiert entsteht eine sogenannte Schwebung,
+\index{Schwebung}%
 was im Fall von \eqref{sonogramm:eq:twoHarmPhi}
 \begin{equation}
     s(t) = \sin(2\pi 3.45 t ) + \sin (2\pi 4.45 t) = 2 \sin\left(2 \pi \frac{3.45 + 4.45}{2}t\right)
@@ -104,9 +108,9 @@ Die Phase $\varphi$ bewirkt eine Verschiebung von \eqref{sonogramm:eq:twoHarm} i
 was bedeutet, dass abhängig von $\varphi$ ein anderer Abschnitt des Signales gefenstert wird.
 Im Fall von $\varphi = \pi$ ist das gefensterte Segment genau zwischen zwei Nulldurchgänge
 vom Kosinus.
-Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95 Hz, welcher mit einem 
+Dies ist Äquivalent zu einem Sinus mit einer Frequenz von 3.95\,Hz, welcher mit einem 
 Sinusfenster multipliziert wurde. 
-Ein Sinusfenster der Länge T ist ein 2T-periodischer Sinus, welcher nach $T$ abgeschnitten wird.
+Ein Sinusfenster der Länge $T$ ist ein $2T$-periodischer Sinus, welcher nach $T$ abgeschnitten wird.
 Die Informationen über die eigentlichen Frequenzen müssen also in den Phasensprüngen bei den 
 Nulldurchgängen des Kosinus sein.
 Geht $\varphi$ von $\pi$ gegen 0 kommt der Phasensprung ins Segment und die eigentlichen Frequenzen
@@ -153,7 +157,11 @@ zuverlässige Resultate erzielen möchte.
     }
 \end{figure}
 
+%
+% Fensterfunktionen
+%
 \section{Fensterfunktionen}
+\rhead{Fensterfunktionen}
 \label{sonogramm:section:windows}
 Bis jetzt haben wir uns auf das Rechteckfenster beschränkt.
 Dieses eignet sich zwar gut, um die theoretischen Grundlagen zu zeigen,
@@ -164,15 +172,15 @@ Leck-Frequenzen abhängig von der Fensterfunktion.
 Durch die abrupten Sprünge im Rechteckfenster sind die Leck-Frequenzen 
 über ein weites Frequenzband sehr prominent.
 
-Um dies zu verbessern wäre es besser eine Fensterfunktion zu haben,
+Um dies zu verbessern wäre es besser, eine Fensterfunktion zu haben,
 welche bei $n = 0$ einen Wert nahe bei 0 hat,
 bis zur Mitte des Fensters auf 1 steigt um dann bis $n = L_w -1$ wieder Richtung 0 zu gehen. 
 Im Frequenzspektrum soll diese Fensterfunktion wie das Rechteckfenster einen 
 Peak bei $f = 0$ hat, aber mit $f \rightarrow \infty$ schneller
 gegen 0 geht.
-Ein Mass wie schnell das Frequenzspektrum einer Funktion gegen 0 geht, liefert
+Ein Mass, wie schnell das Frequenzspektrum einer Funktion gegen 0 geht, liefert
 die $n$-mal stetige Differenzierbarkeit der Funktion.
-Ist eine Funktion $n$-mal stetig differenzierbar gilt im Frequenzspektrum
+Ist eine Funktion $n$-mal stetig differenzierbar, gilt im Frequenzspektrum
 \begin{equation}
     x^{(n)}(t) \xrightarrow{\mathscr{F}} (i f)^n X(f).
 \end{equation}
@@ -180,7 +188,7 @@ Da $(i f)^n X(f)$ rücktransformierbar ist, gilt
 \begin{equation}
     |(i f)^n X(f)| < \infty \quad \forall -\infty \leq f \leq \infty,
 \end{equation}
-was zur Folge hat, dass $X(f)$ bei grösser werdendem $f$ mit mindestens $1/f^n$ gegen 
+was zur Folge hat, dass $X(f)$ bei grösser werdendem $f$ mit mindestens wie $1/f^n$ gegen 
 0 gehen muss.
 
 \subsection{Gauss-Fenster}
@@ -191,6 +199,7 @@ Eine bekannte $\infty$-mal stetig differenzierbare Funktion ist die gausssche Gl
 wobei $\alpha$ ein frei wählbarer Parameter ist, welcher die Breite der Glocke 
 bestimmt.
 Damit wir sehen, wie sich ein Gauss-Fenster auf das Signal auswirkt, brauchen wir
+\index{Gauss-Fenster}%
 die Fourier-Transformation einer gaussschen Glocke.
 Diese wird in Satz \ref{buch:gruppen:fourier:satz:gaussfourier} berechnet und ist mit
 \begin{equation}

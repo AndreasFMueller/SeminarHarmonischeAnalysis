@@ -25,8 +25,14 @@ Das Prinzip der optischen Fourier-Transformation basiert auf der Beugung von Wel
 Im Folgenden wird die Beugung grob abgehandelt, für eine weitere Behandlung wird auf Kapitel 32 aus dem Physikbuch der HSR \cite{opt:HSR:Physik2} verwiesen.
 
 Qualitativ lässt sich die Beugung mit dem Prinzip von Huygens erklären. 
+\index{Huygens}%
+\index{Prinzip von Huygens}%
+\index{Huygens!Prinzip}%
 Abbildung \ref{opt:fig:huygens} zeigt den konzeptionellen Aufbau einer Wellenfront.
-Diese lässt sich als Superposition von unendlichen Elementarwellen (Teilabbildung a) betrachten.
+Diese lässt sich als Superposition von unendlich vielen Elementarwellen (Teilabbildung a) betrachten.
+\index{Superposition}%
+\index{Elementarwellen}%
+\index{Wellenfront}%
 An jedem Punkt der so entstehenden Wellenfront entsteht eine neue Elementarwelle und daraus wieder eine neue Wellenfront (Teilabbildung b).
 Wenn jetzt ein Hindernis die Fortpflanzung der Wellenfront stoppt, bildet sich aus den nicht abgeblockten Elementarwellen eine neue Wellenfront (Teilabbildung c).
 Diese ist jetzt jedoch nicht mehr eben, da die generierenden Elementarwellen auf ein endliches Intervall beschränkt sind.
@@ -113,6 +119,7 @@ Ganz allgemein lässt sich jede Welle als
 \end{equation}
 ausdrücken.
 Wie in Abschnitt \ref{opt:subsection:huygens} gezeigt, wird diese Welle an der Blende gebeugt.
+\index{Blende}%
 In Abhängigkeit von der Öffnungsbreite $b$ breitet sich die Welle anschliessend annähernd kreisförmig als neue Wellenfront weiter aus.
 Dieses Verhalten der kreisförmigen Ausbreitung kann mittels der zuvor betrachteten Linienquellen modelliert werden.
 Unendlich viele dieser Linienquellen sind nun nebeneinander entlang der Öffnungsbreite $b$ angereiht.
@@ -148,6 +155,7 @@ E(y_p, t)
 .
 \end{equation*}
 Die Beugung einer Welle an einer beliebigen Blende statt nur an einem Spalt kann mit der Blendenfunktion $f(y)$ als Integral dargestellt werden.
+\index{Blendenfunktion}%
 Zu beachten ist, dass diese Funktion nicht nur die Extremwerte 0 und 1, sondern auch jegliche Werte dazwischen annehmen kann.
 Dies würde einer teilweise transparenten Blende entsprechen.
 Ein Wert von 0 bedeutet dabei, dass kein Licht durchgelassen wird und ein Wert von 1, dass alles Licht die Blende durchdringen kann.
@@ -228,7 +236,7 @@ E(y_p, t)
 \vartheta\zeta_0 \cdot e^{j\omega t} \cdot e^{-jkl} \cdot \int_{-\infty}^{\infty}f(y)\cdot\frac{e^{jk\frac{(y_p-y)^2}{2l}}}{l - \frac{(y_p-y)^2}{2l}} \,dy
 .
 \end{align*}
-Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund Parallelität als 1 gekürzt geschrieben werden.
+Wiederum konnte das Skalarprodukt der normierten Grössen $\hat{k}$ und $\hat{r}$ aufgrund der Parallelität als 1 gekürzt geschrieben werden.
 Des Weiteren kann der Ausdruck 
 \begin{equation*}
     l - \frac{(y_p-y)^2}{2l}
@@ -258,6 +266,8 @@ E(y_p, t = 0)
 \label{opt:equation:integral_fresnel}
 \end{align}
 Das hiermit erhaltene Integral wird auch als das Fresnel-Beugungsintegral\footnote{Benannt nach dem französischen Physiker Augustin Fresnel; daher ausgesprochen mit einem stummen \emph{s}.}
+\index{Fresnel-Beugungsintegral}%
+\index{Beugungsintegral von Fresnel}%
 bezeichnet und entspricht einer Nahfeldnäherung.
 Anders als von der Bezeichnung zu erwarten wäre, darf diese Näherung jedoch nicht direkt hinter der Blende angewendet werden.
 Die Voraussetzung $y, y_p \ll l$ aus Gleichung \eqref{opt:equation:condition_fresnel} muss erfüllt sein.
@@ -266,6 +276,7 @@ Ansonsten muss das allgemeine Beugungsintegral für die Berechnung verwendet wer
 \subsection{Fraunhofer-Approximation}
 \label{opt:sec:fraunhofer}
 Die Fresnel-Approximation aus \eqref{opt:equation:integral_fresnel} kann mittels der Fraunhofer-Approximation\footnote{Benannt nach dem deutschen Physiker Joseph Fraunhofer.} weiter vereinfacht werden.
+\index{Fraunhofer-Approximation}%
 Dafür wird die Distanz zwischen der Blende und der Auswertungsebene noch weiter erhöht.
 Damit wird es möglich, das Integral in Bezug auf die Distanz $y$ zwischen der Quelle und der Auswertungsebene zu linearisieren.
 Ist nun
@@ -290,7 +301,7 @@ E(y_p)
 \notag
 \\
 &=
-\frac{\vartheta\zeta_0}{l} \cdot e^{-jk\left(l-\frac{y_p^2}{2l}\right)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
+\frac{\vartheta\zeta_0}{l} \cdot e^{-jk\bigl(l-\frac{y_p^2}{2l}\bigr)} \cdot \int_{-\infty}^{\infty}f(y)\cdot e^{-j\frac{ky_p}{l}y} \,dy
 .
 \label{opt:equation:integral_fraunhofer}
 \end{align}

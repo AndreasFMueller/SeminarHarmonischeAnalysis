@@ -8,9 +8,9 @@
 %
 \section{Lösung
 	\label{gezeiten:section:Lösung}}
-\rhead{Teil 3}
-Die Lösung des Problems besteht aus zwei Teilen, der erste Teil besteht darin die Kurve des gemessenen Wasserstandes in Sinuswellen aufzuteilen, analog der Fourieranalyse.
-Im zweiten Teil müssen lediglich die zehn Sinuswellen miteinander addiert werden, um die Gezeiten vorherzusagen.
+\rhead{Lösung}
+Die Lösung des Problems besteht aus zwei Teilen, der erste Teil besteht darin die Kurve des gemessenen Wasserstandes in Sinuswellen aufzuteilen, analog der Fourier Analyse.
+Im zweiten Teil müssen lediglich die neun Sinuswellen miteinander addiert werden, um die Gezeiten vorherzusagen.
 Die im Prozess erste Maschine entwickelte Lord Kelvin erst einige Jahre später als die Maschine, welche für den zweiten Schritt benötigt wird.
 
 \subsection{Partialtiden}
@@ -22,7 +22,8 @@ Die Amplituden unterscheiden sich je nach Standort, und Meeresgrund.
 Die halbtagesgezeit des Mondes hat im Normalfall die höchsten Amplituden, gefolgt vom Hauptsonnenhalbtag.
 Grundsätzlich kann gesagt werden, dass die halbtagesgezeiten die höchsten Amplituden aufzeigen, gefolgt von den täglichen Gezeiten.
 Bei den vierteltäglichen Gezeiten sind die Amplituden, kleiner als zehn Zentimeter, die Auswirkungen sind daher fast gleich Null.
-In der Tabelle \ref{gezeiten:tabelle:partialtiden}steht 
+In der Tabelle \ref{gezeiten:tabelle:partialtiden} sind die wichtigsten Partialtiden abgebildet.
+Je mehr Partialtiden verwendet werden, desto genauer würde die Vorhersage werden. 
 
 \begin{table}
 	\centering
@@ -53,7 +54,7 @@ In der Tabelle \ref{gezeiten:tabelle:partialtiden}steht
 	\hline	
 \end{tabular}
 	
-\caption{In dieser Tabelle sind die zehn wichtigsten Partialtiden aufgeführt. In der zweiten Spalte, wird die Periode in Stunden angegeben. Ab der vierten Spalte sind die Amplituden der Partialtiden in Zentimeter angegeben. Die Abkürzungen stehen für folgende Orte: MICH=Ostküste im Norden USA; MS=Westküste USA; PR=Puerto Rico (Insel zwiscchen Nord- und Südamerika; AK=Kodiak, Alaska; CA=San Francisco, California; HALLO= Hilo, Hawaii)}
+\caption{In dieser Tabelle sind die neun wichtigsten Partialtiden aufgeführt. In der zweiten Spalte, wird die Periode in Stunden angegeben. Ab der vierten Spalte sind die Amplituden der Partialtiden in Zentimeter angegeben. Die Abkürzungen stehen für folgende Orte: MICH=Ostküste im Norden der USA; MS=Westküste der USA; PR=Puerto Rico (Insel zwiscchen Nord- und Südamerika; AK=Kodiak, Alaska; CA=San Francisco, California; HALLO= Hilo, Hawaii)}
 \label{gezeiten:tabelle:partialtiden}
 \end{table}
 
@@ -65,7 +66,7 @@ Wie bereits beschrieben musste Lord Kelvin eine Maschine erfinden, welche eine G
 Diese Maschine entwickelte Lord Kelvin jedoch nicht alleine, sondern er zog sich die Hilfe seines älteren Bruders James Thompson bei.
 Zusammen entwickelten sie die den mechanischen Integrator.
 Die Funktionsweise wird nachfolgend beschrieben, um die funktionweise besser zu verstehen, ist in der Abbildung  \ref{fig: skizze-integralmaschine}eine Skizze zum mechanischen Integrator abgebildet.
-Die Abbildung \ref{fig:harmonicanalyserdiscandsphere} zeigt eine Abbildung eines Mechanischen Integrators.
+Die Abbildung \ref{fig:harmonicanalyserdiscandsphere} zeigt eine Foto eines mechanischen Integrators.
 Für diese Maschine benötigt er eine Scheibe, eine Welle, eine Kugel, ein Ausgabepapier für den Integral und natürlich die bestehende Wasserstandskurve.
 Die Kugel wird dafür in der horizontalen Achse auf die Scheibe gelegt.
 Je nach Position der Kugel, bewegt sich die kurve, langsam, schnell oder sogar rückwärts.
@@ -80,28 +81,28 @@ Das Papier mit der vorhanden Kurve, bewegt sich also von unten nach oben.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=5\linewidth]{"papers/gezeiten/Skizze Integralmaschine"}
+	\includegraphics[width=\textwidth]{"papers/gezeiten/Skizze Integralmaschine"}
 	\caption{Skizze mechanischer Integrator}
 	\label{fig:skizze-integralmaschine}
 \end{figure}
 % TODO: \usepackage{graphicx} required
 \begin{figure}
 	\centering
-	\includegraphics[width=5\linewidth]{papers/gezeiten/Harmonic_analyser_disc_and_sphere}
+	\includegraphics[width=\textwidth]{papers/gezeiten/Harmonic_analyser_disc_and_sphere}
 	\caption{Kugel Scheiben Integrator}
 	\label{fig:harmonicanalyserdiscandsphere}
 \end{figure}
 
-Für diesen Prozess, der Fourieranalyse, muss jedoch die  Wasserstandskurve als erstes mit der Sinuswelle mit der entsprechenden Frequenz mulitpliziert werden.
-Um die Multiplikation in den Prozess zu integrieren, wird die Scheibe mit der Frequenz hin- und her-gedreht.
+Für diesen Prozess, der Fourier Analyse, muss jedoch die  Wasserstandskurve als erstes mit der Sinuswelle mit der entsprechenden Frequenz mulitpliziert werden.
+Um die Multiplikation in den Prozess zu integrieren, wird die Scheibe mit der Frequenz hin- und hergedreht.
 Somit ist die Ausgabekurve das Integral, der Mulitplikation von der Sinuswelle mit der entsprechenden Funktion und der Wasserstandskuve, und somit schon das gewünschte Resultat.
 Um den Koeffizienten zu erhalten, muss lediglich das entstandene Integral durch die Gesamtzeit geteilt werden.
 
 Mathematisch kann dieser Vorgang folgendermassen beschrieben werden:
 Mit dieser Analyse werden die Amplitude, sowie die Phase bestimmt.
-Um die vorhandene Summenkurve, sprich die Aufzeichnung des Wasserstandes, zu zerlegen, wird sie in die standardisierte From $H*cos(vt+p)$ gebracht.
-Um auch die Phase zu erhalten, wird unter der Verwendung einer standardmässigen trigonometrischen Identität als $A*cos(vt)+B*sin(vt)$ umgeschrieben.
-Dabei gilt $A=H*cos(\phi)$ und $B=-H*sin(\phi)$ und v steht für die Geschwindigkeit, t für die Zeit und $\phi$ für die Winkelgeschwindigkeit, respektive die Phase.
+Um die vorhandene Summenkurve, sprich die Aufzeichnung des Wasserstandes, zu zerlegen, wird sie in die standardisierte Form $H\cdot\cos(vt+p)$ gebracht.
+Um auch die Phase zu erhalten, wird unter der Verwendung einer standardmässigen trigonometrischen Identität als $A\cdot\cos(vt)+B\cdot\sin(vt)$ umgeschrieben.
+Dabei gilt $A=H\cdot\cos(\phi)$ und $B=-H\cdot\sin(\phi)$ und $v$ steht für die Geschwindigkeit, $t$ für die Zeit und $\phi$ für die Winkelgeschwindigkeit, respektive die Phase.
 Dadurch erhält man am Ende aus der Aufzeichnung des Gezeitenpegels $R(t)$ die Kosinus- und die Sinusamplituden A und B für eine bestimmte Geschwindigkeit $v$.
 
 
@@ -114,11 +115,11 @@ Dieser Scotch Yoke besteht aus einem Rad, mit einem Zapfen.
 Der Zapfen befindet sich dabei an der Peripherie des Rades.
 Um den Zapfen befindet sich eine freibewegende Öse, in der breite des Rades, damit die vertikalen Bewegungen des Zapfens festgehalten werden könnnen.
 Dieser Scotch Yoke kann also die Sinusbewegungen aufzeichnen, und ist in \ref{fig:scotch-yoke}
-Seine Herausforderung war es jedoch, mindestens zehn solche Sinuswellen miteinander zu addieren.
+Seine Herausforderung war es jedoch, mindestens neun solche Sinuswellen miteinander zu addieren.
 Den Input für die Lösung bekam er seinem Freund Mr. Tower, welcher er zufälligerweise im Zug traf und ihm da das Problem schilderte.
 Towers schlug ihm vor, eine Kette, welche um mehrere Rollen läuft, zu verwenden, wie Wheatstone in seinem alphabetischen Telegrapheninstrument.
-Dies war der entscheidende Input für Lord Kelvin, er skizzierte sogleich, die erste Gezeitenvorhersage Maschine. Seine Skizze könnte vereinfacht etwa so ausgesehen haben, wie die Skizze in der Abbildung \ref{fig: skizze-maschine}.
-Wie Skizze für die dritte Gezeitenvorhersagemaschine ausgesehen hat, ist in der \ref{fig:thompson-skizze}ersichtlich. 
+Dies war der entscheidende Input für Lord Kelvin, er skizzierte sogleich, die erste Gezeitenvorhersage Maschine. Seine Skizze könnte vereinfacht etwa so ausgesehen haben, wie die Skizze in der Abbildung \ref{fig:skizze-maschine}.
+Wie Skizze für die dritte Gezeitenvorhersagemaschine ausgesehen hat, ist in der \ref{fig:thompson-skizze} ersichtlich. 
 Und zwar befestigte er an jedem Scotch-Yoke ein Rad.
 Dort wo Wheatstone eine Kette verwendete, verwendete Lord Kelvin einen Draht, welcher am Anfang befestigt ist.
 Und danach durch alle Rädchen der Scotch-Yokes hindurchläuft.
@@ -127,21 +128,21 @@ So konnte er alle Beträge der Sinuswellen mit den unterschiedlichen Frequenzen 
 
 \begin{figure}
 	\centering
-	%\includegraphics[width=\linewidth]{"papers/gezeiten/Scotch Yoke"}
 	\caption{Darstellung eines Scotch Yoke}
 	\label{fig:scotch-yoke}
+	\includegraphics[width=\textwidth]{"papers/gezeiten/Scotch Yoke"}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{"papers/gezeiten/Skizze Maschine"}
+	\includegraphics[width=\textwidth]{"papers/gezeiten/Skizze Maschine"}
 	\caption{Skizze der Gezeitenvorhersage Maschine}
 	\label{fig:skizze-maschine}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{"papers/gezeiten/Thompson Skizze"}
+	\includegraphics[width=\textwidth]{"papers/gezeiten/Thompson Skizze"}
 	\caption{Vollumfängliche Skizze der 3. Gezeitenvorhersagemaschine von Lord Kelvin}
 	\label{fig:thompson-skizze}
 \end{figure}
@@ -152,12 +153,11 @@ Wenn nun Lord Kelvin oder auch jemand anders, vier Stunden den Hebel der Maschin
 Nun konnte mit einer Scotch-Yoke-Riemenmaschine, viel einfacher die Gezeitenvohersage gemacht werden.
 
 In der Mathematik wird die Vorhersage der Gezeiten harmonische Analyse genannt.
-Die Vorhersage der Gezeiten für einen bestimmten Hafen wird mit $Z_0+\sum A_k*cos(v_kt+\phi_k)$ wobei $Z_0$ die durschnittliche Höhe des Wasserstandes im Hafen ist. Die Zahlen $A_k$, $v_k$, $t$ und $\phi_k$ sind die Amplitude in cm, die Geschwindigkeit Grad/Stunde, Zeit in Stunden und die Phase in Grad angegeben.
+Die Vorhersage der Gezeiten für einen bestimmten Hafen wird mit $Z_0+\sum A_k\cdot\cos(v_kt+\phi_k)$ wobei $Z_0$ die durschnittliche Höhe des Wasserstandes im Hafen ist. Die Zahlen $A_k$, $v_k$, $t$ und $\phi_k$ sind die Amplitude in cm, die Geschwindigkeit Grad/Stunde, Zeit in Stunden und die Phase in Grad angegeben.
 Kurz kann auch gesagt werden: Die einzelnen harmonischen Schwingungen der Partialtiden werden übereinandergelegt, damit am Ende wieder eine Wasserstandskurve entsteht.
 
-Später wurden die Maschinen mit Frequenzkomponenten erweitert.
 Diese Präzisionsmaschinen wurden bis in die 1960er Jahre verwendet, und fanden auch im zweiten Weltkrieg grossen Anklang.
-Später wurden die Maschinen mit Frequenzkomponenten erweitert.
+Später wurden die Maschinen mit zusätzlichen Frequenzkomponenten erweitert.
 So entstand unter anderem der grösste Gezeitenrechner mit 62 unterschiedlichen Frequenzen.
 Seit Jahrzehnten stand im deutschen Schifffahrtsmuseum ein Gezeitenrechner, welcher aber ungenutzt blieb und somit verstaubte
 Im Jahre 2020 wurde der älteste deutsche Gezeitenrechner aus dem Jahr 1915 restauriert.
@@ -165,5 +165,5 @@ Dies war eine kostspielige Sache, die ganze Restauration kostete 50'000 Euro.
 Die tausenden Einzelteile wurden zerlegt, gereinigt und wieder zusammengebaut.
 Das war eine grosse Herausforderung, denn es existieren keine Baupläne.
 
-Im Zeitalter der Digitalen Computer werden die mechanischen Gezeitenrechner, also nur noch im Museum verwendet.
-Für die Schiffahrt oder auch für das Bauingenieurwesen, werden die Berechnungen heute digital mit dem Computer durchgeführt, diese sind Präziser, zuverlässiger und schneller, denn die genauen Einstellungen beim analogen Gezeitenrechner waren, und sind immer noch sehr kompliziert.
+Im Zeitalter der digitalen Computer werden die mechanischen Gezeitenrechner also nur noch im Museum verwendet.
+Für die Schiffahrt oder auch für das Bauingenieurwesen, werden die Berechnungen heute digital mit dem Computer durchgeführt, diese sind präziser, zuverlässiger und schneller, denn die genauen Einstellungen beim analogen Gezeitenrechner waren, und sind immer noch sehr kompliziert.

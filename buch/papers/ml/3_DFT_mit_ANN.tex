@@ -61,7 +61,7 @@ Modells \eqref{ml:ann:linear-unit} als
 \end{equation}
 geschrieben werden. Die konstanten Anteile entfallen.
 
-In Abb. \ref{fig:ml:dft-with-ann:linear} ist das Netz für die Kosinus-Anteile abgebildet.
+In Abbildung~\ref{fig:ml:dft-with-ann:linear} ist das Netz für die Kosinus-Anteile abgebildet.
 Als Übertragungsfunktion wurde für die Linearität die Identitätsfunktion $f(x) = x$ gewählt. Das Netz ist
 also linear und nicht einmal affin (alle Bias-Werte sind Null). Ein analoges Netz kann
 auch für die Sinus-Anteile erstellt werden. Alternativ können die Sinus-Koeffizienten aus
@@ -83,19 +83,19 @@ Man kann erkennen, das so ein Netz unseren Fall der linearen Regression
 (\ref{ml:regression}) exakt wiederspiegelt. Die Koeffizienten $\vec \theta_{k,a}$ und
 $\vec \theta_{k,b}$ können also mit herkömmlichem Gradient-Descent gelernt werden, und das
 sogar in endlich vielen Schritten, exakt. Um diese Aussage mit einem numerischen
-Experiment nachzuprüfen, wurde das lineare Netz aus Abb. \ref{fig:ml:dft-with-ann:linear}
+Experiment nachzuprüfen, wurde das lineare Netz aus Abbildung \ref{fig:ml:dft-with-ann:linear}
 wobei $N=1000$ mit \texttt{Keras} trainiert.
-Abb. \ref{fig:ml:dft-with-ann:leanred-vs-dft} zeigt einen Vergleich der gelernten
+Abbildung~\ref{fig:ml:dft-with-ann:leanred-vs-dft} zeigt einen Vergleich der gelernten
 Koeffizienten mit den Koeffizienten ${\bm \thetaup}_{a}$ und ${\bm \thetaup}_{b}$ der DFT.
 
 Leider haben wir mit dieser Methodik überhaupt nichts gewonnen. Die Koeffizienten müssen
 zwar nur \emph{einmal} gelernt werden bei gleichbleibendem $N$, um aber die
 fouriertransformierten Werte $c_k$ zu berechnen, müssen immer noch zwei volle
-Matrix-Vektor multiplikationen durchgeführt werden. Hier ist die schnelle
+Matrixvektormultiplikationen durchgeführt werden. Hier ist die schnelle
 Fourier-Transformation bei weitem überlegen.
 Die Frage, ob es möglich ist mit einem künstlichen neuronalen Netzwerk die Fourier-Transformation zu
 berechnen können wir totzdem bejahen. Denn so ein lineares Netzwerk \emph{ist} ein FFANN,
-auch wenn ein Spezialfall.
+wenn auch ein Spezialfall.
 
 In einem weiteren numerischen Experiment wurde zuletzt versucht, mit einem dreischichtigen FFANN,
 der $\tanh$-Aktivierungsfunktion und normalisierten Daten die DFT zu approximieren.
@@ -107,7 +107,7 @@ Ein besserer Ansatz bietet \cite{ml:pmlr-v97-dao19a}, wobei durch ein speziell a
 lineares Netzwerk mit schwachbesetzten Schichten, Faktorisierungen\footnote{In
 \ref{buch:diskret:subsetion:faktorisierung} ist eine Faktorisierung der
 Fourier-Transformation und die daraus resultierende Reduktion der Anzahl Koeffizienten
-beschrieben.} von einer vielzahl der linearen Transformationen gelernt werden können.
+beschrieben.} von einer Vielzahl der linearen Transformationen gelernt werden können.
 \cite{ml:pmlr-v97-dao19a} zeigt also, dass ein vielschichtiges ANN mit geschicktem Aufbau in der Lage ist
 einen fast beliebigen schnellen linearen Transformations-Algorithmus (zum Beispiel die FFT)
 aus Daten zu rekonstruieren.

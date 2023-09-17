@@ -106,7 +106,30 @@ es ist $\widehat{\mathbb{R}^2} = \mathbb{R}^2$.
 % Ebene Wellen
 %
 \subsubsection{Ebene Wellen}
-XXX Die Funktionen $\varphi_{kl}(x,y)$ beschreiben ebene Wellen...
+\begin{figure}
+\centering
+\includegraphics{chapters/050-radon/images/ebenewellen.pdf}
+\caption{Ebene Welle $\varphi_{kl}(x,y)$ mit Ausbreitungsrichtung
+in Richtung des Wellenvektors mit den Komponenten $k$ und $l$.
+Die Wellenfronten stehen senkrecht auf dem Wellenvektor.
+\label{buch:radon:fig:ebenewelle}}
+\end{figure}
+Wie Abbildung~\ref{buch:radon:fig:ebenewelle} zeigt, sind
+die Funktionen $\varphi_{kl}(x,y)$ beschreiben ebene Wellen.
+Die Abbildung zeigt nur die Werte des Imaginärteils $\Im \varphi_{kl}(x,y)$,
+blau für negative Werte und grün für negative Werte.
+$\varphi_{kl}(x,y)$ ist konstant auf der Menge der Punkte, für die
+$kx+ly$ konstant ist.
+Da dies das Skalarprodukt 
+\[
+kx+ly 
+=
+\begin{pmatrix}x\\y\end{pmatrix}
+\cdot
+\begin{pmatrix}k\\l\end{pmatrix}
+\]
+ist, ist $\varphi_{kl}(x,y)$ konstant auf Geraden mit der Normalen
+mit Komponenten $k$ und $l$, dem sogenannten Wellenvektor.
 
 %
 % Die duale Gruppe von $(R/2\pi Z)^2$
@@ -245,7 +268,8 @@ u(x,y)
 \,dx\,dy.
 \]
 Der Exponent $kx+ly$ ist konstant entlang von Geraden, die
-senkrecht auf dem Vektor mit den Komponenten $(k,l)$ stehen.
+senkrecht auf dem Vektor mit den Komponenten $(k,l)$ stehen
+(Abbildung~\ref{buch:radon:fig:ebenewellen}).
 Entlang solcher Geraden ist daher auch $e^{i(kx+ly)}$ konstant.
 Wählt man ein Koordinatensystem so, dass diese Geraden
 Koordinatenachsen werden, kann das Fourier-Integral zerlegt werden.
@@ -569,7 +593,7 @@ bezüglich der ersten Variablen Fourier-transformiert wird.
 
 Die Zusammenetzung~\eqref{buch:radon:definitionb:eqn:fr}
 der Fourier-Transformation $\mathscr{F}$ aus
-einer eindimensionalen Transformation $\mathscr{F}_r$ und der
+einer eindimensionalen, radialen Transformation $\mathscr{F}_r$ und der
 Radon-Transformation $\mathscr{R}$
 hat als unmittelbare Konsequenz, dass die Radon-Transformation
 invertierbar sein muss.
@@ -579,66 +603,82 @@ Fourier-Transformierte $\mathscr{F}u$ bestimmt wird.
 Die Funktion $u$ wird dann als Fourier-Umkehrtransformierte davon
 gefunden.
 
-%
-% Anwendung: CAT und MRI
-%
-\subsection{Anwendungen: CAT und MRI
-\label{buch:radon:definition:subsection:catmri}}
-Die Radon-Transformation ist der mathematische Kern zweier bedeutender
-Anwendungen.
-
-%
-% CT-Scanner
-%
-\subsubsection{CT-Scanner}
-Ein CT-Scanner oder Computertomograph ermöglicht, ein Bild eines
-Querschnitts durch einen Körper zu bestimmen, ohne dass der Körper
-aufgeschnitten werden muss.
-Dies ist natürlich besonderes nützlich für diagnostische Zwecke in der
-Medizin, wird aber auch ganz allgemein in der Biologie oder in der
-Materialprüfung angewendet.
-Der Computertomograph verwendet eine Röntgen-Quelle um einen Fächerstrahl
-zu erzeugen.
-Die Röntgenstrahlen durchdringen den zu untersuchenden Körper.
-Mit photoelektrischen Sensoren wird die Abschwächung der Strahlung
-gemessen.
-Ausserdem wird die ganze Aparatur in der Ebene des Fächerstrahls
-gedreht, so dass die Abschwächung auf beliebigen Geraden in der
-Ebene gemessen werden kann.
-
-Die Absobtion der Röntgentstrahlen in einem homogenen Medium 
-hängt exponentiell von der Stärke des Mediums ab.
-Die eintretende Intensität $I_0$ wird in der Tiefe $z$ auf
-\[
-I(z) = I_0e^{-\alpha z}
-\]
-abgeschwächt.
-Die Intenstität entlang des Strahles erfüllt also die Differentialgleichung
-\[
-I'(z)
+\begin{satz}
+Ist $u\colon \mathbb{R}^n \to\mathbb{C}$ eine integrierbare Funktion
+und $\mathscr{R}u$ ihre Radon-Transformierte, dann ist die
+Fourier-Transformierte
+\begin{equation}
+(\mathscr{F}u)(k)
 =
--\alpha I_0 e^{-\alpha z}
+(\mathscr{F}_r \mathscr{R}u)(k^0, r))(|k|)
+\label{buch:radon:definition:satzeqn:fourier}
+\end{equation}
+von $u$ die Zusammensetzung der Radon-Transformation mit der 
+eindimensionalen radialen Fourier-Transformation.
+\end{satz}
+
+Da die Fourier-Transformation invertierbar ist, können wir schliessen,
+dass auch die Radon-Transformation invertierbar ist.
+Aus der Gleichung
+\eqref{buch:radon:definition:satzeqn:fourier}
+kann man ableiten, dass man $u$ aus $\mathscr{R}u$ bekommen kann,
+indem man zuerst die Radon-Transformierte bezüglich der Variablen
+$r$ Fourier-Transformiert und anschliessend die entstandene 
+Funktion von $k$ $n$-dimensional Fourier-rücktransformiert.
+
+\begin{satz}
+Ist $u\colon \mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion
+und $\mathscr{R}u$ ihre Radon-Transformierte, dann kann die Funktion
+mit der Umkehrformel
+\begin{equation}
+u(x)
 =
--\alpha I(z).
-\]
-In einem inhomogenen Medium ist der Absorbtionskoeffizient eine Funktion
-der Tiefe, also erfüllt $I(z)$ die Differentialgleichung
-\[
-I'(z) = -\alpha(z) I(z).
-\]
-Sie kann durch Separation gelöst werden, die Lösung ist
-\[
-I(z) = I(0) \exp\biggl(-\int_0^z \alpha(z)\,dz\biggr).
-\]
+\frac{1}{(2\pi)^n}
+\int_{\mathbb{R}^n}
+e^{ik\cdot x}
+\int_{\mathbb{R}}
+e^{-i|k|s}
+\mathscr{R}u(s,k^0)
+\,ds
+\,dk
+\label{buch:radon:definition:eqn:radonumkehr}
+\end{equation}
+bestimmt werden.
+\end{satz}
 
+\begin{proof}[Beweis]
+Das innere Integral von \eqref{buch:radon:definition:eqn:radonumkehr}
+ist die radiale Fourier-Transformation, das äussere ist die
+Fourier-Umkehrformel.
+\end{proof}
+
+Der Nachteil ist allerdings, dass diese Vorgehensweise zur Umkehr der
+Radon-Transformation nicht unbedingt besonders stabil ist.
+In nachfolgenden Abschnitten sind daher bessere Verfahren gesucht,
+wie die Radon-Transformation invertiert werden kann.
 
 %
-% Magnetic Resonance Imaging
+% Anwendungen der Radon-Transformation
 %
-\subsubsection{Magnetic Resonance Imaging}
+\subsection{Anwendungen der Radon-Transformation
+\label{buch:radon:definition:subsection:anwendungen}}
+Die Radon-Transformation hat interessante Anwendungen in Bildgebenden
+Verfahren der Medizin.
+Ein Computertomograph oder CAT-Scanner bestimmt die Absorbtion von
+Röntgenstrahlen, die in einer Ebene den Körper durchdringen.
+Dies ist die Radontransformation der Funktion des Absorbtionskoeffizienten
+in der Schnittebene.
+Durch Invertierung der Transformation kann ein Schnittbild durch
+den Körper gewonnen werden.
+Die Details dieses Verfahrens werden in Kapitel~\ref{chapter:ct}
+ausgeführt.
 
-
-
-
+Ein Magnetresonanzimager (MRI) verwendet Kernspinresonanz in einem Magnetfeld,
+um das Integral über die Dichte gewisser Atomkerne über eine Ebene durch
+den Körper zu bestimmen.
+Er bestimmt also die Radon-Transformation einer Funktion auf $\mathbb{R}$.
+Durch Invertierung der Transformation kann die Funktion rekonstruiert werden
+und es können Schnittbilder oder dreidimensionale Visualisierungen
+der inneren Organe berechnet werden.
 
 

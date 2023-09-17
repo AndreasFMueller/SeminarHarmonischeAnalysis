@@ -16,7 +16,7 @@ then
 fi
 
 awk 'BEGIN {
-	offsetpage = 12
+	offsetpage = 10
 	startpage = 0
 	identifier = ""
 	chapterno = 0
