@@ -10,8 +10,8 @@
 \section{Rauschen\label{brown:Rauschen}}
 \rhead{Implikationen}
 
-Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden. So ist zum Beispiel die \textit{Fast Fourier Transform (FFT)} eine wichtige Methode, um periodische Signale von Rauschen zu unterscheiden. So kann bezüglich der Intensität der auftretenden Frequenzen und der Verteilung der Amplituden im Frequenzspektrum, also deren Leistungsdichte, charakterisiert werden. 
-So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Signal von Rauschen befreien. Für gewisse Anwendungen ist es auch möglich, mit hochfrequent überlagerten Schwingungen, Rauschen zu simulieren. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen, kann eine Aussage gemacht werden, wie ein System auf Rauschen --- also eine zufällige konstante Störung --- reagieren würde. 
+Um dem Thema des Buches gerecht zu werden und dieses Kapitel einzugliedern, kann die harmonische Analysis als essenzielles Werkzeug betrachtet werden. So ist zum Beispiel die \textit{Fast Fourier Transform (FFT)} eine wichtige Methode, um periodische Signale von Rauschen zu unterscheiden. Es kann bezüglich der Intensität der auftretenden Frequenzen und der Verteilung der Amplituden im Frequenzspektrum, also deren Leistungsdichte, charakterisiert werden. 
+So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Signal von Rauschen befreien. Für gewisse Anwendungen ist es auch möglich, mit hochfrequent überlagerten Schwingungen, Rauschen zu simulieren. Durch die Analyse von Systemantworten auf verschiedene harmonische Anregungen, kann eine Aussage gemacht werden, wie ein System auf echtes Rauschen als Störung reagieren würde. 
 
 \begin{figure}
 	\centering
@@ -37,7 +37,7 @@ So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Si
 
 \subsection{Was ist Rauschen?\label{brown:Rauschen:Arten}}
 
-Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichtiger Faktor, so kann es auch in verschiedenen Kontexten unterschiedlich definiert werden. In der Signal- und Kommunikationstechnik ist Rauschen als ungewollte Störung eines Signals definiert. Ein perfektes, ungestörtes Signal, wie es in Abbildung \ref{idealSignal} dargestellt ist, gibt es nur in der Theorie. In der Realität sind alle Signale von Rauschen behaftet, wie in der Abbildung \ref{realSignal} dargestellt. Eine solche Störung kann auf einem deterministischen Zusammenhang beruhen oder rein zufälliger Natur sein. Zum Beispiel kann bei elektronischen Messungen durch das Magnetfeld von Stromkabeln eine Störung hervorgerufen werden, dies wäre eine deterministische Störungen (konstant 50 Hz Wechselstrom). Es gibt aber auch rein zufällige Störungen, wie zum Beispiel durch kosmische Teilchen, welche einen Empfänger oder Messgerät beeinflussen können. Wird ein Signal konstant von Störungen beeinflusst, kann von Rauschen gesprochen werden. Mathematisch können unterschiedliche Arten von Rauschen unterschieden werden \cite{werner2008signale}, einige der wichtigsten sind folgende: 
+Rauschen ist in vielen technischen und wissenschaftlichen Disziplinen ein wichtiger Faktor, so kann es auch in verschiedenen Kontexten unterschiedlich definiert werden. In der Signal- und Kommunikationstechnik ist Rauschen als ungewollte kontinuierliche Störung eines Signals definiert. Ein perfektes, ungestörtes Signal, wie es in Abbildung \ref{idealSignal} dargestellt ist, gibt es nur in der Theorie. In der Realität sind alle Signale von Rauschen behaftet, wie in der Abbildung \ref{realSignal} dargestellt. Eine solche Störung kann auf einem deterministischen Zusammenhang beruhen oder rein zufälliger Natur sein. Zum Beispiel kann bei elektronischen Messungen durch das Magnetfeld von Stromkabeln eine Störung hervorgerufen werden, dies wäre eine deterministische Störungen (konstant 50 $ Hz $ Wechselstrom). Es gibt aber auch rein zufällige Störungen, wie zum Beispiel durch kosmische Teilchen, welche einen Empfänger oder Messgerät beeinflussen können. Wird ein Signal konstant von Störungen beeinflusst, kann von Rauschen gesprochen werden. Mathematisch können unterschiedliche Arten von Rauschen unterschieden werden \cite{werner2008signale}, einige der wichtigsten sind folgende: 
 
 
 \begin{definition}
@@ -53,14 +53,14 @@ Das Rauschen wird als ``weiss'' bezeichnet, analog zu weissem Licht, bei dem all
 	Ein Signal mit zufälligen Änderungen, dessen Amplituden invers proportional zur Frequenz $ ~1/f $  abnehmen. In der Elektronik wird der Abfall der Leistungsdichte mit 3 \text{dB} pro Oktave charakterisiert.
 \end{definition}
 
- Der Begriff ``Rosa'' ist auch eine Analogie zum sichtbaren Licht, bei dem tiefere Frequenzen eher rötlich erscheinen und überlagert mit Weiss (weisses Rauschen), Rosa ergeben. Um bei einem hörbaren Beispiel zu bleiben: Rosa Rauschen klingt als Schall ausgewogener und ``weicher'' als weisses Rauschen. Dies, da unangenehme hohe Frequenzen abgeschwächt werden und somit weniger dominant sind.
+ Der Begriff ``Rosa'' ist auch eine Analogie zu sichtbarem Licht, bei dem tiefere Frequenzen eher rötlich erscheinen und überlagert mit Weiss (weisses Rauschen), Rosa ergeben. Um bei einem hörbaren Beispiel zu bleiben: Rosa Rauschen klingt als Schall ausgewogener und weicher als weisses Rauschen. Dies, da unangenehme hohe Frequenzen abgeschwächt werden.
 
 \begin{definition}
 	{\em Braunes Rauschen (Brownsches Rauschen):}
 	Ein Signal mit zufälligen Änderungen, dessen Amplituden invers quadratisch zur Frequenz $ ~1/f^2 $ abnehmen. In der Elektronik wird der Abfall der Leistungsdichte mit 6 \text{dB} pro Oktave charakterisiert.
 \end{definition}
 
-\textit{Braun} bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownsche Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern.
+``Braun'' bezieht sich hier nicht auf eine Farbe, sondern ist Robert Brown gewidmet. Denn die Brownsche Modekühlbewegung entspricht diesem Rausch-Typ, da sich die beobachteten trägen Moleküle mit zunehmender Frequenz verstärkt gegenseitig behindern.
 
 \begin{definition}
 	{\em Gausssches Rauschen:}
@@ -75,7 +75,7 @@ Gausssches Rauschen ist ein häufiges Artefakt in digitalen Bildern und daher vo
 \end{definition}
 
 Im Frequenzspektrum äussern sich die Impulse über einen breiten Bereich, ähnlich zur Fourier-Transformation eines Dirac-Impulses. Ein idealer Dirac-Impuls im Zeitbereich stellt im Frequenzbereich einen konstanten Wert über alle Frequenzen dar.
-In der digitalen Bildverarbeitung ist diese Art von Rauschen als \textit{salt} and \textit{pepper} bekannt. Dabei nehmen einzelne Pixel sporadisch extreme Werte an, entweder extrem dunkel (pepper) oder extrem hell (salt). Diese Pixel sind auf dem Bild leicht erkennbar und wirken ähnlich wie verstreute Salz- oder Pfefferkörner.
+In der digitalen Bildverarbeitung ist diese Art von Rauschen als ``salt and pepper'' bekannt. Dabei nehmen einzelne Pixel sporadisch extreme Werte an, entweder extrem dunkel (\textit{pepper}) oder extrem hell (\textit{salt}). Diese Pixel sind auf dem Bild leicht erkennbar und wirken ähnlich wie verstreute Salz- oder Pfefferkörner.
 
 
 Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch auf diese wird nicht eingegangen.
@@ -119,7 +119,7 @@ Es gibt auch Signale die visuell wie Rauschen wirken, obwohl diese kaum von eine
 
 \subsection{Rauschen mittels Wiener-Prozess\label{brown:Rauschen:RandomWalkWiener}}
 
-Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess definiert werden. Zwei weit verbreitete Konzepte dabei sind der \textit{random walk} und der \textit{Wiener-Prozess}.
+Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess definiert werden. Zwei weit verbreitete Konzepte dabei sind der \textit{Random Walk} und der \textit{Wiener-Prozess}.
 
 \begin{definition}\textbf{Random Walk:}
 	\label{randomWalk}
@@ -135,7 +135,7 @@ Um Rauschen zu modellieren, muss als Grundlage ein stochastischer Prozess defini
 	\begin{enumerate}
 		\item Der Startwert von $ t = 0 $ ist $ W(0) = 0 $.
 		\item $ W(t_{1}) - W(t_{2}) $ ist eine normalverteilte Zufallsvariable mit Erwartungswert 0 und Varianz $ t_{1} - t_{2} $. Es ergibt sich folgender Zusammenhang: $ dW^2 = dt $.
-		\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten (Markov-Eigenschaft) und nirgends differenzierbar.
+		\item Zu jedem weiteren Zeitpunkt $ t_{n} $ ist die Zufalls-Variable unabhängig von allen vorhergehenden Werten und nirgends differenzierbar.
 	\end{enumerate}
 \end{definition}
 
@@ -155,7 +155,7 @@ ergibt weisses Rauschen. Dies ist auch der Grund, weshalb der Wiener-Prozess als
 
 In der Abbildung \ref{brown:diffWienerFFT} ist die Simulation eines Wiener-Prozesses, also einer Brownschen Bewegung, und dessen Frequenzspektrum aufgetragen. Der Unterschied zum simulierten Börsenkurs in der Abbildung \ref{brown:1Dbrownian} ist lediglich, dass keine Drift-Komponente modelliert wurde. Man kann feststellen, dass die Leistungsdichte mit zunehmender Frequenz abnimmt. Dies bedeutet, dass tiefe Frequenzen sich im Signal stärker äussern als hohe, also mehr Energie beinhalten. Das Signal kann nun in der Zeitdomäne differenziert werden oder im Frequenzbereich durch eine komplexwertige Multiplikation mit der Frequenz $ jwt $. So ergibt sich aus der Brownschen Bewegung mit abfallendem Frequenzspektrum ein konstantes Frequenzspektrum. In der Zeitdomäne stellt das Signal ausschliesslich weisses Rauschen dar, wie in der Darstellung \ref{brown:diffWienerFFT} zu sehen ist.
 
-Würde man nun das konstante Frequenzspektrum weiter differenzieren, vergrößert man nur die Amplituden, was sich im Zeitbereich durch ein zunehmend unstetigeres Signal äussert. Deshalb ist weisses Rauschen für die meisten Zwecke nicht sinvoll weiter differenzierbar.
+Würde man nun das konstante Frequenzspektrum weiter differenzieren, vergrössert man nur die Amplituden, was sich im Zeitbereich durch ein zunehmend unstetigeres Signal äussert. Deshalb ist weisses Rauschen für die meisten Zwecke nicht sinvoll weiter differenzierbar.
 %ToDo: Alles in eine Grafik und übereinander gross darstellen
 %\begin{figure}
 %	\centering
@@ -188,8 +188,7 @@ Beim Umgang mit Messdaten und empfangenen Signalen ist die Problematik von Stör
 Eine weitere Schwierigkeit entsteht, wenn anhand von Messdaten ein Modell erstellt werden soll, welches das Verhalten der Messdaten widerspiegelt. Dabei kann es sein, dass das Rauschen als Teil des Systems identifiziert wird oder als rein externe Störung. Im einen Fall muss dann zwischen System und Rauschen unterschieden werden, im anderen Fall muss das System selbst Rauschen abbilden können.
 % Absatz?
 
-Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. In vielen Bereichen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es g
-ibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür ist das System
+Ist ein System anhand einer gewöhnlichen Differenzialgleichung (DGL) gegeben, kann das Verhalten des Systems unter Berücksichtigung der Anfangsbedingungen vorhergesagt werden. Vom Anfangswert aus entwickelt sich die Funktion gemäss der Startbedingung und dem durch die DGL gegebenen Vektorfeld. In vielen Situationen entspricht ein solch deterministisches System jedoch nicht der Realität und suggeriert eine Aussagekraft, welche sich nicht mit Beobachtungen deckt. Es gibt Systeme, welche stark auf kleine Störeinflüsse reagieren. Dies führt dazu, dass sich die Lösung einer DGL gegenüber der Realität, zum Beispiel durch Rauschen, nicht perfekt deckt oder das Resultat sogar komplett divergiert. Ein anschauliches Beispiel dafür ist das System
 \begin{align}
 	\frac{dx}{dt} &= -y \\
 	\frac{dy}{dt} &= x^2 + y
@@ -206,6 +205,6 @@ für welches in der Abbildung~\ref{brown:divergentAndConvergentSystem} zwei unte
 
 Dieses System veranschaulicht schön, wie sich eine kleine Variation der Startbedingung auf den Verlauf der Lösung auswirken kann. In diesem speziellen Fall konvergieren die Lösung zu einem späteren Zeitpunkt $ t $ wieder. Bedenkt man nun aber, dass eine solche Störung durch Rauschen herbeigeführt werden könnte, scheint es unsinnig, eine einzige fixe Lösung für ein solches System anzugeben --- zumindest nicht ohne auf die Aussagekraft der Lösung, unter Rauscheinfluss, hinzuweisen oder den Lösungsraum genauer zu spezifizieren.
 
-Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen und komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein, zufällige Störungen des Systems nicht zu berücksichtigen. Andere Systeme beinhalten selbst eine zufällige Komponente, welche nicht vernachlässigt werden soll.
+Es gibt auch Systeme, welche bei kleinen Störungen aus einem stabilen Zustand in einen instabilen Zustand übergehen und komplett divergieren. In solchen Fällen kann es ein fataler Fehler sein, zufällige Störungen des Systems nicht zu berücksichtigen. Andere Systeme beinhalten selbst eine zufällige Komponente, welche nicht vernachlässigt werden darf.
 
-Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von zufälligen Störungen beim Aufstellen eines Modells miteinbeziehen. Anstatt eine fixe Lösung zum Zeitpunkt $ t $ anzugeben, kann man eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände angeben --- et voilà, man hat den Lösungsraum einer stochastische Differenzialgleichung (SDGL).
+Um diesem Umstand gerecht zu werden, kann man die Möglichkeit von zufälligen Störungen beim Aufstellen eines Modells miteinbeziehen. Anstatt eine fixe Lösung zum Zeitpunkt $ t $ anzugeben, definiert man eine Wahrscheinlichkeitsverteilung über die verschiedenen möglichen Endzustände --- et voilà, man hat den Lösungsraum einer stochastische Differenzialgleichung (SDGL).
