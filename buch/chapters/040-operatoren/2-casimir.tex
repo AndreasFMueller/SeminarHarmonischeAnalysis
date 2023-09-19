@@ -552,7 +552,7 @@ Die Ableitung der Invarianzbedingung
 \eqref{buch:operatoren:casimir:eqn:invarianz}
 ist $0$ für alle $t$.
 Die Ableitung der linken Seite nach $t$ an der Stelle $t=0$ ist
-\[
+\begin{equation}
 \frac{d}{dt} g(t)Xg^{-1}(0)\bigg|_{t=0}
 =
 \dot{g}(0)Xg^{-1}(0)
@@ -566,12 +566,13 @@ X
 \frac{d}{dt}e^{-tY}\bigg|_{t=0}
 =
 YX-XY.
-\]
+\label{buch:operatoren:casimir:eqn:innad}
+\end{equation}
 
 \begin{definition}
 Die Abbildung
 \[
-\operatorname{ad}(Y)\colon LG \to LG:X\mapsto [Y,X] = YX-XY
+\operatorname{ad}_Y\colon LG \to LG:X\mapsto [Y,X] = YX-XY
 \]
 heisst die {\em adjungierte Abbildung}.
 \end{definition}
@@ -616,6 +617,31 @@ erfüllt ist.
 Das Produkt $[X,Y]$ in der Lie-Algebra heisst auch die
 {\em Lie-Klammer} von $X$ und $Y$.
 \end{definition}
+
+Eine unmittelbare Folge aus der Jacobi-Identität ergibt sich
+aus der Rechnung
+\begin{align}
+\operatorname{ad}_Z([X,Y])
+&=
+[Z,[X,Y]]
+\\
+&=
+-[X,[Y,Z]]
+-[Y,[Z,X]]
+=
+[X,[Z,Y]]
++
+[[Z,X],Y]
+\notag
+\intertext{und mit der adjungierten Darstellung geschrieben:}
+\operatorname{ad}_Z([X,Y])
+&=
+[X,\operatorname{ad}_Z(Y)]
++
+[\operatorname{ad}_Z(X),Y].
+\label{buch:operatoren:casimir:eqn:lieklammerinvariant}
+\end{align}
+Eine solche Operation heisst auch eine {\em Derivation}.
 
 Für abelsche Gruppen sind Rechts- und Linkstranslation identisch,
 die adjungiert Abbildung wird daher für alle Tangentialvektoren $=0$.
@@ -772,9 +798,9 @@ zu $L\operatorname{SO}(3)$ isomorphe Lie-Algebra.
 \end{beispiel}
 
 %
-% invariante quadratische Formen
+% Das Zentrum einer Lie-Algebra
 %
-\subsubsection{Invariante quadratische Formen}
+\subsubsection{Das Zentrum einer Lie-Algebra}
 Auf einer nichtkommutativen Lie-Algebra $L$ kann man nicht sind die einzigen
 Differentialoperatoren die invarianten Vektorfelder $X$, die mit allen
 anderen Vektoren der Lie-Algebra vertauschen, für die also gilt
@@ -802,6 +828,101 @@ Somit besteht das Zentrum der Lie-Algebra von $\operatorname{SO}(3)$ nur
 aus dem Nullvektor.
 Insbesondere gibt es keine invarianten Differentialoperatoren erster
 Ordnung auf $\operatorname{SO}(3)$.
+
+%
+% invariante quadratische Formen
+%
+\subsubsection{Invariante Bilinearformen}
+Eine Lie-Gruppe, deren Lie-Algebra Zentrum $Z(LG)=0$ hat, hat keine
+invarianten Differentialoperatoren erster Ordnung.
+Ein invarianter Differentialoperator hat also mindestens Ordnung 2.
+Es stellt sich somit die Frage, wie man aus Differentialoperatoren
+erster Ordnung einen invarianten Differentialoperator zweiter
+Ordnung zusammensetzen kann.
+
+Ein Differentialoperator zweiter Ordnung ist eine Linearkombination
+von Produkten von jeweils zwei Differentialoperatoren erster Ordnung,
+also eine Summe der Form
+\[
+P
+=
+\sum_{i,k=1}^n a_{ik} X_i X_k.
+\]
+Dabei darf man annehmen, dass die $X_i$ Basisvektoren der Lie-Algebra
+sind.
+Einem Differentialoperator $P$ entspricht also immer eine
+Bilinearform.
+Ein invarianter Differentialoperator zweiter Ordnung kann daher
+dadurch gefunden werden, dass man eine invariante Bilinearform
+konstruiert.
+
+Sei also $\beta(X,Y)$ eine Bilinearform auf der Lie-Algebra $LG$.
+Sie ist trivialerweise bereits linksinvariant, da sie aus der
+Lie-Algebra konstruiert worden ist.
+Es ist also nur noch zu ermitteln, unter welchen Voraussetzungen
+sie auch rechtsinvariant ist.
+Die Wirkung eines Elementes $g$ von rechts wurde früher
+in \eqref{buch:operatoren:casimir:eqn:innad} als
+die Konjugation erkannt, Invarianz von $\beta$ bedeutet daher:
+\begin{equation}
+\beta(X,Y)
+=
+\beta(gXg^{-1},gYg^{-1}).
+\label{buch:operatoren:casimir:eqn:bilinearinvarianz}
+\end{equation}
+Schreibt man jetzt $g(t)=\exp(tZ)$, dann folgt aus der
+Bedingung~\eqref{buch:operatoren:casimir:eqn:bilinearinvarianz},
+dass
+\[
+\beta(X,Y)
+=
+\beta(g(t)Xg(t)^{-1},g(t)Yg(t)^{-1})
+\]
+konstant ist.
+Die Ableitung muss also verschwinden, Sie kann zunächst mit der
+Produktregel bestimmt werden:
+\begin{align*}
+0
+&=
+\frac{d}{dt}\beta(g(t)Xg(t)^{-1}, g(t)Yg(t)^{-1})\bigg|_{t=0}
+=
+\beta\biggl(\frac{d}{dt}g(t)Xg(t)^{-1}\bigg|_{t=0}, Y\biggr)
++
+\beta\biggl(X,\frac{d}{dt}g(t)Yg(t)^{-1}\bigg|_{t=0}\biggr).
+\intertext{Die inneren Ableitungen wurden früher bereits als die
+Lie-Klammern $[X,Z]$ bzw.~$[Y,Z]$ erkannt, sommit folgt als Bedingung
+für Invarianz}
+0&=\beta([X,Z],Y) + \beta(X,[Y,Z]).
+\end{align*}
+
+\begin{satz}
+\label{buch:operatoren:casimir:satz:invariantebilinearform}
+Eine Bilinearform $\beta(X,Y)$ auf einer Lie-Algebra ist invariant
+genau dann, wenn
+\[
+\beta([Z,X],Y) + \beta(X,[Z,Y])
+=
+\beta(\operatorname{ad}_Z(X),Y)
++
+\beta(X,\operatorname{ad}_Z(Y))
+=
+0
+\]
+gilt.
+\end{satz}
+
+Die Lie-Klammer $[X,Y]$ ist eine Bilinearform.
+In \eqref{buch:operatoren:casimir:eqn:lieklammerinvariant} tritt
+die Invarianzbedingung von
+Satz~\ref{buch:operatoren:casimir:satz:invariantebilinearform}
+auf der rechten Seite aus.
+Aus dem Satz folgt daher, dass $[X,Y]$ genau dann eine invariante
+Bilinearform ist, wenn $\operatorname{ad}_Z([X,Y])=0$ ist, wenn also
+$[X,Y]$ im Zentrum von $LG$ liegt.
+Für interessante Lie-Algebren ist dies normalerweise nicht der Fall,
+so dass wir auf einem anderen Weg nach invarianten Bilinearformen
+suchen müssen, die hoffentlich auf invariante Differentialoperatoren
+zweiter Ordnung führen werden.
 
 %
 % Casimir-Operator

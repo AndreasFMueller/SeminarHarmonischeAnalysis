@@ -83,9 +83,11 @@ Im Abschnitt \ref{jpeg:subsection:farbraumumrechnung} wurde beschrieben, dass di
 Dazu werden sie tiefpassgefiltert, zudem üblicherweise vertikal und horizontal um den Faktor 2 unterabgetastet, was einer vierfachen Datenreduktion entspricht.
 Die Farbunterabtastung bedeutet, dass jeder Pixel des Bild seinen eigenen Helligkeitswert behält, wobei vier benachbarte Pixel sich die Farbinformationen teilen.
 
-Beispiel: Beim \(8\times8\) Pixelblock der Luminanz hat jeder Pixel einen einzelnen Grauwert.
+\begin{beispiel}
+Beim \(8\times8\) Pixelblock der Luminanz hat jeder Pixel einen einzelnen Grauwert.
 Bei den beiden Chrominanzen \(C_b\) und \(C_r\) wird den \(2\times2\) Blöcken, innerhalb der \(8\times8\) Blöcke, jeweils ein einheitlicher Wert zugewiesen.
 Die Chrominanzen haben daher eine geringere Auflösung als die Luminanz.
+\end{beispiel}
 
 \subsection{Tiling
 \label{jpeg:subsection:tiling}}
@@ -139,7 +141,7 @@ In Tabelle \ref{jpeg:tab:quantblock} sind die Werte des Beispielblocks quantisie
 
 Bei diesem Schritt findet die Irrelevanzreduktion statt.
 Irrelevanzreduktion meint, die Daten zu entfernen, die durch mathematische Modelle oder mittels empirischer Werte als irrelevant gekennzeichnet sind.
-Beispiel: Personen mit Rot/Grün Blindheit erkennen kaum Unterschiede zwischen Rot und Grün, deshalb ist eine der beiden Farben irrelevant.
+Personen mit Rot/Grün Blindheit erkennen z.~B.~kaum Unterschiede zwischen Rot und Grün, deshalb ist eine der beiden Farben irrelevant.
 Es könnten daher entweder nur die Rot- oder nur die Grün-Anteile gespeichert werden.
 
 Das Auge ist empfindlicher auf hohe Farbunterschiede von benachbarten Pixel, das sind die tiefen Frequenzen der DCT Koeffizienten.
@@ -207,7 +209,7 @@ Die Tabellen sind aus Untersuchungen des Sehverhaltens entwickelt worden, um Feh
         99 & 99 & 99 & 99 & 99 & 99 & 99 & 99  \\ \hline
         99 & 99 & 99 & 99 & 99 & 99 & 99 & 99  \\ \hline  	  
     \end{tabularx}
-    \caption{Beispiel Quantisierungstabelle für Luminanz (links) und Chominanzen (rechts).
+    \caption{Beispiel Quantisierungstabelle für Luminanz (links) und Chrominanzen (rechts).
         \label{jpeg:tab:quant}}
 \end{table}
 
@@ -243,13 +245,17 @@ Das bedeutet, man betrachtet nicht jeden DC-Wert einzeln, sondern die Differenze
 Die Differenzkodierung beginnt mit dem zweiten Block des Bildes.
 Durch die Differenzbildung wird der kodierte Wert kleiner, damit benötigt man weniger Bits.
 
+\begin{beispiel}
+\label{jpeg:beispie:differenzcodierung}
 Wenn an dem Beispiel in Tabelle \ref{jpeg:tab:quantblock} die differenzielle Kodierung angewendet wird, wird vom DC-Wert 69 der Wert des vorherigen Blocks (76) abgezogen \(69-76 = -7\).
+\end{beispiel}
+
 
 \subsection{Entropiekodierung
 \label{jpeg:subsection:entropiekodierung}}
 Die Entropiekodierung der JPEG Kompression basiert auf dem Prinzip von David A. Huffman (Huffman-Coding).
 \index{Huffman}%
-Bei der Entropiekodierung wird eine Zeichenfolge (z.B. aus einem Text) in eine Bitfolge umgewandelt.
+Bei der Entropiekodierung wird eine Zeichenfolge (z.~B.~aus einem Text) in eine Bitfolge umgewandelt.
 Das geschieht mit Hilfe von Huffman-Trees.
 Im Huffman-Tree wird die Häufig\-keit der zu verschlüsselnden Werte berücksichtigt.
 Werte, die am häufigsten vorkommen, erhalten dadurch kürzere Bitfolgen.
