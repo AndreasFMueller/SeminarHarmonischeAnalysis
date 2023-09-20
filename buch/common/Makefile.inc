@@ -46,6 +46,9 @@ TEXFILES = $(BUCHFILES) $(THEMA_FILES)
 $(workdir)/buch.bbl:		build/buch.aux
 	cd build; bibtex buch
 
+$(workdir)/$(buch).bbl:		build/$(buch).aux
+	cd build; bibtex $(buch)
+
 clean:	cleansubdir
 	rm -f *.bbl *.aux *.log *.out *.run.xml *.pdf *.blg *.idx *.ind \
 		*.ilg *.toc *.synctex.gz *.auxlock *.bak *-blx.bib *.dvi
