@@ -15,19 +15,20 @@ So können mittels harmonischer Analysis Filter entwickelt werden, welche ein Si
 
 \begin{figure}
 	\centering
+	\hbox to\textwidth{%
 	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{papers/brown/images/idealSignal2.png}
 		\caption{Ideales Signal}
 		\label{idealSignal}
 	\end{minipage}
-	%\hspace{0.05\linewidth}
+	\hfill
 	\begin{minipage}{0.48\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{papers/brown/images/realSignal2.png}
 		\caption{Reales Signal}
 		\label{realSignal}
-	\end{minipage}
+	\end{minipage}}
 \end{figure}
 
 %Problematisch dabei kann sein, dass je nach Definition und Anwendung \textit{echtes Rauschen} weder vorhersagbar sein sollte, noch Information beinhalten.
@@ -100,14 +101,14 @@ Natürlich kann noch zwischen vielen weiteren Typen unterschieden werden, doch a
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{papers/brown/images/weissesRauschen-FFT.png}
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/weissesRauschen-FFT-crop.png}
 	\caption{Echtes weisses Rauschen.}
 	\label{brown:weissesRauschenSignal}
 \end{figure}
 
 \begin{figure}	
 	\centering
-	\includegraphics[width=0.8\textwidth]{papers/brown/images/harmonischeOszillatoren-FFT.png}
+	\includegraphics[width=0.8\textwidth]{papers/brown/images/harmonischeOszillatoren-FFT-crop.png}
 	\caption{Überlagerte harmonische Oszillatoren.}
 	\label{brown:überlagerteSchwingungen}
 \end{figure}
@@ -175,7 +176,7 @@ Würde man nun das konstante Frequenzspektrum weiter differenzieren, vergrösser
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.95\textwidth]{papers/brown/images/weissesRauscheDurchBrown-timeDomain.png}
+	\includegraphics[width=1.00\textwidth]{papers/brown/images/weissesRauscheDurchBrown-timeDomain-crop.png}
 	\caption{Weisses Rauschen durch Differenzierung des Wiener-Prozess.}
 	\label{brown:diffWienerFFT}
 \end{figure}

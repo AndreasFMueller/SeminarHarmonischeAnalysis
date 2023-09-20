@@ -122,7 +122,7 @@ $(workdir)/SeminarHarmonischeAnalysis13-blx.bbl:	$(workdir)/SeminarHarmonischeAn
 $(workdir)/SeminarHarmonischeAnalysis14-blx.bbl:	$(workdir)/SeminarHarmonischeAnalysis14-blx.aux
 	cd $(workdir); bibtex SeminarHarmonischeAnalysis14-blx
 
-SBLXFILES = $(workdir)/SeminarHarmonischeAnalysis.bbl \
+SBLXFILES = \
 	$(workdir)/SeminarHarmonischeAnalysis1-blx.bbl \
 	$(workdir)/SeminarHarmonischeAnalysis2-blx.bbl \
 	$(workdir)/SeminarHarmonischeAnalysis3-blx.bbl \
