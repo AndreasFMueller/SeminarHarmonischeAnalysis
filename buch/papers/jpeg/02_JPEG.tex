@@ -261,7 +261,11 @@ Im Huffman-Tree wird die Häufig\-keit der zu verschlüsselnden Werte berücksic
 Werte, die am häufigsten vorkommen, erhalten dadurch kürzere Bitfolgen.
 Die Huffman Kodierung zweigt beim Huffman-Tree von jedem Knoten nach links mit 0 und nach rechts mit 1 ab.
 Um z.~B.~mit dem Baum von Abbildung~\ref{jpeg:fig:huffman} links den Wert 4 zu erhalten, braucht man die Bitfolge 101.
-Um den verschlüsselten Wert wieder zu dekodieren, muss man bei jedem Knoten entsprechend abzweigen, bis man im Huffman-Tree ein Ende erreicht. Beispiel: 1110 entspricht 6, in Abbildung \ref{jpeg:fig:huffman} orange gekennzeichnet.
+Um den verschlüsselten Wert wieder zu dekodieren, muss man bei jedem Knoten entsprechend abzweigen, bis man im Huffman-Tree ein Ende erreicht.
+
+\begin{beispiel}
+1110 entspricht 6, in Abbildung \ref{jpeg:fig:huffman} orange gekennzeichnet.
+\end{beispiel}
 
 Der Huffman-Tree ist im JPEG-Standard nicht vorgegeben und muss deshalb im Header des Files hinterlegt werden.
 Dazu kommt, dass die binären Werte aus Tabelle \ref{jpeg:tab:huffman} alternativ kodiert werden können.
