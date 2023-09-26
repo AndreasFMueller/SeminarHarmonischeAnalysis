@@ -25,6 +25,181 @@ Werte.
 %
 \subsection{Endliche Körper
 \label{buch:diskret:koerper:subsection:koerper}}
+Die diskrete Fourier-Transformation multipliziert Komponenten des
+Input-Vektors mit den Potenzen von $\omega$ und addiert die erhaltenen
+Produkte.
+Ein alternativer Zahlenbereich, in dem die Fourier-Transformation
+definiert werden kann, muss also mindestens eine Gruppe bezüglich 
+der Addition sein und ausserdem über eine Multiplikation verfügen.
+Eine solche Struktur ist bekannt als ein {\em Ring} $R$.
+Genauer, ein Ring mit Eins.
+
+%
+% Nullteiler
+%
+\subsubsection{Nullteiler}
+Das Rechnen mit Resten zeigt, dass die Menge $\mathbb{Z}/k\mathbb{Z}$
+der Reste modulo $k$ ein Ring mit Eins ist.
+Dieser Ring hat jedoch nicht immer für die vorliegenden Zwecke günstige
+Eigenschaften.
+Wenn zum Beispiel $k=p_1\cdot p_2$ ein Produkt von zwei Primzahlen
+ist, dann sind die Reste $p_1$ und $p_2$ in $\mathbb{Z}/k\mathbb{Z}$
+von $0$ verschieden, aber deren Produkt ist
+$p_1\cdot p_2 = k \equiv 0 \mod k$.
+Die Zahlen $p_1$ und $p_2$ heissen {\em Nullteiler}.
+Die Existenz von Nullteilern hat zur Folge, dass Gleichungen der
+Form $p_1 x=b$ sich in $\mathbb{Z}/k\mathbb{Z}$ nicht mehr
+eindeutig lösbar sind.
+Ist nämlich $x_1$ eine Lösung, erfüllt also $p_1x_1=b$, dann ist
+$p_1(x_1+p_2)=p_1x_1+p_1p_2=p_1x_1=b$ und damit ist auch $x_2=x_1+p_2$ 
+eine Lösung.
+
+Die umgekehrte Schlussfolgerung ist auch gültig.
+Wenn die Gleichung $ax=b$ mit $a\ne 0$ zwei verschiedene Lösungen
+$x_1$ und $x_2$ hat, dann ist
+\[
+ax_1=b
+\wedge
+a_x2=b
+\quad\Rightarrow\quad
+a(\underbrace{x_1-x_2}_{\displaystyle\ne 0})=0,
+\]
+die Zahl $a$ ist daher ein Nullteiler.
+Es folgt, dass die Multiplikation mit $a$ genau dann eindeutig umkehrbar
+ist, wenn $a$ kein Nullteiler ist.
+
+%
+% Division durch die Vektorlänge
+%
+\subsubsection{Division durch die Vektorlänge}
+Die Umkehrung der Fourier-Transformation erfordert aber zusätzlich,
+dass durch die Länge des Vektors dividiert werden kann.
+Es muss also möglich sein, die natürliche Zahl $n$, die die Länge
+des Vektors angibt, in den Zahlenbereich abzubilden.
+Da $n = 1+\dots + 1$ die Summe von $n$ Einsen in $\mathbb{N}$ ist,
+kann man $n$ auf die Summe $1+\dots+1$ von $n$ Einsen im Ring abbilden.
+Das Bild von $n$ in $R$ ist also wohldefiniert.
+
+Durch $n \in R$ muss jetzt aber dividiert werden können.
+Dazu ist zunächst notwendig, dass $n\ne 0$ ist.
+In der Digitaltechnik ist es naheliegend, die Menge $\mathbb{Z}/2\mathbb{Z}$
+der Reste modulo $2$ zu verwenden.
+Für die bei der schnellen Fourier-Transformation besonders wichtige
+Anzahl $n=2^t$, die eine Zweierpotenz ist, ist dann aber $2^t=0$ in
+$\mathbb{Z}/2\mathbb{Z}$.
+Die Reste modulo $2$ und damit binäre Bits kommen daher als alternatives
+Zahlensystem für die Fourier-Transformation nicht in Frage.
+
+Dass $n\ne 0$ ist, reicht aber noch nicht.
+Wenn $n\in \mathbb{Z}/k\mathbb{Z}$ ein Nullteiler hat, dann hat die
+Gleichung $nx=b$ keine eindeutige Lösung und es ist nicht sinnvoll
+von $x = b/n$ zu sprechen.
+Die Fourier-Transformation kann also nur invertiert werden, wenn
+$n\in \mathbb{Z}/k\mathbb{Z}$ nicht Nullteiler ist.
+Erst recht ist dies der Fall, wenn $\mathbb{Z}/k\mathbb{Z}$ keine
+Nullteiler hat und $n$ nicht durch $k$ teilbar ist.
+Am meisten freie Wahl von $n$ hat man also, wenn $k$ eine Primzahl
+ist, dann muss nur noch verlangt werden, dass sie $n$ nicht teilt.
+
+%
+% Die endlichen Körper F_p
+%
+\subsubsection{Die endlichen Körper $\mathbb{F}_p$}
+Ist $p$ eine Primzahl, dann wird die
+die Menge $\mathbb{Z}/p\mathbb{Z}$ auch mit $\mathbb{F}_p$
+bezeichnet.
+Sie ist nicht nur ein Ring, da sie keine Nullteiler enthält, ist auch
+die Division durch jeden von $0$ verschiedene Rest eindeutig möglich.
+Die Menge $\mathbb{F}_p$ ist daher nicht nur eine Gruppe bezüglich
+der Addition, sondern $\mathbb{F}_p^*=\mathbb{F}_p\setminus\{0\}$
+ist auch eine Gruppe bezüglich der Multiplikation, jedes Element 
+in $\mathbb{F}_p^*$ kann bezüglich der Multiplikation invertiert
+werden.
+Man nennt eine solche Menge heisst ein {\em Körper}.
+Der Körper $\mathbb{F}_p$ heisst auch der {\em Galois-Körper} 
+der Primzahlordnung $p$.
+
+Die Bestimmung des multiplikativen Inversen eines Elements
+$a\in\mathbb{F}_p$ ist gleichbedeutend damit, dass eine Zahl
+$s$ gefunden werden muss derart, dass $as \equiv 1\mod p$.
+Eine simplizistische Möglichkeit, dieses Problem zu lösen, ist
+die Menge $\mathbb{F}_p$ nach so einem Element zu durchsuchen.
+Eine bessere Methode ist zu verwenden, dass es gibt dann eine
+Zahl $t$ geben muss derart, dass $as+pt=1$.
+Da $a<p$ und $p$ eine Primzahl ist, sind $a$ und $p$ teilerfremd.
+Der euklidische Algorithmus besagt dann, dass es die Zahlen $s$ und $t$
+geben muss.
+Der erweiterte euklidische Algorithmus ermöglicht auch, diese Zahlen 
+effizient zu finden \cite[Abschnitt~3.C]{buch:linalg}.
+
+%
+% Die Körper F_{p^l}
+%
+\subsubsection{Die endlichen Körper $\mathbb{F}_{p^l}$}
+Die Körper $\mathbb{F}_p$ sind leider nicht gross genug, um als Wertebereich
+für die Fourier-Transformation zu dienen.
+Die Schwierigkeit rührt daher, die Fourier-Transformation die Grösse
+$\omega\ne\pm1$ benötigt, deren $n$-te Potenz $1$ ist.
+Für die Vektorlänge $n=2^3=8$ und den Körper $\mathbb{F}_7$ zum Beispiel
+gibt es keine solchen Elemente, denn die achten Potenzen aller Elemente
+von $\mathbb{F}_7$ sind
+\begin{center}
+\begin{tabular}{>{$}l<{$}|cccccc}
+ x & 1& 2& 3& 4& 5& 6\\
+\hline
+x^8& 1& 4& 2& 2& 4& 1
+\end{tabular}
+\end{center}
+Das Element $6\in\mathbb{F}_7$ ist $6=-1$, kommt also für $\omega$
+nicht in Frage.
+
+Die Schwierigkeit ist mit dem Problem verwandt, dass die Gleichung
+$\omega^n=1$ auch im Körper $\mathbb{F}$ der reellen Zahlen nicht
+genügend verschiedene Lösungen hat.
+Das Problem konnte erst gelöst werden, indem die reellen Zahlen
+zum Körper der komplexen Zahlen $\mathbb{C}$ erweitert wurden.
+Noch etwas treffender ist der Vergleich mit dem Körper $\mathbb{Q}$
+der rationalen Zahlen, dem kleinsten Körper, der die ganzen Zahlen
+enthält.
+Der Körper $\mathbb{Q}$ enthält zum Beispiel die Zahl $\!\sqrt{2}$ nicht,
+kann aber zu einem Körper erweitert werden, der die Zahl $\!\sqrt{2}$
+enthält.
+Dazu verwendet man ein neues Symbol $\alpha$, mit dem wie mit
+rationalen Zahlen gerechnet werden kann, welches aber die zusätzliche
+Eigenschaft $\alpha^2-2=0$ erfüllt.
+Die Menge
+\[
+\mathbb{Q}(\alpha)
+=
+\{
+a+b\alpha\mid a,b\in\mathbb{Q}
+\}
+\]
+ist dann ein Körper, der $\sqrt{2}=\alpha$ enthält.
+Er wird auch mit $\mathbb{Q}(\!\sqrt{2})$ bezeichnet.
+
+Die Konstruktion von $\mathbb{Q}(\!\sqrt{w})$ kann auch auf endliche
+Körper übertragen werden.
+Zum Beispiel gilt für alle von $0$ verschiedenen Elemente $x$ des Körpers
+$\mathbb{F}_5$, dass $x^2\ne 2$ ist.
+$\mathbb{F}_5$ enthält also die Quadratwurzel $2$ nicht.
+Fügt man wieder das Symbol $\alpha$ mit der Eigenschaft $\alpha^2-2=0$
+hinzu, wird
+\[
+\mathbb{F}_5(\alpha)
+=
+\{
+a+b\alpha
+\mid
+a,b\in\mathbb{F}_5
+\}
+=
+\mathbb{F}_5(\alpha)
+\]
+zu einem Körper, der ein Element enthält, welches als Quadratwurzel von
+$2$ betrachtet werden kann.
+
+
 
 %
 % Forier-Transformation
