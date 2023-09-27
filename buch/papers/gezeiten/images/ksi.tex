@@ -1,0 +1,31 @@
+%
+% ksi.tex -- Kugel-Scheiben-Integrator
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=gray!20] (0,0) circle[radius=2];
+\draw[color=gray] (0,0) circle[radius=2];
+\fill (0,0) circle[radius=0.1];
+
+\node at (0,2) [above] {$\varphi$};
+
+\pgfdeclareradialshading{sphere4}{%
+\pgfpoint{-0.2cm}{0.5cm}}% 
+{rgb(0cm)=(1,1,1);
+rgb(0.7cm)=(0.7,0.1,0); rgb(1cm)=(0.5,0.05,0); rgb(1.05cm)=(1,1,1)}
+\pgfuseshading{sphere4}
+
+\end{tikzpicture}
+\end{document}
+
