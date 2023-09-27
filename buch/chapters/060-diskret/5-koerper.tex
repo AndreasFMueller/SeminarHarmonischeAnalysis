@@ -60,7 +60,7 @@ $x_1$ und $x_2$ hat, dann ist
 \[
 ax_1=b
 \wedge
-a_x2=b
+ax_2=b
 \quad\Rightarrow\quad
 a(\underbrace{x_1-x_2}_{\displaystyle\ne 0})=0,
 \]
@@ -133,9 +133,9 @@ Der erweiterte euklidische Algorithmus ermöglicht auch, diese Zahlen
 effizient zu finden \cite[Abschnitt~3.C]{buch:linalg}.
 
 %
-% Die Körper F_{p^l}
+% Hinzufügen einer Nullstelle
 %
-\subsubsection{Die endlichen Körper $\mathbb{F}_{p^l}$}
+\subsubsection{Hinzufügen einer Nullstelle}
 Die Körper $\mathbb{F}_p$ sind leider nicht gross genug, um als Wertebereich
 für die Fourier-Transformation zu dienen.
 Die Schwierigkeit rührt daher, die Fourier-Transformation die Grösse
@@ -199,7 +199,113 @@ a,b\in\mathbb{F}_5
 zu einem Körper, der ein Element enthält, welches als Quadratwurzel von
 $2$ betrachtet werden kann.
 
+Der Prozess kann verallgemeinert werden auf die Situtation,
+in der dem Körper $\mathbb{F}_p$ eine Nullstelle $\alpha$ eines beliebigen
+Polynoms hinzugefügt werden soll.
+Damit die Menge
+\[
+L
+=
+\{
+a_{n-1}\alpha^{n-1} + a_{n-2}\alpha^{n-2} + \dots + a_1\alpha a_0
+\mid
+a_0,\dots,a_{n-1}\in\mathbb{F}_p
+\}
+\]
+ein Ring wird, muss sichergestellt sein, dass sich $\alpha^n$ durch
+die kleineren Potenzen ausdrücken lässt.
+Es gibt also ein Polynom $m(X)\in\mathbb{F}_p$ derart, dass
+\[
+m(\alpha)
+=
+\alpha^n + m_{n-1}\alpha^{n-1} + \dots + m_2\alpha^2 + m_1\alpha + m_0
+=
+0
+\]
+ist.
 
+Die Menge $L$ kann auch betrachtet werden als die Menge der Polynomereste
+\[
+L
+=
+\mathbb{F}_p[X] / m\mathbb{F}_p[X]
+\]
+bei Polynomdivision durch $m(X)$.
+Falls sich das Polynom $m(X)$ in zwei Faktoren $p(X),q(X)\in\mathbb{F}_p[X]$
+zerlegen lässt, also $m(X)=p(X)q(X)$, dann sind $p,q\in L$ Nullteiler.
+Wie bei der Konstruktion der Körper $\mathbb{F}_p$ muss also sichergestellt
+werden, dass sich das Polynom $m(X)$ nicht faktorisieren lässt.
+
+\begin{definition}
+Ein Polynom $p(X)\in K[X]$ mit Koeffizienten in einem Körper $K$ heisst
+{\em irreduzibel}, wenn es keine Faktorisierung von $p(X)$ in Faktoren
+$p(X)=a(X)b(X)$ mit $a(X),b(X)\in K[X]$ gib.t
+\end{definition}
+
+%
+% Die Körper F_{p^l}
+%
+\subsubsection{Die endlichen Körper $\mathbb{F}_{p^l}$}
+Zu einem beliebigen irreduziblen Polynom $m(X)\in K[X]$ kann jetzt
+ein Körper konstruiert werden, der ein Element enhält, welches Nullstelle
+des Polynoms $m(X)$ ist.
+
+\begin{satz}
+Ist $m(X)\in K[X]$ ein irreduzibles Polynom mit Koeffizienten in einem
+Körper $K$, dann ist die Menge
+\[
+K(\alpha)
+=
+K[X] / m(X) K[X]
+\]
+ein Körper, der den Körper $K$ enthält.
+Die Restklasse des Polynoms $X$ wird mit $\alpha$ bezeichnet und hat
+die Eigenschaft, dass $m(\alpha)=0$ ist.
+\end{satz}
+
+\begin{proof}[Beweis]
+Aus der Forderung, dass $m(X)$ ein irreduzibles Polynom ist, folgt
+bereits, dass $K(\alpha)$ ein nullteilerfreier Ring ist.
+Es ist nur noch sicherzustellen, dass es zu jedem von $0$ verschiedenen
+Polynom $a(X)\in K(\alpha)$ ein Polynom $s(X)$ gibt derart, dass
+$a(X)s(X) \equiv 1 \mod m(X)$ ist.
+Dies ist gleichbedeutend damit, dass es ein Polynom $t(X)$ mit
+\[
+a(X)s(X) + t(X) m(X) = 1
+\]
+ist.
+Da $\deg a(X)<\deg m(X)$ ist und $m(X)$ als irreduzibles Polynom
+keine Teiler hat, sind die Polynome $a(X)$ und $m(X)$ teilerfremd.
+Nach dem euklidischen Algorithmus gibt es daher tatsächlich Polynome 
+$s(X),t(X)\in \mathbb{K}[X]$ der verlangten Art.
+Sie können mit dem verallgemeinerten euklidischen Algorithmus
+gefunden werden \cite{buch:linalg}.
+\end{proof}
+
+Das Polynom $m(X)=X^2+1\in\mathbb{R}[X]$ ist irreduzibel, dann die
+einzig mögliche Faktorisierung wäre von der Form $(X-a)(X-b)$, dann
+wären $a$ und $b$ Nullstellen des Polynoms.
+Wegen $x^2+1 >0$ für alle $x\in\mathbb{R}$ hat das Polynom aber keine
+Nullstellen.
+Der Erweiterungskörper $\mathbb{R}(\alpha)$ enthält das Element $\alpha$,
+welches $\alpha^2+1=0$ erfüllt, also die definierende Gleichung der
+imaginären Einheit.
+Der Erweiterungskörper ist als der Körper der komplexen Zahlen.
+
+Für den endlichen Körper $K=\mathbb{F}_p$ entstehen die Körper
+$\mathbb{F}_{p^l}$.
+
+\begin{satz}
+\label{buch:diskret:koerper:satz:fpl}
+Ist $m(X)\in \mathbb{F}_p[X]$ ein irreduzibles Polynom vom Grad $l$ mit
+Koeffizienten $\mathbb{F}_p$, dann ist $\mathbb{F}_{p}(\alpha) = \mathbb{F}_p/m(X)\mathbb{F}_p$ ein Körper mit $p^l$-Elementen.
+\end{satz}
+
+\begin{definition}
+\label{buch:diskret:koerper:def:fpl}
+Der Körper von Satz~\ref{buch:diskret:koerper:satz:fpl} heisst der
+endliche Körper oder Galois-Körper der Ordnung $p^l$.
+\end{definition}
 
 %
 % Forier-Transformation
