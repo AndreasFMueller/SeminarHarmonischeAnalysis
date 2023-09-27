@@ -1,0 +1,9 @@
+/*
+ * ksi.maxima
+ *
+ * (c) 2023 Prof Dr Andreas Müller, OST
+ */
+f: 0.25 * (0.8*sin(3 * x) + 0.7 * cos(5*x) + 0.1 * sin(20*x));
+omega: 4;
+F: expand(integrate(f * cos(omega * x), x));
+

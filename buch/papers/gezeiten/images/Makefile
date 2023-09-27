@@ -8,8 +8,8 @@ all:	ksi.pdf
 ksi.pdf:	ksi.tex ksi.jpg
 	pdflatex ksi.tex
 
-ksi.png:	ksi.pov Makefile
+ksi.png:	ksi.pov
 	povray +A0.1 -Oksi.png -W1920 -H1080 ksi.pov
 
 ksi.jpg:	ksi.png
-	convert ksi.png ksi.jpg
+	convert -extract 1920x760+0+200 ksi.png ksi.jpg
