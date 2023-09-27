@@ -30,7 +30,7 @@ Je mehr Partialtiden verwendet werden, desto genauer würde die Vorhersage werde
 	
 \begin{tabular}{|l|l|r|r|r|r|c|r|r|}
 	\hline
-	Tide&Symbol&Zeit&MICH&MS&PR&AK&CA&HALLO\\
+	Tide&Symbol&Zeit [h]&MICH&MS&PR&AK&CA&HALLO\\
 	\hline \hline
 	Halbtägige Mondtide&M$_{2}$&12.42&268.7&3.9&15.9&97.3&58.0&23.0\\
 	\hline
@@ -54,7 +54,7 @@ Je mehr Partialtiden verwendet werden, desto genauer würde die Vorhersage werde
 	\hline	
 \end{tabular}
 	
-\caption{In dieser Tabelle sind die neun wichtigsten Partialtiden aufgeführt. In der zweiten Spalte, wird die Periode in Stunden angegeben. Ab der vierten Spalte sind die Amplituden der Partialtiden in Zentimeter angegeben. Die Abkürzungen stehen für folgende Orte: MICH=Ostküste im Norden der USA; MS=Westküste der USA; PR=Puerto Rico (Insel zwiscchen Nord- und Südamerika; AK=Kodiak, Alaska; CA=San Francisco, California; HALLO= Hilo, Hawaii)}
+\caption{In dieser Tabelle sind die neun wichtigsten Partialtiden aufgeführt. In der zweiten Spalte, wird die Periode in Stunden angegeben. Ab der vierten Spalte sind die Amplituden der Partialtiden in Zentimeter angegeben. Die Abkürzungen stehen für folgende Orte: MICH=Ostküste im Norden der USA; MS=Westküste der USA; PR=Puerto Rico (Insel zwischen Nord- und Südamerika; AK=Kodiak, Alaska; CA=San Francisco, California; HALLO= Hilo, Hawaii)}
 \label{gezeiten:tabelle:partialtiden}
 \end{table}
 
@@ -77,6 +77,12 @@ Wenn sich die Kugel exakt im Zentrum befindet, entsteht auf dem Ausgabepapier ei
 Um die Position der Kugel zu bestimmen, wird mit einem Stift die Wasserstandskurve nachgefahren, wobei der Stift mit der Kugel verbunden ist.
 Die vorhandene Kurve ist dabei orthogonal zum ganzen Rest der Maschine.
 Das Papier mit der vorhanden Kurve, bewegt sich also von unten nach oben.
+Für das Integral mit der Sinuskurve lässt es sich mathematisch \[
+a_k
+=  
+\int_0^{2\pi} R(t) \sin v_kt \, dt
+\]
+so darstellen.
 
 
 \begin{figure}
@@ -89,7 +95,7 @@ Das Papier mit der vorhanden Kurve, bewegt sich also von unten nach oben.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{papers/gezeiten/Harmonic_analyser_disc_and_sphere}
-	\caption{Kugel Scheiben Integrator}
+	\caption{Kugel Scheiben Integrator (Quelle: \cite{gezeiten:KugelScheibenIntegrator }
 	\label{fig:harmonicanalyserdiscandsphere}
 \end{figure}
 
@@ -128,7 +134,7 @@ So konnte er alle Beträge der Sinuswellen mit den unterschiedlichen Frequenzen 
 
 \begin{figure}
 	\centering
-	\caption{Darstellung eines Scotch Yoke}
+	\caption{Darstellung eines Scotch Yoke(Quelle: \cite{gezeiten:Yoke)}
 	\label{fig:scotch-yoke}
 	\includegraphics[width=\textwidth]{"papers/gezeiten/Scotch Yoke"}
 \end{figure}
@@ -143,7 +149,7 @@ So konnte er alle Beträge der Sinuswellen mit den unterschiedlichen Frequenzen 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{"papers/gezeiten/Thompson Skizze"}
-	\caption{Vollumfängliche Skizze der 3. Gezeitenvorhersagemaschine von Lord Kelvin}
+	\caption{Vollumfängliche Skizze der 3. Gezeitenvorhersagemaschine von Lord Kelvin(Quelle: \cite{gezeiten:Thompson)}
 	\label{fig:thompson-skizze}
 \end{figure}
 
