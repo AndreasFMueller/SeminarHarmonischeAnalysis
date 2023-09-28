@@ -10,28 +10,28 @@
 \usepackage{pgfplots}
 \usepackage{csvsimple}
 \usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \begin{document}
 \def\skala{1}
 \def\r{0.6}
-\def\o{0.7}
-\pgfmathparse{-random()}
-\xdef\azero{\pgfmathresult}
-\pgfmathparse{random()}
-\xdef\aone{\pgfmathresult}
-\pgfmathparse{-random()}
-\xdef\atwo{\pgfmathresult}
-\pgfmathparse{random()}
-\xdef\athree{\pgfmathresult}
-\pgfmathparse{-random()}
-\xdef\afour{\pgfmathresult}
-\pgfmathparse{random()}
-\xdef\afive{\pgfmathresult}
-\pgfmathparse{-random()}
-\xdef\asix{\pgfmathresult}
-\pgfmathparse{random()}
-\xdef\aseven{\pgfmathresult}
-\pgfmathparse{-random()}
-\xdef\aeight{\pgfmathresult}
+\def\o{0.8}
+\pgfmathsetseed{4719}
+\pgfmathparse{0.5*random()} \xdef\azero{\pgfmathresult}
+\pgfmathparse{0.5*random()}  \xdef\aone{\pgfmathresult}
+\pgfmathparse{0.5*random()} \xdef\atwo{\pgfmathresult}
+\pgfmathparse{0.5*random()}  \xdef\athree{\pgfmathresult}
+\pgfmathparse{0.5*random()} \xdef\afour{\pgfmathresult}
+\pgfmathparse{0.5*random()}  \xdef\afive{\pgfmathresult}
+\pgfmathparse{0.5*random()} \xdef\asix{\pgfmathresult}
+\pgfmathparse{0.5*random()}  \xdef\aseven{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phizero{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phione{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phitwo{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phithree{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phifour{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phifive{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phisix{\pgfmathresult}
+\pgfmathparse{360*random()} \xdef\phiseven{\pgfmathresult}
 \def\rad#1{
 	\pgfmathparse{random()*60}
 	\xdef\aph{\pgfmathresult}
@@ -45,34 +45,76 @@
 	\draw[color=gray,line width=2pt] #1 circle[radius={0.91*\r}];
 	\fill[color=gray] #1 circle[radius={0.18*\r}];
 }
+\def\arad#1#2#3{
+	\fill[color=gray!20] #1 circle[radius={0.8*\r}];
+	\fill[color=gray!40] #1 -- ++(0:#2) arc (0:{#3+90}:#2) -- cycle;
+	\draw[color=black,line width=0.3pt] #1 circle[radius={#2}];
+	\draw[color=black,line width=0.3pt] #1 -- +({#3+90}:#2);
+	\fill[color=white] #1 circle[radius={0.04}];
+	\fill[color=black] ($#1+({#3+90}:#2)$) circle[radius=0.05];
+}
+\def\yoke#1#2#3#4{
+	\draw[color=darkgreen,line width=1.5pt] ($#1+(0,{#2*cos(#3)+0.1})$) -- ($#1+(0,{#2*cos(#3)+3+#4})$);
+	\fill[color=darkgreen] ($#1+(0,{#2*cos(#3)+3+#4})$) circle[radius=0.05];
+	\draw[color=darkgreen,rounded corners=2.0pt,line width=1.5pt]
+		($#1+(-0.5,{#2*cos(#3)-0.08})$)
+		rectangle
+		($#1+(0.5,{#2*cos(#3)+0.08})$);
+	
+		
+}
+\def\in#1{
+	\node at ({(2*#1-1)*\r},{-3.5}) [right,rotate=-90]
+		{$a_{#1}\cos(v_{#1}t+\delta_{#1})$};
+}
+
 \begin{tikzpicture}[>=latex,thick,scale=\skala,
 	declare function={
-		f(\x) = \azero*cos(\x)+\aone*cos(2*\x)+\atwo*cos(3*\x)+\athree*cos(4*\x)+\afour*cos(5*\x)+\afive*cos(6*\x)+\asix*cos(7*\x)+\aseven*cos(8*\x);
+		g(\x,\frequency,\amplitude,\phase) = \amplitude*cos(\frequency*\x+\phase);
+		f(\x) = \azero*cos(\x+\phizero)+\aone*cos(2*\x+\phione)+\atwo*cos(3*\x+\phitwo)+\athree*cos(4*\x+\phithree)+\afour*cos(5*\x+\phifour)+\afive*cos(6*\x+\phifive)+\asix*cos(7*\x+\phisix)+\aseven*cos(8*\x+\phiseven);
 	},
 ]
 
-\rad{(\r,{\azero-\o})}
-\rad{({3*\r},{\aone+\o})}
-\rad{({5*\r},{\atwo-\o})}
-\rad{({7*\r},{\athree+\o})}
-\rad{({9*\r},{\afour-\o})}
-\rad{({11*\r},{\afive+\o})}
-\rad{({13*\r},{\asix-\o})}
-\rad{({15*\r},{\aseven+\o})}
+\rad{(\r,{g(0,1,\azero,\phizero)-\o})}
+\rad{({3*\r},{g(0,2,\aone,\phione)+\o})}
+\rad{({5*\r},{g(0,3,\atwo,\phitwo)-\o})}
+\rad{({7*\r},{g(0,4,\athree,\phithree)+\o})}
+\rad{({9*\r},{g(0,5,\afour,\phifour)-\o})}
+\rad{({11*\r},{g(0,6,\afive,\phifive)+\o})}
+\rad{({13*\r},{g(0,7,\asix,\phisix)-\o})}
+\rad{({15*\r},{g(0,8,\aseven,\phiseven)+\o})}
 
 \fill[color=blue] (0,1.45) -- ++(0.1,0.1) -- ++(0,0.2) -- ++(-0.2,0)
 	-- ++(0,-0.2) -- cycle;
 \draw[color=blue,line width=1.5pt] (0,1.5)
-	-- (0,{\azero-\o}) arc (180:360:\r)
-	-- ({2*\r},{\aone+\o}) arc (180:0:\r)
-	-- ({4*\r},{\atwo-\o}) arc (180:360:\r)
-	-- ({6*\r},{\athree+\o}) arc (180:0:\r)
-	-- ({8*\r},{\afour-\o}) arc (180:360:\r)
-	-- ({10*\r},{\afive+\o}) arc (180:0:\r)
-	-- ({12*\r},{\asix-\o}) arc (180:360:\r)
-	-- ({14*\r},{\aseven+\o}) arc (180:0:\r)
+	-- (0,{g(0,1,\azero,\phizero)-\o}) arc (180:360:\r)
+	-- ({2*\r},{g(0,2,\aone,\phione)+\o}) arc (180:0:\r)
+	-- ({4*\r},{g(0,3,\atwo,\phitwo)-\o}) arc (180:360:\r)
+	-- ({6*\r},{g(0,4,\athree,\phithree)+\o}) arc (180:0:\r)
+	-- ({8*\r},{g(0,5,\afour,\phifour)-\o}) arc (180:360:\r)
+	-- ({10*\r},{g(0,6,\afive,\phifive)+\o}) arc (180:0:\r)
+	-- ({12*\r},{g(0,7,\asix,\phisix)-\o}) arc (180:360:\r)
+	-- ({14*\r},{g(0,8,\aseven,\phiseven)+\o}) arc (180:0:\r)
 	-- ({16*\r},{f(0)-0.2});
 	;
+
+\arad{({1*\r},-3)}{\azero}{\phizero}
+\yoke{({1*\r},-3)}{\azero}{\phizero}{-\o}
+
+\arad{({3*\r},-3)}{\aone}{\phione}
+\yoke{({3*\r},-3)}{\aone}{\phione}{\o}
+\arad{({5*\r},-3)}{\atwo}{\phitwo}
+\yoke{({5*\r},-3)}{\atwo}{\phitwo}{-\o}
+\arad{({7*\r},-3)}{\athree}{\phithree}
+\yoke{({7*\r},-3)}{\athree}{\phithree}{\o}
+\arad{({9*\r},-3)}{\afour}{\phifour}
+\yoke{({9*\r},-3)}{\afour}{\phifour}{-\o}
+\arad{({11*\r},-3)}{\afive}{\phifive}
+\yoke{({11*\r},-3)}{\afive}{\phifive}{\o}
+\arad{({13*\r},-3)}{\asix}{\phisix}
+\yoke{({13*\r},-3)}{\asix}{\phisix}{-\o}
+\arad{({15*\r},-3)}{\aseven}{\phiseven}
+\yoke{({15*\r},-3)}{\aseven}{\phiseven}{\o}
 
 \begin{scope}[xshift=10.2cm]
 	\begin{scope}
@@ -82,9 +124,19 @@
 	\end{scope}
 	\draw[->] (0,-2) -- (0,2) coordinate[label={right:$f(x)$}];
 	\draw (0,0) -- (3.2,0) coordinate[label={$x$}];
-	\draw[color=red,line width=3pt] (-0.8,{f(0)}) -- (-0.1,{f(0)});
+	\fill[color=red] (0,{f(0)}) -- ++(-0.15,0.05) -- ++(-0.6,0)
+		-- ++(0,-0.1) -- ++(0.6,0) -- cycle;
+	%\draw[color=red,line width=3pt] (-0.8,{f(0)}) -- (-0.1,{f(0)});
 \end{scope}
 
+\in{1}
+\in{2}
+\in{3}
+\in{4}
+\in{5}
+\in{6}
+\in{7}
+\in{8}
 
 \end{tikzpicture}
 \end{document}
