@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	ksi.pdf
+all:	ksi.pdf sy.pdf
 
 ksi.pdf:	ksi.tex ksi.jpg
 	pdflatex ksi.tex
@@ -13,3 +13,7 @@ ksi.png:	ksi.pov
 
 ksi.jpg:	ksi.png
 	convert -extract 1920x760+0+200 ksi.png ksi.jpg
+
+sy.pdf:	sy.tex
+	pdflatex sy.tex
+

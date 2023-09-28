@@ -69,6 +69,7 @@ Die Funktionsweise wird nachfolgend beschrieben, um die funktionweise
 besser zu verstehen, ist in der Abbildung~\ref{fig:skizze-integralmaschine}
 eine Skizze zum mechanischen Integrator
 abgebildet.
+
 Die Abbildung \ref{fig:harmonicanalyserdiscandsphere} zeigt eine Foto eines mechanischen Integrators.
 Für diese Maschine benötigt er eine Scheibe, eine Welle, eine Kugel, ein Ausgabepapier für den Integral und natürlich die bestehende Wasserstandskurve.
 Die Kugel wird dafür in der horizontalen Achse auf die Scheibe gelegt.
@@ -90,8 +91,21 @@ so darstellen.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{"papers/gezeiten/Skizze Integralmaschine"}
-	\caption{Skizze mechanischer Integrator
+	%\includegraphics[width=\textwidth]{"papers/gezeiten/Skizze Integralmaschine"}
+	\includegraphics[width=\textwidth]{papers/gezeiten/images/ksi.pdf}
+	\caption{Funktionsprinzip des Kugelscheibenintegrators:
+		Die Kugel berührt die Scheibe
+		im Abstand $f(x)$ vom Zentrum der Scheibe.
+		Dreht sich die Achse der Scheibe um den Winkel $g(x)$,
+		dann dreht sich die Kugel um $f(x)\cdot g(x)$ um die
+		hellgraue Achse.
+		Diese Drehung wird auf die messingfarbenen Trommel
+		übertragen und verschiebt die dunkelgraue Stange mit
+		dem grünen Schreibstift, der das Integral von
+		$f(x)\cdot g(x)$ aufzeichnet.
+		Wählt man $g(x)=\cos \omega x$ oder $g(x)=\sin\omega x$,
+		kann man nach einer geeigneten Anzahl von Perioden auf der
+		grünen Kurve die Fourier-Koeffizienten ablesen.
 	\label{fig:skizze-integralmaschine}}
 \end{figure}
 % TODO: \usepackage{graphicx} required

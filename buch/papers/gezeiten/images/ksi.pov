@@ -70,7 +70,7 @@ union {
 #declare integraloffset = 0.325;
 
 union {
-	cylinder { <-1.8, sphereradius, 0>, <1.1, sphereradius, 0>, 0.02 }
+	cylinder { <-2.0, sphereradius, 0>, <1.5, sphereradius, 0>, 0.02 }
 	pigment {
 		color White
 	}
@@ -150,14 +150,14 @@ union {
 
 union {
 	cylinder {
-		< -1, sphereradius, -(sphereradius+rollerradius) >, 
-		<  1, sphereradius, -(sphereradius+rollerradius) >,
+		< -0.8, sphereradius, -(sphereradius+rollerradius) >, 
+		<  0.8, sphereradius, -(sphereradius+rollerradius) >,
 		rollerradius
 	}
 	cylinder {
 		< 0, sphereradius, -(sphereradius+rollerradius) >, 
 		< 1.32, sphereradius, -(sphereradius+rollerradius) >,
-		0.5 * rollerradius
+		0.02 //0.5 * rollerradius
 	}
 	cylinder {
 		< 1.3,  sphereradius, -(sphereradius+rollerradius) >,

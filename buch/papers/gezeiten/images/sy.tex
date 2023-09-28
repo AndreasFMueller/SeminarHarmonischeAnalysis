@@ -1,0 +1,91 @@
+%
+% sy.tex -- scotch yoke mechanismus
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\def\r{0.6}
+\def\o{0.7}
+\pgfmathparse{-random()}
+\xdef\azero{\pgfmathresult}
+\pgfmathparse{random()}
+\xdef\aone{\pgfmathresult}
+\pgfmathparse{-random()}
+\xdef\atwo{\pgfmathresult}
+\pgfmathparse{random()}
+\xdef\athree{\pgfmathresult}
+\pgfmathparse{-random()}
+\xdef\afour{\pgfmathresult}
+\pgfmathparse{random()}
+\xdef\afive{\pgfmathresult}
+\pgfmathparse{-random()}
+\xdef\asix{\pgfmathresult}
+\pgfmathparse{random()}
+\xdef\aseven{\pgfmathresult}
+\pgfmathparse{-random()}
+\xdef\aeight{\pgfmathresult}
+\def\rad#1{
+	\pgfmathparse{random()*60}
+	\xdef\aph{\pgfmathresult}
+	\fill[color=gray!60] #1 circle[radius={0.90*\r}];
+	\foreach \a in {0,60,...,330}{
+		\fill[color=white]
+			($#1+({\a+\aph}:{0.6*\r})$) circle[radius={0.18*\r}];
+		\draw[color=gray,line width=2pt]
+			#1 -- +({\a+\aph+30}:{0.90*\r});
+	}
+	\draw[color=gray,line width=2pt] #1 circle[radius={0.91*\r}];
+	\fill[color=gray] #1 circle[radius={0.18*\r}];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+	declare function={
+		f(\x) = \azero*cos(\x)+\aone*cos(2*\x)+\atwo*cos(3*\x)+\athree*cos(4*\x)+\afour*cos(5*\x)+\afive*cos(6*\x)+\asix*cos(7*\x)+\aseven*cos(8*\x);
+	},
+]
+
+\rad{(\r,{\azero-\o})}
+\rad{({3*\r},{\aone+\o})}
+\rad{({5*\r},{\atwo-\o})}
+\rad{({7*\r},{\athree+\o})}
+\rad{({9*\r},{\afour-\o})}
+\rad{({11*\r},{\afive+\o})}
+\rad{({13*\r},{\asix-\o})}
+\rad{({15*\r},{\aseven+\o})}
+
+\fill[color=blue] (0,1.45) -- ++(0.1,0.1) -- ++(0,0.2) -- ++(-0.2,0)
+	-- ++(0,-0.2) -- cycle;
+\draw[color=blue,line width=1.5pt] (0,1.5)
+	-- (0,{\azero-\o}) arc (180:360:\r)
+	-- ({2*\r},{\aone+\o}) arc (180:0:\r)
+	-- ({4*\r},{\atwo-\o}) arc (180:360:\r)
+	-- ({6*\r},{\athree+\o}) arc (180:0:\r)
+	-- ({8*\r},{\afour-\o}) arc (180:360:\r)
+	-- ({10*\r},{\afive+\o}) arc (180:0:\r)
+	-- ({12*\r},{\asix-\o}) arc (180:360:\r)
+	-- ({14*\r},{\aseven+\o}) arc (180:0:\r)
+	-- ({16*\r},{f(0)-0.2});
+	;
+
+\begin{scope}[xshift=10.2cm]
+	\begin{scope}
+	\clip (0,-2) rectangle (3,2);
+	\draw[color=red,line width=1.4pt] plot[domain=0:180,samples=100]
+		({\x/60},{f(\x)});
+	\end{scope}
+	\draw[->] (0,-2) -- (0,2) coordinate[label={right:$f(x)$}];
+	\draw (0,0) -- (3.2,0) coordinate[label={$x$}];
+	\draw[color=red,line width=3pt] (-0.8,{f(0)}) -- (-0.1,{f(0)});
+\end{scope}
+
+
+\end{tikzpicture}
+\end{document}
+
