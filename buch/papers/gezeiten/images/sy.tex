@@ -65,7 +65,7 @@
 }
 \def\in#1{
 	\node at ({(2*#1-1)*\r},{-3.5}) [right,rotate=-90]
-		{$a_{#1}\cos(v_{#1}t+\delta_{#1})$};
+		{$a_{#1}\cos(v_{#1}t+\phi_{#1})$};
 }
 
 \begin{tikzpicture}[>=latex,thick,scale=\skala,
@@ -122,8 +122,8 @@
 	\draw[color=red,line width=1.4pt] plot[domain=0:180,samples=100]
 		({\x/60},{f(\x)});
 	\end{scope}
-	\draw[->] (0,-2) -- (0,2) coordinate[label={right:$f(x)$}];
-	\draw (0,0) -- (3.2,0) coordinate[label={$x$}];
+	\draw[->] (0,-2) -- (0,2) coordinate[label={right:$R(t)$}];
+	\draw[->] (0,0) -- (3.2,0) coordinate[label={$t$}];
 	\fill[color=red] (0,{f(0)}) -- ++(-0.15,0.05) -- ++(-0.6,0)
 		-- ++(0,-0.1) -- ++(0.6,0) -- cycle;
 	%\draw[color=red,line width=3pt] (-0.8,{f(0)}) -- (-0.1,{f(0)});
