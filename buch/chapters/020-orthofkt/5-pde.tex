@@ -459,8 +459,8 @@ y(x) = e^{\pm\!\sqrt{\lambda} x} \quad
 y(x)
 =
 \begin{cases}
-\cos\sqrt{-\lambda} x \\
-\sin\sqrt{-\lambda} x
+\cos\!\sqrt{-\lambda} x \\
+\sin\!\sqrt{-\lambda} x
 \end{cases}
 \quad\text{für $\lambda < 0$.}
 \]
@@ -483,9 +483,9 @@ Form einer Linearkombination
 \begin{equation}
 y(x)
 =
-A\cos \sqrt{-\lambda}x
+A\cos \!\sqrt{-\lambda}x
 +
-B\sin \sqrt{-\lambda}x
+B\sin \!\sqrt{-\lambda}x
 \label{buch:orthofkt:pde:periodisch}
 \end{equation}
 haben und untereinander orthogonal sind.
@@ -498,9 +498,9 @@ Wegen
 \[
 y(0)
 =
-A\cos \sqrt{-\lambda}0
+A\cos \!\sqrt{-\lambda}0
 +
-B\sin \sqrt{-\lambda}0
+B\sin \!\sqrt{-\lambda}0
 =
 A
 =
@@ -511,11 +511,11 @@ Die Randbedingung bei $x=\pi$ wird nur erfüllt, wenn
 \[
 y(\pi)
 =
-B\sin\sqrt{-\lambda}\pi
+B\sin\!\sqrt{-\lambda}\pi
 =
 0
 \qquad
-\pi\sqrt{-\lambda}
+\pi\!\sqrt{-\lambda}
 =
 k\pi,\; k\in\mathbb{Z},
 \]
@@ -529,26 +529,26 @@ Aus
 \[
 y'(x)
 =
--A\sqrt{-\lambda}\sin\sqrt{-\lambda} x 
+-A\!\sqrt{-\lambda}\sin\!\sqrt{-\lambda} x 
 +
-B\sqrt{-\lambda}\cos\sqrt{-\lambda} x 
+B\!\sqrt{-\lambda}\cos\!\sqrt{-\lambda} x 
 \]
 folgt für $x=0$, dass
 \[
 y'(0)
 =
-B\sqrt{-\lambda}
+B\!\sqrt{-\lambda}
 \qquad\Rightarrow\qquad B=0.
 \]
 Am rechten Rand $x=\pi$ folgt dann
 \[
 y'(\pi)
 =
--A\sqrt{-\lambda}\sin\sqrt{-\lambda}\pi
+-A\!\sqrt{-\lambda}\sin\!\sqrt{-\lambda}\pi
 =
 0
 \qquad\Rightarrow\qquad
-\sqrt{-\lambda}\pi = k\pi,\; k\in\mathbb{Z}
+\!\sqrt{-\lambda}\pi = k\pi,\; k\in\mathbb{Z}
 \qquad\Rightarrow\qquad
 \lambda=-k^2,\;k\in\mathbb{Z}.
 \]
@@ -557,16 +557,16 @@ In diesem Fall sind also die Kosinusfunktionen die Eigenfunktionen.
 Als Beispiel für eine gemischte Randbedingung betrachten wir den
 Fall $y(0)=0$ und $y'(\pi)=0$.
 Zunächst folgt aus der Diskussion der Dirichlet-Randbedingung, dass
-$y(x)=A\sin\sqrt{-\lambda}x$ sein muss.
+$y(x)=A\sin\!\sqrt{-\lambda}x$ sein muss.
 Am rechten Rand folgt dann
 \[
 y'(\pi)
 =
-A\sqrt{-\lambda}\cos\sqrt{-\lambda}\pi
+A\!\sqrt{-\lambda}\cos\!\sqrt{-\lambda}\pi
 =
 0
 \quad\Rightarrow\quad
-\sqrt{-\lambda}\pi = (k+{\textstyle\frac12})\pi,\;k\in\mathbb{Z}
+\!\sqrt{-\lambda}\pi = (k+{\textstyle\frac12})\pi,\;k\in\mathbb{Z}
 \]
 und $\lambda = -(k+{\textstyle\frac12})^2$
 Die Eigenfunktionen sind wieder Sinusfunktionen, aber mit anderen
@@ -590,42 +590,42 @@ erfüllt periodische Randbedingungen für die Werte und Ableitungen, wenn
 \begin{align*}
 y(0) &= y(2\pi) 
 &&\Rightarrow&
-A &= A\cos\sqrt{-\lambda}2\pi + B\sin\sqrt{-\lambda}2\pi
+A &= A\cos\!\sqrt{-\lambda}2\pi + B\sin\!\sqrt{-\lambda}2\pi
 \\
 y'(0)&=y'(2\pi)
 &&\Rightarrow&
-\sqrt{-\lambda}B
+\!\sqrt{-\lambda}B
 &=
 -
-A\sqrt{-\lambda}\sin\sqrt{-\lambda}2\pi
+A\!\sqrt{-\lambda}\sin\!\sqrt{-\lambda}2\pi
 +
-B\sqrt{-\lambda}\cos\sqrt{-\lambda}2\pi.
+B\!\sqrt{-\lambda}\cos\!\sqrt{-\lambda}2\pi.
 \end{align*}
 Die Koeffizienten $A$ und $B$ sind Lösungen des linearen Gleichungssystems
 \[
 \renewcommand{\arraycolsep}{2pt}
 \begin{array}{rcrcr}
-\cos2\pi\sqrt{-\lambda} \cdot A
+\cos2\pi\!\sqrt{-\lambda} \cdot A
 &+&
-\sin2\pi\sqrt{-\lambda} \cdot B
+\sin2\pi\!\sqrt{-\lambda} \cdot B
 &=& A
 \\
--\sin2\pi\sqrt{-\lambda} \cdot A
+-\sin2\pi\!\sqrt{-\lambda} \cdot A
 &+&
-\cos2\pi\sqrt{-\lambda} \cdot B
+\cos2\pi\!\sqrt{-\lambda} \cdot B
 &=& B
 \end{array}
 \Leftrightarrow
 \begin{array}{rcrcl}
-(\cos2\pi\sqrt{-\lambda}-1) \cdot A
+(\cos2\pi\!\sqrt{-\lambda}-1) \cdot A
 &+&
-\sin2\pi\sqrt{-\lambda} \cdot B
+\sin2\pi\!\sqrt{-\lambda} \cdot B
 &=&
 0
 \\
--\sin2\pi\sqrt{-\lambda} \cdot A
+-\sin2\pi\!\sqrt{-\lambda} \cdot A
 &+&
-(\cos2\pi\sqrt{-\lambda}-1) \cdot B
+(\cos2\pi\!\sqrt{-\lambda}-1) \cdot B
 &=& 0.
 \end{array}
 \]
@@ -636,19 +636,19 @@ wenn also
 0
 &=
 \biggl|\begin{matrix}
-\cos 2\pi\sqrt{-\lambda}-1 & \sin 2\pi\sqrt{-\lambda}   \\
--\sin 2\pi\sqrt{-\lambda}  & \cos 2\pi\sqrt{-\lambda}-1
+\cos 2\pi\!\sqrt{-\lambda}-1 & \sin 2\pi\!\sqrt{-\lambda}   \\
+-\sin 2\pi\!\sqrt{-\lambda}  & \cos 2\pi\!\sqrt{-\lambda}-1
 \end{matrix}\biggr|
 \\
 &=
-\cos^2 2\pi\sqrt{-\lambda} -2\cos2\pi\sqrt{-\lambda}+1
+\cos^2 2\pi\!\sqrt{-\lambda} -2\cos2\pi\!\sqrt{-\lambda}+1
 +
-\sin^22\pi\sqrt{-\lambda}
+\sin^22\pi\!\sqrt{-\lambda}
 \\
 &=
-2(1-\cos2\pi\sqrt{-\lambda})
+2(1-\cos2\pi\!\sqrt{-\lambda})
 \qquad\Rightarrow\qquad
-2\pi\sqrt{-\lambda} = 2k\pi,\;k\in\mathbb{Z},
+2\pi\!\sqrt{-\lambda} = 2k\pi,\;k\in\mathbb{Z},
 \end{align*}
 da die Maxima der Kosinusfunktion bei den Vielfachen von $2\pi$ liegen.
 Somit sind die möglichen Eigenwerte $\lambda=-k^2$.
@@ -669,15 +669,15 @@ Im Fall $\lambda >0$ muss eine Eigenfunktion die Form
 \[
 y(x)
 =
-Ae^{\sqrt{\lambda}x}
+Ae^{\!\sqrt{\lambda}x}
 +
-Be^{-\sqrt{\lambda}x}
+Be^{-\!\sqrt{\lambda}x}
 \quad\text{mit}\quad
 y'(x)
 =
-A\sqrt{\lambda}e^{\sqrt{\lambda}x}
+A\!\sqrt{\lambda}e^{\!\sqrt{\lambda}x}
 -
-B\sqrt{\lambda}e^{-\sqrt{\lambda}x}
+B\!\sqrt{\lambda}e^{-\!\sqrt{\lambda}x}
 \]
 haben.
 Die Diskussion der Eigenfunktionen wird etwas einfacher auf einem
@@ -685,9 +685,9 @@ symmetrischen Intervall $[-l,l]$.
 
 Homogene Dirichlet-Randbedingungen werden erfüllt, wenn
 \begin{align*}
-0&=y(\phantom{-}l) = Ae^{l\sqrt{\lambda}} + Be^{-l\sqrt{\lambda}}
+0&=y(\phantom{-}l) = Ae^{l\!\sqrt{\lambda}} + Be^{-l\!\sqrt{\lambda}}
 \\
-0&=y(         - l) = Ae^{-l\sqrt{\lambda}} + Be^{l\sqrt{\lambda}}
+0&=y(         - l) = Ae^{-l\!\sqrt{\lambda}} + Be^{l\!\sqrt{\lambda}}
 \end{align*}
 Dies ist ein homogenes lineares Gleichungssystem, es hat nur dann eine
 nichttriviale Lösung, wenn die Determinante nicht verschwindet, wenn also
@@ -696,14 +696,14 @@ nichttriviale Lösung, wenn die Determinante nicht verschwindet, wenn also
 =
 \biggl|
 \begin{matrix}
-e^{l\sqrt{\lambda}}  & e^{-l\sqrt{\lambda}} \\
-e^{-l\sqrt{\lambda}} & e^{l\sqrt{\lambda}}
+e^{l\!\sqrt{\lambda}}  & e^{-l\!\sqrt{\lambda}} \\
+e^{-l\!\sqrt{\lambda}} & e^{l\!\sqrt{\lambda}}
 \end{matrix}
 \biggr|
 =
-e^{2l\sqrt{\lambda}} - e^{-2l\sqrt{\lambda}}
+e^{2l\!\sqrt{\lambda}} - e^{-2l\!\sqrt{\lambda}}
 0
-e^{2l\sqrt{\lambda}} ( 1 - e^{-4l\sqrt{\lambda}}).
+e^{2l\!\sqrt{\lambda}} ( 1 - e^{-4l\!\sqrt{\lambda}}).
 \]
 Die Exponentialfunktion hat keine reellen Nullstellen, daher
 muss der Klammerausdruck verschwinden.
@@ -714,29 +714,29 @@ Für homogene Neumann-Randbedingungen sind die zu erfüllenden Gleichungen
 \begin{align*}
 0&= y'(\phantom{-}l)
 =
-A\sqrt{\lambda} e^{l\sqrt{\lambda}} - B\sqrt{\lambda}e^{-l\sqrt{\lambda}}
+A\!\sqrt{\lambda} e^{l\!\sqrt{\lambda}} - B\!\sqrt{\lambda}e^{-l\!\sqrt{\lambda}}
 \\
 0&= y'(         - l) =
-A\sqrt{\lambda} e^{-l\sqrt{\lambda}} - B\sqrt{\lambda}e^{l\sqrt{\lambda}}.
+A\!\sqrt{\lambda} e^{-l\!\sqrt{\lambda}} - B\!\sqrt{\lambda}e^{l\!\sqrt{\lambda}}.
 \end{align*}
 Die Determinante dieses homogenen linearen Gleichungssystems ist
 \[
 \biggl|\begin{matrix}
-\sqrt{\lambda} e^{l\sqrt{\lambda}}  & -\sqrt{\lambda}e^{-l\sqrt{\lambda}}
+\!\sqrt{\lambda} e^{l\!\sqrt{\lambda}}  & -\!\sqrt{\lambda}e^{-l\!\sqrt{\lambda}}
 \\
-\sqrt{\lambda} e^{-l\sqrt{\lambda}} & -\sqrt{\lambda}e^{l\sqrt{\lambda}}
+\!\sqrt{\lambda} e^{-l\!\sqrt{\lambda}} & -\!\sqrt{\lambda}e^{l\!\sqrt{\lambda}}
 \end{matrix}\biggr|
 =
 -\lambda
 \biggl|\begin{matrix}
-e^{l\sqrt{\lambda}}  & e^{-l\sqrt{\lambda}}
+e^{l\!\sqrt{\lambda}}  & e^{-l\!\sqrt{\lambda}}
 \\
-e^{-l\sqrt{\lambda}} & e^{l\sqrt{\lambda}}
+e^{-l\!\sqrt{\lambda}} & e^{l\!\sqrt{\lambda}}
 \end{matrix}\biggr|
 =
 -\lambda
 (
-e^{2l\sqrt{\lambda}} - e^{-2l\lambda}
+e^{2l\!\sqrt{\lambda}} - e^{-2l\lambda}
 ).
 \]
 Wie für Dirichlet-Randbedingungen folgt, dass auch diese Randbedingungen
@@ -752,55 +752,55 @@ y'(-l)&=y'(l)
 \quad\Rightarrow\quad
 \renewcommand{\arraycolsep}{2pt}
 \begin{array}{rcrcrcr}
-e^{-l\sqrt{\lambda}}A
+e^{-l\!\sqrt{\lambda}}A
 &+&
-e^{l\sqrt{\lambda}}B
+e^{l\!\sqrt{\lambda}}B
 &=&
-e^{l\sqrt{\lambda}}A
+e^{l\!\sqrt{\lambda}}A
 &+&
-e^{-l\sqrt{\lambda}}B
+e^{-l\!\sqrt{\lambda}}B
 \phantom{.}
 \\
-\sqrt{\lambda}e^{-l\sqrt{\lambda}}A
+\!\sqrt{\lambda}e^{-l\!\sqrt{\lambda}}A
 &-&
-\sqrt{\lambda}e^{l\sqrt{\lambda}}B
+\!\sqrt{\lambda}e^{l\!\sqrt{\lambda}}B
 &=&
-\sqrt{\lambda}e^{l\sqrt{\lambda}}A
+\!\sqrt{\lambda}e^{l\!\sqrt{\lambda}}A
 &-&
-\sqrt{\lambda}e^{-l\sqrt{\lambda}}B.
+\!\sqrt{\lambda}e^{-l\!\sqrt{\lambda}}B.
 \end{array}
 \]
 Bringt man alles auf eine Seite, entsteht ein Gleichungssystem mit der
 Koeffizientenmatrix
 \[
 \begin{pmatrix}
--e^{l\sqrt{\lambda}} + e^{-l\sqrt{\lambda}}
-	& e^{l\sqrt{\lambda}} - e^{-l\sqrt{\lambda}}
+-e^{l\!\sqrt{\lambda}} + e^{-l\!\sqrt{\lambda}}
+	& e^{l\!\sqrt{\lambda}} - e^{-l\!\sqrt{\lambda}}
 \\
-\sqrt{\lambda}(
+\!\sqrt{\lambda}(
 -
-e^{l\sqrt{\lambda}}
+e^{l\!\sqrt{\lambda}}
 +
-e^{-l\sqrt{\lambda}}
+e^{-l\!\sqrt{\lambda}}
 )
-	& \sqrt{\lambda}(-e^{l\sqrt{\lambda}} + e^{-l\sqrt{\lambda}})
+	& \!\sqrt{\lambda}(-e^{l\!\sqrt{\lambda}} + e^{-l\!\sqrt{\lambda}})
 \end{pmatrix}
 =
 \begin{pmatrix*}[r]
--              2\sinh(l\sqrt{\lambda})&               2\sinh(l\sqrt{\lambda})\\
--\sqrt{\lambda}2\sinh(l\sqrt{\lambda})&-\sqrt{\lambda}2\sinh(l\sqrt{\lambda})
+-              2\sinh(l\!\sqrt{\lambda})&               2\sinh(l\!\sqrt{\lambda})\\
+-\!\sqrt{\lambda}2\sinh(l\!\sqrt{\lambda})&-\!\sqrt{\lambda}2\sinh(l\!\sqrt{\lambda})
 \end{pmatrix*}
 \]
 mit der Determinante
 \[
-4\sqrt{\lambda}
+4\!\sqrt{\lambda}
 \bigl(
 \sinh^2(l\!\sqrt{\lambda})
 +
 \sinh^2(l\!\sqrt{\lambda})
 \bigr)
 =
-8\sqrt{\lambda} \sinh^2(l\sqrt{\lambda}),
+8\!\sqrt{\lambda} \sinh^2(l\!\sqrt{\lambda}),
 \]
 die nur verschwindet, wenn $l=0$ ist.
 Somit lassen sich auch periodische Randbedingungen für $\lambda > 0$
@@ -1513,7 +1513,7 @@ Die Parametrisierung mit $\vartheta$
 in \eqref{buch:orthfkt:pde:dglthetaphi}
 ist etwas unhandlich, daher soll der Parameter
 $\vartheta$ durch $z=\cos\vartheta$ und
-$\sin\vartheta = \sqrt{1-z^2}$
+$\sin\vartheta = \!\sqrt{1-z^2}$
 ersetzt werden.
 Die Funktion $\Theta(\vartheta)$ ist dann eine Funktion $P(z)$ mit
 $P(\cos\vartheta)=\Theta(\vartheta)$.
@@ -1529,7 +1529,7 @@ Zunächst sind die Ableitungen nach $\vartheta$:
 \\
 &=
 -
-\sqrt{1-z^2}
+\!\sqrt{1-z^2}
 P'(z)
 \\
 \Theta''(\vartheta)
@@ -1558,7 +1558,7 @@ in die Form
 -
 zP'(z)
 -
-\frac{z}{\sqrt{1-z^2}}\sqrt{1-z^2}P'(z)
+\frac{z}{\!\sqrt{1-z^2}}\!\sqrt{1-z^2}P'(z)
 -
 \lambda P(z)
 -

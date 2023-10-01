@@ -169,9 +169,9 @@ in zwei Integrale der Form
 \begin{align}
 (\mathscr{F}f)(k,l)
 &=
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{-ikx}
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{-ily}
 f(x,y)
 \,dy
@@ -179,9 +179,9 @@ f(x,y)
 \label{buch:radon:2dfourier:eqn:f2f1}
 \intertext{oder}
 &=
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{-ily}
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{-ikx}
 f(x,y)
 \,dx
@@ -217,17 +217,17 @@ e^{i(kx+ly)}g(k,l)
 \,dk\,dl
 \intertext{mit den Faktorisierungen}
 &=
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{ikx}
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{ily}
 g(k,l)
 \,dl\,dk
 \intertext{und}
 &=
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{ily}
-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty
+\frac{1}{\!\sqrt{2\pi}}\int_{-\infty}^\infty
 e^{ikx}
 g(k,l)
 \,dk\,dl
@@ -299,7 +299,7 @@ D_\alpha
 \]
 wenn man $\alpha$ als Winkel zwischen der $x$-Achse und Richung
 des Vektors mit den Komponenten $k$ und $l$ wählt und
-$\kappa=\sqrt{k^2+l^2}$ setzt.
+$\kappa=\!\sqrt{k^2+l^2}$ setzt.
 
 Die Koordinatentransformation
 \[
@@ -336,10 +336,10 @@ kann in in zwei einfache Integrale
 \begin{align*}
 \mathscr{F}u(k,l)
 &=
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{-i\kappa\xi}
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 \tilde{f}(\xi,\eta)
 \,d\eta
@@ -351,10 +351,10 @@ Das äussere Integral ist eine gewöhnliche eindimensionale
 Fourier-Transformation der Variablen $\xi$.
 }
 &=
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{-i\kappa\xi}
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 f(\xi\cos\alpha-\eta\sin\alpha,\xi\sin\alpha+\eta\cos\alpha)
 \,d\eta
@@ -570,7 +570,7 @@ durchgeführt werden muss, um die Fourier-Transformierte
 \mathscr{F}u(k_0\omega)
 =
 \frac{1}{(2\pi)^{\frac{n-1}2}}
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{\mathbb{R}}
 e^{-ik_0r}
 \mathscr{R}u(r,\omega)\,dr

@@ -175,11 +175,11 @@ Die Funktion $p_0$ hat die Norm
 =
 2
 \qquad\Rightarrow\qquad
-\|a_0\| = \sqrt{2}.
+\|a_0\| = \!\sqrt{2}.
 \]
 Somit ist
 \[
-p_0(x) = \frac{a_0(x)}{\|a_0\|} = \frac{1}{\sqrt{2}}.
+p_0(x) = \frac{a_0(x)}{\|a_0\|} = \frac{1}{\!\sqrt{2}}.
 \]
 
 Der Vektor $b_1$ wird berechnet durch
@@ -200,9 +200,9 @@ wir müssen daher zunächst das Skalarprodukt
 =
 \int_{-1}^1 b_0(x)a_1(x)\,dx
 =
-\int_{-1}^1 \frac{1}{\sqrt{2}} x\,dx
+\int_{-1}^1 \frac{1}{\!\sqrt{2}} x\,dx
 =
-\frac{1}{\sqrt{2}} \biggl[\frac12x^2\biggr]_{-1}^1=0
+\frac{1}{\!\sqrt{2}} \biggl[\frac12x^2\biggr]_{-1}^1=0
 \]
 berechnen.
 Es folgt dass $a_1$ bereits orthogonal zu $b_0$ ist, er muss also
@@ -221,11 +221,11 @@ Dazu müssen wir die Norm
 \qquad\Rightarrow\qquad
 \|a_1\|
 =
-\sqrt{\frac{2}{3}}
+\!\sqrt{\frac{2}{3}}
 \]
 verwenden und bekommen
 \[
-p_1(x) = \sqrt{\frac{3}{2}} x.
+p_1(x) = \!\sqrt{\frac{3}{2}} x.
 \]
 
 Die dritte Funktion $p_2(x)$ entsteht durch Orthonormierung des
@@ -233,27 +233,27 @@ Monoms $x^2$, dazu sind zunächst die Skalarprodukte
 \begin{align*}
 \langle b_0,a_2\rangle
 &=
-\int_{-1}^1 \frac{1}{\sqrt{2}}x^2\,dx
+\int_{-1}^1 \frac{1}{\!\sqrt{2}}x^2\,dx
 =
-\frac{1}{\sqrt{2}} [\frac13x^3]_{-1}^1
+\frac{1}{\!\sqrt{2}} [\frac13x^3]_{-1}^1
 =
-\frac{1}{\sqrt{2}} \frac{2}{3}
+\frac{1}{\!\sqrt{2}} \frac{2}{3}
 =
-\frac{\sqrt{2}}{3},
+\frac{\!\sqrt{2}}{3},
 \\
 \langle b_1,a_2\rangle
 &=
-\int_{-1}^1 \sqrt{\frac{3}{2}} x \cdot x^2\,dx
+\int_{-1}^1 \!\sqrt{\frac{3}{2}} x \cdot x^2\,dx
 = 
 0.
 \end{align*}
 Die Funktion $p_2(x)$ wird daher erhalten durch Normierung des Polynoms
 \[
 x^2 - 
-\frac{\sqrt{2}}{3} b_0(x)
+\frac{\!\sqrt{2}}{3} b_0(x)
 =
 x^2-
-\frac{\sqrt{2}}{3}\cdot\frac{1}{\sqrt{2}}
+\frac{\!\sqrt{2}}{3}\cdot\frac{1}{\!\sqrt{2}}
 =
 x^2-\frac13.
 \]
@@ -277,13 +277,13 @@ Dazu muss die Norm von $x^2-\frac13$ bestimmt werden, sie ist
 \Rightarrow\qquad
 \|x^2-\frac13\|
 &=
-\sqrt{\frac{45}{38}}
+\!\sqrt{\frac{45}{38}}
 \end{align*}
 und somit
 \[
 p_2(x)
 = 
-\sqrt{\frac{38}{45}} \biggl(x^2-\frac13\biggr).
+\!\sqrt{\frac{38}{45}} \biggl(x^2-\frac13\biggr).
 \]
 
 Dieser Prozess lässt sich beliebig weiterführen, die Rechnung wird
@@ -334,7 +334,7 @@ Das Skalarprodukt
 \langle f,g\rangle_{\text{T}}
 =
 \int_{-1}^1
-f(x)g(x)\frac{1}{\sqrt{1-x^2}}\, dx
+f(x)g(x)\frac{1}{\!\sqrt{1-x^2}}\, dx
 \label{buch:orthfkt:tschebyscheff}
 \end{equation}
 führt auf eine Familie $t_n(x)$ von orthonormierten Polynome.
@@ -364,7 +364,7 @@ $dx/d\vartheta=-\sin\vartheta$.}
 &=
 \int_{\pi}^0
 T_n(\cos\vartheta) T_m(\cos\vartheta)
-\sqrt{1-\cos^2\vartheta}
+\!\sqrt{1-\cos^2\vartheta}
 \, \frac{-d\vartheta}{-\sin\vartheta}
 \\
 &=
@@ -408,7 +408,7 @@ Gewichtsfunktion
 \[
 w_T(x)
 = 
-\frac{1}{\sqrt{1-x^2}}.
+\frac{1}{\!\sqrt{1-x^2}}.
 \]
 
 \begin{definition}
@@ -440,9 +440,9 @@ nämlich
 \[
 w_T(x)
 =
-\frac{1}{\sqrt{1-x^2}}
+\frac{1}{\!\sqrt{1-x^2}}
 =
-\frac{1}{\sqrt{(1-x)(1-x)}}
+\frac{1}{\!\sqrt{(1-x)(1-x)}}
 =
 (1-x)^{-\frac12}(1+x)^{-\frac12}
 =

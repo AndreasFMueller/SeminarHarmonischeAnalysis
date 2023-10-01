@@ -158,9 +158,9 @@ Die Funktion $C_0(t)=1$ ist etwas speziell, sie hat die Norm
 Damit können wir jetzt eine Hilbertbasis zusammenstellen:
 \[
 \begin{aligned}
-c_0(t) &= \frac{1}{\sqrt{2\pi}},\\
-c_k(t) &= \frac{1}{\sqrt{\pi}} C_k(t) = \frac{1}{\sqrt{\pi}} \cos kt,\\
-s_k(t) &= \frac{1}{\sqrt{\pi}} S_k(t) = \frac{1}{\sqrt{\pi}} \sin kt.\\
+c_0(t) &= \frac{1}{\!\sqrt{2\pi}},\\
+c_k(t) &= \frac{1}{\!\sqrt{\pi}} C_k(t) = \frac{1}{\!\sqrt{\pi}} \cos kt,\\
+s_k(t) &= \frac{1}{\!\sqrt{\pi}} S_k(t) = \frac{1}{\!\sqrt{\pi}} \sin kt.\\
 \end{aligned}
 \]
 
@@ -189,7 +189,7 @@ Der konstante Term ist
 \[
 \langle c_0,f\rangle c_0(t)
 =
-\int_{-\pi}^\pi \frac{1}{\sqrt{2\pi}} f(t)\,dt \frac{1}{\sqrt{2\pi}}
+\int_{-\pi}^\pi \frac{1}{\!\sqrt{2\pi}} f(t)\,dt \frac{1}{\!\sqrt{2\pi}}
 =
 \frac12 \cdot \frac1{\pi} \int_{-\pi}^\pi f(t)\,dt
 =
@@ -199,8 +199,8 @@ Für die Cosinus- und Sinus-Terme erhalten wir
 \begin{align*}
 \langle c_k,f\rangle c_k(t)
 &=
-\frac{1}{\sqrt{\pi}}
-\int_{-\pi}^\pi \cos kt f(t)\,dt \cdot \frac{1}{\sqrt{\pi}}\cos kt
+\frac{1}{\!\sqrt{\pi}}
+\int_{-\pi}^\pi \cos kt f(t)\,dt \cdot \frac{1}{\!\sqrt{\pi}}\cos kt
 =
 \frac{1}{\pi} \cos kt\,f(t)\,dt\cdot \cos kt
 =
@@ -208,8 +208,8 @@ a_k \cos kt
 \\
 \langle s_k,f\rangle s_k(t)
 &=
-\frac{1}{\sqrt{\pi}}
-\int_{-\pi}^\pi \int_{-\pi}^\pi \sin kt f(t)\,dt \cdot \frac{1}{\sqrt{\pi}}\sin kt
+\frac{1}{\!\sqrt{\pi}}
+\int_{-\pi}^\pi \int_{-\pi}^\pi \sin kt f(t)\,dt \cdot \frac{1}{\!\sqrt{\pi}}\sin kt
 =
 \frac{1}{\pi} \int_{-\pi}^\pi \sin kt\,f(t)\,dt\cdot \sin kt
 =
@@ -433,7 +433,7 @@ Wir setzen daher
 \begin{equation}
 \langle f,g\rangle
 =
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\pi}^\pi \overline{f(t)} g(t)\,dt.
 \end{equation}
 Mit diesem Skalarprodukt wird die Norm $\|e_k\|=1$.
@@ -449,10 +449,10 @@ c_k
 =
 \langle e_k,f\rangle
 =
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\pi}^{\pi}  \overline{e^{ikt}} f(t)\,dt
 =
-\frac{1}{\sqrt{2\pi}}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\pi}^{\pi}  e^{-ikt} f(t)\,dt
 \end{align*}
 approximieren.

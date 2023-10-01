@@ -180,7 +180,7 @@ einzelne Werte eines Integrals können aber ein Integral nicht beeinflussen.
 Es kann also eine Delta-Funktion nicht geben, aber die Folge von
 glatten Funktionen
 \[
-d_n(x) = \frac{1}{\sqrt{2\pi n}} e^{-x^2/n}
+d_n(x) = \frac{1}{\!\sqrt{2\pi n}} e^{-x^2/n}
 \]
 ist eine gute Approximation dafür.
 Die Funktionen $d_n$ sind ausserdem in $L^2(\mathbb{R})$ und
@@ -244,7 +244,7 @@ Die Funktion
 f_a(x)
 =
 \begin{cases}
-\frac1{\sqrt{2a}}&\qquad -a\le x \le a\\
+\frac1{\!\sqrt{2a}}&\qquad -a\le x \le a\\
 0&\qquad\text{sonst}.
 \end{cases}
 \]
@@ -268,16 +268,16 @@ Die Fouriertransformierte von $f_a$ ist
 &=
 \int_{-\infty}^\infty e^{-ikx} f_a(x)\,dx
 =
-\frac{1}{\sqrt{2a}}
+\frac{1}{\!\sqrt{2a}}
 \int_{-a}^a e^{-ikx}\,dx
 \\
 &=
-\frac{1}{\sqrt{2a}}
+\frac{1}{\!\sqrt{2a}}
 \biggl[
 \frac{1}{-ik} e^{-ikx}
 \biggr]_{-a}^a
 =
-\frac{1}{\sqrt{2a}}\biggl(
+\frac{1}{\!\sqrt{2a}}\biggl(
 \frac{
 e^{-ika}-e^{ika}
 }{
@@ -286,13 +286,13 @@ e^{-ika}-e^{ika}
 \biggr)
 \\
 &=
-\frac{2}{\sqrt{2a}k}\frac{e^{ika}-e^{-ika}}{2i}
+\frac{2}{\!\sqrt{2a}k}\frac{e^{ika}-e^{-ika}}{2i}
 =
-\sqrt{\frac{2}{a}} \frac{\sin ka}{k}
+\!\sqrt{\frac{2}{a}} \frac{\sin ka}{k}
 =
-\sqrt{2a} \frac{\sin ka}{ka}
+\!\sqrt{2a} \frac{\sin ka}{ka}
 =
-\sqrt{2a}
+\!\sqrt{2a}
 \operatorname{si}(ka).
 \end{align*}
 Die Funktion
@@ -375,7 +375,7 @@ Die Fourier-Transformierte der Gauss-Funktion $f(x)=e^{-ax^2}$ ist
 \[
 \hat{f}(k)
 =
-\sqrt{\frac{\pi}{a}}
+\!\sqrt{\frac{\pi}{a}}
 e^{-k^2/2a},
 \]
 also wieder eine Gauss-Funktion.
@@ -407,7 +407,7 @@ e^{-k^2/4a}
 e^{-au^2}
 \,du
 =
-\sqrt{\frac{\pi}{a}}
+\!\sqrt{\frac{\pi}{a}}
 e^{-k^2/4a}.
 \end{align*}
 Dieses formale Argument ist allerdings nicht ganz vollständig,
@@ -425,9 +425,9 @@ $e^{-k^2/2}$.
 \begin{satz}[Gauss-Funktion als Eigenfunktion von $\mathscr{F}$]
 \label{buch:gruppen:fourier:satz:gausseigen}
 Die Funktion $f=e^{x^2/2}$ ist eine Eigenfunktion der Fouriertransformation
-zum Eigenwert $\sqrt{2\pi}$, also
+zum Eigenwert $\!\sqrt{2\pi}$, also
 \[
-\mathscr{F}f = \sqrt{2\pi} f.
+\mathscr{F}f = \!\sqrt{2\pi} f.
 \]
 \end{satz}
 
@@ -530,7 +530,7 @@ dass $\langle x\rangle=0$ und $\langle k\rangle = 0$.
 \begin{satz}[Heisenberg-Pauli-Weyl-Unschärferelation]
 \label{buch:gruppen:fourier:satz:heisenberg-pauli-weyl}
 Sind die Funktion $f(x)$, $xf(x)$ und $k(\mathscr{F}f)(k)$ alle in
-$L^2(\mathbb{R})$ und $\lim_{x\to\pm\infty} \sqrt{x}|f(x)|=0$, dann
+$L^2(\mathbb{R})$ und $\lim_{x\to\pm\infty} \!\sqrt{x}|f(x)|=0$, dann
 gilt
 \begin{equation}
 (\Delta x)^2
