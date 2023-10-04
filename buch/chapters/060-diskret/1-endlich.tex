@@ -66,7 +66,7 @@ Die erzeugte Gruppe der Teilmenge $F$ der Gruppe $G$ ist
 \[
 \langle F\rangle
 =
-\bigcap_{F\subset H\subset G \atop\text{$H$ Gruppe}} L
+\bigcap_{F\subset H\subset G \atop\text{$H$ Gruppe}} H
 \]
 \end{satz}
 
@@ -75,30 +75,173 @@ Eine Gruppe $G$ heisst {\em endlich erzeugt}, wenn es eine endliche Menge
 $F\subset G$ gibt derart, dass $G=\langle F\rangle$.
 \end{definition}
 
-%
-% Zyklische Gruppen
-%
-\subsection{Zyklische Gruppen
-\label{buch:diskret:endlich:subsection:zyklisch}}
+\begin{beispiel}
+Die Menge $F=\{n\}\subset\mathbb{Z}$ erzeugt die additive Untergruppe
+\[
+\langle F \rangle
+=
+\{\dots,-3n,-2n,-n,0,n,2n,3n,\dots\}
+=
+n\mathbb{Z}.
+\]
+Für eine endliche Teilmenge $F=\{n_1,\dots,n_k\}\subset\mathbb{Z}$
+besteht die erzeugte additive Untergruppe
+\[
+\langle F\rangle
+=
+\operatorname{ggT}(n_1,\dots,n_k)\mathbb{Z}
+\]
+aus den Vielfachen des grössten gemeinsamen Teilers der Zahlen
+$n_1,\dots,n_k$.
+\end{beispiel}
+
+\begin{beispiel}
+Sei $\alpha\in \mathbb{R}$, dann besteht die von $e^{i\alpha}$ erzeugte
+multiplikative Untergruppe von $\mathbb{C}^*$ aus den Elementen
+\[
+\langle e^{i\alpha}\rangle
+=
+\{ e^{in\alpha}\mid n\in\mathbb{Z}\}.
+\]
+Sie ist genau dann eine endliche Gruppe, wenn es eine Zahl $l\in\mathbb{Z}$
+mit $e^{il\alpha}=1$.
+Dies ist gleichbedeutend damit, dass $l\alpha$ ein Vielfaches von $2\pi$
+ist, also $l\alpha = 2\pi k$ mit $k\in\mathbb{Z}$.
+Somit ist 
+\[
+\alpha = 2\pi \frac{k}{l},
+\]
+ein rationales Vielfaches von $\pi$.
+Ohne Beschränkung der Allgemeinheit darf man annehmen, dass $k$ und $n$
+teilerfremd sind, dass also der Bruch $k/n$ gekürzt ist.
+Die Zahlen $e^{in\alpha}=e^{2\pi i n (k/l)}$ sind gleich, wenn 
+sich die Exponenten nur um ein Vielfaches von $2\pi i$ unterscheiden,
+wenn also $nk$ den gleichen Rest module $l$ haben.
+Da $k$ und $l$ teilerfremd sind, sind alle Reste module $l$ möglich.
+Die erzeugte endliche Untergruppe ist also
+\[
+\langle e^{i\alpha}\rangle
+=
+\{ e^{2\pi i nk/l}\mid n\in \mathbb{Z} \}
+=
+\{ e^{2pi i n/l} \mid n=0,\dots,l-1 \}
+=
+C_l
+\]
+die zyklische Untergruppe der Ordnung $l$.
+
+Falls $\alpha$ kein rationales Vielfaches von $\pi$ ist, ist die
+erzeugte Gruppe eine unendliche Untergruppe von komplexen Zahlen vom
+Betrag $1$.
+Eine solche Gruppe ist eine Menge, die in
+$S^1=U(1)=\{z\in\mathbb{C}^*\mid |z|=1\}$
+dicht liegt.
+\end{beispiel}
 
 %
 % Produkte
 %
 \subsection{Produkte
 \label{buch:diskret:endlich:subsection:produkte}}
+Die Ordnung einer abelschen Gruppe charakterisiert die Struktur einer
+Gruppe noch nicht eindeutig.
+In diesem Abschnitt soll gezeigt werden, wie sich aus endlichen
+Gruppen neue zusammensetzen lassen.
+
+Seien $G$ und $H$ endliche Gruppen.
+Dann lässt sich eine neue Gruppe konstruieren, die auch die
+{\em Produktgruppe} heisst.
+Sie besteht besteht aus den Paaren von Gruppenelementen
+\[
+G\times H
+=
+\{ (g,h) \mid g\in G\text{ und } h\in H\}.
+\]
+Die Verknüpfung ist
+\begin{align*}
+(g_1,h_1)(g_2,h_2)
+&=
+(g_1g_2,h_1h_2)
+\intertext{mit dem neutralen Element}
+e_{G\times H}
+&=
+(e_G,e_H)
+\intertext{wobei $e_G$ und $e_H$ die neutralen Elemente von $G$ bzw.~$H$
+sind.
+Das inverse Element ist dann}
+(g,h)^{-1}
+&=
+(g^{-1},h^{-1}).
+\end{align*}
+
+Die Verknüpfung abelscher Gruppen wird oft additiv geschrieben.
+In diesem Fall wird die Produktgruppe auch als {\em direkte Summe}
+\[
+G\times H
+=
+G\oplus H
+\]
+geschrieben mit der Verknüpfung
+\begin{align*}
+(g_1,h_1) + (g_2,h_2)
+&=
+(g_1+g_2,h_1+h_2)
+\\
+-(g,g)&=(-g,h)
+\intertext{und dem neutralen Element}
+0&= (0,0).
+\end{align*}
+Die direkte Summe ist auch wieder eine abelsche Gruppe.
 
 \begin{satz}
+\label{buch:diskret:endlich:satz:teilerfremd}
+Sind $n$ und $m$ teilerfremd, dann ist
+$
+\mathbb{Z}/nm\mathbb{Z}
+\equiv
+\mathbb{Z}/n\mathbb{Z} \oplus \mathbb{Z}/m\mathbb{Z}
+$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Das Element $(1,1)\in \mathbb{Z}/n\mathbb{Z}\oplus\mathbb{Z}/m\mathbb{Z}$
+hat die Eigenschaft $nm(1,1)=(0,0)$.
+Ausserdem gibt es keine Zah $k<nm$, für die $k(1,1)=(0,0)$ ist, denn
+dazu müsste $k$ ein Teiler von $n$ und $m$ sein, was nach Voraussetzung
+verboten ist.
+\end{proof}
+
+Der Satz zeigt, dass sich eine endlich erzeugte abelsche Gruppe immer
+Summanden der Form $\mathbb{Z}/p^k\mathbb{Z}$ für Primzahlen $p$
+zerlegen lässt.
+Es bleibt dann nur noch zu untersuchen, ob die Gruppen für verschiedene
+$k$ verschieden sind oder sich weiter zerlegen lassen.
+Darauf gibt der folgende Satz eine Antwort.
+
+\begin{satz}
+\label{buch:diskret:endlich:satz:ppotenz}
 Die Gruppen $\mathbb{Z}/p^k\mathbb{Z}$ und $\mathbb{Z}/p^l\mathbb{Z}$
 sind nicht isomorph, wenn $k\ne l$.
 \end{satz}
+
+\begin{proof}[Beweis]
+Sei $k>l$, dann ist  auch $p^k>p^l$.
+Für jedes Element $x \in \mathbb{Z}/p^l\mathbb{Z}$ gilt, 
+$p^lx=0$.
+Das Element $1\in \mathbb{Z}/p^k\mathbb{Z}$ hat diese Eigenschaft
+nicht, also können die beiden Gruppen nicht isomorph sein.
+\end{proof}
 
 %
 % Struktursatz
 %
 \subsection{Der Struktursatz
 \label{buch:diskret:endlich:subsection:}}
-
-
+Ausgehend von den beiden Sätzen~\ref{buch:diskret:endlich:satz:teilerfremd}
+und
+\ref{buch:diskret:endlich:satz:ppotenz}
+ist jetzt der folgende Struktursatz für endlich erzeugte abelsche
+Gruppen plausibel.
 
 \begin{satz}
 \label{buch:diskret:endlich:struktursatz}
@@ -143,6 +286,9 @@ G
 \]
 die Zerlegung von $G$ gemäss dem Struktursatz
 \ref{buch:diskret:endlich:struktursatz}.
+Es ist jetzt nur noch zu zeigen, dass die duale Gruppe einer direkten
+Summe die direkte Summe der dualen Gruppen ist, dass also
+$(G_1\oplus G_2)\hat{\phantom{\imath}} \cong \hat{G}_1\oplus \hat{G}_2$.
 \end{proof}
 
 
