@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	f23.pdf f32.pdf f30.pdf traeger.pdf etraeger.pdf permutation.pdf f16.pdf f4.pdf f8.pdf log.pdf zeitgl.pdf
+all:	f23.pdf f32.pdf f30.pdf traeger.pdf etraeger.pdf permutation.pdf f16.pdf f4.pdf f8.pdf log.pdf zeitgl.pdf faktoren.pdf
 
 f23.pdf:	f23.tex fcommon.tex
 	pdflatex f23.tex
@@ -40,3 +40,7 @@ log.pdf:	log.tex
 
 zeitgl.pdf:	zeitgl.tex
 	pdflatex zeitgl.tex
+
+faktoren.pdf:	faktoren.tex
+	pdflatex faktoren.tex
+
