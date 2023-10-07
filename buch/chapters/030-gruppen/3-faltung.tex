@@ -25,16 +25,28 @@ Funktionswerte auf verschiedenen Gruppenelemente miteinander verrechnen.
 % 
 \subsection{Hall und andere Phänomene
 \label{buch:gruppen:faltung:subsection:hall}}
+\begin{figure}
+\centering
+\includegraphics{chapters/030-gruppen/images/konzertsaal.pdf}
+\caption{Echos und Nachhall in einem Konzertsaal.
+Eine einzelner Impuls von einer Quelle (rot) führt beim Mikrofon
+zu einer komplizierten Impulsantwort $g(t)$ bestehend aus
+dem Direktschall, den frühen Echos und dem Nachhall.
+Ein beliebiges Signal $f(t)$ (grün) wird beim Mikrofon als $g*f(t)$
+aufgenommen.
+\label{buch:gruppen:faltung:fig:konzertsaal}}
+\end{figure}
 Wie verändern die Reflektionen des Schalls in einem Konzertsaal
-den Klang eines Musikinstruments?
+den Klang eines Musikinstruments
+(Abbildung~\ref{buch:gruppen:faltung:fig:konzertsaal})?
 Das Instrument produziert Schallwellen, die sich als Druckschwankungen
 $f(t)$ ausbreiten.
 Die Wände und Einrichtungsgegenstände reflektieren dies auftreffenden
 Schallenwellen in unterschiedlichem Ausmass.
 Die Reflektionen treffen beim Zuhörer mit verschiedenen Verzögerungen ein.
 Das um $\tau$ verzögerte Signal ist $t\mapsto f(t-\tau)$.
-Ist $g(\tau)$ der Anteil des Signals, des mit Verzögerung $\tau$ beim
-Zuhörer eintrifft.
+Der Anteil $g(\tau)$ des Signals, des mit Verzögerung $\tau$ beim
+Zuhörer eintrifft, heisst die {\em Impulsantwort}.
 Das gesamte vom Zuhörer wahrgenommene Signal ist daher die Überlagerung
 all dieser Signale, also
 \begin{equation}
@@ -66,7 +78,8 @@ g*f(x)
 \int_{\mathbb{R}^2} f(x-\xi)\,g(\xi)\,d\xi.
 \label{buch:gruppen:faltung:eqn:pointspread}
 \end{equation}
-Die Funktion $g(\xi)$ heisst auch die {\em point spread function}.
+Im Kontext der Bildverarbeitung heisst
+die Funktion $g(\xi)$ auch die {\em point spread function}.
 
 %
 % Faltung für Funktionen auf einer beliebigen Gruppe

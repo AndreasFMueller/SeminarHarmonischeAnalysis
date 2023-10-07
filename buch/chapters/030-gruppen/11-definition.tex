@@ -296,3 +296,185 @@ xy^{-1} \in\ker\varphi.
 Es folgt also genau dann $x=y$, wenn der Kern $\ker\varphi$ nur
 das neutrale Element enthält.
 
+%
+% Die Menge aller Homomorphismen
+%
+\subsubsection{Die Menge aller Homomorphismen}
+Homomorphismen dienen dazu, Gruppen miteinander zu vergleichen.
+Die Menge der Homomorphismen zwischen zwei Gruppen kann daher
+Licht auf die Struktur der einzelnen Gruppen werfen.
+
+\begin{definition}
+Sind $G$ und $H$ Gruppen, dann wird die Menge aller Homomorphismen 
+von $G$ nach $H$ mit $\operatorname{Hom}(G,H)$ bezeichnet.
+\end{definition}
+
+\begin{beispiel}
+Von besonderer Bedeutung werden später die Homomorphismen
+$\operatorname{Hom}(G,\mathbb{C}^*)$ 
+von einer Gruppe $G$ in die multiplikative Gruppe $\mathbb{C}^*$
+sein.
+Diese Menge ist sogar eine multiplikative Gruppe, denn für  zwei
+Homomorphismen 
+$f_k\colon G\to\mathbb{C}^*$ 
+ist die Abbildung
+\[
+f_1f_2
+\colon
+G \to \mathbb{C}^*
+:
+g
+\mapsto
+f_1(g)f_2(g)
+\]
+sogar ein Homomorphismus.
+Dies folgt aus der Rechnung
+\[
+(f_1f_2)(gh)
+=
+f_1(gh)f_2(gh)
+=
+f_1(g)f_1(h)f_2(g)f_1(h)
+=
+f_1(g) f_2(g) f_1(h) f_1(h)
+=
+(f_1f_2)(g)(f_1f_2)(gh).
+\]
+Das neutrale Element ist der konstante Homomorphismus
+$1\colon G\to\mathbb{C}^*: g\mapsto 1$.
+Das inverse Element eines Homomorphismus $f\colon G \to\mathbb{C}^*$
+ist $1/f$ mit den Werten $(1/f)(g)=1/f(g)$.
+Diese Argumentation funktioniert benötigt nur, dass die Bildgruppe 
+abelsch ist.
+\end{beispiel}
+
+Aus einem Homomorphismus $\psi \colon H_1\to H_2$ kann die Abbildung
+$\psi_*\colon \operatorname{Hom}(G,H_1)\to\operatorname{Hom}(G,H_2)$ konstruiert
+werden, die den Homomorphismus $f\colon G\to H_1$ auf
+$\psi\circ f\colon G\to H_2$ abbildet.
+Diese Abbildung wird auch mit $\psi_*=\operatorname{Hom}(G,\psi)$ 
+bezeichnet.
+Ebenso lässt sich zu einem Homomorphismus $\varphi\colon G_1\to G_2$ ein
+Abbildung
+$
+\varphi^*
+=
+\operatorname{Hom}(\varphi,H)
+\colon
+\operatorname{Hom}(G_2,H)
+\to
+\operatorname{Hom}(G_1,H)
+$
+konstruieren, die den Homomorphismus $f\colon G_2\to H$ auf
+den Homomorphismus $f\circ \varphi\colon G_1\to H$ abbildet.
+Man beachte, dass die Abbildung $\varphi^*$ in umgekehrter Richtung
+erfolgt.
+
+\begin{definition}
+Ein Homomorphismus von einer Gruppe $G$ nach $G$ heisst {\em Endomorphismus}
+der Gruppe $G$.
+In invertierbarer Endomorphismus heisst {\em Automorphismus}.
+Die Menge aller Automorphismen wird 
+$\operatorname{Aut}(G)$ geschrieben.
+\end{definition}
+
+\begin{satz}
+Die Menge $\operatorname{Aut}(G)$ ist eine Gruppe mit der Zusammensetzung
+von Automorphismen als Gruppenoperation und der Umkehrabbildung als
+inverses Element.
+\end{satz}
+
+%
+% Kategorientheorie
+%
+\subsubsection{Kategorientheorie}
+Die Konstruktion der Automorphismengruppe veranschaulicht ein allgemeineres
+Prinzip, wie Gruppen entstehen.
+Die Kategorientheorie behandelt die allgemeinen Eigenshcaften von
+mathematischen Strukturen und Abbildungen dazwischen, die mit diesen
+Strukturen verträglich sind.
+Die Kategorie der Gruppen zum Beispiel umfasst alle Gruppen und die
+Menge der Homomorphismen von Gruppen.
+Die konkrete Art der Struktur ist für die Überlegungen der Kategorientheorie
+unwichtig.
+Für eine interessante Kategorie werden nur die folgenden Folgerungen
+gestellt.
+
+\begin{definition}
+Eine {\em Kategorie} $\mathscr{C}$ ist eine Klasse von Objekten
+$\operatorname{obj}(\mathscr{C})$ zusammen mit einer
+Menge von sogenannten {\em Morphismen} $\operatorname{Hom}(A,B)$ für
+jedes Paar von Objekten $A$ und $B$, mit einer Verkknüprfung
+$
+\operatorname{Hom}(B,C)\times \operatorname{Hom}(A,B)
+\to
+\operatorname{Hom}(A,C)
+$, die auch als Zusammensetzung $f\circ g$ für $f\in \operatorname{Hom}(B,C)$
+und $g\in \operatorname{Hom}(A,B)$ geschrieben wird.
+Ausserdem gibt es in $\operatorname{Hom}(A,A)$ das Element
+$1_A\in\operatorname{Hom}(A,A)$ mit den Eigenschaften
+\[
+f\circ 1_A = f\quad\forall f\in \operatorname{Hom}(A,B)
+\qquad\text{und}\qquad
+1_B\circ g = g\quad\forall g\in\operatorname{Hom}(A,B).
+\]
+Die Menge der Morphismen von $A$ nach $A$ wird auch mit
+$\operatorname{End}(A)=\operatorname{Hom}(A,A)$ bezeichnet.
+Falls Objekte $A$ und $B$ in mehreren Kategorien sind, kann bei der
+Spezifikation der Morphismenmenge die Kategorie als Index
+angebeben werden: $\operatorname{Hom}_{\mathscr{C}}(A,B)$.
+\end{definition}
+
+\begin{beispiel}
+Die reellen Vektorräume als Objekte mit den Mengen der linearen
+Abbildungen zwischen den Vektorräumen als Morphismenmengen bilden
+eine Kategorie $\mathscr{V}$.
+Für einen Vektorraum $V$ ist die identische Abbildung das Element
+$1_V\in\operatorname{Hom}(V,V)$.
+\end{beispiel}
+
+\begin{beispiel}
+Die endlichen Mengen als Objekte mit den Abbildungen zwischen
+endlichen Mengen als Morphismen bilden die Kategorie $\mathscr{E}$
+der endlichen Mengen.
+Für eine endliche Menge $A$ ist $1_A=\operatorname{id}_A$ die
+identische Abbildung von $A$ auf sich.
+\end{beispiel}
+
+Die Kategorientheorie sagt nicht, dass $\operatorname{Hom}(A,B)$
+eine Menge von Abbildungen ist, wenngleich dies ein sehr häufiger
+Fall ist.
+
+\begin{beispiel}
+Aus einem Graph mit Knoten $V$ und Kantenmenge $E$ kann eine Kategorie
+$\mathscr{G}$ wie folgt konstruiert werden.
+Die Objekte von $\mathscr{G}$ sind die Knoten des Graphen.
+Die Menge $\operatorname{Hom}(a,b)$ besteht aus allen Pfaden
+von $a$ nach $b$ im Graphen.
+Für $a=b$ enthält $\operatorname{Hom}(a,a)$ auch noch den Pfad der
+Länge $0$, der mit $1_a$ bezeichnet wird.
+Die Verknüpfung von Morphismen ist die Verkettung von Pfaden.
+
+Die Morphismenmengen in der Kategorie $\mathscr{G}$ sind ganz offensichtlich
+nicht Mengen von Abbildungen.
+Da durch die Verkettung von Pfaden diese immer länger werden ist es
+nicht möglich, dass zwei Pfade, deren Länge nicht $0$ ist, nach
+Verkettung zu $1_a$ werden.
+\end{beispiel}
+
+Die Kategorientheorie hat Werkzeuge entwickelt, mit denen Isomorphismen
+zwischen Objekten definiert werden können, ohne dass man die Details der
+involvierten Strukturen verstehen muss.
+Sie kann daher auch erklären, was es heissen soll, dass jeder 
+Morphismus in $\operatorname{Hom}(A,A)$ auf eindeutige Art invertiert
+werden kann.
+Dies macht die Menge der invertierbaren Morphismen mit der Verknüpfung
+von Morphismen zu einer Gruppe mit dem neutralen Elemente $1_A$.
+Die Automorphismengruppe einer Gruppe entsteht im Fall der Gruppenkategorie.
+Für die Kategorie der endlichdimensionalen Vektorräume ist die Menge
+führt diese Konstruktion auf die Gruppe $\operatorname{GL}(V)$ der
+invertierbaren linearen Abbildungen $V\to V$.
+
+
+
+

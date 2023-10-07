@@ -33,12 +33,26 @@ Die Menge
 \mathbb{Q} \setminus\{0\}
 \)
 ist eine Gruppe mit der Multiplikation als Gruppenoperation.
-\end{beispiel}
+Für zwei in $\mathbb{Q}^*$ konvergente Folgen $a_n$ und $b_n$ gilt
+\begin{align*}
+\lim_{n\to\infty} a_nb_n
+&=
+\lim_{n\to\infty} a_n
+\lim_{n\to\infty} b_n
+\qquad\text{und}
+\\
+\lim_{n\to\infty} a_n
+&=
+\bigl(
+\lim_{n\to\infty} a_n
+\bigr)^{-1},
+\end{align*}
+die Gruppenoperationen sind also stetig und $\mathbb{Q}^*$
+ist eine topologische Gruppe.
 
-Die Gruppe $\mathbb{Q}^*$ ist eine topologische Gruppe.
-Als Teilmenge von $\mathbb{Q}$ ist klar, was eine Cauchy-Folge in
-$\mathbb{Q}^*$ ist.
-Es gibt aber auch Cauchy-Folgen in $\mathbb{Q}^*$, die nicht konvergieren.
+Für eine beliebige Cauchy-Folge $x_n$ in $\mathbb{Q}^*$
+ist allerdings nicht garantiert, dass die Grenzwerte ebenfalls
+in $\mathbb{Q}^*$ liegen.
 Die Folge
 \[
 x_0=1,\;
@@ -63,6 +77,7 @@ x^2=2
 x=\!\sqrt{2},
 \]
 insbesondere ist der Grenzwert nicht in $\mathbb{Q}^*$.
+\end{beispiel}
 
 \begin{definition}
 \label{buch:gruppen:gruppe:def:topgruppe}
@@ -75,6 +90,46 @@ Für konvergente Folgen $x_n\to x$ und $y_n\to y$ in $G$ gilt dann
 \lim_{n\to \infty} x_n^{-1} &= (\lim_{n\to\infty} x_n)^{-1} = x^{-1}
 \end{align*}
 \end{definition}
+
+\begin{beispiel}
+Die additive Gruppe $\mathbb{R}$ ist eine topologische Gruppe, in der
+jede Cauchy-Folge konvergiert.
+\end{beispiel}
+
+Die topologische Gruppe $\mathbb{Q}^*$ hat sehr viele ``Löcher'', sie ist
+daher keine gute Grundlage für eine analytische Theorie.
+Dafür möchten wir eine Situation erzwingen, in der die Intuition, die 
+wir von den reellen Zahlen haben, ein guter Ratgeber ist.
+Es ist klar, dass eine beschränkte Folge nicht unbedingt konvergieren
+muss, die Folge $x_n=(-1)^n$ in $\mathbb{R}$ ist beschränkt aber nicht
+konvergent.
+Eine beschränkte Folge von reellen Zahlen hat die Eigenschaft, dass 
+sie eine konvergente Teilfolge enthält.
+Für eine Folge $x_n$ von Vektoren in $\mathbb{R}^m$ mit beschränkten Komponenten
+kann man sich eine ähnliche Eigenschaft überlegen.
+Die Folge der ersten Koordinaten von $x_n$ ist eine beschränkte Folge,
+man kann also eine konvergente Teilfolge auswählen.
+Durch Auswahl einer Teilfolge kann man weiter erreichen, dass auch die
+zweite Koordinate konvergiert.
+In $m$ Schritten der Auswahl einer Teilfolge findet man eine
+Teilfolge, in der alle Koordinaten konvergieren.
+Die endliche Dimension $m$ der Vektoren spielt für diese Konstruktion
+eine entscheidende Rolle.
+Die Forderung nach der Existenz einer konvergenten Teilfolge für beschränkte
+Folgen ist also eine ``Endlichkeitsbedingung''.
+
+\begin{definition}
+Eine Menge $X$, auf der Grenzwerte mit einer geeigneten Abstandsmessung
+definiert sind, heisst {\em lokal kompakt}, wenn jede beschränkte Menge
+eine konvergente Teilfolge hat.
+\end{definition}
+
+Abgeschlossene Teilmengen von $\mathbb{R}^m$ sind lokal kompakt.
+Die Menge der quadratintegrierbaren Funktionen auf einem Interval
+ist dagegen nicht lokal kompakt, wie das folgende Beispiel zeigt.
+Die Folge der Funktionen $e^{ikx}$ auf dem Intervall $[0,2\pi]$ ist
+bezüglich der $L^2$-Norm beschränkt, hat aber keine konvergente
+Teilfolge.
 
 %
 % Koordinatensysteme

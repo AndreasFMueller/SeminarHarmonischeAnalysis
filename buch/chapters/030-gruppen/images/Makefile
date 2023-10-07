@@ -3,7 +3,7 @@
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
-all:	sinc.pdf kugelschnitt.pdf kugelkarten.pdf
+all:	sinc.pdf kugelschnitt.pdf kugelkarten.pdf konzertsaal.pdf
 
 sinc.pdf:	sinc.tex
 	pdflatex sinc.tex
@@ -39,3 +39,8 @@ kugelkarten.pdf:	kugelkarten.tex kugel1.jpg kugel2.jpg kugel3.jpg
 kugelschnitt.pdf:	kugelschnitt.tex kugelschnitt.jpg
 	pdflatex kugelschnitt.tex
 
+konzertsaal.pdf:	konzertsaal.tex kpath.tex
+	pdflatex konzertsaal.tex
+
+kpath.tex:	konzertsaal.m
+	octave konzertsaal.m

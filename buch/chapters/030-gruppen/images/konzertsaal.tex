@@ -1,0 +1,83 @@
+%
+% konzertsaal.tex -- Echos in einem Konzertsaal
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\definecolor{deltacolor}{rgb}{1,0,0}
+\definecolor{echocolor}{rgb}{0,0,1}
+\definecolor{signalcolor}{rgb}{0,0.6,0}
+\definecolor{verhalltcolor}{rgb}{0,0.5,0.3}
+\input{kpath.tex}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\pgfmathparse{5/1024}
+\xdef\dx{\pgfmathresult}
+\def\dy{2}
+
+\begin{scope}[xshift=0.3cm,yshift=1.7cm]
+	\impuls
+	\draw[->] (-0.1,0) -- (5.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-0.1) -- (0,2.4) coordinate[label={right:$\delta(t)$}];
+	\node[color=deltacolor] at (5.3,2.4) [below left] {Impuls, ``Knall''};
+\end{scope}
+\begin{scope}[xshift=6.3cm,yshift=1.7cm]
+	\echo
+	\draw[->] (-0.1,0) -- (5.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-0.1) -- (0,2.4) coordinate[label={right:$g(t)$}];
+	\node[color=echocolor] at (5.3,2.4) [below left] {Impulsantwort};
+	\pgfmathparse{\dx*200}
+	\xdef\x{\pgfmathresult}
+	\pgfmathparse{\dx*600}
+	\xdef\y{\pgfmathresult}
+	\draw[->,color=deltacolor!70!echocolor] ({\x+0.1},-1.6) -- (\x,-1.6) -- (\x,-0.1);
+	\node[color=deltacolor!70!echocolor] at ({\x+0.1},-1.6) [right] {Direktschall};
+	\draw[color=echocolor,line width=2pt]
+		({\dx*200+0.1},-0.2) -- ({\dx*600},-0.2);
+	\draw[color=echocolor!40,line width=2pt]
+		({\dx*600},-0.2) -- ({\dx*1024},-0.2);
+	\draw[<-,color=echocolor] ({\dx*400},-0.3) -- ({\dx*400},-1.0)
+		-- ({\dx*400+0.1},-1.0);
+	\node[color=echocolor] at ({\dx*415+0.1},-1.0) [right]
+		{frühe Echos};
+	\node[color=echocolor!40] at ({\dx*812},-0.2) [below] {Nachhall};
+\end{scope}
+
+\node at (0,0) [left,xscale=-1]
+	{\includegraphics[width=5.4cm]{musikvereinssaal.png}};
+
+\fill[color=deltacolor] (0.8,0) circle[radius=0.08];
+\node[color=deltacolor] at (0.8,0) [below] {Quelle};
+\draw[->,color=deltacolor,shorten <= 0.2cm]
+	(0.8,0) -- +(-0.02,1.6);
+
+\fill[color=echocolor] (4,0) circle[radius=0.08];
+\draw[->,color=echocolor,shorten <= 0.2cm]
+	(4,0) -- +(2.5,1.6);
+\node[color=echocolor] at (4,0) [below] {Mikrofon};
+
+\begin{scope}[xshift=0.3cm,yshift=-3.0cm]
+	\def\dy{1}
+	\signal
+	\draw[->] (-0.1,0) -- (5.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-1.1) -- (0,1.3) coordinate[label={right:$f(t)$}];
+	\node[color=signalcolor] at (5.3,1.3) [below left] {Signal};
+\end{scope}
+\begin{scope}[xshift=6.3cm,yshift=-3.0cm]
+	\def\dy{15}
+	\hall
+	\draw[->] (-0.1,0) -- (5.3,0) coordinate[label={$t$}];
+	\draw[->] (0,-1.1) -- (0,1.3) coordinate[label={right:$g*f(t)$}];
+	\node[color=verhalltcolor] at (5.3,1.3) [below left] {verhalltes Signal};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
