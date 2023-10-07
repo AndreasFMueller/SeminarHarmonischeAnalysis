@@ -108,7 +108,71 @@ f(x)g(y) e_x\otimes e_y
 % Das Tensorprodukt
 %
 \subsubsection{Das Tensorprodukt $U\otimes V$}
+Die Überlegungen des vorangegangenen Abschnitts liefert nicht nur
+eine Beschreibung des Vektorraums $\mathbb{C}^{X\times Y}$.
+Sie kann nämlich auf zwei beliebige Vektorräume
+$U$ und $V$ verallgemeinert werden.
+Dazu seien $\mathcal{B}=\{u_1,\dots,u_n\}$ und $\mathcal{C}=\{v_1,\dots,v_m\}$
+Basen der Vektorräume.
+Jeder Vektor in $U$ kann als Linearkombination von Vektoren aus
+$\mathcal{B}$ geschrieben werden, ebenso kann jeder Vektor von $V$
+als Linearkombination von Vektoren in $\mathcal{C}$ geschrieben werden.
+Die Basisvektoren übernehmen dabei die Rollen der Funktionen
+$e_x\in \mathbb{C}^X$ und $e_y\in\mathbb{C}^Y$.
+Wir definieren daher einen neuen Vektorraum $U\otimes V$ mit
+der Basis
+\[
+\mathcal{B}\otimes\mathcal{C}
+=
+\{
+u_i\otimes v_j
+\mid
+i=1,\dots,n\text{ und }j=1,\dots,m
+\}.
+\]
+Der Vektorraum $U\otimes V$ besteht also aus Linearkombinationen
+\[
+\sum_{i=1}^n \sum{j=1}^m
+a_{ij} u_i\otimes v_j
+\]
+von Tensorprodukten $u_i\otimes v_j$.
 
+Der Vektorraum $U\otimes V$ ist kleiner als das kartesische Produkt
+$U\times V$, da die Vektoren
+\[
+(\lambda u_i)\otimes v_j
+=
+u_i\otimes (\lambda v_j)
+=
+\lambda (u_i\otimes v_j)
+\]
+in $U\otimes V$ alle als gleich betrachtet werden, während die
+Paare $(\lambda u_i,v_j)$ und $(u_i,\lambda v_j)$ verschieden sind.
+
+Der Vektorraum $U\otimes V$ berücksichtigt, dass eine bilineare Abbildung
+ebenfalls die Eigenschaft hat, dass ein skalarer Faktor vom einen
+Argument auf das andere geschoben werden kann:
+\[
+f(\lambda x,y) = f(x,\lambda y) = \lambda f(x,y)
+\]
+für eine auf $U\times V$ definierte lineare Abbildung $f$.
+Daher hat der Vektorraum $U\otimes V$ hat die folgende universelle
+Eigenschaft.
+Ist $f\colon U\times V\to W$ eine {\em bilineare} Abbildung, dann
+gibt es auch eine eindeutig bestimmte {\em lineare} Abbildung
+$g\colon U\otimes V\to W$ derart, dass
+\[
+f(u,v)
+=
+g(u\otimes v).
+\]
+Da die Vektoren $u_i\otimes v_j$ eine Basis von $U\otimes V$ bilden,
+ist $g$ als lineare Abbildung durch $g(u_i\otimes v_j) = f(u_i,v_j)$
+vollständig definiert.
+
+Das Tensorprodukt von Funktionen im vorangegangenen Abschnitt besteht
+aus Elementen des Tensorprodukts der Vektorräume
+$\mathbb{C}^X\otimes \mathbb{C}^Y = \mathbb{C}^{X\times Y}$.
 
 %
 % Lineare Abbildungen
