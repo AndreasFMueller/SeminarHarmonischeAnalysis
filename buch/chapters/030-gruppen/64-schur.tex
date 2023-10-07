@@ -1,0 +1,119 @@
+%
+% 64-schur.tex -- Irreduzible Darstellungen und das Lemma von Schur
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Irreduzible Darstellungen und das Lemma von Schur
+%
+\subsection{Irreduzible Darstellungen und das Lemma von Schur}
+Das Beispiel~\ref{buch:gruppen:darstellung:bsp:c3} hat gezeigt, dass
+es möglich ist, die reguläre Darstellung der Gruppe $C_3$ bis auf
+Isomorphie in eine direkte Summe zweier einfacherer Darstellungen
+zu zerlegen.
+Ganz ähnlich wie uns die harmonische Analysis in die Lage versetzt,
+Funktionen in Summen von einfacheren Funktionen zu zerlegen, sollte
+es auch möglich sein, beliebige Darstellungen in eine Summe von
+Bausteinen zu zerlegen.
+Dazu muss aber zunächst der Idee der Zerlegbarkeit einer Darstellung
+eine eindeutige Definition gegeben werden.
+
+Die Zerlegung der Darstellung von $C_3$ im 
+Beispiel~\ref{buch:gruppen:darstellung:bsp:c3} war möglich, weil
+der Vektorraum $\mathbb{R}^3$ in zwei Summanden zerlegt werden 
+konnte, die unter der Wirkung Darstellung unverändert sind.
+Die Ebene im Beispiel kann aber nicht mehr weiter in eindimensionale
+Unterräume aufgespalten werden.
+
+\begin{definition}
+\label{buch:gruppen:darstellung:def:irreduzibel}
+Eine Darstellung $\varrho\colon G\to \operatorname{GL}_n(\mathbb{R})$ 
+heisst {\em irreduzibel}, wenn die einzigen Unterräume, die von allen
+Matrizen $\varrho(g)$ in sich abgebildet werden, der Nullraum $\{0\}$
+und der ganze Raum $\mathbb{R}^n$ sind.
+\end{definition}
+
+Nach dieser Definition ist die reguläre Darstellung von $C_3$ nicht
+irreduzibel, da die beiden Unterräume
+\[
+\mathbb{R}b_1%\begin{pmatrix}1\\1\\1\end{pmatrix}
+\qquad\text{und}\qquad
+\{
+xb_2 + yb_3
+\mid
+x,y\in\mathbb{R}
+\}
+\]
+beide invariant sind.
+
+\begin{satz}[Lemma von Schur]
+Seien $G$ eine Gruppe sein $\varrho_V\colon G\to \operatorname{GL}(V)$
+und $\varrho_W\colon G\to\operatorname{W}$ irreduzible Darstellungen
+von $G$ in den Vektorräumen $V$ und $W$.
+Sei ausserdem $f\colon V\to W$ eine lineare Abbildung, die mit den
+Darstellungen vertauscht, also
+\[
+f\circ \varrho_V(g) = \varrho_W(g)\circ f
+\]
+Dann gilt
+\begin{enumerate}
+\item $f$ ist entweder die Nullabbildung oder ein Isomorphismus.
+\item Falls $V=W$ ist, hat $f$ die Form $f(v)=\lambda v$ mit
+$\lambda\in \mathbb{C}$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Der Kern von $f$ ist der Unterraum
+$\operatorname{ker}f = \{v\in V\mid f(v)=0\}$.
+Für $v\in\operatorname{ker}f$ ist
+$f(\varrho_V(g)v) = \varrho_W(g) f(v) = \varrho_W(g) 0=0$, also ist
+$\varrho_V(g)\in\operatorname{ker}f$.
+Der Kern von $f$ ist damit ein invarianter Unterraum der Darstellung
+$\varrho_V$ von $G$.
+Da $\varrho_V$ irreduzibel ist, ist $\operatorname{ker}f$ entweder
+der ganze Raum, in diesem Fall ist $f=0$ oder der Kern ist $0$, in diesem
+Fall ist $f$ injektiv.
+
+Das Bild von $f$ ist der Unterraum
+$\operatorname{im}f = \{f(v)\mid v\in V\}\subset W$.
+Dann gilt
+$\varrho_W(g)f(v) = f(\varrho_V(g)v)\in\operatorname{im}f$, das Bild von
+$f$ ist damit auch ein invarianter Unterraum von $W$.
+Da die Darstellung $\varrho_W$  irreduzibel ist, ist $\operatorname{im}f$
+entweder der Nullraum, in diesem Fall ist $f=0$, oder das Bild ist der
+ganze Raum $W$, in diesem Fall ist $f$ surjektiv.
+
+Die beiden Aussagen zusammen ergeben, dass $f$ entweder die Nullabbildung
+ist oder sowohl injektiv wie auch surjektiv ist.
+Damit ist 1.~gezeigt.
+
+Bleibt noch 2.~zu zeigen.
+Sei $\lambda$ ein Eigenwert der Abbildung $f$ und $v$ ein Eigenvektor.
+Dann ist $\lambda I$ eine
+Abbildung $V\to V$, die mit der Darstellung vertauscht, denn
+\[
+\varrho_V(g)\lambda I =
+\lambda \varrho_V(g) = \lambda I\varrho_V(g).
+\]
+Somit ist auch $f-\lambda I$ eine Abbildung $V\to V$, die mit $\varrho_V$
+vertauscht.
+Nach 1.~muss dies die Nullabbildung oder ein Isomorphismus sein.
+Da aber der Eigenvektor $v$ auf $(f-\lambda I)v = \lambda v - \lambda v = 0$
+abgebildet wird, kann $f-\lambda I$ nicht ein Isomorphismus sein, somit
+ist $f-\lambda I=0$ und damit $f=\lambda I$.
+\end{proof}
+
+Die erste Aussage des Lemmas von Schur und sein Beweis zeigen, dass
+irreduzible Darstellungen auch nicht teilweise aufeinander abgebildet
+werden können.
+Wenn eine Abbildung nicht die Nullabbildung ist, dann muss die
+ganz Darstellung $V$ ohne Verlust auf die ganze Darstellung $W$
+abgebildet werden.
+Dies ist nur eine andere Formulierung für die Idee der Irreduzibilität.
+
+Die zweite Aussage des Lemmas von Schur besagt im Wesentlichen, dass
+es bis auf Faktor $\lambda$ nur eine Möglichkeit gibt, eine irreduzible
+Darstellung mit sich selbst zu vergleichen.
+

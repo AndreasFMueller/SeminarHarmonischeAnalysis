@@ -1,0 +1,418 @@
+%
+% 12-endlich.tex -- Konzept einer Gruppe
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\section{Gruppen
+\label{buch:gruppen:section:gruppe}}
+\kopfrechts{Gruppe}
+Die Translationsinvarianz des Definitionsbereiches $\mathbb{R}$
+entsteht aus der Tatsache, dass die Addition einer Zahl
+nicht aus $\mathbb{R}$ herausführt und sich auch umkehren lässt.
+Sie basiert also darauf, dass es in $\mathbb{R}$ eine umkehrbare
+Verknüpfung gibt.
+Diese Idee wird von der algebraischen Struktur einer Gruppe eingefangen.
+
+%
+% Endliche Gruppen
+%
+\subsection{Endliche Gruppen
+\label{buch:gruppen:subsection:endliche-gruppen}}
+Während für theoretische Überlegungen die kontinuierliche
+Fourier-Transformation auf Gruppen wie $\mathbb{R}$ oder
+$\mathbb{R}/2\pi\mathbb{Z}$, ist f
+In Ingenieuranwendungen bevorzugt man, mit kontinuierlichen
+
+% XXX Die Gruppen \mathbb{Z}/n\mathbb{Z}
+\subsubsection{Die zyklischen Gruppen $\mathbb{Z}/n\mathbb{Z}$}
+Für die diskrete Fourier-Analysis besonders wichtig sind die zyklischen
+Gruppen.
+
+\begin{definition}
+\label{buch:gruppen:endliche-gruppen:def:zyklisch}
+Die Gruppe
+\[
+\mathbb{Z}/n\mathbb{Z}
+=
+\{0,1,2,\dots,n-1\}
+\]
+der Reste modulo $n$ mit der Addition von Resten ist eine abelsche
+Gruppe.
+\end{definition}
+
+Die zyklischen Gruppen können auch als multiplikativ geschriebene
+Untergruppen der von $0$ verschiedenen komplexen Zahlen geschrieben
+werden.
+Dazu verwendet man die Exponentialfunktion:
+\[
+C_n
+=
+\{ e^{2\pi ik/n}\mid k=0,1,\dots,n-1\}.
+\]
+Die Exponentialabbildung
+\[
+\exp
+\colon
+\mathbb{Z}/n\mathbb{Z}
+\to
+C_n
+:
+k\mapsto e^{2\pi ik/n}
+\]
+ist ein Homomorphismus, denn
+\[
+\exp(k+l)
+=
+e^{2\pi i(k+l)/n}
+=
+e^{2\pi ik/n}
+e^{2\pi il/n}
+=
+\exp(k)\exp(l).
+\]
+Die Reste werden auf verschiedene Ecken eines regelmässigen
+$n$-Ecks in der komplexen Ebene abgebildet, die Abbildung $\exp$
+ist daher auch eine Bijektion.
+Die additiv geschriebene Gruppe $\mathbb{Z}/n\mathbb{Z}$ und
+die multiplikativ geschriebene Gruppe $C_n$ sind also isomorph.
+
+%
+% Die zyklischen Gruppen als Kern
+%
+\subsubsection{Die zyklischen Gruppen als Kern}
+Die Gruppe $C_n$ wurde früher schon als Bild der Gruppe
+$\mathbb{R}/2\pi\mathbb{Z}$ unter der Exponentialabbildung 
+in $\mathbb{C}^*$ erkannt worden.
+Man kann sie aber auch als Kern eines geeignet gewählten Homomorphismus
+verstehen.
+
+Die Abbildung
+\[
+\varphi
+\colon
+S^1\to S^1
+:
+z\mapsto z^n
+\]
+ist ein Homomorphismus, denn es ist ja $\varphi(z_1z_2)=(z_1z_2)^n
+= z_1^nz_2^n=\varphi(z_1)\varphi(z_2)$.
+Der Kern von $\varphi$ besteht aus den komplexen Zahlen mit der 
+Eigenschaft $z^k=1$, das sind genau die Elemente von $C_n$.
+
+%
+% Permutationsgruppen
+%
+\subsubsection{Permutationsgruppen}
+Die Menge $[n]=\{1,2,\dots,n\}$ hat $n$ Elemente.
+Wir betrachten die Menge aller invertierbaren Abbildungen
+$\varphi\colon [n] \to [n]$.
+Zwei solche Abbildungen $\varphi$ und $\psi$ können zusammengesetzt
+werden, oder sie können invertiert werden $\varphi^{-1}$.
+Tatsächlich ist die Menge 
+\[
+S_n = \{\varphi\colon [n] \to [n]\mid \text{$\varphi$ ist invertierbar} \}
+\]
+eine Gruppe, sie heisst die {\em Permutationsgruppe von $n$ Elementen}
+oder die {\em symmetrische Gruppe}.
+
+Permutationen können besonders effizient als Matrizen mit zwei Zeilen
+geschrieben werden.
+Eine Abbildung $\varphi\colon [n]\to[n]$ bildet $i\in [n]$ auf $\varphi(u)$
+ab, was man als die Matrix
+\[
+\varphi
+=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+\varphi(1)&\varphi(2)&\varphi(3)&\dots&\varphi(n)
+\end{pmatrix}
+\]
+schreiben kann.
+Um die Komposition von zwei Abbildungen $\varphi$ und $\psi$ zu bestimmen,
+kann man die beiden Matrizen übereinander schreiben und die Spalten der
+unteren Matrix so sortieren, dass sie mit den Elementen in der unteren
+Zeile der oberen übereinstimmen:
+\[
+\begin{aligned}
+\varphi
+&=
+\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}
+\\
+\psi
+&=
+\begin{pmatrix}1&2&3&4\\3&2&4&1\end{pmatrix}
+\end{aligned}
+\quad\Rightarrow\quad
+\psi\circ \varphi
+=
+\left\{
+\begin{array}{c}
+\displaystyle\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}\\
+\displaystyle\begin{pmatrix}1&2&3&4\\3&2&4&1\end{pmatrix}
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{c}
+\displaystyle\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}\\
+\displaystyle\begin{pmatrix}2&3&1&4\\2&4&3&1\end{pmatrix}
+\end{array}
+\right\}
+=
+\begin{pmatrix}
+1&2&3&4\\
+2&4&3&1
+\end{pmatrix}.
+\]
+
+Die inverse Abbildung findet man, indem man die beiden Zeilen vertauscht
+und die Spalten so sortiert, dass die Elemente in der ersten Zeile
+wieder aufsteigend sind.
+Zum Beispiel
+\[
+\varphi
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&3&5&2&4
+\end{pmatrix}
+\quad\Rightarrow\quad
+\varphi^{-1}
+=
+\begin{pmatrix}
+1&3&5&2&4\\
+1&2&3&4&5
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}.
+\]
+Die Zusammensetzung von $\varphi$ und $\varphi^{-1}$ ist
+\[
+\varphi\circ\varphi^{-1}
+=
+\left\{
+\begin{array}{c}
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}
+\\
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&3&5&2&4
+\end{pmatrix}
+\end{array}
+\right\}
+=
+\left\{
+\begin{array}{c}
+\displaystyle
+\begin{pmatrix}
+1&2&3&4&5\\
+1&4&2&5&3
+\end{pmatrix}
+\\
+\displaystyle
+\begin{pmatrix}
+1&4&2&5&3\\
+1&2&3&4&5
+\end{pmatrix}
+\end{array}
+\right\}
+=
+\begin{pmatrix}
+1&2&3&4&5\\
+1&2&3&4&5
+\end{pmatrix}
+=
+e.
+\]
+
+\begin{definition}
+Eine {\em Transposition} $\tau\in S_n$ ist eine Permutation, die genau
+zwei Elemente vertauscht und alle anderen Elemente fest bleiben.
+\end{definition}
+
+Die Permutationsgruppe $S_n$ ist für $n>2$ nicht abelsch, denn die beiden
+Transpositionen
+\[
+\tau_{12}
+=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+2&1&3&\dots&n
+\end{pmatrix}
+,
+\qquad
+\tau_{23}
+=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+1&3&2&\dots&n
+\end{pmatrix}
+\]
+haben die Produkte
+\begin{align*}
+\tau_{12}
+\circ
+\tau_{23}
+&=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+2&3&1&\dots&n
+\end{pmatrix}
+&&\text{und}&
+\tau_{23}
+\circ
+\tau_{12}
+&=
+\begin{pmatrix}
+1&2&3&\dots&n\\
+3&1&2&\dots&n
+\end{pmatrix},
+\end{align*}
+die verschieden sind.
+
+Die Permutationsgruppen können als die ``ultimativen'' endlichen Gruppen
+im folgenden Sinne betrachtet werden.
+Sei $G=\{e=g_1,g_2,\dots,g_n\}$ irgend eine endliche Gruppe, und $g\in G$
+ein Gruppenelement.
+Für jedes Element $g_i$ ist $gg_i=g_{\pi(i)}$ wieder ein Gruppenelement.
+Damit wird eine Permutation $\pi\in S_n$ definiert.
+Die Gruppe $G$ kann damit als eine in $S_n$ Gruppe von Permutationen
+betrachtet werden.
+Jede endliche Gruppe ist somit eine Untergruppe von $S_n$.
+Für die Zwecke der harmonischen Analysis ist diese Betrachtungsweise
+allerdings nicht besonders ergibig.
+
+%
+% Permutationsmatrizen
+%
+\subsubsection{Permutationsmatrizen}
+Die Permutationsgruppe hat auch eine wichtige Rolle bei der Definition
+der Determinante mit Hilfe des Entwicklungssatzes, wie zum Beispiel
+in \cite[Kapitel~4]{buch:linalg} ausgeführt wird.
+Darin spielen die Transpositionen eine besondere Rolle, da die
+Vertauschungen zweier Spalten einer Matrix das Vorzeichen ihrer
+Determinanten umkehrt.
+Tatsächlich können die Permutationen von $S_n$ auch als
+$n\times n$-Matrizen geschrieben werden.
+Der Permutation $\pi\in S_n$ wird die lineare Abbildung
+$\mathbb{R}^n\to\mathbb{R}^n$ zugeordnet, die den Standardbasisvektor
+$e_k$ auf den Standardbasisvektor $e_{\sigma(k)}$ abbildet.
+Die zugehörige Matrix $P_\sigma$ hat die Matrixelemente
+\[
+(P_\sigma)_{ik} 
+=
+\begin{cases}
+1&\qquad i = \pi(k)\\
+0&\qquad\text{sonst}.
+\end{cases}
+\]
+Die Verknüpfung von Permutationen wird zur Matrixmultiplikation,
+die Abbildung $\sigma \mapsto P_\sigma$ ist ein Homomorphismus
+von der Gruppe $S_n$ in die Gruppe der Permutationsmatrizen.
+Man sagt auch, die Permutationen werden durch Matrizen dargestellt oder
+die Abbildung, die einer Permutation $\sigma$ die zugehörige
+Permutationsmatrix $P_\sigma$ zuordnet, ist eine Darstellung der
+Gruppe $S_n$ im Vektorraum $\mathbb{R}^n$.
+
+Die Spalten einer Permutationsmatrix sind die permutierten
+Standardbasisvektoren.
+Man kann die Permutation rückgängig machen, indem man die Spalten
+paarweise geeignet vertauscht.
+Die Determinante der Matrix ändert dabei jedesmal das Vorzeichen.
+Am Ende des Prozesses steht die Einheitsmatrix mit Determinante $1$.
+Insbesondere ist die Determinanten einer Permutationsmatrix $\pm 1$.
+
+\begin{definition}
+\index{Vorzeichen einer Permutation}%
+\index{Signum einer Permutation}%
+Das {\em Vorzeichen} oder {\em Signum} einer Permutation
+$\operatorname{sgn}(\sigma)$
+ist die Determinante der zugehörigen Permutationsmatrix:
+$\operatorname{sgn}(\sigma)=\det P_\sigma$.
+Eine Permutation heisst {\em gerade}, wenn $\operatorname{sgn}(\sigma)=1$ ist,
+sei heisst {\em ungerade}, wenn $\operatorname{sgn}(\sigma)=-1$ ist.
+\index{gerade Permutation}%
+\index{ungerade Permutation}%
+\end{definition}
+
+Die Permutationsmatrix $P_\tau$ einer Transposition $\tau$ hat nur
+zwei vertauschte Spalten, also ist $\operatorname{sgn}(\tau)=\det P_\tau=-1$.
+Der oben beschrieben Prozess, mit dem erkannt wurde, dass die Determinante
+einer Permutationsmatrix $\pm 1$ sein muss, zeigt noch mehr.
+
+\begin{satz}
+Jede Permutation $\sigma$ kann als Produkt von Transpositionen
+geschrieben werden.
+Das Signum einer Permutation ist genau dann $+1$, wenn $\sigma$
+als Zusammensetzung einer geraden Anzahl von Transpositionen
+geschrieben werden kann.
+Es ist $-1$, wenn $\sigma$ Zusammensetzung einer ungeraden Anzahl
+von Transpositionen geschrieben werden kann.
+\end{satz}
+
+%
+% Die alternierende truppe
+%
+\subsubsection{Die alternierende Gruppe}
+Das Vorzeichen $\operatorname{sgn}$ ist die Zusammensetzung zweier
+Homomorphismen, nämlich der Abbildung $\sigma\to P_\sigma$
+und der Determinante.
+Die Produktregel für Determinanten besagt, dass $\det(AB)=\det(A)\det(B)$,
+die Determinante macht also aus der Matrixmultiplikation das Produkt von
+reellen Zahlen.
+Für zwei Permutationen $\sigma,\varrho\in S_n$ gilt daher für die Signa
+\[
+\operatorname{sgn}(\sigma\varrho)
+=
+\det P_{\sigma\varrho}
+=
+\det(P_\sigma P_\varrho)
+=
+\det(P_\sigma)\det( P_\varrho)
+=
+\operatorname{sgn}(\sigma)
+\operatorname{sgn}(\varrho).
+\]
+Die Zusammensetzung von Homomorphismen ist auch wieder ein Homomorphismus.
+
+Die Menge
+\[
+A_n
+=
+\{ \sigma\in S_n \mid \operatorname{sgn}(\sigma) = 1 \}
+=
+\ker
+\operatorname{sgn}
+\]
+ist als Kern eines Homomorphismus $S_n\to\mathbb{R}$
+eine Untergruppe von $S_n$, denn für $\sigma_1,\sigma_2\in S_n$ ist auch
+\(
+\operatorname{sgn}(\sigma_1\sigma_2)
+=
+\operatorname{sgn}(\sigma_1)
+\operatorname{sgn}(\sigma_2)
+=
+1\cdot 1
+\),
+und daher auch $\sigma_1\sigma_2\in S_n$.
+Ausserdem ist 
+\(
+\operatorname{sgn}(\sigma^{-1})=\det P_{\sigma^{-1}}
+=
+\det P_\sigma^{-1}
+=
+(\det P_\sigma)^{-1}
+=
+1^{-1}=1,
+\)
+somit ist mit $\sigma\in A_n$ auch $\sigma^{-1}\in A_n$.
+Die Menge $A_n$ heisst die {\em alternierende Gruppe}.
+

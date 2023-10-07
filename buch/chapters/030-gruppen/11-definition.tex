@@ -1,0 +1,298 @@
+%
+% 1-gruppe.tex -- Konzept einer Gruppe
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Definition
+%
+\subsection{Definition
+\label{buch:gruppen:subsection:definition}}
+Der Begriff einer Gruppe soll alle Arten von invertierbaren Rechenoperationen
+erfassen, also Addition/Subtraktion, Multiplikation/Division oder
+die Matrixmultiplikation mit der inversen Matrix.
+Die minimal nötigen Eigenschaften fasst die folgende Definition zusammen.
+
+\begin{definition}
+\label{buch:gruppen:definition:gruppe}
+Eine {\em Gruppe} $G$ ist eine Menge mit einer Verknüpfung
+$\cdot \colon G\times G\to G : (x,y) \mapsto xy $, welche folgende
+Eigenschaften hat:
+\begin{enumerate}
+\item
+Die Verknüpfung ist assoziativ, d.~h.~$(xy)z=x(yz)$ für alle
+$x,y,z\in G$.
+\item
+Es gibt ein {\em neutrales Element} $e\in G$, für welches $ex=x$ für alle
+$x\in G$ gilt.
+\index{neutrales Element}%
+\item 
+Zu jedem $x\in G$ gibt es ein {\em inverses Element} $x^{-1}\in G$ mit der
+Eigenschaft $x^{-1}x=e$.
+\index{inverses Element}%
+\end{enumerate}
+\end{definition}
+
+Man beachte, dass die Defiinition nicht verlangt, dass die Faktoren
+vertauscht werden können. 
+
+\begin{beispiel}
+Die Menge $\operatorname{GL}_n(\mathbb{R})$ der invertierbaren
+$n\times n$-Matrizien mit reellen Einträgen und der Matrixmultiplikation
+heisst die {\em allgemeine lineare Gruppe}.
+\index{allgemeine lineare Gruppe}%
+\index{Gruppe!allgemeine lineare}%
+Das neutrale Element von $\operatorname{GL}_n(\mathbb{R})$ ist die
+Einheitsmatrix, das inverse Element einer Matrix
+$A\in \operatorname{GL}_n(\mathbb{R})$
+ist die inverse Matrix $A^{-1}$.
+\end{beispiel}
+
+%
+% Abelsche Gruppen
+%
+\subsubsection{Abelsche Gruppen}
+Die Definition einer Gruppe verlangt nicht, dass die Verknüpfung der
+Gruppenelemente kommutativ sein müsste.
+Tatsächlich haben die meisten Matrizengruppen, wie weiter unten als 
+Beispiele besprochen werden, eine nicht kommutative Verknüpfung.
+Es stellt sich aber heraus, dass Gruppen mit einer kommutativen
+Verknüpfung zu einer besonders reichhaltigen harmonischen Analysis
+führen.
+
+\begin{definition}
+\label{buch:gruppen:definition:abelsch}
+Eine Gruppe $G$ heisst {\em abelsch}, wenn 
+die Verknüpfung in der Gruppe kommutativ ist, wenn also
+$xy=yx$ für alle $x,y\in G$ gilt.
+\end{definition}
+
+Die Verknüpfung einer abelschen Gruppe ist also {\em kommutativ}.
+\index{kommutativ}%
+Abelsche Gruppen werden oft additiv geschrieben, d.~h.~mit einem
+Pluszeichen als $x+y$ für $x,y\in G$.
+Das neutrale Element heisst dann auch das {\em Nullelement} und wird $0$
+geschrieben: $x+0=x$ für alle $x\in G$.
+Das inverse Element von $x$ heisst dann auch das
+{\em entgegengesetzte Element} und wird $-x$ geschrieben. 
+Es gilt $x+(-x)=0$ für alle $x\in G$.
+
+\begin{beispiel}
+Die Gruppe $(\mathbb{R},+)$ ist eine abelsche Gruppe.
+Die Gruppe der von $0$ verschiedenen Zahlen mit der Multiplikation
+$(\mathbb{R}^*,\cdot)$ ist eine abelsche Gruppe.
+\end{beispiel}
+
+\begin{beispiel}
+Die {\em Gruppe der Drehwinkel} in der Ebene ist die Menge
+\(
+\mathbb{R}/2\pi\mathbb{Z}
+=
+(-\pi,\pi].
+\)
+Als Gruppenoperation dient die Addition von Winkeln, die Summe
+$\alpha+\beta$ zweier Winkel $\alpha$ und $\beta$ muss dazu durch
+Subtraktion oder Addition von Vielfachen von $2\pi$ ins Intervall
+$(-\pi,\pi]$ zurückgebracht werden.
+Neutrales Element ist $0$, das inverse Elemente ist $-\alpha$ mit
+dem Spezialfall $-\pi=\pi$.
+\end{beispiel}
+
+\begin{beispiel}
+Die von $0$ verschiedenen Element $\mathbb{C}^*$ mit der Multiplikation
+ist eine Gruppe.
+Das neutrale Element ist die Zahl $1\in\mathbb{C}^*$ und das inverse
+Element zu $z\in\mathbb{C}^*$ ist $z^{-1}$.
+\end{beispiel}
+
+%
+% Untergruppen
+%
+\subsubsection{Untergruppen}
+Da man Drehungen auch mit Hilfe von komplexen Zahlen beschreiben kann,
+kann man die Gruppe der Drehwinkel auch als Menge von komplexen Zahlen
+schreiben, nämlich als die Menge
+\[
+S^1
+=
+\{z\in\mathbb{C}\mid |z|=1\}
+\]
+der komplexen Zahlen vom Betrag $1$.
+Die Gruppenoperation in $S^1$ ist die gleiche wie die Operation
+in $\mathbb{C}^*$, von der $S^1$ eine Teilmenge ist.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:untergruppe}
+Sei $G$ eine Gruppe und $H\subset G$ eine Teilmenge derart,
+dass mit jedem $x,y\in H$ auch $xy$ und $x^{-1}$ in $H$ sind.
+Dann heisst $H$ eine {\em Untergruppe} von $G$.
+\index{Untergruppe}%
+\end{definition}
+
+Jede Gruppe enthält als kleinste Untergruppe immer die Gruppe $G$,
+die {\em triviale Gruppe}, die nur aus dem neutralen Element
+$\{e\}\subset G$ besteht.
+
+%
+% Homomorphismen
+%
+\subsubsection{Homomorphismen}
+Die Exponentialabbildung
+\[
+\exp
+\colon
+\mathbb{R}/2\pi\mathbb{Z} \to S^1
+:
+\alpha \mapsto e^{i\alpha}
+\]
+bildet Drehwinkel auf komplexe Zahlen vom Betrag $1$ ab.
+Die Gruppenoperation bleibt dabei erhalten, es gilt
+\[
+\exp(\alpha + \beta)
+=
+e^{i(\alpha+\beta)}
+=
+e^{i\alpha}
+e^{i\beta}
+=
+\exp(\alpha)
+\exp(\beta).
+\]
+Das neutrale Element $0\in\mathbb{R}/2\pi\mathbb{Z}$ wird auf
+das neutrale Element $1\in S^1$ abgebildet und das inverse
+Element von $\exp(\alpha)$ ist
+$ \exp(\alpha)^{-1} = \exp(-\alpha) $.
+Ausserdem ist die Abbildung bijektiv.
+Die Exponentialabbildung zeigt also, dass es zwischen den beiden
+Gruppen $\mathbb{R}/2\pi\mathbb{Z}$ und $S^1$ nicht wirklich einen
+Unterschied gibt.
+
+Die Gruppe der Drehwinkel kann man auch als eine Matrizengruppe
+verstehen, wie im folgenden Beispiel gezeigt wird.
+
+\begin{beispiel}
+Die Menge
+\[
+\operatorname{SO}(2)
+=
+\biggl\{
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\;
+\bigg|
+\;
+\alpha\in\mathbb{R}
+\biggr\}
+\]
+ist eine Gruppe mit der Matrixmultiplikation als Gruppenoperation,
+der Einheitsmatrix als neutralem Element und der inversen Matrix
+als inversem Element.
+\end{beispiel}
+
+Die Abbildung
+\[
+\varphi
+\colon
+\mathbb{R}/2\pi\mathbb{Z}
+\to
+\operatorname{SO}(2)
+:
+\alpha
+\mapsto
+D_\alpha
+=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\]
+transportiert die Gruppenoperation von $\mathbb{R}/2\pi\mathbb{Z}$
+nach $\operatorname{SO}(2)$ denn es gilt
+\[
+\varphi(\alpha)\varphi(\beta)
+=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\begin{pmatrix}
+\cos\beta & -\sin\beta \\
+\sin\beta &  \cos\beta
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos(\alpha+\beta) & -\sin(\alpha+\beta) \\
+\sin(\alpha+\beta) &  \cos(\alpha+\beta)
+\end{pmatrix}
+=
+\varphi(\alpha+\beta).
+\]
+Auch ist $\varphi(0)$ die Einheitsmatrix und
+$\varphi(-\alpha)=\varphi(\alpha)^{-1}$.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:homomorphismus}
+Eine Abbildung $\varphi\colon G\to H$ zwischen zwei Gruppen $G$ und $H$
+heisst ein {\em Homomorphismus}, wenn
+$\varphi(gh)=\varphi(g)\varphi(h)$ gilt für alle $g,h\in G$
+\end{definition}
+
+Die Bildmenge $\varphi(G)$ eines Homomorphismus ist automatisch eine
+Untergruppe $\varphi(G)\subset H$.
+Sind $\varphi(x)$ und $\varphi(y)$ Elemente in $\varphi(G)$,
+dann ist auch $\varphi(x)\varphi(y)=\varphi(xy)\in\varphi(G)$.
+
+%
+% Der Kern eines Homomorphismus
+%
+\subsubsection{Der Kern eines Homomorphismus}
+Ist $\varphi\colon G\to H$ ein Homomorphismus von Gruppen und
+$U\subset H$ eine Untergruppe von $H$, dann bilden die Elemente
+\[
+\varphi^{-1}(U)
+=
+\{g\in G\mid \varphi(g)\in U\}
+\]
+eine Untergruppe.
+Sind nämlich $g_1,g_2\in\varphi^{-1}(U)$, dann ist
+\[
+\varphi(g_1g_2)
+=
+\varphi(g_1)\varphi(g_2)
+\in U,
+\]
+da $U$ eine Untergruppe ist.
+Dann ist aber auch $g_1g_2\in\varphi^{-1}(U)$, was zeigt, dass
+$\varphi^{-1}(U)$ eine Untergruppe von $G$ ist.
+Sie heisst die {\em Urbildgruppe} von $U$ unter dem Homomorphismus
+$\varphi$.
+
+Besonders wichtig ist die Urbildgruppe der trivialen Gruppe.
+
+\begin{definition}
+\label{buch:gruppen:definition:def:kern}
+Der Kern eines Homomorphismus $\varphi \colon G\to H$ ist die
+Untergruppe
+\[
+\ker \varphi = \varphi^{-1}(\{e\}).
+\]
+\end{definition}
+
+Der Kern eines Homomorphismus kann dazu verwendet werden zu beurteilen,
+ob der Homomorphismus injektiv ist.
+Wenn nämlich $\varphi(x)=\varphi(y)$ ist, dann ist auch
+\[
+e
+=
+\varphi(x)\varphi(y)^{-1}
+=
+\varphi(xy^{-1})
+\quad\Rightarrow\quad
+xy^{-1} \in\ker\varphi.
+\]
+Es folgt also genau dann $x=y$, wenn der Kern $\ker\varphi$ nur
+das neutrale Element enthält.
+

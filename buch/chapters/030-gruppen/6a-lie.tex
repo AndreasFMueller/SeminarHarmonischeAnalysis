@@ -1,0 +1,129 @@
+%
+% 6a-lie.tex -- Darstellungen von kompakten Lie-Gruppen
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Darstellungen kompakter Lie-Gruppen
+%
+\subsection{Darstellungen kompakter Lie-Gruppen}
+Die Resultate des letzten Abschnitts wurden jeweils nur für endliche Gruppen
+beweisen.
+In diesem Abschnitte sollen ein paar Hinweise zusammengetragen werden,
+die illustrieren, wie die Resultate auch für die wichtige Klasse
+der kompakten Lie-Gruppen, zu denen zum Beispiel die Drehgruppen
+$\operatorname{SO}(n)$ und die unitären Gruppen $\operatorname{U}(n)$
+gehören, erweitert werden können.
+Dafür ist entscheidend, dass kompakte Lie-Gruppen ein rechts- und
+linksinvariantes Haar-Mass haben.
+Da die Gruppe kompakt ist, darf man sogar annehmen, dass das
+Volumen
+\[
+\operatorname{vol}(G)
+=
+\int_G 1\, dg
+\]
+der Gruppe den Wert $1$ hat.
+Für eine beliebige Funktion $f\colon G\to \mathbb{R}$ ist
+\[
+Mf
+=
+\int_G f(g)\,dg
+\]
+der Mittelwert der Funktion, die die für endliche Gruppen verwendete
+normierte Summe $1/|G| \sum_{g\in G}f(g)$ als Mittelung ersetzen kann.
+
+%
+% Unitäre Darstellungen
+%
+\subsubsection{Unitäre Darstellungen}
+Wie für eine endliche Gruppe kann man auch für eine endlichdimensionale
+komplexe Darstellung $\varrho$ einer kompakten Lie-Gruppe auf einem
+Vektorraum $V$ aus einem beliebigen Skalarprodukt $(\;,\;)$ auf $V$
+ein invariantes Skalarprodukt mit der Mittelung
+\begin{equation}
+\langle u,v\rangle
+=
+\int_G (\varrho(g)u,\varrho(g)v)\,dg
+\label{buch:gruppen:darstellungen:eqn:invskalarprodukt}
+\end{equation}
+konstruieren.
+Die Konvergenz des Integrals ist für eine kompakte Lie-Gruppe immer 
+gegeben.
+
+
+%
+% Eigenwerte
+%
+\subsubsection{Eigenwerte}
+In Satz~\ref{buch:gruppen:darstellung:satz:charg-1} wurde gezeigt,
+dass für den Charakter einer Darstellung einer endlichen Gruppe
+$\chi(g^{-1})=\overline{\chi(g)}$ gilt.
+Der Beweis hat gebraucht, dass die Eigenwerte komplexe Zahlen vom
+Betrag eins sein mussten.
+
+Das invariante Skalarprodukt
+\eqref{buch:gruppen:darstellungen:eqn:invskalarprodukt}
+zeigt, dass eine Darstellung einer kompakten Lie-Gruppe in einer
+geeigneten Basis immer durch unitäre Matrizen möglich ist.
+Die Wahl einer Basis hat aber keinen Einfluss auf die Eigenwerte.
+Da unitäre Matrizen als Eigenwerte nur komplexe Zahlen vom Betrag $1$
+haben können, folgt wie für endliche Gruppen, dass
+$\chi(g^{-1})=\overline{\chi(g)}$ ist.
+
+%
+% Projektion
+%
+\subsubsection{Projektion}
+In Satz~\ref{buch:gruppen:darstellungen:satz:projektion} wurde gezeigt,
+dass zu einem invarianten Unterraum $W\subset V$ einer endlichdimensionalen
+Darstellung $\varrho\colon G\to \operatorname{GL}(V)$ immer ein komplementärer
+invarianter Unterraum $W'$ gefunden werden kann.
+Der Beweis basierte auf der Idee, dass die Projektion $P\colon V\to W$,
+die nicht unbedingt mit der Darstellung vertauschen muss, durch Mittelung
+zu einer Projektion gemacht werden kann, die mit der Darstellung vertauscht.
+Dies ist auch auf einer kompakten Lie-Gruppe möglich, man verwendet
+\[
+P'
+=
+\int_G \varrho(g)P\varrho(g)^{-1}\,dg,
+\]
+die Konvergenz des Integrals ist wieder durch die Kompaktheit der Gruppe
+garantiert.
+Damit folgt wieder, dass sich zu einem invarianten Unterraum $W\subset V$
+eine direkte Zerlegung $V=W\oplus W'$ von Darstellungen finden lässt.
+
+%
+% Abbildungen zwischen Darstellungen
+%
+\subsubsection{Abbildungen zwischen Darstellungen}
+In Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel} wurde aus einer
+linearen Abbildung $f\colon V_1\to V_2$ zwischen den Vekträumen zweier
+Darstellungen $\varrho_i\colon G\to\operatorname{GL}(V_i)$ eine
+gemittelte Abbildung 
+\[
+f
+=
+\int_G \varrho_w(g) \circ f \circ \varrho_1(g)\,dg
+\]
+konstruiert, die mit den Darstellungen vertauscht.
+Die Schlussfolgerungen mit dem Lemma von Schur sind damit genau gleich
+anwendbar zeigen, dass die Aussage von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel} auch für kompakte
+Lie-Gruppen gilt.
+
+%
+% Orthogonalitätseigenschaften
+%
+\subsubsection{Orthogonalitätseigenschaften}
+Die Matrixform des Satzes~\ref{buch:gruppen:darstellungen:satz:abbmittel} 
+hat auf Formeln der Sätze 
+\ref{buch:gruppen:darstellungen:satz:matrixnichtiso}
+und
+\ref{buch:gruppen:darstellungen:satz:matrixiso}
+ergeben, diese gelten jetzt auch für kompakte Lie-Gruppen.
+Damit sind alle Voraussetzungen gegeben um zu schliessen, dass auch
+die Orthogonalitätseigenschaften für die Charaktere von irreduziblen
+Darstellungen und der Matrix-Elemente gelten.
+

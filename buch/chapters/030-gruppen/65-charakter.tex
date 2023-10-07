@@ -1,0 +1,161 @@
+%
+% 65-charakter.tex -- Charakter einer Darstellung
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Charakter einer Darstellung
+%
+\subsection{Charakter einer Darstellung}
+Die reguläre Darstellung lässt die Gruppe auf Funktionen auf der
+Gruppe operieren.
+Der Begriff der irreduziblen Darstellung und das Lemma von Schur
+lässt vermuten, dass nur sehr spezielle Funktionen für irreduzible
+Darstellungen in Frage kommen.
+Es ist daher eine Verbindung zwischen irreduziblen Darstellungen
+und Funktionen auf der Gruppe herzustellen.
+Diese Funktionen müssen unabhängig sein von der gewählten Basis.
+
+\begin{definition}
+\label{buch:gruppen:darstellungen:def:charakter}
+Ist $\varrho_V\colon G\to\operatorname{GL}(V)$ eine Darstellung der
+Gruppe $G$ im Vektorraum $V$, dann heisst die Funktion
+\[
+\chi_\varrho
+\colon
+G
+\to
+\mathbb{C}
+:
+g
+\mapsto
+\tr \varrho_V(g)
+\]
+der {\em Charakter} der Darstellung $\varrho$.
+\end{definition}
+
+Der Charakter einer Darstellung hängt nicht von der Wahl der Basis ab.
+Zwei verschiedene Basen im Darstellungsraum $V$ führen auf verschiedene
+Matrizen $\varrho_1(g),\varrho_2(g)\in\operatorname{GL}_n(\mathbb{C})$,
+die aber durch eine Transformationsmatrix $T$ über die Formel
+$\varrho_1(g)=T\varrho_2(g)T^{-1}$ miteinander verbunden sind.
+Die Spur dieser Matrizen ist
+\[
+\tr \varrho_1(g)
+=
+\tr(T\varrho_2(g)T^{-1})
+=
+\tr(\varrho_2(g)T^{-1}T)
+=
+\tr \varrho_2(g),
+\]
+die Spuren sind also gleich.
+
+Nicht jede Funktion kann ein Charakter sein, wie der folgende Satz
+zeigt.
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:chareigenschaften}
+Sei $\varrho$ eine $n$-dimensionale Darstellung von $G$ dann gilt
+\begin{enumerate}
+\item $\chi_\varrho(e) = n$
+\item $\chi_\varrho(hgh^{-1}) = \chi_\varrho(g)$
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Da $\varrho(e)=I_n$ die $n$-dimensionale Einheitsmatrix ist, ist
+$\chi_\varrho(e) = \tr \varrho(e) = \tr I_n = n$, was 1.~beweist.
+Aussage~3.~folgt aus
+$\chi_\varrho(hgh^{-1})
+=
+\tr (\varrho(h)\varrho(g)\varrho(h)^{-1})
+=
+\tr \varrho(g)
+=
+\chi_\varrho(g)
+$.
+\end{proof}
+
+Der Charakter einer Darstellung ist nur für eindimensionale Darstellungen
+ein Homomorphismus, es ist also im Allgemeinen nicht möglich $\chi(g^{-1})$
+aus $\chi(g)$ zu berechnen.
+Für endliche Gruppen ist das aber wie folgt möglich.
+
+\begin{satz}
+\label{buch:gruppen:darstellung:satz:charg-1}
+Sei $\varrho$ eine $n$-dimensionale Darstellung einer endlichen Gruppe,
+dann gilt
+$\chi_\varrho(g^{-1}) = \overline{\chi_\varrho(g)}$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir verwenden eine Basis, in der die Matrix $\varrho(g)$ Jord-Normalform hat.
+Die Jordan-Normalform ist eine obere Dreiecksmatrix mit den Eigenwerten
+$\lambda_i$ auf der Diagonalen.
+Da spätestens die $n$-te Potenz von $g$ das neutrale Element ist und damit
+die $n$-te Potenz der Matrix $\varrho(g)$ die Einheitsmatrix ist, müssen
+alle Eigenwerte Betrag $1$ haben.
+Die inverse Matrix $\varrho(g)^{-1}$ ist ebenfalls eine Dreiecksmatrix
+mit den reziproken Eigenwerten $\lambda_i^{-1}$ auf der Diagonalen.
+Da die $\lambda_i$ Betrag $1$ haben, ist $\lambda_i^{-1}=\overline{\lambda}_i$
+und damit
+\[
+\chi_\varrho(g^{-1})
+=
+\tr \varrho(g^{-1})
+=
+\sum_{i=1}^n \lambda_i^{-1}
+=
+\sum_{i=1}^n \overline{\lambda}_i
+=
+\overline{\sum_{i=1}^n \lambda_i}
+=
+\overline{\tr \varrho(g)}
+=
+\overline{\chi_\varrho(g)}.
+\]
+\end{proof}
+
+Der Beweis hängt davon ab, dass die Eigenwerte Betrag $1$ haben, eine
+Eigenschaft, die für eine endliche Gruppe leicht zu erschliessen war.
+Wir werden später sehen, dass man in vielen Fällen auch zeigen kann,
+dass die Matrizen $\varrho(g)$ alle orthogonal oder unitär sind, was
+ebenfalls zur Folge hat, dass die Eigenwerte Betrag $1$ haben.
+Schliesslich kann auch die Einschränkung auf beschränkte Funktionen
+ebenfalls Eigenwerte mit Betrag verschieden von $1$ ausschliessen.
+
+%
+%  Charaktere und Rechenoperationen mit Darstellungen
+%
+\subsubsection{Charaktere und Rechenoperationen mit Darstellungen}
+In Abschnitt~\label{buch:gruppen:darstellungen:subsection:rechnen-mit-darstellungen}
+wurden Rechenoperationen mit Darstellungen definiert.
+Die direkte Summe $\varrho_1\oplus\varrho_2$ einer $n_1$-dimensionalen
+Darstellung $\varrho_1$ und einer $n_2$-dimensionalen Darstellung
+$\varrho_2$ ist eine $n_1+n_2$-dimensionale Darstellung.
+Die Spur der Matrix~\eqref{buch:gruppen:darstellungen:eqn:dirsummatrix}
+ist die Summe der Spuren der Teilmatrizen und daher
+\[
+\chi_{\varrho_1\oplus\varrho_2}
+=
+\chi_{\varrho_1}
++
+\chi_{\varrho_2}.
+\]
+
+Wenn sich eine Darstellung in eine Summe von irreduziblen Darstellungen
+zerlegen lässt, dann ist der Charakter der Darstellung die Summe der
+Charaktere der irreduziblen Darstellungen.
+Dies klingt wie eine Art harmonischer Analysis für Darstellungen: der
+Charakter einer beliebigen Darstellung lässt sich zerlegen in eine
+Linearkombination von Charakteren irreduzibler Darstellungen.
+
+Um aus den Charakteren tatsächlich eine harmonische Analysis zu konstruieren,
+müssen die Charaktere der irreduziblen Darstellungen bezüglich eines
+geeigneten Skalarprodukts als Orthogonal erkannt werden.
+Damit würde es möglich, beliebige Darstellungen einfach dadurch in
+irreduzible Darstellungen zu zerlegen, dass man Skalarprodukte des
+Charakters mit den Charakteren der irreduziblen Darstellungen bildet.
+

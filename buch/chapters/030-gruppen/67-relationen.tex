@@ -1,0 +1,168 @@
+%
+% 67-relationen.tex -- Algegraische Relationen für die Matrixelemente
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Algebraische Relationen für die Matrixelemente
+%
+\subsection{Algebraische Relationen für die Matrixelemente}
+Das Lemma von Schur hat noch mehr zu bieten.
+Man kann damit nämlich sogar über die einzelnen Matrixelemente
+einer Darstellung eine Aussage machen.
+Ist $\varrho\colon G\to \operatorname{GL}_n(\mathbb{R})$ eine 
+$n$-dimensionale Darstellung der Gruppe $G$, dann ist $\varrho(g)$
+eine $n\times n$-Matrix bestehend aus den Matrixelementen
+$(\varrho(g))_{ik}$ für $i,k=1,\dots,n$.
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:matrixnichtiso}
+Wenn die Darstellungen $\varrho_i$ nicht isomorph sind, dann gilt
+\begin{equation}
+\frac{1}{|G|}
+\sum_{g} \bigl(\varrho_1(g)^{-1}\bigr)_{i\!j} \bigl(\varrho_2(g)\bigr)_{kl}
+=
+0
+\label{buch:gruppen:darstellungen:eqn:matrixnichtiso}
+\end{equation}
+für alle $i,j,k,l$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir schreiben die Resultate von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+in Matrixform.
+Die Abbildung $f$ hat die Matrixelemente $(f)_{i\!j}$.
+Die Bedingung, dass $f'=0$ ist, bedeutet, dass alle
+Matrixelemente $(f')_{il}=0$ sind.
+Ausgeschrieben
+\begin{align*}
+(f')_{il}
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho_2(g)^{-1}\bigr)_{is} (f)_{st} \bigl(\varrho_1(g)\bigr)_{tl}
+\end{align*}
+Nach 
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+ist dies immer $=0$, ganz unabhängig davon, was für Werte man für
+die Matrix $f$ einsetzt.
+Wählt man 
+\begin{equation}
+(f)_{st}
+=
+\begin{cases}
+1&\qquad\text{$s=j$ und $t=k$}\\
+0&\qquad\text{sonst},
+\end{cases}
+\qquad\text{oder}\qquad
+(f)_{st}
+=
+\delta_{s\!j}\delta_{tk}
+\label{buch:gruppen:darstellungen:eqn:fst}
+\end{equation}
+dann folgt
+\[
+0
+=
+\frac{1}{|G|}
+\sum_{g\in G} 
+\bigl(\varrho_2(g)^{-1}\bigr)_{is}
+\delta_{s\!j}
+\delta_{tk}
+\bigl(\varrho_1(g)\bigr)_{kl}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho_2(g)^{-1}\bigr)_{i\!j}
+\bigl(\varrho_1(g)\bigr)_{kl}.
+\]
+Damit ist die Aussage bewiesen.
+\end{proof}
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:matrixiso}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$ eine $n$-dimensionale
+irreduzible Darstellung von $G$.
+Dann gilt
+\begin{equation}
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g^{-1})\bigr)_{i\!j} 
+\bigl(\varrho(g))_{kl}
+=
+\frac1n
+\delta_{il}\delta_{jk}
+\label{buch:gruppen:darstellungen:eqn:matrixiso}
+\end{equation}
+\end{satz}
+
+\begin{proof}[Beweis]
+Mit der gleichen Notation wie im Beweis von
+Satz~\ref{buch:gruppen:darstellungen:satz:matrixnichtiso}
+schreiben wir das Resultat 2.~von
+Satz~\ref{buch:gruppen:darstellungen:satz:abbmittel}
+in Matrixform.
+Es ist $f'=\frac1n \tr f$ und somit
+\begin{equation}
+(f')_{il}
+=
+\frac1n\tr(f)\delta_{il}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho(g^{-1})\bigr)_{is}
+f_{st}
+\bigl(\varrho(g)\bigr)_{tl}.
+\label{buch:gruppen:darstellungen:eqn:ff}
+\end{equation}
+Auch hier kann wieder $f$ beliebig gewählt werden.
+Mit der Wahl
+\eqref{buch:gruppen:darstellungen:eqn:fst}
+$\tr f=\delta_{jk}$
+wird
+
+\eqref{buch:gruppen:darstellungen:eqn:ff} zu
+\[
+\frac1n \delta_{jk} \delta_{il}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\sum_{s,t}
+\bigl(\varrho(g^{-1})\bigr)_{is}
+\delta_{s\!j}
+\delta_{tk}
+\bigl(\varrho(g)\bigr)_{tl}
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho(g^{-1})\bigr)_{i\!j}
+\bigl(\varrho(g)\bigr)_{kl},
+\]
+wie behauptet.
+\end{proof}
+
+Beide Sätze besagen, dass ein ähnliches Konstrukt wie das Skalarprodukt
+angewendet auf zwei verschiedene Matrixelemente immer entweder $0$
+ergibt oder den Wert $1/n$.
+Das Konstrukt, von dem hier die Rede ist, ist die Bildung
+\[
+(u,v)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+u(g^{-1}) v(g).
+\]
+Dies ist jedoch nicht das Skalarprodukt von Funktionen auf der
+Gruppe.
+Dazu müsste $u(g^{-1})=\overline{u(g)}$ sein, was im Allgemeinen
+nicht zutrifft.
+Wenn wir aber später zeigen können, dass es im Vektorraum ein Skalarprodukt
+gibt derart, dass die Matrizen der Darstellung unitär sind, dann ist
+$\bigl(\varrho(g^{1})\bigr)_{ik} = \overline{\varrho(g)_{ki}}$ und
+$(u,v)$ stimmt mit dem Skalarprodukt der Matrixelemente überein.
+
+

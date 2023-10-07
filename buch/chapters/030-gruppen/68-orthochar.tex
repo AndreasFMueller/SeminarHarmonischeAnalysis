@@ -1,0 +1,90 @@
+%
+% 68-orthochar.tex -- Orthogonalität der Charktere
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Orthogonalität der Charaktere
+%
+\subsection{Orthogonalität der Charaktere}
+Am Ende des vorangegangenen Abschnitts haben wir angedeutet, dass
+die algebraischen Relationen zwischen den Matrixelementen einer
+Darstellung fast wie Orthogonalitätsrelationen aussehen, dass die
+Summer aber nicht das Skalarprodukt von Funktionen auf der Gruppe ist.
+Charaktere von irreduziblen Darstellungen sind aber speziell und damit
+ist es möglich, für Charaktere die folgenden Orthogonalitätsrelationen
+zu beweisen.
+
+\begin{satz}
+Ist $\chi$ der Charakter einer $n$-dimensionalen irreduziblen Darstellung,
+dann ist $\langle \chi,\chi\rangle = 1$.
+Sind $\chi_1$ und $\chi_2$ Charaktere von nichtisomorphen
+irreduziblen $n_1$- bzw.~$n_2$-dimensionalen Darstellungen, dann 
+ist $\langle \chi_1,\chi_2\rangle = 0$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Für den Charakter wissen wir aus
+Satz~\ref{buch:gruppen:darstellung:satz:charg-1}, dass
+$\chi(g^{-1}) = \overline{\chi(g)}$.
+Dies bedeutet, dass wir in der Formeln
+\eqref{buch:gruppen:darstellungen:eqn:matrixnichtiso}
+und
+\eqref{buch:gruppen:darstellungen:eqn:matrixiso}
+die Inverse durch die komplexe Konjugation ersetzen können,
+sofern wir die Formenl nur brauchen, um die Spur zu berechnen.
+
+Das Skalarprodukt ist
+\begin{align*}
+\langle \chi_1,\chi_2\rangle
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\overline{\chi_1(g)}
+\chi_2(g)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\chi_1(g^{-1})
+\chi_2(g)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\tr \varrho_1(g^{-1})
+\cdot
+\tr \varrho_2(g)
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\biggl(
+\sum_{i}
+\bigl(\varrho_1(g^{-1})\bigr)_{ii}
+\biggl)
+\cdot
+\biggl(
+\sum_{k}
+\bigl(\varrho_2(g)\bigr)_{kk}
+\biggl)
+\\
+&=
+\sum_{i,k}
+\frac{1}{|G|}
+\sum_{g\in G}
+\bigl(\varrho_1(g^{-1})\bigr)_{ii}
+\bigl(\varrho_2(g)\bigr)_{kk}.
+\intertext{Für nicht isomorphe Darstellungen verschwinden alle Summen
+über die Gruppe und somit ist in diesem Fall $\langle \chi_1,\chi_2\rangle=0$.
+Falls $\varrho_1=\varrho_2$ ist, also im Fall $\chi_1=\chi_2$ kann 
+Formel~\ref{buch:gruppen:darstellungen:eqn:matrixiso}
+mit $j=i$ und $l=k$ verwendet werden:}
+&=
+\sum_{i,k}
+\frac1n\delta_{ik}\delta_{ik}
+=
+1.
+\end{align*}
+Damit ist die Orthonormierung der Charaktere bewiesen.
+\end{proof}
+

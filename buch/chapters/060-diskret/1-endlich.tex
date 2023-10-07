@@ -174,6 +174,29 @@ Das inverse Element ist dann}
 (g^{-1},h^{-1}).
 \end{align*}
 
+Sind die Gruppen $G_1$ und $G_2$ endlich erzeugt mit den Erzeugendensystemen
+$F_1$ bzw.~$F_2$, dann ist die Menge
+\[
+F
+=
+F_1\times \{e_2\}
+\cup
+\{e_1\} \times F_2
+=
+\{ (f,e_2) \in G_1\times G_2 \mid f\in G_1 \}
+\cup
+\{ (e_1, f) \in G_1\times G_2 \mid f\in G_2 \},
+\]
+wobei $e_k$ das neutrale Element der Gruppe $G_k$, $k=1,2$ ist.
+Die Menge $F$ ist endlich, denn $|F| = |F_1| + |F_2|$.
+Damit ist gezeigt, dass das Produkt endlich erzeugter Gruppen 
+wieder endlich erzeugt ist.
+
+\begin{satz}
+Sind $G_1$ und $G_2$ endlich erzeugte Gruppen, dann ist auch
+$G_1\times G_2$ endlich erzeugt.
+\end{satz}
+
 Die Verknüpfung abelscher Gruppen wird oft additiv geschrieben.
 In diesem Fall wird die Produktgruppe auch als {\em direkte Summe}
 \[
@@ -193,6 +216,15 @@ geschrieben mit der Verknüpfung
 \end{align*}
 Die direkte Summe ist auch wieder eine abelsche Gruppe.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/060-diskret/images/faktoren.pdf}
+\caption{Das Produkt der Gruppen $\mathbb{Z}/n\mathbb{Z}$ und
+$\mathbb{Z}/m\mathbb{Z}$ ist für teilerfremde Zahlen $n$ und $m$
+isomorph zu $\mathbb{Z}/nm\mathbb{Z}$.
+\label{buch:diskret:endlich:fig:produkt}}
+\end{figure}
+
 \begin{satz}
 \label{buch:diskret:endlich:satz:teilerfremd}
 Sind $n$ und $m$ teilerfremd, dann ist
@@ -211,7 +243,8 @@ dazu müsste $k$ ein Teiler von $n$ und $m$ sein, was nach Voraussetzung
 verboten ist.
 \end{proof}
 
-Der Satz zeigt, dass sich eine endlich erzeugte abelsche Gruppe immer
+Der in Abbildung~\ref{buch:diskret:endlich:fig:produkt} illustrierte
+Satz zeigt, dass sich eine endlich erzeugte abelsche Gruppe immer
 Summanden der Form $\mathbb{Z}/p^k\mathbb{Z}$ für Primzahlen $p$
 zerlegen lässt.
 Es bleibt dann nur noch zu untersuchen, ob die Gruppen für verschiedene
@@ -290,6 +323,203 @@ Es ist jetzt nur noch zu zeigen, dass die duale Gruppe einer direkten
 Summe die direkte Summe der dualen Gruppen ist, dass also
 $(G_1\oplus G_2)\hat{\phantom{\imath}} \cong \hat{G}_1\oplus \hat{G}_2$.
 \end{proof}
+
+Die duale Gruppe der Gruppe $G$ besteht aus den Homomorphismen
+$G\to\mathbb{C}^*$.
+Ein Homomorphismus $\varphi\colon G\to H$ führt daher auf den
+Homomorphisums
+\[
+\hat{\varphi}
+\colon
+\hat{H}\to\hat{G}
+:
+f\mapsto f\circ \varphi
+\]
+der dualen Gruppen.
+Das Produkt der Gruppen $G_1$ und $G_2$ kann durch die Projektionsabbildungen
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rl}
+\pi_1 \colon G_1 \oplus G_2 \to G_1 : (x,y) \mapsto {}&x
+\\
+\pi_2 \colon G_1 \oplus G_2 \to G_2 : (x,y) \mapsto {}&y
+\end{array}
+\]
+und die Einbettungen
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcl}
+i_1 \colon G_1 \to G_1\oplus G_2 : &x&\mapsto (x,0) \\
+i_2 \colon G_2 \to G_1\oplus G_2 : &y&\mapsto (0,y) 
+\end{array}
+\]
+charakterisiert werden.
+Die dualen Homomorphismen
+$\hat{\pi}_k\colon\hat{G}_k\to (G_1\oplus G_2)\hat{\phantom{\imath}}$
+und
+$\hat{\imath}_k\colon (G_1\oplus G_2)\hat{\phantom{\imath}}\to\hat{G}_k$
+können verwendet werden, um $\hat{G}_1\oplus\hat{G}_2$ und
+$(G_1\oplus G_2)\hat{\phantom{\imath}}$ miteinander zu verbinden.
+
+Ist $f\colon G_1\oplus G_2\to\mathbb{C}^*$ ein Homomorphismus, dann 
+sind $\hat{\imath}_k(f)$ für $k=1,2$ Homomorphismen $G_k\to\mathbb{C}^*$
+mit dem Wert
+\[
+\hat{\imath}_k(f)(g)
+=
+f(i_k(g))
+=
+\begin{cases}
+f(g,0)&\qquad k=1\\
+f(0,g)&\qquad k=2.
+\end{cases}
+\]
+Umgekehrt bildet $\hat{\pi}_k$ für $k=1,2$ einen Homomorphismus
+$f_k\colon \hat{G}_k\to\mathbb{C}^*$ auf den
+Homomorphismus
+\[
+\hat{\pi}_k(f_k)
+\colon
+G_1\oplus G_2
+\to
+\mathbb{C}^*
+:
+(g_1,g_2)
+\mapsto
+h(\pi_k(g_1,g_2)) = h(g_k)
+\]
+ab.
+
+Die Homomorphismen $\pi_k$ und $i_k$ erfüllen
+$\pi_k \circ i_k=\operatorname{id}_{G_k}$.
+Für die dualen Homomorphismen muss daher
+$\hat{\imath}_k\circ\hat{\pi}_k=\operatorname{id}_{\hat{G}_k}$
+gelten.
+Daraus können wir jetzt die Homomorphismen 
+\[
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{rcrclcrclcrcl}
+\hat{\pi}_1 \oplus \hat{\pi}_2
+&\colon&
+\hat{G}_1\oplus\hat{G}_2\phantom{)\hat{\imath}}
+&\to&
+(G_1\oplus G_2)\hat{\phantom{\imath}}
+&:&
+(f_1,f_2)
+&\mapsto&
+\hat{\pi}_1(f_1) + \hat{\pi}_2(f_2)
+&:&
+(g_1,g_2)
+&\mapsto&
+f_1(g_1)+f_2(g_2)
+\\
+(\hat{\imath}_1 , \hat{\imath}_2)
+&\colon&
+(G_1\oplus G_2)\hat{\phantom{\imath}}
+&\to&
+\phantom{(}
+\hat{G}_1\oplus\hat{G}_2
+&:&
+f
+&\mapsto&
+(\hat{\imath}_1(f), \hat{\imath}_2(f))
+&&
+&&
+\end{array}
+\]
+konstruieren.
+Wir berechnen die Zusammensetzungen in beiden möglichen Reihenfolgen.
+Die Zusammensetzung
+$(\hat{\pi}_1\oplus\hat{\pi}_2)\circ(\hat{\imath}_1,\hat{\imath}_2)$
+bildet einen Homomorphismus $f\colon G_1\oplus G_2\to\mathbb{C}^*$
+auf den Homomorphismus ab, der auf $(g_1,g_2)\in G_1\oplus G_2$ den
+Wert
+\[
+((\hat{\pi}_1\oplus\hat{\pi}_2)\circ(\hat{\imath}_1,\hat{\imath}_2)(f))(g_1,g_2)
+=
+f(g_1,0) + f(0,g_2)
+=
+f(g_1,g_2)
+\]
+annimmt, also mit $f$ identisch ist.
+Dies beweist, dass
+$
+(\hat{\pi}_1\oplus\hat{\pi}_2)\circ(\hat{\imath}_1,\hat{\imath}_2)
+=
+\operatorname{id}_{(G_1\oplus G_2)\hat{\phantom{\imath}}}
+$.
+Aber auch die umgekehrte Zusammensetzung lässt sich direkt berechnen.
+Sie bildet das Paar $(f_1,f_2)\in \hat{G}_1\oplus \hat{G}_2$ von
+Homomorphismen $f_k\colon G_k\to\mathbb{C}^*$ auf das Paar
+\[
+(f_1',f_2')
+=
+(\hat{\imath}_1,\hat{\imath}_2)
+\circ
+(\hat{\pi}_1\oplus\hat{\pi}_2)
+(f_1,f_2)
+\]
+ab.
+Seien $g_k\in G_k$ Elemente der Gruppen $G_k$, $k=1,2$.
+Wir berechnen die Werte $f_k'(g_k)$:
+\begin{align*}
+f_1'(g_1)
+&=
+(
+f_1\circ\pi_1\circ i_1
+\oplus
+f_2\circ\pi_2\circ i_1
+)(g_1)
+=
+f_1(\pi_1(g_1,0))
++
+f_2(\underbrace{\pi_2(g_1,0)}_{\displaystyle=0})
+)=
+f_1(g_1) \qquad\text{und}
+\\
+f_2'(g_2)
+&=
+(
+f_1\circ\pi_1\circ i_2
+\oplus
+f_2\circ\pi_2\circ i_2
+)(g_2)
+=
+f_1(\underbrace{\pi_1(0,g_2)}_{\displaystyle=0})
++
+f_2(\pi_2(0,g_2))
+)=
+f_2(g_2),
+\end{align*}
+die Homomorphismen $f_k'$ stimmen also mit $f_k$ überein und damit ist
+\[
+(\hat{\imath}_1,\hat{\imath}_2)\circ (\hat{\pi}_1\oplus\hat{\pi}_2)
+=
+\operatorname{id}_{\hat{G}_1\oplus\hat{G}_2}.
+\]
+die beiden Homomorphismen $(\hat{\imath}_1,\hat{\imath}_2)$ und
+$\hat{\pi}_1\oplus\hat{\pi}_2$ sind also zueinander invers.
+Damit ist der folgende Satz beweisen.
+
+\begin{satz}
+Sind $G_1$ und $G_2$ abelsche Gruppen, dann sind die Abbildungen
+\begin{align*}
+\hat{\pi}_1\oplus\hat{\pi}_2
+&\colon
+(G_1\oplus G_2)\hat{\phantom{\imath}}
+\to
+\hat{G}_1 \oplus \hat{G}_2
+\intertext{und}
+(\hat{\imath}_1,\hat{\imath}_2)
+&\colon
+\hat{G}_1\oplus \hat{G}_2
+\to
+(G_1\oplus G_2)\hat{\phantom{\imath}}
+\end{align*}
+zueinander inverse Isomorphismen und
+$\hat{G}_1\oplus\hat{G}_2\cong(G_1\oplus G_2)\hat{\phantom{\imath}}$.
+\end{satz}
+
 
 
 

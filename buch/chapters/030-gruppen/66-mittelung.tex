@@ -1,0 +1,239 @@
+%
+% 66-mittelung.tex -- Mittelung und mittelbare Gruppen
+%
+% (c) 2022 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+
+%
+% Mittelung und mittelbare Gruppen
+%
+\subsection{Mittelung und mittelbare Gruppen}
+Harmonische Analysis vergleicht Funktionen mit Hilfe eines Skalarproduktes.
+Für lokalkompakte topologische Gruppen, zu denen auch die endlichen Gruppen
+zählen, haben wir das Haar-Mass, mit dem sich ein translationsinvariantes
+Skalarprodukt definieren lässt.
+Das Haar-Mass kann aber auch verwendet werden, um Mittelwerte zu bilden
+und neue Darstellungen zu konstruieren.
+
+Sei $f$ eine Funktion auf der Gruppe $G$ mit Werten in einem Vektorraum.
+Die Gruppe operiert auf den Funktionen mit der Translation.
+Eine Gruppe $G$ heisst {\em mittelbar}, wenn diese Operation gemittelt
+werden kann, wenn es also zu $f$ einen Mittelwert $Mf$ gibt, der 
+translationsinvariant ist.
+Falls $f$ bereits eine translationsinvariante Funktion ist, dann 
+ist $Mf=f$.
+Für eine endliche Gruppe kann man als Mittelwert einer Funktion
+$f\colon G\to V$ das arithmetische Mittel
+\[
+Mf
+=
+\frac{1}{|G|}
+\sum_{g\in G} T_gf
+\]
+verwenden.
+Für eine lokal kompakte topologische Gruppe kann man die Mittelung
+mit Hilfe des haarschen Masses als
+\[
+Mf
+=
+\int_G T_gf\,dg
+\]
+definieren, wobei dafür noch ein paar analytische Feinheiten der
+Konvergenz geklärt werden müssten.
+Um diesen Schwierigkeiten aus dem Weg zu gehen, werden wir im folgenden
+die Aussagen nur für endliche Gruppen beweisen, auch wenn sie für
+lokalkompakte topologische Gruppen ebenfalls gültig sind.
+
+Als erstes Beispiel für diese Idee zeigen wir, wie sich Darstellungen 
+zerlegen lassen.
+
+\begin{definition}
+\label{buch:gruppen:darstellungen:def:projektion}
+Eine {\em Projektion} in einem Vektorraum $V$ ist eine lineare Abbildung
+$P\colon V\to V$ mit der Eigenschaft $P^2=P$.
+\end{definition}
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:projektion}
+Sei $\varrho\colon G\to\operatorname{GL}(V)$  eine endlichdimensionale
+Darstellung der Gruppe $G$ und $W$ ein invarianter Unterraum von $V$,
+also ein Unterraum, für den $\varrho(g)W\subset W$ für alle $g\in G$ gilt.
+Dann gibt es einen invarianten Unterraum $W'$ mit $V=W\oplus W'$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Sei $W_0$ irgend ein komplementärer Unterraum mit $V=W\oplus W_0$, er muss
+nicht invariant sein.
+Zu dieser Zerlegung gibt es eine Projektionsabbildung $P\colon V\to V$ mit
+$\operatorname{ker}P=W_0$ und $\operatorname{im}P=W$ ist.
+Auch die Abbildung $P$ muss nicht mit der Darstellung vertauschen.
+Der Mittelwert 
+\[
+P'
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) P \varrho(g)^{-1}
+\]
+ist wieder eine lineare Abbildung.
+Das Bild eines Vektors $v$ unter $P\varrho(g)^{-1}$ liegt in $W$ und wird
+von $\varrho(g)$ wieder in $W$ abgebildet.
+Da $W$ ein Unterraum von $V$ ist, ist somit $P'v\in W$.
+
+Für Vektoren $w\in W$ hat $P$ die Eigenschaft $Pw=w$.
+Darau berechnet man
+\[
+P'w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) P\varrho(g)^2{-1}w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho(g) \varrho(g)^2{-1}w
+=
+\frac{1}{|G|}
+\sum_{g\in G}
+w
+=
+w.
+\]
+Somit ist $P'$ eine Projektion $P^{\prime 2}=P'$ auf $W$.
+
+Die Projektion $P'$ vertauscht aber zusätzlich mit der Darstellung, wie
+wir jetzt nachrechnen wollen.
+Es ist zu zeigen, dass $P'\varrho(h) = \varrho(h)P'$ für alle
+Gruppenelemente $h\in G$.
+Da die Multiplikation $g\mapsto hg$ eine Permutation der Gruppenelemente
+ist, gilt auch
+\begin{align*}
+\varrho(h)P'\varrho(h)^{-1}
+&=
+\varrho(h)
+\biggl(\frac{1}{|G|}\sum_{g\in G} \varrho(g)P\varrho(g)^{-1}\biggr)
+\varrho(h)^{-1}
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho(hg)P\varrho(hg)^{-1}
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho(g)P\varrho(g)^{-1}
+=
+P'.
+\end{align*}
+Durch Multiplikation mit $\varrho(h)$ von rechts ergibt sich die Behauptung.
+
+Somit ist $P'$ eine Projektion von $V$ auf $W$, die mit der Darstellung
+vertauscht.
+Der Kern von $P'$ ist $W'=\ker P'$ ist ebenfalls invariant, denn
+\[
+v\in\ker P'
+\quad\Rightarrow\quad
+P'
+\varrho(g)v
+=
+\varrho(g)P'v
+=
+\varrho(g)0
+=
+0
+\quad\rightarrow\quad
+\varrho(g)v
+\in \ker P'.
+\]
+Es folgt, dass $V=W\oplus W'$ eine komplementäre Zerlegung von $V$ in
+invariante Unterräume ist.
+\end{proof}
+
+Das Argument kann analog auch für eine lokalkompakte topologische Gruppe
+durchgeführt werden.
+Die Eigenschaft der Mittelbarkeit zeigt also, dass zu einer Unterdarstellung
+immer auch eine komplementäre Darstellung existiert.
+Da die reguläre Darstellung immer die triviale Darstellung auf dem
+eindimensionalen Unterraum der konstanten Funktionen als invarianten
+Unterraum enthält, muss es einen komplementären invarianten Unterraum $W'$
+geben derart, dass $\mathbb{C}[G]=\mathbb{C}\oplus W'$ ist.
+
+\begin{satz}
+\label{buch:gruppen:darstellungen:satz:abbmittel}
+Seien $\varrho_i\colon G\to \operatorname{GL}(V_i)$ zwei irreduzible
+Darstellungen von $G$ und $f\colon V_1\to V_2$ eine lineare Abbildung.
+Setze
+\[
+f'
+=
+\frac{1}{|G|}
+\sum_{g\in G} \varrho_2(g)^{-1}\circ f \circ \varrho_1(g).
+\]
+Dann ist $f'$ eine lineare Abbildung, die mit den Darstellungen vertauscht
+und für die gilt:
+\begin{enumerate}
+\item Wenn die beiden Darstellungen nicht isomorph sind, dann ist $f'=0$.
+\item Wenn $V_1=V_2$ und $\varrho_1=\varrho_2$, dann ist $f'=\frac1n\tr f$
+mit $n=\dim V_1$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir rechnen zunächst nach, dass $f'$ mit den Darstellungen vertauscht.
+Dazu berechnen wir
+\begin{align*}
+\varrho_2(h)^{-1}f'\varrho_1(h)
+&=
+\varrho_2(h)^{-1}
+\biggl(
+\frac{1}{|G|}
+\sum_{g\in G} \varrho_2(g)^{-1}f\varrho_1(g)
+\biggr)
+\varrho_1(h)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho_2(gh)^{-1} f \varrho_1(gh)
+\\
+&=
+\frac{1}{|G|}
+\sum_{g\in G}
+\varrho_2(g)^{-1} f \varrho_1(g)
+=
+f',
+\end{align*}
+wobei im zweitletzten Schritt verwendet wurde, dass die Multiplikation
+$g\mapsto gh$ eine Permutation in der Gruppe ist, die den Mittelwert
+nicht ändert.
+Durch Multiplikation von links mit $\varrho_2(h)$ folgt jetzt
+$
+f'\varrho_1(h) = \varrho_1(h)f'
+$.
+
+Auf die lineare Abbildung $f'$ können wir jetzt das Lemma von Schur
+anwenden.
+Es besagt, dass $f'$ entweder ein Isomorphismus ist oder eine
+Nullabbildung, daraus folgt bereits 1.
+
+Für die Spur von $f'$ gilt
+\[
+\tr f'
+=
+\frac{1}{|G|}
+\sum_{g\in G} \tr\bigl(\varrho_1(g)^{-1} f\varrho_1(g)\bigr)
+=
+\frac{1}{|G|}
+\sum_{g\in G} \tr f
+=
+f.
+\]
+Andererseits sagt das Lemma von Schur, dass $f'=\lambda I_n$ sein muss.
+Die Spur davon ist $\tr f = \tr f' = \lambda \tr I_n = n\lambda$ oder
+\[
+\lambda = \frac1n \tr f
+\qquad\Rightarrow\qquad
+f' = \frac{1}{n} \tr f\cdot I_n
+\qedhere
+\]
+\end{proof}
+
