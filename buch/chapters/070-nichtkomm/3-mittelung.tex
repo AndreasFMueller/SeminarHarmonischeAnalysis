@@ -6,3 +6,218 @@
 \section{Mittelungsoperation
 \label{buch:nichtkomm:section:mittelung}}
 \kopfrechts{Mittelungsoperation}
+Im letzten Abschnitt wurde gezeigt, dass sich Registrierungsprobleme
+immer durch die Angabe einer Gruppe $G$ und einer abgeschlossenen
+Untergruppe $K\subset G$ festlegen lassen.
+Dies bedeutet aber, dass das Registrierungsproblem von $X$ zuerst
+auf die Gruppe $G$ transportiert werden muss.
+
+%
+% Invariante Funktionen
+%
+\subsection{Invariante Funktionen}
+Im ursprünglichen Registrierungsproblem ging es um Funktionen auf
+dem homogenen Raum $X$, der jetzt durch $G/K$ ersetzt werden muss.
+
+%
+% Funktionen auf G/K
+%
+\subsubsection{Funktionen auf $G/K$}
+Die Abbildung $\pi\colon G\to G/K$, die jedem Gruppenelement den Orbit $gK$
+zuordnet ist surjektive Abbildung.
+Eine Funktion $f\colon G/K\mathbb{R}$ auf $G/K$ wird durch Zusammensetzung
+mit $\pi$ zu einer Funktion auf $f\circ\pi\colon G\to\mathbb{R}$.
+Sie hat aber zusätzlich die Eigenschaft, dass
+\[
+f\circ\pi(gk) = f(gkK) = f(gK) = f\circ \pi (g).
+\]
+Sie ändert sich also bei einer Rechtsoperation mit einem Element
+von $K$ nicht.
+Man kann also Funktionen auf $G/K$ auch gleichsetzen mit rechtsinvarianten
+Funktionen auf $G$.
+
+%
+% Die Operation $g\mapsto \check{g}$
+%
+\subsubsection{Die Operation $f\mapsto\check{f}$}
+Für die Lösung des ursprünglichen Registrierungsproblem wurde die
+Kreuzkorrelation der Bilder mit Hilfe der Abbildung $f\mapsto \check{f}$
+in eine Faltung umgewandelt.
+Für eine $K$-rechtsinvariante Funktion $f$ ist aber $\check{f}$ nicht
+mehr rechtsinvariant.
+Vielmehr gilt
+\[
+\check{f}(kg)
+=
+f((kg)^{-1})
+=
+f(g^{-1}k^{-1})
+=
+f(g^{-1})
+=
+\check{f}(g),
+\]
+die Funktion ist jetzt also linksinvariant.
+Umgekehrt wird eine linksinvariante Funktion $f$ zu einer
+rechtsinvarianten Funktion $\check{f}$.
+
+%
+% Biinvariante Funktionen
+%
+\subsection{Biinvariante Funktionen}
+Die Lösung des kommutativen Registrierungsproblems mit Hilfe harmonischer
+Analysis basiert auf der Möglichkeit, die Kreuzkorrelation mit Hilfe
+der Abbildung $f\mapsto\check{f}$ in eine Faltung umzuwandeln und dann
+den Faltungssatz zu verwenden.
+
+%
+% Faltung
+%
+\subsubsection{Faltung}
+Seien $f$ und $g$ integrierbare Funktionen mit kompaktem Träger
+in $\mathscr{K}(G)$.
+Dann ist die Faltung die Funktion
+\[
+f*g(x) = \int_G f(y)g(y^{-1}x)\,dy.
+\]
+Falls $g\in\mathscr{K}(G/K)$ ausserdem rechtsinvariant ist, folgt
+\[
+f*g(xt)
+=
+\int_G f(y)g(y^{-1}xt)\,dy
+=
+\int_G f(y)g(y^{-1}x)\,dy
+\]
+für jedes $t\in K$, die Funktion $f*g$ ist also ebenfalls rechtsinvariant.
+Die rechtsinvarianten Funktionen bilden innerhalb der Algebra
+$\mathscr{G}$ der Funktionen auf $G$ ein Linksideal.
+
+Ist die Funktion $f$ rechtsinvariant, dann ist $f(yt)=f(y)$.
+Mit Hilfe der Linksinvarianz des Haar-Masses erhält man aus
+der Definition der Faltung zunächst
+\begin{align*}
+f*g(tx)
+&=
+\int_G f(y)g(y^{-1}tx)\,dy
+=
+\int_G f(ty) g((ty)^{-1}tx)\,dy
+\intertext{für jedes $t\in K$, und unter Verwendung der Linksinvarianz
+der Funktion $f$ schliesslich}
+&=
+\int_G f(y) g(y^{-1}t^{-1}tx)\,dy
+=
+\int_G f(y) g(y^{-1}x)\,dy
+=
+f*g(x),
+\end{align*}
+die Funktion $f*g$ ist also linksinvariant.
+Die linksinvarianten Funktionen bilden also ein Rechtsideal.
+
+Im allgemeinen hat aber die Faltung einer rechtsinvarianten Funktion
+mit einer beliebigen Funktion keine besonderen Invarianzeigesnchaften
+mehr.
+Noch schlimmer, sind $f$ und $g$ rechtsinvariante Funktionen, dann
+ist $\check{f}*g$ sowohl rechts- als auch linksinvariant, während
+$f*\check{g}$ keine besonderen Symmetrieeigenschaften hat.
+Sie ist damit nicht mehr in einer Algebra von Funktionen, die viel
+grösser ist als die Funktionen, die man mit Bildern identifizieren
+kann.
+Für die Lösung des Registrierungsproblems wird es daher zwischenzeitlich
+nötig sein, sich auf Funktionen einzuschränken, die zusätzliche
+Invarianzeigenschaften haben.
+
+%
+% Funktionen auf $K\backslash G/K$
+%
+\subsubsection{Funktionen auf $K\backslash G/K$}
+Sind $f$ und $g$ Funktionen, die sowohl rechtsinvariant wie auch
+linksinvariant sind.
+Dann ist nach obigen Rechnunge auch die Faltung $f*g$ sowohl rechts-
+als auch linksinvariant.
+Ausserdem ist mit jeder Funktion $f\in \mathscr{K}(K\backslash G/K)$
+auch die Funktion $\check{f}\in\mathscr{K}(K\backslash G/K)$.
+
+\begin{beispiel}
+Für die triviale abgeschlossene Untergruppe $K=\{e\}$ ist jede Funktion
+auf $G$ sowohl rechts- als auch linksinvariant und damit auch die
+Faltung.
+Dieses Beispiel zeigt, dass es im allgemeinen nötig sein wird, die
+Untergruppe $K$ gross genug zu wählen, damit das Registrierungsproblem
+einer Lösung näher gebracht werden kann.
+\end{beispiel}
+
+\begin{definition}
+Funktionen, die bezüglich der Untergruppe $K$ sowohl rechts- als auch
+linksinvariant sind, heissen {\em biinvariant}.
+Die Menge der bezüglich rechts- und linksinvarianten Funktionen auf $G$
+mit kompaktem Träger $\mathscr{K}(K\backslash G/K)$ bezeichnet.
+\end{definition}
+
+%
+% Mittelungsoperation
+%
+\subsection{Mittelungsoperation}
+Die Bilder auf $X$ sind rechtsinvariante Funktionen auf $G$.
+Für die Arbeit in $\mathscr{K}(K\backslash G/K)$ muss man sich
+aber auf biinvariante Funktionen einschränken, wird dazu eine
+geeignete Operation benötigt.
+
+Sie $f$ eine beliebige integrierbare Funktion mit kompaktem
+Träger auf $G$.
+Wir definieren die Funktionen
+\begin{align*}
+f^\natural(x)
+&=
+\int_K f(xk)\,dk,
+\\
+\mathstrut^\natural f(x)
+&=
+\int_K f(kx)\,dk.
+\end{align*}
+Für eine bereits rechtsinvariante Funktion $f$ ist $f^\natural(x)$ 
+ein Integral über eine konstante Funktion und ist daher nur dann
+definiert, wenn das Haar-Mass von $K$ beschränkt ist.
+Wir nehmen daher im Folgenden immer an, dass das Integral der konstanten
+Funktion $1$ über $K$ ebenfalls $1$ ist, dass also die Operationen
+Mittelungsoperationen sind.
+
+Die Funktion $f^\natural$ ist rechtsinvariant, dann ist
+\begin{align*}
+f^\natural(xt)
+=
+\int_K f((xt)k)\,dk
+=
+\int_K f(x(tk))\,dk
+=
+\int_K f(xk)\,dk
+=
+f^\natural(x)
+\end{align*}
+wegen der Linksinvarianz des Haar-Masses auf $K$.
+Ähnlich ist die Funktion
+\[
+\mathstrut^\natural f(tx)
+=
+\int_K f(k(tx)) \,dk
+=
+\int_K f((kt)x) \,dk
+=
+\int_K f(kx) \,dk
+=
+\mathstrut^\natural f(x)
+\]
+wegen der Rechtsinvarianz des Haar-Masses auf $K$.
+Schliesslich ist die Funktion
+\[
+\mathstrut^\natural f^\natural (x)
+=
+\int_K \int_K f(txs) \,ds\,dt
+\]
+eine biinvariante Funktion auf $G$.
+
+\begin{definition}
+Die Operation $f\mapsto f^\natural$ heisst die Rechtsmittelung,
+$f\mapsto\mathstrut^\natural f$ heisst die Linksmittelung und
+$f\mapsto \mathstrut^\natural f^\natural$ die beidseitige
+Mittelung der Funktion $f$.
+\end{definition}
