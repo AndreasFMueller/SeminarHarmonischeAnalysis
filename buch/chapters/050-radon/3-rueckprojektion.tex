@@ -104,6 +104,18 @@ gewinnen.
 % Rückprojektion und die Umkehrformel
 %
 \subsection{Rückprojektion und die Umkehrformel}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{chapters/050-radon/images/orion2.pdf}
+\caption{Rekonstruktion eines Bildes $u$ aus der Radon-Transformierten
+$\mathscr{R}u$.
+Die Rückprojektion $\mathscr{R}^*\mathbb{R}u$ ist stark verschwommen.
+Durch die Anwendung des Filters vor der Rückprojektion kann ein
+scharfes und kontrastreiches Bild gewonnen werden.
+Die Filterung funktioniert besser, wenn das Bild von einem genügend 
+grossen scharzen Gebiet umgeben ist.
+\label{buch:radon:rueckprojektion:fig:rueckprojektion}}
+\end{figure}
 In Abschnitt~\ref{XXX}
 haben wir gefunden, dass die Fourier-Transformierte der Funktion $u$
 in die Radon-Transformation und eine eindimensionale Fourier-Transformation
@@ -187,7 +199,7 @@ $r$-Integral über $\mathbb{R}$ zusammenfassen
 u(x)
 &=
 \frac{1}{(2\pi)^{n/2}}
-\int_{\mathbb{R}} int_{S_+^{n-1}}
+\int_{\mathbb{R}} \int_{S_+^{n-1}}
 e^{ir\omega\cdot x}
 \mathscr{F}u(r\omega)
 \,d\omega

@@ -1,8 +1,14 @@
-#
+
 # Makefile
 #
 # (c) 2023 Prof Dr Andreas Müller
 #
+orion2images =								\
+	orion2.jpg							\
+	orion2-radon.jpg						\
+	orion2-backprojection.jpg					\
+	orion2-filtered-backprojection.jpg
+
 radonimages =								\
 	mathman.jpg							\
 	mathman-radon.jpg						\
@@ -11,7 +17,7 @@ radonimages =								\
 	mathman-backward-radon.jpg					\
 	mathman-backward-masked.jpg
 
-all:	ebenewellen.pdf radonft.pdf $(radonimages)
+all:	ebenewellen.pdf radonft.pdf orion2.pdf radon.pdf $(radonimages)
 
 ebenewellen.pdf:	ebenewellen.tex
 	pdflatex ebenewellen.tex
@@ -24,6 +30,19 @@ mathman.jpg:	mathman.fits
 mathman-radon.fits:	mathman.fits
 	$(tools)/radon --debug --height=1024 --width=1024 mathman.fits \
 		mathman-radon.fits
+
+mathman-backprojection.fits:	mathman-radon.fits
+	$(tools)/backprojection --debug \
+		mathman-radon.fits mathman-backprojection.fits
+mathman-backprojection.jpg:	mathman-backprojection.fits
+	convert mathman-backprojection.fits mathman-backprojection.jpg
+
+mathman-filtered-backprojection.fits:	mathman-radon.fits
+	$(tools)/backprojection --debug --filter \
+		mathman-radon.fits mathman-filtered-backprojection.fits
+mathman-filtered-backprojection.jpg:	mathman-filtered-backprojection.fits
+	convert mathman-filtered-backprojection.fits \
+		mathman-filtered-backprojection.jpg
 
 mathman-radon.jpg:	mathman-radon.fits
 	convert mathman-radon.fits mathman-radon.jpg
@@ -49,3 +68,49 @@ clean:
 
 radonft.pdf:	radonft.tex
 	pdflatex radonft.tex
+
+
+orion-radon.fits:	orion.fits
+	$(tools)/radon --debug --height=1000 --width=1000 orion.fits \
+		orion-radon.fits
+
+orion-backprojection.fits:	orion-radon.fits
+	$(tools)/backprojection --debug \
+		orion-radon.fits orion-backprojection.fits
+orion-backprojection.jpg:	orion-backprojection.fits
+	convert orion-backprojection.fits orion-backprojection.jpg
+
+orion-filtered-backprojection.fits:	orion-radon.fits
+	$(tools)/backprojection --debug --filter \
+		orion-radon.fits orion-filtered-backprojection.fits
+orion-filtered-backprojection.jpg:	orion-filtered-backprojection.fits
+	convert orion-filtered-backprojection.fits \
+		orion-filtered-backprojection.jpg
+
+orion2-radon.fits:	orion2.fits
+	$(tools)/radon --debug --height=2000 --width=2000 orion2.fits \
+		orion2-radon.fits
+orion2.jpg:	orion2.fits
+	convert orion2.fits orion2.jpg
+orion2-radon.jpg:	orion2-radon.fits
+	convert orion2-radon.fits orion2-radon.jpg
+
+orion2-backprojection.fits:	orion2-radon.fits
+	$(tools)/backprojection --debug \
+		orion2-radon.fits orion2-backprojection.fits
+orion2-backprojection.jpg:	orion2-backprojection.fits
+	convert orion2-backprojection.fits orion2-backprojection.jpg
+
+orion2-filtered-backprojection.fits:	orion2-radon.fits
+	$(tools)/backprojection --debug --filter \
+		orion2-radon.fits orion2-filtered-backprojection.fits
+orion2-filtered-backprojection.jpg:	orion2-filtered-backprojection.fits
+	convert orion2-filtered-backprojection.fits \
+		orion2-filtered-backprojection.jpg
+
+orion2.pdf:	orion2.tex $(orion2images) orion2-filtered-backprojection-corrected.jpg
+	pdflatex orion2.tex
+
+
+radon.pdf:	radon.tex mathman.jpg mathman-radon.jpg
+	pdflatex radon.tex
