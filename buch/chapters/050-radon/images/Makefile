@@ -11,7 +11,7 @@ radonimages =								\
 	mathman-backward-radon.jpg					\
 	mathman-backward-masked.jpg
 
-all:	ebenewellen.pdf $(radonimages)
+all:	ebenewellen.pdf radonft.pdf $(radonimages)
 
 ebenewellen.pdf:	ebenewellen.tex
 	pdflatex ebenewellen.tex
@@ -46,3 +46,6 @@ fr2 $(mathman2jpg):	mathman2-radon.fits
 
 clean:
 	rm -f mathman-F.fits mathman-F2.fits mathman-o.fits mathman-FF.fits
+
+radonft.pdf:	radonft.tex
+	pdflatex radonft.tex
