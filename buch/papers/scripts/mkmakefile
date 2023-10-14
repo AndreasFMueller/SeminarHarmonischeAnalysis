@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # mkmakefile -- build the Makefile.inc for all the papers
 #
