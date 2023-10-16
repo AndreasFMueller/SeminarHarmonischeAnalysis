@@ -12,7 +12,7 @@
 Ab diesem Zeitpunkt war ein lauffähiger CWT-Code vorhanden, wie die
 Abbildung \ref{wavelet:fig:ErsteAnwendung}, zeigt können damit gut
 aufgelöste und vor allem korrekte Resultate erzielt werden.
-Die Problematik ist aber die Anfangs erwähnte Rechenzeit.
+Die Problematik ist aber die anfangs erwähnte Rechenzeit.
 An der Stelle wurde ein grosser Effort in die Minimierung der
 Rechenzeit gesteckt.
 Im Folgenden werden die wichtigsten Optimierungsansätze angeschaut.
@@ -106,7 +106,7 @@ dieselbe Zeitdauer zu verschieben.
 
 Die Frequenzauflösung war schon einstellbar als Vielfaches der
 gewählten Grundfrequenz, was in dem Zusammenhang hier noch versucht
-wurde, im spezifischen für das Filterbank adaptierte CWT, ist eine
+wurde, im Spezifischen für das Filterbank adaptierte CWT, ist eine
 Frequenzerhöhung zu Radix zwei, d.~h.~ die Auswertungsfrequenz des
 Wavelets wurde mit $f_\text{wavelet} = 2^k$ pro Stufe $k = 0, 1,
 2$ bis $K$ erhöht.
@@ -128,7 +128,7 @@ Die Lösung dieses Problems ist andeutungsweise im rechten Bild mit
 den roten Pfeilen dargestellt.
 Die Anzahl an Spalten ist abhängig von der höchsten Frequenz und
 der dafür gewählten zeitlichen Verschiebung.
-Für die zeitliche Verschiebung $b$, wurde ein $\Delta t=\frac{1}{a}\cdot2$
+Für die zeitliche Verschiebung $b$ wurde ein $\Delta t=\frac{1}{a}\cdot2$
 gewählt, da das gerade einer 50\% Überlappung entspricht.
 Die Anzahl Spalten ergibt sich demnach aus
 \begin{equation}
@@ -153,7 +153,7 @@ Die Anzahl Spalten ergibt sich demnach aus
 	Die Überlappung dient in diesem Fall dem Verhindern von
 	Informationsverlust und führt zu einer natürlichen Glättung
 	in der Visualisierung der Resultate.
-	In der unteren Graphik ist ein Pseudo-Code angegeben der
+	In der unteren Graphik ist ein Pseudo-Code angegeben, der
 	die Matrixbefüllung im Programm beschreibt.
 	Dabei wird für jede Frequenz $a$ ein der Ausdehnung des
 	Wavelets entsprechender Zeitschritt errechnet.
