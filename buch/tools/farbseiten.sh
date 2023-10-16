@@ -1,4 +1,4 @@
-#! /bin/bsh
+#!/usr/bin/env bash
 #
 # farbseiten.sh -- Formattierung der Farbseiteninfo für die Druckerei
 #

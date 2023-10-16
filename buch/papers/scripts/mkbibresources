@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # mkbibresources -- this script builds the addbibresources.tex file
 #

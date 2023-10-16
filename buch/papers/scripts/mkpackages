@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # mkpackages -- this script builds the package inclusions for all papers
 #

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # mkpapers -- this script builds the paper inclusion commands
 #
