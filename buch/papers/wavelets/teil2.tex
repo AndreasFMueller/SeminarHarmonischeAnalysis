@@ -157,7 +157,7 @@ Danach werden die $N-1$ Gewichtungen aufsummiert (Abbildung
 \ref{wavelet:fig:AmpSklal3}).
 Dadurch wird der Nenner in
 \[W_{a,b}=\sum_{a=f_0}^{a_n}\sum_{b=0}^{b_m}\frac{1}{N(a)}\sum_{n=0}^{N-1}
-x(n)\cdot\psi\left(\frac{t-b}{a}\right)\] eine Funktion von $N(a)$,
+x(n)\cdot\psi\left(\frac{n-b}{a}\right)\] eine Funktion von $N(a)$,
 d.~h.~die Gewichtung hängt direkt mit der Dehnung oder Komprimierung
 der Grundfrequenz $f_0$ durch $a$ zusammen.
 Die Verschiebung $b$ nimmt keinen Einfluss, weil $b$ nur die Position
@@ -185,7 +185,7 @@ aus und funktioniert deshalb auch besonders gut für langanhaltende
 periodische Signale.
 In vielen realen Prozessen treten Effekte aber jeweils sehr kurzzeitig auf.
 Um den Umgang der Wavelettransformation mit kurzweiligen Signalen
-mit abrupten Änderungen besser zu verstehen sowie dem Verhalten der
+mit abrupten Änderungen besser zu verstehen, sowie dem Verhalten der
 FFT gegenüberzustellen, wurden kurzzeitig auftretenden Sinusschwingungen
 untersucht.
 Zu einem späteren Zeitpunkt wird das Verhalten der CWT auch noch

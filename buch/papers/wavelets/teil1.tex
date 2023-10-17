@@ -68,7 +68,7 @@ aus vier Quadranten besteht, ausgegeben.}
 Anstelle der Funktion \eqref{wavelets:equation2} kann man sich im
 2D vereinfacht die Verrechnung des Wertes $x(n)$ an der Position
 $n$ mit dem $\sin(\frac{2\pi}{N}kn+\phi)$ vorstellen, wobei $\phi$
-die Phasenverschiebung des Sinuses beschreibt.
+die Phasenverschiebung des Sinus beschreibt.
 Das $\phi$  wird in der Formulierung \eqref{wavelets:equation2} mit
 dem Cosinusanteil miteinbezogen.
 Wenn nun das Signal den Sinus mit der Frequenz $k$ enthält wie in
@@ -80,7 +80,7 @@ liegen, nachvollzogen werden.
 In diesem Fall kommt es zu einem Amplitudenausschlag auf der
 entsprechenden Frequenz.
 In Abbildung \ref{wavelet:fig:AmplitudengangExtraktionDFT} ist das
-schematische für ein Signal (rot) und die enthaltenen Sinusanteile
+schematisch für ein Signal (rot) und die enthaltenen Sinusanteile
 (blau) dargestellt.
 Die Frequenzdomäne entspricht dabei dem Bildbereich des transformierten
 Zeitsignals (rot).
@@ -231,7 +231,7 @@ Signalüberlappung oder Zero-Padding, dem entgegen wirken.
 \begin{itemize}
 	\item Bei der Signalüberlappung wird das Auswertungsfenster
 	mit einer Überdeckung verschoben. Dabei ist $2/3$ ein
-	gängiger Wert für diese Überdeckung, es muss erwähnt sein,
+	gängiger Wert für diese Überdeckung. Es muss erwähnt sein,
 	dass es dabei mehr um die Problematik des Informationsverlustes
 	als um die bessere zeitliche Auflösung geht.
 	\item Beim Zero-Padding wird die Periodenbreite künstlich
@@ -254,7 +254,7 @@ und \ref{wavelet:fig:AufloesungZeitVsFrequenz}) bleibt aber bestehen.
 	\includegraphics[width=0.4\textwidth]{papers/wavelets/images/6-1_FFTAufloesung.png}
 	\caption{Schematische Darstellung
 	der Unschärfeproblematik, entweder wird die Zeit oder die
-	Frequenzgenauigkeit verfeinert, dargestellt anhand er beiden
+	Frequenzgenauigkeit verfeinert, dargestellt anhand der beiden
 	Achsrichtungen.
 	Aus \cite{wavelets:J.Mayer.2002}.
 }
@@ -276,7 +276,7 @@ und \ref{wavelet:fig:AufloesungZeitVsFrequenz}) bleibt aber bestehen.
 	Der rote Weg beschreibt die Möglichkeit der Fensterüberlappung,
 	die Fensterbreite bleibt dabei 1s.
 	Der blaue Weg stellt die Auswertung mit einem schmaleren
-	Fenster der breite $1/5$\,s dar (5\,Hz Auflösung).
+	Fenster der Breite $1/5$\,s dar (5\,Hz Auflösung).
 	Die zeitliche Auflösung kann dadurch deutlich verbessert werden.
 	Am Amplitudengang ist aber die schlechtere Frequenzauflösung
 	an den breiter werdenden Peaks zu erkennen.}
@@ -343,7 +343,7 @@ einhalten müssen:
 	einen endlichen Wert besitzen, sofern $||f||_2<\infty$ ist.
 	Im Gegensatz dazu hat beispielsweise ein reiner Sinus bei
 	dieser Integration einen unendlichen Wert. In dieser Bedingung
-	versteckt sich gerade auch noch eine weitere Eigenschaft
+	versteckt sich gerade auch noch eine weitere Eigenschaft,
 	welche die Wavelettransformation gegenüber der herkömmlichen
 	Fourier-Transformation besitzt. Die Gewichtung wird vom
 	Wavelet selbst und nicht über die Verrechnung mit einer
