@@ -7,6 +7,7 @@ orion2images =								\
 	orion2.jpg							\
 	orion2-radon.jpg						\
 	orion2-backprojection.jpg					\
+	orion2-filtered.jpg						\
 	orion2-filtered-backprojection.jpg
 
 radonimages =								\
@@ -17,7 +18,12 @@ radonimages =								\
 	mathman-backward-radon.jpg					\
 	mathman-backward-masked.jpg
 
-all:	ebenewellen.pdf radonft.pdf orion2.pdf radon.pdf $(radonimages)
+all:	ebenewellen.pdf 						\
+	radonft.pdf							\
+	orion2.pdf							\
+	radon.pdf							\
+	rueckprojektion.pdf						\
+	$(radonimages)
 
 ebenewellen.pdf:	ebenewellen.tex
 	pdflatex ebenewellen.tex
@@ -101,16 +107,24 @@ orion2-backprojection.fits:	orion2-radon.fits
 orion2-backprojection.jpg:	orion2-backprojection.fits
 	convert orion2-backprojection.fits orion2-backprojection.jpg
 
-orion2-filtered-backprojection.fits:	orion2-radon.fits
+orion2-filtered-backprojection.fits orion2-filtered.fits:	orion2-radon.fits
 	$(tools)/backprojection --debug --filter \
+		--filtered-file=orion2-filtered.fits --log \
 		orion2-radon.fits orion2-filtered-backprojection.fits
 orion2-filtered-backprojection.jpg:	orion2-filtered-backprojection.fits
-	convert orion2-filtered-backprojection.fits \
+	convert -black-point-compensation orion2-filtered-backprojection.fits \
 		orion2-filtered-backprojection.jpg
+orion2-filtered.jpg: orion2-filtered.fits
+	convert orion2-filtered.fits orion2-filtered.jpg
+	#convert -equalize orion2-filtered.fits orion2-filtered.jpg
 
-orion2.pdf:	orion2.tex $(orion2images) orion2-filtered-backprojection-corrected.jpg
+
+orion2.pdf:	orion2.tex $(orion2images) 
 	pdflatex orion2.tex
 
 
 radon.pdf:	radon.tex mathman.jpg mathman-radon.jpg
 	pdflatex radon.tex
+
+rueckprojektion.pdf:	rueckprojektion.tex
+	pdflatex rueckprojektion.tex
