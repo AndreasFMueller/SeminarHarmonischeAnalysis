@@ -123,6 +123,15 @@ f(x+r\cos\varphi,y+r\sin\varphi)\,d\varphi.
 \end{beispiel}
 
 \begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/070-nichtkomm/images/coordinates.pdf}
+\caption{Koordinatensystem zur Berechnung der Méndez-Transformation
+für das Paar $(G,K)=(\operatorname{SO}(3),\operatorname{SO}(2))$.
+Die Koordinaten $z$ wird entlang der Achse mit Richtungsvektor $x\in S^2$
+gemessen.
+\label{buch:nichtkomm:mendez:fig:coordinates}}
+\end{figure}
 Für das Registrierungsproblem auf der Kugeloberfläche ist $x$ irgend ein
 Einheitsvektor.
 Die Orbits des Stabilisators von $x$ sind die Breitenkreise bezüglich
@@ -140,6 +149,38 @@ dem Wert
 wobei $\tilde{z}$ ein Einheitsektor mit $\tilde{z}\cdot x=z$ ist.
 Das Integral ist der Mittelwert von $f$ über den Breitenkreis
 auf Höhe $z$ um die Achse $x$.
+
+In Abbildung~\ref{buch:nichtkomm:mendez:fig:coordinates} ist die
+Achsrichtung $x\in S^2$ als hellvioletter Vektor eingezeichnet.
+Die Koordinate $z\in[-1,1]$ wird vom Kugelmittelpunkt entlang dieser
+Achse gemessen.
+Zur Berechnung der Méndez-Transformation einer Funktion $f$ muss die
+Funktion über den violett eingezeichneten Breitenkreis zur Achse $x$
+integriert werden.
+Dies kann mit Hilfe eines Integrals über den gelb eingezeichneten
+Winkel $\varphi\in[0,2\pi]$ erfolgen.
+Die Achsrichtungen $r_1=(n\times x)^0$ und $r_2=x\times r_1$ werden
+aus der Richtung $n\in S^2$ des Nordpoles und $x$ berechnet.
+Der Punkt mit Parameter $\varphi$ ist dann
+\[
+zx
++
+\!\sqrt{1-z^2}(r_1 \cos\varphi + r_2 \sin\varphi).
+\]
+Die Méndez-Transformation kann damit als das Integral
+\[
+(\mathcal{M}f)(x)(z)
+=
+\frac{1}{2\pi}
+\int_0^{2\pi}
+f\left(
+zx
++
+\!\sqrt{1-z^2}(r_1 \cos\varphi + r_2 \sin\varphi)
+\right)
+d\varphi
+\]
+berechnet werden.
 \end{beispiel}
 
 Die Méndez-Transformation wurde von Tabea Méndez in 
@@ -165,6 +206,27 @@ Wir zeigen hier nur das Prinzip, Optimierungsmöglichkeiten sind in
 % Registrierung mit einem Fixpunkt
 %
 \subsubsection{Registrierung mit einem Fixpunkt}
+\begin{figure}
+\centering
+\includegraphics{chapters/070-nichtkomm/images/MTransformExamples.pdf}
+\caption{Méndez-Transformation der zwei Funktionen $f$ und $g$ auf
+der Kugeloberfläche.
+Die $x_3$-Achse ist nicht die Drehachse der Drehung, die $f$ in $g$
+überführt und die Méndez-Transformationen $\mathcal{M}f(x)$
+und $\mathcal{M}g(x)$ sind klar verschieden.
+\label{buch:nichtkomm:fig:mtex}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{chapters/070-nichtkomm/images/MTransformExamples2.pdf}
+\caption{Méndez-Transformation der zwei Funktionen $f$ und $g$ auf
+der Kugeloberfläche.
+Die Achse mit Richtungsvektor $x$ gehört zu derjenigen Drehung,
+die $f$ in $g$ überführt.
+Die Méndez-Transformationen $\mathcal{M}f(x)$
+und $\mathcal{M}g(x)$ sind gleich.
+\label{buch:nichtkomm:fig:mtex2}}
+\end{figure}
 Falls die Wirkung der Gruppe $G$ auf $X$ immer einen Fixpunkt hat,
 ist der erste Schritt des Registrierungsproblems besonders einfach
 zu lösen.

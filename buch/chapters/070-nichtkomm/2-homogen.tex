@@ -341,9 +341,9 @@ im zweiten Fall aber nicht.
 Dies wird auch durch das folgende Beispiel illustriert.
 
 \begin{beispiel}
-Sei $G=\mathbb{R}^2/\mathbb{Z}^2 = (\mathbb{R}/\mathbb{Z}^2$ die additive
-abelsche Gruppe der reellen Zahlen modulo $\mathbb{Z}$ wie im
-vorangegangenen Beispiel.
+Sei $G=\mathbb{R}^2/\mathbb{Z}^2 = (\mathbb{R}/\mathbb{Z})^2$,
+also Paare von Elementen der additiven abelsche Gruppe der reellen
+Zahlen modulo $\mathbb{Z}$ wie im vorangegangenen Beispiel.
 Sei ausserdem $K=\{(k,\alpha k)\mid k\in\mathbb{R}\}\subset G$
 die Untergruppe, die durch die Konstante $\alpha$ definiert wird.
 Je nachdem ob $\alpha$ ratioinal oder irrational ist, ist die Menge der
@@ -383,6 +383,53 @@ K\backslash G
 \]
 wie im Falle von $G/K$ kann sie nur dann mit einem nützlichen
 Grenzwertbegriff versehen werden, wenn $K$ abgeschlossen ist.
+
+\begin{beispiel}
+\label{buch:nichtkomm:homogen:bsp:so2r2}
+\begin{figure}
+\centering
+\includegraphics{chapters/070-nichtkomm/images/so2r2.pdf}
+\caption{Visualisierung der Gruppe $\operatorname{SO}(2)\ltimes \mathbb{R}^2$
+als dreidimensionale Mannigfaltigkeit.
+Die Ebene aufgespannt von den Vektoren $v_1$ und $v_2$ ist der Faktor
+$\mathbb{R}^2$.
+Die Drehungen in $\operatorname{SO}(2)$ werden parametrisiert durch
+die auf der vertikalen Achse abgetragenen Drehwinkel $\alpha$, die 
+aus dem Intervall $[0,2\pi)$.
+Die roten und blauen Kurven zeigen die Rechts- bzw.~Linksorbits
+(siehe Beispiel~\ref{buch:nichtkomm:homogen:bsp:so2r2}).
+\label{buch:nichtkomm:homogen:fig:so2r2}}
+\end{figure}
+Die Gruppe $G=\operatorname{SO}(2)\ltimes \mathbb{R}^2$ ist in 
+Abbildung~\ref{buch:nichtkomm:homogen:fig:so2r2} visualisiert.
+Die horizontalen Ebenen mit Basisvektoren $v_1$ und $v_2$ 
+entsprechen dem Faktor $\mathbb{R}^2$.
+Auf der vertikalen Achse ist der Drehwinkel $\alpha$ einer Drehung
+im Faktor $\operatorname{SO}(2)$ des semidirekten Produktes abgetragen.
+
+Die Elemente $s\subset \operatorname{SO}(2)=K$ werden als Paare
+$(s,0)\in \operatorname{SO}(2)\ltimes\mathbb{R}^2$ eingebettet.
+Die Rechtsorbits der Operation von $\operatorname{SO}(2)$ auf
+$\operatorname{SO}\ltimes \mathbb{R}^2$ sind daher die roten vertikalen
+Linien in der Abbildung.
+Der Orbitraum
+$G/K
+=
+\operatorname{SO}(2)\ltimes\mathbb{R}^2/\operatorname{SO}(2)$
+kann daher mit der Ebene identifiziert werden.
+
+Die Multiplikation mit einer Drehung $s$ mit Drehwinkel $\alpha$ von
+Links fügt der ersten Komponente eines Elements $(t,v)$ von
+$\operatorname{SO}(2)\ltimes\mathbb{R}^2$ den Drehwinkel hinzu, 
+verschiebt den zugehörigen Punkt in
+Abbildung~\ref{buch:nichtkomm:homogen:fig:so2r2}
+Punkt um $\alpha$ nach oben.
+Auf der Vektorkomponente $v$ wirkt $s$ dagegen als Drehung.
+So entstehen die blauen Spiralen in
+Abbildung~\ref{buch:nichtkomm:homogen:fig:so2r2}
+als
+Linksorbits von $\operatorname{SO}(2)$ auf $G$.
+\end{beispiel}
 
 %
 %  Homogene Räume als Quotientenräume
