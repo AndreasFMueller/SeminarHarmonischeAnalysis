@@ -124,11 +124,49 @@
 %
 % Kopfzeilen
 %
+\fancyfoot{}
+\fancyhead{}
+%\def\kopfrechts#1{
+%\edef\theshortsection{\arabic{section}}
+%\rhead{\theshortsection. #1}}
+%\def\kopflinks#1{\lhead{\thechapter. #1}
+%\rhead{}}
 \def\kopfrechts#1{
-\edef\theshortsection{\arabic{section}}
-\rhead{\theshortsection. #1}}
-\def\kopflinks#1{\lhead{\thechapter. #1}
-\rhead{}}
+\global\def\kopfinhalt{#1}
+\xdef\theshortsection{\thechapter.\arabic{section}}
+\fancyhead[LO]{\theshortsection. #1}}
+%
+\def\kopflinks#1{
+\global\def\kapitelinhalt{#1}
+\fancyhead[RE]{\thechapter. #1}
+\thispagestyle{empty}
+\fancyhead[LO]{}}
+%
+%
+% Uebungsaufgaben
+%
+\def\uebungsabschnitt{%
+\begingroup
+
+\bigskip
+
+\noindent
+\vbox to0.3cm{\hbox to\textwidth{\normalfont\large\bfseries Übungsaufgaben}\vfill}
+\keineloesungen%
+\nopagebreak%
+\fancyhead[RE]{\thechapter. \kapitelinhalt}%
+\fancyhead[LE]{\thepage}%
+\fancyhead[LO]{Übungsaufgaben}%
+\fancyhead[RO]{\thepage}%
+\addcontentsline{toc}{section}{Übungsaufgaben}%
+}
+\def\enduebungsabschnitt{
+\endgroup
+\bigskip
+}
+%
+\fancyhead[LE]{\thepage}
+\fancyhead[RO]{\thepage}
 % Transposition
 \def\transpose#1{{{#1}^t}}
 % Real- und Imaginaerteil
@@ -136,3 +174,4 @@
 \def\Im{\operatorname{Im}}
 \def\tr{\operatorname{tr}}
 \def\sign{\operatorname{sign}}
+%

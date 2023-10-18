@@ -53,8 +53,8 @@ pdfauthor={Andreas Müller}
 \vfill
 \pagebreak
 \ifodd\value{page}\else\null\clearpage\fi
-\lhead{Index}
-\rhead{}
+\fancyhead[RE]{Index}
+\fancyhead[LO]{Index}
 \addcontentsline{toc}{chapter}{\indexname}
 \ifthenelse{\boolean{includecover}}{
 \InputIfFileExists{build/SeminarHarmonischeAnalysis.ind}{}{}

@@ -8,7 +8,7 @@
 %
 
 \section{Stochastische Differentialgleichungen\label{brown:SDGL}}
-\rhead{Stochastische DGL}
+\kopfrechts{Stochastische DGL}
 
 Formal kann eine SDGL folgendermassen notiert werden: 
 \begin{equation}
@@ -45,7 +45,6 @@ Weisses Rauschen $ \frac{dW(t)}{dt} $ ist per Definition nicht sinnvoll weiter d
 
 
 \subsection{Euler-Maruyama-Methode\label{brown:Simulation}}
-\rhead{Simulation} %Kurz-Titel der Section
 
 Die Euler-Maruyama-Methode wird oft zur numerischen Simulation von stochastischen Differentialgleichungen (SDGL) verwendet und basiert auf der bekannten Euler-Methode zur Lösung von gewöhnlichen Differentialgleichungen. Die Idee ist es, die SDGL in diskrete Zeitschritte zu zerlegen und den deterministischen, wie auch den stochastischen Anteil, separat zu behandeln. Die Methode hat zwar gewisse Einschränkungen bezüglich ihrer Genauigkeit und Stabilität, ist aber dennoch mitunter aufgrund ihrer Einfachheit weit verbreitet \cite{Bayram2018}. So wurden auch alle in diesem Kapitel gezeigten Simulationen mit dieser Methode umgesetzt. Um eine SDGL mittels der Euler-Maruyama-Methode zu simulieren, geht man wie folgt vor:
 
@@ -76,8 +75,6 @@ als Funktion der des aktuellen Wertes  $ X_n $ ausgedrückt werden. Die Funktion
 
 
 \subsection{Die Itō-Formel\label{brown:ito}}
-\rhead{Itō} %Kurz-Titel der Section
-
 Itō Kiyoshi war ein japanischer Mathematiker, der seine Karriere der Stochastik widmete und heute als Begründer der stochastischen Analysis erachtet werden kann. So legte er auch einen Grossteil des Fundaments, auf dem der Umgang mit SDGLs beruht. Nach ihm ist auch die schon verwendete \textit{Itō'sche Form} einer SDGL benannt, bei welcher die Gleichung mit dem Nenner des Differentialquotienten multipliziert wird. Diese Form eignet sich als Ausgangslage für viele seiner Konzepte, bietet jedoch auch den Vorteil, dass keine vermeintliche Differenzierbarkeit impliziert wird.
 Eines der wichtigsten Werkzeuge im Umgang mit SDGLs, ist die sogenannte \textit{Itō-Formel}, auch \textit{Lemma von Itō} genannt. Sie stellt das Äquivalent zur klassischen Kettenregel bzw. der Substitutionsregel dar. Hier ein Beispiel einer SDGL für einen Prozess $ X(t) $ in \textit{Itō-Form}:
 
