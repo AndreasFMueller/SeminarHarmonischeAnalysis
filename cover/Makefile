@@ -13,6 +13,11 @@ buchcover.png:	buchcover.pdf  Makefile
 		buchcover.png
 buchcover.jpg:	buchcover.png
 	convert buchcover.png buchcover.jpg
+fullcover.jpg:	buchcover.pdf Makefile
+	convert -density 300 buchcover.pdf -scale 25% fullcover.jpg
+
+small:	buchcover-small.jpg
+
 buchcover-small.jpg:	buchcover.jpg
 	convert buchcover.jpg -scale 50% buchcover-small.jpg
 backcover.png:	buchcover.pdf Makefile
@@ -34,19 +39,22 @@ lncover.png:	lncover.pdf Makefile
 		lncover.png
 
 libwavspec.a:	wav.o spec.o
-	ar -r libwavspec.a wav.o
+	ar -r libwavspec.a wav.o spec.o
 wav.o:	wav.cpp wav.h 
 	g++ -std=c++11 -o wav.o -O -Wall -g -c wav.cpp
 spec.o:	spec.cpp spec.h wav.h
 	g++ -std=c++11 -o spec.o -O -Wall -g -c spec.cpp
+
+wavfile = bumblebee.wav
+fitsfile = bumblebee.fits
 
 wavreader:	wavreader.cpp libwavspec.a spec.h
 	g++ -std=c++11 -o wavreader -O -Wall -g wavreader.cpp \
 		-L. -lwavspec `pkg-config --libs fftw3` \
 		`pkg-config --libs cfitsio`
 test:	wavreader
-	rm -f brahms.fits
-	./wavreader -d -f brahms.fits brahms.wav
+	rm -f $(fitsfile)
+	./wavreader --limit=5000000 -c -d -o -f $(fitsfile) $(wavfile)
 
 publish:	buchcover.jpg
 	scp buchcover.jpg oc9co_afm@h2web169.infomaniak.ch:sites/mathsem.ch/jahre/2023/front.jpg

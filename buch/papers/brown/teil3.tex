@@ -23,7 +23,7 @@ In diesem Fall ist die Störung durch $ m $-dimensionales weisses Rauschen $ \xi
 		\vdots \\
 		a_{m}\\ 
 	\end{pmatrix}
-	\ und \
+	\quad\text{und}\quad
 	B = 
 	\begin{pmatrix}
 		B_{11} & \dots & B_{1m} \\
@@ -92,7 +92,17 @@ Die Itō-Formel erlaubt es uns solche Differentialgleichungen für Funktionen vo
 \begin{equation}
 	df = \frac{\partial f}{\partial t} \ dt + \frac{\partial f}{\partial X} (a \ dt + B \ dW) + \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 \ dt) \ .
 \end{equation}
-Die Itō-Formel kann als eine stochastische Version der Taylor-Entwicklung angesehen werden. $ \frac{\partial f}{\partial t} \ dt $ beschreibt, wie sich die Funktion $ f $ allein durch den Verlauf der Zeit ändert, unabhängig von anderen Faktoren. $ \frac{\partial f}{\partial X} (a \ dt) $ ist der \textit{Drift-Term}, der den deterministischen Teil darstellt und der Term $  \frac{\partial f}{\partial X} (B \ dW) $ stellt den stochastischen \textit{Diffusions-Term} dar. Zusammen beschreiben die zwei Terme den Einfluss der ersten Ableitung und der Term $ \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2 \ dt) $ den Einfluss zweiter Ordnung. Dass aus $ (dX)^2 $ eingesetzt $ (B^2 \ dt) $ wird, ist folgendermassen zu erklären:
+Die Itō-Formel kann als eine stochastische Version der Taylor-Entwicklung
+angesehen werden. $ \frac{\partial f}{\partial t} \ dt $ beschreibt,
+wie sich die Funktion $ f $ allein durch den Verlauf der Zeit ändert,
+unabhängig von anderen Faktoren. $ \frac{\partial f}{\partial X}
+(a \ dt) $ ist der \textit{Drift-Term}, der den deterministischen
+Teil darstellt und der Term $  \frac{\partial f}{\partial X} (B \
+dW) $ stellt den stochastischen \textit{Diffusions-Term} dar.
+Zusammen beschreiben die zwei Terme den Einfluss der ersten Ableitung
+und der Term $ \frac{1}{2} \frac{\partial^2 f}{\partial X^2} (B^2
+\ dt) $ den Einfluss zweiter Ordnung. Dass aus $ (dX)^2 $ eingesetzt
+$ (B^2 \ dt) $ wird, ist folgendermassen zu erklären:
 Eigentlich würde eingesetzt sich $ (dX)^2 = a^2 dt^2 + 2a B \ dt \ dW + B^2 dW^2 $ ergeben. Da $ dt^2 $ und $ dt \ dW $ im stochastischen Kontext vernachlässigbar klein sind (tendieren viel schneller gegen Null als $ dt $), ist der einzig relevante Beitrag zu $ (dX)^2 $ der Term $ B^2 \ dW^2 $. Und aufgrund der Eigenschaft des Wiener-Prozesses, dass $ dW^2 = dt $ ergibt, wird der dieser Ausdruck zu $ ()B^2 \ dt) $.
 
 %  $ dt $ als letzter der Gleichung ergibt sich aus der Eigenschaft des Wiener-Prozess, dass die Änderung $ dW $ im Quadrat $ (dW)^2 = dt $ entspricht. 

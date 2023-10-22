@@ -6,7 +6,7 @@
 \section{Vergleich von Funktionen
 \label{buch:einleitung:section:vergleich}}
 Harmonische Analysis ist eine Methode, Funktionen in besser
-verstanden Komponenten zu zerlegen.
+verstandene Komponenten zu zerlegen.
 Die Basis dafür ist die Möglichkeit, die ``Ähnlichkeit'' zwischen
 Funktionen zu messen.
 In diesem Abschnitt soll gezeigt werden, wie diese Idee der
@@ -14,15 +14,19 @@ In diesem Abschnitt soll gezeigt werden, wie diese Idee der
 Anwendungen bereits ergibt.
 Das Ziel ist, den Weg zum abstrakten Konzept des verallgemeinerten
 Skalarproduktes aufzuzeigen.
+\index{Skalarprodukt}%
 
 %
 % Kovarianz als Mass der Ähnlichkeit von Datenreihen
 %
 \subsection{Kovarianz als Mass der Ähnlichkeit von Datenreihen}
 In der Statistik lernt man, dass Beziehungen zwischen Zufallsvariablen
+\index{Zufallsvariable}%
 $X$ und $Y$ durch die Kovarianz gemessen werden.
+\index{Kovarianz}%
 Wir nehmen für die folgende Diskussion der Einfachheit halber an,
-dass die Erwartungswerte $E(X)=E(Y)=0$ ist.
+dass die Erwartungswerte $E(X)=E(Y)=0$ sind.
+\index{Erwartungswert}%
 In diesem Fall ist die Kovarianz der Erwartungswert $E(XY)$ des
 Produkts der beiden Zufallsvariablen.
 Für Stichproben $x_i$ und $y_i$, $i=1,\dots,n$, kann die Kovarianz mit
@@ -38,25 +42,28 @@ Abbildung~\ref{buch:einleitung:fig:kovvergleich} zeigt Beispiele
 verschiedener Stichproben mit mehr oder weniger stark ausgeprägter
 Kovarianz.
 Im rechten Teil der Abbildung sind die Paare $(x_i,y_i)$ als
-Punktpaare aufgezeichnet.
+Punktepaare aufgezeichnet.
 
-Zuoberst zwei ganz zufällige Zahlenreihen.
+\input{chapters/000-einleitung/fig/1-vergleiche.tex}
+
+Zuoberst in der Abbildung~\ref{buch:einleitung:fig:kovvergleich}
+sind zwei ganz zufällige Zahlenreihen dargestellt.
 Die Vorzeichen der Produkte $x_iy_i$ sind wild gemischt, die Punkte
 verteilen sich gleichmässig über alle vier Quadranten.
 Im Mittel heben sich die Beiträge der Produkte $x_iy_i$ weg, die
 Kovarianz ist sehr klein.
 
-In der mittleren Graphik ist die rote Zahlenreihe durch eine Sinusfunktion
+In der zweiten Graphik ist die rote Zahlenreihe durch eine Sinusfunktion
 ersetzt worden.
 Die $x$-Koordinaten der Punkte sind jetzt nicht mehr zufällig, die
-$y$-Koordinaten sind aber immer noch zufällig. 
+$y$-Koordinaten sind aber immer noch ungeordnet. 
 Auch in diesem Fall sind die Punkte gleichmässig über alle Quadranten
 verteilt und die Kovarianz ist klein.
 
 In der dritten Graphik sind die blauen Punkte Werte einer
 Sinusfunktion, denen kleine zufällige Fehler überlagert sind.
 Die Punkte $(x_i,y_i)$ sind jetzt nicht mehr zufällig verteilt,
-sie bewegen sich entlange der $45^\circ$-Geraden in den ersten
+sie bewegen sich entlang der $45^\circ$-Geraden im ersten
 und dritten Quadranten.
 Für die meisten Punkte ist das Produkt $x_iy_i$ daher positiv und
 die Kovarianz, die Summe dieser Produkte, wird gross.
@@ -64,6 +71,8 @@ Die zufällig gestörte blaue Sinusfunktion ist der Sinusfunktion
 ziemlich ähnlich.
 
 In der letzten Graphik schliesslich werden eine Sinusfunktion und
+\index{Sinusfunktion}%
+\index{Cosinusfunktion}%
 eine mit zufälligen Abweichungen gestörte Cosinusfunktion miteinenader
 verglichen.
 Zwar gibt es jetzt einen klaren Zusammenhang, aber die Punkte sind
@@ -72,11 +81,45 @@ Die Kovarianz ist wieder klein.
 Tatsächlich ist die gestörte Cosinusfunktion eben nicht ähnlich zu 
 einer Sinusfunktion, sondern zu einer Cosinusfunktion.
 
-\input{chapters/000-einleitung/fig/1-vergleiche.tex}
-
 Die Kovarianz kann also dazu verwendet werden, eine unbekannten
 Datenreihe mit verschiedenen Funktionen zu vergleichen und zu
 beurteilen, welche am ``ähnlichsten'' ist.
+
+\subsubsection{Zufallsvariablen mit Erwartungswert $\ne  0$}
+Für Zufallsvariablen, deren Erwartungswerte nicht verschwinden,
+wird die Formel für die Kovarianz etwas komplizierter, sie lautet
+\begin{equation}
+\operatorname{cov}(X,Y) = E(XY) - E(X)E(Y).
+\label{buch:einleitung:eqn:cov}
+\end{equation}
+Doch dies ändert nichts an der Ähnlichkeit der Kovarianz 
+mit einem Skalarprodukt.
+
+Dazu muss man allerdings berücksichtigen, dass zwei Zufallsvariablen
+im Vergleich zu den Schwankungen sehr grosse Erwartungswerte haben können.
+Dies hat zur Folge, dass $E(XY)$ von den Erwartungswerten dominiert
+wird, die Schwankungen spielen nur eine untergeordnete Rolle.
+
+Die Zufallsvariable $X-E(X)$ ist hat wegen
+$E(X-E(X))=E(X)-E(E(X))=E(X)-E(X)=0$ Erwartungswert $0$.
+Für Datenreihen $x_i$ und $y_i$ bedeutet dies, dass man
+die Koordinaten $x$ und $y$ durch neue Koordinaten ersetzt,
+so dass die Punktwolke aus den Punkten $(x_i,y_i)$ den
+Nullpunkt des Koordinatensystems als Schwerpunkt hat.
+Das Skalarprodukt von $X-E(X)$ und $Y-E(Y)$ ist dann
+\begin{align*}
+E(\, (X-E(X))\cdot(Y-E(Y))\, )
+&=
+E(XY)-E(X\cdot E(Y)) - E(E(X)\cdot Y) + E(E(X)E(Y))
+\\
+&=
+E(XY) - E(X)E(Y)-E(X)E(Y)+E(X)E(Y)
+\\
+&=
+E(XY)-E(X)E(Y),
+\end{align*}
+dies ist die allgemeine Definition~\eqref{buch:einleitung:eqn:cov}
+der Kovarianz.
 
 %
 % Das Skalarprodukt in der Vektorgeometrie
@@ -91,8 +134,9 @@ Formel
 berechnet.
 Es verschwindet, wenn die Vektoren orthogonal sind, man könnte sagen,
 wenn die Vektoren so verschiedene Richtung wie möglich haben.
-Die Komponenten von $\vec{x}$ in der Richtung von $\vec{y}$ hat die
-Länge 
+Die Orthogonalprojektion von $\vec{x}$ auf die Richtung $\vec{y}$,
+auch die Komponente von $\vec{x}$ in der Richtung von $\vec{y}$ genannt,
+hat die Länge 
 \[
 \frac{\vec{x}\cdot\vec{y}}{|\vec{y}|}
 =
@@ -101,10 +145,11 @@ Länge
 Das Skalarprodukt zweier Vektoren ist nicht grösser als das Produkt
 der Vektorlängen.
 Die Cauchy-Schwarz-Ungleichung, ausführlich diskutiert in
+\index{Cauchy-Schwarz-Ungleichung}%
 Abschnitt~\ref{buch:skalarprodukte:section:cauchyschwarz},
 zeigt, dass das Skalarprodukt mit dem Produkt der Vektorlängen
 genau dann übereinstimmt, wenn die Vektoren die gleiche Richtung
-haben, wenn sie linear abhängig sind.
+haben, wenn sie also linear abhängig sind.
 Die Berechnungsformel~\eqref{buch:einleitung:motiviation:equn:vektorskalar}
 deckt sich mit der Formel zur Berechnung der empirischen Kovarianz.
 
@@ -113,8 +158,8 @@ deckt sich mit der Formel zur Berechnung der empirischen Kovarianz.
 %
 \subsection{Skalarprodukte von Funktionen}
 Die bisherigen Ausführungen zeigen, dass ein Skalarprodukt von
-Vektoren in $\mathbb{R}^n$ ein Mass für die Ähnlichkeit von Vektoren
-ist. 
+Vektoren in $\mathbb{R}^n$ als ein Mass für die Ähnlichkeit von Vektoren
+dienen kann. 
 Die Koordinaten eines Vektors in einer orthogonalen Basis werden
 als Skalarprodukte des Vektors mit den Basisvektoren bestimmt.
 Die Koordinaten geben an, wie ``ähnlich'' zu den Basisvektoren ein Vektor
@@ -126,11 +171,13 @@ x = \sum_{i=1}^n (b_i\cdot x) \, b_i.
 \]
 Das Skalarprodukt ist also eine besonders effiziente und natürlich
 Methode, einen Vektor in Komponenten parallel zu den Basisvektoren
-zu zerlegen und den Vektor auch wieder zu synthetisieren.
+zu zerlegen und den Vektor auch wieder aus den Basisvektoren zu
+synthetisieren.
 
 Diese Idee kann auf sehr viele weitere Situation ausgedehnt werden,
 wenn sich das Konzept des Skalarproduktes darauf übertragen lässt.
-Aus der linearen Algebra weiss man, dass sich aus den Axiomen eines 
+Aus der linearen Algebra \cite{buch:linalg} weiss man, dass sich
+aus den Axiomen eines 
 Skalarproduktes und aus einer Basis alles konstruieren lässt, was
 man für eine solche Analyse benötigt.
 Funktionen bilden bereits einen Vektorraum, wenn es also gelingt,
@@ -144,12 +191,14 @@ orthogonormierte Basen zur Analyse von Funktionen zu verwenden.
 Der Gram-Schmidt-Algorithmus zur Konstruktion einer orthonormierten
 Basis zeigt, dass sich ausgehend von jeder beliebigen linear
 unabhängigen Funktionenmenge eine Basis konstruieren lässt.
-Zum Beispiel kann man orthonormierte Basen aus Polynomen konstruieren,
-Polynome sind natürlich sehr leicht zu evaluieren sind.
+Zum Beispiel kann man orthonormierte Basen aus Polynomen konstruieren.
+Da Polynome sehr leicht zu evaluieren sind, ergeben sich für die
+Numerik nützliche Funktionsbasen.
 
 Meistens haben die Funktionen, die man analysierte möchte, noch
 viel mehr Struktur.
 Fourier hat beobachtet, dass periodische Funktionen zu einer
+\index{Fourier, Joseph Baptiste}%
 besonders erfolgreichen Theorie führen.
 Man kann seine Basisfunktion dadurch charakterisieren, dass sie
 unter Translation des Arguments invariant sind.
@@ -166,14 +215,18 @@ Ableitung selbstadjungiert im Raum der periodischen Funktionen
 mit dem $L^2$-Skalarprodukt.
 Der Laplace-Operator hat ähnliche Eigenschaften und führt
 auf verallgemeinerte harmonische Analysis für Funktionen auf
-einer grossen Zahl für Anwendungen wichtiger Definitionsgebiete.
+einer grossen Zahl von Definitionsgebiete, die auch für
+Anwendungen wichtig sind.
 
 Die Fourier-Funktionen haben aber noch weitere wichtige Eigenschaften.
-Der Definitionsgebiet hat die Struktur einer Gruppe, was sich zum
+Das Definitionsgebiet hat die Struktur einer Gruppe, was sich zum
+\index{Gruppe}%
 Beispiel in den Additionstheoremen äussert.
 Daraus lässt sich eine weitere Operation konstruieren, die Faltung.
+\index{Faltung}%
 Es zeigt sich, dass die Verwendung der Fourier-Basis auch dazu führt,
 dass die Fourier-Transformation aus einem Faltungsprodukt ein gewöhnliches
+\index{Fourier-Transformation}%
 Produkt der Fourierkoeffizienten macht.
 Auch diese Eigenschaft lässt sich auf eine grosse Zahl weiterer
 Gruppen auf interessante Art verallgemeinern.
