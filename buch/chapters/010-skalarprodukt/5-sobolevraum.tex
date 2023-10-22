@@ -14,19 +14,10 @@ nicht stetig sind.
 Die Norm des Hilbertraums $L^2$ ist offenbar nicht stark genug, die
 Stetigkeit der Grenzfunktion sicherzustellen.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/010-skalarprodukt/images/fourierdreieck.pdf}
-\caption{Die 
-Reihe~\ref{buch:skalarprodukt:sobolevraum:eqn:fourierdreieck}
-mit beliebig oft stetig differenzierbaren Partialsummen konvergiert
-gleichmässig gegen die stetige Dreiecksfunktion, aber die Grenzfunktion
-ist nicht mehr überall differenzierbar.
-\label{buch:skalarprodukt:sobolevraum:fig:fourierdreieck}}
-\end{figure}
+\input{chapters/010-skalarprodukt/fig/fourierdreieck.tex}%
 Die Supremum-Norm ist zwar stärker, gleichmässig konvergente Folgen
 von stetigen Funktionen konvergieren gegen einen stetigen Grenzwert.
-Aber sie ist nicht stark genug Differenzierbarkeit zu erzwingen.
+Aber sie ist ebenfalls nicht stark genug, um Differenzierbarkeit zu erzwingen.
 Die Reihe
 \begin{equation}
 f(x)
@@ -141,7 +132,7 @@ die Norm
 \]
 Die $L^2$-Norm einer Funktion in $C^1$ ist immer nach oben beschränkt
 durch die $\|f\|_{W^{1,2}}$.
-Eine Cauchy-Folge $f_n$ in der Norm $\|\;\cdot\;\|_{W^{1,2}}$ ist also
+Eine Cauchy-Folge $f_n$ in der Norm $\normfunc_{W^{1,2}}$ ist also
 automatisch eine Cauchy-Folge in der gewöhnlichen $L^2$-Norm, sie
 konvergiert also gegen eine Funktion $f=\lim_{n\to\infty} f_n \in L^2([a,b])$.
 Gleichzeitig ist die Folge $f_n'$ ebenfalls eine Cauchy-Folge
@@ -152,7 +143,8 @@ Der Grenzwert einer $L^2$-Folge ist nicht notwendigerweise eine
 stetige Funktion, die Norm kann also nicht garantieren, dass die
 Grenzwertfunktion $f$ überhaupt differenzierbar ist.
 Es ist also nicht zulässig zu sagen, dass $f'$ die Ableitung von $f$
-ist.
+ist, aber sie verhält sich als Faktor in Integralen wie die Ableitung
+von $f$.
 
 Der Raum $C^1([a,b])$ der stetig differenzierbaren Funktionen mit
 dem Skalarprodukt ist ein Prähilbertraum, durch Vervollständigung mit
@@ -195,8 +187,8 @@ hat die partiellen ersten Ableitungen
 \frac{\partial f}{\partial x_n}.
 \]
 Für höhere partielle Ableitungen wird diese Notation sehr schwerfällig.
-Die mehrfache Ableitung, die $k_i$-fach nach der Variablen $x_i$ abgeleitet
-ist, wird
+Die mehrfache Ableitung von $f$, die $k_i$-fach nach der Variablen $x_i$
+abgeleitet ist, wird
 \[
 \frac{
 \partial^{k_1+k_2+\dots+k_n} f
@@ -239,12 +231,12 @@ m_i=k_i+l_i,\; i = 1,\dots,n$.
 =
 \frac{|\bm{k}|!}{k_1!\cdots k_n!}
 \)
-\item Potenz: seien die Variablen $x=(x_1,\dots,x_n)$ gegeben, dann soll
+\item Potenz: Seien die Variablen $x=(x_1,\dots,x_n)$ gegeben, dann soll
 \(
 x^{\bm{k}} = x_1^{k_1}\cdot x_n^{k_n}
 \)
 bedeuten.
-\item Ableitungen: sei $f$ eine Funktion der Variablen $x_1,\dots,x_n$, dann
+\item Ableitungen: Sei $f$ eine Funktion der Variablen $x_1,\dots,x_n$, dann
 ist die $\bm{k}$-te Ableitung
 \[
 D^{\bm{k}}f(x_1,\dots,x_n)
@@ -257,7 +249,7 @@ D_1^{k_1}\dots D_n^{k_n} f(x_1,\dots,x_n)
 \partial x_1^{k_1}\dots\partial x_n^{k_n}
 }(x_1,\dots,x_n),
 \]
-darin ist $D_i$ die partielle Ableitung nach $x_i$.
+darin ist $D_i=\partial/\partial_i$ die partielle Ableitung nach $x_i$.
 \end{itemize}
 Die Multiindex-Notation kann zum Beispiel verwendet werden, um die
 Taylor-Reihe der Ordnung $k$ einer Funktionen $f(x_1,\dots,x_n)$ von
@@ -354,7 +346,7 @@ ein Skalarprodukt.
 %
 \subsubsection{Der Sobolev-Raum $W^{k,2}(\Omega)$}
 Der Vektorraum der $k$-mal stetig differenzierbaren Funktionen 
-ist bezüglich der Norm $\|\;\cdot\;\|_{W^{k,2}(\Omega)}$-Norm
+ist bezüglich der Norm $\normfunc_{W^{k,2}(\Omega)}$-Norm
 ein Prähilbertraum, aber nicht vollständig.
 Wenn $f_n$ eine Cauchy-Folge von $k$-mal stetig differenzierbaren
 Funktionen in der $W^{k,2}(\Omega)$-Norm ist, dann ist $D^{\bm{k}}f$
@@ -363,7 +355,7 @@ $L^2(\Omega)$-Norm.
 Da $L^2(\Omega)$ ein Hilbert-Raum ist, gibt es für jeden Multiindex $\bm{k}$
 eine Funktion $f^{\bm{k}}\in L^2(\Omega)$, die Grenzwert
 \[
-f^{\bm{k}} = \lim_{n\to\infty} D^{\bm{k}}f(x)
+f^{(\bm{k})} = \lim_{n\to\infty} D^{\bm{k}}f(x)
 \]
 der Cauchy-Folge $D^{\bm{k}}f$ ist.
 Wie im eindimensionalen Fall ist auch in $W^{k,2}(\Omega)$ nicht
@@ -471,12 +463,15 @@ für alle Testfunktionen $\varphi C_c^{\infty}(\Omega)$ gilt.
 Man kann zeigen, dass die schwache Ableitung einer Funktion
 in $L^2$ eindeutig ist und dass viele der gewohnten Rechenregeln
 sich auf schwache Ableitungen übertragen lassen.
-Besonders wichtig dabei ist die Beobachtung, dass die Funktione
+Besonders wichtig dabei ist die Beobachtung, dass die Funktionen
 in $W^{k,2}(\Omega)$ aus integrierbaren Funktionen besteht, die 
 schwache Ableitungen vom Grad höchstens $k$ in $L^2$ haben.
 
 \begin{beispiel}
-Die Funktion
+\label{buch:skalarprodukt:sobolevraum:bsp:schwachexistiert}
+\input{chapters/010-skalarprodukt/fig/schwach.tex}%
+Die in Abbildung~\ref{buch:skalarprodukt:sobolevraum:fig:schwach} links
+dargestellte Funktion
 \[
 f\colon (0,1) \to \mathbb{R}
 :
@@ -493,7 +488,7 @@ Wir suchen die schwache Ableitung $v$ von $f$.
 In einer Umgebung eines Punktes $x>1$ können wir Testfunktionen $\varphi$
 so wählen, dass ihr Träger vollständig im Inneren des Intervals $(1,2)$
 enthalten ist.
-Mit diesen Testfunktionen können wir so rechnen, wie wenn $f$ die Konstante
+Mit diesen Testfunktionen können wir so rechnen, wie wenn $f$ die konstante
 Funktion $1$ ist.
 Das bedeutet für das Skalarprodukt
 \[
@@ -503,13 +498,13 @@ Das bedeutet für das Skalarprodukt
 =
 [\varphi(x)]_0^1 = 0.
 \]
-Das Skalarprodukt mit jeder beliebigen Testfunktion ist also $0$, wir
+Das Skalarprodukt mit jeder beliebigen Testfunktion ist $0$, wir
 müssen also $v(x)=0$ wählen.
 
 Für $x$ im Teilinterval $(0,1)$ können wir die Testfunktionen so wählen,
 dass der Träger vollständig im Inneren  von $(0,1)$ enthalten ist und
 somit $f$ als die beliebig oft stetig differenzierbare Funktion $x$
-behandelt werden darf..
+behandelt werden darf.
 Für das Skalarprodukt folgt dann
 \[
 -\langle f,\varphi'\rangle
@@ -522,7 +517,7 @@ Für das Skalarprodukt folgt dann
 =
 \langle 1,\varphi(x)\rangle,
 \]
-in diesem Teil des Intervals muss die schache Ableitung den Wert $1$ 
+in diesem Teil des Intervals muss die schwache Ableitung den Wert $1$ 
 haben.
 
 Wir haben somit gefunden, dass die schwache Ableitung von $f$ die
@@ -570,6 +565,7 @@ Trotzdem kann eine Funktion mit einer schwachen Ableitung nicht
 beliebig ``wild'' sein, wie das folgende Beispiel zeigt.
 
 \begin{beispiel}
+\label{buch:skalarprodukt:sobolevraum:bsp:schwachexistiertnicht}
 Die Signum-Funktion
 \[
 f\colon (-1,1) = \operatorname{sgn}(x) =
@@ -579,7 +575,7 @@ f\colon (-1,1) = \operatorname{sgn}(x) =
 \phantom{-}1&\qquad\text{für $0<x<1$}
 \end{cases}
 \]
-ist nicht stetig.
+ist nicht stetig (Abbildung~\ref{buch:skalarprodukt:sobolevraum:fig:schwach}).
 $f$ ist fast überall konstant, in beiden Teilintervallen $(-1,0)$ und
 $(0,1)$ ist die einzige mögliche schwache Ableitung von $f$ die
 Nullfunktion.
@@ -676,7 +672,8 @@ Die Kraft äussert sich in einer Geschwindigkeitsänderung, die aber erst
 messbar wird, wenn man die Beschleunigung eine gewisse Zeit lang aufrecht
 erhält.
 Das Messresultat ist also wieder ein Mittelwert über viele Positionen
-und Zeitpunkte, oder ein Skalarprodukt mit einer Testfunktion.
+und Zeitpunkte, oder anders ausgedrückt ein Skalarprodukt mit einer
+Testfunktion.
 
 Weitere Beispiele kann man auch in der Fluiddynamik finden.
 Die Navier-Stokes-Gleichungen beschreiben die Strömung eines Mediums
@@ -696,6 +693,7 @@ sprechen.
 Alle diese Beispiele zeigen, dass die Ableitung als Änderungsrate, die
 mit einem Differenzenquotienten bestimmt werden kann, eine Idealisierung
 ist.
+Wir können dies sogar etwas formeller zeigen.
 Sei $x(t)$ die Koordinate eines Massepunktes zur Zeit $t$.
 Die Messung kann nicht instantan erfolgen, im besten Fall ist die
 gemessene Position ein Integral der Form

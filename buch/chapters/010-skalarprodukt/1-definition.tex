@@ -9,8 +9,8 @@
 Ein Skalarprodukt ist vor allem deshalb besonders einfach anzuwenden,
 weil es bilinear ist.
 Dies bedeutet, dass man Skalarprodukte ausmultiplizieren kann, die
-Intuition, die man aus der elementaren Algebra mitbringt, führt zum
-Erfolg.
+Intuition für Produkte, die man aus der elementaren Algebra mitbringt,
+führt zum Erfolg.
 Allerdings braucht es für ein erfolgreiches Skalarprodukt noch
 etwas mehr.
 
@@ -55,7 +55,7 @@ besagen, dass die Funktion
 :
 (\vec{u},\vec{v}) \mapsto \vec{u}\cdot\vec{v}
 \]
-linear ist in jedem Faktor.
+in jedem Faktor linear ist.
 Die folgende Definition verallgemeinert die Idee auf einen
 beliebigen reellen Vektorraum $V$.
 
@@ -68,7 +68,7 @@ V\times V \to \mathbb{R}
 (u,v) \mapsto b(u,v)
 \]
 heisst {\em bilinear} oder {\em Bilinearform},
-wenn sie linear ist in jedem Argument, also
+wenn sie linear ist in jedem Argument, wenn also
 \index{bilinear}%
 \index{Bilinearform}%
 \[
@@ -85,11 +85,15 @@ $\lambda,\mu\in\mathbb{R}$.
 
 Das Skalarprodukt der Vektorgeometrie hat aber noch eine weitere
 wichtige Eigenschaft.
-Der Kosinus-Satz der ebenen Trigonometrie ist folgt für
+Es ist kommutativ, es kommt nicht auf die Reihenfolge der Faktoren an.
+Dies ist zum Beispiel wichtig, um den Kosinus-Satz der ebenen Trigonometrie
+zu erhalte.
+Der für den Vektor
 \index{Kosinus-Satz}%
 \index{Trigonometrie}%
 $\vec{c} = \vec{b}-\vec{a}$ 
-durch Berechnung der Länge
+kann man ihn durch Berechnung des Skalarproduktes von $\vec{c}$ mit
+sich selbst als
 \[
 |\vec{c}|^2
 =
@@ -107,12 +111,11 @@ durch Berechnung der Länge
 =
 |\vec{a}|^2 + |\vec{b}|^2 - 2 \vec{a}\cdot\vec{b}
 =
-|\vec{a}|^2 + |\vec{b}|^2 - 2 |\vec{a}|\;|\vec{b}|\cos\alpha,
+|\vec{a}|^2 + |\vec{b}|^2 - 2 |\vec{a}|\;|\vec{b}|\cos\alpha
 \]
-wobei wir verwendet haben, dass $\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$
-ist.
-Die zusätzliche Eigenschaft ist also, dass sich die Faktoren
-des Skalaproduktes vertauschen lassen.
+erhalten.
+Dabei wurde verwendet, dass $\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$ ist.
+Für ein Skalarprodukt heisst die Kommutativität allerdings anders.
 
 \begin{definition}
 Eine Funktion $b\colon V\times V \to\mathbb{R}$ heisst {\em symmetrisch},
@@ -120,7 +123,7 @@ wenn $b(u,v)=b(v,u)$ für alle $u,v\in V$.
 \index{symmetrisch}%
 \end{definition}
 
-Für eine symmetrische Bilinearform erfüllt die binomische Formel
+Eine symmetrische Bilinearform erfüllt die binomische Formel
 \begin{align*}
 b(u+v,u+v)
 &=
@@ -129,21 +132,23 @@ b(u,u+v) + b(v,u+v)
 b(u,u)+b(u,v)+b(v,u)+b(v,v)
 \\
 &=
-b(u,u) + 2b(u,v) + b(v,v).
+b(u,u) + 2b(u,v) + b(v,v),
 \end{align*}
+ein weiteres Indiz dafür, dass das Skalarprodukt bei der algebraischen
+Rechnung wie ein ``gewöhnliches'' Produkt behandelt werden kann.
 
 Eine Bilinearform auf einem endlichdimesionalen Vektorraum $V$
 kann mit Hilfe einer Basis der Berechnung leichter zugänglich
 gemacht werden.
 Seien $b_1,\dots,b_n\in V$ die Vektoren einer Basis von $V$.
 Dann können Vektoren $u,v\in V$ mit Hilfe der Koordinaten
-$u_i\in\mathbb{R}$ und $v_i\in\mathbb{R}$ und der Standardbasisvektoren
-als
+$u_i\in\mathbb{R}$ und $v_i\in\mathbb{R}$ als Linearkombinationen
 \[
-u = \sum_{i=1}^n u_ib_i,\qquad
+u = \sum_{i=1}^n u_ib_i,
+\qquad \text{und}\qquad
 v = \sum_{i=1}^n v_ib_i
 \]
-geschrieben werden.
+aus Basisvektoren geschrieben werden.
 Für das Skalarprodukt folgt dann
 \begin{align*}
 \langle u,v\rangle
@@ -155,7 +160,7 @@ Für das Skalarprodukt folgt dann
 u_i \underbrace{\langle b_i,b_k\rangle}_{\displaystyle = g_{ik}} v_k.
 \end{align*}
 Schreibt man die $u_i$ und $v_k$ in einen $n$-dimensionalen Spaltenvektor
-und die $g_{ik}$ in eine $n\times n-$-Matrix, kann das Skalarprodukt in
+und die $g_{ik}$ in eine $n\times n$-Matrix $G$, kann das Skalarprodukt in
 Matrixschreibweise als
 \[
 \langle u,v\rangle
@@ -192,10 +197,11 @@ Jeder Vektor $\ne 0$ hat eine positive Länge.
 Für eine beliebige Bilinearform ist jedoch nicht automatisch
 sichergestellt, dass $b(u,u)\ne 0$ ist für $u\ne 0$.
 Ausserdem kann ein Längenbegriff nur dann aus $b$ abgeleitet werden,
-wenn zusätzlich $b(u,u)>0$ ist ür $u\ne 0$, da sich andernfalls
+wenn zusätzlich $b(u,u)>0$ ist für $u\ne 0$, da sich andernfalls
 die Wurzel nicht ziehen lässt.
 
 \begin{beispiel}
+\label{buch:skalarprodukt:definition:bsp:hyperbolisch}
 Die symmetrische Bilinearform
 \[
 b(x,y)
@@ -228,9 +234,64 @@ für alle von 0 verschiedenen Vektoren $u\ne 0$ gilt.
 \end{definition}
 
 \begin{definition}
-Eine {\em Skalarprodukt} ist eine positiv definite symmetrische Bilinearform.
+\label{buch:skalarprodukt:definition:def:skalarprodukt}
+Eine {\em Skalarprodukt} ist eine positiv definite, symmetrische Bilinearform.
 \index{Skalarprodukt}%
 \end{definition}
+
+\input{chapters/010-skalarprodukt/fig/kreise.tex}%
+
+Verschiedene Skalarprodukte in zwei Dimensionen kann man durch ihre
+zugehörten ``Kreise'' visualisieren
+(Abbildung~\ref{buch:skalarprodukt:definition:fig:kreise}).
+Damit meinen wir die Menge der Vektoren, die Norm $1$ haben.
+Abbildung~\ref{buch:skalarprodukt:definition:fig:kreise} zeigt
+die Kreise für drei verschiedene Skalarprodukte.
+Links ist der Kreis für das Standard\-skalarprodukt $x_1y_1+x_2y_2$
+dargestellt, der tatsächlich die Form eines Kreises hat.
+Das Skalarprodukt von
+Beispiel~\ref{buch:skalarprodukt:definition:bsp:hyperbolisch}
+führt auf die Kurven mit der Gleichung
+\[
+x_1^2-x_2^2=1,
+\]
+dies sind Hyperbeln.
+Es heisst daher auch das hyperbolische Skalarprodukt, obwohl es
+\index{Skalarprodukt!hyperbolisch}
+im strengen Sinne der
+Definition~\ref{buch:skalarprodukt:definition:def:skalarprodukt}
+kein Skalarprodukt ist.
+In der Mitte schliesslich ist der Kreis für das Skalarprodukt 
+\[
+\langle x,y\rangle
+=
+2
+\cdot
+\frac{x_1+x_2}{\!\sqrt{2}}
+\cdot
+\frac{y_1+y_2}{\!\sqrt{2}}
++
+\frac12
+\cdot
+\frac{x_1-x_2}{\!\sqrt{2}}
+\cdot
+\frac{y_1-y_2}{\!\sqrt{2}}
+=
+\frac{5x_1y_1 + 3x_1y_2 + 3x_2y_1 + 5x_2y_2}{2}
+\]
+dargestellt.
+Die zugehörige Norm ist
+\[
+\|x\|^2
+=
+\frac14(
+5x_1^2 + 5x_2^2 + 6x_1x_2).
+\]
+Der Kreis bestehen aus den Punkten einer Ellipse mit den Halbachsen
+$1$ und $\frac12$, die um $45^\circ$ gegenüber den Koordinatenachsen
+verdreht sind.
+Diese Ellipse verläuft durch die Punkte $(\pm\frac12,\pm\frac12)$ und
+$(\pm1,\mp1)$.
 
 Für die Gram-Matrix $G$ eines Skalarproduktes bedeutet die Forderung,
 dass das Skalarprodukt bilinear ist, dass die Matrix $G$ positiv
@@ -243,6 +304,7 @@ Ein Skalarprodukt hat jetzt alle Eigenschaften, die erlauben, einen
 Abstandsbegriff zu definieren.
 
 \begin{definition}
+\label{buch:skalarprodukt:definition:def:norm}
 Die zu einem Skalarprodukt $\langle\;\,,\;\rangle$ gehörige Norm ist
 definiert als
 \[
@@ -255,7 +317,8 @@ für $v\in V$.
 
 Die Norm erfüllt $\|\lambda v\| = |\lambda|\,\|v\|$ für jeden Vektor
 $v\in V$ und $\lambda\in\mathbb{R}$.
-Skalierung eines Vektors skaliert die Norm auf die gleiche Art.
+In Worten bedeutet dies, dass bei der Skalierung eines Vektors die Norm
+auf die gleiche Art skaliert.
 
 %
 % Sesquilineare Funktionen
@@ -281,6 +344,9 @@ i^2 b(u,u)
 \]
 Da $|i|=1$ ist, würde man eher erwarten, dass $iu$ die gleiche 
 Länge hat wie $u$, dass also $b(iu,iu)=b(u,u)$.
+Bilinearität funktioniert also nicht als Bedingung, um ein Skalarprodukt
+zu konstruieren, für welches auch die geometrische Intuition des Abstands
+anwendbar bleibt.
 
 \begin{definition}
 Eine Funktion $f\colon V\to U$ zwischen komplexen Vektorräumen 
@@ -290,7 +356,7 @@ f(\lambda u + \mu v)
 =
 \overline{\lambda} f(u) + \overline{\mu} (v)
 \]
-für alle $u,v\in V$ und $\lambda,\mu\in \mathbb{C}$.
+ist für alle $u,v\in V$ und $\lambda,\mu\in \mathbb{C}$.
 \end{definition}
 
 Im obengenannten Beispiel wird $b(iu,iu)>0$, wenn $b$ im ersten Faktor
@@ -424,10 +490,11 @@ heisst die {\em transponiert konjugierte} oder {\em hermitesch konjugierte}
 Matrix.
 \end{definition}
 
-Eine Sesquilinearform kann daher geschrieben werden als
+Eine Sesquilinearform kann immer geschrieben werden als
 \(
-f(u,v) = u^*Hv.
+f(u,v) = u^*Hv
 \)
+mit einer hermiteschen Matrix $H$.
 
 %
 % Hermitesche Formen
@@ -521,7 +588,7 @@ auf dem komplexen Vektorraum $V$ heisst {\em positiv definit}, wenn
 \[
 \langle u,u\rangle > 0
 \]
-für alle $u\ne 0$ in $V$.
+gilt für alle $u\ne 0$ in $V$.
 Ein {\em komplexes Skalarprodukt} ist eine positiv definite hermitesche
 Sesquilinearform.
 Die zugehörige {\em Norm} eines Vektors ist

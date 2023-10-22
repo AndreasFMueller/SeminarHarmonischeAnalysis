@@ -1,0 +1,80 @@
+%
+% kreise.tex -- Kreise von skalarprodukten
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\l{2.1}
+\def\axes{
+\draw[->] (-\l,0) -- (\l,0) coordinate[label={$x_1$}];
+\draw[->] (0,-\l) -- (0,\l) coordinate[label={$x_1$}];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-4.5cm]
+\axes
+\draw[color=red,line width=1.4pt] (0,0) circle[radius=1.5];
+\draw (1.5,-0.05) -- (1.5,0.05);
+\draw (-1.5,-0.05) -- (-1.5,0.05);
+\draw (-0.05,1.5) -- (0.05,1.5);
+\draw (-0.05,-1.5) -- (0.05,-1.5);
+\node at (1.5,0) [below right] {$1$};
+\node at (-1.5,0) [below left] {$-1$};
+\node at (0,1.5) [above left] {$1$};
+\node at (0,-1.5) [below left] {$-1$};
+\node at (0,{-\l-0.3}) {$x_1^2+x_2^2=1\mathstrut$};
+\end{scope}
+
+\begin{scope}
+\axes
+\def\s{1.4142}
+\begin{scope}[rotate=45]
+\draw[color=red,line width=1.4pt] (0,0) ellipse (1cm and 2cm);
+\end{scope}
+\draw (\s,-0.05) -- (\s,0.05);
+\draw (-\s,-0.05) -- (-\s,0.05);
+\draw (-0.05,\s) -- (0.05,\s);
+\draw (-0.05,-\s) -- (0.05,-\s);
+\node at (\s,0) [below right] {$1$};
+\node at (-\s,0) [below left] {$-1$};
+\node at (0,\s) [above right] {$1$};
+\node at (0,-\s) [below left] {$-1$};
+\draw[line width=0.3pt] (\l,-\l) -- (-\l,\l);
+\draw[line width=0.3pt] (-\l,-\l) -- (\l,\l);
+\node at (0,{-\l-0.3}) {$5x_1^2+6x_1x_2+5x_2^2=4\mathstrut$};
+\fill[color=red] ({0.5*\s},{0.5*\s}) circle[radius=0.06];
+\fill[color=red] ({-0.5*\s},{-0.5*\s}) circle[radius=0.06];
+\fill[color=red] ({\s},{-\s}) circle[radius=0.06];
+\fill[color=red] ({-\s},{\s}) circle[radius=0.06];
+\end{scope}
+
+\begin{scope}[xshift=4.5cm]
+\axes
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1.4:1.4,samples=20]
+		({cosh(\x)},{sinh(\x)});
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1.4:1.4,samples=20]
+		({-cosh(\x)},{sinh(\x)});
+\draw (1,-0.05) -- (1,0.05);
+\draw (-1,-0.05) -- (-1,0.05);
+\draw (-0.05,1) -- (0.05,1);
+\draw (-0.05,-1) -- (0.05,-1);
+\node at (0,1) [above left] {$1$};
+\node at (0,-1) [below left] {$-1$};
+\node at (1,0) [above left] {$1$};
+\node at (-1,0) [above left] {$-1$};
+\node at (0,{-\l-0.3}) {$x_1^2-x_2^2=1\mathstrut$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

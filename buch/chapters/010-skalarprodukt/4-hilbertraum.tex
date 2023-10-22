@@ -71,7 +71,7 @@ durch eine beliebige positiv definite Matrix $A$ durch
 \]
 definiert werden.
 Wir schreiben die aus $\langle\;,\;\rangle_A$ abgeleitete Norm mit
-$\|\;\cdot\;\|_A$.
+$\normfunc_A$.
 Solange unser primäres Interesse der Approximation von Funktionen gilt,
 kommt es vor allem darauf an, dass die Norm, die aus dem Skalarprodukt
 abgeleitet wird, zu den gleichen konvergenten Folgen führen.
@@ -83,17 +83,17 @@ Dann folgt, dass
 m\|u\|\le \|u\|_A\le M\|u\|
 \]
 für beliebige Vektoren $u\in\mathbb{R}^n$.
-Daraus kann man jetzt ableiten, dass die beiden Normen $\|\;\cdot\;\|$
-und $\|\;\cdot\;\|_A$ auf die gleichen Cauchy-Folgen und die gleichen
-konvergengen Folgen führen.
+Daraus kann man jetzt ableiten, dass die beiden Normen $\normfunc$
+und $\normfunc_A$ auf die gleichen Cauchy-Folgen und die gleichen
+konvergenten Folgen führen.
 Wir zeigen dies für Cauchy-Folgen:
 \begin{enumerate}
 \item
-Sei $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|$,
+Sei $u_k$ eine Cauchy-Folge bezüglich der Norm $\normfunc$,
 und $\varepsilon>0$.
 Wir müssen zeigen, dass $u_k$ auch eine Cauchy-Folge ist bezüglich
-der Norm $\|\;\cdot\;\|_A$.
-Da $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|$ ist,
+der Norm $\normfunc_A$.
+Da $u_k$ eine Cauchy-Folge bezüglich der Norm $\normfunc$ ist,
 gibt es ein $N>0$ derart, dass
 $\|u_k-u_l\|<\varepsilon/M$ für $k,l>N$.
 Dann folgt aber
@@ -107,7 +107,7 @@ M\frac{\varepsilon}{M}
 \varepsilon
 \]
 für $k,l>N$.
-Somit ist $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\;\cdot\;\|_A$.
+Somit ist $u_k$ eine Cauchy-Folge bezüglich der Norm $\normfunc_A$.
 \item
 Ist umgekehrt  $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\,\cdot\,\|_A$,
 dann gibt es ein $N>0$ derart, dass $\|u_k-u_l\|_A<m\varepsilon$ ist für
@@ -122,7 +122,7 @@ $\|\,\cdot\,\|$.
 \end{enumerate}
 In einem endlichdimensionalen Prähilbertraum hat die Wahl des Skalarproduktes
 keinen Einfluss darauf, ob eine Folge eine Cauchy-Folge ist oder nicht.
-Orthonormierte Vektoren werden natürlich im allgemeinen nicht mehr
+Orthonormierte Vektoren werden natürlich im Allgemeinen nicht mehr
 orthonormiert, dies ist jedoch ein Aspekt, dem wir uns erst später
 zuwenden werden.
 
@@ -149,7 +149,7 @@ a_2 - \langle b_1,a_2\rangle b_1
 \|a_2 - \langle b_1,a_2\rangle b_1\|
 }
 \\
-&\;\vdots
+&\phantom{i}\vdots
 \\
 b_n
 &=
@@ -160,9 +160,9 @@ a_n - \sum_{k=1}^{n-1} \langle b_k,a_n\rangle b_k
 }.
 \end{align*}
 
-In einem endlichdimensionalen Vektorraum der Dimensiobn $n$ bricht
+In einem endlichdimensionalen Vektorraum der Dimension $n$ bricht
 der Prozess ab, sobald eine orthonormierte Basis $b_1,\dots,b_n$
-gefunden wurde.
+aus $n$ Vektoren gefunden wurde.
 Jeder andere Vektor $v$ lässt sich dann als Linearkombination
 \begin{equation}
 v
@@ -184,15 +184,16 @@ Reihe der Fall wäre.
 In einem unendlichdimensionalen Prähilbertraum bricht der
 Orthogonalisierungsprozess nicht ab, es gibt immer noch einen
 linear unabhängigen Vektor, der nicht in dem von den bereits
-gefunden Vektoren aufgespannten Raum liegt.
+gefundenen Vektoren aufgespannten Raum liegt.
 Die Summe~\ref{buch:skalarprodukt:hilbertraum:synthese} wird dann
 eine unendliche Summe, die nur im Sinne eines Grenzwertes der
 Partialsummenfolge
-\[
+\begin{equation*}
 s_n = \sum_{k=1}^n \langle b_k,v\rangle b_k
-\]
+\end{equation*}
 ausgewertet werden kann.
-Man darf zwar davon ausgehen, dass $s_n$ gegen $v$ konvergiert,
+Man darf zwar aufgrund der Konstruktion aus $v$ davon ausgehen,
+dass $s_n$ gegen $v$ konvergiert,
 aber für eine beliebige Folge von Koeffizienten $c_k$ ist nicht
 garantiert, dass die Summe
 \[
@@ -200,7 +201,7 @@ garantiert, dass die Summe
 =
 \lim_{n\to\infty} \sum_{k=1}^n c_kb_k
 \]
-konvergiert.
+einen Grenzwert hat.
 Ein nützliche Theorie kann nur entstehen, wenn gefordert wird,
 dass jede Cauchy-Folge des Prähilbertraums tatschächlich konvergiert.
 
@@ -232,18 +233,20 @@ Die Summanden der Reihe~\eqref{buch:skalarprodukt:eqn:rechteckreihe}
 sind Sinus-Funktionen, von denen wir später zeigen werden, dass sie
 orthogonal sind.
 Seien $s_n(x)$ die Partialsummen der Reihe, also
-\[
+\begin{equation}
 s_n(x) = \frac{4}{\pi}\sum_{k=0}^n \frac{\sin (2k+1)x}{2k+1},
-\]
+\label{buch:skalarprodukt:hilbertraum:eqn:sn}
+\end{equation}
 dann kann man auch die Norm $\|s_n-s_m\|$, es gilt nämlich
-\[
+\begin{equation}
 \|s_n-s_m\|
 =
 \biggl\|
 \frac{4}{\pi}
 \sum_{k=m}^n \frac{\sin (2k+1)x}{2k+1}
 \biggr\|,
-\]
+\label{buch:skalarprodukt:hilbertraum:eqn:snsm}
+\end{equation}
 wobei wir $n>m$ angenommen haben, was wir ohne Beschränkung der 
 Allgemeinheit tun dürfen.
 Die Norm eines einzeln Terms ist
@@ -256,18 +259,22 @@ Die Norm eines einzeln Terms ist
 =
 \int_{-\pi}^\pi \frac12\,dx - \int_{-\pi}^\pi \frac{\cos rx}{2}\,dx.
 \notag
-\intertext{Der bweite Term ist ein Integral über eine Periode des
+\intertext{Der zweite Term ist ein Integral über eine Periode des
 Integranden und verschindet daher.
 Der erste Term ergibt daher}
 \|\sin rx\|^2
-&= \pi\\
+&= \pi.
+\intertext{Für die Terme der Summe
+\eqref{buch:skalarprodukt:hilbertraum:eqn:sn}
+folgt daher}
 \biggl\|
 \frac{\sin{2k+1}x}{2k+1}
 \biggr\|^2
 &=
-\frac{\pi}{(2k+1)^2}
+\frac{\pi}{(2k+1)^2}.
 \notag
-\\
+\intertext{Für die Differenz
+\eqref{buch:skalarprodukt:hilbertraum:eqn:snsm} finden wir daher}
 \|s_n-s_m\|^2
 \notag
 &=
@@ -275,7 +282,7 @@ Der erste Term ergibt daher}
 \sum_{k=m}^m \frac{\pi}{(2k+1)^2}
 =
 \frac{16}{\pi}
-\sum_{k=m}^m \frac{1}{(2k+1)^2}
+\sum_{k=m}^m \frac{1}{(2k+1)^2}.
 \label{buch:skalarprodukt:hilbertraum:eqn:bsprest}
 \end{align}
 Da aus dem Analysisunterricht bekannt ist, dass die Reihe $\sum_k\frac1{k^2}$
@@ -296,7 +303,7 @@ $C_{\mathbb{R}}([-\pi,\pi])$ gefunden, die darin nicht konvergiert.
 %
 \subsection{Hilbert-Basis}
 Sei jetzt $H$ ein Hilbert-Raum.
-Fürht man wieder die Konstruktion einer orthonormierten Basis durch,
+Führt man wieder die Konstruktion einer orthonormierten Basis durch,
 entsteht eine Menge $\mathcal{B}=\{b_1,b_2,\dots\}$ orthonormierter
 Vektoren.
 In einem unendlichdimensionalen Hilbert-Raum ist $\mathcal{B}$ eine
@@ -322,7 +329,10 @@ k\in \mathbb{N}
 \]
 wurden in Beispiel~\ref{buch:skalarprodukt:hilbertraum:bsp:sinreihe}
 die Rechteckfunktion synthetisiert.
-Für die Konstante Funktion $v(x)$ sind die Koeffizienten
+Doch reichen diese Funktionen nicht aus, um alle Funktionen auf
+dem Intervall $[-\pi,\pi]$ zu synthetisieren.
+
+Für die konstante Funktion $v(x)$ sind die Koeffizienten
 \[
 \langle v,b_k\rangle
 =
@@ -437,12 +447,16 @@ aus einer Folge von orthonormierten Vektoren linear zu kombinieren.
 Dies verträgt sich nicht mit der Intuition, die in endlichdimensionalen
 Vektorräumen entstanden ist.
 Separabilität ist eine Art ``Endlichkeitseigenschaft''.
-Man findet sie zum Beispiel bei den $L^2$-Räumen mit kompakten
-Definitionsgebiet, auch Kompaktheit ist eine topologische
-Endlichkeitseigenschaft.
+Man findet sie zum Beispiel bei den $L^2$-Räumen mit kompaktem
+Definitionsgebiet.
+Kompaktheit kann als eine topologische
+Endlichkeitseigenschaft angesehen werden.
 Es lassen sich aber auch nicht separable Hilberträume konstruieren,
 zum Beispiel sogenannte fastperiodische Funktionen.
 \index{fastperiodische Funktionen}%
+Für unsere Anwendungen sind nicht separable Hilberträume jedoch nicht
+notwendig und wir können im folgenden annehmen, dass alle Hilberträume
+separabel sind und somit eine Hilbert-Basis haben.
 
 %
 % Der Hilbertraum $l^2$
@@ -551,7 +565,8 @@ Die Norm von $v$ ist
 =
 \sum_{k=0}^\infty c_k^2
 =
-\|c\|_2^2
+\|c\|_2^2.
+\qedhere
 \]
 \end{proof}
 
@@ -572,7 +587,7 @@ Die Identität
 \|v\|^2 = \|\varphi(v)\|_2^2
 \]
 heisst {\em Parseval-Gleichung}.
-Aus der Polaridenttität folgt dann auch die
+Aus der Polaridentität folgt dann auch die
 {\em Parseval-Plancherel-Formel}
 \[
 \langle u,v\rangle_H
@@ -585,7 +600,7 @@ Aus der Polaridenttität folgt dann auch die
 \]
 \end{definition}
 
-Die endlichdimensionalen Hilberträume können auf natürliche Art auf
+Die endlichdimensionalen Hilberträume können auf
 natürliche Art in $l^2$ eingebettet werden, indem die Koordinaten
 eines $n$-dimensionalen Vektors auf die ersten $n$-Komponenten der
 Folge in $l^2$ abgebildet werden.
@@ -638,6 +653,9 @@ von $l_0$ der Hilbert-Raum $l^2$ ist.
 Der Prähilbert-Raum rechtfertigt, dass man in Anwendungen im Sinne
 einer Approximation mit endlich vielen der Koeffizienten $c_k$
 rechnen kann.
+Im Kontext der Fourier-Theorie sind dies
+die trigonometrischen Polynome, mit denen sich jede periodische
+Funktion approximieren lässt.
 
 %
 % Der Hilbert-Raum $L^2$
@@ -648,6 +666,7 @@ mit dem bekannten Skalarprodukt ist ein Prähilbertraum.
 Wir werden später zeigen, dass die Funktionen
 \[
 1, \cos kx \quad\text{und}\quad \sin kx
+\qquad \text{mit $k\in\mathbb{N}$ und $ k\ge 1$}
 \]
 orthogonal sind bezüglich dieses Skalarproduktes.
 Es wird sich zeigen, dass diese Funktionen nach geeigneter Normierung

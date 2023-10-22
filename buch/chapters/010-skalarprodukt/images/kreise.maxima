@@ -1,0 +1,6 @@
+u1: (x1+x2)/sqrt(2);
+u2: (x1-x2)/sqrt(2);
+v1: (y1+y2)/sqrt(2);
+v2: (y1-y2)/sqrt(2);
+expand(2*u1*v1 + u2*v2/2);
+expand(2*u1*u1 + u2*u2/2);

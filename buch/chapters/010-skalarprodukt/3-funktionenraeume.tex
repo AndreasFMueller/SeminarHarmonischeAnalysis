@@ -7,7 +7,8 @@
 \label{buch:skalarprodukt:section:funktionenraeume}}
 \kopfrechts{Funktionenräume}
 Ziel der harmonischen Analysis ist die effiziente Approximation einer
-grossen Klasse von Funktionen.
+grossen Klasse von Funktionen durch einfach zu berechnende Funktionen
+oder durch Funktionen mit besonderen Eigenschaften.
 Als approximierende Funktionen kommen stetige Funktionen, Polynome,
 trigonometrische Polynome oder eine ähnlich, einfach konstruierbare
 Funktionenfamilie in Frage.
@@ -55,13 +56,14 @@ Ein {\em metrischer Raum} ist ein Menge $X$ mit einer Metrik.
 \end{definition}
 
 In einem metrischen Raum ist der Begriff des Grenzwertes übertragbar.
-Mit dem Begriff des Grenzwertes lässt sich auch der Begriff der
-Stetigkeit verallgemeinern.
+Da Stetigkeit von Funktionen mit Grenzwerten definiert werden kann,
+lässt sich sich so auch der Begriff der Stetigkeit auf Abbildungen
+zwischen beliebigen metrischen Räumen ausdehnen.
 
 \begin{definition}
 Ist $x_n\in X$ eine Folge von Punkten in einem metrischen Raum $X$,
 dann heisst $x$ der Grenzwert der Folge $x_n$, wenn es für jedes
-$\varepsilon>0$ ein $N>0$ gibt derhart, dass
+$\varepsilon>0$ ein $N>0$ gibt derart, dass
 $d(x_n,x)\le \varepsilon$ für alle $n>N$.
 Eine Funktion $f\colon X\to Y$ zwischen metrischen Räumen heisst
 stetig im Punkt $x\in X$, wenn für jede Folge $x_n\in X$ mit
@@ -97,33 +99,47 @@ $x_0$ den gleichen Wert haben.
 Ausser in trivialen Fällen wird es Funktionen geben, die zwar im Punkt
 $x_0$ übereinstimmen, sich aber in mindestens einem anderen Punkt
 unterscheiden.
+Es müssen also alle Funktionswerte in die Definition eines Abstands
+berücksichtig werden.
+Für Vektorräume, mit denen wir hier in erster Linie zu tun habe, 
+müssen aber auch noch die algebraischen Eigenschaften einfliessen.
 
-%
-% Normierte Räume
-%
-\subsubsection{Normierte Räume}
-Die stetigen Funktionen bilden aber keine strukturlose Menge, sie
-bilden einen Vektorraum: die Summe von stetigen Funktionen ist ebenfalls
-stetig, multiplizieren einer stetigen Funktion mit einem Skalar führt
-nicht aus der Menge der stetigen Funktionen heraus.
-Die für den Grenzwertbegriff von Funktionen verwendete Abstandsmessung 
-sollte der Vektorraumstruktur ebenfalls Rechnung tragen.
+Der Begriff der Norm von
+Definition~\ref{buch:skalarprodukt:cauchyschwarz:def:norm}
+trägt diesen Aspekten Rechnung.
+Dies reicht aber noch nicht, denn wir möchten auch sicherstellen,
+dass Grenzwerte existieren.
+Der im nächsten Abschnitt eingeführte Begriff der Vollständigkeit
+erreicht dies.
+Abschnitt~\ref{buch:skalarprodukt:subsection:normfuerstetigefunktionen}
+zeigt, wie die Supremum-Norm für stetige Funktionen auf den Begriff
+der gleichmässigen Konvergenz führt.
 
 \begin{definition}
-\label{buch:skalaprodukt:funktionenraume:def:norm}
-Sei $V$ ein Vektorraum über $\mathbb{R}$, dann heisst eine Funktion
-\( \|\;\cdot\;\| \colon V \to \mathbb{R}\) eine {\em Norm}, wenn gilt
-\index{Norm}
-\begin{enumerate}
-\item
-Definit: $ \|x\| = 0 \Rightarrow x=0$
-\item
-Homogeneität: $ \| \lambda x \| = |\lambda| \cdot \|x\|$
-\item
-Dreiecksungleichung: $\|x+y\| \le \|x\| + \|y\|$
-\end{enumerate}
-Ein {\em normierter Raum} ist ein Vektorraum $V$ mit einer Norm.
+Ein reeller oder komplexer Vektorraum mit einer Norm heisst ein
+{\em normierter Raum}.
 \end{definition}
+
+%Für stetige Funktionen bietet sich daher die Supremum-Norm
+%\[
+%\|f\|_\infty = \sup_{x\in X} |f(x)|
+%\]
+%als Norm an.
+%Eine Folge $(f_n)$ von Funktionen, die in dieser Norm gegen die
+%Grenzfunktion $f$ konvergiert, hat die Eigenschaft, dass für jedes
+%$\varepsilon>0$ ein $N>0$ existiert, so dass
+%\[
+%\|f_n-f\|_\infty \varepsilon\quad\forall\; n>N
+%\]
+%gilt.
+%Aus der Definition der Supremum-Norm folgt dann auch
+%\[
+%|f_n(x)-f(x)|<\varepsilon\quad\forall\; n>N
+%\]
+%ist.
+%Dies ist die Definition der gleichmässigen Konvergenz einer Funktionenfolge.
+%Konvergenz in der Supremum-Norm ist daher die gleichmässige Konvergenz
+%von Funktionenfolgen.
 
 %
 % Vollständigkeit
@@ -137,6 +153,7 @@ durch Polyome approximieren, sie ist aber selbst kein Poylnome
 
 \begin{definition}
 Ein Folge $x_n\in X$ in einem metrischen Raum heisst {\em Cauchy-Folge},
+\index{Cauchy-Folge}%
 wenn es für jedes $\varepsilon>0$ ein $N>0$ gibt derart, dass 
 $|x_n-x_m|<\varepsilon$ wenn $n,m>N$ ist.
 \end{definition}
@@ -147,6 +164,7 @@ kaum mehr ändern und für die man daher Konvergenz erwarten würde.
 \begin{definition}
 Ein normierter Raum heisst {\em vollständig} oder ein Banach-Raum,
 wenn jede Cauchy-Folge einen Grenzwert hat.
+\index{vollständig}%
 \end{definition}
 
 Die rationalen Zahlen $\mathbb{Q}$ bilden keinen vollständigen
@@ -168,7 +186,7 @@ Im besten Fall konvergieren stetige Funktionen gegen stetige Funktionen,
 es wird sich aber zeigen, dass diese Anforderung zu streng ist.
 
 %
-% Norm fpr stetige Funktionen
+% Norm für stetige Funktionen
 %
 \subsection{Norm für stetige Funktionen
 \label{buch:skalarprodukt:subsection:normfuerstetigefunktionen}}
@@ -236,8 +254,8 @@ Dreiecksungleichung:
 \end{enumerate}
 
 Eine Cauchy-Folge $f_n$ von Funktionen $X\to \mathbb{R}$ hat die
-Eigenschaft, dass für jedes $\varepsilon >0$ ein $N>0$ existiert,
-derart dass $\|f_n-f_m\|<\varepsilon$ ist.
+Eigenschaft, dass für jedes $\varepsilon >0$ ein $N>0$ existiert
+derart, dass $\|f_n-f_m\|<\varepsilon$ ist.
 Da die Norm der maximale Unterschied von Funktionswerten ist,
 folgt dass für eine Cauchy-Folge in $C(X)$ die Folge $f_n(x)$ eine
 Cauchy-Folge in $\mathbb{R}$ ist und damit einen Grenzwert in $\mathbb{R}$
@@ -253,12 +271,12 @@ es ein $N>0$ gibt derart, dass
 |f_n(x)-f(x)|
 \]
 ist für alle $n>N$ und unabhängig von $x\in X$.
-Die Konvergenz bezüglich der $\|\;\cdot\;\|$-Norm ist also die wohlbekannte
-gleichmässige Konvergenz.
+Die Konvergenz bezüglich der $\normfunc$-Norm ist also die wohlbekannte
+{\em gleichmässige Konvergenz}.
 Es kann gezeigt werden, dass die Grenzfunktion wieder stetig ist.
 
 \begin{satz}
-Der Raum der stetigen Funktion $C(X)$ mit der Supremumg-Norm ist
+Der Raum der stetigen Funktion $C(X)$ mit der Supremum-Norm ist
 ein Banach-Raum.
 \end{satz}
 
@@ -338,7 +356,7 @@ Die $L^1$-Norm ist tatsächlich eine Norm, wir verifizieren die
 definierenden Eigenschaften einer Norm.
 \begin{enumerate}
 \item
-Definit: Sei $f$ eine stetige Funktion mit $\|f\|_1=0$
+Positiv definit: Sei $f$ eine stetige Funktion mit $\|f\|_1=0$
 Wäre $f\ne 0$, dann gäbe es einen Punkt $x_0\in X$ mit $f(x_0) \ne 0$.
 Da $f$ stetig ist, ist $f|(x)| > \frac12|f(x_0)|$ für $x$ in einer
 $\delta$-Umgebung von $x_0$.
@@ -366,19 +384,19 @@ Homogeneität folgt durch direkte Rechnung
 \]
 \item
 Die Dreiecksungleichung folgt aus
-\[
+\begin{align*}
 \|f+g\|_1
-=
+&=
 \int_X |f(x) + g(x)|\,dx
-\le
+\\
+&\le
 \int_X |f(x)| + |g(x)|\,dx
 =
-\int_X |f(x)| + \int_X |g(x)|\,dx
+\int_X |f(x)|\,dx + \int_X |g(x)|\,dx
 =
 \|f\|_1 + \|g\|_1.
-\]
+\end{align*}
 \end{enumerate}
-
 Die $L^1$-Norm ist etwas ``schwächer'' als die Supremum-Norm im
 folgenden Sinne.
 Eine in der Supremum-Norm konvergente Funktionenfolge auf einem
@@ -413,15 +431,20 @@ gilt, bedeutet dies, dass die $\|f_n-f\|_1\to 0$, dass also $f_n$ in
 der $L^1$-Norm konvergiert.
 \end{proof}
 
+\input{chapters/010-skalarprodukt/fig/l1konvergenz.tex}
+
 \begin{beispiel}
-Die Folge $f_n(x)$ von \eqref{buch:skalarprodukt:fig:fourierrechteck}
+Die Folge $f_n(x)$ von \eqref{buch:skalarprodukt:eqn:rechteckreihe}
 konvergiert tatsächlich in der $L^1$-Norm auf dem Intervall $[0,2\pi]$.
 Zwar ist $f_n$ nicht gleichmässig konvergent, aber fast.
+Die Abbildung~\ref{buch:skalarprodukt:funktionenraeume:fig:l1konvergenz}
+illustriert das nachfolgende Argument.
+
 Man kann zeigen, dass für jedes $\delta>0$, die Funktionen
 $f_n(x)$ in Punkten $x$, die weiter als $\delta$ von den
 Punkten $k\pi$ mit $k\in\mathbb{Z}$, gleichmässig konvergieren.
-Innerhalb einer $\delta$-Umgebung der Vielfachen von $\pi$ ist die
-$f_n(x)-f(x)$ beschränkt.
+Liegt $x$ innerhalb einer $\delta$-Umgebung der Vielfachen von $\pi$
+ist die Differenz $f_n(x)-f(x)$ beschränkt.
 Die genaue Schranke ist nicht wichtig, wir nennen sie $M$ und bekommen
 \[
 |f_n(x)-f(x)|
@@ -429,11 +452,11 @@ Die genaue Schranke ist nicht wichtig, wir nennen sie $M$ und bekommen
 \quad\forall x\in X.
 \]
 Ausserhalb einer kleinen Umgebung konvergiert die Folge gleichmässig,
-zu jedem $\varepsilon>0$ gibt es also ein $N>0$ derart, dass
+denn zu jedem $\varepsilon>0$ gibt es also ein $N>0$ derart, dass
 \[
 |f_n(x)-f(x)|<\varepsilon
 \]
-für $x$ weiter als $\delta$ von $k\pi$ entfernt.
+für $x$, die weiter als $\delta$ von $k\pi$ entfernt sind.
 Für die $L^1$-Norm folgt dann
 \begin{align*}
 \|f_n-f\|_1
@@ -473,7 +496,7 @@ für $n>N$.
 Damit ist gezeigt, dass die Folge $f_n$ in der $L^1$-Norm konvergiert.
 \end{beispiel}
 
-Das Beispiel zeigt, dass die $L^1$-Norm eine schwäre Form der Konvergenz
+Das Beispiel zeigt, dass die $L^1$-Norm eine schwächere Form der Konvergenz
 ist, die eine erweiterte Klasse von Funktionen durch stetige Funktionen
 zu approximieren erlaubt.
 
@@ -530,8 +553,9 @@ Funktion $f(x)$ gilt
 \[
 \langle f,f\rangle
 =
-\int_X f(x)^2\,dx \ge 0.
+\int_X f(x)^2\,dx \ge 0,
 \]
+wie bereits in der Einleitung gezeigt wurde.
 Da auch $f(x)^2$ eine stetige Funktion ist,
 verschwindet das Integral genau dann, wenn $f(x)=0\;\forall x\in X$ ist.
 
@@ -548,12 +572,17 @@ heisst auch die {\em $L^2$-Norm}.
 %
 \subsubsection{Nicht kompakter Definitionsbereich}
 Für stetige Funktionen auf einem kompakten Definitionsbereich scheinen
-die drei Normen $\|\;\cdot\;\|_\infty$, $\|\;\cdot\;\|_1$ und
-$\|\;\cdot\;\|_2$ zu den gleichen Konvergenzbegriffen zu führen.
+die drei Normen $\normfunc_\infty$, $\normfunc_1$ und
+$\normfunc_2$ zu den gleichen Konvergenzbegriffen zu führen.
 In diesem Abschnitt soll gezeigt werden, dass dies für nicht kompakte
 Definitionsbereiche nicht mehr gilt.
 Nicht einmal die Menge der Funktionen, die eine endliche Norm haben,
 ist gleich.
+Die Funktionen der nachfolgenden Beispiele sind in
+Abbildung~\ref{buch:skalarprodukt:funktionenraeume:fig:normbeispiele}
+dargestellt.
+
+\input{chapters/010-skalarprodukt/fig/normbeispiele.tex}
 
 \begin{beispiel}
 Auf dem Definitionsbereich $X=(0,1]$ hat die Funktion
@@ -561,7 +590,7 @@ $f(x)=\log x$ endliche $L^1$-Norm aber unendliche Supremum-Norm.
 
 \medskip
 \noindent
-Wegen $\lim_{x\to 0+}\log x = -\infty$ folgt $\|\log\|=\infty$.
+Wegen $\lim_{x\to 0+}\log x = -\infty$ folgt $\|\log\|_\infty=\infty$.
 Für die $L^1$-Norm folgt mit der Substitution $y=\log x$ und
 $dy = dx/x$ oder $dx = e^y\,dy$
 \begin{align*}
@@ -616,6 +645,8 @@ mit endlicher $L^2$-Norm hat auch endliche $L^1$-Norm.
 \begin{proof}[Beweis]
 Aus der Cauchy-Schwarz-Ungleichung folgt
 \begin{align*}
+\|f\|_1
+=
 \int_X |f(x)|\,dx
 &=
 \langle |f|, 1\rangle
@@ -629,12 +660,35 @@ auch beschränkt.
 
 Die Beispiele zeigen, dass die Existenz der Normen selbst für stetige
 Funktionen für nicht kompakten Definitionsbereich nicht garantiert ist.
-Die Erweiterung auf nicht stetige Funktionen kann muss daher beschränkt
+Die Erweiterung auf nicht stetige Funktionen muss daher beschränkt
 werden auf eine Klasse von Funktionen, für die die entsprechende Norm
 existiert.
 Das kann bedeuten, dass nicht alle stetigen Funktionen in Betracht 
 kommen und dass neue Funktionen, die nicht stetig sind, als
 Grenzwerte auftreten können.
+
+Eine Möglichkeit, die Konvergenz etwas unter Kontrolle zu bringen
+besteht darin, von den Funktionen zusätzlich zu verlangen, dass sie
+ausserhalb einer kompakten Teilmenge verschwinden.
+
+\begin{definition}
+Der {\em Träger} einer Funktion $f\colon X\to\mathbb{R}$ ist die Teilmenge
+\[
+\operatorname{supp}(f)
+=
+\{x\in X\mid f(x)\ne 0\}
+\]
+des Definitionsgebietes.
+\end{definition}
+
+\begin{definition}
+Die Menge $C_0(X)$ besteht aus den stetigen Funktionen auf $X$,
+so dass der Abschluss $\overline{\operatorname{supp}(f)}$ des Trägers
+kompakt ist.
+\end{definition}
+
+Für $X=\mathbb{R}$ besteht $C_0(\mathbb{R})$ aus stetigen Funktionen,
+ausserhalb eines beschränkten Intervalls verschwinden.
 
 %
 % Grenzen des Riemann-Integrals
@@ -729,7 +783,7 @@ der Unterteilung.
 
 Der Riemannsche Integralbegriff muss also für die Zwecke der Approxmation
 mit der $L^1$ oder $L^2$-Norm erweitert werden, so dass er sinnvoll mit
-abzählbar vielen Unstetigkeitsstellen umgehenn kann.
+abzählbar vielen Unstetigkeitsstellen umgehen kann.
 Insbesondere sollte er als Integral der Funktion $f(x)$ 
 von \eqref{buch:skalarprodukt:funktionenraeume:eqn:ratfunk}
 den Wert $0$ liefern.
@@ -799,8 +853,8 @@ Menge $A$ mit Mass $\lambda(A)=0$.
 
 Der Riemannsche Integralbegriff lässt bei der Bestimmung des Masses
 nur endlich viele Intervalle zu. 
-Die Menge $Q$ der rationalen Zahlen im Intervall $[0,1]$ ist abzählbar
-unendlich.
+Die Menge $Q=\mathbb{Q}\cap [0,1]$ der rationalen Zahlen im Intervall
+$[0,1]$ ist abzählbar unendlich.
 In jeder beliebigen Umgebung einer reellen Zahl in $[0,1]$ findet man
 rationale Zahlen in $Q$, eine Überdeckung der Menge der rationalen
 Zahlen mit endlich vielen Intervallen enthält daher immer auch alle
@@ -840,6 +894,11 @@ Aus diesem Beispiel lässt sich erahnen, dass der Lebesguesche Massbegriff
 mit Grenzwerten besser umgehen kann als der aus dem Riemannschen Integral
 abgeleitete.
 
+Beim Riemannschen Integral haben endliche Mengen und Mengen mit endlich
+vielen Häufungspunkten Inhalt $0$.
+Viele abzählbare Mengen haben dagegen positiven Inhalt.
+Das Lebesguesche Mass gibt allen abzählbaren Mengen den Inhalt 0.
+
 %
 % Lebesgue-Integral
 %
@@ -858,9 +917,9 @@ Für solche Funktionen ist die naheliegende Definition des Integrals
 =
 \sum_{k=1}^\infty a_k \lambda(A_k).
 \]
-Der wesentliche Unterschied zur Riemannsschen Konstruktion ist,
+Der wesentliche Unterschied zur Riemannschen Konstruktion ist,
 dass nicht nur Intervalle zulässig sind sondern beliebige messbare Mengen.
-Die Berechnung des Inhalts einer messbaren Mengen beinhaltet bereits
+Die Berechnung des Inhalts einer messbaren Menge beinhaltet bereits
 die Möglichkeit, Grenzwerte zu bilden.
 Auch hier ist viel Arbeit notwendig um nachzuweisen, dass sich aus diesem
 Ansatz ein widerspruchsfreier neuer Integralbegriff ergibt.
@@ -873,11 +932,6 @@ bei seiner Konstruktion spielt mit
 \int_X f(x) \,d\lambda(x)
 \]
 bezeichnet.
-
-Beim Riemannschen Integral haben endliche Mengen und Mengen mit endlich
-vielen Häufungspunkten Inhalt $0$.
-Viele abzählbare Mengen haben dagegen positiven Inhalt.
-Das Lebesguesche Mass gibt allen abzählbaren Mengen den Inhalt 0.
 
 Unterscheiden sich zwei Funktionen $f$ und $g$ nur auf einer Nullmenge,
 sagt man, sie seien {\em fast überall} gleich, geschrieben
@@ -943,6 +997,7 @@ mit $L^2(X)$ bezeichnet.
 Mit den Funktionsklassen in $L^1(X)$ und $L^2(X)$ lässt sich genau
 so rechnen, wie man es sicht gewohnt ist.
 Für die Summe von Funktionen $f_1\sim f_2$ und $g_1\sim g_2$ gilt
+zum Beispiel
 \[
 \left.
 \begin{aligned}
@@ -989,7 +1044,7 @@ Dann ist $f$ Lebesgue-integrierbar und es gilt
 
 Der Satz der dominierten Konvergenz von Lebesgue ersetzt also die
 Bedingung der gleichmässigen Konvergenz, die beim Riemann-Integral
-erfolgreich war, durch die viel schächere Bedingung, dass alle
+erfolgreich war, durch die viel schwächere Bedingung, dass alle
 Funktionen unterhalb einer gemeinsamen integrierbaren Funktion bleiben.
 Dadurch wird verhindert, dass die Funktionen $f_n$ nach $\infty$
 ``ausbrechen'' kann und gegen eine Funktion konvergieren, die nicht
@@ -1017,13 +1072,14 @@ Auch für Funktionen, die an höchstens endlich vielen Stellen unstetig
 sind, stimmt das Riemann-Integral mit dem Lebesgue-Integral überein.
 
 Man soll sich daher das Lebesgue-Integral vor allem als eine 
-Erweiterung des Integrals auf Funktionen vorstellen, die als Grenzwerte
-von Folgen stetiger Funktionen im Sinne der $L^1$- oder der $L^2$-Norm
-auftreten können.
+Erweiterung des wohlbekannten Integrals auf Funktionen vorstellen,
+die als Grenzwerte von Folgen stetiger Funktionen im Sinne der $L^1$-
+oder der $L^2$-Norm auftreten können.
 Stetigkeit kann dabei verloren gehen, aber Konvergenzeigenschaften
 wie die dominierte Konvergenz von
 Satz~\ref{buch:skalarprodukt:satz:dominierte-konvergenz}
 bleiben erhalten.
+Am Kalkül zur Berechnung von Stammfunktionen ändert sich nichts.
 
 
 

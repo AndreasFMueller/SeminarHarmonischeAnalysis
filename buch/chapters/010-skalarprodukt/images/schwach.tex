@@ -1,0 +1,58 @@
+%
+% schwach.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-10cm]
+	\draw[->] (-0.1,0) -- (6.3,0) coordinate[label={$x$}];
+	\draw[->] (0,-0.1) -- (0,3.5) coordinate[label={right:$y$}];
+	\draw[color=red,line width=2.0pt] (0,0) -- (3,0) -- (6,3);
+	\node at (0.5,2.5) [right] {$\displaystyle
+		{\color{red}f(x)} = \begin{cases}
+			0\qquad 0\le x\le 1\\
+			x\qquad 1\le x \le 1
+		\end{cases}$};
+	\begin{scope}[yshift=-7cm]
+		\node[color=blue] at (1.5,2.5) {$f'(x)$};
+		\draw[->] (-0.1,0) -- (6.3,0) coordinate[label={$x$}];
+		\draw[->] (0,-0.1) -- (0,3.5) coordinate[label={right:$y$}];
+		\draw[color=blue,line width=2.0pt] (0,0) -- (3,0);
+		\draw[color=blue] (3,0) -- (3,3);
+		\draw[color=blue,line width=2.0pt] (3,3) -- (6,3);
+	\end{scope}
+\end{scope}
+
+\begin{scope}
+	\draw[->] (-3,0) -- (3.3,0) coordinate[label={$x$}];
+	\draw[->] (0,-3.1) -- (0,3.5) coordinate[label={right:$y$}];
+	\draw[color=red,line width=2.0pt] (-3,-3) -- (0,-3);
+	\draw[color=red] (0,-3) -- (0,3);
+	\draw[color=red,line width=2.0pt] (0,3) -- (3,3);
+	\node at (-2.5,2.5) [right]
+		{${\color{red}f(x)} = \operatorname{sgn}(x)$};
+	\begin{scope}[yshift=-7cm]
+		\draw[->] (-3.1,0) -- (3.3,0) coordinate[label={$x$}];
+		\draw[->] (0,-0.1) -- (0,3.5) coordinate[label={right:$y$}];
+		\draw[color=blue,line width=2.0pt] (-3,0) -- (3,0);
+		\fill[color=white] (0,0) circle[radius=0.3];
+		\draw[color=blue] (0,0) circle[radius=0.3];
+		\node[color=blue] at (0,0) {?};
+		\node at (0.5,2) [right] {$f'(0)$ nicht definiert};
+		\draw[->,color=blue,shorten >= 0.4cm] (0.7,1.7) -- (0,0);
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

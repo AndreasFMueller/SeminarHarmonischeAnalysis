@@ -1,0 +1,56 @@
+%
+% dreieck.tex -- 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\def\punkt#1#2{
+	\fill[color=white] #1 circle[radius=0.08];
+	\draw[color=#2] #1 circle[radius=0.08];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (O) at (-1,4);
+\coordinate (A) at (0,0);
+\coordinate (B) at (8,2);
+\coordinate (C) at (3,6);
+
+\fill[color=red!10] (A) -- (B) -- (C) -- cycle;
+
+\draw[->,line width=1.4pt,color=gray!50] (O) -- (A);
+\draw[->,line width=1.4pt,color=gray!50] (O) -- (B);
+\draw[->,line width=1.4pt,color=gray!50] (O) -- (C);
+
+\draw[->,line width=1.4pt] (A) -- (B);
+\draw[->,line width=1.4pt] (A) -- (C);
+\draw[->,line width=1.4pt] (B) -- (C);
+
+\punkt{(O)}{gray!50}
+\punkt{(A)}{black}
+\punkt{(B)}{black}
+\punkt{(C)}{black}
+
+\node[color=gray] at (O) [above] {$O$};
+\node at (A) [below left] {$A$};
+\node at (B) [below right] {$B$};
+\node at (C) [above] {$C$};
+
+\node[color=gray] at ($0.5*(O)+0.5*(A)$) [left] {$\vec{a}$};
+\node[color=gray] at ($0.3*(O)+0.7*(B)$) [below] {$\vec{b}$};
+\node[color=gray] at ($0.5*(O)+0.5*(C)$) [above] {$\vec{c}$};
+
+\node at ($0.5*(B)+0.5*(C)$) [above right] {$\vec{c}-\vec{b}$};
+\node at ($0.6*(A)+0.4*(C)$) [below right] {$\vec{c}-\vec{a}$};
+\node at ($0.5*(A)+0.5*(B)$) [below] {$\vec{b}-\vec{a}$};
+
+\end{tikzpicture}
+\end{document}
+

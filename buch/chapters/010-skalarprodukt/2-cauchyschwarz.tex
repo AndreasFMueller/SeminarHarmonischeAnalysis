@@ -6,16 +6,23 @@
 \section{Ungleichungen
 \label{buch:skalarprodukte:section:cauchyschwarz}}
 \kopfrechts{Cauchy-Schwarz-Ungleichung}
+\input{chapters/010-skalarprodukt/fig/dreieck.tex}
 In der Vektorgeometrie wird gelehrt, dass die Länge eines Vektors $u$
-durch die Norm $\|u\|$ wiedergegeben wird und dass die geometrische
-Intuition dazu passt.
+durch die Norm $\|u\|$ wiedergegeben wird.
+Die geoemtrische Intuition der Länge, die sich in der Dreiecksungleichung
+und dem Satz des Pythagoras äussert, ist auf die Norm anwendbar.
+In anderen Räumen als dem dreidimensionalen Raum steht
+jedoch keine geometrische Anschauung zur Verfügung, es muss also
+auf anderen Wegen sichergestellt werden, dass die Intuition weiterhin
+für das Rechnen mit dem Skalarprodukt und der zugehörigen Norm
+funktioniert.
 Dazu gehört vor allem, dass die Dreiecksungleichung erfüllt ist,
 dass also für drei Punkt $A$, $B$ und $C$
 \begin{equation}
 \overline{AB} \le \overline{AC} + \overline{BC}
 \label{skalarprodukt:ungleichungen:eqn:dreieck}
 \end{equation}
-gilt.
+gilt (Abbildung~\ref{buch:skalarprodukt:ungleichungen:fig:dreieck}).
 In Vektorform bedeutet dies, dass
 \[
 \| b-a\|
@@ -86,11 +93,12 @@ a\biggl(t+\frac{b}{2a}\biggr)^2 -\frac{b^2}{4a}+c
 \]
 gebracht werden.
 Daraus kann man ablesen, dass das Minimum an der Stelle
-\[
+\begin{equation}
 t_0
 =
 -\frac{b}{2a}
-\]
+\label{buch:skalarprodukt:definition:def:t0}
+\end{equation}
 angenommen wird und den Wert 
 \begin{equation}
 p(t_0)
@@ -105,23 +113,36 @@ von $p(t)$ mit Hilfe der Bedingung $p'(t_0)=0$ gefunden werden.
 % Cauchy-Schwarz-Ungleichung für einen reellen Vektorraum
 %
 \subsubsection{Cauchy-Schwarz-Ungleichung für einen reellen Vektorraum}
-Für~\eqref{buch:skalarprodukt:cauchyschwarz:eqn:cspoly}
-ist
+Die rechte Seite von
+\eqref{buch:skalarprodukt:cauchyschwarz:eqn:cspoly}
+ist ein quadratisches Polynom mit den Koeffizienten
 \[
 a=\|y\|^2,\quad
 b=2\langle x,y\rangle
 \quad\text{und}\quad
 c=\|x\|^2.
 \]
-Daher folgt aus~\eqref{buch:skalarprodukt:cauchyschwarz:eqn:cspoly}
+Mit dem Wert
+\[
+t_0
+=
+-\frac{b}{2a}
+=
+-\frac{\langle x,y\rangle}{\|y\|^2}
+\]
+aus \eqref{buch:skalarprodukt:definition:def:t0} muss
+\eqref{buch:skalarprodukt:cauchyschwarz:eqn:cspoly}
+immer noch gelten, also
 \[
 0
 \le
+c-\frac{b^2}{2a}
+=
 \|x\|^2 - \frac{\langle x,y\rangle^2}{\|y\|^2}
 \qquad\Rightarrow\qquad
 \langle x,y\rangle^2 \le \|x\|^2\, \|y\|^2
 \qquad\Rightarrow\qquad
-|\langle x,y\rangle| \le \|x\|\, \|y\|.
+|\langle x,y\rangle| \le \|x\|\cdot \|y\|.
 \]
 Dies ist die Cauchy-Schwarz-Ungleichung für das Skalarprodukt
 $\langle \;\,,\;\rangle$.
@@ -130,11 +151,23 @@ $\langle \;\,,\;\rangle$.
 \label{buch:skalarprodukt:cauchy-schwarz:satz:reell}
 Ein reelles Skalarprodukt $\langle\;\,,\;\rangle$ auf dem reellen Vektorraum
 $V$ erfüllt die Cauchy-Schwarz-Ungleichung
-\[
-|\langle x, y\rangle| \le \|x\|\,\|y\|
-\]
+\begin{equation}
+|\langle x, y\rangle| \le \|x\|\cdot\|y\|
+\label{buch:skalarprodukt:cauchyschwarz:eqn:ungleichung}
+\end{equation}
 für $x,y\in V$.
+Gleichheit gilt genau dann, wenn $x$ und $y$ linear abhängig sind.
 \end{satz}
+
+\begin{proof}[Beweis]
+Es ist nur noch die Aussage für die Gleichheit in der Ungleichung
+\eqref{buch:skalarprodukt:cauchyschwarz:eqn:ungleichung}
+zu beweisen.
+Gleichheit kann nur eintreten, wenn nach
+\eqref{skalarprodukt:cauchyschwarz:eqn:quadrat}
+$x+ty=0$ wird.
+Dies ist gleichbedeutend damit, dass $x$ und $y$ linear abhängig sind.
+\end{proof}
 
 %
 % Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum
@@ -174,19 +207,21 @@ b= 2|\langle x,y\rangle|^2
 c= \|x\|^2.
 \]
 Das Minimum dieses Polynoms ist nach
-\[
+\begin{align*}
 0
-\le
+&\le
 c-\frac{b^2}{4a}
 =
 \|x\|^2 - \frac{|\langle x,y\rangle|^4}{|\langle x,y\rangle|^2\,\|y\|^2}
 =
 \|x\|^2 - \frac{|\langle x,y\rangle|^2}{\|y\|^2}
+\\
 \quad\Rightarrow\quad
-|\langle x,y\rangle|^2 \le \|x\|^2\,\|y\|^2
+|\langle x,y\rangle|^2 &\le \|x\|^2\,\|y\|^2
+\\
 \quad\Rightarrow\quad
-|\langle x,y\rangle \le \|x\|\,\|y\|.
-\]
+|\langle x,y\rangle &\le \|x\|\cdot\|y\|.
+\end{align*}
 Dies ist die Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum.
 
 \begin{satz}[Cauchy-Satz]
@@ -194,7 +229,7 @@ Dies ist die Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum.
 Ein komplexes Skalarprodukt $\langle\;\,,\;\rangle$ auf dem komplexen Vektorraum
 $V$ erfüllt die Cauchy-Schwarz-Ungleichung
 \[
-|\langle x, y\rangle| \le \|x\|\,\|y\|
+|\langle x, y\rangle| \le \|x\|\cdot\|y\|
 \]
 für $x,y\in V$.
 \end{satz}
@@ -207,6 +242,9 @@ nur die Axiome eines Skalarproduktes verwenden.
 Sie gelten also
 ganz unabhängig von der konkreten Definition des Skalarproduktes,
 solange die Eigenschaften eines Skalarproduktes gegeben sind.
+Diese Aussage macht keine Annahme darüber, wieviele linear unabhängige
+Vektoren es in dem Vektorraum gibt, sie gilt daher
+auch für unendlichdimensionale Vektorräume.
 
 \begin{beispiel}
 Die sesquilineare Funktion
@@ -229,13 +267,17 @@ gilt daher
 \sum_{i=1}^n \overline{x}_i y_i
 \biggr|
 \le
-\!\sqrt{\sum_{i=1}^n |x_i|^2} \!\sqrt{\sum_{i=1}^n |y_i|^2}
+\!\sqrt{\sum_{i=1}^n |x_i|^2}
+\cdot
+\!\sqrt{\sum_{i=1}^n |y_i|^2}
 \quad\text{oder auch}\quad
 \biggl|
 \sum_{i=1}^n x_i y_i
 \biggr|
 \le
-\!\sqrt{\sum_{i=1}^n |x_i|^2} \!\sqrt{\sum_{i=1}^n |y_i|^2}
+\!\sqrt{\sum_{i=1}^n |x_i|^2}
+\cdot
+\!\sqrt{\sum_{i=1}^n |y_i|^2}
 \]
 für beliebige Vektoren $x,y\in\mathbb{C}^n$.
 \end{beispiel}
@@ -265,11 +307,13 @@ gilt daher
 \biggl|\int_a^b \overline{f(x)}g(x)\,dx\biggr|
 &\le
 \!\sqrt{\int_a^b |f(x)|^2\,dx}
+\cdot
 \!\sqrt{\int_a^b |g(x)|^2\,dx}
 \intertext{oder auch}
 \biggl|\int_a^b f(x) g(x)\,dx\biggr|
 &\le
 \!\sqrt{\int_a^b |f(x)|^2\,dx}
+\cdot
 \!\sqrt{\int_a^b |g(x)|^2\,dx}
 \end{align*}
 für beliebige komplexwertige stetige Funktionen $f,g$ auf dem
@@ -339,12 +383,16 @@ für $x,y\in V$.
 %
 \subsection{Normen
 \label{skalarprodukt:cauchyschwarz:subsection:norm}}
-Das Skalarprodukt ist nicht die einzige Möglichkeit, eine Norm auf
-einem Vektorraum zu definieren.
+Mit dem Skalarprodukt konnte die Norm eines Vektors definiert werden.
+Mit diesem Längenbegriff wird es möglich auszudrücken, was es heissen
+soll, dass eine Folge von Vektoren gegen einen Grenzwert konvergiert.
+Das Skalarprodukt ist jedoch nicht die einzige Möglichkeit, eine 
+Norm für den der Konstruktion eines Grenzwertbegriffs zu definieren.
 Zum Beispiel kann man auf $\mathbb{C}^n$ die sogenannte $l^1$-Norm
 definieren.
 
 \begin{definition}
+\label{buch:skalarprodukt:cauchyschwarz:def:l1}
 Die Funktion
 \[
 \|x\|_1
@@ -357,7 +405,8 @@ für $x\in\mathbb{C}^n$ heisst die {\em $l^1$-Norm} auf $\mathbb{C}^n$.
 Die Funktion $\|\cdot\|_1$ ist eine Norm im Sinne der folgenden Definition.
 
 \begin{definition}
-Eine Funktion $\|\cdot\| \colon V\to\mathbb{R}$ auf einem reellen
+\label{buch:skalarprodukt:cauchyschwarz:def:norm}
+Eine Funktion $\normfunc \colon V\to\mathbb{R}$ auf einem reellen
 oder komplexen Vektorraum $V$ heisst eine {\em Norm}, wenn Sie die
 folgenden Bedingungen erfüllt
 \begin{enumerate}
@@ -393,10 +442,9 @@ oder komplexe Zahlen $a,b$ benötigen.
 \begin{beispiel}
 Die Funktion
 \[
-\|x\|_\infty = \sup_{1\le i\le n} |x_i|
+x\mapsto \|x\|_\infty = \sup_{1\le i\le n} |x_i|
 \]
 ist eine Norm auf $\mathbb{C}^n$.
-\end{beispiel}
 
 Auch in diesem Fall sind die Bedingungen~1 und 2 ganz offensichtlich erfüllt.
 Für die Dreiecksungleichung rechnen
@@ -411,7 +459,19 @@ Für die Dreiecksungleichung rechnen
 =
 \|x\|_\infty + \|y\|_\infty.
 \end{align*}
-Somit ist $\|\cdot\|_\infty$ eine Norm auf $\mathbb{C}^n$.
+Somit ist $\normfunc_\infty$ eine Norm auf $\mathbb{C}^n$.
+\end{beispiel}
+
+\begin{definition}
+\label{buch:skalarprodukt:cauchyschwarz:def:supremum}
+Die Norm
+\begin{equation}
+\|x\|_\infty = \sup_{1\le i\le n} |x_i|
+\label{buch:skalarprodukt:cauchyschwarz:eqn:supremumnorm}
+\end{equation}
+heisst die {\em Supremum-Norm}.
+\index{Supremum-Norm}
+\end{definition}
 
 %
 % Polaridentität
@@ -428,7 +488,8 @@ das Skalarprodukt wieder zu rekonstruieren?
 % Reelles Skalarprodukt aus der Norm
 %
 \subsubsection{Reelles Skalarprodukt aus der Norm}
-Die Antwort gibt der folgende Satz.
+Für ein reelles Skalarprodukt zeigt der folgende Satz, dass sich
+das Skalarprodukt aus Werten der Norm rekonstruieren lässt.
 
 \begin{satz}[Polaridentität]
 \label{skalarprodukt:cauchyschwarz:satz:polarformel}
@@ -544,7 +605,7 @@ haben.
 %
 % Komplexes Parallelogramm aus der Norm
 %
-\subsubsection{Komplexe Skalarprodukt}
+\subsubsection{Komplexe Skalarprodukte}
 Das Resultat von Satz~\ref{skalarprodukt:cauchyschwarz:satz:polarformel}
 gilt in abgeänderter Form auch für komplexe Skalarprodukte.
 Da das Skalarprodukt auch einen nichtverschwindenen Imaginärteil haben
@@ -578,8 +639,9 @@ die Formeln
 finden, die den Formeln
 \eqref{skalarprodukt:cauchyschwarz:eqn:realteil}
 für das reelle Skalarprodukt entsprechen.
+Die Formeln
 \eqref{skalarprodukt:cauchyschwarz:eqn:realteil}
-Formeln bleiben gültig als Formeln für den Realteil des Skalarproduktes.
+bleiben gültig als Formeln für den Realteil des Skalarproduktes.
 Damit haben wir den folgenden Satz gefunden.
 
 \begin{satz}[Polaridentitäten für ein komplexes Skalarprodukt]
