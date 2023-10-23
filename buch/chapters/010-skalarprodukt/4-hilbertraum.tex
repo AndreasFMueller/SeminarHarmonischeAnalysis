@@ -213,7 +213,7 @@ Endlichdimensionale Vektorräume über sind automatisch vollständig,
 da gibt es also gar keinen Unterschied zwischen Prähilbertraum und
 Hilbert-Raum.
 Das folgende Beispiel zeigt, dass dies für unendlichdimensionale
-Hilberträume nicht mehr zutrifft.
+Hilbert-Räume nicht mehr zutrifft.
 
 \begin{beispiel}
 \label{buch:skalarprodukt:hilbertraum:bsp:sinreihe}
@@ -299,7 +299,7 @@ $C_{\mathbb{R}}([-\pi,\pi])$ gefunden, die darin nicht konvergiert.
 \end{beispiel}
 
 %
-% Hilbertbasis
+% Hilbert-Basis
 %
 \subsection{Hilbert-Basis}
 Sei jetzt $H$ ein Hilbert-Raum.
@@ -308,7 +308,7 @@ entsteht eine Menge $\mathcal{B}=\{b_1,b_2,\dots\}$ orthonormierter
 Vektoren.
 In einem unendlichdimensionalen Hilbert-Raum ist $\mathcal{B}$ eine
 undendliche Menge.
-Die Vollständigkeit des Hilbertraumes garantiert, dass jede
+Die Vollständigkeit des Hilbert-Raumes garantiert, dass jede
 Cauchy-Folge konvergiert, insbesondere können wir zu jedem beliebigen
 Vektor $v$ die Koeffizienten $c_k=\langle b_k,v \rangle$ bestimmen
 und versuchen, mit der
@@ -422,7 +422,7 @@ In einem unendlichdimensionalen Raum muss dieser Begriff etwas
 erweitert werden.
 
 \begin{definition}
-Eine {\em Hilbert-Basis} des Hilbertraumes $H$ ist eine Menge von orthonormalen
+Eine {\em Hilbert-Basis} des Hilbert-Raumes $H$ ist eine Menge von orthonormalen
 \index{Hilbert-Basis}%
 Vektoren $b_k\in H$, $k\in \mathbb{N}$ derart, für jeden Vektor $v\in H$
 die Reihe 
@@ -441,8 +441,8 @@ hat.
 Ein Hilbert-Raum, der eine Hilbert-Basis besitzt, heisst {\em separabel}.
 \end{definition}
 
-Nicht separable Hilberträume sind deutlich grösser.
-In einem nicht separable Hilbertraum ist es nicht möglich, alle Vektoren
+Nicht separable Hilbert-Räume sind deutlich grösser.
+In einem nicht separable Hilbert-Raum ist es nicht möglich, alle Vektoren
 aus einer Folge von orthonormierten Vektoren linear zu kombinieren.
 Dies verträgt sich nicht mit der Intuition, die in endlichdimensionalen
 Vektorräumen entstanden ist.
@@ -451,23 +451,23 @@ Man findet sie zum Beispiel bei den $L^2$-Räumen mit kompaktem
 Definitionsgebiet.
 Kompaktheit kann als eine topologische
 Endlichkeitseigenschaft angesehen werden.
-Es lassen sich aber auch nicht separable Hilberträume konstruieren,
+Es lassen sich aber auch nicht separable Hilbert-Räume konstruieren,
 zum Beispiel sogenannte fastperiodische Funktionen.
 \index{fastperiodische Funktionen}%
-Für unsere Anwendungen sind nicht separable Hilberträume jedoch nicht
-notwendig und wir können im folgenden annehmen, dass alle Hilberträume
+Für unsere Anwendungen sind nicht separable Hilbert-Räume jedoch nicht
+notwendig und wir können im folgenden annehmen, dass alle Hilbert-Räume
 separabel sind und somit eine Hilbert-Basis haben.
 
 %
-% Der Hilbertraum $l^2$
+% Der Hilbert-Raum $l^2$
 %
-\subsection{Der Hilbertraum $l^2$}
+\subsection{Der Hilbert-Raum $l^2$}
 Die abstrakte Definition eines separablen Hilbert-Raumes suggeriert,
 dass es sehr viele verschiedene Hilbert-Räume geben könnte.
 Dem ist aber nicht so, ein Hilbert-Raum ist eine ziemlich starre Struktur.
 In diesem Abschnitt konstrieren wir zunächst den besonders übersichtlichen
 separablen Hilbert-Raum $l^2$ und zeigen anschliessend, dass sich jeder
-separable HIlbertraum isometrisch auf $l^2$ abbilden lässt.
+separable Hilbert-Raum isometrisch auf $l^2$ abbilden lässt.
 
 \begin{satz}
 Der Vektorraum der unendlichen Folgen
@@ -516,7 +516,7 @@ bilden.
 
 Der Hilbert-Raum $l^2$ ist die einfachste, direkte Verallgemeinerung der
 endlichdimensionalen Hilbert-Raume $\mathbb{R}^n$ mit dem Standardskalarprodukt.
-Er ist aber auch der ``einzige'' separable Hilbert-Raum, alle Hilberträume
+Er ist aber auch der ``einzige'' separable Hilbert-Raum, alle Hilbert-Räume
 lassen sich isometrisch auf $l^2$ abbilden.
 
 \begin{satz}
@@ -600,7 +600,7 @@ Aus der Polaridentität folgt dann auch die
 \]
 \end{definition}
 
-Die endlichdimensionalen Hilberträume können auf
+Die endlichdimensionalen Hilbert-Räume können auf
 natürliche Art in $l^2$ eingebettet werden, indem die Koordinaten
 eines $n$-dimensionalen Vektors auf die ersten $n$-Komponenten der
 Folge in $l^2$ abgebildet werden.
@@ -685,5 +685,41 @@ Die Fourier-Transformation formalisiert also die Erkenntnis, dass
 man alle Fragen, die man mit Skalarprodukten beantworten kann, statt
 mit Funktionen auch mit Skalarprodukten von Fourier-Koeffizienten
 finden kann.
+
+%
+% Der Darstellungssatz von Riesz
+%
+\subsection{Der Darstellungssatz von Riesz}
+Eine Linearform $l(x)$ auf dem Vektorraum $\mathbb{R}^n$ ist gegeben durch
+die Werte $l(e_i)$ auf den Standardbasisvektoren.
+Der Wert von auf $x=x_1e_1+\dots+x_ne_n$ ist dann
+\[
+l(x)
+=
+x_1l(e_1)+\dots+x_nl(e_n)
+=
+\begin{pmatrix}
+l(e_1)\\\vdots\\l(e_n)
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+x_1\\\vdots\\x_n
+\end{pmatrix}.
+\]
+Insbesondere lässt sich jede Linearform als Skalarprodukt mit einem 
+geeigneten Vektor geschrieben werden.
+Diese Eigenschaft gilt auch in einem Hilbert-Raum.
+
+\begin{satz}[Riesz]
+\label{buch:skalarprodukt:hilbertraum:satz:riesz}
+Sei $H$ ein Hilbert-Raum und $l\colon H\to\mathbb{R}$ eine stetige
+Linearform.
+Dann gibt es eine $v\in H$ derart, dass $l(x) = \langle v,x\rangle$.
+\end{satz}
+
+Der Beweis dieser Eigenschaft kann man zum Beispiel in \cite{buch:wavelets}
+finden.
+Der Satz gilt natürlich auch in einem komplexen Hilbert-Raum.
+
 
 

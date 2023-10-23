@@ -6,8 +6,8 @@
 \section{Trigonometrische Funktionen
 \label{buch:orthofkt:section:trigo}}
 \kopfrechts{Trigonometrische Funktionen}
-Es ist Fouriers Verdienst zu erkennen, dass nicht zu pathologische
-periodische Funktionen immer als Reihe von trigonometrischen
+Es ist Joseph Fouriers Verdienst zu erkennen, dass nicht allzu pathologische
+periodische Funktionen immer als Reihen von trigonometrischen
 Funktionen ausgedrückt werden können.
 Die Koeffizienten können als Skalarprodukte berechnet werden,
 dies ist der Zugang, den wir aus heutiger Sicht wählen würden.
@@ -155,7 +155,7 @@ Die Funktion $C_0(t)=1$ ist etwas speziell, sie hat die Norm
 =
 2\pi.
 \]
-Damit können wir jetzt eine Hilbertbasis zusammenstellen:
+Damit können wir jetzt eine Hilbert-Basis zusammenstellen:
 \[
 \begin{aligned}
 c_0(t) &= \frac{1}{\!\sqrt{2\pi}},\\
@@ -275,13 +275,13 @@ erhält man die Darstellung
 \begin{align*}
 a_k
 &=
-\frac{1}{\pi}\int_{-l}^l f(x)\cos\frac{k\pi x}l\,\frac{\pi}{l}\,dx
+\frac{1}{\pi}\int_{-l}^l f(x)\cos\biggl(\frac{k\pi x}l\biggr)\cdot\frac{\pi}{l}\,dx
 =
 \frac{1}{l}\int_{-l}^l f(x) \cos\frac{k\pi x}{l} \,dx
 \\
 b_k
 &=
-\frac{1}{\pi}\int_{-l}^l f(x)\sin\frac{k\pi x}l\,\frac{\pi}{l}\,dx
+\frac{1}{\pi}\int_{-l}^l f(x)\sin\biggl(\frac{k\pi x}l\biggr)\,\frac{\pi}{l}\,dx
 =
 \frac{1}{l}\int_{-l}^l f(x) \sin\frac{k\pi x}{l} \,dx
 \end{align*}
@@ -306,12 +306,12 @@ orthonormiert.
 % Komplexe Exponentialfunktionen
 %
 \subsection{Komplexe Exponentialfunktionen}
-Die Eulersche Formel
+Die eulersche Formel
 \[
 e^{it} = \cos t + i\sin t
 \]
-stellt einen Zusammenhang her zwischen den trigonometrischen Funktionen
-und der komplexen Exponentialfunktion.
+stellt einen Zusammenhang zwischen den trigonometrischen Funktionen
+und der komplexen Exponentialfunktion her.
 Die Funktionen
 \[
 e_k(t) = e^{ikt} = \cos kt + i\sin kt\qquad\text{für $k\in\mathbb{Z}$}
@@ -380,11 +380,18 @@ gewonnen werden.
 \subsubsection{Komplexes Skalarprodukt und Orthogonalität}
 Da die Funktionen $e_k(t)$ komplexertig sind, kann man damit
 auch komplexwertige Funktionen approximieren. 
-Man kann aber nicht mehr erwarten, dass $c_{-k}=\overline{c_k}$ ist.
-Natürlich möchte man diese Koeffizienten mit Hilfe eines komplexen
-Skalarproduktes ermitteln können, bezüglich dem die Funktionen $e_k(t)$
-orthonormiert sind.
-Wir versuchen mit dem komplexen Skalarprodukt
+Für eine komplexwertige Funktion kann man nicht mehr erwarten, dass die
+Koeffizienten $c_{-k}=\overline{c_k}$ erfüllen.
+Damit wird die obige Rechnung zur Bestimmung der Koffizienten
+viel komplizierter.
+Stattdessen möchten wir ein Skalarprodukt für komplexwertige Funktionen
+verwenden und eien Basis von komplexwertigen Funktionen, die 
+bezüglich dieses Skalarproduktes orthonormiert sind.
+Dann kann man die Koeffizienten $c_k$ wieder mit Hilfe des komplexen
+Skalarproduktes ermitteln.
+
+Wir versuchen es daher mit dem auf der Hand liegenden komplexen
+Skalarprodukt
 \begin{equation}
 \langle f,g\rangle
 =
@@ -428,12 +435,18 @@ ist die Norm der Funktionen $e_k(t)$
 Die Funktionen sind also nicht normiert.
 Wir könnten die Funktionen anpassen, aber da wir uns beim Skalarprodukt
 noch nicht wirklich festgelegt haben, können wir auch versuchen, letzteres
-anzupassen derart, dass die Funktionen $e_k$ normiert sind.
-Wir setzen daher
+derart anzupassen, dass die Funktionen $e_k$ normiert sind.
+Die Motivation dafür ist, dass die Funktionen andere Eigenschaften haben,
+die sich später als nützlich erweisen werden, insbesondere die 
+Potenzgesetze, die auf $e_k(s+t)=e^{ik(s+t)}=e^{iks}e^{its}=e_k(s)e_k(t)$
+führen.
+
+Um aus $e_k$ eine orthonormierte Funktionenfamilie zu machen, 
+setzen wir
 \begin{equation}
 \langle f,g\rangle
 =
-\frac{1}{\!\sqrt{2\pi}}
+\frac{1}{2\pi}
 \int_{-\pi}^\pi \overline{f(t)} g(t)\,dt.
 \end{equation}
 Mit diesem Skalarprodukt wird die Norm $\|e_k\|=1$.
@@ -449,10 +462,10 @@ c_k
 =
 \langle e_k,f\rangle
 =
-\frac{1}{\!\sqrt{2\pi}}
+\frac{1}{2\pi}
 \int_{-\pi}^{\pi}  \overline{e^{ikt}} f(t)\,dt
 =
-\frac{1}{\!\sqrt{2\pi}}
+\frac{1}{2\pi}
 \int_{-\pi}^{\pi}  e^{-ikt} f(t)\,dt
 \end{align*}
 approximieren.

@@ -7,7 +7,7 @@
 \label{buch:orthofkt:section:pde}}
 \kopfrechts{Partielle Differentialoperatoren}
 Selbstadjungierte partielle Differentialoperatoren auf einem Gebiet 
-$\Omega$ führen auf natürlich Art und Weise zu einer verallgemeinerten
+$\Omega$ führen auf natürliche Art und Weise zu einer verallgemeinerten
 Theorie der harmonischen Analysis, die auch zur Lösung der
 partiellen Differentialgleichung verwendet werden kann.
 Die Vorgehensweise wird zunächst in
@@ -22,6 +22,8 @@ Gebiete und Differentialoperatoren durchgeführt.
 \label{buch:orthfkt:pde:subsection:pdeharm}}
 In diesem Abschnitt soll illustriert werden, wie sich aus Aufgabenstellungen
 aus der Theorie der partiellen Differentialgleichungen 
+automatisch orthogonale Funktionenfamilien und damit Anwendungen
+der harmonischen Analysis ergeben.
 
 %
 % Partielle Differentialoperatoren
@@ -105,7 +107,7 @@ $\Omega$ abgebildet wird.
 % Randbedingungen
 %
 \subsubsection{Randbedingungen}
-Wie beim Sturm-Liouville-Problem entsteht ein interessantes 
+Wie beim Sturm-Liouville-Problem entsteht ein selbstadjungierter Operator
 erst dadurch, dass zusätzlich Randbedingungen formuliert werden.
 Der Operator $L=d^2/dx^2$ auf dem Intervall $(a,b)\subset\mathbb{R}$
 ist zum Beispiel nur selbstadjungiert, wenn man ihn auf Funktionen
@@ -127,11 +129,12 @@ dass die Funktionen die Randwerte $u(a)=u(b)=0$ haben müssen.
 Die Wahl $h_a=h_b=0$ und $k_a=k_b=1$ hat dagegen zur Folge,
 dass die Ableitungen der Funktionen in den Endpunkten $=0$ sein
 müssen.
-Für partielle Differentialoperatoren und die 
+Für partielle Differentialoperatoren sind die Randbedingungen
+etwas komplizierter.
 
 \begin{definition}[Dirichlet-Randbedingungen]
 Sei $\Omega\subset\mathbb{R}^n$ ein Gebiet mit Rand $\partial\Omega$
-und $f\colon \partial\Omega\mathbb R$ eine Funktion auf dem Rand.
+und $f\colon \partial\Omega\to\mathbb{R}$ eine Funktion auf dem Rand.
 Man sagt, eine Funktion $u\colon\overline{\Omega}\to\mathbb{R}$ erfüllt 
 {\em Dirichlet-Randbedingungen}, wenn
 \index{Randbedingung!Dirichlet-}%
@@ -142,10 +145,11 @@ u(x) = f(x)
 für $x\in \partial\Omega$ ist.
 \end{definition}
 
-Dirichlet-Randbedinungen entsprechen also der Vorgabe von Werten
-oder dem Fall $h_a=h_b=0$ und $k_a=k_b=0$.
+Dirichlet-Randbedingungen entsprechen also der Vorgabe von Werten.
+Homogene Dirichlet-Randbedingungen entsprechen dem Fall
+dem Fall $h_a=h_b=1$ und $k_a=k_b=0$.
 
-\begin{definition}
+\begin{definition}[Neumann-Randbedingungen]
 Sei $\Omega\in\mathbb{R}^n$ ein Gebiet mit glattem Rand und
 $n(x)$ der Einheitsnormalenvektor im Punkt $x\in\partial\Omega$
 auf dem Rand.
@@ -158,7 +162,7 @@ Richtungsableitung
 =
 \frac{d}{dt} u(x+tn(x))\bigg|_{t=0}.
 \]
-Man sagt, die Funktion $u$ erfüllt eine Neumann-Randbedingung, wenn
+Man sagt, die Funktion $u$ erfüllt eine {\em Neumann-Randbedingung}, wenn
 \index{Neumann-Randbedingung}%
 \index{Randbedingung!Neumann-}%
 \[
@@ -167,8 +171,9 @@ Man sagt, die Funktion $u$ erfüllt eine Neumann-Randbedingung, wenn
 erfüllt ist.
 \end{definition}
 
-Neumann-Randbedingungen entsprechen also der Vorgabe der Ableitungen
-oder dem Fall $h_a=h_b=0$ und $k_a=k_b=0$.
+Neumann-Randbedingungen entsprechen also der Vorgabe der Ableitungen.
+Homogene Neumann-Randbedingungen entsprechen dem Fall
+$h_a=h_b=0$ und $k_a=k_b=1$.
 Die Dirichlet- und Neumann-Randbedingungen können auch in sogenannte
 gemischte Randbedingungen zusammengefasst werden, indem 
 \index{Randbedingung!gemischt}%
@@ -254,6 +259,10 @@ erfüllt.
 Das Problem ist damit reduziert auf eine homogene Differentialgleichung
 mit möglicherweise inhomogenen Randbedingungen.
 
+%
+% Eindeutigkeit der Lösung
+%
+\subsubsection{Eindeutigkeit der Lösung}
 Durch Vorgabe einer Randbedingung werden die möglichen Lösungen
 eingeschränkt, es ist aber immer noch möglich, dass die Lösung
 nicht eindeutig ist.
@@ -289,18 +298,23 @@ auf einem Gebiet $\Omega$ jeweils eine orthogonale Funktionenfamilie
 von Eigenfunktionen  $u_n(x)$ des Operators mit Eigenwerten $\lambda_n$
 gehört, die zur Synthese beliebiger Funktionen auf $\Omega$ verwendet
 werden kann.
+Dies funktioniert aber nur für selbstadjungiert Operatoren.
 
-Für sogenannte elliptische partielle Differentialoperatoren zweiter
-Ordnung lassen sich dann die Lösungsfunktionen der Gleichungen
+Der Einfachheit halber beschränkten wir uns im Folgenden auf den
+einfacheren und in den Anwendungen sehr häufig auftretenden
+Laplace-Operator $L=\Delta$.
+Für den Operator $\Delta$ ist auch einfach nachzurechnen ist,
+dass er mit geeigneten Randbedingungen selbstadjungiert wird.
+
+Für den Laplace-Operator
+lassen sich dann die Lösungsfunktionen der Gleichungen
 \begin{align*}
-Lu &= \varrho                            &&\text{Poisson-Gleichung}      \\
+\Delta u &= \varrho                            &&\text{Poisson-Gleichung}      \\
 \intertext{oder für den Fall, dass $u(t,x)$ zusätzlich von der Zeit abhängt}
-\frac{\partial u}{\partial t}     &= Lu  &&\text{Wärmeleitungsgleichung} \\
-\frac{\partial^2 u}{\partial t^2} &= LU  &&\text{Wellengleichung}
+\frac{\partial u}{\partial t}     &= \Delta u  &&\text{Wärmeleitungsgleichung} \\
+\frac{\partial^2 u}{\partial t^2} &= \Delta u  &&\text{Wellengleichung}
 \end{align*}
-als Reihe 
-geeigneten Randbedingungen lassen sich die Lösungsfunktionen dann in 
-der Form
+mit geeigneten Randbedingungen in eine Reihe der Form
 \begin{equation}
 u(x)
 =
@@ -309,7 +323,9 @@ u(x)
 \end{equation}
 entwickeln, wobei die Koeffizienten $a_n$ 
 im Falle der Wärmeleitungslgeichung und der Wellengleichung
-Funktionen der Zeit sind.
+zusätzlich Funktionen der Zeit sind.
+Die Funktionen $u_n$ sind Eigenfunktionen des Operator $\Delta$.
+
 Eingesetzt in die Differentialgleichung ergeben sich dann für die
 Koeffizienten $a_n$ die Gleichungenn
 \begin{align}
@@ -331,9 +347,9 @@ Zusätzlich zu den Randbedingungen auf dem Rand des Gebietes $\Omega$,
 auf dem der Differentialoperator $L$ definiert ist, braucht die
 Wärmeleitungsgleichung auch noch eine Randbedingung der Form
 \[
-u(0,x) = f(x)
+u(0,x) = f(x),
 \]
-hinzu, die durch Anwendung der Entwicklung~\eqref{buch:orthofkt:eqn:unreihe}
+die durch Anwendung der Entwicklung~\eqref{buch:orthofkt:eqn:unreihe}
 zur Anfangsbedinung 
 \[
 a_n(0) = f_n
@@ -466,11 +482,14 @@ y(x)
 \]
 Natürlich sind auch Linearkombinationen wieder Eigenfunktionen.
 
-Die Funktionen erfüllen aber die Randbedingungen nicht.
+Die Funktionen erfüllen aber im Allgemeinen die Randbedingungen nicht.
 Zum Beispiel ist es unmöglich, die periodischen Randbedingungen
 mit den Exponentialfunktionen zu erfüllen, denn dazu müsste
 $1=e^{0}=e^{\pm\!\sqrt{\lambda}l}$ sein, was nur für $\lambda=0$
 gilt.
+In den folgenden Abschnitten wird daher diskutiert, für welche $\lambda$
+überhaupt Lösungsfunktionen gefunden werden können, die periodische
+Randbedingungen erfüllen.
 
 %
 % Randbedingungen für \lambda < 0
@@ -575,7 +594,7 @@ Frequenzen.
 Die Beispiele zeigen, dass die Eigenfunktionen entweder Sinus-
 oder Kosinusfunktionen sind.
 Mit diesen Funktionen lassen sich beliebige Funktionen approximieren,
-die die Randbedingungen erfüllen.
+die die homogenen Randbedingungen erfüllen.
 
 %
 % Periodische Randbedingungen für \lambda < 0
@@ -583,7 +602,11 @@ die die Randbedingungen erfüllen.
 \subsubsection{Periodische Randbedingungen für $\lambda < 0$}
 Beliebige periodische Funktionen auf dem Intervall $[0,2\pi]$ lassen sich
 mit den im vorangegangenen Abschnitt gefundenen Funktionen nicht
-approximieren, dazu müssen periodische Randbedingungen verlangt werden.
+approximieren, da diese verschiedene Randwerte haben konnten.
+Eine periodische Funktion hat aber immer die gleichen Randwerte
+an beiden Enden des Intervalls.
+Für periodische Funktionen müssen daher periodische Randbedingungen
+verlangt werden.
 Die Funktion $y(x)$ von
 \eqref{buch:orthofkt:pde:periodisch}
 erfüllt periodische Randbedingungen für die Werte und Ableitungen, wenn

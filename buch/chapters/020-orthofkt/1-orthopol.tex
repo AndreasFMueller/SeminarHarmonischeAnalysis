@@ -15,22 +15,23 @@ werden, Familien von orthogonalen Polynomen zu konstruieren.
 \subsection{Das Orthogonalisierungsverfahren von Gram-Schmidt}
 Das Orthogonalisierungsverfahren von Gram-Schmidt geht aus von einer
 Basis $a_1,a_2,\dots,a_n\subset V$ eines Vektorraums mit einem
-Skalarprodukt, welches wie in Kapitel~\ref{buch:chapter:skalarprodukt}
+Skalarprodukt, welches wie in Kapitel~\ref{buch:chapter:skalarprodukte}
 mit $\langle\;\,,\;\rangle$ bezeichnet wird.
 Aus den Vektoren $a_i$ können jetzt die orthogonalen Vektoren $b_i$
 konstruiert werden, die die zusätzliche Eigenschaft haben, dass der
-von $b_i$ immer im von den Vektoren $a_1,\dots,a_i$ aufgespannten
+Vektor $b_i$ immer in dem von den Vektoren $a_1,\dots,a_i$ aufgespannten
 Unterraum von $V$ liegt.
-Diese Bedingungen legen nur die Richtung von $b_i$ fest. 
+Diese Bedingungen legen nur die Gerade fest, auf der $b_i$ liegt. 
 Auch die Forderung, dass die Norm $\|b_i\|=1$ sein soll, lässt noch
 zwei Möglichkeiten $\pm b_i$ offen.
-Durch die Forderung, dass in der Linearkombination
+Erst durch die Forderung, dass in der Linearkombination
 \[
 b_i = \alpha_i a_i + \alpha_{i-1} a_{i-1} + \dots + \alpha_1 a_1
 \]
-der Koeffiziente $\alpha_i >0$ sein muss.
+der Koeffizient $\alpha_i >0$ sein muss, wird $b_i$ eindeutig festgelegt.
 
-Der Vektor $b_1$ muss also ein positives Vielfaches von $a_1$ sein:
+Im Speziellen muss der Vektor $b_1$ ein positives Vielfaches von $a_1$ sein,
+welches Länge $1$ hat:
 \begin{align}
 b_1
 &=
@@ -39,7 +40,7 @@ b_1
 \intertext{Die folgenden Vektoren müssen um Vielfache der bereits
 gefundenen Vektoren $b_k$ mit $k<i$ korrigiert werden, damit das
 Skalarprodukt verschwindet.
-Ausserdem müssen Sie normiert werden, was mit der Formel}
+Ausserdem müssen sie normiert werden, was mit der Formel}
 b_i
 &=
 \frac{
@@ -53,6 +54,7 @@ a_i - \langle b_{i-1},a_i\rangle b_{i-1} - \langle b_{i-2},a_i\rangle b_{i-2}
 }.
 \label{buch:orthofkt:gs}
 \end{align}
+geschehen kann.
 Der Koeffizient von $a_i$ in \eqref{buch:orthofkt:gs} ist
 \begin{equation}
 \frac{1}{
@@ -78,14 +80,15 @@ als Linearkombination der Vektoren $b_1,\dots,b_{i-1}$ geschrieben
 werden.
 Diese liegen aber alle im von $a_1,\dots,a_{i-1}$ aufgespannten Raum,
 es müsste also auch $a_i$ in diesem Raum liegen.
-Dies widerspricht der Voraussetzung, dass die Vektoren eine Basis bilden.
+Dies widerspricht der Voraussetzung, dass die Vektoren $a_i$ eine Basis
+bilden.
 
 %
-% Hilbertbasis eines Prähilbertraumes
+% Hilbert-Basis eines Prähilbertraumes
 %
-\subsubsection{Hilbertbasis eines Prähilbertraumes}
+\subsubsection{Hilbert-Basis eines Prähilbertraumes}
 Das Orthogonalisierungsverfahren von Gram-Schmidt kann dazu verwendet
-werden, eine Hilbertbasis in einem Hilbertraum $H$ zu konstruieren.
+werden, eine Hilbert-Basis in einem Hilbert-Raum $H$ zu konstruieren.
 Ausgangspunkt ist wieder eine Folge von Vektoren $a_i\in H$.
 Damit der Nenner von \eqref{buch:orthfkt:gsnenner} nicht verschwindet,
 muss verlangt werden, das $a_i$ nicht im Raum aufgespannt von den
@@ -97,20 +100,23 @@ Wenn sich jeder Vektor in $H$ beliebig gut durch eine Folge von
 Linearkombinationen der $a_i$ approximieren lässt, dann gilt dies auch
 für die $b_i$.
 Somit produziert das Orthogonalisierungsverfahren von Gram-Schmidt
-automatisch eine Hilbertbasis.
+automatisch eine Hilbert-Basis.
 
 %
 % Legendre Polynome
 %
 \subsection{Legendre-Polynome}
 Wir betrachten stetige Funktionen in $C([-1,1])$ auf dem Intervall
-$[-1,1]$ mit reellen Werten und dem Skalarprodukt
+$[-1,1]$ mit reellen Werten.
+In Definition~\ref{buch:skalarprodukt:funktionraeume:definition:skalarprodukt}
+haben wir das Skalarprodukt
 \[
 \langle f,g\rangle
 =
-\int_{-1}^1 f(x)g(x)\,dx.
+\int_{-1}^1 f(x)g(x)\,dx
 \]
-$C([-1,1])$ ist ein Prähilbertraum.
+für integrierbare Funktionen definiert.
+Es macht $C([-1,1])$ ist ein Prähilbertraum.
 
 Um mit dem Verfahren von Gram-Schmidt eine Familie von orthogonalen
 Funktionen in $C([-1,1])$ zu produzieren, wird zunächst eine Familie
@@ -229,7 +235,8 @@ p_1(x) = \!\sqrt{\frac{3}{2}} x.
 \]
 
 Die dritte Funktion $p_2(x)$ entsteht durch Orthonormierung des
-Monoms $x^2$, dazu sind zunächst die Skalarprodukte
+Monoms $x^2$.
+Dazu sind zunächst die Skalarprodukte
 \begin{align*}
 \langle b_0,a_2\rangle
 &=
@@ -245,8 +252,9 @@ Monoms $x^2$, dazu sind zunächst die Skalarprodukte
 &=
 \int_{-1}^1 \!\sqrt{\frac{3}{2}} x \cdot x^2\,dx
 = 
-0.
+0
 \end{align*}
+zu berechnen.
 Die Funktion $p_2(x)$ wird daher erhalten durch Normierung des Polynoms
 \[
 x^2 - 
@@ -261,7 +269,7 @@ Dazu muss die Norm von $x^2-\frac13$ bestimmt werden, sie ist
 \begin{align*}
 \|x^2-\frac13\|^2
 &=
-\int_{-1}^1 \biggl(x^2-\frac13\biggr)^2\,dx
+\int_{-1}^1 \biggl(x^2-{\textstyle\frac13}\biggr)^2\,dx
 =
 \int_{-1}^1 x^4-\frac23x^2+\frac{4}{9}\,dx
 \\
@@ -275,7 +283,7 @@ Dazu muss die Norm von $x^2-\frac13$ bestimmt werden, sie ist
 \frac{38}{45}
 \\
 \Rightarrow\qquad
-\|x^2-\frac13\|
+\|x^2-{\textstyle\frac13}\|
 &=
 \!\sqrt{\frac{45}{38}}
 \end{align*}
@@ -291,7 +299,7 @@ allerdings immer aufwendiger.
 Ein praktischeres Verfahren ist dringend nötig und wird sich
 aus der Sturm-Liouville-Theorie von
 Abschnitt~\ref{buch:orthofkt:section:sturmliouville} ergeben.
-Etwas vereinfacht werden kann er durch die Beobachtung, dass die
+Der Prozess kann etwas vereinfacht werden durch die Beobachtung, dass die
 Polynome $p_{2n}(x)$ immer gerade sind und die Polynome $p_{2n+1}(x)$
 immer ungerade, so dass die Skalarprodukte 
 $\langle p_{2k},p_{2l+1}\rangle=0$ sind, weil das Produkt
@@ -325,7 +333,7 @@ P_2(x) &= \frac12(3x^2-1).
 %
 \subsection{Andere Skalarprodukte}
 Das gewöhnliche $L^2$-Skalarprodukt ist nur eines von vielen möglichen
-Skalarprodukten für Funktionen auf dem Intervall $(-1,1)$.
+Skalarprodukten für Funktionen auf dem Intervall $[-1,1]$.
 Jeder Wahl eines Skalarproduktes führt auf einen andere Funktionenfamilie.
 
 \subsubsection{Tschebyscheff-Polynome}
@@ -337,7 +345,8 @@ Das Skalarprodukt
 f(x)g(x)\frac{1}{\!\sqrt{1-x^2}}\, dx
 \label{buch:orthfkt:tschebyscheff}
 \end{equation}
-führt auf eine Familie $t_n(x)$ von orthonormierten Polynome.
+führt auf eine Familie $t_n(x)$ von orthonormierten Polynome,
+wobei natürlich $t_n(x)$ den Grad $n$ hat.
 Da ähnlich wie bei den Legendre-Polynomen oft nur die Nullstellen
 wichtig sind, wird auch hier die Normierung $T_n(x) = t_n(x)/t_n(1)$
 verwendet, was die
@@ -365,12 +374,18 @@ $dx/d\vartheta=-\sin\vartheta$.}
 \int_{\pi}^0
 T_n(\cos\vartheta) T_m(\cos\vartheta)
 \!\sqrt{1-\cos^2\vartheta}
-\, \frac{-d\vartheta}{-\sin\vartheta}
-\\
+\, \frac{d\vartheta}{-\sin\vartheta}.
+\intertext{Da im Intervall $[0,\pi]$ die Sinusfunktion nur nichtnegative
+Werte $\sin \vartheta\ge 0$ annimmt, stimmt sie mit
+$\!\sqrt{1-\cos^2\vartheta}$ überein.
+Das Integral lässt sich damit auf
 &=
 \int_0^{\pi}
 \cos n\vartheta \cos m\vartheta \,d\vartheta
-\\
+\intertext{vereinfachen.
+Mit trignometrischen Identitäten kann das Produkt soweit vereinfacht werden,
+dass sich der Wert des Integrals vollständig bestimmen lässt.
+Er ist}
 &=
 \int_0^\pi
 \frac12(\cos(n-m)\vartheta + \cos(n+m)\vartheta)

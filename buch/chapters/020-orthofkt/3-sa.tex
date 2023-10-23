@@ -18,22 +18,59 @@ keine Ausnahme ist und zu anderen orthogonalen Funktionenfamilien
 führen kann, wenn man die Begriffe der linearen Algebra auf
 die Situation des Hilbert-Raumes ausweiten kann.
 
-
 %
 % Der adjungierte Operator
 %
 \subsection{Der adjungierte Operator}
+In einem Hilbert-Raum lässt sich zu jedem beschränkten linearen
+Operator der sogenannte adjungierte Operator konstruieren, der
+ebenfalls 
+
+%
+% Operatornorm
+%
+\subsubsection{Operatornorm}
 Sei $A:H\to H$ eine lineare Abbildung oder {\em Operator} auf dem
 Hilbert-Raum $H$.
-Damit die Abbildung stetig ist, muss die Norm des Operators
+Damit die Abbildung stetig ist, müssen kleine Vektoren $v$ unter der
+Wirkung $A$ einigermassen klein bleiben.
+Dies bedeutet, dass es eine Zahl $M$ gibt derart, dass $\|Ax\| \le M\|x\|$.
+Man nennt dies auch einen {\em beschränkten Operator}.
+\index{Operator!beschränkt}%
+Die kleinstmögliche solche obere Schranke ist
+die sogenannte Norm des Operators
 \[
 \|A\|
 =
-\sup_{x\in H\setminus\{0\}} \frac{\|Hx\|}{\|x\|}
+\sup_{x\in H\setminus\{0\}} \frac{\|Ax\|}{\|x\|}
 <
 \infty
 \]
 sein.
+
+In einem Hilbertraum kann man die Norm auch mit der Cauchy-Schwarz-Ungleichung
+charakterisieren.
+$\|A\|$ ist die kleinste Zahl $M$, für die 
+\begin{equation}
+|\langle Ax,y\rangle| \le M
+\label{buch:orthofkt:sa:eqn:normcauchyschwarz}
+\end{equation}
+für alle Vektoren $x$ und $y$ der Länge $1$ ist.
+Dies ist gleichbedeutend mit
+\begin{equation}
+\|A\|
+=
+\sup_{x,y\in H, \|x\|=1, \|y\|=1}
+\langle Ax,y\rangle.
+\label{buch:orthofkt:sa:eqn:normcauchyschwarzsup}
+\end{equation}
+Diese Beschreibung der Norm wird im nächsten Abschnitt nützlich sein zur
+Bestimmung der Norm des adjungierten Operators.
+
+%
+% Der Operator A^*
+%
+\subsubsection{Der Operator $A^*$}
 Sei jetzt $x\in H$ ein Vektor.
 Die Funktion
 \[
@@ -54,19 +91,60 @@ ist linear und stetig, die Norm ist
 \|x\| \cdot \|A\| \cdot \|y\|
 .
 \]
-Nach dem Darstellungssatz von Riesz folgt, dass es einen Vektor 
-$A^*x$ gibt derart, dass
+Nach dem Darstellungssatz~\ref{buch:skalarprodukt:hilbertraum:satz:riesz}
+von Riesz folgt, dass es einen Vektor $v$ derart, dass
 \[
-l(y) = \langle A^*x,y\rangle.
+l(y) = \langle v,y\rangle.
 \]
-Die Abbildung $x\mapsto A^*x$ ist wieder ein linearer und beschränkter
-Operator.
-Die Linearität folgt aus der Linearität des Skalarproduktes, die Norm
-von $A^*$ ist
+Der Vektor $v$ wird auch mit $A^*x$ bezeichnet.
+Die Abbildung $x\mapsto A^*x$ ist wieder ein linearer Operator, denn
+für Vektoren $x_1,x_2\in H$ und $\lambda\in\mathbb{R}$ gilt
+\begin{align*}
+\langle A^*(x_1+x_2),y\rangle
+&=
+\langle x_1+x_2,Ay\rangle
+\\
+&=
+\langle x_1,Ay\rangle
++
+\langle x_2,Ay\rangle
+\\
+&=
+\langle A^*x_1,y\rangle
++
+\langle A^*x_2,y\rangle
+\\
+&=
+\langle A^*x_1+A^*x_2,y\rangle
+&&\Rightarrow&
+A^*(x_1+x_2)&=A^*x_1 + A^*x_2
+\\
+\langle A^*\lambda x,y\rangle
+&=
+\langle \lambda x,Ay\rangle
+\\
+&=
+\lambda \langle x,Ay\rangle
+\\
+&=
+\lambda \langle A^*x,y\rangle
+&&\Rightarrow&
+A^*\lambda x&=\lambda A^*x.
+\end{align*}
+Mit Hilfe von
+\eqref{buch:orthofkt:sa:eqn:normcauchyschwarzsup}
+kann auch die Norm von $A^*$ bestimmt werden:
 \[
-\|A^*x\|^2
+\|A^*\|
 =
+\sup_{x,y\in H, \|x\|=\|y\|=1} \langle A^*x,y\rangle
+=
+\sup_{x,y\in H, \|x\|=\|y\|=1} \langle x,Ay\rangle
+=
+\|A\|.
 \]
+Der adjungierte Operator ist als ein linearer Operator mit
+der gleichen Norm.
 
 \begin{definition}
 Der Operator $A^*$ heisst der zu $A$ {\em adjungierte} Operator.
@@ -165,11 +243,11 @@ sind orthogonal.
 
 \begin{beispiel}
 Der Vektorraum $H=\mathbb{R}^n$ mit dem Standardskalarprodukt ist ein
-endlichdimensionaler Hilbertraum.
+endlichdimensionaler Hilbert-Raum.
 Ein Operator $A\colon H\to H$ wird unter Verwendung einer Basis
 $\{b_1,\dots,b_n\}$ durch die Matrix mit den Matrix-Elementen
 \[
-a_{ij}
+a_{i\!j}
 =
 \langle b_i,Ab_j\rangle
 =
@@ -190,11 +268,11 @@ Standardskalarprodukt
 =
 \sum_{i=1}^n  \overline{x}_i y_i
 \]
-ist ein Hilbertraum.
+ist ein Hilbert-Raum.
 Ein selbstadjungierter Operator hat in einer Basis $b_1,\dots,b_n$
 die Matrixelemente
 \[
-a_{ij}
+a_{i\!j}
 =
 \langle b_i,Ab_j\rangle
 =
@@ -227,7 +305,7 @@ H
 \}
 \]
 der $2\pi$-periodischen, beliebig oft stetig differenzierbaren
-stetig differezierbaren Funktionen auf $\mathbb{R}$ mit dem
+stetig differenzierbaren Funktionen auf $\mathbb{R}$ mit dem
 Skalarprodukt
 \[
 \langle f,g\rangle
@@ -283,8 +361,8 @@ Das letzte Beispiel zeigt zusammen mit den Erkenntnissen aus dem
 Abschnitt~\ref{buch:trigo:subsection:symmetrie}, dass die
 Eigenfunktionen eines selbstadjungierten Operators gute Kandidaten
 für eine harmonische Analysis sind, die sich besonderes gut
-zur Lösung von Problemen eignen, die mit dem Operator $D^2$
-zusammenhängen.
+zur Lösung von Problemen eignen, die mit dem Operator $D^2$ der
+zweiten Ableitung zusammenhängen.
 
 
 

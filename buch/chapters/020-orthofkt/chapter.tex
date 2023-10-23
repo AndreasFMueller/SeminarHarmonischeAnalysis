@@ -17,16 +17,19 @@ Dies wird im Abschnitt~\ref{buch:orthofkt:section:orthopol} für
 Polynome durchgerechnet.
 Diese Funktionenfamilien sind zwar nützlich und ermöglichen mit
 der Grauss-Quadratur ein sehr effizientes numerisches
-Integrationsverfahren, sie haben aber kaum andere nützliche Eigenschaften.
+Integrationsverfahren, sie haben aber kaum für unsere Zwecke
+nützliche Eigenschaften.
 
 Die trigonometrischen Funktionen werden in
 Abschnitt~\ref{buch:orthofkt:section:trigo} als orthogonal nachgewiesen,
 diese Funktionen haben die zusätzliche Eigenschaft, dass Sie eine
 Symmetrieeigenschaft haben.
 Die Translation der Funktionen $t\mapsto \sin nt$ oder
-$t\mapsto\cos nt$um einen Phasenwinkel ergibt eine Funktion
-$\sin(nt+\delta)$ oder $\cos(nt+\delta)$, die sich wieder durch
-$\sin nt$ und $\cos nt$ ausdrücken lässt.
+$t\mapsto\cos nt$ um einen Phasenwinkel ergibt eine Funktion
+$\sin(nt+\delta)$ oder $\cos(nt+\delta)$, die sich mit den Additionstheoremen
+wieder durch $\sin nt$ und $\cos nt$ ausdrücken lässt, sie bilden 
+einen zweidimensionalen invarianten Unterraum
+(siehe Abschnitt~\ref{buch:trigo:subsection:symmetrie}).
 
 Noch einfacher wird die Situation für die komplexen Exponentialfunktionen
 $t\mapsto e^{int}$.
@@ -40,7 +43,9 @@ der automatisch orthogonale Funktionenfamilien liefert.
 Die trigonometrischen Funktionen sind nur ein Spezialfall dieses
 Mechanismus.
 
-Das Sturm-Liouville-Problem handelt von der Lösung eines Typs
+Das Sturm-Liouville-Problem
+(Abschnitt~\ref{buch:orthofkt:section:sturmliouville})
+handelt von der Lösung eines Typs
 von Differentialgleichung zweiter Ordnung, die unter anderem auf
 die trigonometrischen Funktionen führt.
 Andere Spezialfälle reproduzieren die orthogonalen Polynome
@@ -49,7 +54,8 @@ von Abschnitt~\ref{buch:orthofkt:section:orthopol}.
 Die Idee, orthogonale Funktionen als Eigenfunktionen eines
 Operators zu finden, funktioniert auch für mehrere unabhängige
 Variablen.
-Elliptische partielle Differentialgleichungen können sehr oft
+Gewisse elliptische partielle Differentialgleichungen verwenden einen
+selbstadjungierten Differentialoperator und können daher 
 in eine Form gebracht werden, die eine orthogonale Funktionenfamilie
 hervorbringt, welche dann verwendet werden kann, um Lösungen
 linear zu kombinieren.

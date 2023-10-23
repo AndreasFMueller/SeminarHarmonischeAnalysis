@@ -10,7 +10,8 @@ Das Beispiel~\ref{buch:orthfkt:sa:beispiel:D2} zeigt, dass
 Eigenfunktionen eines Differentialoperators zu interessanten
 Familien orthogonaler Funktionken führen können.
 Die daraus abgeleitete harmonische Analysis kann zur Lösung
-gewisser Differentialgleichungen genutzt werden.
+gewisser Differentialgleichungen genutzt werden, die diesen
+Differentialoperator verwenden.
 Ziel dieses Abschnitts ist zu zeigen, dass das Beispiel auf
 eine wesentlich grössere Klasse von Differentialgleichungen
 erweitert werden kann.
@@ -22,7 +23,7 @@ erweitert werden kann.
 \label{buch:orthofkt:sturmliouville:subsection:operator}}
 Sie $a<b$ und seien zwei Funktionen
 $p(x)\in C^2([a,b])$, $q(x)\in C([a,b])$ gegeben.
-Wir definieren den Sturm-Liouville-Operator
+Wir definieren den sogenannten Sturm-Liouville-Operator
 \[
 L = \frac{d}{dx} p(x) \frac{d}{dx} + q(x),
 \]
@@ -39,7 +40,9 @@ der die Funktion $y(x)$ auf
 p'(x)y'(x)+p(x)y''(x)+q(x)y(x)
 \end{align*}
 abbildet.
-Die Funktion $q(x)$ wirkt also durch punktweise Multiplikation.
+Die Funktion $q(x)$ wirkt also durch punktweise Multiplikation,
+während $p(x)$ und $p'(x)$ als Gewichtsfunktionen der zweiten und
+ersten Ableitung von $y(x)$ eingehen.
 
 Ableitungen kommen nur im ersten Teil vor, den wir mit
 \[
@@ -163,7 +166,7 @@ Randbedingungen können immer nur für einen Randpunkt gefordert
 werden, wir müssen also den Wert der Determinante festlegen.
 Angenommen, wir fordern, dass die Determinante einen Wert
 $d\ne 0$ annimmt. Setzen wir die Funktione $\lambda f$ und $g$ ein,
-ensteht die Determinante
+entsteht die Determinante
 \[
 \left|\begin{matrix}
 \lambda p(a)f'(a)&p(a)g'(a) \\
@@ -176,7 +179,7 @@ p(a)f'(a)&p(a)g'(a) \\
 f(a) &g(a)
 \end{matrix}\right|
 =
-\lambda t \ne t
+\lambda d \ne d
 \]
 für $\lambda \ne 1$.
 Eine solche Forderung führt also auf eine Menge von zulässigen Funktionen,
@@ -186,7 +189,10 @@ Es bleibt daher nur die Möglichkeit, dass die Determinante $=0$ sein muss.
 Die Determinante 
 \eqref{buch:orthfkt:sturmliouville:det}
 ist genau dann Null, wenn die Spalten der Matrix linear abhängig sind.
-Insbesondere spannen Sie den gleiche Gerade in $\mathbb{R}^2$ auf.
+Insbesondere spannen Sie die gleiche Gerade durch den Nullpunkt
+in $\mathbb{R}^2$ auf.
+In der Ebene kann eine solche Gerade auch durch ihre Normale festgelegt
+werden.
 Es gibt daher Vektoren
 \[
 \begin{pmatrix}
@@ -197,7 +203,7 @@ k_a
 \begin{pmatrix}
 h_b\\
 k_b
-\end{pmatrix}
+\end{pmatrix},
 \]
 die auf den Vektoren
 \[
@@ -245,7 +251,7 @@ k_af(b) + h_bp(b)f'(b) &= 0
 \right\}
 \label{buch:orthfkt:sturmliouvill:ph}
 \end{equation}
-mit dem Skalarprodukte
+mit dem Skalarprodukt
 \[
 \langle f,g\rangle = \int_a^b f(x)g(x)\,dx.
 \]
@@ -259,10 +265,8 @@ Zu Zahlen $h_a$, $h_b$, $k_a$, $k_b$ ist der Operator $L_0$ im
 Prählibertraum~\eqref{buch:orthfkt:sturmliouvill:ph}
 selbstadjungiert.
 Wir erwarten, dass die Eigenvektoren dieses Differentialoperators eine
-Hilbertbasis für die Analyse und Synthese von Funktionen in diesem
+Hilbert-Basis für die Analyse und Synthese von Funktionen in diesem
 Prählibertraum liefern.
-In diesem Abschnitt soll gezeigt werden, wie sich damit 
-Hilbertbasen für erweiterte Differentialgleichungen 
 
 %
 % Das Eigenwertproblem für den Operator $L$
@@ -289,7 +293,7 @@ zweiter Ordnung
  p(x) y''(x) + p'(x)y'(x) + q(x)y(x) = \lambda y(x)
 \end{align*}
 erfüllt.
-Für $H(h_a,h_b,k_a,k_b)$ kann eine Hilbertbasis aus Eigenfunktionen
+Für $H(h_a,h_b,k_a,k_b)$ kann eine Hilbert-Basis aus Eigenfunktionen
 gefunden werden.
 
 %
@@ -300,7 +304,7 @@ Das Eigenwertproblem für eine symmetrische Matrix $A$ sucht einen
 Vektor $v\ne 0$ und eine Zahl $\lambda$ derart, dass $Av=\lambda v$.
 Es ist aus der elementaren linearen Algebra bekannt, dass eine
 symmetrische Matrix mit einer orthogonalen Matrix diagonalisiert werden
-kann, es existiert also eine Basis aus Eigenvektoren.
+kann, es existiert also eine Basis aus orthonormierten Eigenvektoren.
 
 Aus der linearen Algebra ist auch bekannt, dass eine zweite symmetrische
 Matrix $B$ gleich mitdiagonalisiert werden kann.
@@ -337,9 +341,9 @@ Dies bedeutet
 \qquad
 \Rightarrow
 \quad
-AB=BA
+AB=BA,
 \]
-gelten, die beiden Matrizen müssen also vertauschen.
+die beiden Matrizen müssen also vertauschen.
 Da immer noch gilt, dass die Eigenvektoren von $A$ orthogonal bezüglich
 des Standardskalarproduktes sind, ist die Diagonalisierung immer noch
 mit einer orthogonalen Matrix möglich.
@@ -375,10 +379,10 @@ Nur wenn $A$ und $B$ vertauschen, ist
 =
 \transpose{A}\transpose{B}^{-1}
 =
-AB^{-1},
+AB^{-1}.
 \]
 Symmetrie ist also nur gegeben, wenn die Matrizen $A$ und $B$
-vertauschen, was wir im allgemeinen nicht voraussetzen wollen.
+vertauschen, was wir im Allgemeinen nicht voraussetzen wollen.
 
 Eine etwas stärkere Bedingung als Invertierbarkeit der Matrix $B$
 ist, dass $B$ positiv definit ist.
@@ -398,6 +402,9 @@ f(v) = \frac{\transpose{v}Av}{\transpose{v}Bv}
 \]
 ist, dann ist $v$ ein verallgemeinerter Eigenvektor.
 \end{satz}
+
+Man beachte, dass nicht verlangt wird, dass die beiden Matrizen $A$
+und $B$ vertauschen.
 
 \begin{proof}[Beweis]
 Sei $u$ ein beliebiger anderer Vektor und $\lambda = f(v)$.
@@ -543,6 +550,7 @@ Da $A$ und $B$ symmetrisch sind, kann man nachrechnen, dass
 &=&
 \langle Au,v\rangle
 \\
+\text{und}\qquad
 \langle u,Lv\rangle_B
 &=&
 \langle u,B(B^{-1}A)v\rangle
@@ -583,7 +591,7 @@ eine Lösung $y(x)$ der Differentialgleichung
 \lambda w(x) y(x)
 \]
 zu finden.
-Das Problem unterscheidet sich von dem vorher untersuchten Problem durch
+Das Problem unterscheidet sich von dem vorher untersuchten durch
 den zusätzlichen Faktor $w(x)>0$, der auch Gewichtsfunktion heisst.
 Im verallgemeinerten Eigenwertproblem für Matrizen entspricht $w(x)$ 
 der Matrix $B$ und $A$ dem Sturm-Liouville-Operator.
@@ -663,9 +671,9 @@ q(x) f(x)
 =
 \langle L_0f,g\rangle + \langle qf,g\rangle
 \\
-\langle f,Lg\rangle_w
+\langle f,L_wg\rangle_w
 &=
-\int_a^b f(x)(Lg)(x)w(x)\,dx
+\int_a^b f(x)(L_wg)(x)w(x)\,dx
 =
 \int_a^b
 f(x)
