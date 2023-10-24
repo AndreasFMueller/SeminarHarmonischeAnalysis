@@ -22,30 +22,33 @@ vorborgen werden, indem man komplexwertige Abbildungen untersucht,
 die möglichst viel der Struktur erhalten.
 
 \begin{definition}
-Ein Vektorraum $A$ heisst {\em Algebra}, wenn aus auf $A$ eine bilineare
-und assoziative Multiplikation $A\times A\to A$.
+Ein Vektorraum $A$ heisst {\em Algebra}, wenn auf $A$ eine bilineare
+und assoziative Multiplikation $A\times A\to A$ definiert ist.
 Wenn auf dem Vektorraunm $A$ ausserdem eine Norm definiert ist, dann
 heisst $A$ eine normierte Algebra, wenn die Multiplikation die
 Ungleichung
 \[
-\| xy \| \le \|x\|\cdot \|y\|\quad\text{für alle $x,y\in A$}.
+\| xy \| \le \|x\|\cdot \|y\|\quad\text{für alle $x,y\in A$}
 \]
+erfüllt.
 \end{definition}
 
 \begin{definition}
 Sei $A$ eine normierte Algebra.
-Ein Charakter $\chi$ ist eine lineare Abbildung $\chi\colon A\to\mathbb{C}$,
+Ein {\em Charakter} $\chi$ ist eine lineare Abbildung
+$\chi\colon A\to\mathbb{C}$,
+\index{Charakter}%
 die auch ein stetiger Algebrahomomorphismus ist, d.~h.~es gilt
 $\chi(xy)=\chi(x)\chi(y)$.
 \end{definition}
 
 Als Beispiel betrachten wir den Vektorraum $C([a,b])$ der stetigen Funktionen
-auf dem Intervall $[a,b]$ mit der Supremum Norm.
+auf dem Intervall $[a,b]$ mit der Supremumnorm.
 $C([a,b])$ ist aber auch eine Algebra, da Funktionen punktweise
 multipliziert werden können.
 Wenn $f,g\in C([a,b])$ zwei stetige Funktionen sind, dann ist
 $fg\colon [a,b]\to\mathbb{C}:x\mapsto f(x)g(x)$ ein bilineares und
-stetigs Produkt.
+stetiges Produkt.
 Für jeden Punkt $x\in[a,b]$ ist
 \[
 \chi_x
@@ -82,7 +85,7 @@ während $C([a,b])$ eine reichhaltige Algebrastruktur hat.
 \label{buch:gruppen:gelfand:def:spektrum}
 Ist $A$ eine Algebra, dann heisst die Menge
 \[
-\mathrm{X}(A)
+\mathbb{X}(A)
 =
 \operatorname{Hom}(A,\mathbb{C})
 \]
@@ -98,11 +101,12 @@ $[a,b]$ ist eine Teilmenge von $\mathbb{X}(C([a,b]))$.
 % Homomorphismen G \to C^*
 %
 \subsection{Homomorphismen $G\to \mathbb{C}^*$}
-Sei jetzt $G$ eine Gruppe mit einem Haarschen Mass und der Faltung 
+Sei jetzt $G$ eine Gruppe mit einem haarschen Mass und der Faltung 
 von Funktionen mit kompaktem Träger.
 Da die Funktionen alle in $L^2(G)$ drin sind, muss eine lineare
-Abbildung nach dem Darstellungssatz von Riesz als ein Skalarprodukt
-geschrieben werden können.
+Abbildung nach dem
+Darstellungssatz~\ref{buch:skalarprodukt:hilbertraum:satz:riesz}
+von Riesz als ein Skalarprodukt geschrieben werden können.
 Für einen Charakter $\chi\colon L^2(G)\to\mathbb{C}$ muss es also eine
 Funktion $\omega\colon G\to\mathbb{C}$ geben derart, dass
 \begin{equation}
@@ -125,7 +129,7 @@ Im Skalarprodukt
 =
 \int_{G} \overline{\omega(x)} f(s^{-1}x) \,dx
 \]
-ist der Integrand nur für $x$ in unmittelbarer Nähe von $s$ 
+ist der Integrand nur für $x$ in unmittelbarer Nähe von $s$  von
 $0$ verschieden.
 Indem man die Funktion so verändert, dass der Träger kleiner wird,
 dann konvergiert das Skalarprodukt gegen den Wert $\omega(s)$.
@@ -144,15 +148,17 @@ Addition von Winkeln als Gruppenoperation.
 Um die Charaktere der Faltungsalgebra der $2\pi$-periodischen Funktionen
 zu bestimmen, müssen Homomorphismen $G\to\mathbb{C}$ gefunden werden.
 Ist $\omega$ ein solcher Homomorphismus, dann folgt aus
-$h=\omega(\frac{2\pi}{n}$, $\omega(2\pi/n)^n = \omega(2\pi)=\omega(0)=1$.
+$h=\omega(\frac{2\pi}{n})$ sofort
+$\omega(2\pi/n)^n = \omega(2\pi)=\omega(0)=1$.
 Daher muss $h$ eine komplexe Zahl vom Betrag $1$ sein, die man als
 $h=e^{it}$ schreiben kann.
 Somit ist $\omega(2\pi k/n) = e^{ikt}$ eine Exponentialfunktion.
-Da wir auch gefordert haben, das $\omega$ stetig sein muss folgt,
-dass alle Homomorphismen von der Form $x\mapsto e^{ikx}$.
+Da wir auch gefordert haben, dass $\omega$ stetig sein muss, folgt,
+dass alle Homomorphismen von der Form $x\mapsto e^{ikx}$ sind.
 Da $\omega(2\pi)=1$ sein muss, folgt ausserdem, dass $k\in \mathbb{Z}$
 ist.
-Die Menge der Homomorphismen $G\to\mathbb{R}$ ist daher $\mathbb{Z}$ und
+Die Menge der Homomorphismen $G\to\mathbb{R}$ ist daher
+$\mathbb{X}(C(G)) = \mathbb{Z}$ und
 die Menge der Charaktere der Faltungsalgebra ist ebenfalls $\mathbb{Z}$.
 \end{beispiel}
 
@@ -225,8 +231,8 @@ Algebrahomomorphismus:
 \mathscr{G}(ab)
 &=
 \mathscr{G}a\cdot \mathscr{G}b.
+\qedhere
 \end{align*}
-\item
 \end{itemize}
 \end{proof}
 
@@ -240,15 +246,16 @@ von $f\in\mathscr{K}(G)$ den Wert
 (\mathscr{G}f)(\chi) = \chi(f).
 \]
 Da die Gelfand-Transformatioin ein Algebrahomomorophismus ist,
-muss  für jeden Homomorphismus $\chi$
-\[
+muss  für jeden Homomorphismus $\chi\in\mathbb{X}(\mathscr{K}(G))$
+\begin{equation}
 \mathscr{G}(f*g)(\chi)
 =
 (\mathscr{G}f\cdot \mathscr{G}g) (\chi)
 =
 \mathscr{G}f(\chi)
 \mathscr{G}g(\chi)
-\]
+\label{buch:gruppen:gelfand:eqn:gelfandfaltung}
+\end{equation}
 gelten.
 Als Funktion auf $\mathbb{X}(\mathscr{K}(G))$ gilt für die
 Gelfand-Transformtion daher
@@ -324,7 +331,7 @@ Normierungsfaktor die Fourier-Koeffizienten der Funktion $f$.
 Die Gelfand-Transformation ist also eine Verallgemeinerung der
 Fourier-Transformation, die automatisch auf eine Art von harmonischer
 Analyse von Funktionen auf einer Gruppe führt.
-Im Beispiel sind die Funktione $\omega_k$ bezüglich des
+Im Beispiel sind die Funktionen $\omega_k$ bezüglich des
 Skalarproduktes orthogonal, aber im Allgemeinen wissen wir dies 
 noch nicht.
 Wir werden in Abschnitt~\ref{buch:gruppen:section:darstellung}
@@ -491,7 +498,7 @@ n\mathbb{Z}.
 \]
 Die Menge der Homomorphismen ist daher $\mathbb{Z}/n\mathbb{Z}=C_n$,
 die duale Gruppe von $C_n$ ist also $\hat{C}_n=C_n$.
-Insbesondere ist auch die duale Gruppe der dualgen Gruppe von $C_n$ 
+Insbesondere ist auch die duale Gruppe der dualen Gruppe von $C_n$ 
 wieder die Gruppe $C_n$.
 \end{beispiel}
 

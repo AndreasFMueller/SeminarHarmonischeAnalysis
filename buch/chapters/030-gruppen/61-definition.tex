@@ -8,8 +8,8 @@
 % Definition
 %
 \subsection{Definition}
-Viele der klassischen Gruppen lernt man in der linearen Algebra
-kennen und sind bereits Mengen von Matrizen definiert.
+Viele der klassischen Gruppen sind als Mengen von Matrizen definiert.
+Man lernt sie meist bereits in der linearen Algebra kennen.
 Die Verknüpfung der Gruppenelemente ist die Matrixmultiplikation,
 das neutrale Element ist die Einheitsmatrix $I$.
 Da sie auch invertierbar sein müssen, liegen sie in der 
@@ -64,6 +64,9 @@ Abbildungen $\varrho(x)$ als Matrizen in $M_{n\times n}(\Bbbk)$
 geschrieben werden.
 \end{definition}
 
+%
+% Die reguläre Darstellung
+%
 \subsubsection{Die reguläre Darstellung}
 Sei $G$ eine endliche Gruppe und $h\in G$.
 Die Verknüpfung mit $g$ definiert eine Permutation der Gruppenelemente
@@ -73,7 +76,7 @@ durch
 \]
 Zum Gruppenelement $h$ gehört daher die Permutationsmatrix
 $P_{\pi_h}\in\operatorname{GL}_n(\mathbb{R})$.
-Zu jeder endlichen Gruppe gehört daher die Darstellung durch die
+Jede endliche Gruppe hat daher mindestens die Darstellung durch die
 Matrizen $P_{\pi_h}$.
 Sie heisst die {\em reguläre Darstellung}.
 
@@ -82,7 +85,7 @@ nummeriert, kann man auch Vektoren definieren, auf denen die
 Gruppe durch die Matrizen $P_{\pi_h}$ operiert.
 Sei $v_{g_i}$ der Spaltenvektor, der in der $i$-ten Zeile eine Eins
 hat und lauter Nullen in allen anderen Zeilen.
-Dann ist $\pi_{h}v_{g_i} P_{\pi_h}v_{g_i}$, die Vektoren
+Dann ist $\pi_{h}v_{g_i}=P_{\pi_h}v_{g_i}$, die Vektoren
 $v_{g_0},\dots,g_{|G|-1}$ sind die Standardbasis eines $|G|$-dimensionalen
 Vektorraumes, auf dem die Gruppe $G$ durch Permutationsmatrizen wirkt.
 
@@ -101,9 +104,9 @@ g\mapsto
 betrachten.
 Die Menge der Funktionen $G\to\Bbbk$ bezeichnen wir mit $\Bbbk[G]$.
 Die Gruppe $G$ operiert auf den Funktion durch die Translation.
-Funktion $v_{kh}$ ist genau dann $1$, wenn $g=kh$ ist, also wenn $k^{-1}g=h$
+Die Funktion $v_{kh}$ ist genau dann $1$, wenn $g=kh$ ist, also wenn $k^{-1}g=h$
 ist.
-Das selbe gilt die Funktion $g\mapsto v_h(k^{-1}h)$, daher definieren wir
+Dasselbe gilt für die Funktion $g\mapsto v_h(k^{-1}h)$, daher definieren wir
 die Translation für beliebige Funktionen $f\colon G\mapsto \mathbb{R}$
 durch
 \[
@@ -116,9 +119,9 @@ Vektorraum der Funktionen auf der Gruppe.
 
 Für eine topologische Gruppe $G$ ist die Translation $T_g$ eine 
 stetige lineare Abbildung auf dem Vektorraum der stetigen Funktionen
-$C(G,\mathbb{R})$, ausserdem ist die Abbildung $g\mapsto T_g$ eine
+$C_{\mathbb{R}}(G)$, ausserdem ist die Abbildung $g\mapsto T_g$ eine
 stetige Abbildung von $G$ in den Vektorraum der linearen Operatoren
-auf $C(G,\mathbb{R})$.
+auf $C_{\mathbb{R}}(G)$.
 Für eine Lie-Gruppe ist $g\mapsto T_g$ sogar eine differenzierbare
 Abbildung.
 Auch diese Darstellungen von $G$ auf entsprechenden Funktionenräumen
@@ -166,7 +169,7 @@ Sei $G$ eine endliche Gruppe und $f\colon G\mapsto \mathbb{R}$ eine
 Funktion auf $G$.
 Da die Translation $T_g$ eine lineare Abbildung ist, können wir die 
 sie mit den Koeffizienten $T_g$ linear kombinieren.
-Damit lässt sich die eine Operation der Funktion $f$ auf den Funktionen
+Damit lässt sich eine Operation der Funktion $f$ auf den Funktionen
 $h\colon G\to\mathbb{R}$ durch
 \begin{equation}
 T_fh

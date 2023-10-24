@@ -18,7 +18,7 @@ Wir definieren daher
 
 \begin{definition}
 \label{buch:gruppen:gruppe:def:funktionenaufgruppe}
-Die Menge der stetigen reell- und komplexwertigen Funktionen wird mit
+Die Menge der stetigen reell- oder komplexwertigen Funktionen wird mit
 $C_{\mathbb{R}}(G)$ bzw.~$C_{\mathbb{C}}(G)$ bezeichnet.
 Ist $G$ eine Lie-Gruppe, dann ist
 $C_{\mathbb{R}}^\infty(G)$ die Menge der unendlich oft differenzierbaren
@@ -27,7 +27,7 @@ $C_{\mathbb{C}}^\infty(G)$ ist die Menge der unendlich oft differenzierbaren
 komplexwertigen Funktionen.
 \end{definition}
 
-Die Gruppenstruktur ermöglich, lineare Operatoren auf $C_{\mathbb{R}}(G)$
+Die Gruppenstruktur ermöglicht, lineare Operatoren auf $C_{\mathbb{R}}(G)$
 und $C_{\mathbb{C}}(G)$ zu definieren.
 
 \begin{definition}
@@ -47,7 +47,7 @@ f \mapsto T_sf
 Sie heisst die {\em Translation} um $s\in G$.
 \end{definition}
 
-Die Translation ist natürlich linear, denn
+Die Translation ist natürlich ein linearer Operator auf den Funktionen, denn
 \begin{align*}
 (T_s(f+g))(x)
 &=
@@ -68,7 +68,7 @@ T_s(f+g)&=T_sf+T_sg
 &&\Rightarrow&
 T_s\lambda f
 &=
-\lambda T_sf
+\lambda T_sf.
 \end{align*}
 
 %
@@ -113,13 +113,19 @@ f((st)^{-1}x)
 (T_{st}f)(x),
 \]
 also $T_sT_t=T_{st}$.
+Die Zusammensetzung zweier Translationen ist wieder eine Translation.
+Auf die gleiche Art kann man auch $T_{s^{-1}}=T_s^{-1}$ zeigen.
+Die Abbildung $s\to T_s$ ist daher sogar ein Homomorphismus von $G$
+in die Gruppe der umkehrbaren linearen Selbstabbildungen
+des Vektorraumes $C(G)$ der stetigen Funktionen, oder
+$T_s\in\operatorname{GL}(C(G))$.
 
 %
 % Rechtsoperation der Gruppe auf 
 %
 \subsubsection{Rechtsoperation von $G$ auf $C(G)$}
-Die Operation $T_s$ ist genauer die Links-Translation, die Gruppenoperation
-wirkt auf das Argument von links.
+Die Operation $T_s$ wird etwas genauer als die Links-Translation
+bezeichnet, da die Gruppenoperation auf das Argument von links wirkt.
 Für eine abelsche Gruppe spielt die Reihenfolge der Operanden keine
 Rolle, für eine nichtabelsche Gruppe ergibt sich jedoch ein Unterschied.
 
@@ -155,7 +161,8 @@ f(xst)
 (R_{st}f)(x)
 \]
 oder kurz $R_sR_t=R_{st}$.
-
+Auch die Rechtsoperation ist also ein Homomorphismus
+$G\to\operatorname{GL}(C(G))$.
 
 
 

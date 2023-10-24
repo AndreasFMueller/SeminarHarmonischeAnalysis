@@ -18,12 +18,12 @@ die punktweise Multiplikation $f\cdot g$ mit
 \end{align*}
 Die Gruppenstruktur ermöglicht, verschiedene Punkte im Definitionsbereich
 mit Hilfe einer Translation $T_x$ zur Deckung zu bringen und somit
-Funktionswerte auf verschiedenen Gruppenelemente miteinander verrechnen.
+Funktionswerte auf verschiedenen Gruppenelemente miteinander zu verrechnen.
 
 %
 % Hall
 % 
-\subsection{Hall und andere Phänomene
+\subsection{Hall und andere Phänomene, die auf die Faltung führen
 \label{buch:gruppen:faltung:subsection:hall}}
 \begin{figure}
 \centering
@@ -36,14 +36,14 @@ Ein beliebiges Signal $f(t)$ (grün) wird beim Mikrofon als $g*f(t)$
 aufgenommen.
 \label{buch:gruppen:faltung:fig:konzertsaal}}
 \end{figure}
-Wie verändern die Reflektionen des Schalls in einem Konzertsaal
+Wie verändern die Reflexionen des Schalls in einem Konzertsaal
 den Klang eines Musikinstruments
 (Abbildung~\ref{buch:gruppen:faltung:fig:konzertsaal})?
 Das Instrument produziert Schallwellen, die sich als Druckschwankungen
 $f(t)$ ausbreiten.
 Die Wände und Einrichtungsgegenstände reflektieren dies auftreffenden
 Schallenwellen in unterschiedlichem Ausmass.
-Die Reflektionen treffen beim Zuhörer mit verschiedenen Verzögerungen ein.
+Die Reflexionen treffen beim Zuhörer mit verschiedenen Verzögerungen ein.
 Das um $\tau$ verzögerte Signal ist $t\mapsto f(t-\tau)$.
 Der Anteil $g(\tau)$ des Signals, des mit Verzögerung $\tau$ beim
 Zuhörer eintrifft, heisst die {\em Impulsantwort}.
@@ -59,8 +59,8 @@ f(t-\tau)
 \end{equation}
 Das Integral wird auch als die Faltung $g*f$ bezeichnet.
 
-Die Abbildung mit einem realen Objektiv ist nicht in der Lage,
-Punkte beliebig scharf abzubilden.
+Die Abbildung photographische mit einem realen Objektiv ist nicht
+in der Lage, Punkte beliebig scharf abzubilden.
 Stattdessen wird jeder Punkt auf ein Fleck abgebildet, dessen Intensität
 mit zunehmender Entfernung vom idealen Bildpunkt abnimmt.
 Dafür ist die Wellennatur des Lichts über das Phänomen der Beugung
@@ -93,8 +93,30 @@ Definitionsbereichs $\mathbb{R}$ der Funktionen.
 Die Funktion $f(x-\xi)$ in \eqref{buch:gruppen:faltung:eqn:pointspread}
 betrachtet als Funktion von $x$ ist die um $\xi$ verschobene
 Funktion $T_\xi f(x)$.
-In der Bestrebung, das Integral als Skalarprodukt zu schreiben,
-dies als Funktion von $\xi$ ausgedrückt werden.
+
+Die obenstehenden Vorbereitungen können verwendet werden als
+Ausgangspunkt für die Verallgemeinerung auf eine beliebige Gruppe
+in der folgenden Definition.
+
+\begin{definition}
+Die Faltung zweier Funktion $f,g\in C(G)$ ist die Funktion
+\begin{equation}
+(f*g)(x)
+=
+\int_G f(y)g(y^{-1}x)\,dy.
+\label{buch:gruppen:faltung:eqn:deffaltung}
+\end{equation}
+Im Fall einer additiv geschriebenen, abelschen Gruppe wird die Faltung zu
+\begin{equation}
+(f*g)(x)
+=
+\int_G f(y)g(x-y)\,dy.
+\label{buch:gruppen:faltung:eqn:deffaltungadditiv}
+\end{equation}
+\end{definition}
+
+In der Bestrebung, das Integral als Skalarprodukt von Funktionen
+zu schreiben, dies muss als Funktion von $\xi$ ausgedrückt werden.
 
 \begin{definition}
 Zu einer Funktion $f\colon G\to X$ ist $\check{f}\colon G\to X$ die
@@ -121,26 +143,6 @@ schreiben und damit das Faltungsintegral als
 \]
 In dieser Form verschwindet das Integral im Skalarprodukt.
 
-Die obenstehenden Vorbereitungen können verwendet werden als
-Ausgangspunkt für die Verallgemeinerung auf eine beliebige Gruppe
-in der folgenden Definition.
-
-\begin{definition}
-Die Faltung zweier Funktion $f,g\in C(G)$ ist die Funktion
-\begin{equation}
-(f*g)(x)
-=
-\int_G f(y)g(y^{-1}x)\,dy.
-\label{buch:gruppen:faltung:eqn:deffaltung}
-\end{equation}
-Im Fall einer additiv geschriebenen, abelschen Gruppe wird die Faltung zu
-\begin{equation}
-(f*g)(x)
-=
-\int_G f(y)g(x-y)\,dy.
-\label{buch:gruppen:faltung:eqn:deffaltungadditiv}
-\end{equation}
-\end{definition}
 
 %
 % Faltung als Produkt
@@ -151,14 +153,14 @@ Die Faltung ist ein Produkt, d.~h.~man kann mit Faltungsprodukten
 genau so rechnen, wie man es sich von anderen (nicht kommutativen)
 Produkten wie zum Beispiel dem Matrizenprodukt gewöhnt ist.
 Dazu müssen zwei Bedingungen erfüllt sein: es müssen das
-Assoziativ- und das Distributivgesetzt gelten.
+Assoziativ- und das Distributivgesetz gelten.
 
 %
 % Assoziativität
 %
 \subsubsection{Assoziativität}
 Das Assoziativgesetz besagt, dass es in einem Produkt mit mehr als
-zwei Faktoren nicht auf die Reihenfalge ankommt, in der man die
+zwei Faktoren nicht auf die Reihenfolge ankommt, in der man die
 Produkte ausführt.
 Dies ermöglicht, Faltungsprodukte von drei Funktionen $f$, $g$ und $h$
 auch einfach als $f*g*h$ zu schreiben.
@@ -169,7 +171,7 @@ $f,g,h\in C(G)$, für die alle Faltungen definiert sind.
 \end{satz}
 
 \begin{proof}[Beweis]
-Ausgehend vond er Definition der Faltung in
+Ausgehend von der Definition der Faltung in
 \eqref{buch:gruppen:faltung:eqn:deffaltung}
 kann man die Faltung der zweifachen Faltung als
 \begin{align*}
@@ -285,7 +287,7 @@ Wir berechnen die Faltung der beiden Funktionen
 =
 \begin{cases}
 1&\qquad \text{falls $x=\tau$}\\
-0&\qquad \text{sonst}
+0&\qquad \text{sonst.}
 \end{cases}$}
 \qedhere
 \]
@@ -300,7 +302,8 @@ Da die Verknüpfung in der Gruppe stetig ist, gibt es eine kleine
 Umgebung $U$ des neutralen Elements derart, dass sich $sU$ und $tU$
 nicht schneiden und auch keine gemeinsamen Punkte mit $stU$ und $tsU$, die
 sich ebenfalls nicht schneiden.
-Und wenn nötig kann man die Umgebung immer noch kleiner machen.
+Falls nicht, kann man die Umgebung $U$ immer noch kleiner machen, um
+dies zu erreichen.
 Sei ausserdem $f$ eine nichtnegative Funktion, deren Träger in $U$ enthalten
 ist.
 Wir rechnen jetzt nach, dass die Faltungen $T_sf*T_tf$ und $T_tf*T_sf$ 
@@ -336,7 +339,7 @@ Die Gruppenelemente $s$ und $t$ kommen in der Faltung
 \eqref{buch:gruppen:faltung:eqn:kommst}
 und in der nachfolgenden Diskussion symmetrisch vor.
 Daraus folgt, dass die Faltung $T_sf*T_tf$ nur in einer Umgebung von $st$
-von $0$ verschieden ist, während $T_tf*T_sf$ nur einer davon diskunkten
+von $0$ verschieden ist, während $T_tf*T_sf$ nur einer davon disjunkten
 Umgebung von $ts\ne st$ von $0$ verschieden ist.
 Die beiden Funktionen $T_sf*T_tf$ und $T_tf*T_sf$ können daher
 nicht gleich sein, die Faltung ist nicht kommutativ.
@@ -345,7 +348,7 @@ nicht gleich sein, die Faltung ist nicht kommutativ.
 % Rekonstruktion der Gruppenoperation aus der Faltung
 %
 \subsubsection{Rekonstruktion der Gruppenoperation aus der Faltung}
-Die Diskussion zeigt auch, dass die Verknüpfung in der Gruppe aus
+Die Diskussion zeigt auch, dass man die Verknüpfung in der Gruppe aus
 der Faltung rekonstruieren kann.
 Gegeben zwei Elemente $s,t\in G$ und Funktionen $f_n$,
 deren Träger in einer Umgebung des neutralen Elementes
@@ -363,9 +366,9 @@ auf der Gruppe gewinnen.
 Der Vorteil des Zugangs über Funktionen auf der Gruppe besteht
 darin, dass Funktionen einen Vektorraum bilden, auf dem zwei
 verschiedene Multiplikationen definiert sind.
-Das Skalarprodukt sorgt aber auch dafür, dass die quadratintegrierbaren
+Das Skalarprodukt sorgt zusätzlich dafür, dass die quadratintegrierbaren
 Funktionen einen Hilbert-Raum bilden.
-Diese zusätzlichen algebraischen Strukturelemente geben uns zusätzliche
+Diese zusätzlichen algebraischen Strukturelemente geben uns weitere
 Werkzeuge in die Hand, die Gruppe zu studieren.
 
 

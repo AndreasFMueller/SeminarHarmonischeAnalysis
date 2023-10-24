@@ -10,9 +10,9 @@ werden.
 Das Skalarprodukt für Funktionen auf dieser Gruppe ist eine Integral über
 einen unendlichen Definitionsbereich, so entsteht das Problem, dass
 selbst beschränkte Funktionen ein unendliches Skalarprodukt haben können.
-Wir müssen uns daher auf Funktionen beschränken, die nur auf einer
-kompakten Teilmenge von $0$ verschieden sind und den Funktionenraum
-daraus durch Vervollständigung aufbauen.
+Wir müssen uns daher auf die Funktionen in $\mathscr{K}(G)$ beschränken,
+die nur auf einer kompakten Teilmenge von $0$ verschieden sind und den
+Funktionenraum daraus durch Vervollständigung aufbauen.
 
 Im Gegensatz zur Gruppe der Winkel ist die Gruppe $\mathbb{R}$ nicht kompakt
 und die Menge der Homomorphismen ist nicht diskret.
@@ -47,7 +47,7 @@ die Homomorphismen erfüllen also die Differentialgleichung
 \chi(x) = e^{\alpha x}.
 \]
 Nur diejenigen Homomorphismen sind beschränkt und können dazu verwendet,
-für die die Konstante $\alpha=ik$ imaginär ist, mit $k\in\mathbb{R}$.
+für die die Konstante $\alpha=ik$ imaginär ist, also mit $k\in\mathbb{R}$.
 Die duale Gruppe ist daher
 \[
 \hat{G}
@@ -55,7 +55,7 @@ Die duale Gruppe ist daher
 \{
 \chi\colon\mathbb{R}\to\mathbb{C}^*
 \mid
-\chi(x) = e^{ikx},\quad k\in \mathbb{R}
+\chi(x) = e^{ikx},\; k\in \mathbb{R}
 \}.
 \]
 Zu jedem Homomorphismus $\chi$ gehört also eine eindeutig bestimmte
@@ -86,11 +86,11 @@ e^{i(k_1+k_2)x}
 \]
 der beiden Charaktere ist wieder ein Homomorphismus
 $\mathbb{R}\to\mathbb{C}^*$, der zur Wellenzahl $k_1+k_2$ gehört.
-$\hat{\mathbb{R}}$ ist daher nicht nur als Menge das gleiche wie
+$\hat{\mathbb{R}}$ ist daher nicht nur als Menge das Gleiche wie
 die Menge der Wellenzahlen $k\in \mathbb{R}$, sondern auch als
 Gruppe mit der Addition also Gruppenoperation.
 
-Da für $\mathbb{R}$ das Lebesque-Mass translationsinvariant ist,
+Da für $\mathbb{R}$ das Lebesgue-Mass translationsinvariant ist,
 ist auch das Haar-Mass auf der dualen Gruppe $\hat{\mathbb{R}}=\mathbb{R}$
 bis auf einen Normierungsfaktor bekannt.
 Wir können ihn so wählen, dass die Transformations- und
@@ -101,8 +101,8 @@ Rücktransformationsformeln möglichst einfach werden.
 %
 \subsection{Fourier-Transformation
 \label{buch:gruppen:fourier:subsection:transformation}}
-Im Abschnitt~\ref{buch:gruppen:fourier:subsection:dualR} wurde die
-duale Gruppe von $G=\mathbb{R}$ bestimmt.
+Im Abschnitt~\ref{buch:gruppen:fourier:subsection:gruppeR}
+wurde die duale Gruppe von $G=\mathbb{R}$ bestimmt.
 Nach der allgemeinen Theorie der Gelfand-Transformation sind die
 Werte der Gelfand-Transformation auf Funktionen mit kompaktem
 Träger die Skalarprodukt
@@ -122,6 +122,7 @@ für Funktionen mit kompaktem Träger definiert, sondern wegen $|\chi(x)|=1$
 für beliebige integrierbare Funktionen.
 
 \begin{definition}[Fourier-Transformation auf $\mathbb{R}$]
+\label{buch:gruppen:fourier:def:ft}
 Die Fourier-Transformation einer integrierbaren Funktion $f\in L^1(\mathbb{R})$
 \index{Fourier-Transformation!auf $\mathbb{R}$}%
 ist die Funktion
@@ -135,7 +136,35 @@ k\mapsto
 =
 \int_{\mathbb{R}} e^{-ikx}f(x)\,dx.
 \]
+Für differenzierbare Funktionen mit kompaktem Träger $f\in\mathscr{K}(G)$ 
+gilt
+\begin{equation}
+\mathscr{F}f'
+\colon k\to (\mathscr{F}f)(k)
+=
+-ik(\mathscr{F}f) (k)
+\label{buch:gruppen:fourier:eqn:ableitung}
+\end{equation}
 \end{definition}
+
+Die Relation \eqref{buch:gruppen:fourier:eqn:ableitung} muss noch
+gerechtfertigt werden.
+Die Rechnung ergibt
+\begin{align*}
+(\mathscr{F}f')(k)
+&=
+\int_{\mathbb{R}} e^{-ikx} f'(x)\,dx
+=
+\underbrace{
+\biggl[
+e^{-ikx}f(x)
+\biggr]_{-\infty}^\infty
+}_{\displaystyle = 0}
++ik
+\int_{\mathbb{R}} e^{-ikx} f(x)\,dx
+=
+ik(\mathscr{F}f)(k).
+\end{align*}
 
 %
 % Unschärfe-Relation
@@ -152,8 +181,8 @@ dass ein Signal, das in der Zeit wie ein kurzer Ton gut lokalisiert ist,
 im Frequenzbereich schlecht lokalisiert ist.
 Umgekehrt erreicht man gute Lokalisierung und damit genaue Tonhöhenbestimmung
 im Frequenzbereich, wenn das Signal zeitlich nicht klar bestimmt ist.
-Die in diesem Abschnitt entwickelte Unschärferelation fasst diesen intuiven
-mathematisch präzis.
+Die in diesem Abschnitt entwickelte Unschärferelation fasst diese
+Intuition mathematisch präzis.
 
 In Abschnitt~\ref{buch:diskret:section:unschaerfe} wird gezeigt, dass
 Unschärferelationen eine sehr allgemeine Eigenschaft der Transformationen
@@ -364,7 +393,7 @@ erhalten.
 \subsubsection{Fourier-Transformation und Gauss-Verteilung}
 Die Gauss-Verteilung spielt in der Wahrscheinlichkeitstheorie eine
 spezielle Rolle, die ihr vom zentralen Grenzwertsatz zugewiesen wird.
-Eine sehr grosse Summe vieler kleiner Einflüsse ist unabhängig von
+Eine sehr grosse Summe vieler kleiner Zufallseinflüsse ist unabhängig von
 der Verteilung der einzelnen Einflüsse im Wesentlichen normalverteilt.
 Die Gauss-Verteilung hat aber auch in der Fourier-Theorie eine besondere
 Bedeutung, wie die folgenden zwei Sätze zeigen.
@@ -381,7 +410,7 @@ e^{-k^2/2a},
 also wieder eine Gauss-Funktion.
 \end{satz}
 
-\begin{proof}
+\begin{proof}[Beweisidee]
 Wir berechnen die Fourier-Transformierte direkt aus
 \begin{align*}
 \hat{f}(k)
@@ -435,7 +464,7 @@ zum Eigenwert $\!\sqrt{2\pi}$, also
 % Die Heisenberg-Pauli-Weyl-Ungleichung
 %
 \subsubsection{Die Heisenberg-Pauli-Weyl-Ungleichung}
-Um das in vorangegangenen Beispielen diskutierte Phänomen allgemein
+Um das in den vorangegangenen Beispielen diskutierte Phänomen allgemein
 zu fassen, dass eine gut lokalisierte Funktion eine schlecht lokalisierte
 Fourier-Transformierte hat, benötigen wir ein Mass für die Lokalisierung.
 Die Dirac-\textdelta-Funktion hat perfekte Lokalisierung, sie ist 
@@ -558,7 +587,8 @@ Es genügt als  wie folgt zu rechnen:
 \int_{-\infty}^\infty |k\,F(k)|^2\,dk.
 \notag
 \intertext{Aus der Ableitungseigenschaft $ikF(k) = (\mathscr{F}f')(k)$
-der Fourier-Transformation folgt}
+der Fourier-Transformation
+(Definition~\ref{buch:gruppen:fourier:subsection:gruppeR}) folgt}
 &=
 \int_{-\infty}^\infty |x\,f(x)|^2\,dx
 \int_{-\infty}^\infty |(\mathscr{F}f')(k)|^2\,dk.
@@ -588,8 +618,8 @@ ohne dass sich der Wert ändert.
 Wir wählen die Kombination}
 &=
 \biggl|
-\int_{-\infty}^{\infty} xf(x)\overline{f'(x)}\,dx.
-\biggr|
+\int_{-\infty}^{\infty} xf(x)\overline{f'(x)}\,dx
+\biggr|.
 \notag
 \intertext{Verwendet man nur den Realteil des Integranden, wird das Integral
 noch kleiner, nämlich}
@@ -631,7 +661,7 @@ f(x)\overline{f'(x)} + \overline{f(x)}f'(x)
 \frac14 \biggl|
 \int_{-\infty}^{\infty}
 x\frac{d}{dx}(|f(x)|^2)
-\biggr|^2
+\biggr|^2.
 \notag
 \intertext{Partielle Integration ergibt}
 &=
@@ -646,7 +676,8 @@ x|f(x)|^2
 \,dx
 \biggr|^2.
 \notag
-\intertext{Nach Voraussetzung verschwindet der erste Term.
+\intertext{Nach der Voraussetzung $\langle x\rangle$ verschwindet
+der erste Term.
 Das Integral im zweiten Term ist das Quaddrat der $L^2$-Norm, also}
 &=
 \frac14\|f\|_2^4.
@@ -699,7 +730,7 @@ f(x) = Ce^{-ax^2},
 mit $-a = \frac12c$.
 Die Konstante $a$ muss positiv sein, weil sonst $f(x)$ nicht
 integrierbar ist.
-Gleichheit tritt also genau auf für Gauss-Funktionen.
+Gleichheit tritt also genau für Gauss-Funktionen auf.
 \end{proof}
 
 %

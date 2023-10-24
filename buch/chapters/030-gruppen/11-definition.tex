@@ -39,8 +39,8 @@ vertauscht werden können.
 
 \begin{beispiel}
 Die Menge $\operatorname{GL}_n(\mathbb{R})$ der invertierbaren
-$n\times n$-Matrizien mit reellen Einträgen und der Matrixmultiplikation
-heisst die {\em allgemeine lineare Gruppe}.
+$n\times n$-Matrizen mit reellen Einträgen und der Matrixmultiplikation
+ist eine Gruppe, sie heisst die {\em allgemeine lineare Gruppe}.
 \index{allgemeine lineare Gruppe}%
 \index{Gruppe!allgemeine lineare}%
 Das neutrale Element von $\operatorname{GL}_n(\mathbb{R})$ ist die
@@ -68,10 +68,10 @@ die Verknüpfung in der Gruppe kommutativ ist, wenn also
 $xy=yx$ für alle $x,y\in G$ gilt.
 \end{definition}
 
-Die Verknüpfung einer abelschen Gruppe ist also {\em kommutativ}.
+Die Verknüpfung einer abelschen Gruppe ist somit {\em kommutativ}.
 \index{kommutativ}%
 Abelsche Gruppen werden oft additiv geschrieben, d.~h.~mit einem
-Pluszeichen als $x+y$ für $x,y\in G$.
+Pluszeichen als $x+y$ für die Verknüpfung zweier Elemente $x,y\in G$.
 Das neutrale Element heisst dann auch das {\em Nullelement} und wird $0$
 geschrieben: $x+0=x$ für alle $x\in G$.
 Das inverse Element von $x$ heisst dann auch das
@@ -86,22 +86,39 @@ $(\mathbb{R}^*,\cdot)$ ist eine abelsche Gruppe.
 
 \begin{beispiel}
 Die {\em Gruppe der Drehwinkel} in der Ebene ist die Menge
-\(
-\mathbb{R}/2\pi\mathbb{Z}
-=
-(-\pi,\pi].
-\)
+$
+%\mathbb{R}/2\pi\mathbb{Z}
+%=
+(-\pi,\pi]
+$.
 Als Gruppenoperation dient die Addition von Winkeln, die Summe
 $\alpha+\beta$ zweier Winkel $\alpha$ und $\beta$ muss dazu durch
 Subtraktion oder Addition von Vielfachen von $2\pi$ ins Intervall
 $(-\pi,\pi]$ zurückgebracht werden.
 Neutrales Element ist $0$, das inverse Elemente ist $-\alpha$ mit
 dem Spezialfall $-\pi=\pi$.
+
+Eigentlich kann jede Zahl als Drehwinkel verwendet werden, doch
+Drehwinkel, die sich um ein ganzzahliges Vielfaches von $2\pi$ unterscheiden,
+beschreiben die gleiche Drehung.
+Die Darstellung der Drehung mit Winkeln zwischen $-\pi$ und $\pi$ ist nur
+eine von vielen Möglichkeiten.
+Die Zahlen im Intervall $[0,2\pi)$ sind genauso gut geeignet.
+
+Schliesslich könnte man in der Menge der reellen Zahlen alle
+$\mathbb{R}$ Winkel zusammenfassen, die die gleiche Drehung beschreiben.
+Die Menge aller Winkel, die mit der Drehung um den Winkel $\alpha$
+gleichbedeutend sind, ist $\{\alpha + 2k\pi\mid k\in\mathbb{Z}\}$.
+Die Menge dieser Klassen wird auch mit $\mathbb{R}/2\pi\mathbb{Z}$
+bezeichnet.
+Jede Klasse vin $\mathbb{R}/2\pi\mathbb{Z}$ kann durch genau einen
+Winkel in $(-\pi,\pi]$ oder in $[0,2\pi)$ wiedergegeben werden,
+die drei Mengen beschreiben alle die gleiche Gruppe.
 \end{beispiel}
 
 \begin{beispiel}
-Die von $0$ verschiedenen Element $\mathbb{C}^*$ mit der Multiplikation
-ist eine Gruppe.
+Die von $0$ verschiedenen komplexen Zahlen $\mathbb{C}^*$ bilden mit
+der Multiplikation als Verknüpfung eine Gruppe.
 Das neutrale Element ist die Zahl $1\in\mathbb{C}^*$ und das inverse
 Element zu $z\in\mathbb{C}^*$ ist $z^{-1}$.
 \end{beispiel}
@@ -133,6 +150,37 @@ Dann heisst $H$ eine {\em Untergruppe} von $G$.
 Jede Gruppe enthält als kleinste Untergruppe immer die Gruppe $G$,
 die {\em triviale Gruppe}, die nur aus dem neutralen Element
 $\{e\}\subset G$ besteht.
+
+\begin{beispiel}
+Die positiven Zahlen $\mathbb{R}^+ = \{x\in \mathbb{R}\mid x>0\}$ 
+bilden ein Untergruppe der nichtverschwindenden reellen Zahlen
+$\mathbb{R}^*$ mit der Multiplikation als Verknüpfung:
+$\mathbb{R}^+\subset\mathbb{R}^*$.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:gruppen:definition:bsp:so2}
+Die Menge
+\[
+\operatorname{SO}(2)
+=
+\biggl\{
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha \\
+\sin\alpha &  \cos\alpha
+\end{pmatrix}
+\;
+\bigg|
+\;
+\alpha\in\mathbb{R}
+\biggr\}
+\]
+ist eine Gruppe mit der Matrixmultiplikation als Gruppenoperation,
+der Einheitsmatrix als neutralem Element und der inversen Matrix
+als inversem Element.
+Sie ist eine Untergruppe der Gruppe $\operatorname{GL}_2(\mathbb{R})$
+der invertierbaren $2\times 2$-Matrizen.
+\end{beispiel}
 
 %
 % Homomorphismen
@@ -168,31 +216,11 @@ Die Exponentialabbildung zeigt also, dass es zwischen den beiden
 Gruppen $\mathbb{R}/2\pi\mathbb{Z}$ und $S^1$ nicht wirklich einen
 Unterschied gibt.
 
+wie im folgenden Beispiel gezeigt wird.
+
 Die Gruppe der Drehwinkel kann man auch als eine Matrizengruppe
-verstehen, wie im folgenden Beispiel gezeigt wird.
-
-\begin{beispiel}
-Die Menge
-\[
-\operatorname{SO}(2)
-=
-\biggl\{
-\begin{pmatrix}
-\cos\alpha & -\sin\alpha \\
-\sin\alpha &  \cos\alpha
-\end{pmatrix}
-\;
-\bigg|
-\;
-\alpha\in\mathbb{R}
-\biggr\}
-\]
-ist eine Gruppe mit der Matrixmultiplikation als Gruppenoperation,
-der Einheitsmatrix als neutralem Element und der inversen Matrix
-als inversem Element.
-\end{beispiel}
-
-Die Abbildung
+verstehen.
+Dazu betrachten wir die Abbildung
 \[
 \varphi
 \colon
@@ -209,8 +237,10 @@ D_\alpha
 \sin\alpha &  \cos\alpha
 \end{pmatrix}
 \]
-transportiert die Gruppenoperation von $\mathbb{R}/2\pi\mathbb{Z}$
-nach $\operatorname{SO}(2)$ denn es gilt
+von $\mathbb{R}/2\pi\mathbb{Z}$ in die Gruppe der Drehmatrizen der
+Ebene aus Beispiel~\ref{buch:gruppen:definition:bsp:so2}.
+Die Abbildung transportiert die Gruppenoperation von
+$\mathbb{R}/2\pi\mathbb{Z}$ nach $\operatorname{SO}(2)$ denn es gilt
 \[
 \varphi(\alpha)\varphi(\beta)
 =
@@ -270,7 +300,8 @@ $\varphi^{-1}(U)$ eine Untergruppe von $G$ ist.
 Sie heisst die {\em Urbildgruppe} von $U$ unter dem Homomorphismus
 $\varphi$.
 
-Besonders wichtig ist die Urbildgruppe der trivialen Gruppe.
+Besonders wichtig ist die Urbildgruppe der trivialen Gruppe,
+sie ist der Gegenstand der folgenden Definition.
 
 \begin{definition}
 \label{buch:gruppen:definition:def:kern}
@@ -281,7 +312,7 @@ Untergruppe
 \]
 \end{definition}
 
-Der Kern eines Homomorphismus kann dazu verwendet werden zu beurteilen,
+Der Kern eines Homomorphismus kann dazu verwendet werden, zu beurteilen,
 ob der Homomorphismus injektiv ist.
 Wenn nämlich $\varphi(x)=\varphi(y)$ ist, dann ist auch
 \[
@@ -295,6 +326,12 @@ xy^{-1} \in\ker\varphi.
 \]
 Es folgt also genau dann $x=y$, wenn der Kern $\ker\varphi$ nur
 das neutrale Element enthält.
+Wir fassen das Resultat im folgenden Satz zusammen.
+
+\begin{satz}
+Ein Homomorphismus $\varphi\colon G\to H$ ist genau dann injektiv,
+wenn $\ker\varphi=\{e\}$ ist.
+\end{satz}
 
 %
 % Die Menge aller Homomorphismen
@@ -308,6 +345,11 @@ Licht auf die Struktur der einzelnen Gruppen werfen.
 Sind $G$ und $H$ Gruppen, dann wird die Menge aller Homomorphismen 
 von $G$ nach $H$ mit $\operatorname{Hom}(G,H)$ bezeichnet.
 \end{definition}
+
+Für beliebige Gruppen hat die Menge $\operatorname{Hom}(G,H)$
+keine offensichtliche algebraische Struktur.
+Im Spezialfalls $H=\mathbb{C}^*$ ist dies anders, wie das folgende
+Beispiel zeigt.
 
 \begin{beispiel}
 Von besonderer Bedeutung werden später die Homomorphismen
@@ -378,6 +420,59 @@ Die Menge aller Automorphismen wird
 $\operatorname{Aut}(G)$ geschrieben.
 \end{definition}
 
+\begin{beispiel}
+Die Abbildung
+\[
+\varphi_a\colon \mathbb{R}\to\mathbb{R}
+: x\mapsto a x
+\]
+mit $a\in\mathbb{R}^*$ ist ein Homomorphismus, denn
+\begin{align*}
+\varphi_a(x+y)
+&=
+a(x+y) = a x + a y = \varphi_a(x) + \varphi_a(y)
+\\
+\varphi_a(\lambda x)
+&=
+a(\lambda x)
+=
+\lambda (ax)
+=
+\lambda
+\varphi_a(x).
+\end{align*}
+Dies sind natürlich das Distributivgesetz in $\mathbb{R}$ und das
+Assoziativgesetz für die Multiplikation in $\mathbb{R}$.
+$\varphi_a$ ist ein Endomorphismus von $\mathbb{R}$.
+
+Der Homomorphismus $\varphi_a$ hat $\varphi_{a^{-1}}$ als Inverse,
+er ist also auch umkehrbar.
+Somit ist $\varphi_a$ auch ein Automorphismus.
+\end{beispiel}
+
+\begin{beispiel}
+Für $a\in \mathbb{Z}\setminus\{0\}$ ist die Abbildung
+\[
+\varphi_a\colon \mathbb{Z}\to\mathbb{Z} : z\mapsto az
+\]
+ein Endomorphismus der additiven Gruppe $\mathbb{Z}$.
+Für $k\ne \pm 1$ ist $\varphi_a$ aber nicht umkehrbar und damit
+kein Automorphismus von $\mathbb{Z}$.
+\end{beispiel}
+
+\begin{beispiel}
+Für $a>0$ ist die Abbildung
+\[
+\psi_a
+\colon
+\mathbb{R}^+ \to \mathbb{R}^+
+:
+x \mapsto x^a
+\]
+ein Automorphismus der multiplikativen Gruppe der positiven
+reellen Zahlen.
+\end{beispiel}
+
 \begin{satz}
 Die Menge $\operatorname{Aut}(G)$ ist eine Gruppe mit der Zusammensetzung
 von Automorphismen als Gruppenoperation und der Umkehrabbildung als
@@ -390,7 +485,7 @@ inverses Element.
 \subsubsection{Kategorientheorie}
 Die Konstruktion der Automorphismengruppe veranschaulicht ein allgemeineres
 Prinzip, wie Gruppen entstehen.
-Die Kategorientheorie behandelt die allgemeinen Eigenshcaften von
+Die Kategorientheorie behandelt die allgemeinen Eigenschaften von
 mathematischen Strukturen und Abbildungen dazwischen, die mit diesen
 Strukturen verträglich sind.
 Die Kategorie der Gruppen zum Beispiel umfasst alle Gruppen und die
@@ -404,7 +499,7 @@ gestellt.
 Eine {\em Kategorie} $\mathscr{C}$ ist eine Klasse von Objekten
 $\operatorname{obj}(\mathscr{C})$ zusammen mit einer
 Menge von sogenannten {\em Morphismen} $\operatorname{Hom}(A,B)$ für
-jedes Paar von Objekten $A$ und $B$, mit einer Verkknüprfung
+jedes Paar von Objekten $A$ und $B$, mit einer Verkknüpfung
 $
 \operatorname{Hom}(B,C)\times \operatorname{Hom}(A,B)
 \to
@@ -470,11 +565,9 @@ Morphismus in $\operatorname{Hom}(A,A)$ auf eindeutige Art invertiert
 werden kann.
 Dies macht die Menge der invertierbaren Morphismen mit der Verknüpfung
 von Morphismen zu einer Gruppe mit dem neutralen Elemente $1_A$.
-Die Automorphismengruppe einer Gruppe entsteht im Fall der Gruppenkategorie.
-Für die Kategorie der endlichdimensionalen Vektorräume ist die Menge
+Die Automorphismengruppe einer Gruppe entsteht durch Anwendung dieser
+Überlegungen auf die Gruppenkategorie.
+Für die Kategorie der endlichdimensionalen Vektorräume
 führt diese Konstruktion auf die Gruppe $\operatorname{GL}(V)$ der
 invertierbaren linearen Abbildungen $V\to V$.
-
-
-
 

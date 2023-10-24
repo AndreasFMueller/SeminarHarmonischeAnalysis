@@ -11,9 +11,9 @@
 \label{buch:gruppen:subsection:endliche-gruppen}}
 Für theoretische Überlegungen sind die kontinuierliche
 Fourier-Transformation auf Gruppen wie $\mathbb{R}$ oder
-$\mathbb{R}/2\pi\mathbb{Z}$ besonders Leistungsfähig, weil hier die
+$\mathbb{R}/2\pi\mathbb{Z}$ besonders leistungsfähig, weil hier die
 ganze Macht der Analysis zur Konstruktion der orthonormierten Basis
-zur Verfüfung steht.
+zur Verfügung steht.
 In Ingenieuranwendungen reduziert man die unendlichdimensionalen
 Vektorräume dagegen gerne auf endliche Menge, so dass man mit
 Vektoren und Matrizen rechnen kann.
@@ -39,9 +39,18 @@ der Reste modulo $n$ mit der Addition von Resten ist eine abelsche
 Gruppe.
 \end{definition}
 
+\begin{beispiel}
+Die Gruppe $\mathbb{Z}/7\mathbb{Z}$ besteht aus den Resten
+$\{0,1,2,\dots,6\}$.
+Die Verknüfung zweier Reste ist deren Summe, die aber auf einen
+Rest in $\mathbb{Z}/7\mathbb{Z}$ reduziert werden muss.
+Das inverse Element des Restes $r\in\mathbb{Z}/7\mathbb{Z}$
+ist der Rest $7-r$ für $r\ne 0$ und $-0=0$.
+\end{beispiel}
+
 Die zyklischen Gruppen können auch als multiplikativ geschriebene
-Untergruppen der von $0$ verschiedenen komplexen Zahlen geschrieben
-werden.
+Untergruppen der von $0$ verschiedenen komplexen Zahlen $\mathbb{C}^*$
+geschrieben werden.
 Dazu verwendet man die Exponentialfunktion:
 \[
 C_n
@@ -70,8 +79,11 @@ e^{2\pi il/n}
 \exp(k)\exp(l).
 \]
 Die Reste werden auf verschiedene Ecken eines regelmässigen
-$n$-Ecks in der komplexen Ebene abgebildet, die Abbildung $\exp$
-ist daher auch eine Bijektion.
+$n$-Ecks in der komplexen Ebene abgebildet.
+Die Abbildung $\exp$ ist daher auch eine Bijektion.
+Der Homomorphismus $\exp$ zeigt somit, dass die Gruppen
+$\mathbb{Z}/n\mathbb{Z}$ und $C_n$ die gleiche Struktur haben.
+
 Die additiv geschriebene Gruppe $\mathbb{Z}/n\mathbb{Z}$ und
 die multiplikativ geschriebene Gruppe $C_n$ sind also isomorph.
 
@@ -79,9 +91,9 @@ die multiplikativ geschriebene Gruppe $C_n$ sind also isomorph.
 % Die zyklischen Gruppen als Kern
 %
 \subsubsection{Die zyklischen Gruppen als Kern}
-Die Gruppe $C_n$ wurde früher schon als Bild der Gruppe
-$\mathbb{R}/2\pi\mathbb{Z}$ unter der Exponentialabbildung 
-in $\mathbb{C}^*$ erkannt worden.
+Die Gruppe $C_n$ wurde oben als Bild der Gruppe
+$\mathbb{Z}/n\mathbb{Z}$ unter der Exponentialabbildung 
+in $\mathbb{C}^*$ erkannt.
 Man kann sie aber auch als Kern eines geeignet gewählten Homomorphismus
 verstehen.
 
@@ -106,7 +118,7 @@ Die Menge $[n]=\{1,2,\dots,n\}$ hat $n$ Elemente.
 Wir betrachten die Menge aller invertierbaren Abbildungen
 $\varphi\colon [n] \to [n]$.
 Zwei solche Abbildungen $\varphi$ und $\psi$ können zusammengesetzt
-werden, oder sie können invertiert werden $\varphi^{-1}$.
+werden, oder sie können invertiert werden.
 Tatsächlich ist die Menge 
 \[
 S_n = \{\varphi\colon [n] \to [n]\mid \text{$\varphi$ ist invertierbar} \}
@@ -130,7 +142,7 @@ schreiben kann.
 Um die Komposition von zwei Abbildungen $\varphi$ und $\psi$ zu bestimmen,
 kann man die beiden Matrizen übereinander schreiben und die Spalten der
 unteren Matrix so sortieren, dass sie mit den Elementen in der unteren
-Zeile der oberen übereinstimmen:
+Zeile der oberen MatrixMatrix  übereinstimmen:
 \[
 \begin{aligned}
 \varphi
@@ -232,9 +244,18 @@ Die Zusammensetzung von $\varphi$ und $\varphi^{-1}$ ist
 e.
 \]
 
+%
+% Transpositionen
+%
+\subsubsection{Transpositionen}
+Permutationen können besser verstanden werden, wenn man sie in einfachere 
+Bestandteile zerlegen kann.
+Besonders nützlich dabei sind die sogenannten Transpositionen.
+
 \begin{definition}
 Eine {\em Transposition} $\tau\in S_n$ ist eine Permutation, die genau
 zwei Elemente vertauscht und alle anderen Elemente fest bleiben.
+\index{Transposition}%
 \end{definition}
 
 Die Permutationsgruppe $S_n$ ist für $n>2$ nicht abelsch, denn die beiden
@@ -277,17 +298,21 @@ haben die Produkte
 \end{align*}
 die verschieden sind.
 
+%
+% Endliche Gruppen als Untergruppen von $S_n$
+%
+\subsubsection{Endliche Gruppen als Untergruppen von $S_n$}
 Die Permutationsgruppen können als die ``ultimativen'' endlichen Gruppen
 im folgenden Sinne betrachtet werden.
 Sei $G=\{e=g_1,g_2,\dots,g_n\}$ irgend eine endliche Gruppe, und $g\in G$
 ein Gruppenelement.
-Für jedes Element $g_i$ ist $gg_i=g_{\pi(i)}$ wieder ein Gruppenelement.
-Damit wird eine Permutation $\pi\in S_n$ definiert.
-Die Gruppe $G$ kann damit als eine in $S_n$ Gruppe von Permutationen
-betrachtet werden.
+Für jedes Element $g_i$ ist $gg_i=g_k$ wieder ein Gruppenelement.
+Damit wird eine Permutation $\pi\in S_n$ mit $\pi(i)=k$ definiert.
+Die Gruppe $G$ kann damit als eine Untergruppe der Gruppe $S_n$
+von Permutationen betrachtet werden.
 Jede endliche Gruppe ist somit eine Untergruppe von $S_n$.
 Für die Zwecke der harmonischen Analysis ist diese Betrachtungsweise
-allerdings nicht besonders ergibig.
+allerdings nicht allzu ergibig.
 
 %
 % Permutationsmatrizen
@@ -361,13 +386,15 @@ von Transpositionen geschrieben werden kann.
 % Die alternierende truppe
 %
 \subsubsection{Die alternierende Gruppe}
-Das Vorzeichen $\operatorname{sgn}$ ist die Zusammensetzung zweier
-Homomorphismen, nämlich der Abbildung $\sigma\to P_\sigma$
-und der Determinante.
 Die Produktregel für Determinanten besagt, dass $\det(AB)=\det(A)\det(B)$,
 die Determinante macht also aus der Matrixmultiplikation das Produkt von
 reellen Zahlen.
-Für zwei Permutationen $\sigma,\varrho\in S_n$ gilt daher für die Signa
+Dies besagt auch, dass $\det$ ein Homomorphismus
+$\operatorname{GL}_n(\mathbb{R}) \to \mathbb{C}^*$ ist.
+Das Vorzeichen $\operatorname{sgn}$ ist die Zusammensetzung zweier
+Homomorphismen, nämlich der Abbildung $\sigma\to P_\sigma$
+und der Determinante.
+Für zwei Permutationen $\sigma,\varrho\in S_n$ gilt daher für die Vorzeichen
 \[
 \operatorname{sgn}(\sigma\varrho)
 =

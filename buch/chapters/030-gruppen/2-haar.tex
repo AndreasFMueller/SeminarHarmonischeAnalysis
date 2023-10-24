@@ -38,6 +38,12 @@ Translationen hat.
 %
 \subsection{Mittelung auf einer endlichen Gruppen
 \label{buch:haar:subsection:endlich}}
+Für endliche Gruppen ist es nicht schwierig eine invariante
+``Integration'' zu konstruieren.
+Da die Gruppe nur aus isolierten Punkten besteht, muss jdes Element das 
+gleiche Gewicht $1/|G|$ haben.
+Die invariante Integration ist also nichts anderes als eine
+Mittelwertbildung.
 
 \begin{definition}
 \label{buch:gruppen:haar:def:mittelung}
@@ -89,7 +95,7 @@ Damit ist gezeigt, dass die Mittelungsoperation translationsinvariant
 ist.
 
 Die Mittelungsoperation von Definition~\ref{buch:gruppen:haar:def:mittelung}
-ermöglicht jetzt ein, das translationsinvariantes Skalarprodukt
+ermöglicht jetzt, das translationsinvariante Skalarprodukt
 \[
 \langle f,g\rangle_G
 =
@@ -169,7 +175,7 @@ In einer Umgebung von $s$ gibt es daher ebenfalls eine
 translationsinvariante Integration.
 Da es nur genau ein einziges Element in $G$ gibt, welches die Translation
 von $e$ nach $s$ ausführen kann, ist diese translationsinvariante 
-Integration daher auf der ganzen Gruppe wohldefiniert.
+Integration auf der ganzen Gruppe wohldefiniert.
 
 Wir schliessen daher, dass es auf einer Lie-Gruppe ganz analog 
 zu den reellen Zahlen ein translationsinvariante Integration
@@ -262,9 +268,32 @@ Die Konstruktion, die auf Satz~\ref{buch:gruppen:haar:satz:haar}
 führt, kann auch für die Rechtstranslation mit $R_s$ durchgeführt
 werden.
 Es gibt also auf einer topologischen Gruppe auch ein bis auf einen
-skalaren Faktor eindeutig bestimmtes rechtsinvariantes Haarsches Mass,
+skalaren Faktor eindeutig bestimmtes rechtsinvariantes haarsches Mass,
 der Satz sagt aber nichts darüber aus, ob das linksinvariante und das
 rechtsinvariante Mass übereinstimmen.
+
+%
+%  Stetige Funktionen mit kompaktem Träger
+%
+\subsubsection{Stetige Funktionen mit kompaktem Träger}
+Da die Gruppe nicht komapkt sein muss ist es durchaus möglich,
+dass sogar eine beschränkte stetige Funktion auf $G$ ein divergentes
+Integral hat.
+Dies kann vermieden werden, wenn man nur Funktionen zulässt, die
+nur auf einem kompakten Gebiet von $0$ verschieden sind.
+
+\begin{definition}
+Der Vektorraum der Funktionen mit kompaktem Träger wird mit
+\[
+\mathscr{K}(G)
+=
+\{ f\in C(G)\mid \text{$\operatorname{supp}f $ ist kompakt}\}
+\]
+bezeichnet.
+\end{definition}
+
+Im Unterraum $\mathscr{K}(G)\subset C(G)$ ist die Integration
+immer durchführbar.
 
 %
 % Unimodulare Gruppen
@@ -272,8 +301,8 @@ rechtsinvariante Mass übereinstimmen.
 \subsection{Unimodulare Gruppen
 \label{buch:haar:subsection:unimodular}}
 Für eine abelsche Gruppe wie die Gruppe der reellen Zahlen
-oder $\mathbb{R}^n$ gibt es keinen Unterschied zwischen links- und
-rechtstranslation, daher sind auch die links- und rechtsinvarianten
+oder $\mathbb{R}^n$ gibt es keinen Unterschied zwischen Links- und
+Rechtstranslation, daher sind auch die links- und rechtsinvarianten
 haarschen Masse identisch.
 Die Mittelungsoperation einer endlichen Gruppe ist sowohl rechts-
 als auch linksinvariant, selbst dann, wenn die Gruppe nicht abelsch
@@ -322,7 +351,7 @@ Man kann auch zeigen, dass $\delta(r)$ ein Homomorphismus ist,
 was sich als ziemlich starke Einschränkung herausstellt.
 
 \begin{satz}
-Ist die lokalkompakte topologische Gruppe $G$ kompakt, dann ist
+Ist die lokalkompakte topologische Gruppe $G$ sogar kompakt, dann ist
 sie unimodular.
 \end{satz}
 
@@ -384,7 +413,8 @@ f(\sigma,\tau)
 w(\sigma,\tau)
 \,d\tau\,d\sigma
 \]
-sein.
+sein,
+die Gewichtsfunktion $w(\sigma,\tau)$ muss noch bestimmt werden.
 Die Linkstranslation mit $(s,t)$ ist 
 \begin{align*}
 \int_G f(h^{-1}g) w(g)\,dg
@@ -431,11 +461,14 @@ Es folgt, dass die Funktion $w$ die Funktionalgleichung
 w(s\sigma',s\tau'+t) = w(\sigma',\tau') s^2
 \]
 für alle $s$ und $t$ erfüllen muss.
-Daraus folgt zunächst, dass $w$ nicht vom zweiten Argument abhängt,
-und weiter, dass $w(s,t)=as^2$.
+Da man $t$ beliebig verändern kann folgt,
+dass $w$ nicht vom zweiten Argument abhängt, dass also
+$w(\sigma',\tau') = w(\sigma')$.
+Aus $\sigma'=1$ folgt dann $w(s)=w(1)s^2$, oder.
+$w(s,t)=as^2$.
 
-Für die Rechtsinvarianz suchen wir eine Funktion $\tilde{w}(s,t)$ derart,
-dass
+Für die Rechtsinvarianz suchen wir ganz analog eine Funktion
+$\tilde{w}(s,t)$ derart, dass
 \begin{align*}
 \int_0^\infty
 \int_{-\infty}^\infty
@@ -486,12 +519,12 @@ Wieder folgt, dass $\tilde{w}$ nicht vom zweiten Argument abhängt, und
 die Abhängigkeit vom ersten Argument ist $\tilde{w}(s,t)=s$.
 
 Da die beiden Funktionen $w(s,t)$ und $\tilde{w}(s,t)$ verschieden sind,
-sind das rechtsinvariante und das linksinvariante Haarmass verschieden
+sind das rechtsinvariante und das linksinvariante Haar-Mass verschieden
 und die Gruppe $G$ ist nicht unimodular.
 \end{beispiel}
 
 Die Tatsache dass $\mathbb{R}^+\ltimes\mathbb{R}$ nicht kompakt
-und nicht abelsch ist, ist ist nicht ein ausreichender Grund zu
+und nicht abelsch ist, ist nicht ein ausreichender Grund zu
 schliessen, dass $G$ nicht unimodular sein könne.
 Wir werden später die Gruppe der Drehungen und Verschiebungen
 $\operatorname{SO}(2)\ltimes \mathbb{R}^2$ kennenlernen,
