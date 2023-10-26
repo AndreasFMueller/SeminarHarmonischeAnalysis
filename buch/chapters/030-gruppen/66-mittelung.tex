@@ -42,10 +42,13 @@ definieren, wobei dafür noch ein paar analytische Feinheiten der
 Konvergenz geklärt werden müssten.
 Um diesen Schwierigkeiten aus dem Weg zu gehen, werden wir im folgenden
 die Aussagen nur für endliche Gruppen beweisen, auch wenn sie für
-lokalkompakte topologische Gruppen ebenfalls gültig sind.
+lokalkompakte topologische Gruppen mit kleinen Anpassungen ebenfalls
+gültig sind.
 
 Als erstes Beispiel für diese Idee zeigen wir, wie sich Darstellungen 
 zerlegen lassen.
+Wir verwenden dazu, dass Teilräume durch Projektionen beschrieben
+werden können.
 
 \begin{definition}
 \label{buch:gruppen:darstellungen:def:projektion}
@@ -81,17 +84,17 @@ von $\varrho(g)$ wieder in $W$ abgebildet.
 Da $W$ ein Unterraum von $V$ ist, ist somit $P'v\in W$.
 
 Für Vektoren $w\in W$ hat $P$ die Eigenschaft $Pw=w$.
-Darau berechnet man
+Daraus berechnet man
 \[
 P'w
 =
 \frac{1}{|G|}
 \sum_{g\in G}
-\varrho(g) P\varrho(g)^2{-1}w
+\varrho(g) P\varrho(g)^{-1}w
 =
 \frac{1}{|G|}
 \sum_{g\in G}
-\varrho(g) \varrho(g)^2{-1}w
+\varrho(g) \varrho(g)^{-1}w
 =
 \frac{1}{|G|}
 \sum_{g\in G}
@@ -172,7 +175,8 @@ Dann ist $f'$ eine lineare Abbildung, die mit den Darstellungen vertauscht
 und für die gilt:
 \begin{enumerate}
 \item Wenn die beiden Darstellungen nicht isomorph sind, dann ist $f'=0$.
-\item Wenn $V_1=V_2$ und $\varrho_1=\varrho_2$, dann ist $f'=\frac1n\tr f$
+\item Wenn $V_1=V_2$ und $\varrho_1=\varrho_2$, dann ist
+$f'=\frac1n\tr(f)\cdot I_n$
 mit $n=\dim V_1$.
 \end{enumerate}
 \end{satz}
@@ -232,8 +236,8 @@ Die Spur davon ist $\tr f = \tr f' = \lambda \tr I_n = n\lambda$ oder
 \[
 \lambda = \frac1n \tr f
 \qquad\Rightarrow\qquad
-f' = \frac{1}{n} \tr f\cdot I_n
-\qedhere
+f' = \frac{1}{n} \tr(f)\cdot I_n
 \]
+Damit ist 2.~gezeigt.
 \end{proof}
 
