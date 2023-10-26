@@ -37,6 +37,8 @@ entlang einer Hyperbene durch $y$ entstanden sind.
 In der Rückprojektion sind also alle Werte von $u$ gemittelt, aber
 der Wert im Punkt $y$ hat besonders grosses Gewicht.
 Die duale Transformation ist also eine erste Approximation für $u$.
+Abbildung~\ref{buch:radon:rueckprojektion:fig:rueckprojektion}
+zeigt das Resultat der Rückprojektion im Teilbild unten rechts.
 In den weiteren Entwicklungen hoffen wir, daraus eine exakte Rekonstruktion
 von $u$ zu konstruieren.
 
@@ -64,7 +66,7 @@ bekommt}
 \int_{S_+^{n-1}}
 \omega_i
 \frac{\partial v}{\partial s}(\omega\cdot x,\omega)
-\,d\omega
+\,d\omega.
 \end{align*}
 Für den Laplace-Operator findet man dann
 \begin{align}
@@ -106,7 +108,7 @@ gewinnen.
 %
 \subsection{Rückprojektion und die Umkehrformel}
 \input{chapters/050-radon/fig/orion2.tex}
-In Abschnitt~\ref{XXX}
+In Abschnitt~\ref{buch:radon:definition:subsection:radon}
 haben wir gefunden, dass die Fourier-Transformierte der Funktion $u$
 in die Radon-Transformation und eine eindimensionale Fourier-Transformation
 zerlegt werden kann.
@@ -119,6 +121,7 @@ Dies wird durch die Formel
 e^{-i|k|s}
 \mathscr{R}u(s,k^0)\,ds
 \]
+ausgedrückt.
 Die Fourier-Umkehrformel ermöglicht, die Funktion aus $\mathscr{F}u$ 
 wieder zu berechnen, sie ist
 \begin{align*}
@@ -130,6 +133,7 @@ u(x)
 \intertext{Das Integral über $\mathbb{R}$ kann wieder in den
 ``Radon-Koordinaten''
 $(r,\omega)$ berechnet werden mit $r=|k|$ und $\omega = k^0$.
+So entsteht
 }
 &=
 \frac{1}{(2\pi)^{n/2}}
@@ -154,9 +158,9 @@ e^{i(r\omega)\cdot x} \mathscr{F}u(r\omega)\,d\omega r^{n-1}\,dr
 \\
 &\quad+
 \frac{1}{(2\pi)^{n/2}} \int_0^\infty \int_{S_+^{n-1}}
-e^{i(-r\omega)\cdot x} \mathscr{F}u(-r\omega)\,d(-\omega) r^{n-1}\,dr
-\intertext{Wir möchten das zweite $r$-Integral in ein Integral über
-$(-\infty,0)$ verwandeln.
+e^{i(-r\omega)\cdot x} \mathscr{F}u(-r\omega)\,d(-\omega) r^{n-1}\,dr.
+\intertext{Wir möchten das zweite $r$-Integral in ein Integral
+über $(-\infty,0)$ verwandeln.
 Dazu müssen wir $-r$ an allen Stellen haben.
 Wir können gleichzeitig noch das Minuszeichen in $d(-\omega)$ entfernen,
 denn die Spiegelung $\omega\mapsto -\omega$ hat die Determinante
@@ -184,7 +188,7 @@ e^{ir\omega\cdot x} \mathscr{F}u(r\omega)
 d\omega
 |r|^{n-1}\,dr
 \intertext{Jetzt kann man die beiden Integrale in einziges
-$r$-Integral über $\mathbb{R}$ zusammenfassen 
+$r$-Integral
 }
 u(x)
 &=
@@ -194,7 +198,8 @@ e^{ir\omega\cdot x}
 \mathscr{F}u(r\omega)
 \,d\omega
 |r|^{n-1}\,dr
-\intertext{Durch Vertauschung der Integrationsreihenfolge
+\intertext{über $\mathbb{R}$ zusammenfassen.
+Durch Vertauschung der Integrationsreihenfolge
 entsteht als inneres Integral die Fourier-Inversionsformel
 für eine eindimensionale Fourier-Transformierte:}
 u(x)
@@ -227,7 +232,7 @@ u
 \mathscr{F}_r
 \mathscr{R}u,
 \]
-Wobei der Term $|r|^{n-1}$ der Multiplikationsoperator mit der
+wobei der Term $|r|^{n-1}$ der Multiplikationsoperator mit der
 Funktion $r\mapsto |r|^{n-1}$ ist.
 \end{satz}
 
@@ -235,7 +240,7 @@ Dieser Satz zeigt eine neue Möglichkeit, die Radon-Transformation
 zu invertieren.
 Dazu muss die $s$-Abhängigkeit der Radon-Transformierten
 $\mathscr{R}u(r,\omega)$ 
-Zunächst mit $\mathscr{F}_r$ in den Frequenzbereich transformiert werden.
+zunächst mit $\mathscr{F}_r$ in den Frequenzbereich transformiert werden.
 Im Frequenzbereich wird mit $|r|^{n-1}$ multipliziert, dadurch
 werden die hohen Frequenzen verstärkt.
 Schliesslich wird mit $\mathscr{F}_r^{-1}$ in den $s$-Bereich
@@ -249,6 +254,9 @@ gefiltert werden muss um anschliessend mit der Rückprojektion
 $\mathscr{R}^*$ die ursprüngliche Funktion zurückgibt.
 Die Zusammensetzung heisst aus diesem Grund die {\em gefilterte
 Rückprojektion}.
+Der Prozess wird in
+Abbildung~\ref{buch:radon:rueckprojektion:fig:rueckprojektion}
+illustriert.
 
 Der Satz macht auch verständlich, warum die Rekunstruktion nicht
 unbedingt stabil ist. 
@@ -271,8 +279,9 @@ hohe Frequenzen nicht weiter verstärkt.
 Damit verliert man zwar Bildschärfe, bekommt aber das Rauschen unter
 Kontrolle.
 
-In Kapitel~\ref{chapter:ct} werden Abbildungen der gefilterten
-Rückprojektion gezeigt.
+In Kapitel~\ref{chapter:ct} werden weitere Beispiele zur gefilterten
+Rückprojektion und insbesondere Abbildungen gezeigt, die die Wirkung
+der Filterung ebenfalls sichtbar machen.
 
 %
 % Gefilterte Rückprojektion
@@ -319,7 +328,7 @@ Das Integral muss an der Stelle $x=0$ aufgeteilt werden:
 \int_{\epsilon}^{1} \frac{dx}{x}.
 \label{buch:radon:rueckprojektion:bsp:1x:eqn1}
 \end{equation}
-Das erste Integral kann mit der Substituion $t=-s$ und $dt=-ds$ vereinfacht
+Das erste Integral kann mit der Substitution $t=-s$ und $dt=-ds$ vereinfacht
 werden zu
 \begin{align*}
 \int_{-1}^{\varepsilon} \frac{dx}{x}
@@ -394,13 +403,13 @@ Der Hauptwert des Integrals ist also wohldefiniert.
 
 \begin{definition}
 Ist $f\colon \mathbb{R}\to\mathbb{C}$ eine stetige und integrierbare
-Funktion, dann ist die {\em Hilbert-Transformierte} definiert durch
+Funktion, dann ist die {\em Hilbert-Trans\-for\-mier\-te} definiert durch
 \[
 (\mathscr{H}f)(t)
 =
 \frac{1}{\pi} \operatorname{PV} \int_{-\infty}^\infty \frac{f(t)}{t-x}\,dx,
 \]
-wobei der {\em Hauptwert} des Integral gleichbedeutend ist mit
+wobei der {\em Hauptwert} des Integral gleichbedeutend mit
 \[
 (\mathscr{H}f)(t)
 =
@@ -408,8 +417,9 @@ wobei der {\em Hauptwert} des Integral gleichbedeutend ist mit
 \biggl(
 \int_{-\infty}^{t-\varepsilon}+\int_{t+\varepsilon}^\infty
 \frac{f(x)}{t-x}\,dx
-\biggr).
+\biggr)
 \]
+ist.
 \end{definition}
 
 Die Definition der Hilbert-Transformation sieht aus wie eine 
@@ -444,8 +454,8 @@ mit $-ik$ wird.
 Der Filter der gefilterten Rückprojektion benötigt im Frequenzbereich 
 den Faktor $|k|^{n-1}$, 
 Diesen kann man wegen $|k|=\sign(k)\cdot k$ aus dem Vorzeichen und der
-dem Wert zusammensetzen, d.~h.~.
-Für den einfachsten Fall $n=2$ muss man die Filterung mit
+dem Wert zusammensetzen, d.~h.~für den einfachsten Fall $n=2$ muss man
+die Filterung mit
 \[
 |r|
 =
@@ -502,7 +512,7 @@ stabil sein kann.
 Ist die Radon-Transformierte $\mathscr{R}u$ mit weissem Rauschen verrauscht,
 wie das in der Praxis wegen Mess- und Quantisierungsfehlern immer der Fall
 ist, dann verstärkt der Operator $\partial/\partial s$ dieses Rauschen
-zusätzlich in einem Mass, dass die Rücktransformation sogar die
-Hilbert-Transformation, spätestens aber die Fourier-Rücktransformation
+zusätzlich in einem Mass, dass die Rücktransformation möglicherweise schon
+die Hilbert-Transformation, spätestens aber die Fourier-Rücktransformation
 nicht mehr definiert ist.
 

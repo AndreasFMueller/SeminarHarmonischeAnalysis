@@ -107,8 +107,8 @@ es ist $\widehat{\mathbb{R}^2} = \mathbb{R}^2$.
 %
 \subsubsection{Ebene Wellen}
 \input{chapters/050-radon/fig/ebenewelle.tex}
-Wie Abbildung~\ref{buch:radon:fig:ebenewelle} zeigt, sind
-die Funktionen $\varphi_{kl}(x,y)$ beschreiben ebene Wellen.
+Wie Abbildung~\ref{buch:radon:fig:ebenewelle} zeigt, beschreiben
+die Funktionen $\varphi_{kl}(x,y)$ ebene Wellen.
 Die Abbildung zeigt nur die Werte des Imaginärteils $\Im \varphi_{kl}(x,y)$,
 blau für negative Werte und grün für negative Werte.
 $\varphi_{kl}(x,y)$ ist konstant auf der Menge der Punkte, für die
@@ -262,7 +262,7 @@ u(x,y)
 \]
 Der Exponent $kx+ly$ ist konstant entlang von Geraden, die
 senkrecht auf dem Vektor mit den Komponenten $(k,l)$ stehen
-(Abbildung~\ref{buch:radon:fig:ebenewellen}).
+(Abbildung~\ref{buch:gruppen:radon:fig:ebenewelle}).
 Entlang solcher Geraden ist daher auch $e^{i(kx+ly)}$ konstant.
 Wählt man ein Koordinatensystem so, dass diese Geraden
 Koordinatenachsen werden, kann das Fourier-Integral zerlegt werden.
@@ -325,7 +325,7 @@ f(\xi\cos\alpha-\eta\sin\alpha,\xi\sin\alpha+\eta\cos\alpha)
 \]
 abkürzen.
 Das Doppelintegral~\eqref{buch:radon:definition:eqn:fgedreht}
-kann in in zwei einfache Integrale
+kann in zwei einfache Integrale
 \begin{align*}
 \mathscr{F}u(k,l)
 &=
@@ -336,8 +336,9 @@ e^{-i\kappa\xi}
 \int_{-\infty}^\infty
 \tilde{f}(\xi,\eta)
 \,d\eta
-\,d\xi.
+\,d\xi
 \intertext{%
+aufgeteilt werden.
 Das innere Integral ist ein Integral der Funktion $\tilde{f}$
 über die Gerade $\xi=\operatorname{const}$.
 Das äussere Integral ist eine gewöhnliche eindimensionale
@@ -408,12 +409,13 @@ S^{n-1}
 x\in\mathbb{R}^n
 \mid
 |x|=1
-\}.
+\}
 \]
+des $n$-dimensionalen Raumes $\mathbb{R}^n$.
 \end{definition}
 
 In der Ebene, also für $n=2$ lassen sich die Vektoren $\omega\in S^1$
-mit trigonometrischen Funktionen parametrisieren.
+der Normalen mit trigonometrischen Funktionen parametrisieren.
 Solche Parametrisierungen sind auch möglich für $n>2$, in drei
 Dimensionane zum Beispiel könnten Kugelkoordinaten verwendet werden.
 Allerdings benötigen wir im folgenden gar keine explizite Parametrisierung
@@ -444,8 +446,9 @@ die Hyperebene orthogonal auf $\omega$ im Abstand $s$ vom Ursprung.
 \end{definition}
 
 Durch Wahl eines geeigneten Koordinatensystems kann man ein
-Integral über $\mathbb{R}^n$ immer schreiben als
-ein Integral über die Ebenen $E(s,\omega)$ und eines über die Koordinaten $s$.
+Integral über $\mathbb{R}^n$ immer als
+ein Integral über die Ebenen $E(s,\omega)$ und eines über die
+Koordinaten $s$ schreiben.
 Ein solches Koordinatensystem kann zum Beispiel gefunden werden, indem
 man den Vektor $\omega\in S^{n-1}$ mit Vektoren $b_2,\dots,b_n$ zu einer
 Orthonormalbasis von $\mathbb{R}^n$ erweitert.
@@ -619,7 +622,9 @@ Aus der Gleichung
 kann man ableiten, dass man $u$ aus $\mathscr{R}u$ bekommen kann,
 indem man zuerst die Radon-Transformierte bezüglich der Variablen
 $r$ Fourier-Transformiert und anschliessend die entstandene 
-Funktion von $k$ $n$-dimensional Fourier-rücktransformiert.
+Funktion von $k$ $n$-dimensional Fourier-rück\-trans\-for\-miert.
+Abbildung~\ref{buch:gruppen:radon:definition:fig:radonf} illustriert
+dies im Falle $n=2$.
 
 \begin{satz}
 Ist $u\colon \mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion

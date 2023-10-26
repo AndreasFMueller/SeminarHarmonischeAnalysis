@@ -7,9 +7,9 @@
 \label{buch:radon:section:ableitungen}}
 Die Fourier-Transformation verwandelt Ableitungen in eine Multiplikation.
 Die Radon-Transformation führt einen Teil der Fourier-Transformation
-durch, es ist also zu erwarten, dass die Radon-Transformierte ebenfalls
+durch, es ist also zu erwarten, dass die \RT ebenfalls
 sehr spezielle Ableitungseigenschaften hat.
-Es wird sich zeigen, dass die Radon-Transformierte $\mathscr{R}u(s,\omega)$
+Es wird sich zeigen, dass die \RT $\mathscr{R}u(s,\omega)$
 einer Lösung der Wellengleichung ihrerseits Lösung einer
 eindimensionalen Wellengleichung entlang der Richtung $\omega$ ist,
 dies ist ein mathematischer Ausdruck für das Huygenssche Prinzip.
@@ -21,7 +21,7 @@ dies ist ein mathematischer Ausdruck für das Huygenssche Prinzip.
 \label{buch:radon:ableitungen:subsection:partiell}}
 Sei $u\colon \mathbb{R}^n\to\mathbb{C}$ eine Funktion mit kompaktem
 Träger und sei $\omega = e_1 = (1,0,\dots,0)$ der erste Standarbasisvektor
-Da die zugehörige Hyperebene konstante erste Koordinaten aht, ist
+Da die zugehörige Hyperebene konstante erste Koordinaten hat, ist
 die Radon-Transformierte von $u$ gegeben durch
 \[
 \mathscr{R}u(s,\omega)
@@ -29,12 +29,13 @@ die Radon-Transformierte von $u$ gegeben durch
 u(s,x_2,\dots,x_n)\,dx_2\dots\,dx_n.
 \]
 Die Radon-Transformierte der Ableitung nach $x_1$ ist dann
-\begin{align*}
+\begin{align}
 \biggl(\mathscr{R}\frac{\partial u}{\partial x_1}\biggr)(s,\omega)
 &=
 \int_{\mathbb{R}^{n-1}}
 \frac{\partial u}{\partial s}(s,x_2,\dots,x_n)
 \,dx_2\dots\,dx_n
+\notag
 \\
 &=
 \frac{\partial}{\partial s}
@@ -43,6 +44,7 @@ u(s,x_2,\dots,x_n)
 \,dx_2\dots\,dx_n
 =
 \frac{\partial}{\partial s}\mathscr{R}u(s,\omega).
+\notag
 \intertext{Durch Iteration findet man auch die Radon-Transformierte
 der $m$-ten Ableitung}
 \biggl(
@@ -51,6 +53,7 @@ der $m$-ten Ableitung}
 &=
 \frac{\partial^m}{\partial s^m}
 \mathscr{R}u(s,\omega).
+\notag
 \intertext{Die Radon-Transformierten einer Ableitung nach einer
 anderen Koordinate $x_k$ mit $k>1$
 ist dagegen}
@@ -62,6 +65,7 @@ ist dagegen}
 \int_{\mathbb{R}^{n-1}}
 \frac{\partial u}{\partial x_k}(s,x_2,\dots,x_k)
 \,dx_2\dots\,dx_n
+\notag
 \\
 &=
 \int_{\mathbb{R}^{n-2}}
@@ -71,6 +75,7 @@ ist dagegen}
 \,dx_k
 \biggr)
 \,dx_2\dots\widehat{dx_k}\dots dx_n
+\notag
 \\
 &=
 \int_{\mathbb{R}^{n-2}}
@@ -82,7 +87,8 @@ u(s,x_2,\dots,-\infty,\dots,x_n)
 \,dx_2\dots\widehat{dx_k}\dots dx_n
 \\
 &=0.
-\end{align*}
+\label{buch:gruppen:radon:ableitungen:eqn:querrichtung}
+\end{align}
 Im zweitletzten Schritt wurde verwendet, dass $u$ kompakten Träger
 hat, also ausserhalb einer beschränkten Menge verschwindet.
 
@@ -97,10 +103,12 @@ Standardbasisvektor auf die Richtung $\omega$ drehen kann.
 Die Ableitung der zusammengesetzten Funktion $u\circ R$ nach
 der ersten Koordinate ist die Richtungsableitung der Funktion
 $u$ in Richtung $\omega$.
-Radon-Transformierte der Richtungsableitung der Funktion $u$ in
-Richtung $\omega$ ist Ableitung nach dem Parameter $s$ der
-Radontransformierten $\mathscr{R}u(s,\omega)$
-Umkgekehrt verschwindet die Radon-Transformierte der Richtungsableitung
+Die \RT der Richtungsableitung der Funktion $u$ in
+Richtung $\omega$ ist die Ableitung nach dem Parameter $s$ der
+\RT{}n $\mathscr{R}u(s,\omega)$.
+Umkgekehrt verschwindet
+nach~\ref{buch:gruppen:radon:ableitungen:eqn:querrichtung}
+die \RT der Richtungsableitung
 von $u$ in eine Richtung senkrecht auf $\omega$ im Punkt $\omega$.
 Damit haben wir folgenden Satz gefunden:
 
@@ -143,15 +151,16 @@ schreiben kann, finden wir die Komponentenformeln
 \frac{\partial}{\partial s}\mathscr{R}u(s,\omega)
 \notag
 \\
+\text{und}\qquad
 \sum_{i=1}^n
 b_i
 \biggl(
 \mathscr{R}\frac{\partial u}{\partial x_i}
 \biggr)(s,\omega)
-&=0
+&=0.
 \label{buch:radon:ableitungen:eqn:babl}
 \end{align}
-Die Bedingungen \eqref{buch:radon:ableitungen:eqn:babl}
+Die Bedingung \eqref{buch:radon:ableitungen:eqn:babl}
 bedeutet, dass der Vektor $v$ mit den Komponenten
 \[
 v_i
@@ -186,8 +195,8 @@ v_i
 
 \begin{satz}
 Ist $u\colon\mathbb{R}^n\to\mathbb{C}$ eine ingegrierbare Funktion
-mit kompaktem Träger dann ist die Transformation der Ableitungen
-von $u$
+mit kompaktem Träger, dann ist die Ra\-don-Trans\-for\-ma\-tion der
+Ableitungen von $u$
 \[
 \biggl(
 \mathscr{R}
@@ -243,7 +252,7 @@ Der Laplace-Operator ist
 \sum_{i=1}^n
 \frac{\partial^2}{\partial x_i^2}.
 \]
-Zusammen mit der Ableitungsformel ist
+Zusammen mit der Ableitungsformel folgt
 \begin{align*}
 (\mathscr{R}\Delta u)(s,\omega)
 &=
@@ -263,7 +272,7 @@ Zusammen mit der Ableitungsformel ist
 
 Die Radon-Transformation transformiert den Laplace-Operator
 auf einen zweiten Ableitungsoperator nach nur einer einzigen
-Variable.
+Variablen.
 
 %
 % Wellengleichung
@@ -274,7 +283,6 @@ Der Satz~\ref{buch:radon:ableitungen:satz:laplace} über die
 Radon-Transformierte des Laplace-Operators ermöglich, auch die
 Lösung der Wellengleichung mit Hilfe der Radon-Transformation zu
 vereinfachen.
-
 Die Wellengleichung ist die Gleichung
 \[
 \frac{\partial^2}{\partial t^2}u = \Delta u
