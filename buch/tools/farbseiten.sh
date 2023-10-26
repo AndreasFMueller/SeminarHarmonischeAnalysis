@@ -24,174 +24,131 @@ END {
 	printf("Anzahl Farbseiten: %d\n", counter)
 }' <<EOF
 # Kapitel  0
+6
 # Kapitel  1
+14
 17
-20
-# Kapitel  2
-35
-36
-37
-38
-39
-41
-# Kapitel  3
-48
-49
+23
+27
+29
+31
+45
 51
-62
-63
-66
-68
-69
-71
-75
-76
-# Kapitel  4
-88
+# Kapitel  2
+90
 91
-92
-99
-101
-107
-117
-119
+# Kapitel  3
+105
+106
+108
+118
+130
+# Kapitel  4
 # Kapitel  5
-139
-140
-161
+174
+177
+180
+185
+187
 # Kapitel  6
-165
-186
-# Kapitel  7
-198
-200
-201
+196
 204
-205
-215
-236
-# Kapitel  8
-243
+209
+210
+212
+214
+218
+219
+220
+232
+233
+# Kapitel  7
 246
-249
-250
-256
-258
-260
-261
-264
-# Kapitel  9
+252
+253
+254
+255
+# Kapitel  8: sonogramm
+265
+266
+267
+268
+270
+271
+272
+273
+# Kapitel  9: autotune
+279
+281
 282
-# Kapitel 10
-# Kapitel 11
-301
-306
+283
+285
+287
+288
+# Kapitel 10: brown
+292
+295
+298
+299
+# Kapitel 11: opt
+304
+305
 309
-312
-313
-314
+311
+315
+316
 317
-319
+318
+# Kapitel 12: jpeg
+323
 325
-326
-327
+328
+329
 330
-332
-334
-335
-338
+331
+# Kapitel 13: ct
 341
-342
-346
-# Kapitel 12: Verfolgungskurven
-356
-361
+343
+344
+# Kapitel 14: mellin
+348
+349
+355
+359
+360
+# Kapitel 15: gezeiten
+366
 368
-# Kapitel 13: FM
-372
-373
-374
+# Kapitel 16: spektral
 375
-381
-382
+377
+# Kapitel 17: milankovic
+380
 383
 384
-# Kapitel 14 parzyl
-386
-390
-392
-# Kapitel 15 fresnel
-396
-397
+# Kapitel 18: ml
 398
-399
-401
-# Kapitel 16 kreismembran
+# Kapitel 19: wavelets
+403
+404
+405
+406
+407
+408
+409
 410
+411
+412
+413
+414
+415
+416
 417
 418
 419
-# Kapitel 17 sturmliouville
-# Kapitel 18 laguerre
-437
-443
-444
-445
-446
-447
-448
-449
-# Kapitel 19 zeta
-452
-454
-455
-460
-# Kapitel 20 0f1
-463
-465
-467
-468
-469
-470
-# Kapitel 21 nav
-474
-475
-476
-480
-482
-483
-485
-486
-487
-488
-# Kapitel 22 transfer
-492
-493
-494
-495
-496
-498
-# Kapitel 23 kra
-505
-507
-# Kapitel 24 kugel
-515
-517
-519
-522
-532
-533
-535
-543
-# Kapitel 25 elliptisch
-550
-552
-553
-554
-556
-557
-558
-559
-560
-# Kapitel 26
+420
+421
+422
+423
+424
 EOF
