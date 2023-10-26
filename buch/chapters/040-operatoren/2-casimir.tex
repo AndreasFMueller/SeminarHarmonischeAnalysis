@@ -98,7 +98,7 @@ keine Rolle, nur die Abhängigkeit $k\mapsto a(0,k)$ ist relevant.
 Die Fourier-Transformierte einer Funktion $f\in C^{\infty}(\mathbb{R}^n)$
 ändert sich unter der Drehung um den Nullpunkt gemäss
 \[
-\widehat(T_Rf)(k)
+\widehat{T_Rf}(k)
 =
 \frac{1}{(\!\sqrt{2\pi})^n}
 \int_{\mathbb{R}^n}
@@ -316,7 +316,7 @@ Dies lässt sich aber immer schreiben als
 \[
 a(x,k)
 =
-a(k_1^2+k_2^2) + (b-a)k_1^2k_2^2.
+a(k_1^2+k_2^2)^2 + (b-a)k_1^2k_2^2.
 \]
 Der erste Term ist als Quadrat der Länge invariant unter Drehungen,
 vom zweiten Term wissen wir bereits, dass er nicht invariant ist.
@@ -338,7 +338,7 @@ man den Unterraum der Funktionen betrachten, die nur von zwei der
 Variablen abhängen.
 Auf dem Unterraum der nur von $x_k$ und $x_l$ abhängigen Funktionen
 besteht der Operator nur aus den Ableitungen
-nach e
+nach $x_k$ und $x_l$:
 \[
 \biggl(
 \frac{\partial^2}{\partial x_k^2}
@@ -361,6 +361,8 @@ Differentialoperator vierter Ordnung ein Vielfaches von
 \]
 ist.
 Dieser Operator heisst auch der {\em biharmonische Operator}, er
+\index{Operator!biharmonisch}%
+\index{biharmonischer Operator}%
 kommt zum Beispiel in der Plattengleichung vor.
 
 %
@@ -372,7 +374,7 @@ der Isotropie des Raumes in jedem Punkt Rechnung trägt.
 Der Operator ist insbesondere um die Drehungen um jeden Punkt
 invariant.
 Die Invarianzeigenschaft ist natürlich eine Eigenschaft der 
-Zur Verfügung stehenden Gruppe, die im vorliegenden Fall die
+vorliegenden Gruppe, die im vorliegenden Fall die
 orthogonale Gruppe $\operatorname{O}(n)$ ist.
 
 %
@@ -398,7 +400,7 @@ Kurven als Homomorphismen
 \mathbb{R} \to  G
 \]
 definieren.
-Sie erfüllen dann die Homomorphismuseigenschaft
+Sie erfüllen die Homomorphismuseigenschaft
 \[
 \gamma(t_1+t_2) = \gamma(t_1)\gamma(t_2).
 \]
@@ -452,7 +454,7 @@ Ein Differentialoperator entsteht durch Definition eines Tangentialvektors
 in jedem Punkt der Gruppe.
 Für eine Matrizengruppe bedeutet dies, eine Abbildung $G\to M_n(\mathbb{R})$ 
 vorzugeben.
-Die Ableitung im Punkt $X\colon g\in G$ wird dann bestimmt durch die
+Die Ableitung im Punkt $g\in G$ wird dann bestimmt durch die
 Ableitung einer Funktion entlang der Kurve $t\mapsto g\exp(tX(g))$.
 Diese wird auch
 \[
@@ -537,7 +539,7 @@ $gXg^{-1}-X$.
 
 In einer Umgebung des neutralen Elementes kann man jedes Gruppenelement
 $g$ als Punkt einer Kurve $g=\exp Y$ für ein geeignetes linksinvariantes
-Vektorfoeld $Y$ schreiben.
+Vektorfeld $Y$ schreiben.
 Die Bedingung $gXg^{-1}=X$ wird erfüllt, wenn sie für jedes $g(t)=\exp tY$
 mit $t<1$ erfüllt wird, wenn also
 \begin{equation}
@@ -589,7 +591,7 @@ LG\times LG
 [Y,X] = YX-XY,
 \]
 die offensichtlich bilinear und antisymmetrisch ist.
-Sie macht den Vektorraum $LG$ zu einer sogenannten Lie-Algebra
+Sie macht den Vektorraum $LG$ zu einer sogenannten Lie-Algebra.
 
 \begin{definition}
 Ein Vektorraum $V$ mit einem bilinearen und antisymmetrischen
@@ -747,6 +749,7 @@ J_3
 1& 0&0\\
 0& 0&0
 \end{pmatrix*}.
+\qedhere
 \]
 \end{beispiel}
 
@@ -801,7 +804,7 @@ zu $L\operatorname{SO}(3)$ isomorphe Lie-Algebra.
 % Das Zentrum einer Lie-Algebra
 %
 \subsubsection{Das Zentrum einer Lie-Algebra}
-Auf einer nichtkommutativen Lie-Algebra $L$ kann man nicht sind die einzigen
+Auf einer nichtkommutativen Lie-Algebra $L$ sind die einzigen invarianten
 Differentialoperatoren die invarianten Vektorfelder $X$, die mit allen
 anderen Vektoren der Lie-Algebra vertauschen, für die also gilt
 $[Y,X]=0$ für alle $Y\in L$.
@@ -852,7 +855,7 @@ Dabei darf man annehmen, dass die $X_i$ Basisvektoren der Lie-Algebra
 sind.
 Einem Differentialoperator $P$ entspricht also immer eine
 Bilinearform.
-Ein invarianter Differentialoperator zweiter Ordnung kann daher
+Ein invarianter Differentialoperator zweiter Ordnung kann folglich
 dadurch gefunden werden, dass man eine invariante Bilinearform
 konstruiert.
 
@@ -930,7 +933,7 @@ zweiter Ordnung führen werden.
 \subsubsection{Casimir-Operator}
 
 \begin{satz}
-Ist $\Phi\colon LG\times LG\to mathbb{R}$ eine symmetrische, invariante
+Ist $\Phi\colon LG\times LG\to\mathbb{R}$ eine symmetrische, invariante
 und nichtentartete Bilinearform auf der $n$-dimennsionalen Lie-Algebra
 $LG$ von $G$, und $X_i$ eine bezüglich $\Phi$
 orthogonale Basis von $LG$ mit der Eigenschaft
@@ -990,7 +993,7 @@ Es folgt aus der Invarianzbedingung, dass
 \label{buch:operatoren:casimir:eqn:invc}
 \end{equation}
 Damit kann man jetzt die Vertauschung eines Operators mit dem
-Casimir-Operator berechnen:
+Operator $C$ berechnen:
 \begin{align}
 CX_j-X_jC
 &=
@@ -1044,7 +1047,7 @@ X_i X_k
 \end{align}
 Somit vertauscht $C$ mit jedem Vektor $X_j$.
 
-Die Definition des Casimir-Operators hängt von der Wahl der Basis
+Die Definition des Casimir-Operators $C$ hängt von der Wahl der Basis
 $X_i$ ab.
 Sei $E$ die Diagonalmatrix
 $E=\operatorname{diag}(\varepsilon_1,\dots,\varepsilon_n)$.
