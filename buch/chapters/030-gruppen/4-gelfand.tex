@@ -18,14 +18,17 @@ Die Faltung ist eine ziemlich komplizierte Operation.
 Der Vektorraum der Funktionen auf $G$ ist ein unendlichdimensionaler
 Vektorraum.
 Die Unübersichtlichkeit der Faltung und die Dimension kann etwas
-vorborgen werden, indem man komplexwertige Abbildungen untersucht,
+verborgen werden, indem man komplexwertige Abbildungen untersucht,
 die möglichst viel der Struktur erhalten.
 
-\begin{definition}
+\begin{definition}[Algebra]
 Ein Vektorraum $A$ heisst {\em Algebra}, wenn auf $A$ eine bilineare
+\index{Algebra}%
 und assoziative Multiplikation $A\times A\to A$ definiert ist.
 Wenn auf dem Vektorraunm $A$ ausserdem eine Norm definiert ist, dann
-heisst $A$ eine normierte Algebra, wenn die Multiplikation die
+heisst $A$ eine {\em normierte Algebra}, wenn die Multiplikation die
+\index{Algebra!normiert}%
+\index{normierte Algebra}%
 Ungleichung
 \[
 \| xy \| \le \|x\|\cdot \|y\|\quad\text{für alle $x,y\in A$}
@@ -33,7 +36,7 @@ Ungleichung
 erfüllt.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Charakter]
 Sei $A$ eine normierte Algebra.
 Ein {\em Charakter} $\chi$ ist eine lineare Abbildung
 $\chi\colon A\to\mathbb{C}$,
@@ -81,7 +84,7 @@ kann.
 Der Unterschied ist aber, dass die $[a,b]$ einfach nur eine Menge ist,
 während $C([a,b])$ eine reichhaltige Algebrastruktur hat.
 
-\begin{definition}
+\begin{definition}[Spektrum]
 \label{buch:gruppen:gelfand:def:spektrum}
 Ist $A$ eine Algebra, dann heisst die Menge
 \[
@@ -89,7 +92,7 @@ Ist $A$ eine Algebra, dann heisst die Menge
 =
 \operatorname{Hom}(A,\mathbb{C})
 \]
-der Algebrahomomorphismen von $A$ nach $\mathbb{C}$ heisst das
+der Algebrahomomorphismen von $A$ nach $\mathbb{C}$ das
 {\em Spektrum} der Algebra $A$.
 \end{definition}
 
@@ -174,8 +177,9 @@ Den Funktionswert $f(x)$  kann man auch als Wert eines
 Algebrahomomorphismus $\chi_x(f) = f(x)$ bekommen.
 Dies ist die Motivation für die folgende Definition.
 
-\begin{definition}
-Ist $A$ eine Algebra, dann ist die Gelfand-Transformation
+\begin{definition}[Gelfand-Transformation]
+Ist $A$ eine Algebra, dann ist die {\em Gelfand-Transformation}
+\index{Gelfand-Transformation}
 die Abbildung
 \[
 \mathscr{G}
@@ -245,7 +249,7 @@ von $f\in\mathscr{K}(G)$ den Wert
 \[
 (\mathscr{G}f)(\chi) = \chi(f).
 \]
-Da die Gelfand-Transformatioin ein Algebrahomomorophismus ist,
+Da die Gelfand-Transformation ein Algebrahomomorophismus ist,
 muss  für jeden Homomorphismus $\chi\in\mathbb{X}(\mathscr{K}(G))$
 \begin{equation}
 \mathscr{G}(f*g)(\chi)
@@ -393,7 +397,9 @@ die Multiplikation der Homomorphismen macht aus $\mathbb{X}(G)$ eine
 Gruppe mit dem konstanten Homomorphismus als neutralem Element.
 
 \begin{definition}[Duale Gruppe]
-Ist $G$ eine Gruppe, dann ist $\hat{G}$ die Menge der Homomorphismen
+Ist $G$ eine Gruppe, dann ist $\hat{G}$ die Menge
+$\operatorname{Hom}(G,\mathbb{C}^*)$
+der Homomorphismen
 $G\to\mathbb{C}^*$, sie wird mit der Multiplikation von Homomorphismen
 zu einer Gruppe, die die {\em duale Gruppe} heisst.
 \index{duale Gruppe}%
@@ -479,6 +485,7 @@ Es gibt also ein $k\in \mathbb{Z}$ derart, dass
 n\alpha = 2\pi k
 \qquad
 \Rightarrow
+\qquad
 \alpha = \frac{2\pi k}{n}.
 \]
 Jede Zahl $k$ definiert den Homomorphismus $\chi(x) = e^{2\pi kx/n}$.

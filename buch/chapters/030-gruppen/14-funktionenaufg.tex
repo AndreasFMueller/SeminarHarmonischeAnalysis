@@ -16,7 +16,7 @@ Im Falle einer Lie-Gruppe kann man zusätzlich sinnvoll von Ableitungen
 der Funktionen sprechen.
 Wir definieren daher
 
-\begin{definition}
+\begin{definition}[Funktionen auf einer Gruppe]
 \label{buch:gruppen:gruppe:def:funktionenaufgruppe}
 Die Menge der stetigen reell- oder komplexwertigen Funktionen wird mit
 $C_{\mathbb{R}}(G)$ bzw.~$C_{\mathbb{C}}(G)$ bezeichnet.
@@ -30,7 +30,7 @@ komplexwertigen Funktionen.
 Die Gruppenstruktur ermöglicht, lineare Operatoren auf $C_{\mathbb{R}}(G)$
 und $C_{\mathbb{C}}(G)$ zu definieren.
 
-\begin{definition}
+\begin{definition}[Translation]
 \label{buch:gruppen:gruppe:def:translation}
 Für $s\in G$ ist $T_s$ die Abbildung
 \[
@@ -48,6 +48,7 @@ Sie heisst die {\em Translation} um $s\in G$.
 \end{definition}
 
 Die Translation ist natürlich ein linearer Operator auf den Funktionen, denn
+es gilt
 \begin{align*}
 (T_s(f+g))(x)
 &=
@@ -124,13 +125,15 @@ $T_s\in\operatorname{GL}(C(G))$.
 % Rechtsoperation der Gruppe auf 
 %
 \subsubsection{Rechtsoperation von $G$ auf $C(G)$}
-Die Operation $T_s$ wird etwas genauer als die Links-Translation
+Die Operation $T_s$ wird etwas genauer als die {\em Linkstranslation}
+\index{Linksoperation}
 bezeichnet, da die Gruppenoperation auf das Argument von links wirkt.
 Für eine abelsche Gruppe spielt die Reihenfolge der Operanden keine
 Rolle, für eine nichtabelsche Gruppe ergibt sich jedoch ein Unterschied.
 
-\begin{definition}
-Der Operator $R_s\colon C(G)\to C(G)$ der Rechts-Translation ist definiert
+\begin{definition}[Rechtsoperation]
+\index{Rechtsoperation}
+Der Operator $R_s\colon C(G)\to C(G)$ der Rechtstranslation ist definiert
 durch
 \[
 R_s

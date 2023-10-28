@@ -54,9 +54,10 @@ und $\varrho_W\colon G\to\operatorname{GL}(W)$ irreduzible Darstellungen
 von $G$ in den Vektorräumen $V$ und $W$.
 Sei ausserdem $f\colon V\to W$ eine lineare Abbildung, die mit den
 Darstellungen vertauscht, also
-\[
-f\circ \varrho_V(g) = \varrho_W(g)\circ f
-\]
+\begin{equation}
+f\circ \varrho_V(g) = \varrho_W(g)\circ f.
+\label{buch:gruppen:darstellung:eqn:schur}
+\end{equation}
 Dann gilt
 \begin{enumerate}
 \item $f$ ist entweder die Nullabbildung oder ein Isomorphismus.
@@ -79,7 +80,7 @@ Fall ist $f$ injektiv.
 
 Das Bild von $f$ ist der Unterraum
 $\operatorname{im}f = \{f(v)\mid v\in V\}\subset W$.
-Dann gilt
+Dann gilt wegen \eqref{buch:gruppen:darstellung:eqn:schur}
 $\varrho_W(g)f(v) = f(\varrho_V(g)v)\in\operatorname{im}f$, das Bild von
 $f$ ist damit auch ein invarianter Unterraum von $W$.
 Da die Darstellung $\varrho_W$  irreduzibel ist, ist $\operatorname{im}f$

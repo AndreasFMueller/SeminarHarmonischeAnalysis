@@ -26,7 +26,7 @@ eingeführt Translationsoperation ist.
 Die harmonische Analysis mit den Exponentialfunktion $e^{ikx}$ 
 verwendet diese Translationsinvarianz der Integration auf wesentliche Art,
 das Skalarprodukt von Funktionen ändert sich ebenfalls nicht, wenn sie
-entlang der Zeitachse verschoben werden.
+entlang der $t$-Achse verschoben werden.
 
 Wenn die harmonische Analysis auf andere Gruppen als auf die reellen
 Zahlen ausgedehnt werden soll, dann wird eine Integration auf diesen
@@ -40,7 +40,7 @@ Translationen hat.
 \label{buch:haar:subsection:endlich}}
 Für endliche Gruppen ist es nicht schwierig eine invariante
 ``Integration'' zu konstruieren.
-Da die Gruppe nur aus isolierten Punkten besteht, muss jdes Element das 
+Da die Gruppe nur aus isolierten Punkten besteht, muss jedes Element das 
 gleiche Gewicht $1/|G|$ haben.
 Die invariante Integration ist also nichts anderes als eine
 Mittelwertbildung.
@@ -178,7 +178,7 @@ von $e$ nach $s$ ausführen kann, ist diese translationsinvariante
 Integration auf der ganzen Gruppe wohldefiniert.
 
 Wir schliessen daher, dass es auf einer Lie-Gruppe ganz analog 
-zu den reellen Zahlen ein translationsinvariante Integration
+zu den reellen Zahlen eine translationsinvariante Integration
 gibt.
 
 \begin{beispiel}
@@ -217,10 +217,12 @@ Jedes skalare Vielfache davon ist aber ebenfalls eine translationsinvariante
 Integration.
 Die Integration
 \[
-\frac{1}{2\pi} f(g(x))\,dx
+f
+\mapsto
+\frac{1}{2\pi}\int_0^{2\pi} f(g(x))\,dx
 \]
-hat die Eigenschaft, dass die konstante Funktion $1$ das Integral $1$
-hat.
+hat die nützliche Eigenschaft, dass die konstante Funktion $1$ das
+Integral $1$ hat.
 \end{beispiel}
 
 %
@@ -258,7 +260,9 @@ $U$ eines Punktes gibt, die endliches Volumen $\mu(U)$ hat.
 
 Das im Satz~\ref{buch:gruppen:haar:satz:haar} definierte Mass
 heisst das {\em linksinvariante haarsche Mass}.
+\index{haarsches Mass!linksinvariant}%
 Die Voraussetzung {\em lokal kompakt} ist eine Endlichkeitsbedingung,
+\index{Endlichkeitsbedingung}%
 die unendlichdimensionale Gruppen ausschliesst.
 Sie verlangt, dass jeder Punkt eine kompakte Umgebung hat, dass also
 in der Nähe eines Punktes die Gruppe wie ein endlichdimensioinaler 
@@ -300,8 +304,8 @@ immer durchführbar.
 %
 \subsection{Unimodulare Gruppen
 \label{buch:haar:subsection:unimodular}}
-Für eine abelsche Gruppe wie die Gruppe der reellen Zahlen
-oder $\mathbb{R}^n$ gibt es keinen Unterschied zwischen Links- und
+Für eine abelsche Gruppe, wie die Gruppe der reellen Zahlen
+oder $\mathbb{R}^n$, gibt es keinen Unterschied zwischen Links- und
 Rechtstranslation, daher sind auch die links- und rechtsinvarianten
 haarschen Masse identisch.
 Die Mittelungsoperation einer endlichen Gruppe ist sowohl rechts-
@@ -309,7 +313,7 @@ als auch linksinvariant, selbst dann, wenn die Gruppe nicht abelsch
 ist.
 Für eine nicht kommutative Gruppe wie die Gruppe $\operatorname{SO}(3)$
 der Drehungen des Raumes dagegen ist es nicht mehr klar, dass 
-die rechts und linksinvarianten Masse gleich sein müssen.
+die rechts- und linksinvarianten Masse gleich sein müssen.
 
 Sei $G$ eine Gruppe mit dem linksinvarianten Mass $\mu$.
 Dann ist $R_s\mu$ ebenfalls ein linksinvariantes Mass definiert
@@ -333,7 +337,7 @@ $R_r\mu$ ein linksinvariantes Mass ist.
 Nach dem Satz~\ref{buch:gruppen:haar:satz:haar} unterscheiden sich
 die beiden Masse um einen skalaren Faktor.
 
-\begin{definition}
+\begin{definition}[unimodular]
 Es gibt eine Funktion $\delta\colon G\to \mathbb{R}$ derart, dass
 \[
 R_r \mu = \delta(r) \mu
@@ -341,14 +345,17 @@ R_r \mu = \delta(r) \mu
 für $r\in G$
 ist.
 Die Gruppe $G$ heisst {\em unimodular}, wenn $\delta(r)=1$ ist für
+\index{unimodular}
 alle $r\in G$.
 \end{definition}
 
 Für eine unimodulare Gruppe unterscheiden sich die linksinvarianten
 und die rechtsinvarianten Masse also nicht.
 Abelsche Gruppen sind unimodular.
-Man kann auch zeigen, dass $\delta(r)$ ein Homomorphismus ist,
+Man kann auch zeigen, dass $\delta(r)$ ein Homomorphismus in die
+multiplikative Gruppe $\mathbb{R}^*$ ist,
 was sich als ziemlich starke Einschränkung herausstellt.
+Sie ist verwandt mit der Determinanten auf einer Matrizengruppe.
 
 \begin{satz}
 Ist die lokalkompakte topologische Gruppe $G$ sogar kompakt, dann ist
@@ -372,7 +379,7 @@ Wenn $\delta(g)>1$ wäre, dann wäre auch
 der Wert an  der Stelle $gg$ wäre also grösser als das Maximum.
 Der Widersprich zeigt, dass das Maximum $\delta(g)=1$ sein muss.
 Analog sieht man ein, dass auch das Minimum von $\delta(g)=1$
-sein muss, dass also $\delta(r)=1$ ist.
+sein muss, dass also $\delta(g)=1$ ist.
 \end{proof}
 
 \begin{beispiel}
@@ -445,7 +452,7 @@ w(s\sigma',s\tau'+t)
 \,s\,d\tau'
 \,s\,d\sigma',
 \intertext{
-dabei wurde $d\tau = sd\tau'$ und $d\sigma=sd\sigma'$ verwendet.
+dabei wurde $d\tau = s\,d\tau'$ und $d\sigma=s\,d\sigma'$ verwendet.
 Linksinvarianz würde bedeuten, dass dieses Integral für
 alle Funktionen $f$ übereinstimmt mit}
 &=
@@ -515,6 +522,7 @@ woraus man schliessen kann, dass $\tilde{w}$ die Funktionalgleichung
 =
 \tilde{w}(s^{-1}\sigma', \tau'-s^{-1}\sigma't)\,s^{-1}
 \]
+erfüllt.
 Wieder folgt, dass $\tilde{w}$ nicht vom zweiten Argument abhängt, und
 die Abhängigkeit vom ersten Argument ist $\tilde{w}(s,t)=s$.
 

@@ -48,15 +48,15 @@ Das um $\tau$ verzögerte Signal ist $t\mapsto f(t-\tau)$.
 Der Anteil $g(\tau)$ des Signals, des mit Verzögerung $\tau$ beim
 Zuhörer eintrifft, heisst die {\em Impulsantwort}.
 Das gesamte vom Zuhörer wahrgenommene Signal ist daher die Überlagerung
-all dieser Signale, also
 \begin{equation}
 \int_{-\infty}^\infty
 g(\tau) 
 \,
 f(t-\tau)
-\,d\tau.
+\,d\tau
 \label{buch:gruppen:faltung:eqn:hall}
 \end{equation}
+all dieser Signale.
 Das Integral wird auch als die Faltung $g*f$ bezeichnet.
 
 Die Abbildung photographische mit einem realen Objektiv ist nicht
@@ -94,11 +94,11 @@ Die Funktion $f(x-\xi)$ in \eqref{buch:gruppen:faltung:eqn:pointspread}
 betrachtet als Funktion von $x$ ist die um $\xi$ verschobene
 Funktion $T_\xi f(x)$.
 
-Die obenstehenden Vorbereitungen können verwendet werden als
+Die obenstehenden Vorbereitungen können als
 Ausgangspunkt für die Verallgemeinerung auf eine beliebige Gruppe
-in der folgenden Definition.
+in der folgenden Definition verwendet werden.
 
-\begin{definition}
+\begin{definition}[Faltung]
 Die Faltung zweier Funktion $f,g\in C(G)$ ist die Funktion
 \begin{equation}
 (f*g)(x)
@@ -116,7 +116,8 @@ Im Fall einer additiv geschriebenen, abelschen Gruppe wird die Faltung zu
 \end{definition}
 
 In der Bestrebung, das Integral als Skalarprodukt von Funktionen
-zu schreiben, dies muss als Funktion von $\xi$ ausgedrückt werden.
+zu schreiben, dies muss der Faktor $g(x-y)$ als Funktion von $y$
+ausgedrückt werden.
 
 \begin{definition}
 Zu einer Funktion $f\colon G\to X$ ist $\check{f}\colon G\to X$ die
@@ -173,7 +174,7 @@ $f,g,h\in C(G)$, für die alle Faltungen definiert sind.
 \begin{proof}[Beweis]
 Ausgehend von der Definition der Faltung in
 \eqref{buch:gruppen:faltung:eqn:deffaltung}
-kann man die Faltung der zweifachen Faltung als
+kann man den Wert der zweifachen Faltung als
 \begin{align*}
 ((f*g)*h)(x)
 &=
@@ -211,8 +212,9 @@ Damit ist die Assoziativität gezeigt.
 Für ein Produkt wird zusätzlich erwartet, dass man damit rechnen kann
 wie mit jedem anderen Produkt.
 Dies bedeutet, dass für die Faltung und die Addition von Funktionen
-das Distributivgesetz gilt, dass man also Faltungsprodukte ausmultiplizieren
-und faktorisieren kann wie gewöhnliche punktweise Produkte von Funktionen.
+das Distributivgesetz gilt, dass man also Faltungsprodukte
+wie gewöhnliche punktweise Produkte von Funktionen
+ausmultiplizieren und faktorisieren kann.
 
 \begin{satz}
 Für die Faltung und die Addition von Funktionen gilt das Distributivgesetz

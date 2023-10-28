@@ -9,13 +9,14 @@
 %
 \subsection{Definition}
 Viele der klassischen Gruppen sind als Mengen von Matrizen definiert.
-Man lernt sie meist bereits in der linearen Algebra kennen.
+Man lernt sie meist bereits in einem Einführungskurs zur linearen Algebra
+kennen.
 Die Verknüpfung der Gruppenelemente ist die Matrixmultiplikation,
 das neutrale Element ist die Einheitsmatrix $I$.
 Da sie auch invertierbar sein müssen, liegen sie in der 
 allgemeinen linearen Gruppe.
 Eine solche Gruppe ist daher eine Teilmenge von $\operatorname{GL}_n(\Bbbk)$
-für einen geeignten Körper $\Bbbk$.
+für $\Bbbk=\mathbb{R}$ oder $\Bbbk=\mathbb{C}$.
 
 Die Permutationsgruppe $S_n$ von $n$ Elementen operiert durch 
 Vertauschungen.
@@ -33,7 +34,7 @@ konstruieren.
 Man kann sofort nachrechnen, dass $P_{\sigma\pi} = P_\sigma P_\pi$,
 dass $P_{e}=I$ und $P_{\sigma^{-1}}=P_\sigma^{-1}$.
 Die Menge der Matrizen
-$P_n=\{P_\sigma\mid\sigma\in S_n\}\subset\operatorname{GL}_n{\mathbb{R}}$
+$P_n=\{P_\sigma\mid\sigma\in S_n\}\subset\operatorname{GL}_n(\mathbb{R})$
 ist eine Gruppe von Matrizen.
 
 Man kann die Relation, dass $S_n$ in Form der Permutationsmatrizen $P_n$
@@ -57,7 +58,8 @@ wie folgt.
 Sei $G$ eine Gruppe und $V$ ein $\Bbbk$-Vektorraum.
 Ein Homomorphismus $\varrho\colon G\to\operatorname{GL}(V)$
 heisst {\em Darstellung} der Gruppe $G$ im Vektorraum $V$.
-Sie heisst {\em $n$-dimensional}, wenn $V$ ein $n$-dimensionaler
+\index{Darstellung}
+Sie heisst {\em $n$-dimensional}, wenn $V$ ein $n$-di\-men\-sio\-na\-ler
 Vektorraum ist.
 Hat $V$ eine Basis aus $n$ Vektoren, können die linearen
 Abbildungen $\varrho(x)$ als Matrizen in $M_{n\times n}(\Bbbk)$
@@ -80,14 +82,13 @@ Jede endliche Gruppe hat daher mindestens die Darstellung durch die
 Matrizen $P_{\pi_h}$.
 Sie heisst die {\em reguläre Darstellung}.
 
-Indem man die Elemente der Gruppe als $e=g_0,g_1,g_2,\dots,g_{|G|-1}$
-nummeriert, kann man auch Vektoren definieren, auf denen die
-Gruppe durch die Matrizen $P_{\pi_h}$ operiert.
-Sei $v_{g_i}$ der Spaltenvektor, der in der $i$-ten Zeile eine Eins
+Man kann eine Basis dieser Darstellung bilden, indem man die
+Einträge in den Spaltenvektoren mit Elementen der Gruppe indiziert.
+Sei $v_g$ der Spaltenvektor, der in der $h$-Zeile eine Eins
 hat und lauter Nullen in allen anderen Zeilen.
-Dann ist $\pi_{h}v_{g_i}=P_{\pi_h}v_{g_i}$, die Vektoren
-$v_{g_0},\dots,g_{|G|-1}$ sind die Standardbasis eines $|G|$-dimensionalen
-Vektorraumes, auf dem die Gruppe $G$ durch Permutationsmatrizen wirkt.
+Die Vektoren $v_h$ sind die die Standardbasis eines $|G|$-dimensionalen
+Vektorraumes, auf dem die Gruppe $G$ durch
+$\pi_{h}v_{g}=v_{hg}$ wirkt, also durch die Permutaionsmatrix $P_h$.
 
 Die Vektoren $v_h$ kann man auch als die Funktionen
 \[
@@ -102,7 +103,8 @@ g\mapsto
 \end{cases}
 \]
 betrachten.
-Die Menge der Funktionen $G\to\Bbbk$ bezeichnen wir mit $\Bbbk[G]$.
+Die Menge der Funktionen $G\to\Bbbk$ bezeichnen wir mit $\Bbbk[G]$,
+wobei $\Bbbk=\mathbb{R}$ oder $\Bbbk=\mathbb{C}$ ist.
 Die Gruppe $G$ operiert auf den Funktion durch die Translation.
 Die Funktion $v_{kh}$ ist genau dann $1$, wenn $g=kh$ ist, also wenn $k^{-1}g=h$
 ist.
@@ -126,6 +128,8 @@ Für eine Lie-Gruppe ist $g\mapsto T_g$ sogar eine differenzierbare
 Abbildung.
 Auch diese Darstellungen von $G$ auf entsprechenden Funktionenräumen
 heissen die {\em reguläre Darstellung} von $G$.
+\index{reguläre Darstellung}%
+\index{Darstellung!regulär}%
 
 %
 % Die Standarddarstellung einer Matrizengruppe
@@ -154,10 +158,12 @@ Für eine beliebige Gruppe $G$ ist die konstante Abbildung
 \colon
 G\to \operatorname{GL}_n(\mathbb{R})
 :
-g\mapsto I
+g\mapsto I_n
 \]
 ein Homomorphismus und damit eine $n$-dimensionale Darstellung von $G$.
 Sie heisst die {\em triviale $n$-dimensionale Darstellung}.
+\index{triviale Darstellung}%
+\index{Darstellung!trivial}%
 
 %
 % Reguläre Darstellung und Faltung
@@ -168,7 +174,7 @@ lineare Operation der Translation $T_g$ für $g\in G$.
 Sei $G$ eine endliche Gruppe und $f\colon G\mapsto \mathbb{R}$ eine
 Funktion auf $G$.
 Da die Translation $T_g$ eine lineare Abbildung ist, können wir die 
-sie mit den Koeffizienten $T_g$ linear kombinieren.
+sie mit den Koeffizienten $f(g)$ linear kombinieren.
 Damit lässt sich eine Operation der Funktion $f$ auf den Funktionen
 $h\colon G\to\mathbb{R}$ durch
 \begin{equation}
@@ -184,6 +190,10 @@ x\mapsto
 \sum_{g\in G} f(g)h(g^{-1}x)
 =
 (f*h)(x)
+\quad\Rightarrow\quad
+T_f
+=
+\int_G f(g)T_g\,dg.
 \end{equation}
 definieren.
 Die Faltung ist also nichts anderes als die Ausdehnung der regulären

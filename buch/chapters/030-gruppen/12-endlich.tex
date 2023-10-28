@@ -26,8 +26,9 @@ gefunden werden.
 \subsubsection{Die zyklischen Gruppen $\mathbb{Z}/n\mathbb{Z}$}
 Für die diskrete Fourier-Analysis besonders wichtig sind die zyklischen
 Gruppen.
+\index{zyklische Gruppe}%
 
-\begin{definition}
+\begin{definition}[zyklische Gruppe]
 \label{buch:gruppen:endliche-gruppen:def:zyklisch}
 Die Gruppe
 \[
@@ -35,7 +36,9 @@ Die Gruppe
 =
 \{0,1,2,\dots,n-1\}
 \]
+\index{ZnZ@$\mathbb{Z}/n\mathbb{Z}$}%
 der Reste modulo $n$ mit der Addition von Resten ist eine abelsche
+\index{Rest modulo $n$}%
 Gruppe.
 \end{definition}
 
@@ -57,6 +60,7 @@ C_n
 =
 \{ e^{2\pi ik/n}\mid k=0,1,\dots,n-1\}.
 \]
+\index{Cn@$C_n$}%
 Die Exponentialabbildung
 \[
 \exp
@@ -96,7 +100,6 @@ $\mathbb{Z}/n\mathbb{Z}$ unter der Exponentialabbildung
 in $\mathbb{C}^*$ erkannt.
 Man kann sie aber auch als Kern eines geeignet gewählten Homomorphismus
 verstehen.
-
 Die Abbildung
 \[
 \varphi
@@ -125,6 +128,9 @@ S_n = \{\varphi\colon [n] \to [n]\mid \text{$\varphi$ ist invertierbar} \}
 \]
 eine Gruppe, sie heisst die {\em Permutationsgruppe von $n$ Elementen}
 oder die {\em symmetrische Gruppe}.
+\index{Permutationsgruppe}%
+\index{symmetrische Gruppe}%
+\index{Gruppe!symmetrisch}%
 
 Permutationen können besonders effizient als Matrizen mit zwei Zeilen
 geschrieben werden.
@@ -142,7 +148,7 @@ schreiben kann.
 Um die Komposition von zwei Abbildungen $\varphi$ und $\psi$ zu bestimmen,
 kann man die beiden Matrizen übereinander schreiben und die Spalten der
 unteren Matrix so sortieren, dass sie mit den Elementen in der unteren
-Zeile der oberen MatrixMatrix  übereinstimmen:
+Zeile der oberen Matrix übereinstimmen:
 \[
 \begin{aligned}
 \varphi
@@ -252,9 +258,9 @@ Permutationen können besser verstanden werden, wenn man sie in einfachere
 Bestandteile zerlegen kann.
 Besonders nützlich dabei sind die sogenannten Transpositionen.
 
-\begin{definition}
+\begin{definition}[Transposition]
 Eine {\em Transposition} $\tau\in S_n$ ist eine Permutation, die genau
-zwei Elemente vertauscht und alle anderen Elemente fest bleiben.
+zwei Elemente vertauscht und alle anderen Elemente fest lässt.
 \index{Transposition}%
 \end{definition}
 
@@ -328,10 +334,10 @@ Tatsächlich können die Permutationen von $S_n$ auch als
 $n\times n$-Matrizen geschrieben werden.
 Der Permutation $\pi\in S_n$ wird die lineare Abbildung
 $\mathbb{R}^n\to\mathbb{R}^n$ zugeordnet, die den Standardbasisvektor
-$e_k$ auf den Standardbasisvektor $e_{\sigma(k)}$ abbildet.
-Die zugehörige Matrix $P_\sigma$ hat die Matrixelemente
+$e_k$ auf den Standardbasisvektor $e_{\pi(k)}$ abbildet.
+Die zugehörige Matrix $P_\pi$ hat die Matrixelemente
 \[
-(P_\sigma)_{ik} 
+(P_\pi)_{ik} 
 =
 \begin{cases}
 1&\qquad i = \pi(k)\\
@@ -339,11 +345,11 @@ Die zugehörige Matrix $P_\sigma$ hat die Matrixelemente
 \end{cases}
 \]
 Die Verknüpfung von Permutationen wird zur Matrixmultiplikation,
-die Abbildung $\sigma \mapsto P_\sigma$ ist ein Homomorphismus
+die Abbildung $\pi \mapsto P_\pi$ ist ein Homomorphismus
 von der Gruppe $S_n$ in die Gruppe der Permutationsmatrizen.
 Man sagt auch, die Permutationen werden durch Matrizen dargestellt oder
-die Abbildung, die einer Permutation $\sigma$ die zugehörige
-Permutationsmatrix $P_\sigma$ zuordnet, ist eine Darstellung der
+die Abbildung, die einer Permutation $\pi$ die zugehörige
+Permutationsmatrix $P_\pi$ zuordnet, ist eine Darstellung der
 Gruppe $S_n$ im Vektorraum $\mathbb{R}^n$.
 
 Die Spalten einer Permutationsmatrix sind die permutierten
@@ -354,11 +360,12 @@ Die Determinante der Matrix ändert dabei jedesmal das Vorzeichen.
 Am Ende des Prozesses steht die Einheitsmatrix mit Determinante $1$.
 Insbesondere ist die Determinanten einer Permutationsmatrix $\pm 1$.
 
-\begin{definition}
+\begin{definition}[Vorzeichen einer Permutation]
 \index{Vorzeichen einer Permutation}%
 \index{Signum einer Permutation}%
-Das {\em Vorzeichen} oder {\em Signum} einer Permutation
+Das {\em Vorzeichen} oder {\em Signum}
 $\operatorname{sgn}(\sigma)$
+einer Permutation $\sigma$
 ist die Determinante der zugehörigen Permutationsmatrix:
 $\operatorname{sgn}(\sigma)=\det P_\sigma$.
 Eine Permutation heisst {\em gerade}, wenn $\operatorname{sgn}(\sigma)=1$ ist,
@@ -369,7 +376,7 @@ sei heisst {\em ungerade}, wenn $\operatorname{sgn}(\sigma)=-1$ ist.
 
 Die Permutationsmatrix $P_\tau$ einer Transposition $\tau$ hat nur
 zwei vertauschte Spalten, also ist $\operatorname{sgn}(\tau)=\det P_\tau=-1$.
-Der oben beschrieben Prozess, mit dem erkannt wurde, dass die Determinante
+Der oben beschriebene Prozess, mit dem erkannt wurde, dass die Determinante
 einer Permutationsmatrix $\pm 1$ sein muss, zeigt noch mehr.
 
 \begin{satz}
@@ -392,7 +399,8 @@ reellen Zahlen.
 Dies besagt auch, dass $\det$ ein Homomorphismus
 $\operatorname{GL}_n(\mathbb{R}) \to \mathbb{C}^*$ ist.
 Das Vorzeichen $\operatorname{sgn}$ ist die Zusammensetzung zweier
-Homomorphismen, nämlich der Abbildung $\sigma\to P_\sigma$
+Homomorphismen, nämlich der Abbildung
+$S_n\to\operatorname{GL}_n(\mathbb{R}):\sigma\to P_\sigma$
 und der Determinante.
 Für zwei Permutationen $\sigma,\varrho\in S_n$ gilt daher für die Vorzeichen
 \[
@@ -441,4 +449,6 @@ Ausserdem ist
 \)
 somit ist mit $\sigma\in A_n$ auch $\sigma^{-1}\in A_n$.
 Die Menge $A_n$ heisst die {\em alternierende Gruppe}.
+\index{alternierende Gruppe}%
+\index{Gruppe!alternierend}%
 

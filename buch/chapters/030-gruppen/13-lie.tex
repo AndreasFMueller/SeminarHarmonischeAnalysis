@@ -15,7 +15,7 @@ In $\mathbb{R}$, $\mathbb{R}/2\pi\mathbb{Z}$, $S^1$ und $\mathbb{C}^*$
 steht nicht nur die aus der Gruppenoperation abgeleitete algebraische
 Struktur zur Verfügung.
 Vielmehr sind weitere topologische und analytische Eigenschaften 
-gegeben, im Folgenden untersucht werden sollen.
+gegeben, die im Folgenden untersucht werden sollen.
 
 %
 % Topologische Gruppen
@@ -82,15 +82,16 @@ x=\!\sqrt{2},
 insbesondere ist der Grenzwert nicht in $\mathbb{Q}^*$.
 \end{beispiel}
 
-\begin{definition}
+\begin{definition}[topologische Gruppe]
 \label{buch:gruppen:gruppe:def:topgruppe}
 Eine topologische Gruppe $G$ ist eine Gruppe $G$, deren Verknüpfungsabbildung
-$(x,y)\mapsto xy$ und das inverse Element $x\mapsto x^{-1}$ stetig sind.
+$(x,y)\mapsto xy$ und die Abbildung auf das inverse Element $x\mapsto x^{-1}$
+stetig sind.
 Für konvergente Folgen $x_n\to x$ und $y_n\to y$ in $G$ gilt dann
 \begin{align*}
 \lim_{n\to \infty} x_ny_n &= \lim_{n\to\infty} x_n \lim_{n\to\infty} y_n = xy
 \\
-\lim_{n\to \infty} x_n^{-1} &= (\lim_{n\to\infty} x_n)^{-1} = x^{-1}
+\lim_{n\to \infty} x_n^{-1} &= (\lim_{n\to\infty} x_n)^{-1} = x^{-1}.
 \end{align*}
 \end{definition}
 
@@ -124,8 +125,8 @@ eine entscheidende Rolle.
 Die Forderung nach der Existenz einer konvergenten Teilfolge für beschränkte
 Folgen ist also eine ``Endlichkeitsbedingung''.
 
-\begin{definition}
-Eine Menge $X$, auf der Grenzwerte mit einer geeigneten Abstandsmessung
+\begin{definition}[lokal kompakt]
+Eine metrischer Raum $X$, auf dem Grenzwerte mit der Metrik
 definiert sind, heisst {\em lokal kompakt}, wenn jeder Punkt von $X$
 eine offene Umgebung hat, in der jede Folge
 eine in $X$ konvergente Teilfolge hat.
@@ -134,10 +135,12 @@ eine in $X$ konvergente Teilfolge hat.
 Abgeschlossene Teilmengen von $\mathbb{R}^m$ sind lokal kompakt.
 Die Menge der quadratintegrierbaren Funktionen auf einem Interval
 ist dagegen nicht lokal kompakt, denn
-die Folge der Funktionen $e^{ikx}$ auf dem Intervall $[0,2\pi]$ ist
+die Folge der Funktionen $\frac1r e^{ikx}$ auf dem Intervall $[0,2\pi]$ ist
 als Folge im Hilbert-Raum $L^2([0,2\pi])$ 
-bezüglich der $L^2$-Norm beschränkt, hat aber keine konvergente
-Teilfolge.
+bezüglich der $L^2$-Norm in einem Ball vom Radius $r$ enthalten ist,
+hat aber keine konvergente Teilfolge.
+Jede noch so kleine Umgebung des Nullpunktes enthält also eine Folge,
+die keine konvergente Teilfolge enthält.
 In einem unendlichdimensionalen Raum kann man Lokalkompaktheit
 also nicht erwarten.
 
@@ -152,28 +155,11 @@ können.
 Ziel dieses Abschnitts ist daher, beliebigen Mengen ein Koordinatensystem
 zu geben.
 
-%Für Funktionen auf der Gruppe $\mathbb{R}$ ist sogar die Ableitung
-%definiert.
-%Eine solche lässt sich auch für Funktionen auf den Gruppen 
-%$S^1$ und $\operatorname{SO}(2)$ definieren, indem man diese Gruppen
-%mit einer geeigneten Parametrisierung beschreibt.
-%Die der Ableitungsbegriff nur für Funktionen $\mathbb{R}^n \to\mathbb{R}^m$
-%definiert ist, können solche Parametrisierungen dazu dienen,
-%die Gruppe mit einem Koordinatensystem auszustatten und anschliessend
-%die Ableitungen auf der Basis dieser Koordinaten zu definieren.
-%
-%Die Bestrebung, einer Gruppe mit Hilfe von Koordinaten eine differenzierbare
-%Struktur zu verpassen, ist natürlich viel allgemeiner, auch
-%gewöhnliche im dreidimensionalen Raum eingebetteten Flächen
-%benötigen ein Koordinatensystem, damit man Ableitungen von Kurven
-%auf der Fläche unabhängig von der Einbettung der Fläche in den
-%dreidimensionalen Raum studieren kann.
-
 Ein $n$-dimensionales Koordinatensystem einer Menge $U$ besteht
-aus Funktionen $x_i\colon U\mathbb{R}$ für $i=1,\dots,n$, die für
+aus Funktionen $x_i\colon U\to\mathbb{R}$ für $i=1,\dots,n$, die für
 jeden Punkt $p\in U$ die Koordinaten $x_i(p),i=1,\dots,n,$ berechnen.
 Fasst man diese Funktionen $x_i$ zusammen in ein $n$-Tupel, ergibt
-sich eine Abbildung $x\colon U\mathbb{R}^n:p\mapsto (x_1(p),\dots,x_n(p))$.
+sich eine Abbildung $x\colon U\to\mathbb{R}^n:p\mapsto (x_1(p),\dots,x_n(p))$.
 Damit Punkte mit Hilfe ihrer Koordinaten unterscheidbar sind, muss
 die Abbildung injektiv sein: wenn die Punkte $p$ und $q$ verschieden sind,
 dann unterscheiden sich auch $x_i(p)$ und $x_i(q)$ für mindestens ein $i$
@@ -254,10 +240,10 @@ z(p_2).
 Das Beispiel zeigt, dass es viele verschiedene Koordinatensysteme
 auf einer Menge geben kann, die sogar mit der Gruppenstruktur verträglich
 sein können.
-Betrachtet man aber Mengen die die Kugeloberfläche, dann wird schnell
+Betrachtet man aber Mengen wie die Kugeloberfläche, dann wird schnell
 klar, dass es oft kein Koordinatensystem für die ganze Menge gibt.
 Kugelkoordinaten zum Beispiel verwenden die geographische Länge und 
-Breite, aber die Pole haben keine wohldefinierte geogrphische Länge.
+Breite, aber die Pole haben keine wohldefinierte geographische Länge.
 Im Allgemeinen können Koordinatensysteme also nur lokal für eine offene
 Teilmenge der ganzen Menge konstruiert werden.
 Kartographen tun genau dies für die Erdoberfläche: Sie konstruieren
@@ -265,7 +251,7 @@ ein Koordinatensystem für eine kleine Teilmenge der Erdoberfläche
 und nennen dies eine Karte.
 Die Mathematik verwendet daher die folgende Definition.
 
-\begin{definition}
+\begin{definition}[Karte]
 \label{buch:gruppen:gruppe:def:karte}
 Eine $n$-dimensionale {\em Karte} $\alpha$ für eine offene Menge
 \index{Karte}%
@@ -282,14 +268,7 @@ Koordinatensystem definiert.
 
 \begin{beispiel}
 \label{buch:gruppen:gruppe:bsp:kugel}
-\begin{figure}
-\centering
-\includegraphics{chapters/030-gruppen/images/kugelkarten.pdf}
-\caption{Drei verschiedene Karten auf einer Kugeloberfläche jeweils in
-einer Umgebung der Schnittpunkte der Kugeloberfläche mit einer
-Achse.
-\label{buch:gruppen:gruppe:fig:kugelkarten}}
-\end{figure}
+\input{chapters/030-gruppen/fig/kugelkarten.tex}
 Die Menge $S^2 = \{(x,y,z)\mid x^2+y^2+z^2=1\}$ ist eine Kugeloberfläche.
 In der Umgebung $U_\alpha = \{(x,y,z)\in S^2\mid x^2+y^2<0.9\wedge z>0\}$
 des Nordpoles ist die Abbildung
@@ -312,7 +291,7 @@ U_\beta
 \]
 dagegen eine gute Karte.
 So kann für jeden Pol eine Karte gefunden werden.
-Die Karten sind in Abbildung~\ref{buch:gruppen:gruppe:def:karte}
+Die Karten sind in Abbildung~\ref{buch:gruppen:gruppe:fig:kugelkarten}
 dargestellt.
 \end{beispiel}
 
@@ -331,12 +310,7 @@ Menge adressiert.
 % Ableitungen
 %
 \subsubsection{Ableitungen}
-\begin{figure}
-\centering
-\includegraphics{chapters/030-gruppen/images/karten.pdf}
-\caption{Kartenwechsel für zwei Karten auf einem Torus
-\label{buch:gruppen:gruppe:fig:kartenwechsel}}
-\end{figure}
+\input{chapters/030-gruppen/fig/kartenwechsel.tex}
 Die Karten sollen der Menge $M$ ein Koordinatensystem geben, mit dem
 man Ableitungen von Funktionen definieren kann.
 Dazu ist notwendig, dass verschiedene Karten auf die gleiche
@@ -385,13 +359,14 @@ Die Koordinatenwechselabbildung
 \to
 \varphi_\beta(U_\alpha\cap U_\beta)
 \]
-ist eine Abbildung zwischen offenen Teilmengen von $\mathbb{R}^n$.
+ist eine Abbildung zwischen offenen Teilmengen von $\mathbb{R}^n$
+(Abbildung~\ref{buch:gruppen:gruppe:fig:kartenwechsel}).
 Man sagt, der Kartenwechsel ist differenzierbar, wenn $\varphi_{\beta\alpha}$
 als Abbildung von Teilmenen von $\mathbb{R}^n$
 differenzierbar ist.
 Der Kartenwechsel in der umgekehrten Richtung ist $\varphi_{\alpha\beta}$.
 
-\begin{definition}
+\begin{definition}[differenzierbarer Atlas]
 \label{buch:gruppen:gruppe:def:atlas}
 Ein {\em differenzierbarer Atlas} von $M$ ist eine Menge von Karten derart,
 dass alle Kartenwechselabbildungen differenzierbar sind.
@@ -437,17 +412,7 @@ ist eine differenzierbare Mannigfaltigkeit.
 \end{beispiel}
 
 \begin{beispiel}
-\begin{figure}
-\centering
-\includegraphics{chapters/030-gruppen/images/kugelschnitt.pdf}
-\caption{Zwei Karten der Kugeloberfläche und deren Schnittbereich.
-Differenzierbarkeit von Funktionen auf der Kugeloberfläche kann mit
-Hilfe der Karten nur dann definiert werden, wenn die Kartenwechselabbildung
-$\varphi_\alpha\circ\varphi_\beta^{-1}$ und
-$\varphi_\beta\circ\varphi_\alpha^{-1}$ differenzierbare Abbildungen
-zwischen offenen Mengen in $\mathbb{R}^n$ sind.
-\label{buch:gruppen:gruppe:fig:kugelkartenwechsel}}
-\end{figure}
+\input{chapters/030-gruppen/fig/kugelschnitt.tex}
 Die Ableitung von Funktionen auf einer Kugeloberfläche muss auf 
 die Beschreibung der Funktion in einer Karte mit Hilfe der dortigen
 Koordinaten zurückführen.
@@ -606,9 +571,8 @@ D_{\vec{u},\alpha}
  1-(1-c)(1-u_1^2) & -su_3+(1-c)u_1u_2 &  su_2+(1-c)u_1u_3 \\
  su_3+(1-c)u_1u_2 &  1-(1-c)(1-u_2^2) & -su_1+(1-c)u_2u_3 \\
 -su_2+(1-c)u_1u_3 &  su_1+(1-c)u_2u_3 &  1-(1-c)(1-u_3^2) 
-\end{pmatrix}
+\end{pmatrix}.
 \]
-beschrieben werden kann.
 Der Vektor $\vec{u}$ ist ein Einheitsvektor und daher $\vec{u}\in S^2$
 ein Punkt auf einer Kugel.
 Wählt man auf der Kugel eine Karte, kann man daraus zusammen mit den
@@ -616,7 +580,7 @@ Drehwinkeln eine Karte für die Drehmatrizen konstruieren.
 Dies zeigt, dass $\operatorname{SO}(3)$ eine differenzierbare
 Mannigfaltigkeit ist.
 
-Die Konstruktion des vorangeangenen Absatzes ist nicht direkt
+Die Konstruktion des vorangegangenen Absatzes ist nicht direkt
 auf andere Matrizengruppen verallgemeinerbar.
 Man kann aber zeigen, dass in einer Umgebung der Einheitsmatrix
 sich die Matrizen einer Matrizengruppe mit Hilfe der Exponentialreihe

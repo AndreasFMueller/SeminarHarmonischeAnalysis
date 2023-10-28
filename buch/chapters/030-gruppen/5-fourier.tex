@@ -63,9 +63,7 @@ Zahl $k\in\mathbb{R}$, die sogenannte {\em Wellenzahl},
 \index{Wellenzahl}%
 und umgekehrt.
 
-Die Gruppe $G=\mathbb{R}$ ist abelsch, daher erwarten wir, dass 
-$\hat{G}$ ebenfalls eine Gruppe ist.
-Die Gruppenoperation entsteht nach
+Die Gruppenoperation auf $\hat{G}$ entsteht nach
 Abschnitt~\ref{buch:gruppen:gelfand:subsection:dual} aus der 
 Multiplikation der Charaktere.
 Seien also $\chi_1$ und $\chi_2$ zwei Homomorphismen
@@ -105,21 +103,23 @@ Im Abschnitt~\ref{buch:gruppen:fourier:subsection:gruppeR}
 wurde die duale Gruppe von $G=\mathbb{R}$ bestimmt.
 Nach der allgemeinen Theorie der Gelfand-Transformation sind die
 Werte der Gelfand-Transformation auf Funktionen mit kompaktem
-Träger die Skalarprodukt
+Träger die Skalarprodukte
 \begin{equation}
 (\mathscr{G}f)(\chi)
 =
 \langle \chi,f\rangle
 =
-\int_{\mathbb{R}} \overline{\chi(x)} f(x)\,dx
+\int_{\mathbb{R}} \overline{\chi(x)} f(x)\,d\mu(x)
 =
-\int_{\mathbb{R}} e^{-ikx} f(x)\,dx,
+\int_{\mathbb{R}} e^{-ikx} f(x)\,d\mu(x),
 \label{buch:gruppen:fourier:ft:integral}
 \end{equation}
 wenn $k$ die Wellenzahl des Charakteres $\chi(x)=e^{ikx}$ ist.
 Das Integral~\eqref{buch:gruppen:fourier:ft:integral} ist nicht nur
 für Funktionen mit kompaktem Träger definiert, sondern wegen $|\chi(x)|=1$
 für beliebige integrierbare Funktionen.
+Die Normierung des Masses $\mu(x)$ im Integral ist noch offen, die
+folgende Definition legt die übliche Normierung fest.
 
 \begin{definition}[Fourier-Transformation auf $\mathbb{R}$]
 \label{buch:gruppen:fourier:def:ft}
@@ -134,6 +134,7 @@ k\mapsto
 =
 \hat{f}(k)
 =
+\frac{1}{\!\sqrt{2\pi}}
 \int_{\mathbb{R}} e^{-ikx}f(x)\,dx.
 \]
 Für differenzierbare Funktionen mit kompaktem Träger $f\in\mathscr{K}(G)$ 
@@ -142,7 +143,7 @@ gilt
 \mathscr{F}f'
 \colon k\to (\mathscr{F}f)(k)
 =
--ik(\mathscr{F}f) (k)
+-ik(\mathscr{F}f) (k).
 \label{buch:gruppen:fourier:eqn:ableitung}
 \end{equation}
 \end{definition}
@@ -153,18 +154,41 @@ Die Rechnung ergibt
 \begin{align*}
 (\mathscr{F}f')(k)
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{\mathbb{R}} e^{-ikx} f'(x)\,dx
 =
+\frac{1}{\!\sqrt{2\pi}}
 \underbrace{
 \biggl[
 e^{-ikx}f(x)
 \biggr]_{-\infty}^\infty
 }_{\displaystyle = 0}
 +ik
+\frac{1}{\!\sqrt{2\pi}}
 \int_{\mathbb{R}} e^{-ikx} f(x)\,dx
 =
 ik(\mathscr{F}f)(k).
 \end{align*}
+Für die Fourier-Transformation kann auch die {\em Umkehrformel}
+\index{Fourier-Umkehr}%
+\index{Umkehrformel}%
+\begin{equation}
+\mathscr{F}^{-1}\hat{f}(x)
+=
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty e^{ikx} \hat{f}(k)\,dx
+\label{buch:gruppen:fourier:eqn:fourierumkehr}
+\end{equation}
+und die {\em Plancherel-Formel}
+\index{Plancherel-Formel}%
+\begin{equation}
+\|f\|_2 = \|\hat{f}\|_2
+\label{buch:gruppen:fourier:eqn:plancherel}
+\end{equation}
+gezeigt werden.
+Die Plancherel-Formel besagt, dass die Fourier-Transformation eine
+Isometrie ist.
+\index{Isometrie}%
 
 %
 % Unschärfe-Relation
@@ -194,6 +218,7 @@ sind, denen man in der harmonischen Analysis begegnet.
 \subsubsection{Dirac-\textdelta-Funktion}
 In der elementaren Theorie der Fourier-Transformation wird oft 
 die ``Dirac-\textdelta-Funktion'' $\delta(x)$ eingeführt, die die
+\index{Dirac-delta-Funktion@Dirac-\textdelta-Funktion}%
 Eigenschaft haben soll, dass
 \begin{equation}
 \int_{-\infty}^\infty \delta(x) f(x)\,dx = f(0)
@@ -228,25 +253,30 @@ Die Fourier-Transformierte der Dirac-\textdelta-Funktion ist
 \[
 (\mathscr{F}\delta)(k)
 =
-\int_{-\infty}\infty e^{-ikx}\delta(x)\,dx
+\frac{1}{\!\sqrt{2\pi}}
+\int_{-\infty}^\infty e^{-ikx}\delta(x)\,dx
 =
+\frac{1}{\!\sqrt{2\pi}}
 e^{ik\cdot 0}
 =
-1.
+\frac{1}{\!\sqrt{2\pi}}.
 \]
 Für eine um $y$ verschobene Dirac-\textdelta-Funktion ist die
 Fourier-Transformierte
 \[
 (\mathscr{F}T_y\delta)(k)
 =
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty e^{-ikx}\delta(x-y)\,dx
 =
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty e^{-ik(x'+y)}\delta(x')\,dx'
 =
+\frac{1}{\!\sqrt{2\pi}}
 e^{-iky}.
 \]
 Die Fourier-Transformierte der Dirac-\textdelta-Funktion hat also 
-konstant den Betrag $1$, sie ist nicht einmal integrierbar.
+konstanten Betrag, sie ist nicht einmal integrierbar.
 
 %
 % Lokalisierung
@@ -289,23 +319,27 @@ ist integrierbar und quadratintegrierbar, es gilt
 =
 1.
 \]
-Die Fouriertransformierte von $f_a$ ist
+Die Fourier-Transformierte von $f_a$ ist
 \begin{align*}
 \mathscr{F}f_a
 \colon k\mapsto
 (\mathscr{F}f_a)(k)
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty e^{-ikx} f_a(x)\,dx
 =
+\frac{1}{\!\sqrt{2\pi}}
 \frac{1}{\!\sqrt{2a}}
 \int_{-a}^a e^{-ikx}\,dx
 \\
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \frac{1}{\!\sqrt{2a}}
 \biggl[
 \frac{1}{-ik} e^{-ikx}
 \biggr]_{-a}^a
 =
+\frac{1}{\!\sqrt{2\pi}}
 \frac{1}{\!\sqrt{2a}}\biggl(
 \frac{
 e^{-ika}-e^{ika}
@@ -315,13 +349,13 @@ e^{-ika}-e^{ika}
 \biggr)
 \\
 &=
-\frac{2}{\!\sqrt{2a}k}\frac{e^{ika}-e^{-ika}}{2i}
+\frac{1}{\!\sqrt{a\pi}k}\frac{e^{ika}-e^{-ika}}{2i}
 =
-\!\sqrt{\frac{2}{a}} \frac{\sin ka}{k}
+\!\sqrt{\frac{1}{a\pi}} \frac{\sin ka}{k}
 =
-\!\sqrt{2a} \frac{\sin ka}{ka}
+\!\sqrt{\frac{a}{\pi}} \frac{\sin ka}{ka}
 =
-\!\sqrt{2a}
+\!\sqrt{\frac{a}{\pi}}
 \operatorname{si}(ka).
 \end{align*}
 Die Funktion
@@ -365,18 +399,20 @@ Wir berechnen die Fourier-Transformation
 \begin{align*}
 \widehat{D_af}(k)
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{ikx}D_af(x)
 \,dx
 \\
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{ikx}f(ax)
 \,dx,
 \intertext{indem wir die Substitution $ax=u$ und $dx = (1/a)\,du$ 
 verwenden und damit}
 &=
-\frac{1}{a}
+\frac{1}{a\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{i(k/a)u}f(u)
 \,du
@@ -415,28 +451,33 @@ Wir berechnen die Fourier-Transformierte direkt aus
 \begin{align*}
 \hat{f}(k)
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty e^{-ikx} f(x)\,dx
 =
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty e^{-ax^2-ikx}\,dx.
 \intertext{Durch quadratisches Ergänzen im Exponenten erhält man}
 &=
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{-ax^2-ikx+k^2/4a}
 e^{-k^2/4a}
 \,dx
 = 
 e^{-k^2/2a}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{-a(x-ik/2a)^2}
 \,dx.
 \intertext{Die Substitution $u=x-ik/2a$ mit $du=dx$ führt auf}
 &=
 e^{-k^2/4a}
+\frac{1}{\!\sqrt{2\pi}}
 \int_{-\infty}^\infty
 e^{-au^2}
 \,du
 =
-\!\sqrt{\frac{\pi}{a}}
+\!\sqrt{\frac{1}{a\pi}}
 e^{-k^2/4a}.
 \end{align*}
 Dieses formale Argument ist allerdings nicht ganz vollständig,
@@ -477,7 +518,7 @@ Abbildung~\ref{buch:gruppen:fourier:fig:sinc} zeigt,
 jeweils ganz $\mathbb{R}$.
 
 Die in Abbildung~\ref{buch:gruppen:fourier:fig:sinc}
-rot eigezeichnete Fourier-Transformierte von $f_a$ hat ihre grössten 
+rot eingezeichnete Fourier-Transformierte von $f_a$ hat ihre grössten 
 Werte in der Nähe von $k=0$.
 Je grösser $a$ ist, desto besser sind die grossen Werte von $\mathscr{F}f_a$
 in der Nähe von $k=0$ konzentriert.
@@ -579,7 +620,9 @@ Erwartungswerte $0$ sind.
 Es genügt als  wie folgt zu rechnen:
 \begin{align}
 \|f\|_2^2
+\,
 \|F\|_2^2
+\,
 (\Delta x)^2
 (\Delta k)^2
 &=
@@ -678,13 +721,15 @@ x|f(x)|^2
 \notag
 \intertext{Nach der Voraussetzung $\langle x\rangle$ verschwindet
 der erste Term.
-Das Integral im zweiten Term ist das Quaddrat der $L^2$-Norm, also}
+Das Integral im zweiten Term ist das Quadrat der $L^2$-Norm, also}
 &=
 \frac14\|f\|_2^4.
 \notag
 \intertext{Verfolgen wird die gesamte Ungleichungskette, finden wir}
 \|f\|_2^2
+\,
 \|F\|_2^2
+\,
 (\Delta x)^2
 (\Delta k)^2
 &\ge 
@@ -700,8 +745,10 @@ Ungleichung}
 \frac14.
 \notag
 \end{align}
-Damit ist die Ungleichung bewiesen, es bleibt noch zu zeigen, dass Gleichheit
-nur für Gauss-Funktionen auftreten kann.
+Damit ist die Ungleichung bewiesen.
+
+Es bleibt nur noch zu zeigen, dass Gleichheit nur für Gauss-Funktionen
+auftreten kann.
 Gleichheit tritt auf, wenn in den Ungleichungen
 \eqref{buch:gruppen:fourier:eqn:cauchyschwarz}
 und
@@ -737,6 +784,7 @@ Gleichheit tritt also genau für Gauss-Funktionen auf.
 % Unschärferelation inder Quantemechanik
 %
 \subsubsection{Unschärferelation in der Quantenmechanik}
+\index{Quantenmechanik}%
 In der Quantenmechanik wird der Zustand eines Teilchens durch die 
 komplexwertige Wellenfunktion $\psi\colon\mathbb{R}^3\to\mathbb{C}$
 beschrieben.
@@ -755,14 +803,17 @@ der Wahrscheinlichkeitsdichte des Ortes, also genau die früher
 betrachtete Grösse $(\Delta x)^2$.
 
 Nach Louis de Broglie gibt es einen Zusammenhang zwischen dem Impuls $p$
+\index{de Broglie, Louis}%
 eines Teilchens und der Wellenlänge $\lambda$.
 Der zugehörige Zusammenhang zwischen Impuls und Wellenzahl ist
 $p = \hbar k$.
 Darin ist $\hbar = h/2\pi$ und $h$ ist das plancksche Wirkungsquantum.
+\index{plancksches Wirkungsquantum}%
+\index{Wirkungsquantum}%
 Um den Impuls eines Teilchens vorherzusagen, ist daher die
 Fourier-Transformierte zu bestimmen, damit kann dann der Erwartungswert
 \[
-\langle k \rangle 
+\langle k\rangle 
 =
 \int_{\mathbb{R}^3} k\, |\mathscr{F}\psi(k)|^2\,dk
 \]
@@ -784,6 +835,7 @@ folgt jetzt die berühmte Heisenbergsche Unschärferelation.
 \begin{satz}[Heisenberg]
 \label{buch:gruppen:fourier:satz:heisenberg}
 \index{Unschärferelation!Heisenberg}%
+\index{Heisenberg}%
 \index{heisenbergsche Unschärferelation}%
 Ort $x$ und Impuls $p$ eines Teilchens können nicht gleichzeitig beliebig
 genau bestimmt werden, für die Varianz $(\Delta x)^2$ des Orts und

@@ -17,14 +17,17 @@ Die minimal nötigen Eigenschaften fasst die folgende Definition zusammen.
 \begin{definition}
 \label{buch:gruppen:definition:gruppe}
 Eine {\em Gruppe} $G$ ist eine Menge mit einer Verknüpfung
+\index{Gruppe}%
 $\cdot \colon G\times G\to G : (x,y) \mapsto xy $, welche folgende
 Eigenschaften hat:
 \begin{enumerate}
 \item
 Die Verknüpfung ist assoziativ, d.~h.~$(xy)z=x(yz)$ für alle
 $x,y,z\in G$.
+\index{assoziativ}%
 \item
 Es gibt ein {\em neutrales Element} $e\in G$, für welches $ex=x$ für alle
+\index{neutrales}%
 $x\in G$ gilt.
 \index{neutrales Element}%
 \item 
@@ -34,7 +37,7 @@ Eigenschaft $x^{-1}x=e$.
 \end{enumerate}
 \end{definition}
 
-Man beachte, dass die Defiinition nicht verlangt, dass die Faktoren
+Man beachte, dass die Definition nicht verlangt, dass die Faktoren
 vertauscht werden können. 
 
 \begin{beispiel}
@@ -64,6 +67,7 @@ führen.
 \begin{definition}
 \label{buch:gruppen:definition:abelsch}
 Eine Gruppe $G$ heisst {\em abelsch}, wenn 
+\index{abelsch}%
 die Verknüpfung in der Gruppe kommutativ ist, wenn also
 $xy=yx$ für alle $x,y\in G$ gilt.
 \end{definition}
@@ -73,9 +77,11 @@ Die Verknüpfung einer abelschen Gruppe ist somit {\em kommutativ}.
 Abelsche Gruppen werden oft additiv geschrieben, d.~h.~mit einem
 Pluszeichen als $x+y$ für die Verknüpfung zweier Elemente $x,y\in G$.
 Das neutrale Element heisst dann auch das {\em Nullelement} und wird $0$
+\index{Nullelement}%
 geschrieben: $x+0=x$ für alle $x\in G$.
 Das inverse Element von $x$ heisst dann auch das
 {\em entgegengesetzte Element} und wird $-x$ geschrieben. 
+\index{entgegengesetztes Element}%
 Es gilt $x+(-x)=0$ für alle $x\in G$.
 
 \begin{beispiel}
@@ -105,13 +111,13 @@ Die Darstellung der Drehung mit Winkeln zwischen $-\pi$ und $\pi$ ist nur
 eine von vielen Möglichkeiten.
 Die Zahlen im Intervall $[0,2\pi)$ sind genauso gut geeignet.
 
-Schliesslich könnte man in der Menge der reellen Zahlen alle
-$\mathbb{R}$ Winkel zusammenfassen, die die gleiche Drehung beschreiben.
+Schliesslich könnte man in der Menge der reellen Zahlen $\mathbb{R}$
+alle Winkel zusammenfassen, die die gleiche Drehung beschreiben.
 Die Menge aller Winkel, die mit der Drehung um den Winkel $\alpha$
 gleichbedeutend sind, ist $\{\alpha + 2k\pi\mid k\in\mathbb{Z}\}$.
 Die Menge dieser Klassen wird auch mit $\mathbb{R}/2\pi\mathbb{Z}$
 bezeichnet.
-Jede Klasse vin $\mathbb{R}/2\pi\mathbb{Z}$ kann durch genau einen
+Jede Klasse von $\mathbb{R}/2\pi\mathbb{Z}$ kann durch genau einen
 Winkel in $(-\pi,\pi]$ oder in $[0,2\pi)$ wiedergegeben werden,
 die drei Mengen beschreiben alle die gleiche Gruppe.
 \end{beispiel}
@@ -147,7 +153,7 @@ Dann heisst $H$ eine {\em Untergruppe} von $G$.
 \index{Untergruppe}%
 \end{definition}
 
-Jede Gruppe enthält als kleinste Untergruppe immer die Gruppe $G$,
+Jede Gruppe enthält als kleinste Untergruppe immer die Gruppe $\{e\}$,
 die {\em triviale Gruppe}, die nur aus dem neutralen Element
 $\{e\}\subset G$ besteht.
 
@@ -214,9 +220,7 @@ $ \exp(\alpha)^{-1} = \exp(-\alpha) $.
 Ausserdem ist die Abbildung bijektiv.
 Die Exponentialabbildung zeigt also, dass es zwischen den beiden
 Gruppen $\mathbb{R}/2\pi\mathbb{Z}$ und $S^1$ nicht wirklich einen
-Unterschied gibt.
-
-wie im folgenden Beispiel gezeigt wird.
+Unterschied gibt, wie im folgenden Beispiel gezeigt wird.
 
 Die Gruppe der Drehwinkel kann man auch als eine Matrizengruppe
 verstehen.
@@ -386,8 +390,7 @@ Das neutrale Element ist der konstante Homomorphismus
 $1\colon G\to\mathbb{C}^*: g\mapsto 1$.
 Das inverse Element eines Homomorphismus $f\colon G \to\mathbb{C}^*$
 ist $1/f$ mit den Werten $(1/f)(g)=1/f(g)$.
-Diese Argumentation funktioniert benötigt nur, dass die Bildgruppe 
-abelsch ist.
+Diese Argumentation benötigt nur, dass die Bildgruppe abelsch ist.
 \end{beispiel}
 
 Aus einem Homomorphismus $\psi \colon H_1\to H_2$ kann die Abbildung
@@ -552,7 +555,7 @@ Die Verknüpfung von Morphismen ist die Verkettung von Pfaden.
 
 Die Morphismenmengen in der Kategorie $\mathscr{G}$ sind ganz offensichtlich
 nicht Mengen von Abbildungen.
-Da durch die Verkettung von Pfaden diese immer länger werden ist es
+Da durch die Verkettung von Pfaden diese immer länger werden, ist es
 nicht möglich, dass zwei Pfade, deren Länge nicht $0$ ist, nach
 Verkettung zu $1_a$ werden.
 \end{beispiel}
