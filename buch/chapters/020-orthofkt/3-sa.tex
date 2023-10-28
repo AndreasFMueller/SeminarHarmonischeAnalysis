@@ -24,7 +24,7 @@ die Situation des Hilbert-Raumes ausweiten kann.
 \subsection{Der adjungierte Operator}
 In einem Hilbert-Raum lässt sich zu jedem beschränkten linearen
 Operator der sogenannte adjungierte Operator konstruieren, der
-ebenfalls 
+bis auf Konjugation der Transponierten einer Matrix entspricht.
 
 %
 % Operatornorm
@@ -38,7 +38,8 @@ Dies bedeutet, dass es eine Zahl $M$ gibt derart, dass $\|Ax\| \le M\|x\|$.
 Man nennt dies auch einen {\em beschränkten Operator}.
 \index{Operator!beschränkt}%
 Die kleinstmögliche solche obere Schranke ist
-die sogenannte Norm des Operators
+die sogenannte {\em Norm}
+\index{Norm eines Operators}%
 \[
 \|A\|
 =
@@ -46,9 +47,9 @@ die sogenannte Norm des Operators
 <
 \infty
 \]
-sein.
+des Operators $A$.
 
-In einem Hilbertraum kann man die Norm auch mit der Cauchy-Schwarz-Ungleichung
+In einem Hilbert-Raum kann man die Norm auch mit der Cauchy-Schwarz-Ungleichung
 charakterisieren.
 $\|A\|$ ist die kleinste Zahl $M$, für die 
 \begin{equation}
@@ -148,7 +149,10 @@ der gleichen Norm.
 
 \begin{definition}
 Der Operator $A^*$ heisst der zu $A$ {\em adjungierte} Operator.
-Ein Operator $A$ heisst selbstadjungiert, wenn $A^*=A$ oder
+\index{adjungierter Operator}%
+\index{Operator!adjungiert}%
+Ein Operator $A$ heisst {\em selbstadjungiert}, wenn $A^*=A$ oder
+\index{selbstadjungiert}%
 $\langle Ax,y\rangle = \langle x,Ay\rangle$ für alle $x,y\in H$.
 \end{definition}
 
@@ -165,7 +169,7 @@ Die Eigenwerte eines selbstadjungierten Operators sind reell.
 \end{satz}
 
 \begin{proof}[Beweis]
-Sei $A$ ein selbstadjungierter Operator auf dem Hilbert-Raum und
+Sei $A$ ein selbstadjungierter Operator auf dem Hilbert-Raum $H$ und
 $x$ ein Eigenvektor zum Eigenwert $\lambda$, also $Ax=\lambda x$
 und damit
 \begin{equation}
@@ -173,7 +177,7 @@ und damit
 =
 \langle x,\lambda x\rangle
 =
-\lambda \langle x,x\rangle
+\lambda \langle x,x\rangle.
 \label{buch:orthofkt:sa:reell1}
 \end{equation}
 Andererseits gilt
@@ -199,7 +203,7 @@ $\|x\|^2$ teilen und erhält
 \[
 \lambda = \overline{\lambda},
 \]
-$\lambda$ ist reell.
+folglich $\lambda$ ist reell.
 \end{proof}
 
 \begin{satz}
@@ -214,6 +218,7 @@ Da $A$ selbstadjungiert ist, gilt
 $\langle Ax_1,x_2\rangle=\langle x_1,Ax_2\rangle$.
 Wir berechnen diese beiden Skalarprodukte mit Hilfe der Eigenvektoreigenschaft:
 \[
+\renewcommand{\arraycolsep}{3pt}
 \begin{array}{cclcl}
 \langle Ax_1,x_2\rangle
 &=&
@@ -236,7 +241,7 @@ Die Differenz dieser beiden Terme ist
 =
 (\lambda_1-\lambda_2)\langle x_1,x_2\rangle.
 \]
-Da $\lambda_1\ne \lambda_2$ ist der Klammerausdruck nicht $0$, daher muss
+Da $\lambda_1\ne \lambda_2$ ist, ist der Klammerausdruck nicht $0$, daher muss
 das Skalarprodukt $\langle x_1,x_2\rangle=0$ sein, die beiden Eigenvektoren
 sind orthogonal.
 \end{proof}
@@ -285,13 +290,9 @@ a_{i\!j}
 \overline{a_{ji}}.
 \]
 Die Matrix von $A$ ist also nicht mehr symmetrisch, sondern konjugiert
-symmetrisch.
+symmetrisch oder hermitesch (siehe
+Definition~\ref{buch:skalarprodukt:definition:def:hermitesch}).
 \end{beispiel}
-
-\begin{definition}
-Eine Matrix $A$ heisst hermitesch, wenn
-$\transpose{A}=\overline{A}$.
-\end{definition}
 
 \begin{beispiel}
 \label{buch:orthfkt:sa:beispiel:D2}
@@ -321,7 +322,7 @@ H_0 \to H_0
 :
 f\mapsto f''.
 \]
-Wir berechnene die Skalarprodukte
+Wir berechnen die Skalarprodukte
 \begin{align}
 \langle D^2f,g\rangle
 &=
@@ -329,9 +330,10 @@ Wir berechnene die Skalarprodukte
 =
 \biggl[f'(x)g(x)\biggr]_{-\pi}^\pi
 -
-\int_{-\pi}^\pi f'(x)g'(x)\,dx,
+\int_{-\pi}^\pi f'(x)g'(x)\,dx
 \label{buch:orthfunkt:sa:eqn:D2fg}
 \\
+\text{und}\qquad
 \langle f,D^2g\rangle
 &=
 \int_{-\pi}^\pi f(x)g''(y)\,dx

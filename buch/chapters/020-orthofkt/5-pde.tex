@@ -33,9 +33,12 @@ Ein linearer partieller Differentialoperator ist eine lineare
 Funktion der partiellen Ableitungen einer Funktion, die auf einem
 Gebiet definiert ist.
 
-\begin{definition}
+\begin{definition}[partieller Differentialoperator]
 Ein Gebiet $\Omega$ ist eine offene Teilmenge von $\mathbb{R}^n$.
-Ein partieller Differentialoperator der Ordnung $r$ ist eine Linearkombination
+Ein {\em partieller Differentialoperator} der Ordnung $r$ ist eine
+Linearkombination
+\index{Differentialoperator!partiell}%
+\index{partieller Differentialoperator}%
 \[
 L
 =
@@ -46,7 +49,9 @@ a_{k_1\dots k_n}(x)
 \end{definition}
 
 \begin{beispiel}
-Der Laplace-Operator auf einem beliebigen Gebiet $\Omega\subset\mathbb{R}^n$
+Der {\em Laplace-Operator} auf einem beliebigen Gebiet
+$\Omega\subset\mathbb{R}^n$
+\index{Laplace-Operator}
 ist definiert als
 \[
 \Delta
@@ -55,9 +60,9 @@ ist definiert als
 +
 \dots
 +
-\frac{\partial^2}{\partial x_n^2}
+\frac{\partial^2}{\partial x_n^2}.
 \]
-ist ein partieller Differentialoperator zweiter Ordnung.
+$\Delta$ ist ein partieller Differentialoperator zweiter Ordnung.
 \end{beispiel}
 
 %
@@ -67,7 +72,7 @@ ist ein partieller Differentialoperator zweiter Ordnung.
 Da $\Omega$ eine offene Teilmenge von $\mathbb{R}^n$ ist, lässt sich
 sofort ein Skalarprodukt von Funktionen auf $\Omega$ definieren.
 
-\begin{definition}
+\begin{definition}[Skalarprodukt]
 Ist $\Omega\subset \mathbb{R}^n$ ein Gebiet in $\mathbb{R}^n$, dann ist
 \begin{equation}
 \langle u,v\rangle_\Omega
@@ -75,10 +80,12 @@ Ist $\Omega\subset \mathbb{R}^n$ ein Gebiet in $\mathbb{R}^n$, dann ist
 \int_{\Omega}  \overline{u(x)} v(x)\,dx
 \label{buch:orthofkt:pde:eqn:skalarprodukt}
 \end{equation}
-ein Skalarprodukt für Funktionen auf $\Omega$.
+ein {\em Skalarprodukt} für Funktionen auf $\Omega$.
+\index{Skalarprodukt}
 \end{definition}
 
-Mit einer Gewichtsfunktion $w\colon \Omega \to \mathbb{R}^+$ lässt sich
+Mit einer {\em Gewichtsfunktion} $w\colon \Omega \to \mathbb{R}^+$ lässt sich
+\index{Gewichtsfunktion}%
 das Skalarprodukt noch etwas verallgemeinern, es wird zu
 \[
 \langle u,v\rangle_{\Omega,w}
@@ -89,6 +96,7 @@ Diese Erweiterung ist auch deshalb nötig, weil bei einem Wechsel
 der Koordinaten nach $x_i=x_i(x_1',\dots,x_n')$, das Integral
 \eqref{buch:orthofkt:pde:eqn:skalarprodukt}
 den zusätzlichen Faktor der Funktionaldeterminante 
+\index{Funktionaldeterminante}%
 \[
 \langle u,v\rangle_{\Omega}
 =
@@ -172,9 +180,9 @@ erfüllt ist.
 \end{definition}
 
 Neumann-Randbedingungen entsprechen also der Vorgabe der Ableitungen.
-Homogene Neumann-Randbedingungen entsprechen dem Fall
+Homogene Neu\-mann-Rand\-be\-din\-gun\-gen entsprechen dem Fall
 $h_a=h_b=0$ und $k_a=k_b=1$.
-Die Dirichlet- und Neumann-Randbedingungen können auch in sogenannte
+Die Dirichlet- und Neu\-mann-Randbedingungen können auch in sogenannte
 gemischte Randbedingungen zusammengefasst werden, indem 
 \index{Randbedingung!gemischt}%
 \index{gemischte Randbedingung}%
@@ -225,7 +233,7 @@ oder der Normalableitungen auf dem Rand unterscheiden.
 Es ist also im allgemeinen nötig, eine Randbedingung vorzugeben.
 Eine partikuläre Lösung $u_p$ erfüllt die Randbedingung möglicherweise
 nicht.
-Eine Lösung $u$, die auch die Randbedingung erfüllt, unterschiedet sich
+Eine Lösung $u$, die auch die Randbedingung erfüllt, unterscheidet sich
 von $u_p$ um 
 $\tilde{u} = u-u_p$ und erfüllt die Differentialgleichung
 \[
@@ -306,15 +314,19 @@ Laplace-Operator $L=\Delta$.
 Für den Operator $\Delta$ ist auch einfach nachzurechnen ist,
 dass er mit geeigneten Randbedingungen selbstadjungiert wird.
 
-Für den Laplace-Operator
-lassen sich dann die Lösungsfunktionen der Gleichungen
+Für den Laplace-Operator lassen sich die folgenden Gleichungen
+formulieren:
 \begin{align*}
 \Delta u &= \varrho                            &&\text{Poisson-Gleichung}      \\
-\intertext{oder für den Fall, dass $u(t,x)$ zusätzlich von der Zeit abhängt}
+\intertext{Für den Fall, dass $u(t,x)$ zusätzlich von der Zeit abhängt:
+\index{Poisson-Gleichung}}
 \frac{\partial u}{\partial t}     &= \Delta u  &&\text{Wärmeleitungsgleichung} \\
 \frac{\partial^2 u}{\partial t^2} &= \Delta u  &&\text{Wellengleichung}
 \end{align*}
-mit geeigneten Randbedingungen in eine Reihe der Form
+\index{Wärmeleitungsgleichung}%
+\index{Wellengleichung}%
+Mit geeigneten Randbedingungen lassen sich Lösungen fidnen und in eine
+Reihe der Form
 \begin{equation}
 u(x)
 =
@@ -322,9 +334,9 @@ u(x)
 \label{buch:orthofkt:eqn:unreihe}
 \end{equation}
 entwickeln, wobei die Koeffizienten $a_n$ 
-im Falle der Wärmeleitungslgeichung und der Wellengleichung
+im Falle der Wärmeleitungsgleichung und der Wellengleichung
 zusätzlich Funktionen der Zeit sind.
-Die Funktionen $u_n$ sind Eigenfunktionen des Operator $\Delta$.
+Die Funktionen $u_n$ sind Eigenfunktionen des Operators $\Delta$.
 
 Eingesetzt in die Differentialgleichung ergeben sich dann für die
 Koeffizienten $a_n$ die Gleichungenn
@@ -341,7 +353,7 @@ Koeffizienten $a_n$ die Gleichungenn
 wobei die $b_n$ die Koeffizienten der Entwicklung von $\varrho$ nach
 den Funktionen $u_n(x)$ ist.
 Im Falle der Wärmeleitungsgleichung wird das Problem also reduziert
-auf die Lösung einer gewöhnlichen Differentialgleichung.
+auf die Lösung einer Familie von gewöhnlichen Differentialgleichungen.
 
 Zusätzlich zu den Randbedingungen auf dem Rand des Gebietes $\Omega$,
 auf dem der Differentialoperator $L$ definiert ist, braucht die
@@ -392,6 +404,7 @@ D^2 = \frac{d^2}{dx^2}
 \end{equation}
 der zweiten Ableitung auf dem Intervall $[0,l]$.
 Das Skalarprodukt ist das übliche $L^2$-Skalarprodukt.
+Dazu muss aber erst gezeigt werden, dass $D^2$ selbstadjungiert ist.
 
 \subsubsection{$D^2$ ist selbstadjungiert}
 Seien $f$ und $g$ zwei zweimal stetig differenzierbare Funktionen,
@@ -444,7 +457,7 @@ f(l)  & g(l)
 \biggl|\begin{matrix}
 f'(0) & g'(0) \\
 f(0)  & g(0)
-\end{matrix}\biggr|
+\end{matrix}\biggr|.
 \label{buch:orthofkt:pde:eqn:detfg}
 \end{align}
 Bei der Diskussion des Sturm-Liouville-Problems haben wir die beiden
@@ -452,7 +465,7 @@ Intervallenden unabhängig voneinander betrachtet und zwei unabhängige
 Randbedingungen gefunden, welche erzwingen, dass 
 \eqref{buch:orthofkt:pde:eqn:detfg} erfüllt ist.
 Es gibt aber noch eine weitere Lösung, nämlich zu verlangen, dass
-die Funktionswerte und Ableitung für $x=0$ und $x=l$ übereinstimmen.
+die Funk\-tions\-wer\-te und Ableitung für $x=0$ und $x=l$ übereinstimmen.
 Eine Funktion mit $f(0)=f(l)$ und $f'(0)=f'(l)$ kann periodisch
 auf ganz $\mathbb{R}$ ausgedehnt werden.
 Wegen $f(0)=f(l)$ ist die ausgedehnte Funktion stetig auf ganz $\mathbb{R}$
@@ -625,8 +638,9 @@ A\!\sqrt{-\lambda}\sin\!\sqrt{-\lambda}2\pi
 B\!\sqrt{-\lambda}\cos\!\sqrt{-\lambda}2\pi.
 \end{align*}
 Die Koeffizienten $A$ und $B$ sind Lösungen des linearen Gleichungssystems
-\[
+\begin{equation}
 \renewcommand{\arraycolsep}{2pt}
+\left.
 \begin{array}{rcrcr}
 \cos2\pi\!\sqrt{-\lambda} \cdot A
 &+&
@@ -638,22 +652,28 @@ Die Koeffizienten $A$ und $B$ sind Lösungen des linearen Gleichungssystems
 \cos2\pi\!\sqrt{-\lambda} \cdot B
 &=& B
 \end{array}
+\right\}
 \Leftrightarrow
+\left\{
 \begin{array}{rcrcl}
 (\cos2\pi\!\sqrt{-\lambda}-1) \cdot A
 &+&
-\sin2\pi\!\sqrt{-\lambda} \cdot B
+\sin2\pi\!\sqrt{-\lambda}\phantom{)} \cdot B
 &=&
 0
 \\
--\sin2\pi\!\sqrt{-\lambda} \cdot A
+-\sin2\pi\!\sqrt{-\lambda}\phantom{)} \cdot A
 &+&
 (\cos2\pi\!\sqrt{-\lambda}-1) \cdot B
 &=& 0.
 \end{array}
-\]
-Als homogenes lineares Gleichungssystems kann es nur dann eine nichttriviale
-Lösung geben, wenn die Determinante der Koeffizientenmatrix verschwindet,
+\right.
+\label{buch:orthofkt:pde:eqn:perrand}
+\end{equation}
+Als homogenes lineares Gleichungssystem kann
+\eqref{buch:orthofkt:pde:eqn:perrand}
+nur dann eine nichttriviale
+Lösung haben, wenn die Determinante der Koeffizientenmatrix verschwindet,
 wenn also
 \begin{align*}
 0
@@ -662,7 +682,8 @@ wenn also
 \cos 2\pi\!\sqrt{-\lambda}-1 & \sin 2\pi\!\sqrt{-\lambda}   \\
 -\sin 2\pi\!\sqrt{-\lambda}  & \cos 2\pi\!\sqrt{-\lambda}-1
 \end{matrix}\biggr|
-\\
+\intertext{ist.
+Die Determinante kann evaluiert werden und ergibt}
 &=
 \cos^2 2\pi\!\sqrt{-\lambda} -2\cos2\pi\!\sqrt{-\lambda}+1
 +
@@ -713,7 +734,7 @@ Homogene Dirichlet-Randbedingungen werden erfüllt, wenn
 0&=y(         - l) = Ae^{-l\!\sqrt{\lambda}} + Be^{l\!\sqrt{\lambda}}
 \end{align*}
 Dies ist ein homogenes lineares Gleichungssystem, es hat nur dann eine
-nichttriviale Lösung, wenn die Determinante nicht verschwindet, wenn also
+nichttriviale Lösung, wenn die Determinante verschwindet, wenn also
 \[
 0
 =
@@ -725,7 +746,7 @@ e^{-l\!\sqrt{\lambda}} & e^{l\!\sqrt{\lambda}}
 \biggr|
 =
 e^{2l\!\sqrt{\lambda}} - e^{-2l\!\sqrt{\lambda}}
-0
+=
 e^{2l\!\sqrt{\lambda}} ( 1 - e^{-4l\!\sqrt{\lambda}}).
 \]
 Die Exponentialfunktion hat keine reellen Nullstellen, daher
@@ -825,7 +846,7 @@ mit der Determinante
 =
 8\!\sqrt{\lambda} \sinh^2(l\!\sqrt{\lambda}),
 \]
-die nur verschwindet, wenn $l=0$ ist.
+die wegen $l>0$ nicht verschwindet.
 Somit lassen sich auch periodische Randbedingungen für $\lambda > 0$
 nicht erfüllen.
 
@@ -842,6 +863,7 @@ In diesem Abschnitt betrachten wir den Operator
 \frac{\partial^2}{\partial y^2}
 \]
 auf einem Rechteck $\Omega = (0,l_x)\times (0,l_y)$.
+\index{Rechteck}
 Das Skalarprodukt ist wieder das übliche $L^2$-Skalarprodukt.
 
 
@@ -911,18 +933,11 @@ das Skalarprodukt
 \,dy\,dx.
 \label{buch:orthofkt:pdf:eqn:rechteck:total}
 \end{align}
-Die ersten vier Integrale auf der rechten Seite hängen nur ab
-von den Werten der Funktionen und der Ableitungen auf dem Rand.
+Die ersten vier Integrale auf der rechten Seite hängen nur 
+von den Werten der Funktionen und der Ableitungen auf dem Rand ab.
 Erfüllen die Funktionen homogene Dirichlet-Randbedingungen, dann
 ist der Integrand immer 0 und auf der rechten Seite bleibt nur
 der Term \eqref{buch:orthofkt:pdf:eqn:rechteck:total}.
-%\[
-%-\int_0^{l_x} \int_0^{l_y}
-%\frac{\partial f}{\partial x} \frac{\partial g}{\partial x}
-%+
-%\frac{\partial f}{\partial y} \frac{\partial g}{\partial y}
-%\,dy\,dx.
-%\]
 Der gleiche Term bleibt auch bei der Berechnung von
 $\langle f,\Delta g\rangle$
 stehen, so dass für Funktionen, die homogene Dirichlet-Randbedingungen
@@ -990,7 +1005,7 @@ X''(x)&=\mu X(x)
 &&\Rightarrow
 &
 Y''(y)&=(\lambda-\mu)Y(y)
-&&\text{für $y\in (0,l_y)$}
+&&\text{für $y\in (0,l_y)$.}
 \end{align*}
 Damit ist das Problem auf das einimensionale Problem von
 Abschnitt~ \ref{buch:orthofkt:subsection:fourier-theorie}
@@ -1026,7 +1041,7 @@ Die Integrale
 und
 \eqref{buch:orthofkt:pdf:eqn:rechteck:r2}
 können aber auch zum verschwinden gebracht werden, wenn man sicherstellt,
-wenn die Funktionswerte und Normalableitungen auf den Rändern des Gebietes
+dass die Funktionswerte und Normalableitungen auf den Rändern des Gebietes
 übereinstimmen.
 Die Bedingungen
 \begin{align*}
@@ -1037,7 +1052,8 @@ f(x,l_y) &= f(x,0)
 f(l_x,y) &= f(0,y)
 &&\text{und}&
 \frac{\partial f}{\partial y}(l_x,y) &= \frac{\partial f}{\partial y}(0,y).
-\intertext{Aus den  ersten beiden Gleichung folgt ausserdem, dass}
+\intertext{heissen periodische Randbedingungen.
+Aus den ersten beiden Gleichung folgt ausserdem, dass}
 \frac{\partial f}{\partial x}(x,0) &=
 \frac{\partial f}{\partial x}(x,l_y)
 &&\text{und}&
@@ -1062,13 +1078,14 @@ Der Laplace-Operator in Polarkoordinaten ist
 +
 \frac{1}{r^2} \frac{\partial}{\partial\varphi}.
 \]
-Funktionen auf dem Kreisgebiet sind Funktion $f(r,\varphi)$ müssen
+Damit $f(r,\varphi)$ als
+Funktion auf dem Kreisgebiet stetig ist, müssen zusätzlich
 \[
 f(0,\varphi) = f(0,0)
 \qquad\text{und}\qquad
 f(r,\varphi) = f(r,\varphi+2\pi)
 \]
-erfüllt sein, da die Funktion sonst nicht stetig sein kann.
+erfüllt sein.
 Damit die Funktion auch im Nullpunkt differenzierbar ist, müssen die
 Ableitungen für $r=0$ zusammenpassen.
 Die Richtungsableitungen in $x$- und $y$-Richtung sind
@@ -1098,8 +1115,8 @@ In jeder anderen Richtung ist die Richtungsableitung
 \end{equation}
 Die Gleichung
 \eqref{buch:orthofkt:eqn:phibed}
-ist eine Bedingung, die Funktion $f$ erfüllen muss, damit $f$
-differenzierbar ist.
+ist eine Bedingung, die die Funktion $f$ erfüllen muss, damit $f$
+im Nullpunkt differenzierbar ist.
 
 %
 % \Delta ist selbstadjungiert
@@ -1181,15 +1198,16 @@ g(r,\varphi)
 berechnen.
 Das erste Integral in 
 \eqref{buch:orthofkt:pde:eqn:kreisdphi}
-verschwindet, weil $f$ und $g$ $2\pi$-periodisch sind in $\varphi$.
+verschwindet, weil $f$ und $g$ als Funktionen on $\varphi$ periodisch
+mit Periode $2\pi$ sind.
 Das erste Integral in 
 \eqref{buch:orthofkt:pde:eqn:kreisdr}
 hängt nur von den Werten von $g$ und der Ableitung von $f$ in $r$-Richtung
 auf dem Rand des Gebietes ab.
 Die doppelten Integrale sind symmetrisch in $f$ und $g$.
-Daraus kann man wieder folgern, dass $\Delta$ auf Funktionen mit
-einer homogenen Dirichlet- oder einer homogenen Neumann-Randbedingung
-selbstadjungiert ist.
+Daraus kann man wieder folgern, dass der Laplace-Operator $\Delta$
+auf Funktionen mit einer homogenen Dirichlet- oder einer homogenen
+Neumann-Randbedingung selbstadjungiert ist.
 
 %
 % Eigenfunktionen
@@ -1228,7 +1246,7 @@ werden die beiden Gleichungen
 \begin{aligned}
 r^2R''(r) + rR'(r) +(m^2 - \lambda r^2)R(r) &= 0
 \\
-\Phi''(\varphi)&=-m^2 \Phi(\varphi)
+\Phi''(\varphi)&=-m^2 \Phi(\varphi).
 \end{aligned}
 \right.
 \]
@@ -1237,6 +1255,8 @@ als Lösungen.
 Die erste Gleichung ist etwas schwieriger zu lösen.
 Sie kann zum Beispiel mit der Potenzreihenmethode gelöst werden, die
 Lösungsfunktionen sind die Bessel-Funktionen.
+Die Bessel-Funktionen werden in \cite{buch:mathsem-spezfunk} 
+ausführlich diskutiert.
 
 %
 % Funktionen auf einer Kugeloberfläche
@@ -1392,7 +1412,7 @@ g(\vartheta,\varphi)
 \frac{\partial g}{\partial\varphi}
 \sin\vartheta
 \,d\varphi
-\,d\vartheta
+\,d\vartheta.
 \label{buch:orthofkt:pde:deltakugel2}
 \end{align}
 Das erste Integral in
@@ -1410,15 +1430,15 @@ Die verbleibenden doppelten Integrale in \eqref{buch:orthofkt:pde:deltakugel1}
 und \eqref{buch:orthofkt:pde:deltakugel2} sind symmetrisch in $f$ und $g$.
 Somit ist der Laplace-Operator auf beliebigen auf der Kugeloberfläche
 differenzierbaren Funktionen selbstadjungiert.
-Aus der allgemeinen Theorie folgt somit, dass die Eigenfunktionen orthogonal
-sind.
+Aus der allgemeinen Theorie folgt somit, dass die Eigenfunktionen
+zu verschiedenen Eigenwerten orthogonal sind.
 
 %
 % Lösungen der Legendre-Differentialgleichung
 %
 \subsubsection{Lösungen der Legendre-Differentialgleichung}
 Die Eigenfunktionen des Laplace-Operators auf der Kugeloberfläche
-kann wieder mit einem Ansatz
+können wieder mit einem Ansatz
 $f(\vartheta,\varphi)=\Theta(\vartheta)\Phi(\varphi)$
 gefunden werden.
 Einsetzen in die Differentialgleichung gibt
@@ -1458,7 +1478,7 @@ mit $\sin^2\vartheta$ ergibt}
 &=
 \lambda\sin^2\vartheta,
 \intertext{in der man $\vartheta$ auf die linke Seite und $\varphi$ auf
-die rechte Seite verschieben kann}
+die rechte Seite verschieben kann:}
 \sin\vartheta
 \frac{
 \cos\vartheta\Theta'(\vartheta)
@@ -1471,7 +1491,7 @@ die rechte Seite verschieben kann}
 &=
 -\frac{\Phi''(\varphi)}{\Phi(\varphi)}
 =
-m^2
+m^2.
 \end{align*}
 Für die Funktionen $\Phi(\varphi)$ sind wieder beliebige Linearkombinationen
 der trigonometrischen Funktionen $\cos m\varphi$ und $\sin m\varphi$
@@ -1540,8 +1560,8 @@ $\sin\vartheta = \!\sqrt{1-z^2}$
 ersetzt werden.
 Die Funktion $\Theta(\vartheta)$ ist dann eine Funktion $P(z)$ mit
 $P(\cos\vartheta)=\Theta(\vartheta)$.
-Die Ableitungen von $\Theta$ können durch Ableitungen von $P$
-ausgedrückt werden wie folgt.
+Die Ableitungen von $\Theta$ können wie folgt
+durch Ableitungen von $P$ ausgedrückt werden.
 Zunächst sind die Ableitungen nach $\vartheta$:
 \begin{align*}
 \Theta'(\vartheta)
@@ -1571,11 +1591,11 @@ P'(\cos\vartheta)\cos\vartheta
 P''(z)
 -
 z
-P'(z)
+P'(z).
 \end{align*}
 Damit kann man die Differentialgleichung
 \eqref{buch:orthfkt:pde:dglthetaphi}
-in die Form
+in die Form der Differentialgleichung
 \[
 (1-z^2)P''(z)
 -
@@ -1589,7 +1609,7 @@ zP'(z)
 =
 0
 \]
-für die Funktion $P(z)$ finden.
+für die Funktion $P(z)$ bringen, diese kann zu
 \begin{equation}
 (1-z^2)P''(z) - 2zP'(z)
 +
@@ -1604,6 +1624,7 @@ P(z)
 0
 \label{buch:orthofkt:pde:eqn:legendreassocz}
 \end{equation}
+zusammengefasst werden.
 Diese Differentialgleichung kann auch in der Form des
 Sturm-Liouville-Operators
 \[
@@ -1636,7 +1657,7 @@ in der Form
 können mit Polynomen gelöst werden.
 Sie heissen die {\em assoziierten Legendre-Polynome} $P_l^m(z)$.
 Eine ausführliche Diskussion dieser Lösungen kann in
-\cite{buch:mathsem-spezfunk}
+\cite[Kapitel 24]{buch:mathsem-spezfunk}
 gefunden werden.
 
 Mit Hilfe der assoziierten Legendre-Polynomen können die Eigenfunktion

@@ -93,8 +93,9 @@ Ausgangspunkt ist wieder eine Folge von Vektoren $a_i\in H$.
 Damit der Nenner von \eqref{buch:orthfkt:gsnenner} nicht verschwindet,
 muss verlangt werden, das $a_i$ nicht im Raum aufgespannt von den
 Vektoren $a_1,\dots,a_{i-1}$ liegen darf.
-Dies garantiert, dass \eqref{buch:orthofkt:gs} eine Folge $b_i$ hervorbringt,
-mit der Eigenschaft, dass jeder Vektor $a_i$ sich eindeutig durch die
+Dies garantiert, dass die wiederholte Anwendung der
+Formel~\eqref{buch:orthofkt:gs} eine Folge $b_i$ mit der Eigenschaft
+hervorbringt, dass jeder Vektor $a_i$ sich eindeutig durch die
 $b_i$ ausdrücken lässt.
 Wenn sich jeder Vektor in $H$ beliebig gut durch eine Folge von
 Linearkombinationen der $a_i$ approximieren lässt, dann gilt dies auch
@@ -116,7 +117,7 @@ haben wir das Skalarprodukt
 \int_{-1}^1 f(x)g(x)\,dx
 \]
 für integrierbare Funktionen definiert.
-Es macht $C([-1,1])$ ist ein Prähilbertraum.
+Es macht $C([-1,1])$ zu einem Prähilbertraum.
 
 Um mit dem Verfahren von Gram-Schmidt eine Familie von orthogonalen
 Funktionen in $C([-1,1])$ zu produzieren, wird zunächst eine Familie
@@ -126,7 +127,7 @@ lässt.
 Dies ist gemäss dem folgenden Satz mit Polnomen möglich.
 
 \begin{satz}[Weierstrass]
-Jeder stetige Funktion auf dem Intervall $[a,b]$ lässt sich beliebig
+Jede stetige Funktion auf dem Intervall $[a,b]$ lässt sich beliebig
 genau durch Polynome approximieren: ist $f\colon [a,b]\to\mathbb{R}$
 eine stetige Funktion, dann gibt es Polynome $p_n(x)$, die gleichmässig
 gegen $f(x)$ konvergieren, d.~h.~\(
@@ -144,7 +145,7 @@ $L^2$-Norm von $L^2([a,b])$
 \le 
 \int_a^b \varepsilon^2 \,dx
 =
-\varepsilon |b-a|.
+\varepsilon^2\cdot |b-a|.
 \]
 Die Folge der approximierenden Polynome $p_n(x)$ konvergiert also
 auch in der $L^2$-Norm.
@@ -164,8 +165,12 @@ a_{n+1}(x)=x^{n+1},\;
 verwendet werden können, die alle linear unabhängig sind.
 Der von den Funktionen $a_0,\dots,a_n$ erzeugte Unterraum von
 $C([a,b])$ besteht aus den Polynomen vom Grad $\le n$.
-Die Vektoren $b_n$ sind daher ebenfalls Vektoren vom Grad $n$.
+Die Vektoren $b_n$ sind daher ebenfalls Polynome vom Grad $n$.
 
+%
+% Orthonormalisierung für die Legendre-Polynome
+%
+\subsubsection{Orthonormalisierung für die Legendre-Polynome}
 Wir führen jetzt den Gram-Schmidt-Prozess für die Monome
 \eqref{buch:orthfkt:monome}
 und das $L^2$-Skalarprodukt auf dem Intervall $[-1,1]$ durch.
@@ -211,7 +216,7 @@ wir müssen daher zunächst das Skalarprodukt
 \frac{1}{\!\sqrt{2}} \biggl[\frac12x^2\biggr]_{-1}^1=0
 \]
 berechnen.
-Es folgt dass $a_1$ bereits orthogonal zu $b_0$ ist, er muss also
+Es folgt, dass $a_1$ bereits orthogonal zu $b_0$ ist, er muss also
 nur noch normiert werden.
 Dazu müssen wir die Norm
 \[
@@ -302,9 +307,10 @@ Abschnitt~\ref{buch:orthofkt:section:sturmliouville} ergeben.
 Der Prozess kann etwas vereinfacht werden durch die Beobachtung, dass die
 Polynome $p_{2n}(x)$ immer gerade sind und die Polynome $p_{2n+1}(x)$
 immer ungerade, so dass die Skalarprodukte 
-$\langle p_{2k},p_{2l+1}\rangle=0$ sind, weil das Produkt
-$p_{2k}(x)p_{2l+1}(x)$ eine ungerade Funktion ist und daher auf
-dem symmetrischen Intervall $[-1,1]$ verschwindendes Integral hat.
+$\langle p_{2k},p_{2l+1}\rangle=0$ für $k,l\in\mathbb{N}$ sind,
+weil das Produkt $p_{2k}(x)p_{2l+1}(x)$ eine ungerade Funktion ist
+und daher auf dem symmetrischen Intervall $[-1,1]$ verschwindendes
+Integral hat.
 
 Weiter sind in den Polynomen $p_n(x)$ die Normierungsfaktoren mit
 ihren komplizierten Wurzeln eher unangenehm.
@@ -312,8 +318,9 @@ Da zum Beispiel in der Gauss-Quadratur als Anwendung der Polynome
 nur die Nullstellen von Interesse sind, werden sie oft in einer
 anderen Normierung gemäss der folgenden Definition tabelliert.
 
-\begin{definition}
+\begin{definition}[Legendre-Polynome]
 Die {\em Legendre-Polynome} $P_n(x)$ sind bezüglich des $L^2$-Skalarproduktes 
+\index{Legendre-Polynome}
 auf $[-1,1]$ orthogonale Polynome mit positivem Leitkoeffizienten und
 $P_n(1)=1$.
 \end{definition}
@@ -326,7 +333,8 @@ P_0(x) &= 1 \\
 P_1(x) &= x \\
 P_2(x) &= \frac12(3x^2-1).
 \end{align*}
-
+Weitere Legendre-Polynome sind in \cite[Tabelle 7.1]{buch:mathsem-spezfunk}
+aufgelistet.
 
 %
 % Andere Skalarprodukte
@@ -334,7 +342,7 @@ P_2(x) &= \frac12(3x^2-1).
 \subsection{Andere Skalarprodukte}
 Das gewöhnliche $L^2$-Skalarprodukt ist nur eines von vielen möglichen
 Skalarprodukten für Funktionen auf dem Intervall $[-1,1]$.
-Jeder Wahl eines Skalarproduktes führt auf einen andere Funktionenfamilie.
+Jede Wahl eines Skalarproduktes führt auf einen andere Funktionenfamilie.
 
 \subsubsection{Tschebyscheff-Polynome}
 Das Skalarprodukt
@@ -350,7 +358,8 @@ wobei natürlich $t_n(x)$ den Grad $n$ hat.
 Da ähnlich wie bei den Legendre-Polynomen oft nur die Nullstellen
 wichtig sind, wird auch hier die Normierung $T_n(x) = t_n(x)/t_n(1)$
 verwendet, was die
-sogenannten Tschebyscheff-Polynome
+sogenannten {\em Tschebyscheff-Polynome}
+\index{Tschebyscheff-Polynome}
 \(
 T_n(x)
 \)
@@ -363,12 +372,12 @@ gegeben sind.
 
 Tatsächlich kann man direkt nachrechnen, dass die Polynome $T_n$ und $T_m$
 mit $n\ne m$ orthogonal sind.
-Dazu berechnen wir
+Dazu setzen wir
 \begin{align*}
 \langle T_n,T_m\rangle
 &=
 \int_{-1}^1 T_n(x) T_m(x)\,dx
-\intertext{und verwenden die Substitution $x=\cos\vartheta$ mit
+\intertext{ein und verwenden die Substitution $x=\cos\vartheta$ mit
 $dx/d\vartheta=-\sin\vartheta$.}
 &=
 \int_{\pi}^0
@@ -388,7 +397,7 @@ dass sich der Wert des Integrals vollständig bestimmen lässt.
 Er ist}
 &=
 \int_0^\pi
-\frac12(\cos(n-m)\vartheta + \cos(n+m)\vartheta)
+\frac12\bigl(\cos(n-m)\vartheta + \cos(n+m)\vartheta\bigr)
 \,d\vartheta
 =
 \frac12
@@ -398,7 +407,7 @@ Er ist}
 =
 0,
 \end{align*}
-da Sinus für ganzzahlige Vielfache von $\pi$ verschwindet.
+da der Sinus für ganzzahlige Vielfache von $\pi$ verschwindet.
 
 %
 % Gewichtsfunktionen
@@ -426,8 +435,9 @@ w_T(x)
 \frac{1}{\!\sqrt{1-x^2}}.
 \]
 
-\begin{definition}
+\begin{definition}[Jacobi-Skalarprodukt]
 Die {\em Jacobi-Gewichtsfunktion} $w^{(\alpha,\beta)}(x)$ ist 
+\index{Jacobi-Gewichtsfunktion}
 \[
 w^{(\alpha,\beta)}
 \colon
@@ -450,6 +460,7 @@ geschrieben.
 
 Die Familie orthogonaler Polynome, die sich zu diesem Skalarprodukt
 ergeben, heissen {\em Jacobi-Polynome}.
+\index{Jacobi-Polynom}%
 Die Gewichtsfunktion der Tschebyscheff-Polynome ist ein Spezialfall,
 nämlich
 \[
@@ -478,10 +489,12 @@ das Integral beschränkt bleibt.
 
 Für $\mathbb{R}$ als Definitionsbereich der Polynome kann man die
 {\em Hermite-Gewichtsfunktion}
+\index{Hermite-Gewichtsfunktion}%
 \[
 w(x) = e^{-\frac{x^2}2}
 \]
 verwenden, sie führt auf die {\em Hermite-Polynome}.
+\index{Hermite-Polynom}%
 
 %
 % Laguerre-Polynome

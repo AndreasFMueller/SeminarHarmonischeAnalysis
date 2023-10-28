@@ -183,7 +183,7 @@ f(t)
 \langle s_k,f\rangle s_k(t)
 ).
 \]
-Wir schreiben die einzelnen Terme aus um die Verbindung zu der in der
+Wir schreiben die einzelnen Terme aus, um die Verbindung zu der in der
 Theorie der Fourier-Reihen üblichen Notation herzustellen.
 Der konstante Term ist
 \[
@@ -238,6 +238,22 @@ b_k
 \]
 
 %
+% Parseval-Gleichung
+%
+\subsubsection{Parseval-Gleichung}
+Da die Abbildung einer Funktion auf die Folge der Fourier-Koeffizienten
+eine Isometrie in den Raum $l^2$ ist, folgt die {\em Parseval-Gleichung}
+\index{Parseval-Gleichung}
+\begin{equation}
+\| f\|^2
+=
+\frac{a_0^2}{2}
++
+\sum_{k=1}^\infty(|a_k|^2 + |b_k|^2).
+\label{buch:orthofkt:trigo:eqn:parseval}
+\end{equation}
+
+%
 % Andere Intervalle
 %
 \subsubsection{Andere Intervalle}
@@ -270,7 +286,7 @@ b_k
 \right.
 \]
 Indem man die Variablentransformation unter Verwendung von
-$dt = (\pi/l)dx$ auch in den Integralen durchführt,
+$t=x\pi/l$ und $dt = (\pi/l)dx$ auch in den Integralen durchführt,
 erhält man die Darstellung
 \begin{align*}
 a_k
@@ -283,7 +299,7 @@ b_k
 &=
 \frac{1}{\pi}\int_{-l}^l f(x)\sin\biggl(\frac{k\pi x}l\biggr)\,\frac{\pi}{l}\,dx
 =
-\frac{1}{l}\int_{-l}^l f(x) \sin\frac{k\pi x}{l} \,dx
+\frac{1}{l}\int_{-l}^l f(x) \sin\frac{k\pi x}{l} \,dx.
 \end{align*}
 Dasselbe Resultat kann man erhalten, indem man wie vorhin die
 orthogonalen, $2l$-periodischen Funktionen
@@ -319,7 +335,7 @@ e_k(t) = e^{ikt} = \cos kt + i\sin kt\qquad\text{für $k\in\mathbb{Z}$}
 sind $2\pi$-periodisch.
 Im Gegensatz zur Situation bei den trigonometrischen Funktionen können
 wir hier nicht auf die negativen Indizes $k<0$ verzichten.
-Für eine reelle Funktion ist lässt sich die Fourierreihe unter Verwendung
+Für eine reelle Funktion lässt sich die Fourierreihe unter Verwendung
 der Identitäten
 \[
 \cos kt
@@ -378,14 +394,14 @@ gewonnen werden.
 % komplexes Skalarprodukt und Orthogonalität
 %
 \subsubsection{Komplexes Skalarprodukt und Orthogonalität}
-Da die Funktionen $e_k(t)$ komplexertig sind, kann man damit
+Da die Funktionen $e_k(t)$ komplexwertig sind, kann man damit
 auch komplexwertige Funktionen approximieren. 
 Für eine komplexwertige Funktion kann man nicht mehr erwarten, dass die
 Koeffizienten $c_{-k}=\overline{c_k}$ erfüllen.
 Damit wird die obige Rechnung zur Bestimmung der Koffizienten
 viel komplizierter.
 Stattdessen möchten wir ein Skalarprodukt für komplexwertige Funktionen
-verwenden und eien Basis von komplexwertigen Funktionen, die 
+und eine Basis von komplexwertigen Funktionen verwenden, die 
 bezüglich dieses Skalarproduktes orthonormiert sind.
 Dann kann man die Koeffizienten $c_k$ wieder mit Hilfe des komplexen
 Skalarproduktes ermitteln.
@@ -415,7 +431,7 @@ und berechnen die Skalarprodukte für $k\ne l$
 =
 0
 \]
-da die Funktionen $e_k(t)$ $2\pi$-periodisch sind.
+da die Funktionen $e_k(t)$ periodisch mit Periode $2\pi$ sind.
 
 %
 % Normierung
@@ -501,7 +517,7 @@ Wendet man $T_\delta$ auf die Funktion $e_k(t)$ ergibt sich
 &=
 e_k(t+\delta)
 =
-e^{ik(t\delta)}
+e^{ik(t+\delta)}
 =
 e^{ik\delta} e^{ikt}
 =
@@ -521,7 +537,7 @@ man bekommt
 =
 \cos kt \cos k\delta - \sin kt \sin k\delta
 =
-\cos k\delta C_k(t) - \sin k\delta S_k(t)
+\cos k\delta \cdot C_k(t) - \sin k\delta \cdot S_k(t)
 \\
 (T_\delta S_k)(t)
 &=
@@ -531,9 +547,9 @@ man bekommt
 +
 \sin kt\cos k\delta
 =
-\sin k\delta C_k(t)
+\sin k\delta \cdot C_k(t)
 +
-\cos k\delta S_k(t),
+\cos k\delta \cdot S_k(t),
 \end{align*}
 die man auch in Matrixform als
 \[
@@ -544,7 +560,7 @@ C_k\\S_k
 =
 \begin{pmatrix}
 \cos k\delta & -\sin k\delta \\
-\sin k\delta &  \cos k\delta
+\sin k\delta & \phantom{-} \cos k\delta
 \end{pmatrix}
 \begin{pmatrix}
 C_k\\S_k
@@ -560,6 +576,7 @@ aber sie spannen einen zweidimensionalen invarianten Unterraum auf.
 Die Symmetrieeigenschaften äussern sich auch in den Ableitungen
 der Funktionen.
 Die Ableitungsfunktion ist der Grenzwert
+\index{Ableitungsfunktion}%
 \[
 Df
 =

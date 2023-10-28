@@ -8,7 +8,7 @@
 \kopfrechts{Sturm-Liouville-Problem}
 Das Beispiel~\ref{buch:orthfkt:sa:beispiel:D2} zeigt, dass
 Eigenfunktionen eines Differentialoperators zu interessanten
-Familien orthogonaler Funktionken führen können.
+Familien orthogonaler Funktionen führen können.
 Die daraus abgeleitete harmonische Analysis kann zur Lösung
 gewisser Differentialgleichungen genutzt werden, die diesen
 Differentialoperator verwenden.
@@ -21,9 +21,10 @@ erweitert werden kann.
 %
 \subsection{Der Sturm-Liouville-Differentialgoperator
 \label{buch:orthofkt:sturmliouville:subsection:operator}}
-Sie $a<b$ und seien zwei Funktionen
-$p(x)\in C^2([a,b])$, $q(x)\in C([a,b])$ gegeben.
-Wir definieren den sogenannten Sturm-Liouville-Operator
+Sei $a<b$ und seien zwei Funktionen
+$p(x)\in C^1([a,b])$, $q(x)\in C([a,b])$ gegeben.
+Wir definieren den sogenannten {\em Sturm-Liouville-Operator}
+\index{Sturm-Liouville-Operator}%
 \[
 L = \frac{d}{dx} p(x) \frac{d}{dx} + q(x),
 \]
@@ -126,6 +127,7 @@ Die Funktionen müssen die Bedingungen
 \biggl[ p(x)f(x) g'(x) \biggr]_a^b
 \notag
 \\
+\Leftrightarrow\qquad
 p(b)f'(b)g(b)
 -
 p(a)f'(a)g(a) 
@@ -149,39 +151,41 @@ f(a)g'(a)
 \notag
 \intertext{erfüllen.
 Mit der Determinante lässt sich das noch etwas übersichtlicher
-schreiben als}
+als}
 \left|\begin{matrix}
 p(b)f'(b)&p(b)g'(b) \\
 f(b) &g(b)
 \end{matrix}\right|
-=
+&=
 \left|\begin{matrix}
 p(a)f'(a)&p(a)g'(a) \\
 f(a) &g(a)
-\end{matrix}\right|.
+\end{matrix}\right|
 \label{buch:orthfkt:sturmliouville:det}
 \end{align}
+schreiben.
 
 Randbedingungen können immer nur für einen Randpunkt gefordert
 werden, wir müssen also den Wert der Determinante festlegen.
 Angenommen, wir fordern, dass die Determinante einen Wert
-$d\ne 0$ annimmt. Setzen wir die Funktione $\lambda f$ und $g$ ein,
+$d\ne 0$ annimmt.
+Setzen wir die Funktione $s f$ und $g$ ein,
 entsteht die Determinante
 \[
 \left|\begin{matrix}
-\lambda p(a)f'(a)&p(a)g'(a) \\
-\lambda f(a) &g(a)
+s p(a)f'(a)&p(a)g'(a) \\
+s f(a) &g(a)
 \end{matrix}\right|
 =
-\lambda
+s
 \left|\begin{matrix}
 p(a)f'(a)&p(a)g'(a) \\
 f(a) &g(a)
 \end{matrix}\right|
 =
-\lambda d \ne d
+s d \ne d
 \]
-für $\lambda \ne 1$.
+für $s \ne 1$.
 Eine solche Forderung führt also auf eine Menge von zulässigen Funktionen,
 die nicht mehr ein Vektorraum ist.
 Es bleibt daher nur die Möglichkeit, dass die Determinante $=0$ sein muss.
@@ -189,7 +193,7 @@ Es bleibt daher nur die Möglichkeit, dass die Determinante $=0$ sein muss.
 Die Determinante 
 \eqref{buch:orthfkt:sturmliouville:det}
 ist genau dann Null, wenn die Spalten der Matrix linear abhängig sind.
-Insbesondere spannen Sie die gleiche Gerade durch den Nullpunkt
+Insbesondere spannen sie die gleiche Gerade durch den Nullpunkt
 in $\mathbb{R}^2$ auf.
 In der Ebene kann eine solche Gerade auch durch ihre Normale festgelegt
 werden.
@@ -233,7 +237,7 @@ Dann ist der Operator $L_0$ ist selbstadjungiert im Prähilbertraum
 H(h_a,h_b,k_a,k_b)
 =
 \left\{
-f \in C^1([a,b])
+f \in C^2([a,b])
 \;
 \left|
 \;
@@ -281,8 +285,8 @@ L
 L_0 + q(x).
 \]
 Es wurde bereits gezeigt, dass $q(x)$ immer selbstadjungiert ist,
-und dass $L_0$ in einem Prähilbertraum der Form
-Prählibertraum~\eqref{buch:orthfkt:sturmliouvill:ph}
+und dass $L_0$ in einem Prähilbertraum der
+Form~\eqref{buch:orthfkt:sturmliouvill:ph}
 selbstadjungiert wird.
 Eine Funktion $y\in H(h_a,h_b,k_a,k_b)$ ist eine Eigenfunktion des
 Operators $L$ zum Eigenwert $\lambda$, wenn sie die Differentialgleichung
@@ -293,7 +297,9 @@ zweiter Ordnung
  p(x) y''(x) + p'(x)y'(x) + q(x)y(x) = \lambda y(x)
 \end{align*}
 erfüllt.
-Für $H(h_a,h_b,k_a,k_b)$ kann eine Hilbert-Basis aus Eigenfunktionen
+Für $H(h_a,h_b,k_a,k_b)$ kann,
+möglicherweise unter zusätzlichen Annahmen über die Funktionen
+$p(x)$ und $q(x)$ eine Hilbert-Basis aus Eigenfunktionen
 gefunden werden.
 
 %
@@ -366,7 +372,7 @@ Er kann daher nur dann ein verallgemeinerter Eigenvektor sein,
 wenn auch $Av=0$ ist.
 
 Wenn die Matrix $B$ zusätzlich invertierbar ist, dann erfüllt ein
-verallgemeinerter Eigenvektor $B$ zusätzlich 
+verallgemeinerter Eigenvektor $B$ die einfachere Gleichung
 $B^{-1}Av=\lambda v$, er ist also ein gewöhnlicher Eigenvektor von $B^{-1}A$.
 Selbst wenn die Matrizen $A$ und $B$ symmetrisch sind, ist nicht garantiert,
 dass $B^{-1}A$ symmetrisch ist.
@@ -583,6 +589,7 @@ Diagonalisierung einer symmetrischen Matrix.
 %
 \subsubsection{Das verallgemeinerte Sturm-Liouville-Eigenwertproblem}
 Das verallgemeinerte Sturm-Liouville-Eigenwertproblem ist die Aufgabe,
+\index{Sturm-Liouville-Eigenwertproblem!verallgemeinert}%
 eine Lösung $y(x)$ der Differentialgleichung
 \[
 \frac{d}{dx}p(x)\frac{d}{dx} y(x)
@@ -592,7 +599,7 @@ eine Lösung $y(x)$ der Differentialgleichung
 \]
 zu finden.
 Das Problem unterscheidet sich von dem vorher untersuchten durch
-den zusätzlichen Faktor $w(x)>0$, der auch Gewichtsfunktion heisst.
+den zusätzlichen Faktor $w(x)>0$, der auch hier Gewichtsfunktion heisst.
 Im verallgemeinerten Eigenwertproblem für Matrizen entspricht $w(x)$ 
 der Matrix $B$ und $A$ dem Sturm-Liouville-Operator.
 Auf Grund dieser Analogie erwarten wir, dass der wie folgt
@@ -633,7 +640,7 @@ Der Operator $L_w$ ist selbstadjungiert im Prähilbertraum
 H(h_a,h_b,k_a,k_b,w)
 =
 \left\{
-f \in C^1([a,b])
+f \in C^2([a,b])
 \;
 \left|
 \;
@@ -655,8 +662,8 @@ $w(x)$.
 \end{satz}
 
 \begin{proof}[Beweis]
-Wir müssen nachrechnen, dass der Operator $L$ selbstadjungiert ist.
-Dazu seien $f,g\in H(h_a,h_b,k_a,k_b,w)$, wir berechnen die
+Wir müssen nachrechnen, dass der Operator $L_w$ selbstadjungiert ist.
+Dazu seien Funktionen $f,g\in H(h_a,h_b,k_a,k_b,w)$, wir berechnen die
 Skalarprodukte
 \begin{align*}
 \langle L_wf,g\rangle_w
@@ -684,9 +691,9 @@ q(x) g(x)
 =
 \langle f,L_0g\rangle + \langle f,qg\rangle
 \end{align*}
-Da der Operator $L_0$ und der Multiplikationsoperator mit $q(x)$ bezügich
+Da der Operator $L_0$ und der Multiplikationsoperator mit $q(x)$ bezüglich
 des Standardskalarproduktes $\langle\;\,,\;\rangle$ selbstadjungiert sind,
-sind die beiden Ausdrücke gleich.
+sind die beiden Ausdrücke auf der rechten Seite gleich.
 Damit ist gezeigt, dass $L_w$ bezüglich $\langle\;\,,\;\rangle_w$
 selbstadjungiert ist.
 \end{proof}
