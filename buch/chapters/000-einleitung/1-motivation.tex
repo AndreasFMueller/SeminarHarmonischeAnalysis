@@ -11,7 +11,7 @@ Die Basis dafür ist die Möglichkeit, die ``Ähnlichkeit'' zwischen
 Funktionen zu messen.
 In diesem Abschnitt soll gezeigt werden, wie diese Idee der
 ``Ähnlichkeit'' sich natürlich in verschiedenen bekannten
-Anwendungen bereits ergibt.
+Anwendungen ergibt.
 Das Ziel ist, den Weg zum abstrakten Konzept des verallgemeinerten
 Skalarproduktes aufzuzeigen.
 \index{Skalarprodukt}%
@@ -39,7 +39,7 @@ Hilfe der empirischen Kovarianz
 \]
 geschätzt werden.
 Abbildung~\ref{buch:einleitung:fig:kovvergleich} zeigt Beispiele
-verschiedener Stichproben mit mehr oder weniger stark ausgeprägter
+verschiedener Stichproben mit mehr oder weniger grosser
 Kovarianz.
 Im rechten Teil der Abbildung sind die Paare $(x_i,y_i)$ als
 Punktepaare aufgezeichnet.
@@ -55,6 +55,7 @@ Kovarianz ist sehr klein.
 
 In der zweiten Graphik ist die rote Zahlenreihe durch eine Sinusfunktion
 ersetzt worden.
+\index{Sinusfunktion}%
 Die $x$-Koordinaten der Punkte sind jetzt nicht mehr zufällig, die
 $y$-Koordinaten sind aber immer noch ungeordnet. 
 Auch in diesem Fall sind die Punkte gleichmässig über alle Quadranten
@@ -67,11 +68,10 @@ sie bewegen sich entlang der $45^\circ$-Geraden im ersten
 und dritten Quadranten.
 Für die meisten Punkte ist das Produkt $x_iy_i$ daher positiv und
 die Kovarianz, die Summe dieser Produkte, wird gross.
-Die zufällig gestörte blaue Sinusfunktion ist der Sinusfunktion
-ziemlich ähnlich.
+Die zufällig gestörte blaue Sinusfunktion ist der exakten roten
+Sinusfunktion ziemlich ähnlich.
 
 In der letzten Graphik schliesslich werden eine Sinusfunktion und
-\index{Sinusfunktion}%
 \index{Cosinusfunktion}%
 eine mit zufälligen Abweichungen gestörte Cosinusfunktion miteinenader
 verglichen.
@@ -100,13 +100,14 @@ im Vergleich zu den Schwankungen sehr grosse Erwartungswerte haben können.
 Dies hat zur Folge, dass $E(XY)$ von den Erwartungswerten dominiert
 wird, die Schwankungen spielen nur eine untergeordnete Rolle.
 
-Die Zufallsvariable $X-E(X)$ ist hat wegen
+Die Zufallsvariable $X-E(X)$ hat wegen
 $E(X-E(X))=E(X)-E(E(X))=E(X)-E(X)=0$ Erwartungswert $0$.
 Für Datenreihen $x_i$ und $y_i$ bedeutet dies, dass man
 die Koordinaten $x$ und $y$ durch neue Koordinaten ersetzt,
 so dass die Punktwolke aus den Punkten $(x_i,y_i)$ den
 Nullpunkt des Koordinatensystems als Schwerpunkt hat.
-Das Skalarprodukt von $X-E(X)$ und $Y-E(Y)$ ist dann
+Der Erwartungswert des Produktes von $X-E(X)$ und $Y-E(Y)$
+ist dann
 \begin{align*}
 E(\, (X-E(X))\cdot(Y-E(Y))\, )
 &=
@@ -126,15 +127,18 @@ der Kovarianz.
 %
 \subsection{Das Skalarprodukt in der Vektorgeometrie}
 Das Skalarprodukt wird in einem rechtwinkligen Koordinatensystem nach der
+\index{Skalarprodukt}
 Formel
 \begin{equation}
 \vec{x}\cdot\vec{y} = x_1y_1 + x_2y_2 + x_3y_3 = \sum_{i=1} x_iy_i
 \label{buch:einleitung:motiviation:equn:vektorskalar}
 \end{equation}
 berechnet.
-Es verschwindet, wenn die Vektoren orthogonal sind, man könnte sagen,
+Es verschwindet, wenn die Vektoren $\vec{x}$ und $\vec{y}$ orthogonal
+sind, man könnte sagen,
 wenn die Vektoren so verschiedene Richtung wie möglich haben.
 Die Orthogonalprojektion von $\vec{x}$ auf die Richtung $\vec{y}$,
+\index{Orthogonalprojektion}%
 auch die Komponente von $\vec{x}$ in der Richtung von $\vec{y}$ genannt,
 hat die Länge 
 \[
@@ -180,30 +184,37 @@ Aus der linearen Algebra \cite{buch:linalg} weiss man, dass sich
 aus den Axiomen eines 
 Skalarproduktes und aus einer Basis alles konstruieren lässt, was
 man für eine solche Analyse benötigt.
-Funktionen bilden bereits einen Vektorraum, wenn es also gelingt,
+Funktionen bilden bereits einen Vektorraum.
+\index{Vektorraum}%
+Wenn es also gelingt,
 ein Skalarprodukt zu konstruieren, dann kann man damit beginnen,
-orthogonormierte Basen zur Analyse von Funktionen zu verwenden.
+orthonormierte Basen zur Analyse von Funktionen zu verwenden.
 
 %
 % Interessante Basen
 %
 \subsection{Interessante Basen}
 Der Gram-Schmidt-Algorithmus zur Konstruktion einer orthonormierten
+\index{Gram-Schmidt-Algorithmus}%
 Basis zeigt, dass sich ausgehend von jeder beliebigen linear
 unabhängigen Funktionenmenge eine Basis konstruieren lässt.
 Zum Beispiel kann man orthonormierte Basen aus Polynomen konstruieren.
 Da Polynome sehr leicht zu evaluieren sind, ergeben sich für die
 Numerik nützliche Funktionsbasen.
+\index{Numerik}%
 
 Meistens haben die Funktionen, die man analysierte möchte, noch
 viel mehr Struktur.
-Fourier hat beobachtet, dass periodische Funktionen zu einer
+Joseph Fourier hat beobachtet, dass periodische Funktionen zu einer
 \index{Fourier, Joseph Baptiste}%
 besonders erfolgreichen Theorie führen.
 Man kann seine Basisfunktion dadurch charakterisieren, dass sie
 unter Translation des Arguments invariant sind.
 Verlangt man ausserdem Differenzierbarkeit, dann sind die
 Fourier-Basisfunktionen Eigenfunktionen des Ableitungsoperators.
+\index{Fourier-Basisfunktionen}%
+\index{Eigenfunktionen}%
+\index{Ableitungsoperator}%
 
 Tatsächlich treten orthogonale Funktionensystem im Zusammenhang
 mit partiellen Differentialgleichungen auf ganz natürliche Art auf.
@@ -215,7 +226,7 @@ Ableitung selbstadjungiert im Raum der periodischen Funktionen
 mit dem $L^2$-Skalarprodukt.
 Der Laplace-Operator hat ähnliche Eigenschaften und führt
 auf verallgemeinerte harmonische Analysis für Funktionen auf
-einer grossen Zahl von Definitionsgebiete, die auch für
+einer grossen Zahl von Definitionsgebieten, die auch für
 Anwendungen wichtig sind.
 
 Die Fourier-Funktionen haben aber noch weitere wichtige Eigenschaften.
