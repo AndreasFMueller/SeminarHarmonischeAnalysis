@@ -73,13 +73,13 @@ Die Wirkung dieses Operators ist also gegeben durch
 Af(y)
 =
 \sum_{j\in\mathbb{Z}}
-e^{ijy}
+e^{i\!jy}
 \sum_{k\in\mathbb{Z}} a_{jk}
 c_k
 =
 \frac{1}{2\pi}
 \sum_{j\in\mathbb{Z}}
-e^{ijy}
+e^{i\!jy}
 \sum_{k\in\mathbb{Z}} a_{jk}
 \int_{-\pi}^\pi e^{-ikx} f(x)\,dx.
 \label{buch:operatoren:pseudodifferential:eqn:matrixop}
@@ -184,7 +184,7 @@ eine Funktion auf $\mathbb{R}$.
 Als Indexmenge für eine Summation kommt $\mathbb{R}$ nicht in Frage.
 Man kann aber die Summation durch eine Integration ersetzen.
 
-\begin{definition}
+\begin{definition}[Integraloperator, Kernfunktion]
 Seien $X$ und $Y$ Teilmengen von $\mathbb{R}$
 und $K\colon X\times Y\to\mathbb{R}$ eine stetige Funktion.
 Dann definiert $K$ einen linearen Operator
@@ -196,11 +196,14 @@ C(Y) \to C(X)
 f \mapsto K\cdot f: x\mapsto \int_Y K(x,y) f(y)\,dy,
 \]
 er heisst der {\em Integraloperator mit Kernfunktion $K(x,y)$}.
+\index{Integraloperator}%
+\index{Kernfunktion}%
 \end{definition}
 
 \begin{beispiel}
 Sei $g$ eine stetige Funktion mit kompaktem Träger auf $\mathbb{R}$.
 Dann ist der Faltungsoperator
+\index{Faltungsoperator}%
 \[
 g*
 \colon 
@@ -277,6 +280,7 @@ f(x).
 Somit ist gezeigt, dass der Operator $G$ eine Inverse der zweiten
 Ableitung ist.
 Die Funktion $G(x,y)$ heisst auch die Greensche Funktion der
+\index{Greensche Funktion}%
 Differentialgleichung~\eqref{buch:operatoren:pseudodifferential:eqn:dgl1}.
 \end{beispiel}
 
@@ -303,7 +307,7 @@ $(K\cdot h)(x_0)\ne 0$ und damit $K\cdot(f+h)\ne K\cdot f$.
 
 Ein Differentialoperator ist dagegen perfekt lokalisiert im
 folgenden Sinn.
-Sei $f$ eine differenzierbare Funktion Funktion auf $\mathbb{R}$
+Sei $f$ eine differenzierbare Funktion auf $\mathbb{R}$
 und $x_0\in \mathbb{R}$.
 Für einen Punkt $x\ne x_0$ sei $g$ eine Funktion, die sich nur 
 im Intervall $(x-\varepsilon,x+\varepsilon)$ mit $\varepsilon=\frac12|x-x_0|$
@@ -391,7 +395,7 @@ f(x)
 Wenigstens formal ist das innere Integral eine ``Kernfunktion'', mit der
 der Ableitungsoperator als Integraloperator geschrieben werden kann.
 
-Das Problem mit der ``Kernfunktion''
+Das Problem mit der ``Kernfunktion'' in
 \eqref{buch:operatoren:pseudodifferential:eqn:ablkern}
 ist jedoch, dass es gar keine Funktion ist.
 Zum Beispiel führt die Formel für $x=y$ auf
@@ -470,8 +474,9 @@ Die Fourier-Transformation kann auf Distributionen ausgedehnt und
 damit kann eine konsistente Theorie von Operatoren der folgenden Form
 konstruiert werden.
 
-\begin{definition}
+\begin{definition}[Pseudodifferentialoperator]
 Ein {\em Pseudodifferentialoperator} für Funktionen $f$ auf $\mathbb{R}$ ist
+\index{Pseudodifferentialoperator}
 ein Operator der Form
 \[
 (K\cdot f)(x)
@@ -489,7 +494,7 @@ Die Funktion $a$ heisst das {\em Symbol} des Operators.
 \end{definition}
 
 Die Klasse der Pseudodifferentialoperatoren ist gross genug, dass sie
-viele Operatoren enthalten kann.
+viele interessante Operatoren enthalten kann.
 Die folgenden Beispiele zeigen, dass Differntialoperatoren,
 Faltungsoperatoren und Multiplikationsoperatoren alle von dieser
 Form sind.
