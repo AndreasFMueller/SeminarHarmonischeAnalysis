@@ -59,10 +59,15 @@
 		\node[color=red] at (4.3,1.5) [above] {$\|f\|_1$};
 		\draw[->,color=red,line width=0.7pt] (4.3,1.5) -- (4.3,0.65);
 	\end{scope}
-	\node[color=red] at (5.5,5.5) [below left]
+	\node[color=red] at (5.5,4.5) [below left]
 		{$\displaystyle
 			f(x) = \frac{1}{x}
 		$};
+	\def\x{0.61}
+	\coordinate (A) at ({2*\x},{2/(\x*\x)});
+	\coordinate (B) at ({1.9},{2/(\x*\x)+0.1});
+	\draw[color=blue,line width=0.3pt] (A) -- (B);
+	\node[color=blue] at (B) [right] {$\displaystyle f(x)^2=\frac{1}{x^2}$};
 \end{scope}
 
 \end{tikzpicture}
