@@ -30,8 +30,8 @@ zeichnen sich durch das Vorhandensein eines Skalarproduktes aus.
 Wir fassen diese Eigenaschaften im Begriff des Prähilbertraumes
 zusammen.
 
-\begin{definition}
-Ein reeller Prähilbertraum ist ein reller Vektorraum mit einem
+\begin{definition}[Prähilbertraum]
+Ein reeller Prähilbertraum ist ein reeller Vektorraum mit einem
 (reellen) Skalarprodukt.
 \index{Prähilbertraum}%
 Eine komplexer Prähilbertraum ist ein komplexer Vektorraum mit einem
@@ -50,7 +50,7 @@ für Vektoren $u,v\in\mathbb{R}^n$.
 \end{beispiel}
 
 \begin{beispiel}
-Der endlichedimensionale komplexe Vektorrau $\mathbb{C}$ ist ein
+Der endlichdimensionale komplexe Vektorrau $\mathbb{C}$ ist ein
 komplexer Prähilbertraum mit dem Skalarprodukt
 \[
 \langle u,v\rangle
@@ -60,8 +60,8 @@ komplexer Prähilbertraum mit dem Skalarprodukt
 für Vektoren $u,v\in\mathbb{C}^n$.
 \end{beispiel}
 
-Die Skalarprodukte in den Beispielen sind nicht die einzig möglichen
-Skalarprodukte.
+Die Skalarprodukte in den endlichdimensionalen Beispielen sind nicht
+die einzig möglichen Skalarprodukte.
 Alternative Skalarprodukte auf einem reellen Prähilbertraum können 
 durch eine beliebige positiv definite Matrix $A$ durch
 \[
@@ -109,7 +109,7 @@ M\frac{\varepsilon}{M}
 für $k,l>N$.
 Somit ist $u_k$ eine Cauchy-Folge bezüglich der Norm $\normfunc_A$.
 \item
-Ist umgekehrt  $u_k$ eine Cauchy-Folge bezüglich der Norm $\|\,\cdot\,\|_A$,
+Ist umgekehrt  $u_k$ eine Cauchy-Folge bezüglich der Norm $\normfunc_A$,
 dann gibt es ein $N>0$ derart, dass $\|u_k-u_l\|_A<m\varepsilon$ ist für
 $k,l>N$.
 Dann folgt
@@ -118,7 +118,7 @@ m\|u_k-u_l\|\le \|u_k-u_l\|_A < m\varepsilon
 \qquad\Rightarrow\qquad \|u_k-u_l\|<\varepsilon
 \]
 für $k,l>N$, also ist $u_k$ auch eine Cauchy-Folge bezüglich der Norm
-$\|\,\cdot\,\|$.
+$\normfunc$.
 \end{enumerate}
 In einem endlichdimensionalen Prähilbertraum hat die Wahl des Skalarproduktes
 keinen Einfluss darauf, ob eine Folge eine Cauchy-Folge ist oder nicht.
@@ -205,7 +205,7 @@ einen Grenzwert hat.
 Ein nützliche Theorie kann nur entstehen, wenn gefordert wird,
 dass jede Cauchy-Folge des Prähilbertraums tatschächlich konvergiert.
 
-\begin{definition}
+\begin{definition}[Hilbert-Raum]
 Ein Prähilbertraum heisst {\em Hilbert-Raum}, wenn er vollständig ist.
 \end{definition}
 
@@ -237,7 +237,7 @@ Seien $s_n(x)$ die Partialsummen der Reihe, also
 s_n(x) = \frac{4}{\pi}\sum_{k=0}^n \frac{\sin (2k+1)x}{2k+1},
 \label{buch:skalarprodukt:hilbertraum:eqn:sn}
 \end{equation}
-dann kann man auch die Norm $\|s_n-s_m\|$, es gilt nämlich
+dann kann man auch die Norm $\|s_n-s_m\|$ bestimmen, es gilt nämlich
 \begin{equation}
 \|s_n-s_m\|
 =
@@ -249,7 +249,7 @@ dann kann man auch die Norm $\|s_n-s_m\|$, es gilt nämlich
 \end{equation}
 wobei wir $n>m$ angenommen haben, was wir ohne Beschränkung der 
 Allgemeinheit tun dürfen.
-Die Norm eines einzeln Terms ist
+Die Norm eines einzelnen Terms ist
 \begin{align}
 \|\sin rx\|^2
 &=
@@ -264,7 +264,7 @@ Integranden und verschindet daher.
 Der erste Term ergibt daher}
 \|\sin rx\|^2
 &= \pi.
-\intertext{Für die Terme der Summe
+\intertext{Für die einzelnen Terme der Summe
 \eqref{buch:skalarprodukt:hilbertraum:eqn:sn}
 folgt daher}
 \biggl\|
@@ -276,7 +276,6 @@ folgt daher}
 \intertext{Für die Differenz
 \eqref{buch:skalarprodukt:hilbertraum:eqn:snsm} finden wir daher}
 \|s_n-s_m\|^2
-\notag
 &=
 \frac{16}{\pi^2}
 \sum_{k=m}^m \frac{\pi}{(2k+1)^2}
@@ -307,7 +306,7 @@ Führt man wieder die Konstruktion einer orthonormierten Basis durch,
 entsteht eine Menge $\mathcal{B}=\{b_1,b_2,\dots\}$ orthonormierter
 Vektoren.
 In einem unendlichdimensionalen Hilbert-Raum ist $\mathcal{B}$ eine
-undendliche Menge.
+unendliche Menge.
 Die Vollständigkeit des Hilbert-Raumes garantiert, dass jede
 Cauchy-Folge konvergiert, insbesondere können wir zu jedem beliebigen
 Vektor $v$ die Koeffizienten $c_k=\langle b_k,v \rangle$ bestimmen
@@ -371,8 +370,8 @@ c_k-c_k=0.
 \]
 Der Vektor $v-v_0$ muss also orthogonal sein zu allen Vektoren
 $b_k$.
-Die Menge der Vektoren $b_k$ kann also vergrössert werden um einen
-weiteren Vektor, der zu allen vorhandenen Vektoren orthogonal ist.
+Die Menge der Vektoren $b_k$ kann also um einen weiteren Vektor
+vergrössert werden, der zu allen vorhandenen Vektoren orthogonal ist.
 
 \begin{satz}
 Eine Menge von orthogonalen Vektoren in einem Prähilbertraum ist linear 
@@ -421,7 +420,7 @@ lässt.
 In einem unendlichdimensionalen Raum muss dieser Begriff etwas 
 erweitert werden.
 
-\begin{definition}
+\begin{definition}[Hilbert-Basis]
 Eine {\em Hilbert-Basis} des Hilbert-Raumes $H$ ist eine Menge von orthonormalen
 \index{Hilbert-Basis}%
 Vektoren $b_k\in H$, $k\in \mathbb{N}$ derart, für jeden Vektor $v\in H$
@@ -436,7 +435,7 @@ Auf eine Hilbert-Basis ist die Inuition anwendbar, die man von
 einer orthonormierten Basis eines endlichdimensionalen Prählibertraumes
 hat.
 
-\begin{definition}
+\begin{definition}[separabler Hilbert-Raum]
 \index{separabel}%
 Ein Hilbert-Raum, der eine Hilbert-Basis besitzt, heisst {\em separabel}.
 \end{definition}
@@ -455,7 +454,7 @@ Es lassen sich aber auch nicht separable Hilbert-Räume konstruieren,
 zum Beispiel sogenannte fastperiodische Funktionen.
 \index{fastperiodische Funktionen}%
 Für unsere Anwendungen sind nicht separable Hilbert-Räume jedoch nicht
-notwendig und wir können im folgenden annehmen, dass alle Hilbert-Räume
+notwendig und wir können im Folgenden annehmen, dass alle Hilbert-Räume
 separabel sind und somit eine Hilbert-Basis haben.
 
 %
@@ -580,15 +579,17 @@ $L^2([-\pi,\pi])$ verwendet werden.
 Die Tatsache, dass die Abbildung eine Isometrie ist, hat einen
 speziellen Namen.
 
-\begin{definition}
+\begin{definition}[Parseval]
 \label{buch:skalarprodukt:hilbertraum:def:parseval}
 Die Identität
 \[
 \|v\|^2 = \|\varphi(v)\|_2^2
 \]
 heisst {\em Parseval-Gleichung}.
+\index{Parseval-Gleichung}%
 Aus der Polaridentität folgt dann auch die
 {\em Parseval-Plancherel-Formel}
+\index{Parseval-Plancherel-Formel}%
 \[
 \langle u,v\rangle_H
 =
@@ -607,7 +608,7 @@ Folge in $l^2$ abgebildet werden.
 Aus dieser Idee lässt sich auch ein Prähilbertraum konstruieren,
 in dem einfacher gerechnet werden kann.
 
-\begin{definition}
+\begin{definition}[$l^0$]
 \label{buch:skalarprodukt:hilbertraum:def:l0}
 Sei 
 \[
@@ -670,12 +671,14 @@ Wir werden später zeigen, dass die Funktionen
 \]
 orthogonal sind bezüglich dieses Skalarproduktes.
 Es wird sich zeigen, dass diese Funktionen nach geeigneter Normierung
-eine Hilbert-Basis bilden von $L^2$ bilden.
+eine Hilbert-Basis von $L^2$ bilden.
 Die in Satz~\ref{buch:skalarprodukt:hilbertraum:satz:phil2}
-konstruierte Abbildung bezeichnen wir mit $\mathscr{F}:L^2([-\pi,\pi])\to l^2$.
+konstruierte Abbildung bezeichnen wir mit $\mathscr{F}:L^2([-\pi,\pi])\to l^2$
+und nennt sie die Fourier-Transformation.
 Die Parseval-Plancherel-Formel besagt dann, dass man das Skalarprodukt
 von Funktionen auch durch das Skalarprodukt der zugehörigen
 Fourier-Koeffizienten berechnen kann:
+\index{Fourier-Koeffizienten}%
 \[
 \langle f,g\rangle_{L^2{[-\pi,\pi]}}
 =

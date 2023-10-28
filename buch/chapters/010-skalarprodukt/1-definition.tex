@@ -59,7 +59,7 @@ in jedem Faktor linear ist.
 Die folgende Definition verallgemeinert die Idee auf einen
 beliebigen reellen Vektorraum $V$.
 
-\begin{definition}
+\begin{definition}[bilinear]
 Eine Funktion
 \[
 b\colon
@@ -86,10 +86,10 @@ $\lambda,\mu\in\mathbb{R}$.
 Das Skalarprodukt der Vektorgeometrie hat aber noch eine weitere
 wichtige Eigenschaft.
 Es ist kommutativ, es kommt nicht auf die Reihenfolge der Faktoren an.
-Dies ist zum Beispiel wichtig, um den Kosinus-Satz der ebenen Trigonometrie
+Dies ist zum Beispiel wichtig, um den Kosinussatz der ebenen Trigonometrie
 zu erhalte.
 Der für den Vektor
-\index{Kosinus-Satz}%
+\index{Kosinussatz}%
 \index{Trigonometrie}%
 $\vec{c} = \vec{b}-\vec{a}$ 
 kann man ihn durch Berechnung des Skalarproduktes von $\vec{c}$ mit
@@ -118,13 +118,14 @@ erhalten.
 Dabei wurde verwendet, dass $\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$ ist.
 Für ein Skalarprodukt heisst die Kommutativität allerdings anders.
 
-\begin{definition}
+\begin{definition}[symmetrisch]
 Eine Funktion $b\colon V\times V \to\mathbb{R}$ heisst {\em symmetrisch},
 wenn $b(u,v)=b(v,u)$ für alle $u,v\in V$.
 \index{symmetrisch}%
 \end{definition}
 
 Eine symmetrische Bilinearform erfüllt die binomische Formel
+\index{binomische Formel}%
 \begin{align*}
 b(u+v,u+v)
 &=
@@ -161,6 +162,7 @@ Für das Skalarprodukt folgt dann
 u_i \underbrace{\langle b_i,b_k\rangle}_{\displaystyle = g_{ik}} v_k.
 \end{align*}
 Schreibt man die $u_i$ und $v_k$ in einen $n$-dimensionalen Spaltenvektor
+$u$ bzw.~$v$
 und die $g_{ik}$ in eine $n\times n$-Matrix $G$, kann das Skalarprodukt in
 Matrixschreibweise als
 \[
@@ -174,9 +176,15 @@ G
 \begin{pmatrix}
 v_1\\v_2\\\vdots\\v_n
 \end{pmatrix}
+=
+\transpose{u}
+G
+v
 \]
 geschrieben werden.
-Die Matrix $G$ heisst die Matrix des Skalarproduktes in der Basis
+Die Matrix $G$ heisst die {\em Matrix des Skalarproduktes} in der Basis
+\index{Matrix des Skalarproduktes}%
+\index{Skalarprodukt!Matrix}%
 oder auch die {\em Gram-Matrix}.
 \index{Gram-Matrix}%
 Die Eigenschaften des Skalarproduktes schlagen sich in Eigenschaften
@@ -194,12 +202,15 @@ die Matrix $G$ ist also symmetrisch.
 In der Vektorgeometrie wird das Skalarprodukt auch dazu verwendet,
 mit $|\vec{v}|^2 = \vec{v}\cdot\vec{v}$ 
 die Länge eines Vektors zu berechnen.
+\index{Länge}%
 Jeder Vektor $\ne 0$ hat eine positive Länge.
 Für eine beliebige Bilinearform ist jedoch nicht automatisch
 sichergestellt, dass $b(u,u)\ne 0$ ist für $u\ne 0$.
 Ausserdem kann ein Längenbegriff nur dann aus $b$ abgeleitet werden,
-wenn zusätzlich $b(u,u)>0$ ist für $u\ne 0$, da sich andernfalls
+wenn zusätzlich $b(u,u)>0$ ist für alle $u$, da sich andernfalls
 die Wurzel nicht ziehen lässt.
+Vektoren lassen sich nur dann ausschliesslich mit der Länge ihrer
+Differenz unterscheiden, wenn $b(u,u)>0$ ist für alle $u\ne 0$.
 
 \begin{beispiel}
 \label{buch:skalarprodukt:definition:bsp:hyperbolisch}
@@ -224,17 +235,19 @@ b(e_1,e_1) + 2\underbrace{b(e_1,e_2)}_{\displaystyle =0} + b(e_2,e_2)
 1-1
 =
 0.
-\qedhere
 \]
+Dies bedeutet z.~B.~dass die Punkte mit Ortsvektoren $e_1$ und $e_2$ die
+``Entfernung'' $0$ haben.
 \end{beispiel}
 
-\begin{definition}
+\begin{definition}[positiv definit]
 Eine symmetrische Bilinearform $\langle\;\,,\;\rangle$
 heisst {\em positiv definit}, wenn $\langle u,u\rangle > 0$ 
+\index{positiv definit}%
 für alle von 0 verschiedenen Vektoren $u\ne 0$ gilt.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Skalarprodukt]
 \label{buch:skalarprodukt:definition:def:skalarprodukt}
 Eine {\em Skalarprodukt} ist eine positiv definite, symmetrische Bilinearform.
 \index{Skalarprodukt}%
@@ -244,6 +257,7 @@ Eine {\em Skalarprodukt} ist eine positiv definite, symmetrische Bilinearform.
 
 Verschiedene Skalarprodukte in zwei Dimensionen kann man durch ihre
 zugehörten ``Kreise'' visualisieren
+\index{Kreise}%
 (Abbildung~\ref{buch:skalarprodukt:definition:fig:kreise}).
 Damit meinen wir die Menge der Vektoren, die Norm $1$ haben.
 Abbildung~\ref{buch:skalarprodukt:definition:fig:kreise} zeigt
@@ -257,8 +271,9 @@ führt auf die Kurven mit der Gleichung
 x_1^2-x_2^2=1,
 \]
 dies sind Hyperbeln.
-Es heisst daher auch das hyperbolische Skalarprodukt, obwohl es
-\index{Skalarprodukt!hyperbolisch}
+Es heisst daher auch das {\em hyperbolische Skalarprodukt}, obwohl es
+\index{hyperbolisches Skalarprodukt}%
+\index{Skalarprodukt!hyperbolisch}%
 im strengen Sinne der
 Definition~\ref{buch:skalarprodukt:definition:def:skalarprodukt}
 kein Skalarprodukt ist.
@@ -295,7 +310,7 @@ Diese Ellipse verläuft durch die Punkte $(\pm\frac12,\pm\frac12)$ und
 $(\pm1,\mp1)$.
 
 Für die Gram-Matrix $G$ eines Skalarproduktes bedeutet die Forderung,
-dass das Skalarprodukt bilinear ist, dass die Matrix $G$ positiv
+dass das Skalarprodukt positiv definit ist, dass die Matrix $G$ positiv
 definit sein muss.
 Aus der linearen Algebra ist bekannt, dass $G$ genau dann positiv
 definit ist, wenn $G$ eine Cholesky-Zerlegung $G=L\transpose{L}$ hat,
@@ -304,9 +319,10 @@ deren Diagonalelemente alle positiv sind.
 Ein Skalarprodukt hat jetzt alle Eigenschaften, die erlauben, einen 
 Abstandsbegriff zu definieren.
 
-\begin{definition}
+\begin{definition}[Norm]
 \label{buch:skalarprodukt:definition:def:norm}
-Die zu einem Skalarprodukt $\langle\;\,,\;\rangle$ gehörige Norm ist
+Die zu einem Skalarprodukt $\langle\;\,,\;\rangle$ gehörige {\em Norm} ist
+\index{Norm}%
 definiert als
 \[
 \| v\|
@@ -318,8 +334,8 @@ für $v\in V$.
 
 Die Norm erfüllt $\|\lambda v\| = |\lambda|\,\|v\|$ für jeden Vektor
 $v\in V$ und $\lambda\in\mathbb{R}$.
-In Worten bedeutet dies, dass bei der Skalierung eines Vektors die Norm
-auf die gleiche Art skaliert.
+In Worten bedeutet dies, dass bei der Skalierung eines Vektors mit
+dem skalaren Faktor $\lambda$ die Norm auf die gleiche Art skaliert.
 
 %
 % Sesquilineare Funktionen
@@ -348,10 +364,15 @@ Länge hat wie $u$, dass also $b(iu,iu)=b(u,u)$.
 Bilinearität funktioniert also nicht als Bedingung, um ein Skalarprodukt
 zu konstruieren, für welches auch die geometrische Intuition des Abstands
 anwendbar bleibt.
+Das Problem entsteht offenbar dadurch, dass man $i$ linear aus
+der Bilinearform herausziehen und so den Faktor $-1$ erzeugen kann.
+Die Bedingung der Bilinearität muss daher durch folgende
+Alternative ersetzt werden.
 
-\begin{definition}
+\begin{definition}[konjugiert linear]
 Eine Funktion $f\colon V\to U$ zwischen komplexen Vektorräumen 
 heisst {\em konjugiert linear}, wenn 
+\index{konjugiert linear}%
 \[
 f(\lambda u + \mu v)
 =
@@ -361,10 +382,10 @@ ist für alle $u,v\in V$ und $\lambda,\mu\in \mathbb{C}$.
 \end{definition}
 
 Im obengenannten Beispiel wird $b(iu,iu)>0$, wenn $b$ im ersten Faktor
-konjugiert linear ist.
+konjugiert linear und im zweiten linear ist.
 Dann ist nämlich $b(iu,iu) = -ib(u,iu) = -i^2 b(u,u) = b(u,u)>0$.
 
-\begin{definition}
+\begin{definition}[sesquilinear]
 Eine Funktion
 \[
 \langle\;\,,\;\rangle
@@ -374,10 +395,13 @@ V\times V \to \mathbb{C}
 (u,v) \mapsto \langle u,v\rangle
 \]
 heisst {\em sesquilinear} oder {\em Sesquilinearform}
-wenn sie linear ist im zweiten Argument
+\index{sesquilinear}%
+\index{Sesquilinearform}%
+wenn sie konjugiert linear im ersten und linear im zweiten Argument ist.
 \end{definition}
 
 Das lateinische Wort {\em sesqui} bedeudet eineinhalb, eine
+\index{sesqui}%
 sesquilineare Funktion ist linear in einem Faktor, aber nur
 halb linear im anderen.
 
@@ -450,12 +474,61 @@ f(u,v)
 H
 \begin{pmatrix}
 v_1\\v_2\\\vdots\\v_n
-\end{pmatrix}.
+\end{pmatrix}
+=
+\transpose{\overline{u}}Hv
+.
 \]
 Der transponierte Vektor $\transpose{\overline{u}}$ mit komplex
-konjugierten Einträgen heisst auch konjugiert transponiert zu $u$.
+konjugierten Einträgen heisst auch {\em konjugiert transponiert} zu $u$.
+\index{konjugiert transponiert}%
 
-\begin{definition}
+
+
+%
+% Hermitesche Formen
+%
+\subsection{Hermitesche Formen}
+Damit aus einer sesquilinearen Funktion eine Norm abgeleitet werden
+kann, muss das Produkt $\langle u,u\rangle$ für jeden Vektor $u\in V$
+eine reelle Zahl sein.
+Selbst für die sesquilineare Funktion
+\[
+\langle\;\,,\;\rangle
+\colon
+\mathbb{C}\times\mathbb{C}
+\to
+\mathbb{C}
+:
+(u,v) \mapsto i\overline{u}v
+\]
+ist dies jedoch nicht der Fall, da $\langle 1,1\rangle = i\not\in\mathbb{R}$
+ist.
+Die folgende Eigenschaft kann aber garantieren, dass
+$\langle u,u\rangle\in\mathbb{R}$.
+
+\begin{definition}[konjugiert symmetrisch, hermitesch]
+Eine sesquilinear Funktion 
+\[
+\langle \;\,,\;\rangle
+\colon
+V\times V
+\to
+\mathbb{C}
+\]
+heisst in {\em konjugiert symmetrisch} oder {\em hermitesch}, wenn
+\index{konjugiert symmetrisch}%
+\index{hermitesch!Sesquilinearform}%
+\[
+\langle u,v\rangle = \overline{\langle v,u\rangle}
+\]
+für alle $u,v\in V$ gilt.
+\end{definition}
+
+Die Bedingung garantiert, dass $\langle u,u\rangle\in \mathbb{R}$ ist.
+Sie hat auch Konsequenzen für die Gram-Matrix.
+
+\begin{definition}[komplex konjugierte Matrix]
 Ist $A\in M_{m\times n}(\mathbb{C})$ eine komplexe $m\times n$-Matrix.
 Die Matrix $\overline{A}\in M_{m\times n}(\mathbb{C})$ mit 
 den komplex konjugierten Matrixelementen von $A$ heisst die
@@ -489,52 +562,6 @@ M_{n\times m}(\mathbb{C})
 heisst die {\em transponiert konjugierte} oder {\em hermitesch konjugierte}
 \index{hermitesch konjugiert}%
 Matrix.
-\end{definition}
-
-Eine Sesquilinearform kann immer geschrieben werden als
-\(
-f(u,v) = u^*Hv
-\)
-mit einer hermiteschen Matrix $H$.
-
-%
-% Hermitesche Formen
-%
-\subsection{Hermitesche Formen}
-Damit aus einer sesquilinearen Funktion eine Norm abgeleitet werden
-kann, muss das Produkt $\langle u,u\rangle$ für jeden Vektor $u\in V$
-eine reelle Zahl sein.
-Selbst für die sesquilineare Funktion
-\[
-\langle\;\,,\;\rangle
-\colon
-\mathbb{C}\times\mathbb{C}
-\to
-\mathbb{C}
-:
-(u,v) \mapsto i\overline{u}v
-\]
-ist dies jedoch nicht der Fall, da $\langle 1,1\rangle = i\not\in\mathbb{R}$
-ist.
-Die folgende Eigenschaft kann aber garantieren, dass
-$\langle u,u\rangle\in\mathbb{R}$.
-
-\begin{definition}
-Eine sesquilinear Funktion 
-\[
-\langle \;\,,\;\rangle
-\colon
-V\times V
-\to
-\mathbb{C}
-\]
-heisst in {\em konjugiert symmetrisch} oder {\em hermitesch}, wenn
-\index{konjugiert symmetrisch}%
-\index{hermitesch!Sesquilinearform}%
-\[
-\langle u,v\rangle = \overline{\langle v,u\rangle}
-\]
-für alle $u,v\in V$ gilt.
 \end{definition}
 
 \begin{beispiel}
@@ -574,6 +601,12 @@ H^* = H.
 Man sagt auch, die Matrix $H$ ist {\em hermitesch}.
 \index{hermitesch!Matrix}%
 
+Eine Sesquilinearform kann immer geschrieben werden als
+\(
+f(u,v) = u^*Hv
+\)
+mit einer hermiteschen Matrix $H$.
+
 %
 % Komplexe Skalarprodukte
 %
@@ -583,7 +616,7 @@ komplexen Vektorraums die Eigenschaften der Sesquilinearität
 und der hermiteschen Symmetrie nicht aus, ein sinnvolles
 Skalarprodukt zu definieren.
 
-\begin{definition}
+\begin{definition}[positiv definit]
 Eine hermitesche Sesquilinearform $\langle\;\,,\;\rangle$
 auf dem komplexen Vektorraum $V$ heisst {\em positiv definit}, wenn
 \[
@@ -591,8 +624,11 @@ auf dem komplexen Vektorraum $V$ heisst {\em positiv definit}, wenn
 \]
 gilt für alle $u\ne 0$ in $V$.
 Ein {\em komplexes Skalarprodukt} ist eine positiv definite hermitesche
+\index{komplexes Skalarprodukt}%
+\index{Skalarprodukt!komplex}%
 Sesquilinearform.
 Die zugehörige {\em Norm} eines Vektors ist
+\index{Norm}%
 $\|v\| = \!\sqrt{\langle u, u\rangle}$.
 \end{definition}
 

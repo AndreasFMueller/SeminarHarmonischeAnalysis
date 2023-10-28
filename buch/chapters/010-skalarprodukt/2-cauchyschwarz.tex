@@ -10,6 +10,9 @@
 In der Vektorgeometrie wird gelehrt, dass die Länge eines Vektors $u$
 durch die Norm $\|u\|$ wiedergegeben wird.
 Die geoemtrische Intuition der Länge, die sich in der Dreiecksungleichung
+\index{Dreiecksungleichung}%
+\index{Pythagoras}%
+\index{Satz des Pythagoras}%
 und dem Satz des Pythagoras äussert, ist auf die Norm anwendbar.
 In anderen Räumen als dem dreidimensionalen Raum steht
 jedoch keine geometrische Anschauung zur Verfügung, es muss also
@@ -17,7 +20,7 @@ auf anderen Wegen sichergestellt werden, dass die Intuition weiterhin
 für das Rechnen mit dem Skalarprodukt und der zugehörigen Norm
 funktioniert.
 Dazu gehört vor allem, dass die Dreiecksungleichung erfüllt ist,
-dass also für drei Punkt $A$, $B$ und $C$
+dass also für drei Punkt $A$, $B$ und $C$ die Ungleichung
 \begin{equation}
 \overline{AB} \le \overline{AC} + \overline{BC}
 \label{skalarprodukt:ungleichungen:eqn:dreieck}
@@ -155,7 +158,7 @@ $V$ erfüllt die Cauchy-Schwarz-Ungleichung
 |\langle x, y\rangle| \le \|x\|\cdot\|y\|
 \label{buch:skalarprodukt:cauchyschwarz:eqn:ungleichung}
 \end{equation}
-für $x,y\in V$.
+für alle $x,y\in V$.
 Gleichheit gilt genau dann, wenn $x$ und $y$ linear abhängig sind.
 \end{satz}
 
@@ -175,7 +178,7 @@ Dies ist gleichbedeutend damit, dass $x$ und $y$ linear abhängig sind.
 \subsubsection{Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum}
 Für ein komplexes Skalarprodukt ist das Produkt $\langle x,y\rangle$
 nicht mehr unbedingt reell und kann damit nicht mehr direkt mit den
-Normen $\|x\|^2u$ und $\|y\|^2$ vergleichen.
+Normen $\|x\|^2u$ und $\|y\|^2$ verglichen werden.
 Wir ersetzen daher $t$ durch
 $t\langle y,x\rangle=t\overline{\langle x,y\rangle}$
 und erhalten 
@@ -186,6 +189,12 @@ und erhalten
 &=
 \langle x,x\rangle
 +t\langle y,x\rangle \langle x,y\rangle
++t\overline{\langle y,x\rangle}\langle y,x\rangle
++t^2\langle y,y\rangle
+\\
+&=
+\langle x,x\rangle
++t\langle y,x\rangle \overline{\langle y,x\rangle}
 +t\overline{\langle y,x\rangle}\langle y,x\rangle
 +t^2\langle y,y\rangle
 \\
@@ -220,7 +229,7 @@ c-\frac{b^2}{4a}
 |\langle x,y\rangle|^2 &\le \|x\|^2\,\|y\|^2
 \\
 \quad\Rightarrow\quad
-|\langle x,y\rangle &\le \|x\|\cdot\|y\|.
+|\langle x,y\rangle|&\le \|x\|\cdot\|y\|.
 \end{align*}
 Dies ist die Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum.
 
@@ -228,10 +237,11 @@ Dies ist die Cauchy-Schwarz-Ungleichung für einen komplexen Vektorraum.
 \label{buch:skalarprodukt:cauchy-schwarz:satz:komplex}
 Ein komplexes Skalarprodukt $\langle\;\,,\;\rangle$ auf dem komplexen Vektorraum
 $V$ erfüllt die Cauchy-Schwarz-Ungleichung
+\index{Cauchy-Schwarz-Ungleichung}%
 \[
 |\langle x, y\rangle| \le \|x\|\cdot\|y\|
 \]
-für $x,y\in V$.
+für alle $x,y\in V$.
 \end{satz}
 
 Man beachte, dass die
@@ -329,7 +339,6 @@ Dreiecksungleichung~\eqref{skalarprodukt:ungleichungen:eqn:dreieck}.
 Sie ist gleichbedeutend mit der
 Vektorform~\eqref{skalarprodukt:cauchyschwarz:eqn:dreieck0}
 der Ungleichung.
-
 Die Cauchy-Schwarz-Ungleichung ermöglicht nun, diese Ungleichung
 nachzurechnen.
 Die Norm von $\|x+y\|^2$ ist
@@ -370,12 +379,13 @@ Durch Ziehen der Wurzel folgt
 Damit ist der folgende Satz bewiesen.
 
 \begin{satz}[Dreiecksungleichung]
+\index{Dreiecksungleichung}%
 Für die Norm zu einem beliebigen Skalarprodukt auf dem reellen
 oder komplexen Vektorraum $V$ gilt die Dreiecksungleichung
 \[
 \|x+y\| \le \|x\| + \|y\|
 \]
-für $x,y\in V$.
+für alle $x,y\in V$.
 \end{satz}
 
 %
@@ -391,7 +401,7 @@ Norm für den der Konstruktion eines Grenzwertbegriffs zu definieren.
 Zum Beispiel kann man auf $\mathbb{C}^n$ die sogenannte $l^1$-Norm
 definieren.
 
-\begin{definition}
+\begin{definition}[$l^1$]
 \label{buch:skalarprodukt:cauchyschwarz:def:l1}
 Die Funktion
 \[
@@ -400,14 +410,16 @@ Die Funktion
 \sum_{i=1}^n |x_i|
 \]
 für $x\in\mathbb{C}^n$ heisst die {\em $l^1$-Norm} auf $\mathbb{C}^n$.
+\index{l1-Norm@$l^1$-Norm}%
 \end{definition}
 
 Die Funktion $\|\cdot\|_1$ ist eine Norm im Sinne der folgenden Definition.
 
-\begin{definition}
+\begin{definition}[Norm]
 \label{buch:skalarprodukt:cauchyschwarz:def:norm}
 Eine Funktion $\normfunc \colon V\to\mathbb{R}$ auf einem reellen
 oder komplexen Vektorraum $V$ heisst eine {\em Norm}, wenn Sie die
+\index{Norm}%
 folgenden Bedingungen erfüllt
 \begin{enumerate}
 \item
@@ -447,7 +459,7 @@ x\mapsto \|x\|_\infty = \sup_{1\le i\le n} |x_i|
 ist eine Norm auf $\mathbb{C}^n$.
 
 Auch in diesem Fall sind die Bedingungen~1 und 2 ganz offensichtlich erfüllt.
-Für die Dreiecksungleichung rechnen
+Für die Dreiecksungleichung rechnen wir
 \begin{align*}
 \|x+y\|_\infty
 &=
@@ -462,15 +474,15 @@ Für die Dreiecksungleichung rechnen
 Somit ist $\normfunc_\infty$ eine Norm auf $\mathbb{C}^n$.
 \end{beispiel}
 
-\begin{definition}
+\begin{definition}[Supremumnorm]
 \label{buch:skalarprodukt:cauchyschwarz:def:supremum}
 Die Norm
 \begin{equation}
 \|x\|_\infty = \sup_{1\le i\le n} |x_i|
 \label{buch:skalarprodukt:cauchyschwarz:eqn:supremumnorm}
 \end{equation}
-heisst die {\em Supremum-Norm}.
-\index{Supremum-Norm}
+heisst die {\em Supremumnorm}.
+\index{Supremumnorm}
 \end{definition}
 
 %
@@ -493,6 +505,7 @@ das Skalarprodukt aus Werten der Norm rekonstruieren lässt.
 
 \begin{satz}[Polaridentität]
 \label{skalarprodukt:cauchyschwarz:satz:polarformel}
+\index{Polaridentität}%
 Ist $\|\cdot\|$ die Norm zu einem Skalarprodukt auf dem reellen Vektorraum
 $V$, dann kann das Skalarprodukt zweier Vektoren $x,y\in V$ mittels
 der sogenannten {\em Polaridentität}
@@ -544,6 +557,7 @@ Dazu berechnet man zusätzlich die Norm von $x-y$:
 &=
 \|x\|^2 + \|y\|^2 - 2\langle x, y\rangle
 \\
+\text{und}\qquad
 \|x+y\|^2 +\|x-y\|^2
 &=
 2\|x\|^2 + 2\|y\|^2
@@ -553,6 +567,7 @@ Dazu berechnet man zusätzlich die Norm von $x-y$:
 \label{skalarprodukt:cauchyschwarz:satz:parallelgramm}
 Für eine Norm, die von einem reellen Skalarprodukt herkommt, gilt die
 Parallelogrammformel
+\index{Parallelogrammformel}%
 \begin{equation}
 \|x+y\|^2 +\|x-y\|^2
 =
@@ -587,7 +602,7 @@ Norm gewinnen:
 \label{skalarprodukt:cauchyschwarz:eqn:realteil}
 \end{equation}
 Nur die letzte Formel ist noch nicht gut begründet.
-Man kann aber sofort nachrechnen, dass 
+Man kann aber mit der Definition der Norm sofort nachrechnen, dass 
 \begin{align*}
 \|x+y\|^2&=\|x\|^2+2\langle x,y\rangle+\|y\|^2\\
 \|x-y\|^2&=\|x\|^2-2\langle x,y\rangle+\|y\|^2
@@ -645,6 +660,7 @@ bleiben gültig als Formeln für den Realteil des Skalarproduktes.
 Damit haben wir den folgenden Satz gefunden.
 
 \begin{satz}[Polaridentitäten für ein komplexes Skalarprodukt]
+\index{Polaridentität!für komplexes Skalarprodukt}%
 Ist $\|\cdot\|$ die Norm, die aus dem komplexen Skalarprodukt
 $\langle\;\,,\;\rangle$ auf einem Vektorraum $V$ gewonnen wurde,
 dann können Real- und Imaginärteil mit den Formeln
