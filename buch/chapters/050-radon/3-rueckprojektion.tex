@@ -17,8 +17,9 @@ $\mathscr{R}(\omega\cdot y,\omega)$ Information über den Wert der
 Funktion $u$ im Punkt $y$ enthalten.
 Sie enthalten aber auch noch Information über alle anderen Punkte.
 
-\begin{definition}
+\begin{definition}[Rückprojektion]
 Die {\em Rückprojektion} $\mathscr{R}^*f$ einer Funktion
+\index{Rückprojektion}%
 $f\colon \mathbb{R}\times S^{n-1}\to\mathbb{C}$ ist die Funktion
 \[
 (\mathscr{R}^*f)(y)
@@ -26,6 +27,8 @@ $f\colon \mathbb{R}\times S^{n-1}\to\mathbb{C}$ ist die Funktion
 \int_{S_+^{n-1}} f(\omega\cdot y,\omega)\,d\omega.
 \]
 $\mathscr{R}^*$ heisst auch die {\em duale Transformation}.
+\index{duale Transformation}%
+\index{Transformation, dual}%
 \end{definition}
 
 Die Rückprojektion ist also der Mittelwert der Werte von $f$ über
@@ -36,7 +39,7 @@ der Mittelwert aller Werte von $\mathscr{R}u$, die durch Integration
 entlang einer Hyperbene durch $y$ entstanden sind.
 In der Rückprojektion sind also alle Werte von $u$ gemittelt, aber
 der Wert im Punkt $y$ hat besonders grosses Gewicht.
-Die duale Transformation ist also eine erste Approximation für $u$.
+Die duale Transformation ist somit eine erste Approximation für $u$.
 Abbildung~\ref{buch:radon:rueckprojektion:fig:rueckprojektion}
 zeigt das Resultat der Rückprojektion im Teilbild unten rechts.
 In den weiteren Entwicklungen hoffen wir, daraus eine exakte Rekonstruktion
@@ -84,7 +87,7 @@ Für den Laplace-Operator findet man dann
 \mathscr{R}^*
 \frac{\partial^2}{\partial s^2} v
 \qquad\Rightarrow\qquad
-\Delta\mathscr{R}^* = \mathscr{R}^*\frac{\partial^2}{\partial s^2}
+\Delta\mathscr{R}^* = \mathscr{R}^*\frac{\partial^2}{\partial s^2}.
 \label{buch:radon:rueckprojektion:eqn:laplacedual}
 \end{align}
 In Satz
@@ -186,7 +189,7 @@ e^{i(r\omega)\cdot x} \mathscr{F}u(r\omega)\,d\omega r^{n-1}\,dr
 \frac{1}{(2\pi)^{n/2}} \int_{-\infty}^0 \int_{S_+^{n-1}}
 e^{ir\omega\cdot x} \mathscr{F}u(r\omega)
 d\omega
-|r|^{n-1}\,dr
+|r|^{n-1}\,dr.
 \intertext{Jetzt kann man die beiden Integrale in einziges
 $r$-Integral
 }
@@ -198,7 +201,7 @@ e^{ir\omega\cdot x}
 \mathscr{F}u(r\omega)
 \,d\omega
 |r|^{n-1}\,dr
-\intertext{über $\mathbb{R}$ zusammenfassen.
+\intertext{über ganz $\mathbb{R}$ zusammenfassen.
 Durch Vertauschung der Integrationsreihenfolge
 entsteht als inneres Integral die Fourier-Inversionsformel
 für eine eindimensionale Fourier-Transformierte:}
@@ -208,7 +211,7 @@ u(x)
 \int_{S_+^{n-1}}
 \int_{\mathbb{R}}
 e^{ir\omega\cdot x}
-\mathscr{F}(r\omega)
+\mathscr{F}u(r\omega)
 |r|^{n-1}\,dr
 \,
 d\omega
@@ -249,11 +252,15 @@ Die nachfolgende duale Transformation mit $\mathscr{R}^*$ entsteht
 das ursprüngliche Bild.
 Die mittleren drei Schritte $\mathscr{F}_r^{-1}|r|^{n-1}\mathscr{F}_r$
 entsprechen einer frequenzabhängigen Filterung.
+\index{Filterung}%
+\index{frequenzabhängige Filterung}%
 Der Satz besagt also, dass die Radon-Transformierte zunächst
-gefiltert werden muss um anschliessend mit der Rückprojektion
-$\mathscr{R}^*$ die ursprüngliche Funktion zurückgibt.
+gefiltert werden muss, um anschliessend mit der Rückprojektion
+$\mathscr{R}^*$ die ursprüngliche Funktion zurückzugeben.
 Die Zusammensetzung heisst aus diesem Grund die {\em gefilterte
 Rückprojektion}.
+\index{Rückprojektion!gefiltert}%
+\index{gefilterte Rückprojektion}%
 Der Prozess wird in
 Abbildung~\ref{buch:radon:rueckprojektion:fig:rueckprojektion}
 illustriert.
@@ -293,7 +300,7 @@ Rücktransformation durch die Hilbert-Transformation ausdrückt.
 Dieses wird mit einem normalerweise divergenten Integral definiert,
 das als der sogenannte Hauptwert interpretiert werden muss.
 
-\begin{definition}
+\begin{definition}[Hauptwert]
 Ist $f\colon[a,b]\setminus\{c\}\to\mathbb{R}$ eine stetige Funktion,
 dann heisst
 \[
@@ -308,6 +315,8 @@ dann heisst
 \biggr)
 \]
 der {\em Hauptwert} oder {\em principal value} des Integrals.
+\index{Hauptwert}%
+\index{principal value}%
 \end{definition}
 
 Der Hauptwert gibt gewissen uneigentlichen Integralen einen Sinn, 
@@ -401,7 +410,7 @@ Dann ergibt sich
 Der Hauptwert des Integrals ist also wohldefiniert.
 \end{beispiel}
 
-\begin{definition}
+\begin{definition}[Hilbert-Transformation]
 Ist $f\colon \mathbb{R}\to\mathbb{C}$ eine stetige und integrierbare
 Funktion, dann ist die {\em Hilbert-Trans\-for\-mier\-te} definiert durch
 \[
@@ -427,7 +436,7 @@ Faltung mit der Funktion $x\mapsto 1/x$, da diese aber nicht
 integrierbar ist, ist die konventionelle Definition der Faltung
 nicht anwendbar.
 
-\begin{satz}
+\begin{satz}[Hilbert-Transformation und Signum]
 Die Hilbert-Transformierte $\mathscr{H}f$ einer stetigen Funktion $f$
 hat die Fourier-Transformierte
 \[

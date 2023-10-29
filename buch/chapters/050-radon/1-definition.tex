@@ -51,13 +51,12 @@ Setzt man eine der Variablen $=0$ entsteht die eindimensionale Situation,
 die früher bereits untersucht wurde.
 Die Funktionen
 \begin{equation*}
-\begin{aligned}
-\varphi(\cdot,0)&\colon \mathbb{R} \to \mathbb{C}^*&:
-x\mapsto &\varphi(x,0)
+\renewcommand{\arraycolsep}{2pt}
+\begin{array}{ccccccccc}
+\varphi(\cdot,0)&\colon&\mathbb{R}&\to&\mathbb{C}^*&:&x&\mapsto&\varphi(x,0)
 \\
-\varphi(0,\cdot)&\colon \mathbb{R} \to \mathbb{C}^*&:
-y\mapsto &\varphi(0,y)
-\end{aligned}
+\varphi(0,\cdot)&\colon&\mathbb{R}&\to&\mathbb{C}^*&:&y&\mapsto&\varphi(0,y)
+\end{array}
 \end{equation*}
 sind stetige Homomorphismen und daher Exponentialfunktionen der Form
 \[
@@ -107,10 +106,10 @@ es ist $\widehat{\mathbb{R}^2} = \mathbb{R}^2$.
 %
 \subsubsection{Ebene Wellen}
 \input{chapters/050-radon/fig/ebenewelle.tex}
-Wie Abbildung~\ref{buch:radon:fig:ebenewelle} zeigt, beschreiben
+Wie Abbildung~\ref{buch:gruppen:radon:fig:ebenewelle} zeigt, beschreiben
 die Funktionen $\varphi_{kl}(x,y)$ ebene Wellen.
 Die Abbildung zeigt nur die Werte des Imaginärteils $\Im \varphi_{kl}(x,y)$,
-blau für negative Werte und grün für negative Werte.
+blau für negative Werte und grün für positive Werte.
 $\varphi_{kl}(x,y)$ ist konstant auf der Menge der Punkte, für die
 $kx+ly$ konstant ist.
 Da dies das Skalarprodukt 
@@ -131,7 +130,7 @@ mit Komponenten $k$ und $l$, dem sogenannten Wellenvektor.
 Homomorphismen von der additiven Gruppe $(\mathbb{R}/2\pi\mathbb{Z})^2$
 nach $\mathbb{C}^*$ sind Homomorphismen $\mathbb{R}^2\to\mathbb{C}^*$,
 sie lassen sich also auf jeden Fall als Exponentialfunktionen schreiben.
-Ausserdem müssen Sie aber in jedem Argument $2\pi$-periodisch sein.
+Ausserdem müssen sie aber in jedem Argument $2\pi$-periodisch sein.
 Die Funktion $\varphi_{kl}$ ist genau dann im ersten Argument
 $2\pi$-periodisch, wenn die partielle Funktion
 $x\mapsto \varphi_{kl}(x,0) = e^{ikx}$ schon $2\pi$-periodisch ist,
@@ -191,7 +190,7 @@ Schreibt man $\mathscr{F}_x$ und $\mathscr{F}_y$ für die eindimensionale
 Fourier-Transformation der Variablen $x$ bzw.~$y$, dann kann man
 die Ingegrale \eqref{buch:radon:2dfourier:eqn:f2f1}
 und \eqref{buch:radon:2dfourier:eqn:f1f2}
-auch als die Zusammensetzungen der Transformationen
+auch als die Zusammensetzungen
 \[
 \mathscr{F}
 =
@@ -199,7 +198,7 @@ auch als die Zusammensetzungen der Transformationen
 =
 \mathscr{F}_y\mathscr{F}_x
 \]
-lesen.
+der Transformationen $\mathscr{F}_y$ und $\mathscr{F}_x$ lesen.
 
 Auch die Umkehrtransformation kann man sofort ablesen, sie muss
 \begin{align*}
@@ -272,8 +271,8 @@ Durch Drehung um den Winkel $\alpha$ mit der Drehmatrix
 D_\alpha
 =
 \begin{pmatrix*}
-\cos\alpha&-\sin\alpha\\
-\sin\alpha& \cos\alpha
+\cos\alpha&         - \sin\alpha\\
+\sin\alpha&\phantom{-}\cos\alpha
 \end{pmatrix*}
 \]
 erzeugt den Vektor mit den Komponenten $k$ und $l$ aus einem
@@ -365,16 +364,17 @@ Das innere Integral ist über die Gerade mit der Parameterdarstellung
 \eta
 \begin{pmatrix}
 -\sin\alpha\\
-\cos\alpha
-\end{pmatrix}.
+\phantom{-}\cos\alpha
+\end{pmatrix}
 \]
+zu erstrecken.
 Sie ist die Gerade orthogonal zum Vektor
 \[
 \omega
 =
 \begin{pmatrix}
 -\sin\alpha\\
-\cos\alpha
+\phantom{-}\cos\alpha
 \end{pmatrix}
 \]
 im Abstand $\xi$ vom Ursprung des Koordinatensystem.
@@ -400,8 +400,9 @@ Der Richtungsvektor ist ein Einheitsvektor.
 In $\mathbb{R}^n$ müssen also die Einheitsvektoren zur Parametrisierung
 verwendet werden.
 
-\begin{definition}
-Die $n-1$-dimensionale Sphäre ist die Teilmenge
+\begin{definition}[$n-1$-dimnensionale Sphäre]
+Die {\em $n-1$-dimensionale Sphäre} ist die Teilmenge
+\index{Sphäre, $n-1$-dimensional}%
 \[
 S^{n-1}
 =
@@ -429,7 +430,8 @@ Die Hyperebenen, über die integriert werden soll, werden durch die
 Richtung $\omega\in S^{n-1}$ und den Abstand vom Nullpunkt des
 Koordinatensystems parametrisiert.
 
-\begin{definition}
+\begin{definition}[Hyperebene $E(s,\omega)$]
+\index{Esomega@$E(s,\omega)$}%
 Für $s\in\mathbb{R}$ und $\omega\in S^{n-1}$ bezeichnen wir mit
 \[
 E(s,\omega)
@@ -443,6 +445,7 @@ x\in\mathbb{R}^n
 \mathbb{R}^n
 \]
 die Hyperebene orthogonal auf $\omega$ im Abstand $s$ vom Ursprung.
+\index{Hyperebene}%
 \end{definition}
 
 Durch Wahl eines geeigneten Koordinatensystems kann man ein
@@ -452,6 +455,7 @@ Koordinaten $s$ schreiben.
 Ein solches Koordinatensystem kann zum Beispiel gefunden werden, indem
 man den Vektor $\omega\in S^{n-1}$ mit Vektoren $b_2,\dots,b_n$ zu einer
 Orthonormalbasis von $\mathbb{R}^n$ erweitert.
+Der Gram-Schmidt-Prozess kann dazu verwendet werden.
 Das Integral über $\mathbb{R}^n$ ist dann
 \[
 \int_{\mathbb{R}^n} f(x)\,dx
@@ -481,7 +485,7 @@ f(s\omega + \xi)
 \,d\xi
 \,ds
 \]
-zu schreiben.
+für Vektoren $\xi\in\mathbb{R}^{n-1}$ zu schreiben.
 Die Vektoren $s\omega +\xi$ sind die Punkte der Ebene $E(s,\omega)$,
 wir können daher das Integral noch einfacher als
 \[
@@ -529,7 +533,7 @@ u(\xi)
 \]
 Das innere Integral ist die gesuchte Transformation:
 
-\begin{definition}
+\begin{definition}[Radon-Transformation]
 Sei $u\colon\mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion,
 dann heisst die Funktion
 \[
@@ -589,19 +593,19 @@ Die Fourier-Transformierte von $u$ kann also gefunden werden,
 indem erst die Radon-Transformierte bestimmt wird und anschliessend
 bezüglich der ersten Variablen Fourier-transformiert wird.
 
-Die Zusammenetzung~\eqref{buch:radon:definitionb:eqn:fr}
-der Fourier-Transformation $\mathscr{F}$ aus
-einer eindimensionalen, radialen Transformation $\mathscr{F}_r$ und der
-Radon-Transformation $\mathscr{R}$
-hat als unmittelbare Konsequenz, dass die Radon-Transformation
-invertierbar sein muss.
-Ist $v=\mathscr{R}u$, dann kann $u$ zurückgewonnen werden, indem
-erst mit einer eindimensionalen Fourier-Transformation die
-Fourier-Transformierte $\mathscr{F}u$ bestimmt wird.
-Die Funktion $u$ wird dann als Fourier-Umkehrtransformierte davon
-gefunden.
+%Die Zusammenetzung~\eqref{buch:radon:definitionb:eqn:fr}
+%der Fourier-Transformation $\mathscr{F}$ aus
+%einer eindimensionalen, radialen Transformation $\mathscr{F}_r$ und der
+%Radon-Transformation $\mathscr{R}$
+%hat als unmittelbare Konsequenz, dass die Radon-Transformation
+%invertierbar sein muss.
+%Ist $v=\mathscr{R}u$, dann kann $u$ zurückgewonnen werden, indem
+%erst mit einer eindimensionalen Fourier-Transformation die
+%Fourier-Transformierte $\mathscr{F}u$ bestimmt wird.
+%Die Funktion $u$ wird dann als Fourier-Umkehrtransformierte davon
+%gefunden.
 
-\begin{satz}
+\begin{satz}[Radon- und Fourier-Transformation]
 Ist $u\colon \mathbb{R}^n \to\mathbb{C}$ eine integrierbare Funktion
 und $\mathscr{R}u$ ihre Radon-Transformierte, dann ist die
 Fourier-Transformierte
@@ -613,8 +617,10 @@ Fourier-Transformierte
 \end{equation}
 von $u$ die Zusammensetzung der Radon-Transformation mit der 
 eindimensionalen radialen Fourier-Transformation.
+Insbesondere ist die Radon-Transformation umkehrbar.
 \end{satz}
 
+\begin{proof}[Beweis]
 Da die Fourier-Transformation invertierbar ist, können wir schliessen,
 dass auch die Radon-Transformation invertierbar ist.
 Aus der Gleichung
@@ -623,10 +629,11 @@ kann man ableiten, dass man $u$ aus $\mathscr{R}u$ bekommen kann,
 indem man zuerst die Radon-Transformierte bezüglich der Variablen
 $r$ Fourier-Transformiert und anschliessend die entstandene 
 Funktion von $k$ $n$-dimensional Fourier-rück\-trans\-for\-miert.
-Abbildung~\ref{buch:gruppen:radon:definition:fig:radonf} illustriert
+Abbildung~\ref{buch:gruppen:radon:definition:fig:radonft} illustriert
 dies im Falle $n=2$.
+\end{proof}
 
-\begin{satz}
+\begin{satz}[Radon-Umkehrformel]
 Ist $u\colon \mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion
 und $\mathscr{R}u$ ihre Radon-Transformierte, dann kann die Funktion
 mit der Umkehrformel
@@ -653,7 +660,17 @@ Fourier-Umkehrformel.
 \end{proof}
 
 Der Nachteil ist allerdings, dass diese Vorgehensweise zur Umkehr der
-Radon-Transformation nicht unbedingt besonders stabil ist.
+Radon-Transformation nicht besonders stabil ist.
+Dies lässt sich auch aus
+Abbildung~\ref{buch:gruppen:radon:definition:fig:radonft}
+erahnen.
+Die Transformation auf Polarkoordinaten quetscht viel wichtige Information
+aus der Radon-Transformation in der Nähe des Nullpunkts zusammen.
+Wegen der beschränkten Auflösung der diskreten Fourier-Transformation
+geht daher ein Teil der für die Rekonstruktion nötigen Information
+verloren.
+Für Punkte weit weg vom Nullpunkt erhält die Darstellung unten rechts
+nicht genügen Information.
 In nachfolgenden Abschnitten sind daher bessere Verfahren gesucht,
 wie die Radon-Transformation invertiert werden kann.
 
@@ -662,7 +679,7 @@ wie die Radon-Transformation invertiert werden kann.
 %
 \subsection{Anwendungen der Radon-Transformation
 \label{buch:radon:definition:subsection:anwendungen}}
-Die Radon-Transformation hat interessante Anwendungen in Bildgebenden
+Die Radon-Transformation hat interessante Anwendungen in bildgebenden
 Verfahren der Medizin.
 Ein Computertomograph oder CAT-Scanner bestimmt die Absorbtion von
 Röntgenstrahlen, die in einer Ebene den Körper durchdringen.

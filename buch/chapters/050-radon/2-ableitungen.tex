@@ -6,13 +6,13 @@
 \section{Radon-Transformation und Ableitungen
 \label{buch:radon:section:ableitungen}}
 Die Fourier-Transformation verwandelt Ableitungen in eine Multiplikation.
-Die Radon-Transformation führt einen Teil der Fourier-Transformation
-durch, es ist also zu erwarten, dass die \RT ebenfalls
+Die Radon-Trans\-for\-ma\-tion führt einen Teil der Fourier-Transformation
+durch, es ist also zu erwarten, dass die \RT{} ebenfalls
 sehr spezielle Ableitungseigenschaften hat.
-Es wird sich zeigen, dass die \RT $\mathscr{R}u(s,\omega)$
+Es wird sich zeigen, dass die \RT{} $\mathscr{R}u(s,\omega)$
 einer Lösung der Wellengleichung ihrerseits Lösung einer
 eindimensionalen Wellengleichung entlang der Richtung $\omega$ ist,
-dies ist ein mathematischer Ausdruck für das Huygenssche Prinzip.
+dies ist ein mathematischer Ausdruck für das huygenssche Prinzip.
 
 %
 % Partielle Ableitungen
@@ -20,7 +20,7 @@ dies ist ein mathematischer Ausdruck für das Huygenssche Prinzip.
 \subsection{Partielle Ableitungen
 \label{buch:radon:ableitungen:subsection:partiell}}
 Sei $u\colon \mathbb{R}^n\to\mathbb{C}$ eine Funktion mit kompaktem
-Träger und sei $\omega = e_1 = (1,0,\dots,0)$ der erste Standarbasisvektor
+Träger und sei $\omega = e_1 = (1,0,\dots,0)$ der erste Standarbasisvektor.
 Da die zugehörige Hyperebene konstante erste Koordinaten hat, ist
 die Radon-Transformierte von $u$ gegeben durch
 \[
@@ -112,7 +112,7 @@ die \RT der Richtungsableitung
 von $u$ in eine Richtung senkrecht auf $\omega$ im Punkt $\omega$.
 Damit haben wir folgenden Satz gefunden:
 
-\begin{satz}
+\begin{satz}[Radon-Transformation und Richtungsableitung]
 Sei $u\colon\mathbb{R}^n\to\mathbb{C}$ eine integrierbare Funktion
 mit kompaktem Träger:
 Sei weiter $b\perp \omega$ ein zu $\omega$ orthogonaler Einheitsvektor.
@@ -122,9 +122,10 @@ Dann sind die Radon-Transformierten der Richtungsableitungen
 &=
 \frac{\partial}{\partial s}\mathscr{R}u(s,\omega)
 \\
+\text{und}\qquad
 (\mathscr{R}D_b u)(s,\omega)
 &=
-0
+0.
 \end{align*}
 \end{satz}
 
@@ -193,7 +194,7 @@ v_i
 \frac{\partial}{\partial s}\mathscr{R}(s,\omega).
 \]
 
-\begin{satz}
+\begin{satz}[Radon-Transformation und Ableitung]
 Ist $u\colon\mathbb{R}^n\to\mathbb{C}$ eine ingegrierbare Funktion
 mit kompaktem Träger, dann ist die Ra\-don-Trans\-for\-ma\-tion der
 Ableitungen von $u$
@@ -218,7 +219,7 @@ D^{\bm{\alpha}} u
 }{
 \partial s^{|\bm{\alpha}|}
 }
-\mathscr{R}u(s,\omega)
+\mathscr{R}u(s,\omega).
 \]
 \end{satz}
 
@@ -233,7 +234,7 @@ abhängt und solche, die vom Radius $s$ abhängt.
 Ableitungen hängen dann nur noch von $s$ ab, was sich auch
 auf den Laplace-Operator auswirkt.
 
-\begin{satz}
+\begin{satz}[Radon-Transformation und Laplace-Operator]
 \label{buch:radon:ableitungen:satz:laplace}
 Für eine zweimal stetig differenzierbare Funktion
 $u\colon\mathbb{R}^n\to\mathbb{C}$ mit kompaktem Träger gilt
@@ -280,7 +281,7 @@ Variablen.
 \subsection{Wellengleichung
 \label{buch:radon:ableitungen:subsection:wellengleichung}}
 Der Satz~\ref{buch:radon:ableitungen:satz:laplace} über die
-Radon-Transformierte des Laplace-Operators ermöglich, auch die
+Radon-Transformierte des Laplace-Operators ermöglicht, auch die
 Lösung der Wellengleichung mit Hilfe der Radon-Transformation zu
 vereinfachen.
 Die Wellengleichung ist die Gleichung
