@@ -11,7 +11,7 @@ zusammensetzen lassen.
 In diesem Abschnitt soll daher untersucht werden, wie Funktionen auf
 einem Produkt $X\times Y$ aus Funktionen auf den Faktoren $X$ und $Y$
 zusammengesetzt werden können.
-Dabei ergibt sich das sogenannte Tensor-Produkt.
+Dabei ergibt sich das sogenannte Tensorprodukt.
 
 %
 %
@@ -31,7 +31,8 @@ X\times Y \to \mathbb{C}
 h(x,y) = f(x)g(y).
 \]
 Sie wird im Folgenden auch mit $f\otimes g$ bezeichnet und das
-{\em Tensor-Produkt} von $f$ und $g$ genannt.
+{\em Tensorprodukt} von $f$ und $g$ genannt.
+\index{Tensorprodukt}%
 
 Dies Produkt hat die Eigenschaften
 \begin{align*}
@@ -80,7 +81,7 @@ e_{x,y}(\xi,\eta)
 0&\qquad\text{sonst}
 \end{cases}
 \]
-Diese lassen sich auch als Tensor-Produkte schreiben, nämlich
+Diese lassen sich auch als Tensorprodukte schreiben, nämlich
 $e_{x,y} = e_x\otimes e_y$.
 
 Die Funktionen $f\colon X\to \mathbb{C}$ und $g\colon Y\to\mathbb{C}$
@@ -93,7 +94,7 @@ g = \sum_{y\in Y} g(y)e_y
 schreiben.
 
 Da das Tensorprodukt linear in beiden Faktoren ist, ist das Tensorprodukt
-von $f$ und $g$ daher
+von $f$ und $g$ 
 \[
 f\otimes g
 =
@@ -101,7 +102,7 @@ f\otimes g
 f(x)g(y) e_x\otimes e_y
 =
 \sum_{(x,y)\in X\times Y}
-(f\otimes g)(x,y) e_x\otimes e_y
+(f\otimes g)(x,y) e_x\otimes e_y.
 \]
 
 %
@@ -162,11 +163,16 @@ Eigenschaft.
 Ist $f\colon U\times V\to W$ eine {\em bilineare} Abbildung, dann
 gibt es auch eine eindeutig bestimmte {\em lineare} Abbildung
 $g\colon U\otimes V\to W$ derart, dass
-\[
+\begin{equation}
 f(u,v)
 =
 g(u\otimes v).
-\]
+\label{buch:diskret:tensor:eqn:nurlinear}
+\end{equation}
+Man könnte auch sagen, dass der bilineare Charakter einer Abbildung
+durch die kanonische Abbildung $U\times V\to U\otimes V$ bereits
+vollständig erfasst wird und dass nur noch der Linearität Rechnung
+getragen werden muss.
 Da die Vektoren $u_i\otimes v_j$ eine Basis von $U\otimes V$ bilden,
 ist $g$ als lineare Abbildung durch $g(u_i\otimes v_j) = f(u_i,v_j)$
 vollständig definiert.
@@ -213,7 +219,7 @@ Af\otimes Bg
 \sum_{(x,y)\in X\times Y}
 \biggl(
 \sum_{(x',y')\in X\times Y}
-\underbrace{a_{xx'}b_{yy'}}_{c_{\displaystyle (x,y),(x',y')}}
+\underbrace{a_{xx'}b_{yy'}}_{\displaystyle c_{(x,y),(x',y')}}
 f(x')g(y')
 \biggr)
 e_x\otimes e_y.
@@ -477,9 +483,11 @@ A\otimes I_m
 \right)
 \label{buch:diskret:tensor:eqn:AIm}
 \end{equation}
-$A\otimes B=A\otimes I_m$ eine Matrix aus $m\times m$ grossen
-Blöcken, die jeweils diagonal sind und auf der Diagonalen
-die $n\times n$ Werte $a_{ik}$ haben.
+%$A\otimes B=A\otimes I_m$
+eine Matrix aus $m\times m$ grossen
+Blöcken, die jeweils diagonal sind.
+Der Block in Zeile $i$ und Spalte $k$ hat auf der Diagonalen
+$n$-mal den Wert $a_{ik}$.
 
 Ist hingegen $A=I_n$ eine $n$-dimensionale Diagonalmatrix, dann ist
 \begin{equation}
@@ -655,7 +663,7 @@ b^{(1)}_{yy''} b^{(2)}_{y''y'},
 \end{align*}
 dies sind die Matrixelemente von $A_1A_2 \otimes B_1B_2$.
 
-\begin{satz}
+\begin{satz}[Tensorprodukt und Matrizenprodukt]
 Seien
 $A_k\in M_{n\times n}(\Bbbk)$ und $B_k\in M_{m\times m}(\Bbbk)$
 für $k=1,2$.
@@ -696,7 +704,7 @@ Produktregel
 \]
 berechnet werden.
 
-\begin{satz}
+\begin{satz}[Tensorprodukt und Determinante]
 \label{buch:diskret:tensor:satz:deteinheit}
 Für $A\in M_{n\times n}(\Bbbk)$ und $B\in M_{m\times m}(\Bbbk)$ ist
 \[
@@ -728,7 +736,7 @@ Durch Umordnung der Zeilen und Spalten mit der Permutation
 kann aber die gleiche Anordnung
 wie in $I_m\otimes A$ erreicht werden.
 Da dazu gleich viele Zeilenvertauschungen wie Spaltenvertauschungen
-nötig sind, ändert sich die Determinante dadurch nicht.
+nötig sind, ändert sich die Determinante durch die Vertauschungen nicht.
 Somit folgt auch
 \[
 \det (A\otimes I_m) = \det (I_m\otimes A) = \det(A)^m.
@@ -736,9 +744,10 @@ Somit folgt auch
 \]
 \end{proof}
 
-\begin{satz}
+\begin{satz}[Determinante eines Tensorproduktes]
 \label{buch:diskret:tensor:satz:det}
 Für $A\in M_{n\times n}(\Bbbk)$ und $B\in M_{m\times m}(\Bbbk)$
+gilt
 \[
 \det(A\otimes B) = \det(A)^m\det(B)^n.
 \]

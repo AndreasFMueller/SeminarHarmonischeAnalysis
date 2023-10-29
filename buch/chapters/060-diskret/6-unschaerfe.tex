@@ -83,7 +83,6 @@ Der Wert $E(\delta)$ ist der Erwartungswert einer Zufallsvariablen
 mit der Wahrscheinlichkeitsdichte $|f(x)|^2/\|f\|_2$ im Intervall
 $[-\pi+\delta,\pi+\delta]$.
 Es gibt also keinen einzelnen sinnvollen Wert für den Erwartungswert.
-Die Translation ist damit nicht möglich.
 
 Für einen diskreten Definitionsbereich wird das Problem noch grösser.
 Selbst wenn man sich auf ein Integrationsintervall festlegen könnte,
@@ -143,7 +142,7 @@ Die nicht lokalisierte Funktion $f$ hat den minimal
 möglichen Wert $1$ und die lokalisierte Funktion $g$
 hat den maximal möglichen Wert $|G|$.
 
-\begin{definition}
+\begin{definition}[Lokalisierungsmass]
 \label{buch:diskret:unschaerfe:def:lokalisierungsmass}
 Für eine Funktion $f\colon G\to\mathbb{C}$ ist das Lokalisierungsmass
 \[
@@ -161,16 +160,16 @@ H(f)
 \subsection{Das allgemeine Unschärfeprinzip}
 Die Unschärferelation für die Fourier-Transformation vergleicht
 die Lokalisierungsmasse der Funktionen $f$ und $\mathscr{F}f$.
-As allgemeine Unschärfeprinzip verallgemeinert dies auf eine
+Das allgemeine Unschärfeprinzip verallgemeinert dies auf eine
 Aussage über beliebige lineare Abbildungen $A$.
-Da das Lokalisierungsmass die $\|\,\cdot\,\|_1$ und $\|\,\cdot\,\|_\infty$
+Da das Lokalisierungsmass die Normen $\normfunc_1$ und $\normfunc_\infty$
 miteinander vergleicht, muss untersucht werden, wie die Matrix $A$
 diese Normen beeinflusst.
 
-\begin{definition}
+\begin{definition}[$U$-$V$-Norm]
 \label{buch:diskret:unschaerfe:def:normUV}
-Seien $U$ und $V$ zwei Vektorräume mit Normen $\|\,\cdot\,\|_U$ und
-$\|\,\cdot\,\|_V$ und $A\colon U\to V$ eine lineare Abbildung.
+Seien $U$ und $V$ zwei Vektorräume mit Normen $\normfunc_U$ und
+$\normfunc_V$ und $A\colon U\to V$ eine lineare Abbildung.
 Die Norm von $A$ ist
 \begin{equation}
 \|A\|_{U\to V}
@@ -186,15 +185,15 @@ der Norm bedeutet, dass
 \[
 \|Au\|_V \le \|A\|_{U\to V}\cdot \|u\|_U
 \]
-für alle $u\in U\setminus\{0\}$.
+für alle $u\in U$.
 Da auf den Vektorräumen, auf denen wir das Lokalisierungsmass
 berechnen wollen verschiedene Normen definiert sein können,
 müssen wir die Definition~\ref{buch:diskret:unschaerfe:def:normUV}.
 noch etwas verallgemeinern.
 
-\begin{definition}
+\begin{definition}[Norm]
 \label{buch:diskret:unschaerfe:def:norm1i}
-Ist $A\colon U\to V$ eine lineare Abbildung und ist $\|\,\cdot\,\|_p$
+Ist $A\colon U\to V$ eine lineare Abbildung und ist $\normfunc_p$
 die $p$-Norm auf den Vektorräumen $U$ oder $V$, dann setzen wir
 \[
 \|A\|_{p\to q}
@@ -209,8 +208,8 @@ formulieren \cite{buch:widgerson}.
 
 \begin{satz}[Das primäre Unschärfeprinzip]
 \label{buch:diskret:unschaerfe:satz:primaer}
-Sind $U$ und $V$ komplexe Vektorräume mit zwei Normen $\|\,\cdot\,\|_\infty$
-und $\|\,\cdot\,\|_1$ und $A\colon U\to V$ und $B\colon V\to U$ lineare
+Sind $U$ und $V$ komplexe Vektorräume mit zwei Normen $\normfunc_\infty$
+und $\normfunc_1$ und $A\colon U\to V$ und $B\colon V\to U$ lineare
 Abbildungen mit $\|A\|_{1\to\infty}\le 1$ und $\|G\|_{1\to\infty}\le 1$.
 Weiter sei angenommen, dass es eine Konstante $k>0$ gibt mit
 $\|BAu\|_\infty \ge k\|u\|_\infty$.
@@ -248,8 +247,8 @@ Für das Produkt gilt dann
 \cdot
 \|Au\|_1.
 \]
-Aus der Bedingung an das Produkt $BA$ kann die linke Seite gegen unten
-abgeschätzt werden durch
+Aus der Bedingung an das Produkt $BA$ kann die linke Seite nach unten
+durch
 \[
 k\|u\|_\infty
 \cdot
@@ -261,9 +260,10 @@ k\|u\|_\infty
 \le
 \|u\|_1
 \cdot
-\|Au\|_1,
+\|Au\|_1
 \]
-dies ist die behauptete Ungleichung.
+abgeschätzt werden.
+Dies ist die behauptete Ungleichung.
 \end{proof}
 
 In Definition \ref{buch:diskret:unschaerfe:def:lokalisierungsmass}
@@ -271,7 +271,7 @@ wurde der Quotient von $L^1$-Norm und Supremumnorm als
 Lokalsierungsmass definiert.
 Damit kann das Unschärfeprinzip wie folgt umformuliert werden.
 
-\begin{satz}
+\begin{satz}[Unschärfe]
 Unter den Voraussetzungen des
 Satzes~\ref{buch:diskret:unschaerfe:satz:primaer}
 gilt
@@ -303,9 +303,10 @@ Die Bedingungen an das Produkt $BA$ in
 Satz~\ref{buch:diskret:unschaerfe:satz:primaer}
 motivieren die folgende Definition.
 
-\begin{definition}
+\begin{definition}[$k$-Hadamard-Matrix]
 \label{buch:diskret:unschaerfe:def:khadamard}
 Eine $n\times n$-Matrix heisst $k$-Hadamard wenn alle Einträge $a_{ik}$ von
+\index{k-Hadamard-Matrix@$k$-Hadamard-Matrix}%
 $A$ Betrag $|a_{ik}|\le 1$ haben und wenn
 \begin{equation}
 \|A^*Au\|_\infty \ge k\|u\|_\infty
@@ -320,7 +321,7 @@ besagt, dass $A^*$ die Rolle der Matrix $B$ im primären
 Unschärfeprinzip von Satz~\ref{buch:diskret:unschaerfe:satz:primaer}
 einnehmen kann.
 
-\begin{satz}
+\begin{satz}[Unschärfe für $k$-Hadamard-Matrizen]
 Ist $A$ eine $k$-Hadamard-Matrix dann gilt
 \[
 \|u\|_1\cdot \|Au\|_1 \ge k\|u\|_\infty \cdot \|Au\|_\infty
@@ -352,7 +353,7 @@ Die Fourier-Transformation $\mathscr{F}_n$ ist also eine
 $n$-Hadamard Matrix.
 Damit folgt jetzt der primäre Unschärfesatz für die Fourier-Transformation.
 
-\begin{satz}
+\begin{satz}[Unschärfe für diskrete Fourier-Transformation]
 Für beliebige $f\in \mathbb{C}^n\setminus\{u\}$ gilt
 \begin{equation}
 H(u)\cdot H(\mathscr{F}_nu) \ge n.
@@ -368,30 +369,7 @@ eines Vektors $f\in\mathbb{C}^n$ ist etwas aufwendig zu berechnen.
 Ein einfacheres Mass ist die Anzahl der von $0$ verschiedenen
 Funktionswerte.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/060-diskret/images/traeger.pdf}
-\caption{Der Träger $\operatorname{supp}u$ einer Funktion $u$ kann
-als Lokalisierungsmass verwendet werden.
-Jede Funktion $u$ (grün) mit Träger $T$ kann durch $\|u\|_\infty\cdot\chi_T$
-abgeschätzt werden (blaue Funktion), so dass $\|u\|_1\le \|u\|_\infty\cdot|T|$
-gilt.
-Zwischen dem allgemeinen Lokalisierungsmass $H(u)=\|u\|_1/\|u\|_\infty$
-und der Grösse des Trägers besteht also ein direkter Zusammenhang.
-\label{buch:diskret:unschaerfe:fig:traeger}}
-\end{figure}
-
-\begin{definition}
-\label{buch:diskret:unschaerfe:def:support}
-Der Träger $\operatorname{supp}f$ einer Funktion $f\colon G\to\mathbb{C}$ ist
-\index{Träger}%
-die Menge
-\[
-\operatorname{supp} f
-=
-\{x\in G\mid f(x)\ne 0\}.
-\]
-\end{definition}
+\input{chapters/060-diskret/fig/traeger.tex}
 
 Die Kardinalität des Trägers einer Funktion kann ebenfalls als
 Lokalisierungsmass verwendet werden.
@@ -419,7 +397,7 @@ Funktion des Trägers $\operatorname{supp}u$, also
 =
 \begin{cases}
 1&\qquad\text{falls $x\in\operatorname{supp}(f)$ oder $f(x)\ne 0$}\\
-0&\qquad\text{sonst}
+0&\qquad\text{sonst.}
 \end{cases}
 \]
 Dann ist
@@ -477,16 +455,7 @@ $n=|G|$-Hadamard ist.
 % $\varepsilon$-Träger
 %
 \subsection{$(\varepsilon,p)$-Träger}
-\begin{figure}
-\centering
-\includegraphics{chapters/060-diskret/images/etraeger.pdf}
-\caption{$(\varepsilon,1)$-Träger als Mass für die Lokalsierung
-einer Funktion.
-Im Bereich der Menge $T$ ist die $L^1$-Norm des so gross, dass
-die $L^1$-Norm auf dem Komplement von $L^1$ nur das $\varepsilon$-fache
-der $L^1$-Norm $\|u\|_1$ ist.
-\label{buch:diskret:unschaerfe:fig:etraeger}}
-\end{figure}%
+\input{chapters/060-diskret/fig/etraeger.tex}
 Rauschen sorgt dafür, dass man nicht erwarten kann dass ein
 Signalvektor überhaupt Nullstellen hat.
 Der Träger einer Funktionen ist also aus praktischen Grünen fast immer
@@ -496,12 +465,13 @@ dass sie nur auf einer kleinen Menge von Punkten des Definitionsbereichs
 grösser als eine gewählte untere Schranke $\varepsilon$ ist.
 Dies führt auf die folgende Definition.
 
-\begin{definition}
-Man sagt die Menge $T$ ist ein $(p,\varepsilon)$-Träger eines Vektors
+\begin{definition}[$(p,\varepsilon)$-Träger]
+Man sagt die Menge $T$ ist ein {\em $(p,\varepsilon)$-Träger} eines Vektors
 $u\in\mathbb{C}^n$, wenn 
 \[
 \| u\cdot (1-\chi_T)  \|_p \le \varepsilon \|u\|_p.
 \]
+\index{pepsilon-Träger@$(p,\varepsilon)$-Träger}%
 \end{definition}
 
 Da die Funktion $1-\chi_T$ in der Menge $T$ verschwindet und ausserhalb
@@ -516,7 +486,7 @@ $\varepsilon$-fache der Norm der ganzen Funktion ist.
 Diese Situation ist in der Abbildung~\ref{buch:diskret:unschaerfe:fig:etraeger}
 veranschaulicht.
 
-\begin{definition}
+\begin{definition}[$(p,\varepsilon)$-Trägergrösse]
 Die $(p,\varepsilon)$-Trägergrösse ist
 \[
 |\operatorname{supp}_\varepsilon^p u|
@@ -534,7 +504,7 @@ für einen dieser kleinsten $(p,\varepsilon)$-Träger zulassen.
 
 In Anlehnung an den Satz~\ref{buch:diskret:unschaerfe:satz:donoho-stark}
 möchten wir ein Unschärfe-Resultat für das Unschärfe-Mass
-$\operatorname{supp}_\varepsilon^1 u|$ herleiten.
+$|\operatorname{supp}_\varepsilon^1 u|$ herleiten.
 Dazu ist es nötig, einen Zusammenhang zwischen
 $|\operatorname{supp}_\varepsilon^1 u|$ und $H(u) = \|u\|_1/\|u\|_\infty$ 
 herzustellen.
@@ -581,7 +551,7 @@ Da dies für alle $(\varepsilon,1)$-Träger gilt, folgt
 Damit folgt jetzt aus dem allgemeinen Unschärfeprinzip der folgende
 Satz.
 
-\begin{satz}
+\begin{satz}[$\varepsilon$-$\delta$-Unschärfe für $k$-Hadamard-Matrix]
 Ist $A$ eine $k$-Hadamard-Matrix und $\varepsilon,\delta\in [0,1)$,
 dann gilt
 \[

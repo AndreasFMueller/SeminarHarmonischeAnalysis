@@ -9,7 +9,7 @@
 %
 \subsection{Faktorisierung der Fourier-Matrix
 \label{buch:diskret:subsetion:faktorisierung}}
-Die Fourier-Transformation $\mathscr{F}$ und ihre Inverse
+Die Fourier-Transformation $\mathscr{F}$ und ihre konjugierte
 $\overline{\mathscr{F}}$ sind nach
 \eqref{buch:diskret:vandermonde:eqn:vanderfourier}
 und
@@ -85,8 +85,9 @@ Durch Ausmultiplizieren kann man nachrechnen, dass
 =
 A(2,3,\omega)
 \cdot
-(\mathscr{F}_2\otimes I_3).
+(\mathscr{F}_2\otimes I_3)
 \]
+gilt.
 Dabei muss auch wieder $\omega^6=1$ verwendet werden, zum Beispiel
 bei der Berechnung der vierten Zeile, wo sich die Werte
 \[
@@ -275,7 +276,7 @@ schematisch dargestellt.
 Die beiden Faktoren $A(p,q,\omega)$ und $F(q,p,\omega)$ enthalten
 viele verschwindende Einträge.
 In jeder Zeile von $A(p,q,\omega)$ sind genau $p$ Einträge von
-$0$ verschieden während in jeder Zeile von $F(q,p,\omega)$ genau
+$0$ verschieden, während in jeder Zeile von $F(q,p,\omega)$ genau
 $q$ Einträge von $0$ verschieden sind.
 Da alle Einträge von $\mathscr{F}_6$ von Null verschieden sind, benötigt
 die Berechnung des Produktes $\hat{f}=\mathscr{F}_6f$ für jede

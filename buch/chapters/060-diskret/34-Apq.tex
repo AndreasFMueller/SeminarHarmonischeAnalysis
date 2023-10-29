@@ -78,7 +78,7 @@ A(p,q,\omega)
 \end{equation}
 Sie besteht aus $p$ übereinander angeordneten rechteckigen
 $q\times pq$-Abschnitten.
-In jeder Zeile eines solchen Abschnitt ist nur der Block
+In jeder Zeile eines solchen Abschnitts ist nur der Block
 \begin{equation}
 B_k
 =
@@ -152,13 +152,13 @@ P(q,p)
 \draw[color=gray] \punkt{16}{0} -- \punkt{16}{20};
 \draw[color=gray] \punkt{0}{15} -- \punkt{20}{15};
 \end{tikzpicture}}
-\right)
+\right).
 \end{equation}
-$P(q,p)$ ist eine Blockmatrix bestehend aus $q\times p$ Blöcken $B_{ij}$ der
+$P(q,p)$ ist eine Blockmatrix bestehend aus $q\times p$ Blöcken $B_{i\!j}$ der
 Grösse $p\times q$.
-Der Block $B_{ij}$ enthält genau eine Eines in Zeile $j$ und Spalte $i$.
+Der Block $B_{i\!j}$ enthält genau eine Eines in Zeile $j$ und Spalte $i$.
 
-\begin{definition}
+\begin{definition}[Matrix $P(q,p)$]
 Die Matrix $P(q,p)$ ist die Matrix mit den Einträgen
 \[
 (P(q,p))_{kl} = 
@@ -248,7 +248,7 @@ P(q,p)A(p,q,\omega)
 \]
 erhalten.
 
-\begin{definition}
+\begin{definition}[Matrix $D(p,q,\omega)$]
 Die Matrix $D(p,q,\omega)$ ist die Blockdiagonalmatrix mit $p$ diagonalen
 $q\times q$-Blöcken
 \[
@@ -268,7 +268,7 @@ B_k
 
 Unter Verwendung von $P(q,p)^{-1}=P(p,q)$ folgt der folgende Satz.
 
-\begin{satz}
+\begin{satz}[Faktorisierung von $A(p,q,\omega)$]
 Die Matrix $A(p,q,\omega)$ lässt sich faktorisieren als
 \begin{equation}
 A(p,q,\omega)
@@ -291,14 +291,14 @@ Die Determinante von $A(p,q),\omega)$ kann explizit berechnet werden.
 %
 % Hauptsatz über die Matrix A(p,q,\omega)
 %
-\begin{satz}
+\begin{satz}[Determinante von $A(p,q,\omega)$]
 \label{buch:diskret:vandermonde:hauptsatz}
 Die Matrix $A(p,q,\omega)$ ist regulär und hat die Determinante
 \begin{equation}
 \det A(p,q,\omega)
 =
 (-\omega)^{p(p-1)q(q-1)/4}
-(\mathscr{F}_p)^q
+(\mathscr{F}_p)^q.
 \label{buch:diskret:vandermonde:eqn:detA}
 \end{equation}
 \end{satz}
@@ -322,87 +322,6 @@ Satz~\eqref{buch:diskret:faktorisierung:satz:vorzeichen}
 berechnet, der Faktor $\det D(p,q,\omega)$ in
 Satz~\eqref{buch:diskret:faktorisierung:satz:detD}.
 Aus den Resultaten dieser Sätze folgt die Behauptung.
-%Durch Umordnung der Zeilen der Matrix $A(p,q,\omega)$ mit Hilfe der Matrix
-%$P(p,q)$ lässt sich die Blockstruktur
-%\eqref{buch:diskret:faktorisierung:eqn:PpqApq}
-%erreichen.
-%\bgroup
-%\def\w{2.0}
-%\def\h{0.4}
-%\def\punkt#1#2{({(#2)*\h},{-(#1)*\h})}
-%\def\b#1#2#3#4#5{
-%	\fill[color=gray!20] \punkt{#1}{#1} rectangle \punkt{#1+5}{#1+5};
-%	\foreach \y in {0,1,2,4}{
-%		\fill[color=red!10]
-%			\punkt{#1+\y}{#1} rectangle \punkt{#1+\y+1}{#1+5};
-%		\draw[color=red] \punkt{#1+\y+1}{#1}
-%			-- ++\punkt{-1}{0} -- ++\punkt{0}{5} -- ++\punkt{1}{0};
-%	}
-%	\draw[color=red] \punkt{#1+3}{#1} -- \punkt{#1+3}{#1+5};
-%	\draw[color=red] \punkt{#1+5}{#1} -- \punkt{#1+5}{#1+5};
-%	\node[color=red] at \punkt{#1+3.5}{#1+2.5} {$\dots$};
-%	\node at \punkt{#1+0.5}{#1+2.5} {$#2$};
-%	\node at \punkt{#1+1.5}{#1+2.5} {$#3$};
-%	\node at \punkt{#1+2.5}{#1+2.5} {$#4$};
-%	\node at \punkt{#1+4.5}{#1+2.5} {$#5$};
-%}
-%\begin{align}
-%\det A(p,q,\omega)
-%&=
-%\sigma(p,q)
-%\left|\raisebox{-3.99cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!10] \punkt{0}{0} rectangle \punkt{20}{20};
-%\foreach \x in {5,10,15}{
-%	\draw[color=white] \punkt{\x}{0} -- \punkt{\x}{20};
-%	\draw[color=white] \punkt{0}{\x} -- \punkt{20}{\x};
-%}
-%\b{0}{B_0}{B_q}{B_{2q}}{B_{(p-1)q}}
-%\b{5}{B_1}{B_{q+1}}{B_{2q+1}}{B_{(p-1)q+1}}
-%\b{15}{B_{p-1}}{B_{q+p-1}}{B_{2q+p-1}}{B_{pq-1}}
-%\foreach \x in {-2,-1,0,1,2}{
-%	\fill[color=red] \punkt{12.5+\x*0.5}{12.5+\x*0.5} circle[radius=0.03];
-%}
-%\end{tikzpicture}}\right|
-%\notag
-%\intertext{der Determinante erreichen, deren Wert nach dem Produktsatz
-%das Produkt der Determinante der einzelnen Blöcke ist:}
-%&=
-%\def\labelC#1{
-%\node at \punkt{0.1}{2.4} {\smash{\clap{\raisebox{0.1cm}{
-%\begin{tikzpicture}[>=latex,thick]
-%\node at (0,0.1) [above] {$C_{#1}$};
-%\draw[decorate,decoration={brace},thick] (-1,0) -- (1,0);
-%\end{tikzpicture}}}}};
-%}
-%\sigma(p,q)
-%\left|\,\raisebox{-0.99cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!10] \punkt{0}{0} rectangle \punkt{5}{5};
-%\labelC{0}
-%\b{0}{B_0}{B_q}{B_{2q}}{B_{(p-1)q}}
-%\end{tikzpicture}}\,\right|
-%\cdot
-%\left|\,\raisebox{-0.99cm}{\begin{tikzpicture}[>=latex,thick]
-%\labelC{1}
-%\fill[color=gray!10] \punkt{0}{0} rectangle \punkt{5}{5};
-%\b{0}{B_1}{B_{q+1}}{B_{2q+1}}{B_{(p-1)q+1}}
-%\end{tikzpicture}}\,\right|
-%\cdot
-%\ldots
-%\cdot
-%\left|\,\raisebox{-0.99cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!10] \punkt{0}{0} rectangle \punkt{5}{5};
-%\labelC{p-1}
-%\b{0}{B_{p-1}}{B_{q+p-1}}{B_{2q+p-1}}{B_{pq-1}}
-%\end{tikzpicture}}\,\right|.
-%\label{buch:diskret:vandermonde:eqn:blockprodukt}
-%\end{align}
-%\egroup
-%Die Zeilenvertauschungen in der Determinante führen möglicherweise zu
-%einem Vorzeichenwechsel, der durch den Faktor $\sigma(p,q)\in\{\pm1\}$ 
-%wiedergeben wird.
-%Um die Determinante zu bestimmen, müssen nun also der Vorzeichenfaktor
-%$\sigma(p,q)$ und die $p$ Werte der $q\times q$-Determinanten bestimmt
-%werden, was in den folgenden Hilfssätzen geschehen soll.
 \end{proof}
 
 \begin{satz}
@@ -465,7 +384,7 @@ Damit ist der Satz bewiesen.
 %
 % Satz über den Vorzeichenfaktor
 %
-\begin{satz}
+\begin{satz}[Vorzeichenfaktor $\sigma(p,q)$]
 \label{buch:diskret:faktorisierung:satz:vorzeichen}
 Der Vorzeichenfaktor $\sigma(p,q)$
 in~\eqref{buch:diskret:vandermonde:eqn:detA}
@@ -596,189 +515,3 @@ wie behauptet.
 \qedhere
 \end{proof}
 
-%%
-%% Der Wert der Blockdeterminanten
-%%
-%\subsubsection{Der Wert der Blockdeterminanten}
-%Zur Berechnung der Determinanten müssen jetzt nur noch die Determinanten
-%der einzelnen Blöcke bestimmt werden.
-%
-%%
-%% Satz über den Wert der Blockdeterminante
-%%
-%\begin{satz}
-%\label{buch:diskret:vandermonde:satz:blockdet}
-%Der Faktor $k$ mit $k=0,\dots,p-1$ im
-%Produkt~\eqref{buch:diskret:vandermonde:eqn:blockprodukt}
-%hat den Wert
-%\[
-%\det C_k
-%=
-%\left|\raisebox{-0.95cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!20] (0,0) rectangle (2,-2);
-%\fill[color=red!10] (0,0) rectangle (2,-1.2);
-%\draw[color=red] (0,0) rectangle (2,-1.2);
-%\draw[color=red] (0,-0.4) -- (2,-0.4);
-%\draw[color=red] (0,-0.8) -- (2,-0.8);
-%\fill[color=red!10] (0,-1.6) rectangle (2,-2);
-%\draw[color=red] (0,-1.6) rectangle (2,-2);
-%\node at (1,-0.2) {$B_k$};
-%\node at (1,-0.6) {$B_{q+k}$};
-%\node at (1,-1.0) {$B_{2q+k}$};
-%\node at (1,-1.4) {$\dots$};
-%\node at (1,-1.8) {$B_{(p-1)q+k}$};
-%\end{tikzpicture}}\right|
-%=
-%\omega^{kp(p-1)/2}
-%\cdot
-%\det\mathscr{F}_p
-%\]
-%\end{satz}
-%
-%\begin{proof}[Beweis]
-%Der Block $C_k$ mit der Nummer $k$ ist die Determinante
-%\bgroup
-%\def\v{\vdots\phantom{.}}
-%\begin{align*}
-%\det C_k
-%=
-%\left|\raisebox{-0.95cm}{\begin{tikzpicture}[>=latex,thick]
-%\fill[color=gray!20] (0,0) rectangle (2,-2);
-%\fill[color=red!10] (0,0) rectangle (2,-1.2);
-%\draw[color=red] (0,0) rectangle (2,-1.2);
-%\draw[color=red] (0,-0.4) -- (2,-0.4);
-%\draw[color=red] (0,-0.8) -- (2,-0.8);
-%\fill[color=red!10] (0,-1.6) rectangle (2,-2);
-%\draw[color=red] (0,-1.6) rectangle (2,-2);
-%\node at (1,-0.2) {$B_k$};
-%\node at (1,-0.6) {$B_{q+k}$};
-%\node at (1,-1.0) {$B_{2q+k}$};
-%\node at (1,-1.4) {$\dots$};
-%\node at (1,-1.8) {$B_{(p-1)q+k}$};
-%\end{tikzpicture}}\right|
-%&=
-%\left|\begin{array}{ccccc}
-%1&\omega^k    &\omega^{2k}&\dots&\omega^{(p-1)k}\\
-%1&\omega^{q+k}&\omega^{2(q+k)}&\dots&\omega^{(p-1)(q+k)}\\
-%1&\omega^{2q+k}&\omega^{2(2q+k)}&\dots&\omega^{(p-1)(2q+k)}\\
-%\v&\v&\v&\ddots&\v\\
-%1&\omega^{(p-1)q+k}&\omega^{2((p-1)q+k)}&\dots&\omega^{(p-1)((p-1)q+k)}
-%\end{array}\right|.
-%\intertext{Aus den hinteren Spalten lassen sich nacheinander die Faktoren
-%$\omega^k, \omega^{2k},\dots,\omega^{(p-1)k}$ ausklammern:}
-%&=
-%\omega^k
-%\omega^{2k}
-%\cdot
-%\ldots
-%\cdot
-%\omega^{(p-1)k}
-%\cdot
-%\left|\begin{array}{ccccc}
-%1&1    &1&\dots&1\\
-%1&\omega^{q}&\omega^{2q}&\dots&\omega^{(p-1)q}\\
-%1&\omega^{2q}&\omega^{4q)}&\dots&\omega^{(p-1)2q}\\
-%\v&\v&\v&\ddots&\v\\
-%1&\omega^{(p-1)q}&\omega^{2(p-1)q}&\dots&\omega^{(p-1)(p-1)q}
-%\end{array}\right|.
-%\intertext{Es bleibt eine Vandermonde-Determinante, nämlich}
-%&=
-%\omega^k
-%\omega^{2k}
-%\cdot
-%\ldots
-%\cdot
-%\omega^{(p-1)k}
-%\cdot
-%V(1,\omega^q,\omega^{2q},\dots,\omega^{(p-1)q}).
-%\intertext{Die Vandermonde-Determinante ist sogar sehr speziell, sie
-%ist die Determinante der Fourier-Transformation $\mathscr{F}_p$, also}
-%&=
-%\omega^k
-%\omega^{2k}
-%\cdot
-%\ldots
-%\cdot
-%\omega^{(p-1)k}
-%\cdot
-%\det\mathscr{F}_p.
-%\end{align*}
-%\egroup
-%Somit muss jetzt nur noch der Faktor aus den Potenzen von $\omega$
-%berechnet werden.
-%Er ist
-%\[
-%\pi_k
-%=
-%\omega^k \omega^{2k} \cdot\ldots\cdot \omega^{(p-1)k}
-%=
-%\omega^{N_k}
-%\]
-%mit
-%\begin{align*}
-%N_k
-%&=
-%k(1+2+\dots+(p-1))
-%=
-%k\sum_{i=1}^{p-1}i
-%= 
-%k\frac{p(p-1)}2.
-%\end{align*}
-%Damit folgt die Behauptung.
-%\end{proof}
-%
-%%
-%% Das Produkt
-%%
-%\subsubsection{Das Produkt}
-%Das Produkt der Faktoren $\pi_i$ kann jetzt ebenfalls explizit berechnet
-%werden.
-%
-%%
-%% Satz über den Wert des Produktes
-%%
-%\begin{satz}
-%Das Produkt der Determinanteblöcke auf der rechten Seite von
-%\eqref{buch:diskret:vandermonde:eqn:} ist
-%\[
-%\pi_0\pi_1\dots \pi_{p-1}
-%=
-%\omega^{p(p-1)q(q-1)/4}.
-%\]
-%\end{satz}
-%
-%\begin{proof}[Beweis]
-%Der Block mit der Nummber $k$, $k=0,\dots,q-1$ trägt also einen Faktor
-%der Form
-%\[
-%\pi_k
-%=
-%\omega^k
-%\omega^{2k}
-%\cdot
-%\ldots
-%\cdot
-%\omega^{(p-1)k}
-%=
-%(\omega^k)^{p(p-1)/2}.
-%\]
-%Das Produkt der Faktoren über alle $k$ ist
-%\begin{align*}
-%\pi_0\pi_1\cdot\ldots\cdot\pi_{q-1}
-%&=
-%(\omega^0\omega^1\cdots\omega^{q-1})^{p(p-1)/2}.
-%\end{align*}
-%Der Exponent in der Klammer ist
-%\[
-%\sum_{i=0}^{q-1}i
-%=
-%\frac{q(q-1)}{2}.
-%\]
-%Daraus ergibt sich
-%\[
-%\prod_{k=0}^{q-1} \pi_k
-%=
-%\omega^{q(q-1)p(p-1)/4}.
-%\qedhere
-%\]
-%\end{proof}

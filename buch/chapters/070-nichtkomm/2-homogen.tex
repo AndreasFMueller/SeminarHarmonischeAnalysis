@@ -24,7 +24,7 @@ $X$ lässt sich etwas Ordnung bringen, indem man Fixpunkte dieser
 Transformationen sucht.
 \index{Fixpunkt}
 
-\begin{definition}
+\begin{definition}[Fixpunkt, Stabilisator]
 Wenn die Gruppe $G$ auf dem Raum $X$ operiert und $x\in X$ ist, dann
 heisst $x$ ein {\em Fixpunkt} einer Transformation $s\in G$, wenn 
 \index{Fixpunkt}%
@@ -47,7 +47,7 @@ und analog für die Inverse.
 
 \begin{beispiel}
 \label{buch:nichtkomm:homogen:bsp:SO3}
-Die Gruppe $\operatorname{SO}(3)\ltimes\mathbb{R}^2$ operiert auf der
+Die Gruppe $\operatorname{SO}(2)\ltimes\mathbb{R}^2$ operiert auf der
 Mengen $X=\mathbb{R}^2$.
 Nicht jede Transformation hat einen Fixpunkt, zum Beispiel haben reine
 Verschiebungen um einen Vektor $v\in\mathbb{R}^2$, $v\ne 0$, keinen
@@ -63,8 +63,9 @@ x = -(s-e)^{-1}a
 \]
 ermitteln.
 Diese Lösung ist genau dann möglich, wenn $s-e$ invertierbar ist.
-Dies kann mit der Determinante der Matrix $D_\alpha-I$ bestimmt werden,
-die
+Ob eine Matrix invertierbar ist,
+kann mit der Determinante entschieden werden.
+Die Determinante der Matrix $D_\alpha-I$ ist
 \begin{align*}
 \det(D_\alpha-I)
 &=
@@ -77,9 +78,8 @@ die
 2-2\cos\alpha 
 \\
 &=
-2(1-\cos\alpha)
+2(1-\cos\alpha).
 \end{align*}
-ist.
 Diese verschwindget genau dann, wenn $\alpha$ ein Vielfaches von $2\pi$ ist.
 Damit ist gezeigt, dass alle Transformationen mit einer nichttrivialen
 Drehkomponente einen Fixpunkt haben.
@@ -104,7 +104,7 @@ $S_x\subset \operatorname{SO}(2)\ltimes \mathbb{R}^2$.
 \end{beispiel}
 
 \begin{beispiel}
-Die Gruppe $G=\operatorname{SO}(2)$ operiert auf der Kugeloberfläche $S^2$.
+Die Gruppe $G=\operatorname{SO}(3)$ operiert auf der Kugeloberfläche $S^2$.
 Der Stabilisator eines Punktes $x\in S^2$ auf der Kugeloberfläche besteht
 aus allen Drehungen, die die Achse mit Richtung $x$ oder $-x$ fest
 lassen.
@@ -171,10 +171,10 @@ Aus $gx=hx$ folgt $x=g^{-1}hx$, also $s=g^{-1}h\in S_x$.
 Ausserdem ist $gs=gg^{-1}h=h$, wie verlangt.
 \end{proof}
 
-\begin{satz}
+\begin{satz}[Isomorphie der Stabilisatoren]
 Wenn die Gruppe $G$ transitiv auf dem Raum $X$ operiert und $x,y\in X$
 zwei Punkte in $X$ sind, dann sind die Stabilisatoren $S_x$ und $S_y$
-isomorp.
+isomorph.
 Ist $gx=y$ dann ist die Abbildung
 \[
 c_g\colon
@@ -226,9 +226,10 @@ Mit den  Mitteln der Gruppentheorie von $G$ lassen sich zwei Punkte
 in $X$ nicht unterscheiden.
 Diese spezielle Situation hat einen Namen.
 
-\begin{definition}
+\begin{definition}[homogener Raum]
 Ein Raum $X$, auf dem eine Gruppe $G$ transitiv wirkt, heisst
 {\em homogen}, wenn der Stabilisator in jedem Punkt von $x$ gleich ist.
+\index{homogen}%
 \index{homogener Raum}%
 \end{definition}
 
@@ -243,8 +244,10 @@ dass alle Punkte isomorphe Symmetrieuntergruppen haben.
 
 \begin{beispiel}
 Sei $x$ der Nordpol der zweidimensionalen Kugeloberfläche $S^2$.
-Ist $y\in S^2$ ein weiterer Punkt, gibt es eine Drehung um die Achse
-$x\times y$, die den Nordpol in den Punkt $y$ transportiert.
+Ist $y\in S^2$ ein weiterer Punkt, gibt es eine Drehung um die Achse,
+die durch das Vektorprodukt
+$x\times y$ gegeben ist.
+Sie transportiert den Nordpol in den Punkt $y$ transportiert.
 Alle anderen Drehungen, die den Nordpol in den Punkt $y$ überführen,
 bestehen aus einer Drehung um die Nord-Süd-Achse gefolgt von der
 genannten Drehung um $x\times y$.
@@ -263,7 +266,7 @@ werden können.
 $gK$ heisst auch der {\em Rechtsorbit} oder einfach {\em Orbit} von $g$
 bezüglich der Operation von $K$ auf $G$ von rechts.
 
-\begin{definition}
+\begin{definition}[Orbitraum]
 Die Menge 
 \[
 G/K
@@ -296,7 +299,7 @@ beschreiben kann, die $\mathbb{R}$ surjektiv auf $S^1$ abbildet.
 \end{beispiel}
 
 Der Orbitraum des vorangegangenen Beispiels der reellen Zahlen
-modulo $\mathbb{R}$ ist sogar eine Gruppe.
+modulo $\mathbb{Z}$ ist sogar eine Gruppe.
 
 \begin{beispiel}
 Sei $G=\mathbb{R}/\mathbb{Z}$,
@@ -347,7 +350,7 @@ also Paare von Elementen der additiven abelsche Gruppe der reellen
 Zahlen modulo $\mathbb{Z}$ wie im vorangegangenen Beispiel.
 Sei ausserdem $K=\{(k,\alpha k)\mid k\in\mathbb{R}\}\subset G$
 die Untergruppe, die durch die Konstante $\alpha$ definiert wird.
-Je nachdem ob $\alpha$ ratioinal oder irrational ist, ist die Menge der
+Je nachdem ob $\alpha$ rational oder irrational ist, ist die Menge der
 Orbits völlig verschieden.
 
 Ist $\alpha\in\mathbb{Q}$, dann gibt es eine Darstellung $\alpha=p/q$
@@ -366,7 +369,7 @@ Beispiel ist lässt sich kein nützlicher Grenwertbegriff definieren.
 Wir schränken daher im folgenden die Verwendung des Begriffs des
 Orbitraums $G/K$ auf Fälle ein, in denen die Untergruppe $K$ eine
 abgeschlossene Untergruppe von $G$ ist.
-Diese Bedinung ist insbesondere dann immer erfüllt, wenn $K$ eine
+Diese Bedingung ist insbesondere dann immer erfüllt, wenn $K$ eine
 kompakte Untergruppe ist.
 
 %
@@ -429,7 +432,7 @@ Auf der Vektorkomponente $v$ wirkt $s$ dagegen als Drehung.
 So entstehen die blauen Spiralen in
 Abbildung~\ref{buch:nichtkomm:homogen:fig:so2r2}
 als
-Linksorbits von $\operatorname{SO}(2)$ auf $G$.
+Linksorbits der Wirkung von $\operatorname{SO}(2)$ auf $G$.
 \end{beispiel}
 
 %
@@ -510,8 +513,8 @@ Der Satz~\ref{buch:nichtkomm:homogen:satz:homorbitraum} zeigt, dass
 ein homogener Raum $X$ als topologischer Raum immer mit dem Orbitraum
 $G/S_x$ identifiziert werden kann, wobei $S_x\subset G$ ein abgeschlossene
 Untergruppe ist.
-Aber auch die Gruppenoperation der Gruppe auf $G/S_x$ stimmt mit der
-Operation auf $X$ überein.
+Aber auch die Gruppenoperation der Gruppe $G$ auf $G/S_x$ von links
+stimmt mit der Operation auf $X$ überein.
 
 \begin{beispiel}
 In Beispiel~\ref{buch:nichtkomm:homogen:bsp:SO3/SO2} wurde darauf

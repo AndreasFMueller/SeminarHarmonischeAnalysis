@@ -64,10 +64,10 @@ denn dazu kann die Fourier-Theorie verwendet werden.
 Der erste Schritt der oben vorgeschlagenen Lösungsansatzes verlangt,
 dass man zu zwei Punkten $x_1,x_2\in X$ entscheiden können muss,
 ob sie sich in den Funktionen $f$ und $g$ entsprechen.
-Dazu kann man verwenden, sich nach einer Translation, die $x_1$ nach $x_2$
+Dazu kann man verwenden, dass sich nach einer Translation, die $x_1$ nach $x_2$
 bringt, die Funktionen nur noch durch die Wirkung des Stabilisators
 $S_{x_2}$ unterscheiden.
-Mittelt man über die Wirkung von des Stabilisators, unterscheiden
+Mittelt man über die Wirkung des Stabilisators, unterscheiden
 sich die Funktionen gar nicht mehr.
 
 Die Punkte $x_1$ und $x_2$ entsprechen sich also in den Funktionen $f$
@@ -77,12 +77,12 @@ Sind die Funktionen $f$ und $g$ stetig, dann liegt $x_1$ nahe bei
 dem Punkt, der $x_2$ entspricht, wenn die beiden gemittelten Funktionen
 sich nur wenig unterscheiden.
 
-\begin{definition}
+\begin{definition}[Méndez-Transformation]
 Sie $G$ eine unimodulare lokalkompakte topologische Gruppe und $K$
 eine kompakte Untergruppe und $f$ eine Funktion $G/K\to \mathbb{R}$.
 Sei $\tilde{z}\in G$ ein Gruppenelement, das als Orbit
 den Punkt $z\in K\backslash G/K$ hat.
-Für jeden Punkt $x\in G/K$ ist dann die {\em Méndez-transformiert}
+Für jeden Punkt $x\in G/K$ ist dann die {\em Méndez-Transformierte}
 von $f$ definiert als
 \[
 (\mathcal{M}f)(x)(z)
@@ -98,14 +98,7 @@ den gemeinsamen Definitionsbereich $K\backslash G/K$, damit sie
 verglichen werden können.
 
 \begin{beispiel}
-\begin{figure}
-\centering
-\includegraphics{chapters/070-nichtkomm/images/2dmendez.pdf}
-\caption{Die Méndez-Transformation einer Funktion $f$ in der
-Ebene an der Stelle $x,r$ ist der Mittelwert der Funktionswerte
-auf auf dem Kreis $S_xy$ mit Radius $r=|y-x|$ um den Punkt $x$.
-\label{buch:nichtkomm:mendez:fig:2d}}
-\end{figure}
+\input{chapters/070-nichtkomm/fig/2dmendez.tex}
 Für das Registrierungsproblem auf der Ebene mit der Gruppe
 $\operatorname{SO}(2)\ltimes \mathbb{R}^2$ sind die Orbits des
 Stabilisators eines Punktes $P=(x,y)$ Kreise vom Radius $r$ um
@@ -123,15 +116,7 @@ f(x+r\cos\varphi,y+r\sin\varphi)\,d\varphi.
 \end{beispiel}
 
 \begin{beispiel}
-\begin{figure}
-\centering
-\includegraphics{chapters/070-nichtkomm/images/coordinates.pdf}
-\caption{Koordinatensystem zur Berechnung der Méndez-Transformation
-für das Paar $(G,K)=(\operatorname{SO}(3),\operatorname{SO}(2))$.
-Die Koordinaten $z$ wird entlang der Achse mit Richtungsvektor $x\in S^2$
-gemessen.
-\label{buch:nichtkomm:mendez:fig:coordinates}}
-\end{figure}
+\input{chapters/070-nichtkomm/fig/coordinates.tex}
 Für das Registrierungsproblem auf der Kugeloberfläche ist $x$ irgend ein
 Einheitsvektor.
 Die Orbits des Stabilisators von $x$ sind die Breitenkreise bezüglich
@@ -206,33 +191,14 @@ Wir zeigen hier nur das Prinzip, Optimierungsmöglichkeiten sind in
 % Registrierung mit einem Fixpunkt
 %
 \subsubsection{Registrierung mit einem Fixpunkt}
-\begin{figure}
-\centering
-\includegraphics{chapters/070-nichtkomm/images/MTransformExamples.pdf}
-\caption{Méndez-Transformation der zwei Funktionen $f$ und $g$ auf
-der Kugeloberfläche.
-Die $x_3$-Achse ist nicht die Drehachse der Drehung, die $f$ in $g$
-überführt und die Méndez-Transformationen $\mathcal{M}f(x)$
-und $\mathcal{M}g(x)$ sind klar verschieden.
-\label{buch:nichtkomm:fig:mtex}}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics{chapters/070-nichtkomm/images/MTransformExamples2.pdf}
-\caption{Méndez-Transformation der zwei Funktionen $f$ und $g$ auf
-der Kugeloberfläche.
-Die Achse mit Richtungsvektor $x$ gehört zu derjenigen Drehung,
-die $f$ in $g$ überführt.
-Die Méndez-Transformationen $\mathcal{M}f(x)$
-und $\mathcal{M}g(x)$ sind gleich.
-\label{buch:nichtkomm:fig:mtex2}}
-\end{figure}
+\input{chapters/070-nichtkomm/fig/mtexamples.tex}
+\input{chapters/070-nichtkomm/fig/mtexamples2.tex}
 Falls die Wirkung der Gruppe $G$ auf $X$ immer einen Fixpunkt hat,
 ist der erste Schritt des Registrierungsproblems besonders einfach
 zu lösen.
 In diesem Fall gibt es nämlich immer einen Punkt $x$, der beiden
 Bildern gemeinsam ist.
-Die Méndez-Transformationen $\mathcal{M}f(x)$ und $mathcal{M}g(x)$
+Die Méndez-Transformationen $\mathcal{M}f(x)$ und $\mathcal{M}g(x)$
 sind daher die gleiche Funktion auf $Z=K\backslash G/K$.
 Es muss daher nur der Definitionsbereich $X$ nach einem Punkt
 durchsucht werden, für den $\mathcal{M}f(x) = \mathcal{M}g(x)$

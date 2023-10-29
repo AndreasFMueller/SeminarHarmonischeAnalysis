@@ -9,7 +9,7 @@
 Das Registrierungsproblem ist ein wichtiges Beispiel für die Bedeutung
 der Gruppentheorie in der harmonischen Analysis.
 In diesem Abschnitt stellen wir das Registrierungsproblem vor
-und Lösen den wichtigen Fall des kommutativen Registrierungsproblems
+und lösen den wichtigen Fall des kommutativen Registrierungsproblems
 mit Fourier-Theorie als Motivation für die spätere Entwicklung 
 der nichtkommutativen harmonischen Analysis.
 
@@ -44,23 +44,27 @@ Die Aufgabenstellung wird damit etwas genauer
 
 \begin{aufgabe}
 \label{buch:nichtkomm:aufgabe:regG}
-Gegeben ist eine Gruppe $G$ von Transformationenen
+Gegeben ist eine Gruppe $G$ von Transformationen
 $\varphi:\mathbb{R}^2 \to\mathbb{R}^2$ der Ebene und 
 zwei Funktionen $f,g\colon\mathbb{R}^2\to\mathbb{R}$, die sich nur durch
 eine Transformation $\varphi\in G$ unterscheiden.
-Finde die Transformation $\varphi\in G$ derart
+Finde die Transformation $\varphi\in G$ derart,
 dass $f=g\circ \varphi$.
 \end{aufgabe}
 
 \begin{beispiel}
 Die {\em Bewegungen} der Ebene sind affinen isometrischen
+\index{Bewegung}%
 Transformationen der Ebene.
 Dazu gehören Tranlationen, Drehungen, Spiegelungen und beliebige
+\index{Translation}%
+\index{Drehung}%
+\index{Spiegelung}%
 Kombinationen davon.
 In vielen praktischen Anwendungen weiss man, dass die Orientierung
 der Bilder erhalten ist, damit fallen die Spiegelungen weg, es
 müssen nur noch Translationen und Drehungen berücksichtig werden.
-Translationen werden durch Vektoren $v\in\mathbb{r}$ beschrieben,
+Translationen werden durch Vektoren $v\in\mathbb{R}$ beschrieben,
 Drehungen durch Matrizen in $\operatorname{SO}(2)$.
 \end{beispiel}
 
@@ -205,7 +209,7 @@ Für die direkte Berechnung der
 Kreuzkorrelation~\eqref{buch:nichtkomm:motivation:eqn:kreuzkorr}
 wird für jeden von $O(n^2)$ Vektoren $v$ die Berechnung des Skalarproduktes
 mit $O(n^2)$ Multiplikationen nötig.
-Sie wird jedoch wird jedoch durch die Formulierung als Faltung bedeutend
+Sie wird jedoch durch die Formulierung als Faltung bedeutend
 einfacher.
 Die Fourier-Transformation
 von~\eqref{buch:nichtkomm:motivation:eqn:kkorrfaltung}
@@ -219,7 +223,7 @@ ist
 \intertext{oder nach Fourier-Rücktransformation}
 (f\star g)(v)
 &=
-\mathscr{F}^{-1} (\mathscr{F}f\cdot\mathscr{F}g)(v)
+\mathscr{F}^{-1} (\mathscr{F}f\cdot\mathscr{F}\check{g})(v)
 \end{align*}
 Für digitale Bilder kann man die diskrete Fourier-Transformation
 verwenden.
@@ -238,13 +242,13 @@ Fourier-Transformation erfolgreich gelöst werden.
 Die Einschränkung auf Translationen ist jedoch in vielen
 Anwendungen nicht realistisch.
 Dies ist nur möglich, wenn die Bilder zum Beispiel durch geeignete
-mechanische Vorrichtungen gegen Verdrehungen zu schützen.
+mechanische Vorrichtungen gegen Verdrehungen geschützt sind.
 Dies ist zum Beispiel nicht möglich in der Astrophotographie.
 Da werden viele Bilder mit wenigen Minuten Belichtungszeit 
 kombiniert.
 Unzulänglichkeiten in der Aufstellung des Teleskops verursachen
 aber unweigerlich Verdrehungen.
-Das Registrierungsproblem für Translationen sind also nicht
+Das Registrierungsproblem für Translationen ist also nicht
 ausreichend.
 
 Der erste Schritt, diesen Lösungsansatz auf grössere Gruppen
@@ -271,7 +275,7 @@ $g(x) = g\cdot x$, $x\in X$.
 Daraus lässt sich jetzt auch eine Operation auf den Funktionen auf
 $X$ konstruieren:
 
-\begin{definition}
+\begin{definition}[Translation]
 Ist $g\in G$ und $f\colon X\to\mathbb{R}$ eine Funktion auf $X$, dann
 bezeichnen wir mit
 \begin{equation}
@@ -289,6 +293,7 @@ Der Leser mag sich fragen, warum in
 \eqref{buch:nichtkomm:motivation:eqn:opf}
 das inverse Element $g^{-1}$ von $g$ verwendet wird.
 Damit wird erreicht, dass die Abbildung $g\mapsto T_g$
+wie in Definition~\ref{buch:gruppen:gruppe:def:translation}
 ein Homomorphismus wird, denn für ein weiteres Element $h\in G$
 ist dann
 \[
@@ -310,7 +315,7 @@ Die Notation $T_gf$ für die um $g$ verschobene Funktion $f$ fällt
 mit der Notation zusammen, die wir fürher für den Definitionsbereich
 $\mathbb{R}^2$ und die Verschiebungen in der Ebene verwendet haben.
 Tatsächlich ist dies der Fall des Definitionsbereichs $X=\mathbb{R}^2$,
-auf dem die Gruppe $G=\mathbb{R}^2$ durch die gewähnliche
+auf dem die Gruppe $G=\mathbb{R}^2$ durch die gewöhnliche
 Translation wirkt, also $v\cdot x = x +v$ für $x\in X$ und $v\in G$.
 Die Formel \eqref{buch:nichtkomm:motivation:eqn:opf} wird in diesem
 Fall zu
@@ -330,35 +335,35 @@ Die zugehörige Gruppe wird mit $\operatorname{SO}(2)\ltimes\mathbb{R}^2$
 bezeichnet und soll in diesem Abschnitt konstruiert werden.
 Das besondere an dieser Situation ist, dass die Drehungen auch auf
 die Richtung der Translation wirken können.
-Wir verallgemeinern diese Situation in den folgenden Definitionen.
+%Wir verallgemeinern diese Situation in den folgenden Definitionen.
 
-\begin{definition}
-Sei $A$ eine abelsche Gruppe, die im folgenden jeweils additiv geschrieben
-werden soll.
-Ein {\em Endorphismus} von $A$ ist eine Abbildung $h\colon A\to A$ mit
-$h(a_1+a_2)=h(a_1)+h(a_2)$.
-und
-$h(0)=0$.
-Die Menge der Endomorphismen wird mit
-$\operatorname{End}(A)=\operatorname{Hom}(A,A)$ bezeichnet.
-\end{definition}
+%\begin{definition}
+%Sei $A$ eine abelsche Gruppe, die im folgenden jeweils additiv geschrieben
+%werden soll.
+%Ein {\em Endorphismus} von $A$ ist eine Abbildung $h\colon A\to A$ mit
+%$h(a_1+a_2)=h(a_1)+h(a_2)$.
+%und
+%$h(0)=0$.
+%Die Menge der Endomorphismen wird mit
+%$\operatorname{End}(A)=\operatorname{Hom}(A,A)$ bezeichnet.
+%\end{definition}
 
-Die Translationen der Ebene bilden eine abelsche Gruppe, wir haben
-Sie früher mit den Vektoren $\mathbb{R}^2$ identifiziert.
-Die inverterbaren Endomorphismen der Gruppe der Translationen der
-Ebene ist die allgemeine lineare Gruppe $\operatorname{GL}_2(\mathbb{R})$,
-ist also eine Gruppe.
-Dies gilt aber auch ganz allgemein für die Menge der invertierbaren
-Endomorphismen, die Menge
-\[
-\{ s \in \operatorname{End}(A)
-\mid
-\text{$s$ ist invertierbar}
-\}
-\]
-ist eine Gruppe.
+%Die Translationen der Ebene bilden eine abelsche Gruppe, wir haben
+%Sie früher mit den Vektoren $\mathbb{R}^2$ identifiziert.
+%Die inverterbaren Endomorphismen der Gruppe der Translationen der
+%Ebene ist die allgemeine lineare Gruppe $\operatorname{GL}_2(\mathbb{R})$,
+%ist also eine Gruppe.
+%Dies gilt aber auch ganz allgemein für die Menge der invertierbaren
+%Endomorphismen, die Menge
+%\[
+%\{ s \in \operatorname{End}(A)
+%\mid
+%\text{$s$ ist invertierbar}
+%\}
+%\]
+%ist eine Gruppe.
 
-\begin{definition}
+\begin{definition}[Wirkung auf einer abelschen Gruppe]
 Sei $G$ eine Gruppe und $A$ eine abelsche Gruppe.
 Man sagt, die Gruppe {\em $G$ wirkt auf $A$}, wenn
 es einen Homomorphismus $\vartheta\colon G\to\operatorname{Hom}(A,A)$ gibt.
@@ -384,7 +389,7 @@ Eine Translation wird durch den Verschiebungsvektor $v$ beschrieben.
 Ist $g\in\operatorname{SO}(2)$ eine Drehmatrix, dann ist $gv$ ein
 Vektor in $\mathbb{R}^2$, der wieder eine Verschiebung beschreibt.
 
-\begin{satz}
+\begin{satz}[semidirektes Produkt]
 Sei $G$ eine Gruppe, die auf einer abelschen Gruppe $A$ wirkt.
 Die Menge $G\times A$ mit der Verknüpfung
 \[
@@ -395,6 +400,7 @@ g_1
 ist eine Gruppe mit dem neutralen Element $(e,0)$.
 Sie wird mit $G\ltimes A$ bezeichnet und heisst das {\em semidirekte Produkt}
 von $G$ und $A$.
+\index{semidirektes Produkt}%
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -489,7 +495,7 @@ $f$ und $T_sg$ sich ``möglichst ähnlich'' sind.
 Für das Registrierungsproblem auf der Kugeloberfläche ist der
 Definitionsbereich der zu registrierenden Funktion die
 zweidimensionale Kugeloberfläche $X=S^2$.
-Darauf operatiert die volle Gruppe der dreidimensionalen
+Darauf operiert die volle Gruppe der dreidimensionalen
 Drehmatrizen $\operatorname{SO}(3)$.
 
 \begin{aufgabe}[Sphärisches Registrierungsproblem]

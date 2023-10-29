@@ -14,6 +14,7 @@ digitalen Signalen oder Bildern zu verwenden, die dann auch verlustlos
 rekonstruiert werden können.
 Sie eignen sich aber nicht für Approximationen wie sie zum Beispiel
 bei der JPEG-Codierung verwendet werden sollen.
+\index{JPEG}%
 Diese beruhen darauf, dass hochfrequente Komponenten in der
 Fourier-Transformierten weggelassen werden können, weil sie für die
 meisten Bilder ``klein'' sind.
@@ -47,6 +48,7 @@ ist, dann sind die Reste $p_1$ und $p_2$ in $\mathbb{Z}/k\mathbb{Z}$
 von $0$ verschieden, aber deren Produkt ist
 $p_1\cdot p_2 = k \equiv 0 \mod k$.
 Die Zahlen $p_1$ und $p_2$ heissen {\em Nullteiler}.
+\index{Nullteiler}%
 Die Existenz von Nullteilern hat zur Folge, dass Gleichungen der
 Form $p_1 x=b$ sich in $\mathbb{Z}/k\mathbb{Z}$ nicht mehr
 eindeutig lösbar sind.
@@ -115,9 +117,10 @@ der Addition, sondern $\mathbb{F}_p^*=\mathbb{F}_p\setminus\{0\}$
 ist auch eine Gruppe bezüglich der Multiplikation, jedes Element 
 in $\mathbb{F}_p^*$ kann bezüglich der Multiplikation invertiert
 werden.
-Man nennt eine solche Menge heisst ein {\em Körper}.
+Man nennt eine solche Menge einen {\em Körper}.
 Der Körper $\mathbb{F}_p$ heisst auch der {\em Galois-Körper} 
 der Primzahlordnung $p$.
+\index{Galois-Körper}%
 
 Die Bestimmung des multiplikativen Inversen eines Elements
 $a\in\mathbb{F}_p$ ist gleichbedeutend damit, dass eine Zahl
@@ -154,7 +157,7 @@ Das Element $6\in\mathbb{F}_7$ ist $6=-1$, kommt also für $\omega$
 nicht in Frage.
 
 Die Schwierigkeit ist mit dem Problem verwandt, dass die Gleichung
-$\omega^n=1$ auch im Körper $\mathbb{F}$ der reellen Zahlen nicht
+$\omega^n=1$ auch im Körper $\mathbb{R}$ der reellen Zahlen nicht
 genügend verschiedene Lösungen hat.
 Das Problem konnte erst gelöst werden, indem die reellen Zahlen
 zum Körper der komplexen Zahlen $\mathbb{C}$ erweitert wurden.
@@ -207,7 +210,7 @@ Damit die Menge
 L
 =
 \{
-a_{n-1}\alpha^{n-1} + a_{n-2}\alpha^{n-2} + \dots + a_1\alpha a_0
+a_{n-1}\alpha^{n-1} + a_{n-2}\alpha^{n-2} + \dots + a_1\alpha + a_0
 \mid
 a_0,\dots,a_{n-1}\in\mathbb{F}_p
 \}
@@ -228,7 +231,7 @@ Die Menge $L$ kann auch betrachtet werden als die Menge der Polynomereste
 \[
 L
 =
-\mathbb{F}_p[X] / m\mathbb{F}_p[X]
+\mathbb{F}_p[X] / m(X)\mathbb{F}_p[X]
 \]
 bei Polynomdivision durch $m(X)$.
 Falls sich das Polynom $m(X)$ in zwei Faktoren $p(X),q(X)\in\mathbb{F}_p[X]$
@@ -236,9 +239,10 @@ zerlegen lässt, also $m(X)=p(X)q(X)$, dann sind $p,q\in L$ Nullteiler.
 Wie bei der Konstruktion der Körper $\mathbb{F}_p$ muss also sichergestellt
 werden, dass sich das Polynom $m(X)$ nicht faktorisieren lässt.
 
-\begin{definition}
+\begin{definition}[irreduzibeles Polynom]
 Ein Polynom $p(X)\in K[X]$ mit Koeffizienten in einem Körper $K$ heisst
-{\em irreduzibel}, wenn es keine Faktorisierung von $p(X)$ in Faktoren
+{\em ir\-re\-du\-zi\-bel}, wenn es keine Faktorisierung von $p(X)$ in Faktoren
+\index{irreduzibel}%
 $p(X)=a(X)b(X)$ mit $a(X),b(X)\in K[X]$ gib.t
 \end{definition}
 
@@ -250,7 +254,7 @@ Zu einem beliebigen irreduziblen Polynom $m(X)\in K[X]$ kann jetzt
 ein Körper konstruiert werden, der ein Element enhält, welches Nullstelle
 des Polynoms $m(X)$ ist.
 
-\begin{satz}
+\begin{satz}[endlicher Körper]
 Ist $m(X)\in K[X]$ ein irreduzibles Polynom mit Koeffizienten in einem
 Körper $K$, dann ist die Menge
 \[
@@ -295,13 +299,13 @@ Der Erweiterungskörper ist als der Körper der komplexen Zahlen.
 Für den endlichen Körper $K=\mathbb{F}_p$ entstehen die Körper
 $\mathbb{F}_{p^l}$.
 
-\begin{satz}
+\begin{satz}[Körper $\mathbb{F}_{p^l}$]
 \label{buch:diskret:koerper:satz:fpl}
 Ist $m(X)\in \mathbb{F}_p[X]$ ein irreduzibles Polynom vom Grad $l$ mit
 Koeffizienten $\mathbb{F}_p$, dann ist $\mathbb{F}_{p}(\alpha) = \mathbb{F}_p/m(X)\mathbb{F}_p$ ein Körper mit $p^l$-Elementen.
 \end{satz}
 
-\begin{definition}
+\begin{definition}[Körper $\mathbb{F}_{p^l}$]
 \label{buch:diskret:koerper:def:fpl}
 Der Körper von Satz~\ref{buch:diskret:koerper:satz:fpl} heisst der
 endliche Körper oder Galois-Körper der Ordnung $p^l$.
@@ -402,7 +406,7 @@ n.
 Die Matrix $\overline{\mathscr{F}}_n$ kann also nur dann zur
 inversen Matrix von $\mathscr{F}_n$ werden, wenn im Körper
 $\mathbb{F}_{p^l}$ durch $n$ geteilt werden kann.
-Das ist genau dann möglich, wenn $p$ kein Teiler von $p$ ist.
+Das ist genau dann möglich, wenn $p$ kein Teiler von $n$ ist.
 
 Für das ausserdiagonale Element in Zeile $i$ und Spalte $j$
 findet man entsprechend
@@ -440,8 +444,8 @@ Einheitswurzel darin gefunden werden kann.
 
 Die Faktorisierung der Fourier-Transformation in
 Abschnitt~\ref{buch:diskret:section:vandermonde}
-und die konstruktion schneller Algorithmen in
-Abschnitt~ \ref{buch:diskret:section:schnell} können damit
+und die Konstruktion schneller Algorithmen in
+Abschnitt~\ref{buch:diskret:section:schnell} können damit
 genauso versucht werden.
 Dabei treten die Fourier-Transformationen $\mathscr{q}$ für Primfaktoren
 $q$ von $n$ auf.
@@ -450,7 +454,7 @@ Da aber $\omega$ eine primitive $n$-te Einheitswurzel von ist, ist
 $\omega^{n/q}$ eine primitive $q$-te Einheitswurzel.
 
 Für die inverse Abbildung wird die inverse Fourier-Transformation
-benötigt, die durch $\frac{1}{q}\overline{\mathscr{F}}_q$ ist.
+$\frac{1}{q}\overline{\mathscr{F}}_q$ benötigt.
 Da $q$ ein Primfaktor von $n$ ist, sind $p$ und $q$ verschieden.
 Damit ist auch $q$ in $\mathbb{F}_{p^l}$ invertierbar und es steht
 der Konstruktion der inversen Fourier-Transformation nichts im Wege.

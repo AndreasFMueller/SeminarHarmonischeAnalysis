@@ -22,12 +22,13 @@ können daher leicht durch eine Multiplikations oder Invertierungstabelle
 vollständig beschrieben werden.
 In diesem Abschnitt soll gezeigt werden, dass sogar noch viel weniger
 nötig ist, weil solche Gruppen aus einer kleineren Menge von Elementen
-Erzeugt werden können.
+erzeugt werden können.
 
-\begin{definition}
+\begin{definition}[von $F$ erzeugte Gruppe]
 Sei $F\subset G$ eine Teilmenge einer Gruppe $G$.
 Dann heisst die kleinste Untergruppe $\langle F\rangle$ von $G$,
-der $F$ enthält, die von $F$ erzeugte Gruppe.
+die $F$ enthält, die von $F$ erzeugte Gruppe.
+\index{Gruppe!von $F$ erzeugt}%
 \end{definition}
 
 \begin{beispiel}
@@ -52,7 +53,7 @@ Da aber auch Summen von Brüchen der Form
 =
 \frac{aq^l+bp^k}{p^kq^l}
 \]
-enthalten, die erzeugte Gruppe muss daher auch alle Brüche mit
+enthalten ist, muss die erzeugte Gruppe auch alle Brüche mit
 Nennern erhalten, die Produkte von beliebigen Primzahlpotenzen sind.
 Da jeder Nenner als Primzahlprodukt geschrieben werden kann, folgt,
 dass die von $F$ erzeugte Gruppe alle rationalen Zahlen enthalten
@@ -61,7 +62,7 @@ Da aber in $F$ nur rationale Zahlen vorhanden sind, folgt
 $\langle F\rangle = \mathbb{Q}$.
 \end{beispiel}
 
-\begin{satz}
+\begin{satz}[von $F$ erzeugte Gruppe]
 Die erzeugte Gruppe der Teilmenge $F$ der Gruppe $G$ ist
 \[
 \langle F\rangle
@@ -70,9 +71,10 @@ Die erzeugte Gruppe der Teilmenge $F$ der Gruppe $G$ ist
 \]
 \end{satz}
 
-\begin{definition}
+\begin{definition}[endlich erzeugt]
 Eine Gruppe $G$ heisst {\em endlich erzeugt}, wenn es eine endliche Menge
 $F\subset G$ gibt derart, dass $G=\langle F\rangle$.
+\index{Gruppe!endliche erzeugt}%
 \end{definition}
 
 \begin{beispiel}
@@ -109,15 +111,15 @@ Dies ist gleichbedeutend damit, dass $l\alpha$ ein Vielfaches von $2\pi$
 ist, also $l\alpha = 2\pi k$ mit $k\in\mathbb{Z}$.
 Somit ist 
 \[
-\alpha = 2\pi \frac{k}{l},
+\alpha = 2\pi \frac{k}{l}
 \]
 ein rationales Vielfaches von $\pi$.
 Ohne Beschränkung der Allgemeinheit darf man annehmen, dass $k$ und $n$
 teilerfremd sind, dass also der Bruch $k/n$ gekürzt ist.
 Die Zahlen $e^{in\alpha}=e^{2\pi i n (k/l)}$ sind gleich, wenn 
 sich die Exponenten nur um ein Vielfaches von $2\pi i$ unterscheiden,
-wenn also $nk$ den gleichen Rest module $l$ haben.
-Da $k$ und $l$ teilerfremd sind, sind alle Reste module $l$ möglich.
+wenn also $nk$ den gleichen Rest modulo $l$ haben.
+Da $k$ und $l$ teilerfremd sind, sind alle Reste modulo $l$ möglich.
 Die erzeugte endliche Untergruppe ist also
 \[
 \langle e^{i\alpha}\rangle
@@ -151,6 +153,8 @@ Gruppen neue zusammensetzen lassen.
 Seien $G$ und $H$ endliche Gruppen.
 Dann lässt sich eine neue Gruppe konstruieren, die auch die
 {\em Produktgruppe} heisst.
+\index{Produktgruppe}%
+\index{Gruppe!Produkt}%
 Sie besteht besteht aus den Paaren von Gruppenelementen
 \[
 G\times H
@@ -192,13 +196,15 @@ Die Menge $F$ ist endlich, denn $|F| = |F_1| + |F_2|$.
 Damit ist gezeigt, dass das Produkt endlich erzeugter Gruppen 
 wieder endlich erzeugt ist.
 
-\begin{satz}
+\begin{satz}[Produkt endlich erzeugter Gruppen]
 Sind $G_1$ und $G_2$ endlich erzeugte Gruppen, dann ist auch
 $G_1\times G_2$ endlich erzeugt.
 \end{satz}
 
 Die Verknüpfung abelscher Gruppen wird oft additiv geschrieben.
 In diesem Fall wird die Produktgruppe auch als {\em direkte Summe}
+\index{direkte Summe}%
+\index{Gruppe!direkte Summe}%
 \[
 G\times H
 =
@@ -276,8 +282,9 @@ und
 ist jetzt der folgende Struktursatz für endlich erzeugte abelsche
 Gruppen plausibel.
 
-\begin{satz}
+\begin{satz}[Struktursatz für endlich erzeugte Gruppen]
 \label{buch:diskret:endlich:struktursatz}
+\index{Struktursatz}%
 Ist $G$ eine endliche erzeugte abelsche Gruppe, dann gibt es eine
 Zahl $d\in\mathbb{N}$ und eindeutig bestimmte Primzahlpotenzen $d_i$
 derart, dass
@@ -290,6 +297,7 @@ G
 \mathbb{Z}/d_i\mathbb{Z}.
 \]
 Die Ordnung der Gruppe $G$ ist $|G|=\prod_{i=1}^n d_i$.
+\index{Gruppe!Struktursatz}%
 \end{satz}
 
 %
@@ -305,8 +313,8 @@ $G\to\mathbb{C}$ durch die Werte auf den erzeugenden Elementen
 jedes einzelnen Summanden eindeutig bestimmt ist.
 Daher gilt der folgende Satz:
 
-\begin{satz}
-Ist $G$ eine endlich erzeugte Gruppe, dann ist
+\begin{satz}[Duale Gruppe einer endlich erzeugten abelschen Gruppe]
+Ist $G$ eine endlich erzeugte abelsche Gruppe, dann ist
 $\hat{G}\cong G$.
 \end{satz}
 
@@ -501,7 +509,7 @@ die beiden Homomorphismen $(\hat{\imath}_1,\hat{\imath}_2)$ und
 $\hat{\pi}_1\oplus\hat{\pi}_2$ sind also zueinander invers.
 Damit ist der folgende Satz beweisen.
 
-\begin{satz}
+\begin{satz}[duale Gruppe einer direkten Summe]
 Sind $G_1$ und $G_2$ abelsche Gruppen, dann sind die Abbildungen
 \begin{align*}
 \hat{\pi}_1\oplus\hat{\pi}_2

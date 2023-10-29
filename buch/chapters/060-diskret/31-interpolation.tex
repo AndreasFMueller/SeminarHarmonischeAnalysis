@@ -10,6 +10,7 @@
 \subsection{Interpolation und die Vandermonde-Matrix
 \label{buch:diskret:subsection:interpolation}}
 Interpolation löst das folgende Problem.
+\index{Interpolation}%
 
 \begin{aufgabe}
 Gegeben sind die Zahlen $x_0,\dots,x_n\in \mathbb{R}$ und die
@@ -26,8 +27,10 @@ p(x) = p_0 + p_1x + p_2x^2 + \dots p_{n-1}x^{n-1} p_nx^n.
 Zu bestimmen sind also die $n+1$ Koeffizienten $p_0,\dots,p_n$.
 Dazu sind aus den Datenpunkten $(x_i,f_i)$ Gleichungen zu finden,
 für die Koeffizienten zu bestimmen.
-Einsetzen der Zahlen $x_i$ in $p(x_i)$ 
+Einsetzen der Zahlen $x_i$ in $p(x_i)$ ergibt das Gleichungssystem
 \begin{equation}
+\renewcommand{\arraycolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
 \def\v{\vdots\phantom{.}}
 \begin{array}{rcrcrcccrcrcr}
 p_0&+&x_0p_1&+&x_0^2p_2&+&\dots &+&x_0^{n-1}p_{n-1}&+&x_0^np_n&=&f_0\\
@@ -38,6 +41,7 @@ p_n&+&x_np_1&+&x_n^2p_2&+&\dots &+&x_n^{n-1}p_{n-1}&+&x_n^np_n&=&f_n
 \end{array}
 \label{buch:diskret:eqn:interpolation}
 \end{equation}
+für die $p_i$.
 Schreibt man die Koeffizienten $p_0,\dots,p_n$ und die Werte
 $f_0,\dots,f_n$ als $n+1$-dimensionale Spaltenvektoren $p$ und $f$,
 dann kann das Gleichungssystem~\eqref{buch:diskret:eqn:interpolation}
@@ -56,7 +60,7 @@ X
 \]
 geschrieben werden.
 
-\begin{definition}
+\begin{definition}[Vandermonde-Matrix]
 \label{buch:diskret:interpolation:def:vandermonde}
 Die $n\times n$-Matrix
 \[
@@ -73,8 +77,12 @@ V(x_1,\dots,x_n)
 M_{n\times n}(\mathbb R)
 \]
 heisst die {\em Vandermonde-Matrix}.
-Die {\em Vandermonde-Determinante} ist die Determinante
-$\det V(x_1,\dots,x_n)$ der Vandermonde-Matrix.
+\index{Vandermonde-Matrix}%
+Die Vandermonde-Matrix hat
+$\det V(x_1,\dots,x_n)$
+als Determinante, sie wird die {\em Vandermonde-Determinante}
+genannt.
+\index{Vandermonde-Determinante}%
 \end{definition}
 
 Die Matrix $X$ ist also die Vandermonde-Matrix $X=V(x_0,\dots,x_n)$.
@@ -82,7 +90,8 @@ Das Interpolationsproblem ist genau dann lösbar, wenn $X$
 regulär ist, was gleichbedeutend ist damit, dass die
 Vandermonde-Determinante von $0$ verschieden ist.
 Glücklicherweise ist dies unter den gegebenen Voraussetzungen immer
-der Fall, denn man kann den folgenden Satz beweisen.
+der Fall, denn man kann den folgenden Satz beweisen (siehe auch
+\cite[Satz 5.47]{buch:linalg}).
 
 \begin{satz}
 \label{buch:diskret:vandermonde:satz:vandermonde}

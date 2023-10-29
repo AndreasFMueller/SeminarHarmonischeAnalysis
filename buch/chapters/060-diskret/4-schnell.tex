@@ -6,7 +6,7 @@
 \section{Schnelle Algorithmen für die Fourier-Transformation
 \label{buch:diskret:section:schnell}}
 \kopfrechts{Schnelle Algorithmen}
-Die Berechnung Fourier-Transformierten $\hat{f}=\mathscr{F}_nf$ eines
+Die Berechnung der Fourier-Transformierten $\hat{f}=\mathscr{F}_nf$ eines
 $n$-dimensionalen Vektors $f$ als Produkt einer $n\times n$-Matrix mit
 einem Vektor benötigt $n^2$ Multiplikationen und $n(n-1)$ Additionen,
 also $O(n^2)$ Operationen.
@@ -256,7 +256,7 @@ die Grösse der Faktoren der
 Faktorisierung~\eqref{buch:diskret:schnell:eqn:faktorisierung}
 abgeschätzt werden kann.
 
-\begin{satz}
+\begin{satz}[Aufwand]
 \label{buch:diskret:schnell:satz:aufwand}
 Ist $n=n_1n_2\cdot\ldots\cdot n_k$ eine Faktorisierung von $n$
 mit $n_i\le b$ für alle $i$, dann lässt sich die Fourier-Transformation
@@ -276,7 +276,7 @@ Andererseits sind alle Faktoren $n_i\ge 2$, so dass auch $k\le \log_2 n$
 sein muss.
 Es folgt, dass $k=O(\log n)$.
 
-Für die Berechnung des Aufwandes wird die Summe der Faktoren nötig,
+Für die Berechnung des Aufwandes wird die Summe der Faktoren benötigt,
 sie kann abgeschätzt werden durch
 \[
 n_1+\ldots+n_k
@@ -353,8 +353,9 @@ Daher ist es nicht überraschend, dass eine Umordnung der Komponenten
 von $f$ basierend auf der Zweiersystemdarstellung des Index zu einer
 einfacheren Darstellung der Zerlegung führt.
 
-\begin{definition}
+\begin{definition}[Bitumkehr]
 Die {\em Bitumkehr} $\beta_k(i)$ einer Zahl $i\in\mathbb{N}$ ist
+\index{Bitumkehr}%
 die Zahl, die sich ergibt, wenn man die Zahl $i$ als $k$-stellige
 Zweiersystemzahl schreibt, nötigenfalls mit führenden Nullen,  und
 dann die Reihenfolge der Ziffern umkehrt.
@@ -394,7 +395,8 @@ Die Abbildungen
 \ref{buch:diskret:schnell:fig:f8}
 und
 \ref{buch:diskret:schnell:fig:f16}
-zeigen den Datenfluss in der Faktorisierung der Fourier-Transformationen
+zeigen den Datenfluss in der Faktorisierung der
+Fourier-Trans\-for\-ma\-tio\-nen
 $\mathscr{F}_8$ und $\mathscr{F}_{16}$.
 
 
