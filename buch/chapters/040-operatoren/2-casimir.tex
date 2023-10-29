@@ -371,10 +371,10 @@ kommt zum Beispiel in der Plattengleichung vor.
 \subsection{Invariante Differentialoperatoren auf einer Lie-Gruppe}
 Der Laplace-Operator hat sich als der Operator herausgestellt, der
 der Isotropie des Raumes in jedem Punkt Rechnung trägt.
-Der Operator ist insbesondere um die Drehungen um jeden Punkt
+Der Operator ist insbesondere unter den Drehungen um jeden Punkt
 invariant.
 Die Invarianzeigenschaft ist natürlich eine Eigenschaft der 
-vorliegenden Gruppe, die im vorliegenden Fall die
+Symmetriegruppe, die im vorliegenden Fall die
 orthogonale Gruppe $\operatorname{O}(n)$ ist.
 
 %
@@ -431,7 +431,7 @@ Alle möglichen Kurven entstehen also durch die Exponentialfunktion.
 
 Leitet man
 \eqref{buch:operatoren:casimir:eqn:homomorph}
-nach $s$ ab, erhält man als Lösungskurven
+n der Stelle $s=0$ nach $s$ ab, erhält man als Lösungskurven
 \(
 t\mapsto \gamma(t) = \exp(\dot{\gamma}(0)) \gamma(0).
 \)
@@ -445,10 +445,12 @@ Xf(e)
 =
 \frac{d}{dt} f(\exp(tX)) \bigg|_{t=0}.
 \]
-Die Matrix $X=\dot{\gamma}(0)$ kann als Tangentialvektor der Gruppe
+Die Matrix $X=\dot{\gamma}(0)$ kann als {\em Tangentialvektor} der Gruppe
+\index{Tangentialvektor}%
 im Punkt $e\in G$ betrachtet werden.
 Ein Tangentialvektor im Punkt $e\in G$ entspricht daher einem
 Ableitungsoperator im gleichen Punkt.
+\index{Ableitungsoperator}%
 
 Ein Differentialoperator entsteht durch Definition eines Tangentialvektors
 in jedem Punkt der Gruppe.
@@ -463,7 +465,9 @@ Xf(g)
 \frac{d}{dt}f(g\exp(tX(g)))\bigg|_{t=0}
 \]
 geschrieben.
-Der Differentialoperator $X$ ist also ein Vektorfeld von Tangentialvektoren.
+Der Differentialoperator $X$ ist also ein {\em Vektorfeld von
+Tangentialvektoren}.
+\index{Vektorfeld}%
 Durch wiederholte Anwendung können Operatoren höherer Ordnung konstruiert
 werden.
 
@@ -494,7 +498,7 @@ $X(g^{-1}) = X(e)$ gilt.
 Die unter $T_g$ invarianten Differentialoperatoren entsprechen also
 bijektiv den Tangentialvektoren im neutralen Element.
 
-\begin{definition}
+\begin{definition}[Raum der linksinvarianten Vektorfelder]
 Die linksinvarianten Vektorfelder auf einer Lie-Gruppe $G$ bilden 
 den $n$-dimensionalen Vektorraum $LG$.
 \end{definition}
@@ -531,6 +535,10 @@ gX(g)g^{-1} = X(e)
 \]
 gilt.
 
+%
+% Die adjungierte Abbildung
+%
+\subsubsection{Die adjungierte Abbildung}
 Der Unterschied zwischen Rechts- und Linkstranslation wird also gemessen
 durch die Grösse $gX(g)g^{-1}-X(e)$.
 Ein Vektorfeld ist genau dann invariant, wenn diese Grösse verschwindet.
@@ -571,14 +579,20 @@ YX-XY.
 \label{buch:operatoren:casimir:eqn:innad}
 \end{equation}
 
-\begin{definition}
+\begin{definition}[adjungierte Abbildung]
 Die Abbildung
 \[
 \operatorname{ad}_Y\colon LG \to LG:X\mapsto [Y,X] = YX-XY
 \]
 heisst die {\em adjungierte Abbildung}.
+\index{adjungierte Abbildung}%
+\index{Abbildung!adjungiert}%
 \end{definition}
 
+%
+% Lie-Algebra
+%
+\subsubsection{Lie-Algebra}
 Die adjungierte Abbildung ist für alle Elemente $Y\in LG$ definiert,
 es gibt also auch eine Abbildung
 \[
@@ -593,7 +607,7 @@ LG\times LG
 die offensichtlich bilinear und antisymmetrisch ist.
 Sie macht den Vektorraum $LG$ zu einer sogenannten Lie-Algebra.
 
-\begin{definition}
+\begin{definition}[Lie-Algebra]
 Ein Vektorraum $V$ mit einem bilinearen und antisymmetrischen
 Produkt
 \[
@@ -604,6 +618,7 @@ V\to V
 (Y,X) \to [Y,X]
 \]
 heisst eine {\em Lie-Algebra}, wenn die sogenannte
+\index{Lie-Algebra}%
 {\em Jacobi-Identität}
 \[
 [X,[Y,Z]]
@@ -618,9 +633,12 @@ für alle Vektoren $X,Y,Z\in V$
 erfüllt ist.
 Das Produkt $[X,Y]$ in der Lie-Algebra heisst auch die
 {\em Lie-Klammer} von $X$ und $Y$.
+\index{Lie-Klammer}%
 \end{definition}
 
 Eine unmittelbare Folge aus der Jacobi-Identität ergibt sich
+\index{Jacobi-Identität}%
+\index{Identität, Jacobi-}%
 aus der Rechnung
 \begin{align}
 \operatorname{ad}_Z([X,Y])
@@ -644,6 +662,7 @@ aus der Rechnung
 \label{buch:operatoren:casimir:eqn:lieklammerinvariant}
 \end{align}
 Eine solche Operation heisst auch eine {\em Derivation}.
+\index{Derivation}%
 
 Für abelsche Gruppen sind Rechts- und Linkstranslation identisch,
 die adjungiert Abbildung wird daher für alle Tangentialvektoren $=0$.
@@ -665,8 +684,8 @@ Der Tangentialvektor dieser Kurve bei $t=0$ ist
 \dot{\gamma}(0)
 =
 \begin{pmatrix}
--\sin t & -\cos t \\
- \cos t & -\sin t
+         - \sin t & -\cos t \\
+\phantom{-}\cos t & -\sin t
 \end{pmatrix}
 \bigg|_{t=0}
 =
@@ -772,7 +791,7 @@ e_2
 \]
 ableiten.
 Diese stimmen mit den Kommutatorrelationen der Matrizen $J_k$ der
-Lie-Algebra $L\operatorname{SO}(e)$ von $\operatorname{SO}(e)$ überein.
+Lie-Algebra $L\operatorname{SO}(3)$ von $\operatorname{SO}(3)$ überein.
 Die lineare Abbildung
 \[
 \mathbb{R}^3 \to L\operatorname{SO}(3):
@@ -853,7 +872,7 @@ P
 \]
 Dabei darf man annehmen, dass die $X_i$ Basisvektoren der Lie-Algebra
 sind.
-Einem Differentialoperator $P$ entspricht also immer eine
+Einem Differentialoperator $P$ zweiter Ordnung entspricht also immer eine
 Bilinearform.
 Ein invarianter Differentialoperator zweiter Ordnung kann folglich
 dadurch gefunden werden, dass man eine invariante Bilinearform
@@ -898,7 +917,7 @@ für Invarianz}
 0&=\beta([X,Z],Y) + \beta(X,[Y,Z]).
 \end{align*}
 
-\begin{satz}
+\begin{satz}[Invarianz von Bilinearformen]
 \label{buch:operatoren:casimir:satz:invariantebilinearform}
 Eine Bilinearform $\beta(X,Y)$ auf einer Lie-Algebra ist invariant
 genau dann, wenn
@@ -911,17 +930,20 @@ genau dann, wenn
 =
 0
 \]
-gilt.
+gilt für alle $X,Y,Z\in LG$.
 \end{satz}
 
 Die Lie-Klammer $[X,Y]$ ist eine Bilinearform.
-In \eqref{buch:operatoren:casimir:eqn:lieklammerinvariant} tritt
+In der Schreibweise
+\eqref{buch:operatoren:casimir:eqn:lieklammerinvariant}
+der Jacobi-Identität mit der adjungierten Abbildung tritt
 die Invarianzbedingung von
 Satz~\ref{buch:operatoren:casimir:satz:invariantebilinearform}
-auf der rechten Seite aus.
-Aus dem Satz folgt daher, dass $[X,Y]$ genau dann eine invariante
-Bilinearform ist, wenn $\operatorname{ad}_Z([X,Y])=0$ ist, wenn also
-$[X,Y]$ im Zentrum von $LG$ liegt.
+auf der rechten Seite auf.
+Aus dem Satz~\ref{buch:operatoren:casimir:satz:invariantebilinearform}
+folgt daher, dass $[X,Y]$ genau dann eine invariante
+Bilinearform ist, wenn $\operatorname{ad}_Z([X,Y])=0$ für alle $Z\in LG$
+ist, wenn also $[X,Y]$ im Zentrum von $LG$ liegt.
 Für interessante Lie-Algebren ist dies normalerweise nicht der Fall,
 so dass wir auf einem anderen Weg nach invarianten Bilinearformen
 suchen müssen, die hoffentlich auf invariante Differentialoperatoren
@@ -932,13 +954,13 @@ zweiter Ordnung führen werden.
 %
 \subsubsection{Casimir-Operator}
 
-\begin{satz}
+\begin{satz}[Casimir-Operator]
 Ist $\Phi\colon LG\times LG\to\mathbb{R}$ eine symmetrische, invariante
 und nichtentartete Bilinearform auf der $n$-dimennsionalen Lie-Algebra
 $LG$ von $G$, und $X_i$ eine bezüglich $\Phi$
 orthogonale Basis von $LG$ mit der Eigenschaft
 \[
-\Phi(X_i,X_i) = \varepsilon_i \in \{\pm 1\}\qquad\forall i,
+\Phi(X_i,X_i) = \varepsilon_i \in \{\pm 1\}\quad\forall i,
 \]
 dann ist der Operator
 \[
@@ -979,7 +1001,9 @@ c_{jkl}\Phi(X_i,X_i)
 =
 \varepsilon_i c_{jki}.
 \end{align*}
-Es folgt aus der Invarianzbedingung, dass
+Es folgt aus der Invarianzbedingung von
+Satz~\ref{buch:operatoren:casimir:satz:invariantebilinearform},
+dass
 \begin{equation}
 \varepsilon_k c_{i\!jk}
 =
@@ -1022,7 +1046,7 @@ Summe ergibt}
 &=
 \sum_{i,k=1}^n (\varepsilon_i c_{i\!jk}
 +
-\varepsilon_k c_{k\!ji}) X_i X_k
+\varepsilon_k c_{k\!ji}) X_i X_k.
 \label{buch:operatoren:casimir:eqn:summe}
 \intertext{Setzt man \eqref{buch:operatoren:casimir:eqn:invc}
 in \eqref{buch:operatoren:casimir:eqn:summe} ein, erhält man}
@@ -1085,7 +1109,7 @@ Der zum Standardskalarprodukt gehörige Casimir-Operator ist also
 der Laplace-Operator.
 
 Man kann aber auch auf $\mathbb{R}^4$ den Operator konstruieren, der
-zu dem entarteten Minkovski-Skalarprodukt
+zu dem entarteten Min\-kow\-ski-Ska\-lar\-pro\-dukt
 \[
 \Phi(x,y)
 =
