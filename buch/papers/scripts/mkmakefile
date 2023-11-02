@@ -45,10 +45,8 @@ awk 'BEGIN {
 	counter++
 }
 END {
-	printf("buch%d-blx.bbl:\tbuch%d-blx.aux\n", counter, counter)
-	printf("\tbibtex buch%d-blx\n\n", counter)
 	printf("BLXFILES = buch.bbl \\\n")
-	for (i = 1; i <= counter; i++) {
+	for (i = 1; i < counter; i++) {
 		printf("\tbuch%d-blx.bbl \\\n", i)
 	}
 	#printf("\tbuch%d-blx.bbl\n", i)

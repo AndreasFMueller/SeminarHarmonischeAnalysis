@@ -61,9 +61,6 @@ $(workdir)/buch12-blx.bbl:	$(workdir)/buch12-blx.aux
 $(workdir)/buch13-blx.bbl:	$(workdir)/buch13-blx.aux
 	cd $(workdir); bibtex buch13-blx
 
-$(workdir)/buch14-blx.bbl:	$(workdir)/buch14-blx.aux
-	cd $(workdir); bibtex buch14-blx
-
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
 	$(workdir)/buch2-blx.bbl \
@@ -78,7 +75,6 @@ BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch11-blx.bbl \
 	$(workdir)/buch12-blx.bbl \
 	$(workdir)/buch13-blx.bbl \
-	$(workdir)/buch14-blx.bbl \
 
 $(workdir)/SeminarHarmonischeAnalysis1-blx.bbl:	$(workdir)/SeminarHarmonischeAnalysis1-blx.aux
 	cd $(workdir); bibtex SeminarHarmonischeAnalysis1-blx
