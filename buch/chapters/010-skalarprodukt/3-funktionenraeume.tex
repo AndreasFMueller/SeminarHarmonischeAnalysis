@@ -48,9 +48,9 @@ mit den folgenden Eigenschaften
 \item
 Positiv definit: $d(x,y)\ge 0$ und $d(x,y)$ genau dann, wenn $x=y$.
 \item
-Symmetrie: \(d(x,y)=d(y,x)\)
+Symmetrie: $d(x,y)=d(y,x)$.
 \item
-Dreiecksungleichung: \( d(x,y) \le d(x,z) + d(z,y) \).
+Dreiecksungleichung: $d(x,y) \le d(x,z) + d(z,y)$.
 \end{enumerate}
 Ein {\em metrischer Raum} ist ein Menge $X$ mit einer Metrik.
 \index{metrischer Raum}%
@@ -557,7 +557,7 @@ verschwindet das Integral genau dann, wenn $f(x)=0\;\forall x\in X$ ist.
 
 Die zum Skalarprodukt gehörige Norm 
 \[
-\|f\|_2
+\|f\|_2^2
 =
 \int_X |f(x)|^2\,dx
 \]
@@ -692,9 +692,9 @@ Für $X=\mathbb{R}$ besteht $C_0(\mathbb{R})$ aus stetigen Funktionen,
 ausserhalb eines beschränkten Intervalls verschwinden.
 
 %
-% Grenzen des Riemann-Integrals
+% Unzulänglichkeiten des Riemann-Integrals
 %
-\subsection{Grenzen des Riemann-Integrals
+\subsection{Unzulänglichkeiten des Riemann-Integrals
 \label{buch:skalarprodukt:funktionenraeume:subsection:grenzen-riemann}}
 In den vorangegangenen Rechnungen sind wir immer vom Riemann-Integral
 ausgegangen, welches man im Analysisunterricht als erstes kennenlernt.
@@ -705,7 +705,7 @@ Integrals mit dem Integral des Grenzwertes übereinstimmt:
 \int_X \lim_{n\to\infty} f_n(x)\,dx
 =
 \lim_{n\to\infty}
-\int_X f_n(x)\,dx
+\int_X f_n(x)\,dx.
 \]
 Der vorangegangene Abschnitt hat gezeigt, dass wir die Klasse der
 Funktionen ausdehnen müssen auf Funktionen, die nicht stetig sind,
@@ -952,7 +952,7 @@ Zwei fast überall gleiche Funktionen haben das gleiche Integral, denn
 =
 \int_X f(x)-g(x)\,dx
 =
-\int_X 0\,dx=0
+\int_X 0\,dx=0,
 \]
 weil das Integral einer fast überall verschwindenden Funktion $0$ ist.
 
